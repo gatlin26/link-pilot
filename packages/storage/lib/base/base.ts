@@ -37,6 +37,15 @@ const updateCache = async <D>(valueOrUpdate: ValueOrUpdateType<D>, cache: D | nu
  */
 let globalSessionAccessLevelFlag: StorageConfigType['sessionAccessForContentScripts'] = false;
 
+const canConfigureSessionAccessLevel = (): boolean => {
+  const protocol = globalThis.location?.protocol;
+  if (protocol === 'chrome-extension:') {
+    return true;
+  }
+
+  return typeof document === 'undefined';
+};
+
 /**
  * Checks if the storage permission is granted in the manifest.json.
  */
@@ -72,7 +81,8 @@ export const createStorage = <D = string>(
   if (
     globalSessionAccessLevelFlag === false &&
     storageEnum === StorageEnum.Session &&
-    config?.sessionAccessForContentScripts === true
+    config?.sessionAccessForContentScripts === true &&
+    canConfigureSessionAccessLevel()
   ) {
     checkStoragePermission(storageEnum);
 

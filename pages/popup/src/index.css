@@ -1,6 +1,15 @@
 @import '@extension/ui/global.css';
 
+html,
 body {
-  width: 300px;
-  height: 260px;
+  width: 460px;
+  height: 680px;
+}
+
+body,
+#app-container {
+  width: 460px;
+  height: 680px;
+  min-width: 460px;
+  min-height: 680px;
 }

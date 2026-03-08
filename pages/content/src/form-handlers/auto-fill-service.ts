@@ -1,0 +1,192 @@
+/**
+ * 自动填充服务
+ * 负责填充表单字段
+ */
+
+import type { FormField } from './form-detector';
+
+/**
+ * 填充数据
+ */
+export interface FillData {
+  name?: string;
+  email?: string;
+  website?: string;
+  comment?: string;
+}
+
+/**
+ * 填充结果
+ */
+export interface FillResult {
+  /** 是否成功 */
+  success: boolean;
+  /** 已填充的字段 */
+  filledFields: string[];
+  /** 失败的字段 */
+  failedFields: string[];
+  /** 错误信息 */
+  error?: string;
+}
+
+/**
+ * 自动填充服务
+ */
+export class AutoFillService {
+  /**
+   * 填充表单
+   */
+  async fill(fields: FormField[], data: FillData, autoSubmit = false): Promise<FillResult> {
+    const filledFields: string[] = [];
+    const failedFields: string[] = [];
+
+    try {
+      // 填充各个字段
+      for (const field of fields) {
+        if (field.type === 'submit') continue; // 跳过提交按钮
+
+        const value = data[field.type];
+        if (!value) continue;
+
+        try {
+          await this.fillField(field.element, value);
+          filledFields.push(field.type);
+        } catch (error) {
+          console.error(`填充字段 ${field.type} 失败:`, error);
+          failedFields.push(field.type);
+        }
+      }
+
+      // 验证填充结果
+      const validated = this.validateFill(fields, data);
+      if (!validated) {
+        return {
+          success: false,
+          filledFields,
+          failedFields,
+          error: '填充验证失败',
+        };
+      }
+
+      // 自动提交（如果启用）
+      if (autoSubmit) {
+        const submitField = fields.find(f => f.type === 'submit');
+        if (submitField) {
+          await this.clickSubmit(submitField.element);
+        }
+      }
+
+      return {
+        success: true,
+        filledFields,
+        failedFields,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        filledFields,
+        failedFields,
+        error: error instanceof Error ? error.message : '未知错误',
+      };
+    }
+  }
+
+  /**
+   * 填充单个字段
+   */
+  private async fillField(element: HTMLElement, value: string): Promise<void> {
+    // 聚焦元素
+    element.focus();
+
+    // 设置值
+    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+      // 使用原生 setter 触发 React/Vue 等框架的变更检测
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+        element.constructor.prototype,
+        'value'
+      )?.set;
+
+      if (nativeInputValueSetter) {
+        nativeInputValueSetter.call(element, value);
+      } else {
+        element.value = value;
+      }
+
+      // 触发事件
+      element.dispatchEvent(new Event('input', { bubbles: true }));
+      element.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // 失焦
+    element.blur();
+
+    // 等待一小段时间确保事件处理完成
+    await this.sleep(100);
+  }
+
+  /**
+   * 点击提交按钮
+   */
+  private async clickSubmit(element: HTMLElement): Promise<void> {
+    // 等待一小段时间确保所有字段都已填充
+    await this.sleep(500);
+
+    // 触发点击事件
+    element.click();
+  }
+
+  /**
+   * 验证填充结果
+   */
+  private validateFill(fields: FormField[], data: FillData): boolean {
+    for (const field of fields) {
+      if (field.type === 'submit') continue;
+
+      const value = data[field.type];
+      if (!value) continue;
+
+      const element = field.element;
+      if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+        if (element.value !== value) {
+          console.warn(`字段 ${field.type} 验证失败: 期望 "${value}", 实际 "${element.value}"`);
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * 获取默认填充数据
+   */
+  getDefaultData(): FillData {
+    return {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      website: 'https://example.com',
+      comment: 'Great article! Thanks for sharing.',
+    };
+  }
+
+  /**
+   * 从配置读取填充数据
+   */
+  async getDataFromConfig(): Promise<FillData> {
+    // TODO: 从 chrome.storage 读取用户配置的数据
+    // 目前返回默认数据
+    return this.getDefaultData();
+  }
+
+  /**
+   * 睡眠函数
+   */
+  private sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+}
+
+/**
+ * 导出单例
+ */
+export const autoFillService = new AutoFillService();

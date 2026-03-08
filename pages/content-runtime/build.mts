@@ -21,8 +21,9 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
     publicDir: resolve(rootDir, 'public'),
     plugins: [IS_DEV && makeEntryPointPlugin()],
     build: {
+      emptyOutDir: false,
       lib: {
-        name: name,
+        name,
         formats: ['iife'],
         entry,
         fileName: name,

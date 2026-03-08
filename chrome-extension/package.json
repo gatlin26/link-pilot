@@ -4,7 +4,9 @@
   "description": "chrome extension - core settings",
   "type": "module",
   "private": true,
-  "sideEffects": false,
+  "sideEffects": [
+    "src/background/**/*.ts"
+  ],
   "scripts": {
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",

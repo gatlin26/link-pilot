@@ -1,0 +1,490 @@
+/**
+ * 数据模型定义
+ */
+
+import {
+  BacklinkStatus,
+  BusinessType,
+  LinkType,
+  OpportunityStatus,
+  PageType,
+  SourcePlatform,
+  SubmissionResult,
+  SubmitMode,
+  SyncEntityType,
+  SyncJobStatus,
+  SyncOperation,
+} from './enums.js';
+
+/**
+ * 已收集外链
+ */
+export interface CollectedBacklink {
+  /** 唯一标识 */
+  id: string;
+
+  /** 数据来源平台 */
+  source_platform: SourcePlatform;
+
+  /** 收集批次 ID */
+  collection_batch_id: string;
+
+  /** 外链分组 ID */
+  backlink_group_id?: string;
+
+  /** 收集时间 */
+  collected_at: string;
+
+  /** 目标域名 */
+  target_domain: string;
+
+  /** 目标 URL */
+  target_url: string;
+
+  /** 引用页面 URL */
+  referring_page_url: string;
+
+  /** 引用域名 */
+  referring_domain: string;
+
+  /** 锚文本 */
+  anchor_text: string;
+
+  /** 页面标题 */
+  page_title: string;
+
+  /** 原始指标数据 */
+  raw_metrics: Record<string, unknown>;
+
+  /** 原始快照（限制 5KB） */
+  raw_snapshot: string;
+
+  /** 站点摘要 */
+  site_summary?: string;
+
+  /** 链接类型 */
+  link_type?: LinkType;
+
+  /** 站点业务类型 */
+  site_business_types?: BusinessType[];
+
+  /** 上下文匹配分数 */
+  context_match_score?: number;
+
+  /** 上下文匹配说明 */
+  context_match_note?: string;
+
+  /** 状态 */
+  status: BacklinkStatus;
+
+  /** 备注 */
+  notes?: string;
+
+  /** 创建时间 */
+  created_at: string;
+
+  /** 更新时间 */
+  updated_at: string;
+}
+
+/**
+ * 机会
+ */
+export interface Opportunity {
+  /** 唯一标识 */
+  id: string;
+
+  /** 关联的已收集外链 ID */
+  collected_backlink_id: string;
+
+  /** 目标 URL */
+  url: string;
+
+  /** 域名 */
+  domain: string;
+
+  /** 页面类型 */
+  page_type: PageType;
+
+  /** 路径模式 */
+  path_pattern: string;
+
+  /** 链接类型 */
+  link_type: LinkType;
+
+  /** 站点摘要 */
+  site_summary: string;
+
+  /** 站点业务类型 */
+  site_business_types: BusinessType[];
+
+  /** 上下文匹配分数 */
+  context_match_score: number;
+
+  /** 上下文匹配说明 */
+  context_match_note: string;
+
+  /** 是否可提交 */
+  can_submit: boolean;
+
+  /** 是否可自动填充 */
+  can_auto_fill: boolean;
+
+  /** 是否可自动提交 */
+  can_auto_submit: boolean;
+
+  /** 状态 */
+  status: OpportunityStatus;
+
+  /** 备注 */
+  notes?: string;
+
+  /** 创建时间 */
+  created_at: string;
+
+  /** 更新时间 */
+  updated_at: string;
+}
+
+/**
+ * 表单字段映射
+ */
+export interface FieldMapping {
+  /** 字段类型 */
+  field_type: 'name' | 'email' | 'website' | 'comment' | 'submit';
+
+  /** 选择器 */
+  selector: string;
+
+  /** 是否必填 */
+  required: boolean;
+
+  /** 默认值 */
+  default_value?: string;
+}
+
+/**
+ * 站点模板
+ */
+export interface SiteTemplate {
+  /** 唯一标识 */
+  id: string;
+
+  /** 域名 */
+  domain: string;
+
+  /** 页面类型 */
+  page_type: PageType;
+
+  /** 路径模式 */
+  path_pattern: string;
+
+  /** 字段映射 */
+  field_mappings: FieldMapping[];
+
+  /** 提交按钮选择器 */
+  submit_selector: string;
+
+  /** 版本号 */
+  version: number;
+
+  /** 更新时间 */
+  updated_at: string;
+}
+
+/**
+ * 提交记录
+ */
+export interface Submission {
+  /** 唯一标识 */
+  id: string;
+
+  /** 关联的机会 ID */
+  opportunity_id: string;
+
+  /** 域名 */
+  domain: string;
+
+  /** 页面 URL */
+  page_url: string;
+
+  /** 提交模式 */
+  submit_mode: SubmitMode;
+
+  /** 是否点击了提交按钮 */
+  did_click_submit: boolean;
+
+  /** 提交结果 */
+  result: SubmissionResult;
+
+  /** 评论摘要 */
+  comment_excerpt: string;
+
+  /** 错误信息 */
+  error_message?: string;
+
+  /** 创建时间 */
+  created_at: string;
+}
+
+/**
+ * 同步任务
+ */
+export interface SyncJob {
+  /** 唯一标识 */
+  id: string;
+
+  /** 实体类型 */
+  entity_type: SyncEntityType;
+
+  /** 实体 ID */
+  entity_id: string;
+
+  /** 操作类型 */
+  operation: SyncOperation;
+
+  /** 状态 */
+  status: SyncJobStatus;
+
+  /** 重试次数 */
+  retry_count: number;
+
+  /** 错误信息 */
+  error_message?: string;
+
+  /** 创建时间 */
+  created_at: string;
+
+  /** 更新时间 */
+  updated_at: string;
+}
+
+/**
+ * 收集批次信息
+ */
+export interface CollectionBatch {
+  /** 批次 ID */
+  id: string;
+
+  /** 数据来源平台 */
+  source_platform: SourcePlatform;
+
+  /** 收集数量 */
+  count: number;
+
+  /** 收集时间 */
+  collected_at: string;
+
+  /** 同步状态 */
+  sync_status: 'pending' | 'syncing' | 'synced' | 'failed';
+
+  /** 同步成功数量 */
+  synced_count: number;
+}
+
+/**
+ * 页面上下文
+ */
+export interface PageContext {
+  /** 机会 ID */
+  opportunity_id: string;
+
+  /** 域名 */
+  domain: string;
+
+  /** 链接类型 */
+  link_type: LinkType;
+
+  /** 是否启用自动填充 */
+  auto_fill_enabled: boolean;
+
+  /** 是否启用自动提交 */
+  auto_submit_enabled: boolean;
+
+  /** 标签页 ID */
+  tab_id?: number;
+
+  /** 创建时间 */
+  created_at: string;
+}
+
+/**
+ * 网站配置
+ */
+export interface WebsiteConfig {
+  /** 唯一标识 */
+  id: string;
+
+  /** 网站名称 */
+  name: string;
+
+  /** 网站 URL */
+  url: string;
+
+  /** 网站域名 */
+  domain: string;
+
+  /** 分组 ID */
+  group_id: string;
+
+  /** 分类 */
+  categories: string[];
+
+  /** 网站描述 */
+  description?: string;
+
+  /** 关键词 */
+  keywords?: string[];
+
+  /** 是否启用 */
+  enabled: boolean;
+
+  /** 创建时间 */
+  created_at: string;
+
+  /** 更新时间 */
+  updated_at: string;
+}
+
+/**
+ * 网站分组
+ */
+export interface WebsiteGroup {
+  /** 分组 ID */
+  id: string;
+
+  /** 分组名称 */
+  name: string;
+
+  /** 网站数量 */
+  website_count: number;
+
+  /** 创建时间 */
+  created_at: string;
+}
+
+/**
+ * 外链分组
+ */
+export interface BacklinkGroup {
+  /** 分组 ID */
+  id: string;
+
+  /** 分组名称 */
+  name: string;
+
+  /** 外链数量 */
+  backlink_count: number;
+
+  /** 创建时间 */
+  created_at: string;
+}
+
+/**
+ * 扩展设置
+ */
+export interface ExtensionSettings {
+  /** 自动检测表单 */
+  auto_detect_form: boolean;
+
+  /** 自动开始填充 */
+  auto_start_fill: boolean;
+
+  /** 下一个外链打开数量 */
+  next_backlink_count: number;
+
+  /** 外链域名唯一 */
+  unique_backlink_domain: boolean;
+
+  /** 显示手动填充提示（MVP 中未启用页面侧边提示时保持 false） */
+  show_manual_fill_hints: boolean;
+}
+
+/**
+ * MVP 网站资料
+ */
+export interface WebsiteProfile {
+  id: string;
+  group_id: string;
+  name: string;
+  url: string;
+  domain: string;
+  email: string;
+  comments: string[];
+  enabled: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * MVP 网站分组
+ */
+export interface WebsiteProfileGroup {
+  id: string;
+  name: string;
+  website_count: number;
+  created_at: string;
+}
+
+/**
+ * MVP 管理外链
+ */
+export interface ManagedBacklink {
+  id: string;
+  group_id: string;
+  url: string;
+  domain: string;
+  note?: string;
+  keywords: string[];
+  dr?: number;
+  as?: number;
+  flagged: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * MVP 外链分组
+ */
+export interface ManagedBacklinkGroup {
+  id: string;
+  name: string;
+  backlink_count: number;
+  created_at: string;
+}
+
+/**
+ * MVP 提交会话
+ */
+export interface SubmissionSession {
+  selected_website_id?: string;
+  selected_website_group_id?: string;
+  selected_backlink_group_id?: string;
+  current_backlink_id?: string;
+  queue_backlink_ids: string[];
+  queue_cursor: number;
+  last_opened_at?: string;
+}
+
+/**
+ * 当前页面 SEO 摘要
+ */
+export interface FillPageSeoSummary {
+  title: string;
+  description: string;
+  h1: string;
+  language: string;
+  url: string;
+}
+
+/**
+ * 当前页面填表状态
+ */
+export interface FillPageState {
+  seo: FillPageSeoSummary;
+  form_detected: boolean;
+  form_confidence: number;
+  field_types: Array<'name' | 'email' | 'website' | 'comment' | 'submit'>;
+  backlink_in_current_group: boolean;
+  selected_website_link_present: boolean;
+}
