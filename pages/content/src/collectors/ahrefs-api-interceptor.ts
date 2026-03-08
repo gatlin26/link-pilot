@@ -89,12 +89,17 @@ export class AhrefsApiInterceptor {
       const [resource] = args;
       const url = typeof resource === 'string' ? resource : resource instanceof URL ? resource.toString() : resource.url;
 
+      // 记录所有请求用于调试
+      if (self.isActive) {
+        console.log('[Ahrefs Interceptor] Fetch 请求:', url);
+      }
+
       // 调用原始 fetch
       const response = await self.originalFetch.call(window, ...args);
 
       // 检查是否为 Ahrefs API 请求
       if (self.isActive && self.isAhrefsApiRequest(url)) {
-        console.log('[Ahrefs Interceptor] 命中 fetch API 请求:', url);
+        console.log('[Ahrefs Interceptor] ✓ 命中 fetch API 请求:', url);
         // 克隆响应以便读取
         const clonedResponse = response.clone();
 
@@ -126,9 +131,14 @@ export class AhrefsApiInterceptor {
       const xhr = this;
       const url = (xhr as XMLHttpRequest & { _url?: string })._url || '';
 
+      // 记录所有请求用于调试
+      if (self.isActive && url) {
+        console.log('[Ahrefs Interceptor] XHR 请求:', url);
+      }
+
       // 添加响应监听
       if (self.isActive && self.isAhrefsApiRequest(url)) {
-        console.log('[Ahrefs Interceptor] 命中 XHR API 请求:', url);
+        console.log('[Ahrefs Interceptor] ✓ 命中 XHR API 请求:', url);
         xhr.addEventListener('load', function() {
           if (xhr.status >= 200 && xhr.status < 300) {
             try {
@@ -153,6 +163,8 @@ export class AhrefsApiInterceptor {
     const patterns = [
       /api\.ahrefs\.com/i,
       /ahrefs\.com\/api/i,
+      /ahrefs\.com\/v\d+\//i,  // 匹配 /v4/, /v3/ 等版本化 API
+      /stGetFreeBacklinksList/i,  // 匹配免费外链列表 API
       /backlink.*api/i,
       /refpages/i,
       /backlinks/i,

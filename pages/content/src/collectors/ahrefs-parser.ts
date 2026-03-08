@@ -16,6 +16,7 @@ import {
  * Ahrefs API 响应中的外链数据项
  */
 interface AhrefsBacklinkItem {
+  // 旧格式字段（下划线）
   url_to?: string;
   url_from?: string;
   anchor?: string;
@@ -27,6 +28,18 @@ interface AhrefsBacklinkItem {
   external_links?: number;
   first_seen?: string;
   last_visited?: string;
+
+  // 新格式字段（驼峰命名）
+  urlTo?: string;
+  urlFrom?: string;
+  domainRating?: number;
+  urlRating?: number;
+  ahrefsRank?: number;
+  linkedDomains?: number;
+  externalLinks?: number;
+  firstSeen?: string;
+  lastVisited?: string;
+
   [key: string]: unknown;
 }
 
@@ -45,7 +58,16 @@ export function parseAhrefsApiResponse(
     let backlinks: AhrefsBacklinkItem[] = [];
 
     if (Array.isArray(responseData)) {
-      backlinks = responseData;
+      // 检查是否为 ["TopBacklinks", { backlinks: [...] }] 格式
+      if (responseData.length === 2 && typeof responseData[1] === 'object' && responseData[1] !== null) {
+        const secondElement = responseData[1] as Record<string, unknown>;
+        if (Array.isArray(secondElement.backlinks)) {
+          backlinks = secondElement.backlinks;
+        }
+      } else {
+        // 直接是数组
+        backlinks = responseData;
+      }
     } else if (typeof responseData === 'object' && responseData !== null) {
       const data = responseData as Record<string, unknown>;
 
@@ -102,13 +124,10 @@ function parseBacklinkItem(
   batchId: string,
   timestamp: string,
 ): CollectedBacklink | null {
-  // 提取必需字段
-  const referringUrl = typeof item.url_from === 'string'
-    ? item.url_from
-    : typeof item.referring_page_url === 'string'
-      ? item.referring_page_url
-      : '';
-  const urlTo = typeof item.url_to === 'string' ? item.url_to : targetUrl;
+  // 提取必需字段（支持两种命名格式）
+  const referringUrl = item.urlFrom || item.url_from ||
+    (typeof item.referring_page_url === 'string' ? item.referring_page_url : '');
+  const urlTo = item.urlTo || item.url_to || targetUrl;
 
   // 验证必需字段
   if (!referringUrl || !isValidUrl(referringUrl)) {
@@ -125,15 +144,15 @@ function parseBacklinkItem(
   const anchorText = cleanText(item.anchor || '');
   const pageTitle = cleanText(item.title || '');
 
-  // 提取指标数据
+  // 提取指标数据（支持两种命名格式）
   const rawMetrics: Record<string, unknown> = {
-    domain_rating: item.domain_rating,
-    url_rating: item.url_rating,
-    ahrefs_rank: item.ahrefs_rank,
-    linked_domains: item.linked_domains,
-    external_links: item.external_links,
-    first_seen: item.first_seen,
-    last_visited: item.last_visited,
+    domain_rating: item.domainRating || item.domain_rating,
+    url_rating: item.urlRating || item.url_rating,
+    ahrefs_rank: item.ahrefsRank || item.ahrefs_rank,
+    linked_domains: item.linkedDomains || item.linked_domains,
+    external_links: item.externalLinks || item.external_links,
+    first_seen: item.firstSeen || item.first_seen,
+    last_visited: item.lastVisited || item.last_visited,
   };
 
   // 移除 undefined 值
