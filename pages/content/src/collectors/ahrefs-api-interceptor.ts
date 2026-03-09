@@ -3,9 +3,29 @@
  * 监听和拦截 Ahrefs 页面的网络请求，提取外链数据
  */
 
-import type { CollectedBacklink } from '@extension/shared/lib/types/models';
-import { parseAhrefsApiResponse } from './ahrefs-parser';
 import { getAhrefsTargetUrl } from './ahrefs-detector';
+import { parseAhrefsApiResponse } from './ahrefs-parser';
+import type { CollectedBacklink } from '@extension/shared/lib/types/models';
+
+const BRIDGE_CHANNEL = '__LINK_PILOT_AHREFS_BRIDGE__';
+const BRIDGE_SOURCE_MAIN = 'link_pilot_ahrefs_main';
+const BRIDGE_SOURCE_CONTENT = 'link_pilot_ahrefs_content';
+
+interface BridgeMessage {
+  channel: string;
+  source: string;
+  type: string;
+  payload?: {
+    url?: string;
+    matched?: boolean;
+    transport?: string;
+    data?: unknown;
+    error?: string;
+    maxCount?: number;
+    ready?: boolean;
+    [key: string]: unknown;
+  };
+}
 
 /**
  * API 拦截器配置
@@ -27,16 +47,14 @@ export class AhrefsApiInterceptor {
   private collectedBacklinks: CollectedBacklink[] = [];
   private batchId: string;
   private isActive = false;
-  private originalFetch: typeof fetch;
-  private originalXhrOpen: typeof XMLHttpRequest.prototype.open;
-  private originalXhrSend: typeof XMLHttpRequest.prototype.send;
+  private statusCheckInterval: number | null = null;
+  private requestCount = 0; // 记录拦截到的请求总数
+  private matchedRequestCount = 0; // 记录匹配的请求数
+  private messageListener: ((event: MessageEvent) => void) | null = null;
 
   constructor(config: InterceptorConfig) {
     this.config = config;
     this.batchId = this.generateBatchId();
-    this.originalFetch = window.fetch;
-    this.originalXhrOpen = XMLHttpRequest.prototype.open;
-    this.originalXhrSend = XMLHttpRequest.prototype.send;
   }
 
   /**
@@ -51,14 +69,35 @@ export class AhrefsApiInterceptor {
     this.isActive = true;
     this.collectedBacklinks = [];
     this.batchId = this.generateBatchId();
+    this.requestCount = 0;
+    this.matchedRequestCount = 0;
 
     console.log('[Ahrefs Interceptor] 开始拦截 API 请求');
+    console.log('[Ahrefs Interceptor] 当前页面 URL:', window.location.href);
+    console.log('[Ahrefs Interceptor] 目标采集数量:', this.config.maxCount);
 
-    // 拦截 fetch
-    this.interceptFetch();
+    this.bindBridgeListener();
+    this.postBridgeCommand('START_INTERCEPT', {
+      maxCount: this.config.maxCount,
+    });
 
-    // 拦截 XMLHttpRequest
-    this.interceptXHR();
+    console.log('[Ahrefs Interceptor] 拦截器已激活，等待网络请求...');
+
+    // 启动状态检查（每10秒报告一次）
+    this.statusCheckInterval = window.setInterval(() => {
+      console.log(
+        `[Ahrefs Interceptor] 状态检查 - 总请求: ${this.requestCount}, 匹配请求: ${this.matchedRequestCount}, 已收集: ${this.collectedBacklinks.length}/${this.config.maxCount}`,
+      );
+
+      // 如果60秒内没有任何请求，给出警告
+      if (this.requestCount === 0) {
+        console.warn('[Ahrefs Interceptor] ⚠️ 警告：拦截器已启动但未捕获到任何网络请求！');
+        console.warn('[Ahrefs Interceptor] 可能原因：');
+        console.warn('[Ahrefs Interceptor] 1. 页面在拦截器启动前已完成所有请求');
+        console.warn('[Ahrefs Interceptor] 2. Ahrefs 使用了其他请求方式（如 iframe、WebSocket）');
+        console.warn('[Ahrefs Interceptor] 3. Content script 注入时机有问题');
+      }
+    }, 10000);
   }
 
   /**
@@ -71,106 +110,133 @@ export class AhrefsApiInterceptor {
 
     this.isActive = false;
 
-    // 恢复原始方法
-    window.fetch = this.originalFetch;
-    XMLHttpRequest.prototype.open = this.originalXhrOpen;
-    XMLHttpRequest.prototype.send = this.originalXhrSend;
+    // 清除状态检查定时器
+    if (this.statusCheckInterval !== null) {
+      window.clearInterval(this.statusCheckInterval);
+      this.statusCheckInterval = null;
+    }
+
+    this.postBridgeCommand('STOP_INTERCEPT');
+    this.unbindBridgeListener();
 
     console.log('[Ahrefs Interceptor] 停止拦截');
   }
 
-  /**
-   * 拦截 fetch 请求
-   */
-  private interceptFetch(): void {
-    const self = this;
+  private bindBridgeListener(): void {
+    if (this.messageListener) {
+      return;
+    }
 
-    window.fetch = async function(...args): Promise<Response> {
-      const [resource] = args;
-      const url = typeof resource === 'string' ? resource : resource instanceof URL ? resource.toString() : resource.url;
-
-      // 记录所有请求用于调试
-      if (self.isActive) {
-        console.log('[Ahrefs Interceptor] Fetch 请求:', url);
+    this.messageListener = (event: MessageEvent) => {
+      const data = event.data as BridgeMessage | undefined;
+      if (event.source !== window || !data || typeof data !== 'object') {
+        return;
+      }
+      if (data.channel !== BRIDGE_CHANNEL || data.source !== BRIDGE_SOURCE_MAIN) {
+        return;
+      }
+      if (!this.isActive) {
+        return;
       }
 
-      // 调用原始 fetch
-      const response = await self.originalFetch.call(window, ...args);
-
-      // 检查是否为 Ahrefs API 请求
-      if (self.isActive && self.isAhrefsApiRequest(url)) {
-        console.log('[Ahrefs Interceptor] ✓ 命中 fetch API 请求:', url);
-        // 克隆响应以便读取
-        const clonedResponse = response.clone();
-
-        try {
-          const data = await clonedResponse.json();
-          self.handleApiResponse(data, url);
-        } catch (error) {
-          console.error('[Ahrefs Interceptor] 解析 fetch 响应失败:', error);
+      switch (data.type) {
+        case 'BRIDGE_READY': {
+          console.log('[Ahrefs Interceptor] 主世界桥接已就绪');
+          return;
         }
-      }
 
-      return response;
-    };
-  }
-
-  /**
-   * 拦截 XMLHttpRequest
-   */
-  private interceptXHR(): void {
-    const self = this;
-
-    XMLHttpRequest.prototype.open = function(method: string, url: string | URL, ...rest: unknown[]): void {
-      // 保存 URL 到实例
-      (this as XMLHttpRequest & { _url?: string })._url = url.toString();
-      return self.originalXhrOpen.apply(this, [method, url, ...rest] as Parameters<typeof XMLHttpRequest.prototype.open>);
-    };
-
-    XMLHttpRequest.prototype.send = function(...args): void {
-      const xhr = this;
-      const url = (xhr as XMLHttpRequest & { _url?: string })._url || '';
-
-      // 记录所有请求用于调试
-      if (self.isActive && url) {
-        console.log('[Ahrefs Interceptor] XHR 请求:', url);
-      }
-
-      // 添加响应监听
-      if (self.isActive && self.isAhrefsApiRequest(url)) {
-        console.log('[Ahrefs Interceptor] ✓ 命中 XHR API 请求:', url);
-        xhr.addEventListener('load', function() {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            try {
-              const data = JSON.parse(xhr.responseText);
-              self.handleApiResponse(data, url);
-            } catch (error) {
-              console.error('[Ahrefs Interceptor] 解析 XHR 响应失败:', error);
+        case 'REQUEST_SEEN': {
+          const requestUrl = typeof data.payload?.url === 'string' ? data.payload.url : '';
+          if (!requestUrl) {
+            return;
+          }
+          this.requestCount++;
+          console.log(
+            `[Ahrefs Interceptor] ${data.payload?.transport || 'request'} 请求 #${this.requestCount}:`,
+            requestUrl,
+          );
+          if (data.payload?.matched) {
+            this.matchedRequestCount++;
+            const matchResult = this.checkUrlPatterns(requestUrl);
+            if (matchResult.matched) {
+              console.log('[Ahrefs Interceptor] ✓ URL 匹配模式:', matchResult.pattern);
             }
           }
-        });
-      }
+          return;
+        }
 
-      self.originalXhrSend.apply(this, args as Parameters<typeof XMLHttpRequest.prototype.send>);
+        case 'API_RESPONSE': {
+          const url = typeof data.payload?.url === 'string' ? data.payload.url : '';
+          if (!url) {
+            return;
+          }
+          console.log('[Ahrefs Interceptor] ✓ 命中 API 请求:', url);
+          const responseData = data.payload?.data;
+          if (responseData && typeof responseData === 'object') {
+            console.log('[Ahrefs Interceptor] 响应数据结构:', Object.keys(responseData as Record<string, unknown>));
+          }
+          this.handleApiResponse(responseData, url);
+          return;
+        }
+
+        case 'BRIDGE_ERROR': {
+          const errorMessage = typeof data.payload?.error === 'string' ? data.payload.error : '主世界桥接错误';
+          console.error('[Ahrefs Interceptor] 桥接错误:', errorMessage);
+          if (this.config.onError) {
+            this.config.onError(new Error(errorMessage));
+          }
+          return;
+        }
+
+        default:
+          return;
+      }
     };
+
+    window.addEventListener('message', this.messageListener);
+  }
+
+  private unbindBridgeListener(): void {
+    if (!this.messageListener) {
+      return;
+    }
+    window.removeEventListener('message', this.messageListener);
+    this.messageListener = null;
+  }
+
+  private postBridgeCommand(type: string, payload?: Record<string, unknown>): void {
+    window.postMessage(
+      {
+        channel: BRIDGE_CHANNEL,
+        source: BRIDGE_SOURCE_CONTENT,
+        type,
+        payload,
+      } satisfies BridgeMessage,
+      '*',
+    );
   }
 
   /**
-   * 判断是否为 Ahrefs API 请求
+   * 检查 URL 是否匹配任何模式（用于调试）
    */
-  private isAhrefsApiRequest(url: string): boolean {
-    // Ahrefs API 请求特征
+  private checkUrlPatterns(url: string): { matched: boolean; pattern?: string } {
     const patterns = [
-      /api\.ahrefs\.com/i,
-      /ahrefs\.com\/api/i,
-      /ahrefs\.com\/v\d+\//i,  // 匹配 /v4/, /v3/ 等版本化 API
-      /stGetFreeBacklinksList/i,  // 匹配免费外链列表 API
-      /backlink.*api/i,
-      /refpages/i,
-      /backlinks/i,
+      { name: 'api.ahrefs.com', regex: /api\.ahrefs\.com/i },
+      { name: 'ahrefs.com/api', regex: /ahrefs\.com\/api/i },
+      { name: 'versioned API', regex: /ahrefs\.com\/v\d+\//i },
+      { name: 'stGetFreeBacklinksList', regex: /stGetFreeBacklinksList/i },
+      { name: 'backlink api', regex: /backlink.*api/i },
+      { name: 'refpages', regex: /refpages/i },
+      { name: 'backlinks', regex: /backlinks/i },
     ];
 
-    return patterns.some(pattern => pattern.test(url));
+    for (const pattern of patterns) {
+      if (pattern.regex.test(url)) {
+        return { matched: true, pattern: pattern.name };
+      }
+    }
+
+    return { matched: false };
   }
 
   /**
@@ -252,6 +318,5 @@ export class AhrefsApiInterceptor {
 /**
  * 创建 Ahrefs API 拦截器
  */
-export function createAhrefsInterceptor(config: InterceptorConfig): AhrefsApiInterceptor {
-  return new AhrefsApiInterceptor(config);
-}
+export const createAhrefsInterceptor = (config: InterceptorConfig): AhrefsApiInterceptor =>
+  new AhrefsApiInterceptor(config);

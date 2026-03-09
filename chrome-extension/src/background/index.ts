@@ -6,6 +6,7 @@ import './context-manager';
 import './error-logger';
 import './sync-manager';
 import './collection-manager';
+import './web-request-manager';
 import './submission-session-manager';
 
 const initStorageAccess = async () => {

@@ -18,7 +18,11 @@ import type { FillPageState, WebsiteProfile } from '@extension/shared';
 import { autoFillService, formDetector, type FormField, type FormDetectionResult } from '../form-handlers';
 import { templateLearner } from '../template';
 import { createAhrefsInterceptor } from '../collectors/ahrefs-api-interceptor';
+import { isAhrefsBacklinkChecker } from '../collectors/ahrefs-detector';
 import type { CollectedBacklink } from '@extension/shared';
+
+const PASSIVE_INTERCEPT_MAX_COUNT = 20;
+const CACHE_TTL_MS = 10 * 60 * 1000;
 
 let activeInterceptor: ReturnType<typeof createAhrefsInterceptor> | null = null;
 let lastDetectionResult: FormDetectionResult | null = null;
@@ -26,6 +30,135 @@ let formAnchorElements: HTMLElement[] = [];
 let formAnchorIndex = 0;
 let autoFillStarted = false;
 let learnedTemplateKey: string | null = null;
+let interceptorMaxCount = 0;
+let interceptorPassiveMode = false;
+let cachedBacklinks: CollectedBacklink[] = [];
+let cachedBacklinksAt = 0;
+let pendingCollectionMaxCount: number | null = null;
+let passiveRestartTimer: number | null = null;
+let autoPassiveBootstrapStarted = false;
+let passiveBootstrapRetryTimer: number | null = null;
+let passiveBootstrapRetryCount = 0;
+
+function cacheBacklinks(backlinks: CollectedBacklink[]): void {
+  cachedBacklinks = backlinks.slice();
+  cachedBacklinksAt = Date.now();
+}
+
+function hasFreshCachedBacklinks(maxCount: number): boolean {
+  if (cachedBacklinks.length < maxCount) {
+    return false;
+  }
+  return Date.now() - cachedBacklinksAt <= CACHE_TTL_MS;
+}
+
+function notifyCollectionComplete(backlinks: CollectedBacklink[]): void {
+  void chrome.runtime.sendMessage({ type: 'COLLECTION_COMPLETE', payload: { backlinks } }).catch(error => {
+    console.error('[Content Script] 发送 COLLECTION_COMPLETE 失败:', error);
+  });
+}
+
+function notifyCollectionError(errorMessage: string): void {
+  void chrome.runtime.sendMessage({ type: 'COLLECTION_ERROR', payload: { error: errorMessage } }).catch(error => {
+    console.error('[Content Script] 发送 COLLECTION_ERROR 失败:', error);
+  });
+}
+
+function schedulePassiveInterceptorRestart(): void {
+  if (passiveRestartTimer !== null) {
+    window.clearTimeout(passiveRestartTimer);
+  }
+
+  passiveRestartTimer = window.setTimeout(() => {
+    passiveRestartTimer = null;
+    void ensurePassiveInterceptorBootstrap();
+  }, 600);
+}
+
+async function ensureMainWorldBridge(): Promise<void> {
+  const response = await chrome.runtime.sendMessage({
+    type: 'ENSURE_AHREFS_MAIN_BRIDGE',
+  }) as { success?: boolean; error?: string };
+
+  if (!response?.success) {
+    throw new Error(response?.error || '主世界桥接注入失败');
+  }
+}
+
+function createAndStartInterceptor(maxCount: number, passiveMode: boolean): void {
+  if (activeInterceptor?.isRunning()) {
+    activeInterceptor.stop();
+  }
+
+  interceptorMaxCount = maxCount;
+  interceptorPassiveMode = passiveMode;
+  activeInterceptor = createAhrefsInterceptor({
+    maxCount,
+    onCollected: (backlinks: CollectedBacklink[]) => {
+      cacheBacklinks(backlinks);
+
+      const pendingMaxCount = pendingCollectionMaxCount;
+      if (pendingMaxCount !== null) {
+        notifyCollectionComplete(backlinks.slice(0, Math.min(pendingMaxCount, backlinks.length)));
+        pendingCollectionMaxCount = null;
+      } else if (!passiveMode) {
+        notifyCollectionComplete(backlinks);
+      }
+
+      if (passiveMode) {
+        schedulePassiveInterceptorRestart();
+      }
+    },
+    onError: (error: Error) => {
+      if (!passiveMode || pendingCollectionMaxCount !== null) {
+        notifyCollectionError(error.message);
+      }
+      pendingCollectionMaxCount = null;
+
+      if (passiveMode) {
+        schedulePassiveInterceptorRestart();
+      }
+    },
+  });
+
+  activeInterceptor.start();
+}
+
+async function ensurePassiveInterceptorBootstrap(): Promise<void> {
+  if (!isAhrefsBacklinkChecker()) {
+    return;
+  }
+
+  if (passiveBootstrapRetryTimer !== null) {
+    window.clearTimeout(passiveBootstrapRetryTimer);
+    passiveBootstrapRetryTimer = null;
+  }
+
+  if (autoPassiveBootstrapStarted) {
+    return;
+  }
+  if (activeInterceptor?.isRunning()) {
+    return;
+  }
+
+  autoPassiveBootstrapStarted = true;
+  try {
+    await ensureMainWorldBridge();
+    createAndStartInterceptor(PASSIVE_INTERCEPT_MAX_COUNT, true);
+    passiveBootstrapRetryCount = 0;
+    console.log('[Content Script] Ahrefs 被动拦截器已启动');
+  } catch (error) {
+    console.error('[Content Script] 启动 Ahrefs 被动拦截器失败:', error);
+    passiveBootstrapRetryCount += 1;
+    const retryDelay = Math.min(6000, 800 * passiveBootstrapRetryCount);
+    passiveBootstrapRetryTimer = window.setTimeout(() => {
+      passiveBootstrapRetryTimer = null;
+      void ensurePassiveInterceptorBootstrap();
+    }, retryDelay);
+  } finally {
+    autoPassiveBootstrapStarted = false;
+  }
+}
 
 function normalizeUrl(value: string): string {
   return value.trim().replace(/\/$/, '').toLowerCase();
@@ -351,8 +484,8 @@ function handleMessage(
       return true;
 
     case 'START_API_INTERCEPTOR':
-      handleStartApiInterceptor(message, sendResponse);
-      return false;
+      void handleStartApiInterceptor(message, sendResponse);
+      return true;
 
     case 'STOP_API_INTERCEPTOR':
       handleStopApiInterceptor(sendResponse);
@@ -368,28 +501,38 @@ function handleMessage(
   }
 }
 
-function handleStartApiInterceptor(message: any, sendResponse: (response: BaseResponse) => void): void {
+async function handleStartApiInterceptor(message: BaseMessage, sendResponse: (response: BaseResponse) => void): Promise<void> {
   try {
+    const payload = (message.payload ?? {}) as { maxCount?: number };
+    const normalizedMaxCount = Number(payload.maxCount);
+    const maxCount = Number.isFinite(normalizedMaxCount) && normalizedMaxCount > 0
+      ? Math.min(200, Math.floor(normalizedMaxCount))
+      : 20;
+
+    pendingCollectionMaxCount = maxCount;
+
     console.log('[Content Script] 准备启动 API 拦截器', {
       href: window.location.href,
-      maxCount: message.payload?.maxCount,
+      maxCount,
+      passiveMode: interceptorPassiveMode,
+      running: activeInterceptor?.isRunning() || false,
     });
-    if (activeInterceptor?.isRunning()) {
-      activeInterceptor.stop();
+
+    if (hasFreshCachedBacklinks(maxCount)) {
+      console.log('[Content Script] 命中缓存外链结果，直接返回');
+      notifyCollectionComplete(cachedBacklinks.slice(0, maxCount));
+      sendResponse({ success: true });
+      return;
     }
 
-    const maxCount = message.payload?.maxCount || 20;
-    activeInterceptor = createAhrefsInterceptor({
-      maxCount,
-      onCollected: (backlinks: CollectedBacklink[]) => {
-        chrome.runtime.sendMessage({ type: 'COLLECTION_COMPLETE', payload: { backlinks } });
-      },
-      onError: (error: Error) => {
-        chrome.runtime.sendMessage({ type: 'COLLECTION_ERROR', payload: { error: error.message } });
-      },
-    });
+    if (activeInterceptor?.isRunning() && interceptorPassiveMode && interceptorMaxCount >= maxCount) {
+      console.log('[Content Script] 复用已运行的被动拦截器，等待结果');
+      sendResponse({ success: true });
+      return;
+    }
 
-    activeInterceptor.start();
+    await ensureMainWorldBridge();
+    createAndStartInterceptor(maxCount, false);
     console.log('[Content Script] API 拦截器启动成功');
     sendResponse({ success: true });
   } catch (error) {
@@ -401,9 +544,15 @@ function handleStartApiInterceptor(message: any, sendResponse: (response: BaseRe
 function handleStopApiInterceptor(sendResponse: (response: BaseResponse) => void): void {
   try {
     console.log('[Content Script] 准备停止 API 拦截器');
+    pendingCollectionMaxCount = null;
+
     if (activeInterceptor?.isRunning()) {
       activeInterceptor.stop();
       activeInterceptor = null;
+    }
+
+    if (isAhrefsBacklinkChecker()) {
+      void ensurePassiveInterceptorBootstrap();
     }
 
     console.log('[Content Script] API 拦截器已停止');
@@ -433,5 +582,6 @@ async function warmupDetectionIfNeeded() {
 export function initMessageListener(): void {
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => handleMessage(message, sender, sendResponse));
   void warmupDetectionIfNeeded();
+  void ensurePassiveInterceptorBootstrap();
   console.log('[Content Script] 消息监听器已初始化');
 }

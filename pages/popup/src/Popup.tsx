@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import {
   exampleThemeStorage,
-  extensionSettingsStorage,
   managedBacklinkStorage,
   submissionSessionStorage,
   websiteProfileStorage,
@@ -53,7 +52,6 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [working, setWorking] = useState(false);
-  const [uniqueByDomain, setUniqueByDomain] = useState(true);
   const [backlinkSearch, setBacklinkSearch] = useState('');
   const [backlinkKeyword, setBacklinkKeyword] = useState('');
   const [backlinkNote, setBacklinkNote] = useState('');
@@ -83,47 +81,31 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
   );
 
   const filteredBacklinks = useMemo(() => {
-    let result = backlinks.filter(backlink => {
+    return backlinks.filter(backlink => {
       const matchesGroup = selectedBacklinkGroupId === 'all' || backlink.group_id === selectedBacklinkGroupId;
       const matchesUrl = !backlinkSearch || backlink.url.toLowerCase().includes(backlinkSearch.toLowerCase());
       const matchesNote = !backlinkNote || (backlink.note ?? '').toLowerCase().includes(backlinkNote.toLowerCase());
       const matchesKeyword = !backlinkKeyword || backlink.keywords.some(keyword => keyword.toLowerCase().includes(backlinkKeyword.toLowerCase()));
       return matchesGroup && matchesUrl && matchesNote && matchesKeyword;
     });
-
-    if (uniqueByDomain) {
-      const seen = new Set<string>();
-      result = result.filter(backlink => {
-        if (seen.has(backlink.domain)) {
-          return false;
-        }
-        seen.add(backlink.domain);
-        return true;
-      });
-    }
-
-    return result;
-  }, [backlinks, backlinkKeyword, backlinkNote, backlinkSearch, selectedBacklinkGroupId, uniqueByDomain]);
+  }, [backlinks, backlinkKeyword, backlinkNote, backlinkSearch, selectedBacklinkGroupId]);
 
   useEffect(() => {
     const load = async () => {
-      const [profilesData, groupsData, backlinksData, settings] = await Promise.all([
+      const [profilesData, groupsData, backlinksData] = await Promise.all([
         websiteProfileStorage.getEnabledProfiles(),
         websiteProfileStorage.getAllGroups(),
         managedBacklinkStorage.getAllBacklinks(),
-        extensionSettingsStorage.get(),
       ]);
       setProfiles(profilesData);
       setGroups(groupsData);
       setBacklinks(backlinksData);
-      setUniqueByDomain(settings.unique_backlink_domain);
     };
 
     void load();
     const unsubscribers = [
       websiteProfileStorage.subscribe(() => void load()),
       managedBacklinkStorage.subscribe(() => void load()),
-      extensionSettingsStorage.subscribe(() => void load()),
     ];
 
     return () => {
@@ -138,10 +120,7 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
     if (session.selected_website_id) {
       setSelectedWebsiteId(session.selected_website_id);
     }
-    if (session.selected_backlink_group_id) {
-      setSelectedBacklinkGroupId(session.selected_backlink_group_id);
-    }
-  }, [session.selected_backlink_group_id, session.selected_website_group_id, session.selected_website_id]);
+  }, [session.selected_website_group_id, session.selected_website_id]);
 
   useEffect(() => {
     if (!groups.length) return;
@@ -384,7 +363,10 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
 
       const response = await chrome.runtime.sendMessage({
         type: 'START_MANUAL_COLLECTION',
-        payload: { targetUrl },
+        payload: {
+          targetUrl,
+          groupId: selectedBacklinkGroupId === 'all' ? undefined : selectedBacklinkGroupId,
+        },
       });
 
       if (!response?.success) {
@@ -393,7 +375,14 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
 
       const backlinksData = await managedBacklinkStorage.getAllBacklinks();
       setBacklinks(backlinksData);
-      setMessage(`已为当前站点发起采集，成功新增 ${response.count || 0} 条机会`);
+      const collectedCount = Number(response.count || 0);
+      const addedToLibrary = Number(response.addedToLibrary ?? 0);
+      const skippedInLibrary = Number(response.skippedInLibrary ?? 0);
+      setMessage(
+        skippedInLibrary > 0
+          ? `采集完成：共 ${collectedCount} 条，新增到外链库 ${addedToLibrary} 条，跳过重复 ${skippedInLibrary} 条`
+          : `采集完成：共 ${collectedCount} 条，新增到外链库 ${addedToLibrary} 条`,
+      );
       setActiveTab('backlinks');
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : '采集失败');

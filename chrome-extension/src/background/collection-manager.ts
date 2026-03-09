@@ -4,13 +4,17 @@
  */
 
 import { messageRouter } from './message-router';
+import { bindCollectionTab, unbindCollectionTab } from './web-request-manager';
 import { OpportunityStatus, PageType, LinkType, SourcePlatform } from '@extension/shared';
-import { opportunityStorage, collectionBatchStorage } from '@extension/storage';
-import type { Opportunity, CollectedBacklink } from '@extension/shared';
+import { opportunityStorage, collectionBatchStorage, managedBacklinkStorage } from '@extension/storage';
+import type { Opportunity, CollectedBacklink, ManagedBacklink } from '@extension/shared';
 
 interface CollectionResult {
   success: boolean;
   count?: number;
+  addedToLibrary?: number;
+  skippedInLibrary?: number;
+  groupId?: string;
   error?: string;
   debugLogs?: string[];
 }
@@ -38,6 +42,233 @@ interface ActiveTab {
   timestamp: number;
 }
 
+const installAhrefsMainWorldBridge = (): void => {
+  const BRIDGE_CHANNEL = '__LINK_PILOT_AHREFS_BRIDGE__';
+  const BRIDGE_SOURCE_MAIN = 'link_pilot_ahrefs_main';
+  const BRIDGE_SOURCE_CONTENT = 'link_pilot_ahrefs_content';
+  const BRIDGE_STATE_KEY = '__linkPilotAhrefsBridgeState__';
+
+  type BridgePayload = Record<string, unknown> | undefined;
+  type BridgeMessage = {
+    channel: string;
+    source: string;
+    type: string;
+    payload?: BridgePayload;
+  };
+  type BridgeState = {
+    active: boolean;
+    readyForStreaming: boolean;
+    originalFetch: typeof window.fetch;
+    originalXhrOpen: typeof XMLHttpRequest.prototype.open;
+    originalXhrSend: typeof XMLHttpRequest.prototype.send;
+    bufferedResponses: Array<{ url: string; data: unknown }>;
+    listenerBound: boolean;
+    stop: () => void;
+  };
+
+  const win = window as unknown as Window & Record<string, unknown>;
+  const existingState = win[BRIDGE_STATE_KEY] as BridgeState | undefined;
+
+  const emit = (type: string, payload?: BridgePayload): void => {
+    const message: BridgeMessage = {
+      channel: BRIDGE_CHANNEL,
+      source: BRIDGE_SOURCE_MAIN,
+      type,
+      payload,
+    };
+    window.postMessage(message, '*');
+  };
+
+  if (existingState?.listenerBound) {
+    emit('BRIDGE_READY', { reused: true });
+    return;
+  }
+
+  const state: BridgeState = {
+    active: false,
+    readyForStreaming: false,
+    originalFetch: window.fetch,
+    originalXhrOpen: XMLHttpRequest.prototype.open,
+    originalXhrSend: XMLHttpRequest.prototype.send,
+    bufferedResponses: [],
+    listenerBound: true,
+    stop: () => {
+      if (!state.active) {
+        return;
+      }
+      state.active = false;
+      state.readyForStreaming = false;
+      window.fetch = state.originalFetch;
+      XMLHttpRequest.prototype.open = state.originalXhrOpen;
+      XMLHttpRequest.prototype.send = state.originalXhrSend;
+      emit('INTERCEPTOR_STOPPED');
+    },
+  };
+
+  const emitApiResponse = (url: string, data: unknown): void => {
+    if (!state.readyForStreaming) {
+      state.bufferedResponses.push({ url, data });
+      if (state.bufferedResponses.length > 60) {
+        state.bufferedResponses = state.bufferedResponses.slice(-60);
+      }
+      return;
+    }
+
+    emit('API_RESPONSE', { url, data });
+  };
+
+  const flushBufferedResponses = (): void => {
+    if (!state.readyForStreaming || state.bufferedResponses.length === 0) {
+      return;
+    }
+    const backlog = state.bufferedResponses.slice();
+    state.bufferedResponses = [];
+    backlog.forEach(item => {
+      emit('API_RESPONSE', { url: item.url, data: item.data });
+    });
+  };
+
+  const isAhrefsApiRequest = (url: string): boolean => {
+    const patterns = [
+      /api\.ahrefs\.com/i,
+      /ahrefs\.com\/api/i,
+      /ahrefs\.com\/v\d+\//i,
+      /stGetFreeBacklinksList/i,
+      /backlink.*api/i,
+      /refpages/i,
+      /backlinks/i,
+    ];
+    return patterns.some(pattern => pattern.test(url));
+  };
+
+  const getUrlFromResource = (resource: RequestInfo | URL): string => {
+    if (typeof resource === 'string') {
+      return resource;
+    }
+    if (resource instanceof URL) {
+      return resource.toString();
+    }
+    return resource.url;
+  };
+
+  const start = (readyForStreaming: boolean): void => {
+    if (readyForStreaming) {
+      state.readyForStreaming = true;
+    }
+
+    if (state.active) {
+      flushBufferedResponses();
+      emit('BRIDGE_READY', { reused: true });
+      return;
+    }
+
+    state.active = true;
+
+    window.fetch = async (...args: Parameters<typeof fetch>): Promise<Response> => {
+      const [resource] = args;
+      const url = getUrlFromResource(resource);
+      const matched = isAhrefsApiRequest(url);
+
+      if (state.active) {
+        emit('REQUEST_SEEN', {
+          transport: 'fetch',
+          url,
+          matched,
+        });
+      }
+
+      const response = await state.originalFetch.call(window, ...args);
+
+      if (state.active && matched) {
+        try {
+          const payload = await response.clone().json();
+          emitApiResponse(url, payload);
+        } catch (error) {
+          emit('BRIDGE_ERROR', {
+            error: error instanceof Error ? error.message : '解析 fetch 响应失败',
+            url,
+            transport: 'fetch',
+          });
+        }
+      }
+
+      return response;
+    };
+
+    XMLHttpRequest.prototype.open = function (method: string, url: string | URL, ...rest: unknown[]): void {
+      (this as XMLHttpRequest & { __linkPilotUrl?: string }).__linkPilotUrl = url.toString();
+      return state.originalXhrOpen.apply(this, [method, url, ...rest] as Parameters<
+        typeof XMLHttpRequest.prototype.open
+      >);
+    };
+
+    XMLHttpRequest.prototype.send = function (...args): void {
+      const xhr = this as XMLHttpRequest & { __linkPilotUrl?: string };
+      const url = xhr.__linkPilotUrl || '';
+      const matched = isAhrefsApiRequest(url);
+
+      if (state.active && url) {
+        emit('REQUEST_SEEN', {
+          transport: 'xhr',
+          url,
+          matched,
+        });
+      }
+
+      if (state.active && matched) {
+        xhr.addEventListener('load', () => {
+          if (xhr.status < 200 || xhr.status >= 300) {
+            return;
+          }
+          try {
+            const payload = JSON.parse(xhr.responseText);
+            emitApiResponse(url, payload);
+          } catch (error) {
+            emit('BRIDGE_ERROR', {
+              error: error instanceof Error ? error.message : '解析 XHR 响应失败',
+              url,
+              transport: 'xhr',
+            });
+          }
+        });
+      }
+
+      state.originalXhrSend.apply(this, args as Parameters<typeof XMLHttpRequest.prototype.send>);
+    };
+
+    flushBufferedResponses();
+    emit('BRIDGE_READY', { ready: true });
+  };
+
+  window.addEventListener('message', event => {
+    const message = event.data as BridgeMessage | undefined;
+    if (event.source !== window || !message || typeof message !== 'object') {
+      return;
+    }
+    if (message.channel !== BRIDGE_CHANNEL || message.source !== BRIDGE_SOURCE_CONTENT) {
+      return;
+    }
+
+    if (message.type === 'START_INTERCEPT') {
+      start(true);
+      return;
+    }
+    if (message.type === 'STOP_INTERCEPT') {
+      state.stop();
+    }
+  });
+
+  window.addEventListener('beforeunload', () => {
+    state.stop();
+  });
+
+  // 自动启动底层拦截，尽可能提前捕获请求；数据会在 content script 就绪后回放。
+  start(false);
+
+  win[BRIDGE_STATE_KEY] = state;
+  emit('BRIDGE_READY', { installed: true });
+};
+
 /**
  * 采集管理器类
  */
@@ -59,7 +290,12 @@ class CollectionManager {
   /**
    * 开始手动采集
    */
-  async startManualCollection(targetUrl: string, maxCount: number = 20): Promise<CollectionResult> {
+  async startManualCollection(
+    targetUrl: string,
+    maxCount: number = 20,
+    targetGroupId?: string,
+    collectionUrlOverride?: string,
+  ): Promise<CollectionResult> {
     let tabId: number | null = null;
 
     try {
@@ -74,8 +310,9 @@ class CollectionManager {
       // 重置状态
       this.currentBatchId = crypto.randomUUID();
 
-      // 打开 Ahrefs Backlink Checker 页面
-      const ahrefsUrl = `https://ahrefs.com/backlink-checker?input=${encodeURIComponent(targetUrl)}`;
+      // 打开 Ahrefs Backlink Checker 页面（测试场景可覆盖 URL）
+      const ahrefsUrl =
+        collectionUrlOverride || `https://ahrefs.com/backlink-checker?input=${encodeURIComponent(targetUrl)}`;
 
       const tab = await chrome.tabs.create({
         url: ahrefsUrl,
@@ -101,12 +338,14 @@ class CollectionManager {
         maxCount,
         timestamp: Date.now(),
       };
+      bindCollectionTab(tab.id, this.currentBatchId!, targetUrl);
 
       // 等待页面加载完成
       await this.waitForTabLoad(tab.id);
       await this.logInfo('页面加载完成', { tabId: tab.id, tabUrl: tab.url });
 
       await this.waitForContentReady(tab.id);
+      await this.ensureMainWorldBridge(tab.id);
 
       await this.startApiInterceptor(tab.id, maxCount);
 
@@ -124,6 +363,7 @@ class CollectionManager {
         // 转换并保存数据
         const opportunities = this.convertToOpportunities(result.data);
         await opportunityStorage.addBatch(opportunities);
+        const libraryResult = await this.addToManagedBacklinkLibrary(result.data, targetGroupId);
 
         // 保存批次信息
         await collectionBatchStorage.add({
@@ -138,6 +378,9 @@ class CollectionManager {
         return {
           success: true,
           count: opportunities.length,
+          addedToLibrary: libraryResult.added,
+          skippedInLibrary: libraryResult.skipped,
+          groupId: libraryResult.groupId,
         };
       } else {
         await this.logWarn('采集结束但无有效数据', { error: result.error });
@@ -159,6 +402,7 @@ class CollectionManager {
       };
     } finally {
       if (tabId) {
+        unbindCollectionTab(tabId);
         await chrome.tabs.remove(tabId).catch(err => {
           console.warn('[Collection Manager] 关闭采集标签页失败:', err);
         });
@@ -195,6 +439,20 @@ class CollectionManager {
       files: ['content/all.iife.js'],
     });
     await this.logInfo('content script 注入完成', { tabId });
+  }
+
+  private async ensureMainWorldBridge(tabId: number): Promise<void> {
+    await this.logInfo('尝试注入主世界桥接脚本', { tabId });
+    await chrome.scripting.executeScript({
+      target: { tabId },
+      world: 'MAIN',
+      func: installAhrefsMainWorldBridge,
+    });
+    await this.logInfo('主世界桥接脚本注入完成', { tabId });
+  }
+
+  async ensureAhrefsMainWorldBridge(tabId: number): Promise<void> {
+    await this.ensureMainWorldBridge(tabId);
   }
 
   private isReceivingEndMissingError(error: unknown): boolean {
@@ -425,8 +683,8 @@ class CollectionManager {
     return backlinks.map(backlink => ({
       id: crypto.randomUUID(),
       collected_backlink_id: backlink.id,
-      url: backlink.target_url,
-      domain: backlink.target_domain,
+      url: backlink.referring_page_url,
+      domain: backlink.referring_domain,
       page_type: PageType.BLOG_COMMENT,
       path_pattern: '',
       link_type: LinkType.BLOG_COMMENT,
@@ -441,6 +699,80 @@ class CollectionManager {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }));
+  }
+
+  private normalizeUrl(value: string): string {
+    return value.trim().replace(/\/+$/, '').toLowerCase();
+  }
+
+  private extractDomain(value: string): string | null {
+    try {
+      return new URL(value).hostname.toLowerCase();
+    } catch {
+      return null;
+    }
+  }
+
+  private async addToManagedBacklinkLibrary(
+    backlinks: CollectedBacklink[],
+    preferredGroupId?: string,
+  ): Promise<{ added: number; skipped: number; groupId: string }> {
+    const [groups, existingBacklinks] = await Promise.all([
+      managedBacklinkStorage.getAllGroups(),
+      managedBacklinkStorage.getAllBacklinks(),
+    ]);
+    const groupId = groups.some(group => group.id === preferredGroupId) ? (preferredGroupId as string) : 'default';
+    const existingUrls = new Set(
+      existingBacklinks
+        .filter(backlink => backlink.group_id === groupId)
+        .map(backlink => this.normalizeUrl(backlink.url)),
+    );
+
+    const managedBacklinksToAdd: ManagedBacklink[] = [];
+    let skipped = 0;
+
+    for (const backlink of backlinks) {
+      const url = backlink.referring_page_url?.trim();
+      const domain = backlink.referring_domain?.trim().toLowerCase() || (url ? this.extractDomain(url) : null);
+
+      if (!url || !domain) {
+        skipped++;
+        continue;
+      }
+
+      const normalizedUrl = this.normalizeUrl(url);
+      if (existingUrls.has(normalizedUrl)) {
+        skipped++;
+        continue;
+      }
+
+      const now = new Date().toISOString();
+      managedBacklinksToAdd.push({
+        id: crypto.randomUUID(),
+        group_id: groupId,
+        url,
+        domain,
+        note: backlink.page_title?.trim() || undefined,
+        keywords: backlink.anchor_text?.trim() ? [backlink.anchor_text.trim()] : [],
+        dr: typeof backlink.raw_metrics?.domain_rating === 'number' ? backlink.raw_metrics.domain_rating : undefined,
+        as: undefined,
+        flagged: false,
+        created_at: now,
+        updated_at: now,
+      });
+
+      existingUrls.add(normalizedUrl);
+    }
+
+    for (const backlink of managedBacklinksToAdd) {
+      await managedBacklinkStorage.addBacklink(backlink);
+    }
+
+    return {
+      added: managedBacklinksToAdd.length,
+      skipped,
+      groupId,
+    };
   }
 
   /**
@@ -522,12 +854,68 @@ messageRouter.register('CHECK_IF_COLLECTED', (message, sender, sendResponse) => 
   return true; // 异步响应
 });
 
+messageRouter.register('ENSURE_AHREFS_MAIN_BRIDGE', (_message, sender, sendResponse) => {
+  const tabId = sender.tab?.id;
+  if (!tabId) {
+    sendResponse({
+      success: false,
+      error: '无法识别当前标签页',
+    });
+    return false;
+  }
+
+  collectionManager
+    .ensureAhrefsMainWorldBridge(tabId)
+    .then(() => {
+      sendResponse({ success: true });
+    })
+    .catch(error => {
+      sendResponse({
+        success: false,
+        error: error instanceof Error ? error.message : '主世界桥接注入失败',
+      });
+    });
+
+  return true;
+});
+
 messageRouter.register('START_MANUAL_COLLECTION', (message, sender, sendResponse) => {
-  const { targetUrl } = message.payload;
+  const { targetUrl, groupId, maxCount, collectionUrlOverride } = message.payload ?? {};
+  if (typeof targetUrl !== 'string' || !targetUrl.trim()) {
+    sendResponse({
+      success: false,
+      error: '缺少 targetUrl',
+    });
+    return false;
+  }
+  const normalizedMaxCount = Number(maxCount);
+  const finalMaxCount =
+    Number.isFinite(normalizedMaxCount) && normalizedMaxCount > 0 ? Math.min(100, Math.floor(normalizedMaxCount)) : 20;
+  let finalCollectionUrlOverride: string | undefined;
+  if (typeof collectionUrlOverride === 'string' && collectionUrlOverride.trim()) {
+    try {
+      const parsed = new URL(collectionUrlOverride.trim());
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+        finalCollectionUrlOverride = parsed.toString();
+      } else {
+        sendResponse({
+          success: false,
+          error: 'collectionUrlOverride 仅支持 http/https',
+        });
+        return false;
+      }
+    } catch {
+      sendResponse({
+        success: false,
+        error: 'collectionUrlOverride 不是有效 URL',
+      });
+      return false;
+    }
+  }
   console.log('[Collection Manager] 开始手动采集:', targetUrl);
 
   collectionManager
-    .startManualCollection(targetUrl)
+    .startManualCollection(targetUrl, finalMaxCount, groupId, finalCollectionUrlOverride)
     .then(result => {
       console.log('[Collection Manager] 采集完成:', result);
       sendResponse(result);

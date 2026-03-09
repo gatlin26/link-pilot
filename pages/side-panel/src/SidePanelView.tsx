@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useStorage } from '@extension/shared';
 import {
   exampleThemeStorage,
-  extensionSettingsStorage,
   managedBacklinkStorage,
   submissionSessionStorage,
   websiteProfileStorage,
@@ -15,6 +14,23 @@ import { buildCommentCandidates } from '../../popup/src/utils/comment-generator'
 import { ManualCollector } from '../../popup/src/components/ManualCollector';
 
 type SidePanelTab = 'fill' | 'backlinks' | 'collection';
+
+function resolveCollectionTargetUrl(rawUrl: string): string {
+  const currentUrl = new URL(rawUrl);
+  const ahrefsInput = currentUrl.searchParams.get('input');
+
+  if (ahrefsInput) {
+    try {
+      const decoded = decodeURIComponent(ahrefsInput);
+      const target = new URL(decoded);
+      return `${target.protocol}//${target.hostname}/`;
+    } catch {
+      return ahrefsInput;
+    }
+  }
+
+  return `${currentUrl.protocol}//${currentUrl.hostname}/`;
+}
 
 export const SidePanelView = () => {
   const { isLight } = useStorage(exampleThemeStorage);
@@ -31,7 +47,6 @@ export const SidePanelView = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [working, setWorking] = useState(false);
-  const [uniqueByDomain, setUniqueByDomain] = useState(true);
   const [backlinkSearch, setBacklinkSearch] = useState('');
   const [backlinkKeyword, setBacklinkKeyword] = useState('');
   const [backlinkNote, setBacklinkNote] = useState('');
@@ -61,40 +76,29 @@ export const SidePanelView = () => {
   );
 
   const filteredBacklinks = useMemo(() => {
-    let result = backlinks.filter(backlink => {
+    return backlinks.filter(backlink => {
       const matchesGroup = selectedBacklinkGroupId === 'all' || backlink.group_id === selectedBacklinkGroupId;
       const matchesUrl = !backlinkSearch || backlink.url.toLowerCase().includes(backlinkSearch.toLowerCase());
       const matchesNote = !backlinkNote || (backlink.note ?? '').toLowerCase().includes(backlinkNote.toLowerCase());
       const matchesKeyword = !backlinkKeyword || backlink.keywords.some(keyword => keyword.toLowerCase().includes(backlinkKeyword.toLowerCase()));
       return matchesGroup && matchesUrl && matchesNote && matchesKeyword;
     });
-
-    if (uniqueByDomain) {
-      const seen = new Set<string>();
-      result = result.filter(backlink => {
-        if (seen.has(backlink.domain)) {
-          return false;
-        }
-        seen.add(backlink.domain);
-        return true;
-      });
-    }
-
-    return result;
-  }, [backlinks, selectedBacklinkGroupId, backlinkSearch, backlinkNote, backlinkKeyword, uniqueByDomain]);
+  }, [backlinks, selectedBacklinkGroupId, backlinkSearch, backlinkNote, backlinkKeyword]);
 
   useEffect(() => {
     void loadProfiles();
     void loadBacklinks();
-    void loadSettings();
     void refreshPageState(false);
   }, []);
 
   const loadProfiles = async () => {
     try {
-      const data = await websiteProfileStorage.getAll();
-      setProfiles(data.profiles);
-      setGroups(data.groups);
+      const [profiles, groups] = await Promise.all([
+        websiteProfileStorage.getAllProfiles(),
+        websiteProfileStorage.getAllGroups(),
+      ]);
+      setProfiles(profiles);
+      setGroups(groups);
     } catch (error) {
       console.error('加载网站资料失败:', error);
     }
@@ -102,19 +106,10 @@ export const SidePanelView = () => {
 
   const loadBacklinks = async () => {
     try {
-      const data = await managedBacklinkStorage.getAll();
+      const data = await managedBacklinkStorage.getAllBacklinks();
       setBacklinks(data);
     } catch (error) {
       console.error('加载外链失败:', error);
-    }
-  };
-
-  const loadSettings = async () => {
-    try {
-      const settings = await extensionSettingsStorage.get();
-      setUniqueByDomain(settings.unique_backlink_domain);
-    } catch (error) {
-      console.error('加载设置失败:', error);
     }
   };
 
@@ -239,16 +234,28 @@ export const SidePanelView = () => {
         throw new Error('无法获取当前页面 URL');
       }
 
+      const targetUrl = resolveCollectionTargetUrl(tab.url);
+
       const response = await chrome.runtime.sendMessage({
         type: 'START_MANUAL_COLLECTION',
-        payload: { targetUrl: tab.url },
+        payload: {
+          targetUrl,
+          groupId: selectedBacklinkGroupId === 'all' ? undefined : selectedBacklinkGroupId,
+        },
       });
 
       if (!response?.success) {
         throw new Error(response?.error || '采集失败');
       }
 
-      setMessage(`采集成功！共采集 ${response.count || 0} 条外链`);
+      const collectedCount = Number(response.count || 0);
+      const addedToLibrary = Number(response.addedToLibrary ?? 0);
+      const skippedInLibrary = Number(response.skippedInLibrary ?? 0);
+      setMessage(
+        skippedInLibrary > 0
+          ? `采集完成：共 ${collectedCount} 条，新增到外链库 ${addedToLibrary} 条，跳过重复 ${skippedInLibrary} 条`
+          : `采集完成：共 ${collectedCount} 条，新增到外链库 ${addedToLibrary} 条`,
+      );
       setTimeout(() => setMessage(null), 3000);
       await loadBacklinks();
     } catch (error) {
