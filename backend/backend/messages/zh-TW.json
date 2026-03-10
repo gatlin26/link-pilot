@@ -1,0 +1,1385 @@
+{
+  "Metadata": {
+    "name": "BuildWay",
+    "title": "BuildWay - 發現最好的 AI 工具 | AI 工具目錄",
+    "description": "發現和探索滿足各種需求的最佳 AI 工具。你的終極 AI 工具目錄站，提供精選集合、評價和推薦。"
+  },
+  "ImageTask": {
+    "submitting": "正在提交任務...",
+    "submitted": "任務已提交，正在生成...",
+    "generating": "正在生成中...",
+    "queuing": "任務排隊中...",
+    "completed": "生成完成！",
+    "cancelled": "已取消",
+    "generationFailed": "生成失敗，請重試",
+    "submitError": "提交失敗，請重試",
+    "submitFailed": "提交失敗: {status}",
+    "requestFailed": "請求失敗: {status}",
+    "networkError": "網路錯誤，請重試",
+    "timeout": "任務超時，請稍後重試"
+  },
+  "Common": {
+    "premium": "付費文章",
+    "login": "登入",
+    "logout": "登出",
+    "signUp": "註冊",
+    "language": "切換語言",
+    "mode": {
+      "label": "切換模式",
+      "light": "淺色模式",
+      "dark": "深色模式",
+      "system": "跟隨系統"
+    },
+    "theme": {
+      "label": "切換主題",
+      "default": "預設",
+      "blue": "藍色",
+      "green": "綠色",
+      "amber": "橙色",
+      "neutral": "中性"
+    },
+    "copy": "複製",
+    "save": "儲存",
+    "saving": "儲存中...",
+    "loading": "載入中...",
+    "cancel": "取消",
+    "logoutFailed": "登出失敗",
+    "table": {
+      "totalRecords": "共 {count} 筆記錄",
+      "noResults": "無結果",
+      "loading": "載入中...",
+      "columns": "欄位",
+      "rowsPerPage": "每頁筆數",
+      "page": "頁",
+      "firstPage": "第一頁",
+      "lastPage": "最後一頁",
+      "nextPage": "下一頁",
+      "previousPage": "上一頁",
+      "ascending": "升序",
+      "descending": "降序"
+    }
+  },
+  "PricingPage": {
+    "title": "提交您的 AI 工具",
+    "description": "讓您的 AI 工具在我們的目錄中展示",
+    "freeSubmission": {
+      "title": "免費提交",
+      "description": "免費將您的工具加入我們的目錄",
+      "features": [
+        "基礎工具列表",
+        "標準審核流程",
+        "出現在搜尋結果中"
+      ],
+      "button": "免費提交",
+      "note": "無需信用卡"
+    },
+    "paidFeatures": {
+      "title": "付費功能",
+      "description": "提升您的工具曝光度",
+      "features": [
+        "精選展示位置",
+        "優先審核",
+        "詳細分析數據"
+      ],
+      "button": "查看價格"
+    },
+    "comparePlans": {
+      "title": "比較方案",
+      "description": "選擇最適合您需求的方案"
+    }
+  },
+  "Navigation": {
+    "home": "首頁",
+    "tools": "工具",
+    "docs": "文件",
+    "blog": "部落格",
+    "pricing": "價格",
+    "about": "關於",
+    "contact": "聯絡",
+    "dashboard": "控制台",
+    "profile": "個人資料",
+    "settings": "設定",
+    "admin": "管理",
+    "submitTool": "提交工具"
+  },
+  "Auth": {
+    "signIn": {
+      "title": "歡迎回來",
+      "description": "登入您的帳戶以繼續",
+      "email": "電子郵件",
+      "password": "密碼",
+      "forgotPassword": "忘記密碼？",
+      "noAccount": "還沒有帳戶？",
+      "signUp": "註冊",
+      "continueWith": "或使用以下方式登入",
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "signUp": {
+      "title": "創建帳戶",
+      "description": "開始使用我們的平台",
+      "name": "姓名",
+      "email": "電子郵件",
+      "password": "密碼",
+      "confirmPassword": "確認密碼",
+      "hasAccount": "已有帳戶？",
+      "signIn": "登入",
+      "agree": "註冊即表示您同意我們的",
+      "terms": "服務條款",
+      "privacy": "隱私政策"
+    },
+    "forgotPassword": {
+      "title": "重設密碼",
+      "description": "輸入您的電子郵件以接收重設連結",
+      "email": "電子郵件",
+      "sendLink": "發送重設連結",
+      "backToSignIn": "返回登入",
+      "checkEmail": "請檢查您的電子郵件",
+      "emailSent": "我們已發送密碼重設連結到您的電子郵件"
+    },
+    "resetPassword": {
+      "title": "設置新密碼",
+      "description": "輸入您的新密碼",
+      "password": "新密碼",
+      "confirmPassword": "確認新密碼",
+      "resetButton": "重設密碼",
+      "success": "密碼重設成功",
+      "redirecting": "正在重定向..."
+    },
+    "verifyEmail": {
+      "title": "驗證您的電子郵件",
+      "description": "請點擊我們發送到您電子郵件的連結來驗證您的帳戶",
+      "checkEmail": "請檢查您的電子郵件",
+      "didntReceive": "沒有收到郵件？",
+      "resend": "重新發送",
+      "verified": "電子郵件已驗證",
+      "redirecting": "正在重定向..."
+    },
+    "errors": {
+      "invalidCredentials": "電子郵件或密碼無效",
+      "emailExists": "此電子郵件已被註冊",
+      "weakPassword": "密碼強度不足",
+      "passwordMismatch": "密碼不匹配",
+      "invalidEmail": "請輸入有效的電子郵件地址",
+      "required": "此欄位為必填",
+      "generic": "發生錯誤，請重試"
+    }
+  },
+  "Dashboard": {
+    "title": "控制台",
+    "welcome": "歡迎回來，{name}",
+    "overview": {
+      "title": "概覽",
+      "totalTools": "工具總數",
+      "totalViews": "總瀏覽量",
+      "totalClicks": "總點擊數",
+      "recentActivity": "近期活動"
+    },
+    "tools": {
+      "title": "我的工具",
+      "addNew": "新增工具",
+      "noTools": "您還沒有提交任何工具",
+      "status": {
+        "pending": "待審核",
+        "approved": "已通過",
+        "rejected": "已拒絕"
+      }
+    },
+    "settings": {
+      "title": "設定",
+      "profile": {
+        "title": "個人資料"
+      },
+      "submissions": {
+        "title": "我的提交"
+      },
+      "notifications": "通知",
+      "billing": "帳單",
+      "apiKeys": "API 金鑰"
+    }
+  },
+  "ToolsPage": {
+    "title": "AI 工具目錄",
+    "description": "探索最佳 AI 工具",
+    "searchPlaceholder": "搜尋 AI 工具...",
+    "noTools": "未找到工具",
+    "toolNotFound": "工具未找到",
+    "backToTools": "返回工具列表",
+    "visitWebsite": "訪問網站",
+    "collectedOn": "收錄於",
+    "listedOn": "收錄於",
+    "reviews": {
+      "title": "{name} 評論 ({count})",
+      "averageRating": "{rating} 分（滿分 5 分）",
+      "noRating": "暫無評分",
+      "recommend": "你會推薦 {name} 嗎？留下你的評價",
+      "placeholder": "分享你的使用體驗...",
+      "charCount": "{current}/{max}",
+      "loginToComment": "登入後評論",
+      "submit": "提交評論",
+      "update": "更新評論",
+      "delete": "刪除",
+      "deleteConfirm": "確定要刪除這條評論嗎？",
+      "noReviews": "還沒有評論，成為第一個分享體驗的人吧！",
+      "loadMore": "載入更多",
+      "submitSuccess": "評論提交成功！",
+      "updateSuccess": "評論更新成功！",
+      "deleteSuccess": "評論刪除成功！",
+      "ratingRequired": "請選擇評分",
+      "edited": "已編輯"
+    },
+    "featured": "精選",
+    "allCategories": "所有分類",
+    "loadMore": "載入更多",
+    "viewAll": "查看全部",
+    "filters": {
+      "category": "分類",
+      "pricing": "價格",
+      "sortBy": "排序方式",
+      "free": "免費",
+      "paid": "付費",
+      "freemium": "免費增值"
+    },
+    "sort": {
+      "newest": "最新",
+      "popular": "最受歡迎",
+      "nameAsc": "名稱 (A-Z)",
+      "nameDesc": "名稱 (Z-A)"
+    },
+    "submit": {
+      "badge": "提交工具",
+      "title": "提交您的 AI 工具",
+      "description": "與我們的社群分享您的 AI 工具，我們會仔細審核所有提交。",
+      "plans": {
+        "free": {
+          "title": "免費版",
+          "price": "$0",
+          "feature1": "獲得 3 個 dofollow 連結以提升您的 SEO",
+          "feature2": "永久連結並提供反向連結維護",
+          "feature3": "1 - 2 週內審核並列出",
+          "feature4": "您可以自由選擇發布日期",
+          "limit1": "需在您的網站添加指向我們的反向連結",
+          "limit2": "不提供客戶支援",
+          "cta": "提交審核",
+          "backlinkRequired": "免費收錄需在您站內添加指向我們的反鏈。"
+        },
+        "pro": {
+          "title": "專業版",
+          "popular": "最受歡迎",
+          "price": "$4.99",
+          "feature1": "獲得 ≥3 個 dofollow 連結以提升您的 SEO",
+          "feature2": "48 小時內列出，隨時發布",
+          "feature3": "永久連結，無需添加反向連結",
+          "feature4": "在列表中獲得置頂推薦位置",
+          "feature5": "透過社群媒體和電子報分享",
+          "feature6": "高級客戶支援",
+          "cta": "立即付款並發布",
+          "comingSoonNote": "透過 Creem 安全付款，提交後將自動跳轉至結帳頁面。"
+        }
+      },
+      "inclusionTips": {
+        "title": "收錄須知",
+        "items": [
+          "僅收錄 AI 相關工具或網站，非 AI 工具將直接拒絕",
+          "工具網站必須可正常存取，無法開啟的連結將被拒絕",
+          "不收錄色情、賭博等灰色產業相關工具或網站",
+          "已收錄同類工具時，重複功能的提交可能被拒絕",
+          "免費版需在您的網站上添加指向本站的反向連結"
+        ]
+      },
+      "backlinkNotice": {
+        "title": "反向連結檢測說明",
+        "message": "我們檢測到您的網站尚未添加指向我們的反向連結。請在站內添加反鏈後重新提交審核。",
+        "badgeTab": "徽章",
+        "textLinkTab": "文字連結",
+        "themeLabel": "徽章主題：",
+        "dark": "深色",
+        "light": "淺色",
+        "copyCode": "複製程式碼",
+        "preview": "預覽：",
+        "gotIt": "知道了",
+        "payAndPublish": "立即付款並發布"
+      },
+      "examples": {
+        "title": "參考案例",
+        "description": "以下是我們已收錄的工具案例，可作為提交參考：",
+        "visitWebsite": "訪問網站"
+      },
+      "form": {
+        "toolName": "工具名稱",
+        "toolUrl": "工具 URL",
+        "description": "描述",
+        "descriptionOptional": "選填：告訴我們更多關於這個工具的資訊",
+        "yourEmail": "您的電子郵件",
+        "emailHint": "如有問題，我們會與您聯繫",
+        "submitButton": "提交工具",
+        "submitting": "提交中...",
+        "logo": {
+          "label": "Logo",
+          "description": "支援 JPEG, PNG, WebP · 最大 1MB",
+          "uploading": "上傳中...",
+          "uploadLogo": "上傳 Logo",
+          "dragOrClick": "拖曳或點擊上傳"
+        },
+        "screenshot": {
+          "label": "截圖",
+          "description": "支援 JPEG, PNG, WebP · 最大 5MB",
+          "uploading": "上傳中...",
+          "dragOrClick": "拖曳或點擊上傳截圖",
+          "addScreenshot": "新增截圖",
+          "selected": "已選擇 {count} / {max} 張"
+        },
+        "upload": {
+          "error": {
+            "invalidFormat": "僅支援 JPEG、PNG、WebP 格式",
+            "tooLarge": "檔案大小不能超過 {size}MB",
+            "uploadFailed": "上傳失敗，請重試",
+            "maxImages": "最多只能上傳 {max} 張截圖"
+          }
+        },
+        "loginRequired": {
+          "title": "請先登入",
+          "description": "提交工具需要登入帳戶，請先登入後再提交。",
+          "button": "立即登入"
+        },
+        "success": {
+          "title": "提交成功！",
+          "message": "感謝您的提交！我們將盡快審核。",
+          "continuePrompt": "✨ 您可以繼續提交更多工具",
+          "continueSubmit": "繼續提交工具",
+          "viewSubmissions": "查看我的提交",
+          "reviewNote": "我們將在 1-2 週內審核您的提交。"
+        },
+        "errors": {
+          "checkForm": "請檢查表單中的錯誤。",
+          "duplicateToolName": "已存在同名工具的提交，請勿重複提交。"
+        },
+        "viewBacklinkInstructions": "查看反鏈說明",
+        "backlinkVerification": {
+          "title": "外鏈驗證必填",
+          "description": "免費提交需要在您的網站添加指向我們的外鏈。請先在您的網站上添加連結。",
+          "verifyButton": "驗證外鏈",
+          "verifying": "驗證中...",
+          "verified": "驗證通過！",
+          "notFound": "未偵測到外鏈。請在您的網站添加連結後重試。",
+          "enterUrlFirst": "請先填寫工具 URL",
+          "error": "外鏈驗證失敗，請重試。",
+          "dialogAutoVerifyFailed": "我們偵測到您的網站尚未添加指向我們的外鏈。請在您的網站添加反鏈後點擊驗證。",
+          "checkingBacklink": "正在檢測外鏈...",
+          "step1": "複製下方程式碼，添加到您的網站頁面中。",
+          "step2": "添加完成後，回到這裡點擊「驗證外鏈」。"
+        }
+      }
+    },
+    "similarTools": {
+      "matchedTags": "匹配 {count} 個標籤"
+    }
+  },
+  "ToolDetail": {
+    "overview": "概覽",
+    "features": "功能",
+    "pricing": "價格",
+    "reviews": "評價",
+    "relatedTools": "相關工具",
+    "visitWebsite": "訪問網站",
+    "share": "分享",
+    "save": "儲存",
+    "saved": "已儲存",
+    "tags": "標籤",
+    "category": "分類",
+    "developer": "開發者",
+    "launched": "發布時間",
+    "updated": "更新時間"
+  },
+  "SubmitTool": {
+    "title": "提交 AI 工具",
+    "description": "將您的 AI 工具提交到我們的目錄",
+    "steps": {
+      "basic": "基本資訊",
+      "details": "詳細資訊",
+      "media": "媒體",
+      "review": "審核"
+    },
+    "basicInfo": {
+      "title": "基本資訊",
+      "name": "工具名稱",
+      "namePlaceholder": "輸入工具名稱",
+      "tagline": "標語",
+      "taglinePlaceholder": "簡短描述您的工具（最多 100 字）",
+      "description": "描述",
+      "descriptionPlaceholder": "詳細描述您的工具的功能和用途",
+      "website": "網站 URL",
+      "websitePlaceholder": "https://your-tool.com",
+      "category": "分類",
+      "selectCategory": "選擇分類"
+    },
+    "details": {
+      "title": "詳細資訊",
+      "features": "功能特點",
+      "featuresPlaceholder": "列出您工具的主要功能",
+      "useCases": "使用場景",
+      "useCasesPlaceholder": "描述您的工具適合哪些使用場景",
+      "pricing": "價格模式",
+      "selectPricing": "選擇價格模式"
+    },
+    "media": {
+      "title": "媒體",
+      "logo": "Logo",
+      "uploadLogo": "上傳 Logo",
+      "screenshots": "截圖",
+      "uploadScreenshots": "上傳截圖",
+      "video": "影片 URL",
+      "videoPlaceholder": "YouTube 或 Vimeo 連結（可選）"
+    },
+    "review": {
+      "title": "審核",
+      "description": "請檢查您的提交資訊",
+      "submit": "提交審核",
+      "edit": "編輯資訊"
+    },
+    "success": {
+      "title": "提交成功！",
+      "description": "您的工具已提交審核，我們會盡快處理",
+      "viewStatus": "查看狀態",
+      "submitAnother": "提交另一個工具"
+    },
+    "errors": {
+      "nameRequired": "請輸入工具名稱",
+      "taglineRequired": "請輸入標語",
+      "descriptionRequired": "請輸入描述",
+      "websiteRequired": "請輸入網站 URL",
+      "invalidUrl": "請輸入有效的 URL",
+      "categoryRequired": "請選擇分類"
+    }
+  },
+  "Blog": {
+    "title": "部落格",
+    "description": "探索 AI 世界的最新見解、教學和更新",
+    "readMore": "閱讀更多",
+    "publishedOn": "發布於",
+    "author": "作者",
+    "categories": "分類",
+    "tags": "標籤",
+    "share": "分享",
+    "relatedPosts": "相關文章",
+    "searchPlaceholder": "搜尋文章...",
+    "noPosts": "未找到文章",
+    "backToBlog": "返回部落格",
+    "minutesRead": "{count} 分鐘閱讀"
+  },
+  "Docs": {
+    "title": "文件",
+    "description": "了解如何使用我們的平台",
+    "searchPlaceholder": "搜尋文件...",
+    "gettingStarted": "開始使用",
+    "apiReference": "API 參考",
+    "guides": "指南",
+    "faq": "常見問題",
+    "previous": "上一頁",
+    "next": "下一頁",
+    "onThisPage": "本頁內容",
+    "editOnGitHub": "在 GitHub 上編輯"
+  },
+  "Footer": {
+    "description": "發現和探索滿足各種需求的最佳 AI 工具。",
+    "links": {
+      "product": "產品",
+      "company": "公司",
+      "resources": "資源",
+      "legal": "法律"
+    },
+    "subscribe": {
+      "title": "訂閱我們的電子報",
+      "description": "獲取最新的 AI 工具更新和見解",
+      "placeholder": "輸入您的電子郵件",
+      "button": "訂閱"
+    },
+    "rights": "版權所有",
+    "madeWith": "用愛製作"
+  },
+  "Errors": {
+    "404": {
+      "title": "頁面未找到",
+      "description": "抱歉，我們找不到您要找的頁面",
+      "backHome": "返回首頁"
+    },
+    "500": {
+      "title": "伺服器錯誤",
+      "description": "抱歉，發生了意外錯誤",
+      "tryAgain": "重試"
+    },
+    "generic": {
+      "title": "出錯了",
+      "description": "發生意外錯誤",
+      "backHome": "返回首頁"
+    }
+  },
+  "SEO": {
+    "defaultTitle": "BuildWay - 發現最好的 AI 工具",
+    "defaultDescription": "發現和探索滿足各種需求的最佳 AI 工具。你的終極 AI 工具目錄站。",
+    "tools": {
+      "title": "AI 工具目錄 - BuildWay",
+      "description": "探索最佳 AI 工具的精選目錄。找到適合您需求的完美 AI 解決方案。"
+    },
+    "blog": {
+      "title": "部落格 - BuildWay",
+      "description": "閱讀關於 AI 工具、趨勢和見解的最新文章。"
+    },
+    "docs": {
+      "title": "文件 - BuildWay",
+      "description": "了解如何使用 BuildWay 平台及其功能。"
+    }
+  },
+  "HomePage": {
+    "hero": {
+      "badge": "AI 工具目錄",
+      "title": "探索最佳 AI 工具",
+      "subtitle": "發現和探索滿足各種需求的最佳 AI 工具",
+      "searchPlaceholder": "搜尋 AI 工具...",
+      "searchButton": "搜尋",
+      "ctaPrimary": "瀏覽工具",
+      "ctaSecondary": "提交工具"
+    },
+    "featured": {
+      "title": "精選工具",
+      "description": "我們精選的最佳 AI 工具",
+      "viewAll": "查看全部"
+    },
+    "latestTools": {
+      "justLaunched": "最新發布",
+      "viewAll": "查看全部工具",
+      "featuredTitle": "精選推薦"
+    },
+    "categories": {
+      "title": "瀏覽分類",
+      "description": "探索各種類別的 AI 工具",
+      "viewAll": "查看全部分類"
+    },
+    "latest": {
+      "title": "最新工具",
+      "description": "我們目錄中最新添加的工具",
+      "viewAll": "查看全部"
+    },
+    "newsletter": {
+      "title": "保持更新",
+      "description": "訂閱我們的電子報，獲取最新的 AI 工具和趨勢",
+      "placeholder": "輸入您的電子郵件",
+      "button": "訂閱",
+      "privacy": "我們尊重您的隱私，不會發送垃圾郵件。"
+    },
+    "stats": {
+      "tools": "AI 工具",
+      "categories": "分類",
+      "users": "用戶",
+      "monthlyViews": "月瀏覽量"
+    }
+  },
+  "Credits": {
+    "title": "點數",
+    "balance": "點數餘額",
+    "purchase": "購買點數",
+    "history": "交易記錄",
+    "packages": {
+      "title": "選擇點數包",
+      "small": "小額包",
+      "medium": "中額包",
+      "large": "大額包",
+      "popular": "最受歡迎"
+    },
+    "transactions": {
+      "title": "近期交易",
+      "type": {
+        "purchase": "購買",
+        "usage": "使用",
+        "refund": "退款",
+        "bonus": "獎勵"
+      },
+      "status": {
+        "completed": "已完成",
+        "pending": "處理中",
+        "failed": "失敗"
+      },
+      "noTransactions": "暫無交易記錄"
+    }
+  },
+  "Admin": {
+    "title": "管理控制台",
+    "dashboard": {
+      "title": "儀表板",
+      "stats": {
+        "totalUsers": "總用戶數",
+        "totalTools": "總工具數",
+        "pendingSubmissions": "待審核提交",
+        "totalRevenue": "總收入"
+      }
+    },
+    "tools": {
+      "title": "工具管理",
+      "list": "工具列表",
+      "pending": "待審核",
+      "approved": "已通過",
+      "rejected": "已拒絕",
+      "actions": {
+        "approve": "通過",
+        "reject": "拒絕",
+        "edit": "編輯",
+        "delete": "刪除",
+        "feature": "設為精選"
+      }
+    },
+    "users": {
+      "title": "用戶管理",
+      "list": "用戶列表",
+      "admins": "管理員",
+      "banned": "已封禁",
+      "actions": {
+        "ban": "封禁",
+        "unban": "解封",
+        "makeAdmin": "設為管理員",
+        "removeAdmin": "移除管理員"
+      }
+    },
+    "categories": {
+      "title": "分類管理",
+      "add": "新增分類",
+      "edit": "編輯分類",
+      "delete": "刪除分類",
+      "name": "名稱",
+      "description": "描述",
+      "icon": "圖示"
+    },
+    "settings": {
+      "title": "系統設定",
+      "general": "一般設定",
+      "email": "郵件設定",
+      "payment": "支付設定",
+      "seo": "SEO 設定"
+    }
+  },
+  "Payment": {
+    "title": "付款",
+    "checkout": {
+      "title": "結帳",
+      "description": "完成您的付款",
+      "cardDetails": "卡片詳情",
+      "payNow": "立即付款",
+      "processing": "處理中...",
+      "secure": "安全加密付款"
+    },
+    "success": {
+      "title": "付款成功！",
+      "description": "感謝您的購買",
+      "receiptSent": "收據已發送至您的電子郵件",
+      "continue": "繼續瀏覽"
+    },
+    "cancel": {
+      "title": "付款已取消",
+      "description": "您已取消付款",
+      "tryAgain": "重試"
+    },
+    "errors": {
+      "cardDeclined": "卡片被拒絕",
+      "insufficientFunds": "餘額不足",
+      "expiredCard": "卡片已過期",
+      "invalidCard": "無效的卡片資訊",
+      "generic": "付款處理失敗"
+    }
+  },
+  "Notifications": {
+    "title": "通知",
+    "markAllRead": "全部標為已讀",
+    "clearAll": "清除全部",
+    "empty": "暫無通知",
+    "types": {
+      "toolApproved": "工具已通過",
+      "toolRejected": "工具被拒絕",
+      "newFollower": "新追隨者",
+      "paymentReceived": "收到付款",
+      "system": "系統通知"
+    }
+  },
+  "Search": {
+    "title": "搜尋",
+    "placeholder": "搜尋工具、文章...",
+    "noResults": "未找到結果",
+    "filters": "篩選",
+    "clearFilters": "清除篩選",
+    "categories": {
+      "all": "全部",
+      "tools": "工具",
+      "blog": "部落格",
+      "docs": "文件"
+    }
+  },
+  "Reviews": {
+    "title": "評價",
+    "writeReview": "撰寫評價",
+    "editReview": "編輯評價",
+    "deleteReview": "刪除評價",
+    "rating": "評分",
+    "comment": "評論",
+    "submit": "提交評價",
+    "update": "更新評價",
+    "noReviews": "暫無評價",
+    "beFirst": "成為第一個評價的人",
+    "verified": "已驗證用戶",
+    "helpful": "有幫助",
+    "report": "檢舉",
+    "sort": {
+      "newest": "最新",
+      "highest": "最高評分",
+      "lowest": "最低評分",
+      "helpful": "最有幫助"
+    }
+  },
+  "Favorites": {
+    "title": "我的收藏",
+    "description": "您收藏的工具",
+    "empty": "您還沒有收藏任何工具",
+    "browseTools": "瀏覽工具",
+    "remove": "移除",
+    "added": "已添加到收藏",
+    "removed": "已從收藏移除"
+  },
+  "Share": {
+    "title": "分享",
+    "copyLink": "複製連結",
+    "copied": "已複製！",
+    "twitter": "分享到 Twitter",
+    "facebook": "分享到 Facebook",
+    "linkedin": "分享到 LinkedIn",
+    "email": "通過郵件分享"
+  },
+  "Tags": {
+    "title": "標籤",
+    "allTags": "所有標籤",
+    "popular": "熱門標籤",
+    "noTags": "暫無標籤",
+    "toolsCount": "{count} 個工具"
+  },
+  "Categories": {
+    "title": "分類",
+    "allCategories": "所有分類",
+    "browseByCategory": "按分類瀏覽",
+    "noCategories": "暫無分類",
+    "toolsCount": "{count} 個工具"
+  },
+  "Integrations": {
+    "title": "整合",
+    "description": "與您喜愛的工具連接",
+    "connected": "已連接",
+    "disconnected": "未連接",
+    "connect": "連接",
+    "disconnect": "斷開連接",
+    "configure": "配置"
+  },
+  "API": {
+    "title": "API",
+    "description": "管理您的 API 金鑰和存取",
+    "keys": {
+      "title": "API 金鑰",
+      "create": "創建金鑰",
+      "name": "金鑰名稱",
+      "key": "金鑰",
+      "created": "創建時間",
+      "lastUsed": "最後使用",
+      "actions": {
+        "copy": "複製",
+        "revoke": "撤銷",
+        "regenerate": "重新生成"
+      }
+    },
+    "docs": {
+      "title": "API 文件",
+      "authentication": "認證",
+      "rateLimits": "速率限制",
+      "endpoints": "端點"
+    },
+    "usage": {
+      "title": "使用統計",
+      "requests": "請求數",
+      "limits": "限制"
+    }
+  },
+  "Analytics": {
+    "title": "分析",
+    "overview": {
+      "title": "概覽",
+      "views": "瀏覽量",
+      "clicks": "點擊數",
+      "conversions": "轉換數",
+      "engagement": "參與度"
+    },
+    "charts": {
+      "viewsOverTime": "瀏覽趨勢",
+      "topSources": "主要來源",
+      "devices": "裝置",
+      "locations": "地區"
+    },
+    "timeRange": {
+      "today": "今天",
+      "week": "本週",
+      "month": "本月",
+      "year": "本年",
+      "custom": "自定義"
+    }
+  },
+  "Settings": {
+    "title": "設定",
+    "profile": {
+      "title": "個人資料",
+      "name": "姓名",
+      "bio": "簡介",
+      "website": "網站",
+      "location": "地點",
+      "avatar": "頭像",
+      "update": "更新資料"
+    },
+    "account": {
+      "title": "帳戶",
+      "email": "電子郵件",
+      "password": "密碼",
+      "changePassword": "更改密碼",
+      "currentPassword": "當前密碼",
+      "newPassword": "新密碼",
+      "confirmPassword": "確認新密碼",
+      "deleteAccount": "刪除帳戶",
+      "deleteWarning": "此操作無法撤銷"
+    },
+    "notifications": {
+      "title": "通知設定",
+      "email": {
+        "title": "郵件通知",
+        "marketing": "行銷郵件",
+        "updates": "產品更新",
+        "newsletter": "電子報"
+      },
+      "push": {
+        "title": "推送通知",
+        "enabled": "啟用推送通知"
+      }
+    },
+    "privacy": {
+      "title": "隱私",
+      "profileVisible": "個人資料公開可見",
+      "showActivity": "顯示活動狀態",
+      "allowTracking": "允許使用數據分析"
+    }
+  },
+  "Billing": {
+    "title": "帳單",
+    "subscription": {
+      "title": "訂閱",
+      "currentPlan": "當前方案",
+      "status": "狀態",
+      "renewalDate": "續訂日期",
+      "cancel": "取消訂閱",
+      "upgrade": "升級方案",
+      "downgrade": "降級方案"
+    },
+    "paymentMethods": {
+      "title": "付款方式",
+      "add": "新增付款方式",
+      "remove": "移除",
+      "default": "預設"
+    },
+    "invoices": {
+      "title": "發票",
+      "download": "下載",
+      "noInvoices": "暫無發票"
+    },
+    "history": {
+      "title": "付款記錄",
+      "date": "日期",
+      "amount": "金額",
+      "status": "狀態",
+      "description": "描述"
+    }
+  },
+  "Subscriptions": {
+    "title": "訂閱方案",
+    "free": {
+      "name": "免費",
+      "description": "適合初學者",
+      "features": [
+        "瀏覽所有工具",
+        "基礎搜尋",
+        "收藏工具"
+      ]
+    },
+    "pro": {
+      "name": "專業版",
+      "description": "適合專業用戶",
+      "features": [
+        "所有免費功能",
+        "進階搜尋篩選",
+        "無廣告體驗",
+        "優先支援"
+      ]
+    },
+    "enterprise": {
+      "name": "企業版",
+      "description": "適合團隊",
+      "features": [
+        "所有專業版功能",
+        "團隊管理",
+        "API 存取",
+        "專屬支援"
+      ]
+    },
+    "monthly": "月付",
+    "yearly": "年付",
+    "save": "省 {percent}%",
+    "currentPlan": "當前方案",
+    "upgrade": "升級",
+    "downgrade": "降級",
+    "subscribe": "訂閱",
+    "manage": "管理訂閱"
+  },
+  "Support": {
+    "title": "支援",
+    "contact": {
+      "title": "聯絡我們",
+      "description": "需要幫助？我們隨時為您服務",
+      "email": "電子郵件",
+      "subject": "主題",
+      "message": "訊息",
+      "send": "發送訊息",
+      "success": "訊息已發送"
+    },
+    "faq": {
+      "title": "常見問題",
+      "description": "找到常見問題的答案"
+    },
+    "status": {
+      "title": "系統狀態",
+      "operational": "正常運作",
+      "degraded": "效能下降",
+      "outage": "服務中斷"
+    }
+  },
+  "Legal": {
+    "terms": {
+      "title": "服務條款",
+      "lastUpdated": "最後更新"
+    },
+    "privacy": {
+      "title": "隱私政策",
+      "lastUpdated": "最後更新"
+    },
+    "cookies": {
+      "title": "Cookie 政策",
+      "accept": "接受",
+      "decline": "拒絕",
+      "settings": "Cookie 設定"
+    }
+  },
+  "Onboarding": {
+    "welcome": {
+      "title": "歡迎來到 BuildWay！",
+      "description": "讓我們幫助您開始",
+      "getStarted": "開始"
+    },
+    "steps": {
+      "profile": "完善個人資料",
+      "interests": "選擇興趣",
+      "notifications": "設定通知"
+    },
+    "interests": {
+      "title": "您對什麼感興趣？",
+      "description": "選擇您感興趣的 AI 工具類別",
+      "skip": "跳過",
+      "continue": "繼續"
+    },
+    "complete": {
+      "title": "準備就緒！",
+      "description": "您已完成設置",
+      "startExploring": "開始探索"
+    }
+  },
+  "Feedback": {
+    "title": "反饋",
+    "description": "幫助我們改進",
+    "type": {
+      "bug": "錯誤報告",
+      "feature": "功能請求",
+      "improvement": "改進建議",
+      "other": "其他"
+    },
+    "submit": "提交反饋",
+    "success": "感謝您的反饋！"
+  },
+  "Maintenance": {
+    "title": "維護中",
+    "description": "我們正在進行系統維護，請稍後再試",
+    "estimatedTime": "預計完成時間",
+    "refresh": "重新整理"
+  },
+  "ComingSoon": {
+    "title": "即將推出",
+    "description": "此功能正在開發中，敬請期待",
+    "notifyMe": "有更新時通知我"
+  },
+  "EmptyStates": {
+    "noResults": {
+      "title": "未找到結果",
+      "description": "嘗試調整您的搜尋或篩選條件",
+      "clearFilters": "清除篩選"
+    },
+    "noData": {
+      "title": "暫無數據",
+      "description": "這裡還沒有任何內容"
+    },
+    "error": {
+      "title": "出錯了",
+      "description": "載入數據時發生錯誤",
+      "retry": "重試"
+    }
+  },
+  "Actions": {
+    "create": "創建",
+    "edit": "編輯",
+    "delete": "刪除",
+    "save": "儲存",
+    "cancel": "取消",
+    "confirm": "確認",
+    "back": "返回",
+    "next": "下一步",
+    "finish": "完成",
+    "close": "關閉",
+    "open": "開啟",
+    "download": "下載",
+    "upload": "上傳",
+    "refresh": "重新整理",
+    "filter": "篩選",
+    "sort": "排序",
+    "search": "搜尋",
+    "clear": "清除",
+    "apply": "應用",
+    "reset": "重設",
+    "view": "查看",
+    "hide": "隱藏",
+    "show": "顯示",
+    "expand": "展開",
+    "collapse": "收起",
+    "selectAll": "全選",
+    "deselectAll": "取消全選",
+    "more": "更多",
+    "less": "更少"
+  },
+  "Status": {
+    "active": "啟用",
+    "inactive": "停用",
+    "pending": "待處理",
+    "approved": "已通過",
+    "rejected": "已拒絕",
+    "completed": "已完成",
+    "failed": "失敗",
+    "cancelled": "已取消",
+    "processing": "處理中",
+    "verified": "已驗證",
+    "unverified": "未驗證"
+  },
+  "Time": {
+    "justNow": "剛剛",
+    "minutesAgo": "{count} 分鐘前",
+    "hoursAgo": "{count} 小時前",
+    "daysAgo": "{count} 天前",
+    "weeksAgo": "{count} 週前",
+    "monthsAgo": "{count} 個月前",
+    "yearsAgo": "{count} 年前",
+    "today": "今天",
+    "yesterday": "昨天",
+    "tomorrow": "明天"
+  },
+  "FileUpload": {
+    "dropzone": "拖放檔案至此或點擊上傳",
+    "maxSize": "最大檔案大小: {size}",
+    "acceptedTypes": "接受的格式: {types}",
+    "uploading": "上傳中...",
+    "success": "上傳成功",
+    "error": "上傳失敗",
+    "remove": "移除"
+  },
+  "Form": {
+    "required": "必填",
+    "optional": "選填",
+    "invalid": "無效",
+    "minLength": "至少需要 {count} 個字符",
+    "maxLength": "最多 {count} 個字符",
+    "minValue": "最小值為 {value}",
+    "maxValue": "最大值為 {value}",
+    "pattern": "格式無效",
+    "email": "請輸入有效的電子郵件地址",
+    "url": "請輸入有效的 URL",
+    "number": "請輸入數字",
+    "integer": "請輸入整數",
+    "match": "輸入不匹配"
+  },
+  "Pagination": {
+    "showing": "顯示",
+    "of": "共",
+    "results": "結果",
+    "previous": "上一頁",
+    "next": "下一頁",
+    "first": "第一頁",
+    "last": "最後一頁"
+  },
+  "ConfirmDialog": {
+    "title": "確認操作",
+    "description": "您確定要執行此操作嗎？",
+    "confirm": "確認",
+    "cancel": "取消",
+    "destructive": {
+      "title": "無法撤銷",
+      "description": "此操作無法撤銷，請確認"
+    }
+  },
+  "Toast": {
+    "success": "成功",
+    "error": "錯誤",
+    "warning": "警告",
+    "info": "資訊"
+  },
+  "Loading": {
+    "default": "載入中...",
+    "tools": "載入工具...",
+    "data": "載入數據...",
+    "saving": "儲存中...",
+    "submitting": "提交中...",
+    "processing": "處理中..."
+  },
+  "Success": {
+    "saved": "儲存成功",
+    "created": "創建成功",
+    "updated": "更新成功",
+    "deleted": "刪除成功",
+    "submitted": "提交成功",
+    "copied": "已複製到剪貼簿"
+  },
+  "Validation": {
+    "required": "此欄位為必填",
+    "email": "請輸入有效的電子郵件地址",
+    "url": "請輸入有效的 URL",
+    "minLength": "至少需要 {count} 個字符",
+    "maxLength": "最多 {count} 個字符",
+    "passwordMatch": "密碼不匹配",
+    "acceptTerms": "您必須接受條款"
+  },
+  "Placeholder": {
+    "search": "搜尋...",
+    "select": "請選擇...",
+    "email": "your@email.com",
+    "password": "輸入密碼",
+    "description": "輸入描述..."
+  },
+  "Tooltip": {
+    "copy": "複製到剪貼簿",
+    "share": "分享",
+    "favorite": "添加到收藏",
+    "unfavorite": "從收藏移除",
+    "edit": "編輯",
+    "delete": "刪除",
+    "more": "更多選項"
+  },
+  "Accessibility": {
+    "skipToContent": "跳轉到主要內容",
+    "menu": "選單",
+    "closeMenu": "關閉選單",
+    "openMenu": "開啟選單",
+    "search": "搜尋",
+    "toggleTheme": "切換主題",
+    "loading": "載入中"
+  },
+  "Mobile": {
+    "menu": "選單",
+    "filters": "篩選",
+    "sort": "排序",
+    "pullToRefresh": "下拉重新整理"
+  },
+  "DataTable": {
+    "search": "搜尋...",
+    "filter": "篩選",
+    "columns": "欄位",
+    "export": "匯出",
+    "print": "列印",
+    "refresh": "重新整理",
+    "noData": "暫無數據",
+    "selected": "已選擇 {count} 項"
+  },
+  "Chart": {
+    "noData": "暫無數據可顯示",
+    "loading": "載入圖表中...",
+    "error": "無法載入圖表"
+  },
+  "Wizard": {
+    "step": "步驟 {current} / {total}",
+    "next": "下一步",
+    "back": "上一步",
+    "finish": "完成",
+    "skip": "跳過"
+  },
+  "Tour": {
+    "next": "下一步",
+    "back": "上一步",
+    "skip": "跳過導覽",
+    "finish": "完成",
+    "progress": "{current} / {total}"
+  },
+  "FeatureFlags": {
+    "title": "功能標誌",
+    "enabled": "啟用",
+    "disabled": "停用",
+    "beta": "測試版"
+  },
+  "Experiments": {
+    "title": "實驗性功能",
+    "description": "試用我們正在開發的新功能",
+    "optIn": "加入",
+    "optOut": "退出"
+  },
+  "Localization": {
+    "language": "語言",
+    "region": "地區",
+    "currency": "貨幣",
+    "timezone": "時區",
+    "dateFormat": "日期格式",
+    "timeFormat": "時間格式"
+  },
+  "Theme": {
+    "light": "淺色",
+    "dark": "深色",
+    "system": "系統",
+    "custom": "自定義"
+  },
+  "Marketing": {
+    "navbar": {
+      "tools": {
+        "title": "工具"
+      },
+      "submit": {
+        "title": "提交工具"
+      },
+      "features": {
+        "title": "功能"
+      },
+      "pricing": {
+        "title": "價格"
+      },
+      "blog": {
+        "title": "部落格"
+      },
+      "about": {
+        "title": "關於"
+      },
+      "docs": {
+        "title": "文件"
+      },
+      "ai": {
+        "title": "AI 工具",
+        "items": {
+          "text": {
+            "title": "AI 文字",
+            "description": "展示如何使用 AI 生成精彩文字"
+          },
+          "image": {
+            "title": "AI 圖像",
+            "description": "展示如何使用 AI 生成精美圖像"
+          },
+          "chat": {
+            "title": "AI 聊天",
+            "description": "展示如何使用 AI 與客戶聊天"
+          },
+          "video": {
+            "title": "AI 影片",
+            "description": "展示如何使用 AI 生成驚人影片"
+          },
+          "audio": {
+            "title": "AI 音訊",
+            "description": "展示如何使用 AI 生成動聽音訊"
+          }
+        }
+      },
+      "pages": {
+        "title": "頁面",
+        "items": {
+          "about": {
+            "title": "關於我們",
+            "description": "了解更多關於我們的公司、使命和價值觀"
+          },
+          "contact": {
+            "title": "聯絡我們",
+            "description": "與我們的團隊聯繫以獲取支援或諮詢"
+          },
+          "waitlist": {
+            "title": "等候名單",
+            "description": "加入等候名單，獲取最新消息和更新"
+          },
+          "changelog": {
+            "title": "更新日誌",
+            "description": "查看我們產品的最新更新"
+          },
+          "roadmap": {
+            "title": "路線圖",
+            "description": "探索我們的未來計畫和即將推出的功能"
+          },
+          "cookiePolicy": {
+            "title": "Cookie 政策",
+            "description": "關於我們如何在網站上使用 Cookie"
+          },
+          "privacyPolicy": {
+            "title": "隱私政策",
+            "description": "我們如何保護和處理您的資料"
+          },
+          "termsOfService": {
+            "title": "服務條款",
+            "description": "您與我們公司之間的法律協議"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "您的終極 AI 工具目錄 — 發現、比較並選擇最適合您專案的 AI 工具",
+      "product": {
+        "title": "產品",
+        "items": {
+          "features": "功能",
+          "pricing": "價格",
+          "faq": "常見問題"
+        }
+      },
+      "resources": {
+        "title": "資源",
+        "items": {
+          "blog": "部落格",
+          "docs": "文件",
+          "changelog": "更新日誌",
+          "roadmap": "路線圖"
+        }
+      },
+      "company": {
+        "title": "公司",
+        "items": {
+          "about": "關於我們",
+          "contact": "聯絡我們",
+          "waitlist": "等候名單"
+        }
+      },
+      "legal": {
+        "title": "法律",
+        "items": {
+          "cookiePolicy": "Cookie 政策",
+          "privacyPolicy": "隱私政策",
+          "termsOfService": "服務條款",
+          "refundPolicy": "退款政策"
+        }
+      }
+    },
+    "avatar": {
+      "history": "歷史記錄",
+      "billing": "帳單",
+      "credits": "點數",
+      "settings": "設定"
+    }
+  }
+}

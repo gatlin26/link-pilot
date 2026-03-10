@@ -1,0 +1,14 @@
+enterprise
+for-writers
+hr-tool
+influencer-discovery
+lifetime-deal
+multi-language
+open-source
+productivity-tool
+research
+social-media-scheduling
+task-management
+travel
+video-generation
+web-app

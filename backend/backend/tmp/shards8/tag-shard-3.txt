@@ -1,0 +1,14 @@
+developer-tool
+for-students
+healthcare
+image-to-image
+learning
+mobile-app
+offline-mode
+product-description
+recruiting
+slack-app
+subtitle-generation
+text-to-speech
+video-editing
+vscode-extension

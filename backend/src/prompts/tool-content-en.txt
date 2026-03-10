@@ -1,0 +1,78 @@
+You are an expert content writer for BuildWay, an AI tools directory website. Your task is to generate SEO-optimized, E-E-A-T aligned English content based on the reference material provided.
+
+## Your Task
+Based ONLY on the reference content, generate English content for the tool listing. Do NOT visit the website or invent information. Keep it concise—aim to well-present the site's information, not to be exhaustive.
+
+## Output Requirements
+
+Generate a JSON object with this exact structure:
+
+{
+  "title": "SEO title in English",
+  "description": "Meta description in English",
+  "introduction": "Detailed introduction in Markdown format"
+}
+
+## Field Guidelines
+
+### title (SEO Title)
+- Maximum 60 characters
+- Format: "{Tool Name}: {Brief Value Proposition}" — primary keyword first
+- Make it compelling and include the tool name
+
+### description (Meta Description)
+- Maximum 160 characters
+- Include tool name + core value + subtle call-to-action
+- Should entice users to click from search results
+
+### introduction (Detailed Introduction)
+- **IMPORTANT: Keep it concise, 300-400 words total**
+- **Strict hierarchy**: Use ## for H2, ### for H3. Page H1 is the tool name (rendered separately).
+- **Keyword placement**: Each H2 MUST contain the tool name or LSI-related terms.
+- **Structure** (follow exactly):
+
+```markdown
+## What is {Tool Name}?
+First sentence must hit user pain point or core value. ~150-200 words. Include a bullet list when reference content supports it.
+
+## {Tool Name} Key Features
+~150-200 words. Include a bullet list when reference content supports it.
+
+## Who Uses {Tool Name}?
+Target audience and use cases. ~100-150 words.
+
+## {Tool Name} FAQ
+- **If reference content already has FAQ**: Use it directly as-is
+- **If reference content has no FAQ**: Generate 5-12 Q&A pairs based on reference content, for Google Featured Snippets. Format:
+
+### Question 1?
+2-3 sentence answer based on reference content.
+
+### Question 2?
+2-3 sentence answer.
+```
+
+## SEO & E-E-A-T Requirements
+- Use {Tool Name} as the primary keyword in H2 headings
+- Each H2 section: ~150-200 words, first sentence must address user pain point or value
+- Each H2 section: include a bullet list when reference content supports it (do NOT invent items)
+- FAQ: Use reference content's FAQ directly if present; otherwise generate 5-12 Q&A (based on reference content only)
+- Keep content factual and grounded—no fluff, only information from reference; prefer brevity over fabrication
+
+## Critical Requirements
+- **Return ONLY valid JSON, no markdown code blocks around the JSON**
+- **SOURCE CONSTRAINT**: Use ONLY information explicitly stated in the reference content. Do NOT invent, assume, or hallucinate anything.
+- If the reference does not mention something, omit that section or write "Visit the official website for more details."
+- **Ensure the JSON is complete and properly closed**
+
+---
+
+## Reference Content (Source Material - Use ONLY This)
+
+{{referenceContent}}
+
+## Context
+- **URL**: {{url}}
+- **Tool Name**: {{name}}
+
+Generate the JSON based on the reference content above.

@@ -1,0 +1,590 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * 1. Themes Documentation
+ * https://mksaas.com/docs/themes
+
+ * 2. Theme Generator
+ * https://ui.shadcn.com/themes
+ * https://tweakcn.com/
+ * https://ui.pub/x/theme-gen
+ *
+ * default theme: custom theme inspired by Qoder
+ * https://qoder.com/
+ * https://tweakcn.com/editor/theme
+ *
+ * NOTICE: when you change the theme, you need to check the fonts and keep the animation variables
+ *
+ * 3. How to Add a Theme Selector to Your Next.js App
+ * https://ouassim.tech/notes/how-to-add-a-theme-selector-to-your-nextjs-app/
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  /* fonts */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* animate */
+  --animate-shiny-text: shiny-text 8s infinite;
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-marquee-left: marquee-left var(--duration, 40s) linear infinite;
+  --animate-marquee-right: marquee-right var(--duration, 40s) linear infinite;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * .2s)
+    infinite;
+  --animate-pulse: pulse var(--duration) ease-out infinite;
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-gradient: gradient 8s linear infinite;
+
+  @keyframes shiny-text {
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-left {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-33.333%, 0, 0);
+    }
+  }
+
+  @keyframes marquee-right {
+    0% {
+      transform: translate3d(-33.333%, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes ripple {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 var(--pulse-color);
+    }
+    50% {
+      box-shadow: 0 0 0 8px var(--pulse-color);
+    }
+  }
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size, 300%) 0;
+    }
+  }
+}
+
+:root {
+  /* Easemate Style - Electric Blue Theme */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  /* Primary - Electric Blue */
+  --primary: #0052ff;
+  --primary-foreground: #ffffff;
+  /* Secondary - Cool Slate */
+  --secondary: #f8fafc;
+  --secondary-foreground: #475569;
+  /* Muted - Slate tones */
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  /* Accent - Lighter Blue for highlights */
+  --accent: #3d8bff;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  /* Border & Input - Subtle borders */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0052ff;
+  /* Chart - Blue-based */
+  --chart-1: #0052ff;
+  --chart-2: #3d8bff;
+  --chart-3: #0f172a;
+  --chart-4: #64748b;
+  --chart-5: #94a3b8;
+  /* Sidebar - Blue tones */
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #64748b;
+  --sidebar-primary: #0052ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eff6ff;
+  --sidebar-accent-foreground: #1e40af;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #0052ff;
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+  --font-mono: var(--font-jetbrains-mono);
+  --radius: 0.75rem;
+  /* Easemate multi-layered shadows */
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-xs: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.03);
+  --shadow-sm: 0 2px 4px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.03);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.03);
+  --shadow-md: 0 6px 10px -2px rgb(0 0 0 / 0.05), 0 4px 6px -3px
+    rgb(0 0 0 / 0.03);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.04), 0 4px 6px -4px
+    rgb(0 0 0 / 0.02);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px
+    rgb(0 0 0 / 0.02);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+  /* AI Glow effect */
+  --glow-primary: 0 0 20px rgba(0, 82, 255, 0.15);
+  --glow-primary-strong: 0 0 30px rgba(0, 82, 255, 0.25);
+}
+
+.dark {
+  /* Easemate Style - Dark Mode Electric Blue */
+  --background: #0a0f1a;
+  --foreground: #f8fafc;
+  --card: #111827;
+  --card-foreground: #f8fafc;
+  --popover: #111827;
+  --popover-foreground: #f8fafc;
+  /* Primary - Brighter Blue for dark mode */
+  --primary: #3d8bff;
+  --primary-foreground: #0a0f1a;
+  /* Secondary - Dark Slate */
+  --secondary: #1e293b;
+  --secondary-foreground: #94a3b8;
+  /* Muted - Dark tones */
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  /* Accent - Electric Blue */
+  --accent: #60a5fa;
+  --accent-foreground: #0a0f1a;
+  --destructive: #dc2626;
+  --destructive-foreground: #f8fafc;
+  /* Border & Input - Dark borders */
+  --border: #334155;
+  --input: #334155;
+  --ring: #3d8bff;
+  /* Chart - Dark mode blues */
+  --chart-1: #3d8bff;
+  --chart-2: #60a5fa;
+  --chart-3: #f8fafc;
+  --chart-4: #94a3b8;
+  --chart-5: #64748b;
+  /* Sidebar - Dark blue tones */
+  --sidebar: #0f172a;
+  --sidebar-foreground: #94a3b8;
+  --sidebar-primary: #3d8bff;
+  --sidebar-primary-foreground: #0a0f1a;
+  --sidebar-accent: #1e3a5f;
+  --sidebar-accent-foreground: #93c5fd;
+  --sidebar-border: #334155;
+  --sidebar-ring: #3d8bff;
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+  --font-mono: var(--font-jetbrains-mono);
+  --radius: 0.75rem;
+  /* Dark mode multi-layered shadows */
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-xs: 0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+  --shadow-sm: 0 2px 4px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-md: 0 6px 10px -2px rgb(0 0 0 / 0.3), 0 4px 6px -3px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px
+    rgb(0 0 0 / 0.2);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.35), 0 8px 10px -6px
+    rgb(0 0 0 / 0.25);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  /* Dark mode AI Glow */
+  --glow-primary: 0 0 25px rgba(61, 139, 255, 0.25);
+  --glow-primary-strong: 0 0 40px rgba(61, 139, 255, 0.4);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  @apply overscroll-none bg-transparent;
+}
+
+.text-gradient_indigo-purple {
+  background: linear-gradient(90deg, #6366f1 0%, rgb(168 85 247 / 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*
+ * 1. all the themes are copied from the shadcn-ui dashboard example
+ * https://github.com/shadcn-ui/ui/blob/main/apps/v4/app/(examples)/dashboard/theme.css
+ * https://github.com/TheOrcDev/orcish-dashboard/blob/main/app/globals.css
+ *
+ * 2. we suggest always using the default theme for better user experience,
+ * and then override the .theme-default to customize the theme
+ */
+.theme-default {
+  /* default theme */
+}
+
+.theme-neutral {
+  --primary: var(--color-neutral-600);
+  --primary-foreground: var(--color-neutral-50);
+
+  @variant dark {
+    --primary: var(--color-neutral-500);
+    --primary-foreground: var(--color-neutral-50);
+  }
+}
+
+.theme-blue {
+  --primary: var(--color-blue-600);
+  --primary-foreground: var(--color-blue-50);
+
+  @variant dark {
+    --primary: var(--color-blue-500);
+    --primary-foreground: var(--color-blue-50);
+  }
+}
+
+.theme-green {
+  --primary: var(--color-lime-600);
+  --primary-foreground: var(--color-lime-50);
+
+  @variant dark {
+    --primary: var(--color-lime-600);
+    --primary-foreground: var(--color-lime-50);
+  }
+}
+
+.theme-amber {
+  --primary: var(--color-amber-600);
+  --primary-foreground: var(--color-amber-50);
+
+  @variant dark {
+    --primary: var(--color-amber-500);
+    --primary-foreground: var(--color-amber-50);
+  }
+}
+
+/* https://github.com/shadcn-ui/ui/issues/4227#issuecomment-2438290165 */
+html body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
+}
+
+/* Fix for Fumadocs empty banner appearing in Cloudflare Worker */
+/* This targets the specific banner issue where empty:hidden doesn't work properly */
+div[class*="border-t"][class*="bg-fd-secondary"]:not(:has(*)):not(
+    [data-content]
+  ) {
+  display: none !important;
+}
+
+/* Fallback for banners with the exact classes found in the issue */
+.border-t.bg-fd-secondary\/50.p-3:empty {
+  display: none !important;
+}
+
+/* Additional safety for any empty Fumadocs banner */
+[class*="fd-secondary"]:empty:not([data-banner-content]) {
+  display: none !important;
+}
+
+/* Enhanced blog post typography */
+.prose {
+  /* Body text */
+  font-size: 17px;
+  line-height: 1.75;
+  color: theme("colors.foreground");
+}
+
+.prose p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: theme("colors.foreground");
+  scroll-margin-top: 5rem;
+}
+
+.prose h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid theme("colors.border");
+}
+
+.prose h3 {
+  font-size: 1.375rem;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose h4 {
+  font-size: 1.125rem;
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.prose a {
+  color: theme("colors.accent.DEFAULT");
+  text-decoration: none;
+  border-bottom: 1px solid theme("colors.accent.DEFAULT");
+  transition: all 0.2s;
+}
+
+.prose a:hover {
+  border-bottom-width: 2px;
+  color: theme("colors.accent.DEFAULT");
+}
+
+.prose strong {
+  font-weight: 600;
+  color: theme("colors.foreground");
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: theme("colors.muted.DEFAULT");
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  border: 1px solid theme("colors.border");
+}
+
+.prose pre {
+  background: theme("colors.muted.DEFAULT");
+  border: 1px solid theme("colors.border");
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose blockquote {
+  border-left: 3px solid theme("colors.accent.DEFAULT");
+  padding-left: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  font-style: italic;
+  color: theme("colors.muted.foreground");
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  padding-left: 1.75em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.prose hr {
+  border-color: theme("colors.border");
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.prose table {
+  width: 100%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-collapse: collapse;
+}
+
+.prose thead {
+  border-bottom: 2px solid theme("colors.border");
+}
+
+.prose th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.prose td {
+  padding: 0.75rem;
+  border-bottom: 1px solid theme("colors.border");
+}

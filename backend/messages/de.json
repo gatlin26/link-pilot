@@ -1,0 +1,2220 @@
+{
+  "Metadata": {
+    "name": "BuildWay",
+    "title": "BuildWay - Entdecken Sie die besten KI-Tools | KI-Tools-Verzeichnis",
+    "description": "Entdecken und erkunden Sie die besten KI-Tools für jeden Bedarf. Ihr ultimatives KI-Tools-Verzeichnis mit kuratierten Sammlungen, Bewertungen und Empfehlungen."
+  },
+  "ImageTask": {
+    "submitting": "Aufgabe wird übermittelt...",
+    "submitted": "Aufgabe übermittelt, wird generiert...",
+    "generating": "Wird generiert...",
+    "queuing": "Aufgabe wird in Warteschlange gestellt...",
+    "completed": "Generierung abgeschlossen!",
+    "cancelled": "Abgebrochen",
+    "generationFailed": "Generierung fehlgeschlagen, bitte erneut versuchen",
+    "submitError": "Übermittlung fehlgeschlagen, bitte erneut versuchen",
+    "submitFailed": "Übermittlung fehlgeschlagen: {status}",
+    "requestFailed": "Anfrage fehlgeschlagen: {status}",
+    "networkError": "Netzwerkfehler, bitte erneut versuchen",
+    "timeout": "Zeitüberschreitung der Aufgabe, bitte später erneut versuchen"
+  },
+  "Common": {
+    "premium": "Premium",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "signUp": "Registrieren",
+    "language": "Sprache wechseln",
+    "mode": {
+      "label": "Modus umschalten",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System"
+    },
+    "theme": {
+      "label": "Thema umschalten",
+      "default": "Standard",
+      "blue": "Blau",
+      "green": "Grün",
+      "amber": "Bernstein",
+      "neutral": "Neutral"
+    },
+    "copy": "Kopieren",
+    "saving": "Wird gespeichert...",
+    "save": "Speichern",
+    "loading": "Wird geladen...",
+    "cancel": "Abbrechen",
+    "logoutFailed": "Abmeldung fehlgeschlagen",
+    "table": {
+      "totalRecords": "Insgesamt {count} Einträge",
+      "noResults": "Keine Ergebnisse",
+      "loading": "Wird geladen...",
+      "columns": "Spalten",
+      "rowsPerPage": "Zeilen pro Seite",
+      "page": "Seite",
+      "firstPage": "Erste Seite",
+      "lastPage": "Letzte Seite",
+      "nextPage": "Nächste Seite",
+      "previousPage": "Vorherige Seite",
+      "ascending": "Aufsteigend",
+      "descending": "Absteigend"
+    }
+  },
+  "PricingPage": {
+    "title": "KI-Tool einreichen",
+    "description": "Präsentieren Sie Ihr KI-Tool in unserem Verzeichnis",
+    "subtitle": "Einmal zahlen, jederzeit nutzen. Kein Abonnement erforderlich.",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "submitTool": {
+      "title": "Präsentieren Sie Ihr KI-Tool",
+      "subtitle": "Erreichen Sie Tausende potenzieller Nutzer, indem Sie Ihr KI-Tool in unserem Verzeichnis listen",
+      "badge": "Einmalige Zahlung",
+      "packageName": "Tool-Einreichung",
+      "packageDescription": "Erhalten Sie eine permanente Platzierung in unserem KI-Tools-Verzeichnis",
+      "oneTime": "Einmalige Zahlung, lebenslange Auflistung",
+      "submitButton": "Tool einreichen"
+    },
+    "PricingCard": {
+      "freePrice": "0 €",
+      "perMonth": "/Monat",
+      "perYear": "/Jahr",
+      "popular": "Beliebteste",
+      "currentPlan": "Aktueller Plan",
+      "yourCurrentPlan": "Ihr aktueller Plan",
+      "getStartedForFree": "Kostenlos registrieren",
+      "getLifetimeAccess": "Lebenslangen Zugang erhalten",
+      "getStarted": "Jetzt kaufen",
+      "notAvailable": "Nicht verfügbar",
+      "daysTrial": "{days}-tägige kostenlose Testversion"
+    },
+    "CheckoutButton": {
+      "loading": "Wird geladen...",
+      "checkoutFailed": "Checkout-Seite konnte nicht geöffnet werden",
+      "checkoutNetworkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+    },
+    "credits": {
+      "features": {
+        "allModels": "Zugriff auf alle KI-Modelle",
+        "noExpiry": "Guthaben 1 Jahr gültig",
+        "standardSupport": "Standard-Support",
+        "prioritySupport": "Prioritäts-Support",
+        "bestValue": "Bestes Preis-Leistungs-Verhältnis",
+        "bulkDiscount": "Bester Mengenrabatt"
+      },
+      "registerGift": "Jetzt registrieren und {amount} kostenlose Credits erhalten!",
+      "validityNotice": "Credits aus aktuellen Paketen sind 1 Jahr gültig"
+    },
+    "faqs": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Alles, was Sie über unsere Credit-Pakete wissen müssen",
+      "items": {
+        "item-1": {
+          "question": "Wie lange sind Credits gültig?",
+          "answer": "Credits, die aus unseren Paketen erworben wurden, sind 1 Jahr ab Kaufdatum gültig. Sie können sie jederzeit während dieses Zeitraums für jede KI-Fotobearbeitungsfunktion nutzen."
+        },
+        "item-2": {
+          "question": "Wie kann ich Credits kaufen?",
+          "answer": "Wählen Sie einfach ein Credit-Paket, das Ihren Bedürfnissen entspricht, und klicken Sie auf 'Jetzt kaufen'. Sie werden zu einer sicheren Checkout-Seite weitergeleitet, auf der Sie Ihren Kauf per Kreditkarte oder anderen unterstützten Zahlungsmethoden abschließen können."
+        },
+        "item-3": {
+          "question": "Was ist der Unterschied zwischen den Paketen?",
+          "answer": "Starter (200 Credits) ist perfekt für Anfänger. Popular (1000 Credits) bietet das beste Preis-Leistungs-Verhältnis mit Prioritäts-Support. Pro (3000 Credits) bietet den besten Mengenrabatt für Profis, die mehr Credits benötigen."
+        },
+        "item-4": {
+          "question": "Kann ich Credits für alle KI-Funktionen nutzen?",
+          "answer": "Ja! Alle erworbenen Credits können für jede KI-Fotobearbeitungsfunktion auf unserer Plattform genutzt werden, einschließlich Hintergrundentfernung, Bildverbesserung, Hochskalierung und allen anderen KI-Modellen."
+        },
+        "item-5": {
+          "question": "Was passiert, wenn meine Credits ablaufen?",
+          "answer": "Credits verfallen 1 Jahr nach dem Kauf. Wir empfehlen, sie vor dem Ablauf zu nutzen. Sie können Ihr Credit-Guthaben und das Ablaufdatum in Ihrem Account-Dashboard überprüfen."
+        },
+        "item-6": {
+          "question": "Kann ich Credits auf ein anderes Konto übertragen?",
+          "answer": "Nein, Credits sind nicht übertragbar und mit dem Konto verbunden, das sie erworben hat. Dies hilft uns, Sicherheit zu gewährleisten und Betrug zu verhindern."
+        },
+        "item-7": {
+          "question": "Bieten Sie Rückerstattungen an?",
+          "answer": "Wir bieten Rückerstattungen innerhalb von 30 Tagen nach dem Kauf an, wenn Sie nicht mehr als 10% Ihrer Credits genutzt haben. Bitte kontaktieren Sie unser Support-Team für Unterstützung bei Rückerstattungsanfragen."
+        },
+        "item-8": {
+          "question": "Welche Zahlungsmethoden akzeptieren Sie?",
+          "answer": "Wir akzeptieren alle gängigen Kreditkarten, Debitkarten und PayPal. Alle Zahlungen werden sicher über Stripe abgewickelt, sodass Ihre Zahlungsinformationen geschützt sind."
+        }
+      }
+    },
+    "modelCredits": {
+      "badge": "KI-Modelle",
+      "title": "Credit-Verbrauch pro Modell",
+      "subtitle": "Verschiedene Modelle haben einzigartige Funktionen und Credit-Kosten. Wählen Sie das beste für Ihre Bedürfnisse.",
+      "columns": {
+        "model": "Modellname",
+        "features": "Funktionen",
+        "useCases": "Anwendungsfälle",
+        "credits": "Credits"
+      },
+      "tags": {
+        "fastGeneration": "Schnelle Generierung",
+        "strongConsistency": "Starke Konsistenz",
+        "strongComprehension": "Starke Textverständnis",
+        "4kHd": "4K HD",
+        "multiImageGen": "Mehrfachbild-Generierung",
+        "ultraFast": "Ultraschnell",
+        "highQuality": "Hohe Qualität",
+        "asyncProcess": "Asynchrone Verarbeitung"
+      },
+      "useCases": {
+        "nano-banana": "Schnelle Generierung, tägliche Kreationen, Social-Media-Posts",
+        "nano-banana-pro": "Hochauflösende Ausgabe, kommerzielle Nutzung, Druckmaterialien",
+        "seedream-4-5": "Stapelverarbeitung, Stil-Konsistenz, Serienerstellung",
+        "z-image-turbo": "Sofortige Vorschau, schnelle Iteration, kreative Erkundung"
+      },
+      "perGeneration": "Credits/Gen",
+      "note": "Der Credit-Verbrauch variiert je nach Modell. Premium-Modelle bieten höhere Ausgabequalität."
+    }
+  },
+  "PricePlans": {
+    "free": {
+      "name": "Kostenlos",
+      "description": "Probieren Sie KI-Fotobearbeitung kostenlos aus",
+      "features": {
+        "feature-1": "2 Credits pro Monat",
+        "feature-2": "Max. Dateigröße 2MB",
+        "feature-3": "Max. Auflösung 1024×1024",
+        "feature-4": "Standard-Verarbeitungswarteschlange",
+        "feature-5": "60-tägige Verlaufsaufbewahrung",
+        "feature-6": "Community-Support"
+      },
+      "limits": {}
+    },
+    "basic": {
+      "name": "Basic",
+      "description": "Für tägliche Fotobearbeitungsbedürfnisse",
+      "features": {
+        "feature-1": "200 Credits/Monat",
+        "feature-2": "Max. Dateigröße 20MB",
+        "feature-3": "Max. Auflösung 2048×2048",
+        "feature-4": "Standard-Verarbeitungswarteschlange",
+        "feature-5": "1-jährige Verlaufsaufbewahrung",
+        "feature-6": "E-Mail-Support (48h Antwortzeit)"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Für Profis und Power-User",
+      "features": {
+        "feature-1": "500 Credits/Monat",
+        "feature-2": "Max. Dateigröße 20MB",
+        "feature-3": "Max. Auflösung 4096×4096 (4K)",
+        "feature-4": "Prioritäts-Verarbeitungswarteschlange",
+        "feature-5": "Permanente Verlaufsaufbewahrung",
+        "feature-6": "Benutzerdefinierte Voreinstellungen speichern",
+        "feature-7": "Prioritäts-Support (24h Antwortzeit)",
+        "feature-8": "Früher Zugang zu neuen Funktionen"
+      }
+    }
+  },
+  "CreditPackages": {
+    "starter": {
+      "name": "Starter",
+      "description": "Perfekt für Anfänger"
+    },
+    "popular": {
+      "name": "Beliebt",
+      "description": "Bestes Preis-Leistungs-Verhältnis"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Für Profis"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "Entschuldigung, die gesuchte Seite existiert nicht.",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "ErrorPage": {
+    "title": "Ups! Etwas ist schiefgelaufen!",
+    "tryAgain": "Erneut versuchen",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "AboutPage": {
+    "title": "Über uns",
+    "description": "BuildWay ist Ihr ultimatives KI-Tools-Verzeichnis. Entdecken, vergleichen und wählen Sie die besten KI-Tools für Ihre Projekte.",
+    "authorName": "BuildWay",
+    "authorBio": "KI-Tools-Verzeichnis & Discovery-Plattform",
+    "introduction": "BuildWay ist ein kuratiertes Verzeichnis der besten verfügbaren KI-Tools. Ob Sie Entwickler, Designer, Marketer oder Unternehmer sind – wir helfen Ihnen, KI-Tools zu entdecken und zu vergleichen, um die perfekte Lösung für Ihre Bedürfnisse zu finden. Von Produktivitätstools bis hin zu kreativer KI machen wir die Suche nach dem richtigen KI-Tool einfach und effizient.",
+    "talkWithMe": "Kontaktieren Sie uns",
+    "followMe": "Folgen Sie uns"
+  },
+  "ChangelogPage": {
+    "title": "Changelog",
+    "description": "Verfolgen Sie unsere Reise, während wir unser KI-Tools-Verzeichnis kontinuierlich verbessern und erweitern",
+    "subtitle": "Jedes Update bringt neue Tools und bessere Funktionen",
+    "startPoint": "Wo alles begann",
+    "latestVersion": "Neueste"
+  },
+  "ContactPage": {
+    "title": "Kontakt",
+    "description": "Wir helfen Ihnen, den richtigen Plan für Ihr Unternehmen zu finden",
+    "subtitle": "Wir helfen Ihnen, den richtigen Plan für Ihr Unternehmen zu finden",
+    "form": {
+      "title": "Kontaktieren Sie uns",
+      "description": "Wenn Sie Fragen oder Feedback haben, wenden Sie sich bitte an unser Team",
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "submit": "Absenden",
+      "submitting": "Wird gesendet...",
+      "success": "Nachricht erfolgreich gesendet",
+      "fail": "Nachricht konnte nicht gesendet werden",
+      "nameMinLength": "Name muss mindestens 3 Zeichen lang sein",
+      "nameMaxLength": "Name darf maximal 30 Zeichen lang sein",
+      "emailValidation": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "messageMinLength": "Nachricht muss mindestens 10 Zeichen lang sein",
+      "messageMaxLength": "Nachricht darf maximal 500 Zeichen lang sein"
+    }
+  },
+  "WaitlistPage": {
+    "title": "Warteliste",
+    "description": "Treten Sie unserer Warteliste für den Launch unseres Produkts bei",
+    "subtitle": "Treten Sie unserer Warteliste für den Launch unseres Produkts bei",
+    "form": {
+      "title": "Treten Sie unserer Warteliste bei",
+      "description": "Wir benachrichtigen Sie, wenn wir unser Produkt launchen",
+      "email": "E-Mail",
+      "subscribe": "Abonnieren",
+      "subscribing": "Wird abonniert...",
+      "success": "Erfolgreich abonniert",
+      "fail": "Abonnement fehlgeschlagen",
+      "emailValidation": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+    }
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Treten Sie der Community bei",
+    "description": "Abonnieren Sie unseren Newsletter für die neuesten Nachrichten und Updates",
+    "form": {
+      "email": "E-Mail",
+      "subscribe": "Abonnieren",
+      "subscribing": "Wird abonniert...",
+      "success": "Erfolgreich abonniert",
+      "fail": "Abonnement fehlgeschlagen",
+      "emailValidation": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+    }
+  },
+  "AuthPage": {
+    "login": {
+      "title": "Anmelden",
+      "welcomeBack": "Willkommen zurück",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "signIn": "Anmelden",
+      "signUpHint": "Noch kein Konto? Registrieren",
+      "forgotPassword": "Passwort vergessen?",
+      "signInWithGoogle": "Mit Google anmelden",
+      "signInWithGitHub": "Mit GitHub anmelden",
+      "showPassword": "Passwort anzeigen",
+      "hidePassword": "Passwort ausblenden",
+      "or": "Oder fortfahren mit",
+      "emailRequired": "Bitte geben Sie Ihre E-Mail ein",
+      "passwordRequired": "Bitte geben Sie Ihr Passwort ein",
+      "captchaInvalid": "Captcha-Verifizierung fehlgeschlagen",
+      "captchaError": "Captcha-Verifizierungsfehler"
+    },
+    "register": {
+      "title": "Registrieren",
+      "createAccount": "Konto erstellen",
+      "name": "Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "signUp": "Registrieren",
+      "signInHint": "Bereits ein Konto? Anmelden",
+      "checkEmail": "Bitte überprüfen Sie Ihren E-Mail-Posteingang",
+      "showPassword": "Passwort anzeigen",
+      "hidePassword": "Passwort ausblenden",
+      "nameRequired": "Bitte geben Sie Ihren Namen ein",
+      "emailRequired": "Bitte geben Sie Ihre E-Mail ein",
+      "passwordRequired": "Bitte geben Sie Ihr Passwort ein",
+      "captchaInvalid": "Captcha-Verifizierung fehlgeschlagen",
+      "captchaError": "Captcha-Verifizierungsfehler"
+    },
+    "forgotPassword": {
+      "title": "Passwort vergessen",
+      "email": "E-Mail",
+      "send": "Reset-Link senden",
+      "backToLogin": "Zurück zur Anmeldung",
+      "checkEmail": "Bitte überprüfen Sie Ihren E-Mail-Posteingang",
+      "emailRequired": "Bitte geben Sie Ihre E-Mail ein"
+    },
+    "resetPassword": {
+      "title": "Passwort zurücksetzen",
+      "password": "Passwort",
+      "reset": "Passwort zurücksetzen",
+      "backToLogin": "Zurück zur Anmeldung",
+      "showPassword": "Passwort anzeigen",
+      "hidePassword": "Passwort ausblenden",
+      "minLength": "Passwort muss mindestens 8 Zeichen lang sein"
+    },
+    "error": {
+      "title": "Ups! Etwas ist schiefgelaufen!",
+      "tryAgain": "Bitte versuchen Sie es erneut.",
+      "backToLogin": "Zurück zur Anmeldung",
+      "checkEmail": "Bitte überprüfen Sie Ihren E-Mail-Posteingang"
+    },
+    "common": {
+      "termsOfService": "Nutzungsbedingungen",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "byClickingContinue": "Durch Klicken auf 'Fortfahren' stimmen Sie unseren ",
+      "and": " und "
+    }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "description": "KI-Tools-Einblicke, Branchentrends und Experten-Guides",
+    "subtitle": "Bleiben Sie auf dem Laufenden mit den neuesten KI-Tools und Technologien",
+    "author": "Autor",
+    "categories": "Kategorien",
+    "tableOfContents": "Inhaltsverzeichnis",
+    "readTime": "{minutes} Min. Lesezeit",
+    "readTimeShort": "{minutes} Min.",
+    "all": "Alle",
+    "noPostsFound": "Keine Beiträge gefunden",
+    "allPosts": "Alle Beiträge",
+    "morePosts": "Weitere Beiträge"
+  },
+  "DocsPage": {
+    "toc": "Inhaltsverzeichnis",
+    "search": "Dokumentation durchsuchen",
+    "lastUpdate": "Zuletzt aktualisiert am",
+    "searchNoResult": "Keine Ergebnisse",
+    "previousPage": "Zurück",
+    "nextPage": "Weiter",
+    "chooseLanguage": "Sprache auswählen",
+    "title": "MkSaaS Dokumentation",
+    "homepage": "Startseite"
+  },
+  "PremiumContent": {
+    "title": "Premium-Inhalt freischalten",
+    "description": "Abonnieren Sie unseren Pro-Plan, um Zugriff auf alle Premium-Inhalte und exklusive Inhalte zu erhalten.",
+    "upgradeCta": "Jetzt upgraden",
+    "benefit1": "Alle Premium-Inhalte",
+    "benefit2": "Exklusive Inhalte",
+    "benefit3": "Jederzeit kündbar",
+    "signIn": "Anmelden",
+    "loginRequired": "Melden Sie sich an, um weiterzulesen",
+    "loginDescription": "Dies ist Premium-Inhalt. Melden Sie sich bei Ihrem Konto an, um auf den vollständigen Inhalt zuzugreifen.",
+    "checkingAccess": "Zugriff wird überprüft...",
+    "loadingContent": "Vollständigen Inhalt laden..."
+  },
+  "Marketing": {
+    "navbar": {
+      "tools": {
+        "title": "Tools"
+      },
+      "submit": {
+        "title": "Tool einreichen"
+      },
+      "features": {
+        "title": "Funktionen"
+      },
+      "pricing": {
+        "title": "Preise"
+      },
+      "blog": {
+        "title": "Blog"
+      },
+      "about": {
+        "title": "Über uns"
+      },
+      "docs": {
+        "title": "Dokumentation"
+      },
+      "ai": {
+        "title": "KI-Tools",
+        "items": {
+          "text": {
+            "title": "KI-Text",
+            "description": "Zeigen Sie, wie Sie KI verwenden, um beeindruckende Texte zu schreiben"
+          },
+          "image": {
+            "title": "KI-Bild",
+            "description": "Zeigen Sie, wie Sie KI verwenden, um schöne Bilder zu generieren"
+          },
+          "chat": {
+            "title": "KI-Chat",
+            "description": "Zeigen Sie, wie Sie KI verwenden, um mit Ihren Kunden zu chatten"
+          },
+          "video": {
+            "title": "KI-Video",
+            "description": "Zeigen Sie, wie Sie KI verwenden, um erstaunliche Videos zu generieren"
+          },
+          "audio": {
+            "title": "KI-Audio",
+            "description": "Zeigen Sie, wie Sie KI verwenden, um wunderbares Audio zu generieren"
+          }
+        }
+      },
+      "pages": {
+        "title": "Seiten",
+        "items": {
+          "about": {
+            "title": "Über uns",
+            "description": "Erfahren Sie mehr über unser Unternehmen, unsere Mission und Werte"
+          },
+          "contact": {
+            "title": "Kontakt",
+            "description": "Nehmen Sie Kontakt mit unserem Team für Support oder Anfragen auf"
+          },
+          "waitlist": {
+            "title": "Warteliste",
+            "description": "Treten Sie unserer Warteliste für die neuesten Nachrichten und Updates bei"
+          },
+          "changelog": {
+            "title": "Changelog",
+            "description": "Sehen Sie die neuesten Updates zu unseren Produkten"
+          },
+          "roadmap": {
+            "title": "Roadmap",
+            "description": "Erkunden Sie unsere zukünftigen Pläne und kommenden Funktionen"
+          },
+          "cookiePolicy": {
+            "title": "Cookie-Richtlinie",
+            "description": "Wie wir Cookies auf unserer Website verwenden"
+          },
+          "privacyPolicy": {
+            "title": "Datenschutzrichtlinie",
+            "description": "Wie wir Ihre Daten schützen und verarbeiten"
+          },
+          "termsOfService": {
+            "title": "Nutzungsbedingungen",
+            "description": "Die rechtliche Vereinbarung zwischen Ihnen und unserem Unternehmen"
+          }
+        }
+      },
+      "blocks": {
+        "title": "Blöcke",
+        "items": {
+          "magicui": {
+            "title": "MagicUI-Blöcke"
+          },
+          "hero-section": {
+            "title": "Hero-Blöcke"
+          },
+          "logo-cloud": {
+            "title": "Logo-Cloud-Blöcke"
+          },
+          "integrations": {
+            "title": "Integrations-Blöcke"
+          },
+          "features": {
+            "title": "Funktions-Blöcke"
+          },
+          "content": {
+            "title": "Inhalts-Blöcke"
+          },
+          "stats": {
+            "title": "Statistik-Blöcke"
+          },
+          "team": {
+            "title": "Team-Blöcke"
+          },
+          "testimonials": {
+            "title": "Testimonial-Blöcke"
+          },
+          "callToAction": {
+            "title": "Call-to-Action-Blöcke"
+          },
+          "footer": {
+            "title": "Footer-Blöcke"
+          },
+          "pricing": {
+            "title": "Preis-Blöcke"
+          },
+          "comparator": {
+            "title": "Vergleichs-Blöcke"
+          },
+          "faq": {
+            "title": "FAQ-Blöcke"
+          },
+          "login": {
+            "title": "Login-Blöcke"
+          },
+          "signup": {
+            "title": "Registrierungs-Blöcke"
+          },
+          "forgot-password": {
+            "title": "Passwort-vergessen-Blöcke"
+          },
+          "contact": {
+            "title": "Kontakt-Blöcke"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "Ihr ultimatives KI-Tools-Verzeichnis – entdecken, vergleichen und wählen Sie die besten KI-Tools für Ihre Projekte",
+      "product": {
+        "title": "Produkt",
+        "items": {
+          "features": "Funktionen",
+          "pricing": "Preise",
+          "faq": "FAQ"
+        }
+      },
+      "resources": {
+        "title": "Ressourcen",
+        "items": {
+          "blog": "Blog",
+          "docs": "Dokumentation",
+          "changelog": "Changelog",
+          "roadmap": "Roadmap"
+        }
+      },
+      "company": {
+        "title": "Unternehmen",
+        "items": {
+          "about": "Über uns",
+          "contact": "Kontakt",
+          "waitlist": "Warteliste"
+        }
+      },
+      "legal": {
+        "title": "Rechtliches",
+        "items": {
+          "cookiePolicy": "Cookie-Richtlinie",
+          "privacyPolicy": "Datenschutzrichtlinie",
+          "termsOfService": "Nutzungsbedingungen",
+          "refundPolicy": "Rückerstattungsrichtlinie"
+        }
+      }
+    },
+    "avatar": {
+      "history": "Verlauf",
+      "billing": "Abrechnung",
+      "credits": "Credits",
+      "settings": "Einstellungen"
+    }
+  },
+  "Dashboard": {
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "studio": {
+      "title": "Erstellen",
+      "create": "Neue Kreation",
+      "myWorks": "Meine Werke",
+      "videos": "Videos",
+      "emptyTitle": "Noch keine Kreationen",
+      "emptyDescription": "Beginnen Sie mit der Erstellung erstaunlicher KI-generierter Bilder mit nur einem Text-Prompt."
+    },
+    "admin": {
+      "title": "Admin",
+      "users": {
+        "title": "Benutzer",
+        "fakeData": "Hinweis: Simulierte Daten zur Demonstration, einige Funktionen sind deaktiviert",
+        "error": "Benutzer konnten nicht abgerufen werden",
+        "search": "Benutzer suchen...",
+        "columns": {
+          "columns": "Spalten",
+          "name": "Name",
+          "email": "E-Mail",
+          "role": "Rolle",
+          "createdAt": "Erstellt am",
+          "customerId": "Kunden-ID",
+          "status": "Status",
+          "banReason": "Sperrgrund",
+          "banExpires": "Sperre läuft ab"
+        },
+        "admin": "Admin",
+        "user": "Benutzer",
+        "email": {
+          "verified": "E-Mail verifiziert",
+          "unverified": "E-Mail nicht verifiziert"
+        },
+        "emailCopied": "E-Mail in Zwischenablage kopiert",
+        "banned": "Gesperrt",
+        "active": "Aktiv",
+        "joined": "Beigetreten am",
+        "updated": "Aktualisiert am",
+        "ban": {
+          "reason": "Sperrgrund",
+          "reasonPlaceholder": "Geben Sie den Grund für die Sperrung dieses Benutzers ein",
+          "defaultReason": "Spamming",
+          "never": "Nie",
+          "expires": "Sperre läuft ab",
+          "selectDate": "Datum auswählen",
+          "button": "Benutzer sperren",
+          "success": "Benutzer wurde gesperrt",
+          "error": "Benutzer konnte nicht gesperrt werden"
+        },
+        "unban": {
+          "button": "Benutzer entsperren",
+          "success": "Benutzer wurde entsperrt",
+          "error": "Benutzer konnte nicht entsperrt werden"
+        },
+        "close": "Schließen"
+      },
+      "generations": {
+        "title": "Generierungen",
+        "searchPlaceholder": "Nutzer-E-Mail suchen...",
+        "totalRecords": "Insgesamt {count} Einträge",
+        "columns": {
+          "columns": "Spalten",
+          "user": "Benutzer",
+          "type": "Typ",
+          "status": "Status",
+          "prompt": "Prompt",
+          "model": "Modell",
+          "inputImage": "Eingabe",
+          "outputImage": "Ausgabe",
+          "credits": "Credits",
+          "createdAt": "Erstellt am",
+          "error": "Fehler"
+        },
+        "filters": {
+          "status": "Status",
+          "allStatus": "Alle Status",
+          "pending": "Ausstehend",
+          "processing": "In Bearbeitung",
+          "completed": "Abgeschlossen",
+          "failed": "Fehlgeschlagen",
+          "type": "Typ",
+          "allType": "Alle Typen",
+          "generate": "Generieren",
+          "enhance": "Verbessern",
+          "edit": "Bearbeiten",
+          "inpaint": "Inpaint",
+          "outpaint": "Outpaint",
+          "upscale": "Hochskalieren"
+        }
+      },
+      "submissions": {
+        "title": "Tool-Einreichungen",
+        "description": "Alle Tool-Einreichungen von allen Benutzern anzeigen",
+        "total": "Insgesamt {count} Einträge",
+        "empty": "Keine Einreichungen gefunden",
+        "status": {
+          "pending": "Ausstehend",
+          "approved": "Genehmigt",
+          "rejected": "Abgelehnt"
+        },
+        "filter": {
+          "status": "Status-Filter",
+          "all": "Alle"
+        },
+        "search": {
+          "placeholder": "Tool-Name, URL oder E-Mail suchen..."
+        },
+        "columns": {
+          "name": "Tool-Name",
+          "url": "Tool-URL",
+          "submitter": "Einreicher",
+          "status": "Status",
+          "submittedAt": "Eingereicht am",
+          "actions": "Aktionen"
+        },
+        "pagination": {
+          "showing": "Zeige {from} - {to} von {total}",
+          "page": "Seite {current} / {total}"
+        },
+        "rejectReason": "Ablehnungsgrund",
+        "approve": "Genehmigen",
+        "reject": "Ablehnen",
+        "view": "Ansehen",
+        "rejectDialog": {
+          "title": "Einreichung ablehnen",
+          "description": "Bitte geben Sie den Ablehnungsgrund ein. Der Benutzer wird diesen Grund sehen",
+          "reason": "Ablehnungsgrund",
+          "reasonPlaceholder": "Bitte geben Sie den Ablehnungsgrund ein...",
+          "quickReasons": "Schnellauswahl",
+          "quickReason1": "Dieses Tool passt nicht zu unserem KI-Tools-Verzeichnis-Thema",
+          "quickReason2": "Doppelte Einreichung erkannt",
+          "quickReason3": "Die Tool-Website ist nicht erreichbar oder wurde geschlossen",
+          "quickReason4": "Ein ähnliches Tool existiert bereits in unserem Verzeichnis",
+          "quickReason5": "Die eingereichten Screenshots oder das Logo stimmen nicht mit dem tatsächlichen Tool überein",
+          "quickReason6": "Das Tool bietet keine substanzielle Funktionalität oder keinen Wert",
+          "quickReason7": "Kein Backlink auf Ihrer Website gefunden. Bitte fügen Sie einen hinzu und reichen Sie erneut ein",
+          "quickReason8": "Wir listen keine Tools oder Websites auf, die mit Erwachseneninhalten, Glücksspiel oder anderen Grauzonen-Branchen in Verbindung stehen",
+          "cancel": "Abbrechen",
+          "submit": "Ablehnung bestätigen",
+          "submitting": "Wird gesendet..."
+        },
+        "viewDialog": {
+          "title": "Einreichungsdetails",
+          "description": "Detaillierte Informationen zur Einreichung anzeigen",
+          "name": "Tool-Name",
+          "url": "Tool-URL",
+          "descriptionLabel": "Beschreibung",
+          "status": "Status",
+          "close": "Schließen"
+        }
+      },
+      "allRecords": {
+        "title": "Alle Einreichungsaufzeichnungen",
+        "description": "Alle Benutzereinreichungsaufzeichnungen anzeigen, einschließlich Tool-Einreichungen",
+        "total": "Insgesamt {count} Einträge",
+        "empty": "Keine Aufzeichnungen gefunden",
+        "status": {
+          "pending": "Ausstehend",
+          "approved": "Genehmigt",
+          "rejected": "Abgelehnt"
+        },
+        "filter": {
+          "status": "Status-Filter",
+          "all": "Alle"
+        },
+        "search": {
+          "placeholder": "Name, URL, Beschreibung, Benutzername oder E-Mail suchen..."
+        },
+        "columns": {
+          "name": "Name",
+          "url": "URL",
+          "description": "Beschreibung",
+          "submitter": "Einreicher",
+          "status": "Status",
+          "submittedAt": "Eingereicht am"
+        },
+        "pagination": {
+          "showing": "Zeige {from} - {to} von {total}",
+          "page": "Seite {current} / {total}"
+        }
+      },
+      "tools": {
+        "title": "Tool-Verwaltung",
+        "description": "Alle Tools im Verzeichnis verwalten",
+        "total": "Insgesamt {count} Tools",
+        "empty": "Keine Tools gefunden",
+        "add": "Tool hinzufügen",
+        "search": {
+          "placeholder": "Tool-Name, URL oder Slug suchen..."
+        },
+        "filter": {
+          "status": "Status-Filter",
+          "all": "Alle",
+          "published": "Veröffentlicht",
+          "publishedOnly": "Nur veröffentlichte",
+          "draftOnly": "Nur Entwürfe",
+          "pending": "Ausstehend",
+          "rejected": "Abgelehnt",
+          "featured": "Empfohlen",
+          "featuredOnly": "Nur empfohlene",
+          "notFeatured": "Nicht empfohlen"
+        },
+        "columns": {
+          "name": "Name",
+          "url": "URL",
+          "categories": "Kategorien",
+          "tags": "Tags",
+          "status": "Status",
+          "createdAt": "Erstellt am",
+          "actions": "Aktionen"
+        },
+        "status": {
+          "published": "Veröffentlicht",
+          "draft": "Entwurf",
+          "featured": "Empfohlen"
+        },
+        "actions": {
+          "edit": "Bearbeiten",
+          "delete": "Löschen"
+        },
+        "editDialog": {
+          "titleAdd": "Neues Tool hinzufügen",
+          "titleEdit": "Tool bearbeiten",
+          "descriptionAdd": "Ein neues Tool zum Verzeichnis hinzufügen",
+          "descriptionEdit": "Tool-Informationen und Inhalt bearbeiten",
+          "basicInfo": "Grundinformationen (Geteilt)",
+          "analyzeWebsite": "Website analysieren",
+          "analyzing": "KI analysiert die Website...",
+          "generateContent": "KI generieren",
+          "generating": "KI generiert Inhalt, dies kann 20-30 Sekunden dauern...",
+          "referenceContent": "Referenzinhalt",
+          "fetchContent": "Von URL abrufen",
+          "fetchingContent": "Inhalt von Website wird abgerufen...",
+          "referenceContentPlaceholder": "Fügen Sie hier Website-Inhalte ein oder rufen Sie sie ab. Dies wird als Referenz für die KI-Inhaltsgenerierung verwendet.",
+          "save": "Speichern",
+          "saving": "Wird gespeichert...",
+          "cancel": "Abbrechen",
+          "featuredLabel": "Empfohlen",
+          "publishedLabel": "Veröffentlicht"
+        },
+        "deleteDialog": {
+          "title": "Tool löschen",
+          "description": "Sind Sie sicher, dass Sie dieses Tool löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+          "cancel": "Abbrechen",
+          "confirm": "Löschen",
+          "deleting": "Wird gelöscht..."
+        },
+        "pagination": {
+          "showing": "Zeige {from} - {to} von {total}",
+          "page": "Seite {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Tool erfolgreich erstellt",
+          "updateSuccess": "Tool erfolgreich aktualisiert",
+          "deleteSuccess": "Tool erfolgreich gelöscht",
+          "error": "Vorgang fehlgeschlagen"
+        }
+      },
+      "tags": {
+        "title": "Tag-Verwaltung",
+        "description": "Tool-Tags und Kategorien verwalten",
+        "total": "{count} Tags insgesamt",
+        "empty": "Noch keine Tags",
+        "add": "Tag hinzufügen",
+        "search": {
+          "placeholder": "Tag-Name oder Slug suchen..."
+        },
+        "filter": {
+          "category": "Nach Kategorie filtern",
+          "all": "Alle",
+          "published": "Veröffentlichungsstatus",
+          "publishedOnly": "Veröffentlicht",
+          "draftOnly": "Entwurf",
+          "featured": "Empfohlen-Status",
+          "featuredOnly": "Empfohlen",
+          "notFeatured": "Nicht empfohlen"
+        },
+        "columns": {
+          "name": "Name",
+          "slug": "Slug",
+          "category": "Kategorie",
+          "color": "Farbe",
+          "usageCount": "Nutzungsanzahl",
+          "status": "Status",
+          "actions": "Aktionen"
+        },
+        "status": {
+          "published": "Veröffentlicht",
+          "draft": "Entwurf",
+          "archived": "Archiviert",
+          "featured": "Empfohlen"
+        },
+        "category": {
+          "type": "Typ",
+          "pricing": "Preise",
+          "platform": "Plattform",
+          "feature": "Funktion",
+          "general": "Allgemein",
+          "other": "Sonstiges"
+        },
+        "actions": {
+          "edit": "Bearbeiten",
+          "delete": "Löschen",
+          "view": "Ansehen"
+        },
+        "pagination": {
+          "showing": "Zeige {from} - {to} von {total}",
+          "page": "Seite {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Tag erfolgreich erstellt",
+          "updateSuccess": "Tag erfolgreich aktualisiert",
+          "deleteSuccess": "Tag erfolgreich gelöscht",
+          "error": "Vorgang fehlgeschlagen"
+        },
+        "form": {
+          "create": "Tag erstellen",
+          "edit": "Tag bearbeiten",
+          "slug": "Slug",
+          "slugPlaceholder": "ki-tool",
+          "slugHint": "URL-freundlicher Identifikator",
+          "enName": "Englischer Name",
+          "enNamePlaceholder": "KI-Tool",
+          "zhName": "Chinesischer Name",
+          "zhNamePlaceholder": "AI 工具",
+          "enDescription": "Englische Beschreibung",
+          "enDescriptionPlaceholder": "Tools, die von künstlicher Intelligenz angetrieben werden",
+          "zhDescription": "Chinesische Beschreibung",
+          "zhDescriptionPlaceholder": "由人工智能驱动的工具",
+          "category": "Kategorie",
+          "categoryPlaceholder": "Kategorie auswählen",
+          "color": "Farbe",
+          "colorPlaceholder": "#3B82F6",
+          "iconEmoji": "Icon-Emoji",
+          "iconEmojiPlaceholder": "🤖",
+          "published": "Veröffentlicht",
+          "featured": "Empfohlen",
+          "cancel": "Abbrechen",
+          "save": "Speichern",
+          "saving": "Wird gespeichert..."
+        },
+        "deleteDialog": {
+          "title": "Tag löschen",
+          "description": "Sind Sie sicher, dass Sie diesen Tag löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+          "cancel": "Abbrechen",
+          "confirm": "Löschen bestätigen",
+          "deleting": "Wird gelöscht..."
+        }
+      }
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "profile": {
+        "title": "Profil",
+        "description": "Verwalten Sie Ihre Kontoinformationen",
+        "avatar": {
+          "title": "Avatar",
+          "description": "Klicken Sie auf die Upload-Schaltfläche, um einen benutzerdefinierten hochzuladen",
+          "recommendation": "Ein Avatar ist optional, aber dringend empfohlen",
+          "uploading": "Wird hochgeladen...",
+          "uploadAvatar": "Avatar hochladen",
+          "success": "Avatar erfolgreich aktualisiert",
+          "fail": "Avatar konnte nicht aktualisiert werden"
+        },
+        "name": {
+          "title": "Name",
+          "description": "Bitte geben Sie Ihren Anzeigenamen ein",
+          "placeholder": "Geben Sie Ihren Namen ein",
+          "minLength": "Bitte verwenden Sie mindestens 3 Zeichen",
+          "maxLength": "Bitte verwenden Sie maximal 30 Zeichen",
+          "hint": "Bitte verwenden Sie 3-30 Zeichen für Ihren Namen",
+          "success": "Name erfolgreich aktualisiert",
+          "fail": "Name konnte nicht aktualisiert werden",
+          "saving": "Wird gespeichert...",
+          "save": "Speichern"
+        }
+      },
+      "billing": {
+        "title": "Abrechnung",
+        "description": "Verwalten Sie Ihr Abonnement und Ihre Abrechnungsdetails",
+        "status": {
+          "active": "Aktiv",
+          "trial": "Testversion",
+          "free": "Kostenlos",
+          "lifetime": "Lebenslang"
+        },
+        "interval": {
+          "month": "Monat",
+          "year": "Jahr",
+          "oneTime": "einmalig"
+        },
+        "currentPlan": {
+          "title": "Aktueller Plan",
+          "description": "Details Ihres aktuellen Plans",
+          "noPlan": "Sie haben keinen aktiven Plan"
+        },
+        "CustomerPortalButton": {
+          "loading": "Wird geladen...",
+          "createCustomerPortalFailed": "Stripe-Kundenportal konnte nicht geöffnet werden"
+        },
+        "price": "Preis:",
+        "periodStartDate": "Beginn der Periode:",
+        "periodEndDate": "Ende der Periode:",
+        "trialEnds": "Testversion endet:",
+        "freePlanMessage": "Sie befinden sich derzeit im kostenlosen Plan mit eingeschränkten Funktionen",
+        "lifetimeMessage": "Sie haben lebenslangen Zugriff auf alle Premium-Funktionen",
+        "manageSubscription": "Abonnement und Abrechnung verwalten",
+        "manageBilling": "Abrechnung verwalten",
+        "upgradePlan": "Plan upgraden",
+        "retry": "Erneut versuchen",
+        "errorMessage": "Daten konnten nicht abgerufen werden",
+        "paymentSuccess": "Zahlung erfolgreich"
+      },
+      "credits": {
+        "title": "Credits",
+        "description": "Verwalten Sie Ihre Credit-Transaktionen",
+        "tabs": {
+          "balance": "Guthaben",
+          "transactions": "Transaktionen"
+        },
+        "balance": {
+          "title": "Credit-Guthaben",
+          "description": "Ihr Credit-Guthaben",
+          "credits": "Credits",
+          "creditsDescription": "Sie haben {credits} Credits",
+          "creditsExpired": "Credits abgelaufen",
+          "creditsAdded": "Credits wurden Ihrem Konto hinzugefügt",
+          "viewTransactions": "Credit-Transaktionen anzeigen",
+          "retry": "Erneut versuchen",
+          "expiringCredits": "{credits} Credits laufen in den nächsten {days} Tagen ab"
+        },
+        "packages": {
+          "title": "Credit-Pakete",
+          "description": "Kaufen Sie zusätzliche Credits, um unsere Dienste zu nutzen",
+          "purchase": "Kaufen",
+          "processing": "Wird verarbeitet...",
+          "popular": "Beliebt",
+          "completePurchase": "Kauf abschließen",
+          "failedToFetchCredits": "Credits konnten nicht abgerufen werden",
+          "failedToCreatePaymentIntent": "Zahlungsabsicht konnte nicht erstellt werden",
+          "failedToInitiatePayment": "Zahlung konnte nicht initiiert werden",
+          "cancel": "Abbrechen",
+          "purchaseFailed": "Credit-Kauf fehlgeschlagen",
+          "checkoutFailed": "Checkout-Sitzung konnte nicht erstellt werden",
+          "loading": "Wird geladen...",
+          "pay": "Bezahlen"
+        },
+        "transactions": {
+          "title": "Credit-Transaktionen",
+          "error": "Credit-Transaktionen konnten nicht abgerufen werden",
+          "search": "Credit-Transaktionen suchen...",
+          "paymentIdCopied": "Zahlungs-ID in Zwischenablage kopiert",
+          "columns": {
+            "columns": "Spalten",
+            "id": "ID",
+            "type": "Typ",
+            "description": "Beschreibung",
+            "amount": "Betrag",
+            "remainingAmount": "Verbleibender Betrag",
+            "paymentId": "Zahlungs-ID",
+            "expirationDate": "Ablaufdatum",
+            "expirationDateProcessedAt": "Ablaufdatum verarbeitet am",
+            "createdAt": "Erstellt am",
+            "updatedAt": "Aktualisiert am"
+          },
+          "types": {
+            "MONTHLY_REFRESH": "Monatliche Aktualisierung",
+            "REGISTER_GIFT": "Registrierungsgeschenk",
+            "PURCHASE": "Gekaufte Credits",
+            "USAGE": "Verbrauchte Credits",
+            "EXPIRE": "Abgelaufene Credits",
+            "SUBSCRIPTION_RENEWAL": "Abonnement-Verlängerung",
+            "LIFETIME_MONTHLY": "Lebenslang monatlich"
+          },
+          "detailViewer": {
+            "title": "Credit-Transaktionsdetails",
+            "close": "Schließen"
+          },
+          "expired": "Abgelaufen",
+          "never": "Kein Ablaufdatum"
+        }
+      },
+      "history": {
+        "title": "Verlauf",
+        "description": "Ihren Bildverarbeitungsverlauf anzeigen",
+        "empty": "Noch kein Verlauf",
+        "prev": "Zurück",
+        "next": "Weiter",
+        "detail": "Bilddetails",
+        "input": "Original",
+        "output": "Ergebnis",
+        "credits": "Credits",
+        "type": {
+          "enhance": "Verbessern",
+          "generate": "Generieren"
+        },
+        "status": {
+          "success": "Erfolg",
+          "failed": "Fehlgeschlagen"
+        }
+      },
+      "notification": {
+        "title": "Benachrichtigung",
+        "description": "Verwalten Sie Ihre Benachrichtigungseinstellungen",
+        "newsletter": {
+          "title": "Newsletter-Abonnement",
+          "description": "Verwalten Sie Ihre Newsletter-Abonnement-Einstellungen",
+          "label": "Newsletter abonnieren",
+          "hint": "Sie können Ihre Abonnement-Einstellungen jederzeit ändern",
+          "emailRequired": "E-Mail ist erforderlich, um den Newsletter zu abonnieren",
+          "subscribeSuccess": "Newsletter erfolgreich abonniert",
+          "subscribeFail": "Newsletter-Abonnement fehlgeschlagen",
+          "unsubscribeSuccess": "Newsletter erfolgreich abbestellt",
+          "unsubscribeFail": "Newsletter-Abbestellung fehlgeschlagen",
+          "error": "Beim Aktualisieren Ihres Abonnements ist ein Fehler aufgetreten"
+        }
+      },
+      "security": {
+        "title": "Sicherheit",
+        "description": "Verwalten Sie Ihre Sicherheitseinstellungen",
+        "updatePassword": {
+          "title": "Passwort ändern",
+          "description": "Geben Sie Ihr aktuelles Passwort und ein neues Passwort ein",
+          "currentPassword": "Aktuelles Passwort",
+          "currentRequired": "Aktuelles Passwort ist erforderlich",
+          "newPassword": "Neues Passwort",
+          "newMinLength": "Passwort muss mindestens 8 Zeichen lang sein",
+          "hint": "Bitte verwenden Sie mindestens 8 Zeichen für das Passwort",
+          "showPassword": "Passwort anzeigen",
+          "hidePassword": "Passwort ausblenden",
+          "success": "Passwort erfolgreich aktualisiert",
+          "fail": "Passwort konnte nicht aktualisiert werden",
+          "saving": "Wird gespeichert...",
+          "save": "Speichern"
+        },
+        "resetPassword": {
+          "title": "Passwort zurücksetzen",
+          "description": "Passwort zurücksetzen, um E-Mail-Login zu aktivieren",
+          "info": "Das Zurücksetzen Ihres Passworts ermöglicht es Ihnen, sich mit Ihrer E-Mail und Ihrem Passwort zusätzlich zu Ihren Social-Login-Methoden anzumelden. Sie erhalten eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts",
+          "button": "Passwort zurücksetzen"
+        },
+        "deleteAccount": {
+          "title": "Konto löschen",
+          "description": "Entfernen Sie Ihr Konto und alle seine Inhalte dauerhaft",
+          "warning": "Diese Aktion ist nicht rückgängig zu machen, fahren Sie also bitte mit Vorsicht fort",
+          "button": "Konto löschen",
+          "confirmTitle": "Konto löschen",
+          "confirmDescription": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+          "confirm": "Löschen",
+          "cancel": "Abbrechen",
+          "deleting": "Wird gelöscht...",
+          "success": "Konto erfolgreich gelöscht",
+          "fail": "Konto konnte nicht gelöscht werden"
+        }
+      },
+      "submissions": {
+        "title": "Meine Einreichungen",
+        "description": "Ihre Tool-Einreichungsaufzeichnungen anzeigen",
+        "total": "Insgesamt {count} Einträge",
+        "empty": "Noch keine Einreichungen",
+        "successAfterPayment": "Zahlung erfolgreich! Ihr Tool wurde eingereicht und wartet nun auf Überprüfung.",
+        "status": {
+          "unpaid": "Unbezahlt",
+          "pending": "Ausstehend",
+          "approved": "Genehmigt",
+          "rejected": "Abgelehnt"
+        },
+        "filter": {
+          "status": "Status-Filter",
+          "all": "Alle"
+        },
+        "columns": {
+          "name": "Tool-Name",
+          "url": "Tool-URL",
+          "status": "Status",
+          "submittedAt": "Eingereicht am",
+          "actions": "Aktionen"
+        },
+        "pagination": {
+          "showing": "Zeige {from} - {to} von {total}",
+          "page": "Seite {current} / {total}"
+        },
+        "rejectReason": "Ablehnungsgrund",
+        "edit": "Bearbeiten",
+        "editDialog": {
+          "title": "Einreichung bearbeiten",
+          "description": "Ändern Sie Ihre Einreichungsinformationen. Nach der Änderung wird sie erneut in den Überprüfungsprozess eingegeben",
+          "name": "Tool-Name",
+          "url": "Tool-URL",
+          "logo": "Logo",
+          "screenshot": "Screenshot",
+          "descriptionLabel": "Beschreibung",
+          "descriptionOptional": "Beschreibung ist optional",
+          "cancel": "Abbrechen",
+          "submit": "Speichern und erneut einreichen",
+          "submitting": "Wird gesendet..."
+        }
+      }
+    },
+    "upgrade": {
+      "title": "Upgrade",
+      "description": "Upgraden Sie auf Pro, um Zugriff auf alle Funktionen zu erhalten",
+      "button": "Upgraden"
+    }
+  },
+  "Mail": {
+    "common": {
+      "team": "{name} Team",
+      "copyright": "©️ {year} Alle Rechte vorbehalten."
+    },
+    "verifyEmail": {
+      "title": "Hallo, {name}.",
+      "body": "Bitte klicken Sie auf den Link unten, um Ihre E-Mail-Adresse zu verifizieren.",
+      "confirmEmail": "E-Mail bestätigen",
+      "subject": "Verifizieren Sie Ihre E-Mail"
+    },
+    "forgotPassword": {
+      "title": "Hallo, {name}.",
+      "body": "Bitte klicken Sie auf den Link unten, um Ihr Passwort zurückzusetzen.",
+      "resetPassword": "Passwort zurücksetzen",
+      "subject": "Setzen Sie Ihr Passwort zurück"
+    },
+    "subscribeNewsletter": {
+      "body": "Vielen Dank für Ihr Abonnement bei Vidlyo! Sie erhalten die neuesten Tipps zur KI-Video- & Bilderstellung, Updates zu neuen Funktionen und exklusive Angebote. Bleiben Sie dran für leistungsstarke KI-Erstellungstools und Techniken.",
+      "subject": "Willkommen bei Vidlyo"
+    },
+    "contactMessage": {
+      "name": "Name: {name}",
+      "email": "E-Mail: {email}",
+      "message": "Nachricht: {message}",
+      "subject": "Kontaktnachricht von der Website"
+    }
+  },
+  "HomePage": {
+    "title": "BuildWay - Entdecken Sie die besten KI-Tools",
+    "description": "Entdecken Sie kuratierte KI-Tools für jeden Bedarf. Finden Sie die perfekte Lösung für Ihr nächstes Projekt.",
+    "hero": {
+      "badge": "🚀 KI-Tools-Verzeichnis",
+      "introduction": "Folgen Sie uns auf X",
+      "title": "Entdecken Sie die besten KI-Tools",
+      "subtitle": "Entdecken Sie kuratierte KI-Tools für jeden Bedarf. Finden Sie die perfekte Lösung für Ihr nächstes Projekt.",
+      "description": "Entdecken Sie kuratierte KI-Tools für jeden Bedarf. Finden Sie die perfekte Lösung für Ihr nächstes Projekt.",
+      "primary": "Loslegen",
+      "secondary": "Demo ansehen",
+      "searchPlaceholder": "KI-Tools, Kategorien oder Funktionen suchen...",
+      "stats": {
+        "tools": "KI-Tools",
+        "categories": "Kategorien",
+        "users": "Benutzer"
+      }
+    },
+    "latestTools": {
+      "title": "Neueste KI-Tools",
+      "subtitle": "Kürzlich zu unserer Sammlung hinzugefügt",
+      "justLaunched": "Neu eingeführt",
+      "viewAll": "Alle Tools anzeigen",
+      "featuredTitle": "Ausgewählt"
+    },
+    "submitCta": {
+      "badge": "Tool einreichen",
+      "title": "Teilen Sie Ihr KI-Tool mit der Community",
+      "description": "Präsentieren Sie Ihr KI-Tool und gewinnen Sie mehr Sichtbarkeit bei potenziellen Nutzern, die neue Lösungen entdecken.",
+      "button": "Tool einreichen"
+    },
+    "logocloud": {
+      "title": "Ihre Lieblingsunternehmen sind unsere Partner"
+    },
+    "integration": {
+      "title": "Integrationen",
+      "subtitle": "Integrieren Sie sich mit Ihren Lieblingstools",
+      "description": "Verbinden Sie sich nahtlos mit beliebten Plattformen und Diensten, um Ihren Workflow zu verbessern.",
+      "learnMore": "Mehr erfahren",
+      "items": {
+        "item-1": {
+          "title": "Google Gemini",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-2": {
+          "title": "Replit",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-3": {
+          "title": "MagicUI",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-4": {
+          "title": "VSCodium",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-5": {
+          "title": "MediaWiki",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-6": {
+          "title": "Google PaLM",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        }
+      }
+    },
+    "integration2": {
+      "title": "Integrieren Sie sich mit Ihren Lieblingstools",
+      "description": "Verbinden Sie sich nahtlos mit beliebten Plattformen und Diensten, um Ihren Workflow zu verbessern.",
+      "primaryButton": "Loslegen",
+      "secondaryButton": "Demo ansehen"
+    },
+    "pricing": {
+      "title": "Preise",
+      "subtitle": "Preise",
+      "description": "Wählen Sie den Plan, der am besten zu Ihnen passt"
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "Was unsere Kunden sagen",
+      "items": {
+        "item-1": {
+          "name": "Jonathan Yombo",
+          "role": "Software-Ingenieur",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "quote": "MkSaaS ist wirklich außergewöhnlich und sehr praktisch, man muss sich nicht den Kopf zerbrechen. Eine wahre Goldgrube."
+        },
+        "item-2": {
+          "name": "Yves Kalume",
+          "role": "GDE - Android",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg",
+          "quote": "Ohne Erfahrung im Webdesign habe ich meine gesamte Website in wenigen Minuten mit TailwindCSS dank MkSaaS neu gestaltet."
+        },
+        "item-3": {
+          "name": "Yucel Faruksahan",
+          "role": "Tailkits-Ersteller",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg",
+          "quote": "Großartige Arbeit am MkSaaS-Template. Dies ist eine der besten persönlichen Websites, die ich bisher gesehen habe :)"
+        },
+        "item-4": {
+          "name": "Anonymer Autor",
+          "role": "Produktmanager",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg",
+          "quote": "Ich habe eines der MkSaaS-Templates heruntergeladen, das von Anfang an sehr verständlich ist und Sie die Codes/Blöcke perfekt an Ihren Zweck anpassen können."
+        },
+        "item-5": {
+          "name": "Shekinah Tshiokufila",
+          "role": "Senior Software-Ingenieur",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "quote": "MkSaaS definiert den Standard des Webdesigns neu, mit diesen Blöcken bietet es eine einfache und effiziente Möglichkeit für diejenigen, die Schönheit lieben, aber möglicherweise keine Zeit haben, sie umzusetzen."
+        },
+        "item-6": {
+          "name": "Oketa Fred",
+          "role": "Fullstack-Entwickler",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg",
+          "quote": "Ich liebe MkSaaS! Die Komponentenblöcke sind wunderschön gestaltet und einfach zu verwenden, was die Erstellung einer gut aussehenden Website zum Kinderspiel macht."
+        },
+        "item-7": {
+          "name": "Zeki",
+          "role": "Gründer von ChatExtend",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg",
+          "quote": "MkSaaS ist die perfekte Fusion aus Einfachheit und Vielseitigkeit, die es uns ermöglicht, UIs zu erstellen, die so atemberaubend wie benutzerfreundlich sind."
+        },
+        "item-8": {
+          "name": "Joseph Kitheka",
+          "role": "Fullstack-Entwickler",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg",
+          "quote": "MkSaaS hat die Art und Weise, wie ich Webanwendungen entwickle, verändert. Ihre umfangreiche Sammlung von UI-Komponenten, Blöcken und Templates hat meinen Workflow erheblich beschleunigt."
+        },
+        "item-9": {
+          "name": "Khatab Wedaa",
+          "role": "MerakiUI-Ersteller",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg",
+          "quote": "MkSaaS ist eine elegante, saubere und responsive Tailwind-CSS-Komponentensammlung, die sehr hilfreich ist, um schnell mit Ihrem Projekt zu starten."
+        },
+        "item-10": {
+          "name": "Rodrigo Aguilar",
+          "role": "TailwindAwesome-Ersteller",
+          "image": "https://randomuser.me/api/portraits/men/11.jpg",
+          "quote": "Ich liebe MkSaaS ❤️. Die Komponentenblöcke sind gut strukturiert, einfach zu verwenden und wunderschön gestaltet. Es macht es wirklich einfach, in kürzester Zeit eine gut aussehende Website zu haben."
+        },
+        "item-11": {
+          "name": "Eric Ampire",
+          "role": "@GoogleDevExpert für Android",
+          "image": "https://randomuser.me/api/portraits/men/12.jpg",
+          "quote": "MkSaaS-Templates sind die perfekte Lösung für jeden, der eine schöne und funktionale Website ohne Webdesign-Erfahrung erstellen möchte."
+        },
+        "item-12": {
+          "name": "Roland Tubonge",
+          "role": "Software-Ingenieur",
+          "image": "https://randomuser.me/api/portraits/men/13.jpg",
+          "quote": "MkSaaS ist so gut gestaltet, dass man selbst mit sehr geringen Webdesign-Kenntnissen Wunder wirken kann. Lassen Sie sich verführen!"
+        }
+      }
+    },
+    "stats": {
+      "title": "Statistiken",
+      "subtitle": "MkSaaS in Zahlen",
+      "description": "MkSaaS lässt Sie KI-SaaS in Tagen erstellen, einfach und mühelos",
+      "items": {
+        "item-1": {
+          "title": "Stars auf GitHub"
+        },
+        "item-2": {
+          "title": "Aktive Benutzer"
+        },
+        "item-3": {
+          "title": "Angetriebene Apps"
+        }
+      }
+    },
+    "calltoaction": {
+      "title": "Starten Sie mit dem Bauen",
+      "description": "MkSaaS lässt Sie KI-SaaS in Tagen erstellen, einfach und mühelos",
+      "primaryButton": "Loslegen",
+      "secondaryButton": "Demo ansehen"
+    },
+    "faqs": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Häufige Fragen zum KI-Tools-Verzeichnis",
+      "items": {
+        "item-1": {
+          "question": "Wie viele KI-Tools sind auf dieser Website gelistet?",
+          "answer": "Wir kuratieren und aktualisieren kontinuierlich hochwertige KI-Tools, die verschiedene Bereiche abdecken, einschließlich Bildgenerierung, Videogenerierung, Textschreiben, Audiomusik, Codeentwicklung und mehr. Unsere Sammlung wächst ständig, während wir neue Tools hinzufügen."
+        },
+        "item-2": {
+          "question": "Wie kann ich mein KI-Tool einreichen?",
+          "answer": "Klicken Sie auf die Schaltfläche 'Tool einreichen' auf der Startseite und füllen Sie die Grundinformationen zu Ihrem Tool aus (Name, Website, Beschreibung, Kategorie usw.). Wir werden Ihre Einreichung innerhalb von 1-3 Werktagen überprüfen, und sobald sie genehmigt ist, wird sie auf der Website angezeigt."
+        },
+        "item-3": {
+          "question": "Wie werden Tools kategorisiert?",
+          "answer": "Wir kategorisieren Tools nach Funktion in mehrere Kategorien: Bildgenerierung, Videogenerierung, Textschreiben, Audiomusik, Codeentwicklung, Designkreativität, Produktivität, Marketing-SEO, Datenanalyse, Chat-Assistenten und mehr. Jedes Tool kann mehreren Kategorien angehören."
+        },
+        "item-4": {
+          "question": "Sind alle Tools kostenlos?",
+          "answer": "Nein. Die Tools, die wir listen, umfassen vollständig kostenlose Tools, Tools mit kostenlosen Testversionen und nur kostenpflichtige Tools. Auf der Detailseite jedes Tools werden Preisinformationen angezeigt, sodass Sie das richtige Tool basierend auf Ihren Bedürfnissen auswählen können."
+        },
+        "item-5": {
+          "question": "Wie suche ich nach einem bestimmten Tool?",
+          "answer": "Verwenden Sie das Suchfeld oben auf der Startseite und geben Sie Schlüsselwörter ein, um zu suchen. Die Suche stimmt mit Tool-Namen, Beschreibungen und Tags überein, um Ihnen zu helfen, schnell die benötigten Tools zu finden."
+        },
+        "item-6": {
+          "question": "Was sind empfohlene Tools?",
+          "answer": "Empfohlene Tools sind hochwertige Tools, die sorgfältig von unserem Redaktionsteam basierend auf Qualität, Beliebtheit, Nutzerbewertungen und Funktionsumfang ausgewählt wurden. Diese Tools zeichnen sich in ihren jeweiligen Bereichen aus."
+        },
+        "item-7": {
+          "question": "Wie oft wird das Verzeichnis aktualisiert?",
+          "answer": "Wir aktualisieren unser Verzeichnis regelmäßig mit neuen KI-Tools und entfernen veraltete oder eingestellte. Unser Team überprüft und fügt wöchentlich neue Tools hinzu, um sicherzustellen, dass Sie Zugang zu den neuesten und relevantesten KI-Lösungen haben."
+        },
+        "item-8": {
+          "question": "Kann ich ein bestimmtes Tool zur Aufnahme beantragen?",
+          "answer": "Ja! Wenn Sie von einem großartigen KI-Tool wissen, das nicht gelistet ist, können Sie es über unsere 'Tool einreichen'-Funktion einreichen. Wir überprüfen alle Einreichungen und fügen Tools hinzu, die unseren Qualitätsstandards entsprechen und unserer Community einen Mehrwert bieten."
+        }
+      }
+    }
+  },
+  "AIImagePage": {
+    "title": "KI-Bild",
+    "description": "MkSaaS lässt Sie KI-SaaS in Tagen erstellen, einfach und mühelos"
+  },
+  "AIChatPage": {
+    "title": "KI-Chat",
+    "description": "MkSaaS lässt Sie KI-SaaS in Tagen erstellen, einfach und mühelos"
+  },
+  "AIVideoPage": {
+    "title": "KI-Video",
+    "description": "MkSaaS lässt Sie KI-SaaS in Tagen erstellen, einfach und mühelos"
+  },
+  "AIAudioPage": {
+    "title": "KI-Audio",
+    "description": "MkSaaS lässt Sie KI-SaaS in Tagen erstellen, einfach und mühelos"
+  },
+  "LandingPage": {
+    "metadata": {
+      "title": "Vidlyo - KI-Video- & Bildgenerator | One-Stop-Erstellungsplattform",
+      "description": "Ihre One-Stop-KI-Video- & Bilderstellungsplattform. Generieren Sie atemberaubende Bilder, erstellen Sie Videos aus Text oder Bildern mit KI. Text zu Video, Bild zu Video, KI-Animationsgenerator und mehr."
+    },
+    "hero": {
+      "badge": "KI-gestützte Erstellungsplattform",
+      "title": "Erstellen Sie atemberaubende",
+      "titleHighlight": "KI-Videos & Bilder",
+      "subtitle": "Ihre One-Stop-KI-Erstellungsplattform.",
+      "noPlasticSkin": "Text zu Video. Bild zu Video.",
+      "noBeautyFilter": "KI-Animation. KI-Bildgenerator.",
+      "description": "Verwandeln Sie Ihre Ideen mit KI in atemberaubende Videos und Bilder. Generieren Sie aus Text-Prompts, animieren Sie Fotos, erstellen Sie KI-Kunst – alles auf einer leistungsstarken Plattform.",
+      "cta": "Kostenlos starten",
+      "ctaSecondary": "Beispiele ansehen",
+      "users": "Ersteller",
+      "rating": "Bewertung",
+      "scroll": "Scrollen",
+      "processing": "In Bearbeitung",
+      "processingTime": "< 30 Sekunden"
+    },
+    "howItWorks": {
+      "sectionLabel": "So funktioniert es",
+      "title": "Erstellen Sie KI-Videos & Bilder in 3 einfachen Schritten",
+      "subtitle": "Verwandeln Sie Ihre Ideen in atemberaubende Visuals. Geben Sie einen Prompt ein, wählen Sie Ihren Stil und lassen Sie die KI die Magie wirken. Keine technischen Kenntnisse erforderlich.",
+      "steps": {
+        "upload": {
+          "step": "01",
+          "title": "Geben Sie Ihren kreativen Prompt ein",
+          "description": "Beschreiben Sie, was Sie erstellen möchten – eine filmische Videoszene, atemberaubende Kunstwerke oder einen animierten Charakter. Laden Sie Referenzbilder für noch bessere Ergebnisse hoch."
+        },
+        "choose": {
+          "step": "02",
+          "title": "Wählen Sie KI-Modell & Stil",
+          "description": "Wählen Sie aus unseren leistungsstarken KI-Modellen. Wählen Sie Seitenverhältnis, Dauer und Stil. Unser KI-Video-Generator und Bildgenerator erledigen den Rest."
+        },
+        "download": {
+          "step": "03",
+          "title": "Laden Sie Ihre KI-Kreation herunter",
+          "description": "Ihr KI-generiertes Video oder Bild ist in Sekunden bereit. Vorschau anzeigen, bei Bedarf verfeinern, dann in hoher Qualität herunterladen. Professionelle Ergebnisse jedes Mal."
+        }
+      }
+    },
+    "features": {
+      "sectionLabel": "Funktionen",
+      "title": "Leistungsstarke KI-Bilderstellungsfunktionen",
+      "subtitle": "Alles, was Sie brauchen, um atemberaubende Bilder mit KI zu erstellen. Von Text-zu-Bild bis hin zu Stil-Transfer, professionelle Qualität bis hin zu blitzschneller Generierung. Video-Funktionen demnächst verfügbar.",
+      "items": {
+        "textToVideo": {
+          "subtitle": "KI-Video-Generator",
+          "title": "Text zu Video KI",
+          "description": "Verwandeln Sie Ihre Text-Prompts in atemberaubende, fesselnde Videos. Beschreiben Sie jede Szene – filmische Aufnahmen, Produkt-Demos oder kreative Animationen – und sehen Sie zu, wie die KI Ihre Vision mit realistischer Bewegung und Audio zum Leben erweckt. Demnächst verfügbar."
+        },
+        "imageToVideo": {
+          "subtitle": "Bild zu Video KI",
+          "title": "Animieren Sie Ihre Bilder mit KI",
+          "description": "Verwandeln Sie Standbilder in dynamische, realistische Videos. Laden Sie ein Foto hoch und lassen Sie die KI natürliche Bewegung, Ausdrücke und Leben hinzufügen. Perfekt für die Erstellung ansprechender Inhalte aus vorhandenen Fotos. Demnächst verfügbar."
+        },
+        "referenceToVideo": {
+          "subtitle": "Referenz zu Video",
+          "title": "Halten Sie Charaktere über Videos hinweg konsistent",
+          "description": "Bereitstellen Sie Referenzbilder Ihres Charakters, Objekts oder Ihrer Szene und halten Sie sie über alle Frames in Ihren Videos hinweg konsistent. Perfekt für Storytelling, Markeninhalte und Serienerstellung. Demnächst verfügbar."
+        },
+        "textToImage": {
+          "subtitle": "KI-Bildgenerator",
+          "title": "Text zu atemberaubenden Bildern",
+          "description": "Verwandeln Sie Ihre Ideen mit KI in atemberaubende Visuals. Beschreiben Sie einfach, was Sie wollen – futuristische Stadtlandschaften, ruhige Landschaften oder alles, was Sie sich vorstellen können. Unsere fortschrittlichen KI-Modelle generieren in Sekunden hochwertige Bilder."
+        },
+        "cartoonStyle": {
+          "subtitle": "Cartoon-Stil-Konverter",
+          "title": "Foto in Cartoon-Stil verwandeln",
+          "description": "Mit nur einem Klick verwandeln Sie Ihre Fotos in beliebte Cartoon-Stile wie Disney, Pixar, Simpsons und Cyberpunk – kostenlos! Treten Sie in den Mittelpunkt in den sozialen Medien."
+        },
+        "ghibliStyle": {
+          "subtitle": "Ghibli-Stil-Konverter",
+          "title": "Foto in Ghibli-Stil konvertieren",
+          "highlightedTitle": "Magischer Animationsstil",
+          "description": "Verwandeln Sie Ihre Fotos schnell in Ghibli-artige Kunstwerke mit üppiger, handgezeichneter Animation und lebendigen Farbpaletten. Erfassen Sie jedes Detail in Ihren Bildern und durchdringen Sie sie mit skurrilen und magischen Elementen.",
+          "imageAlt": {
+            "0": "Originalfoto",
+            "1": "Ghibli-Stil-Ergebnis"
+          }
+        },
+        "handMadePaintings": {
+          "subtitle": "Handgemachter Stil-Konverter",
+          "title": "Fotos in handgemachte Gemälde verwandeln",
+          "highlightedTitle": "",
+          "description": "Fügen Sie Ihren Bildern mühelos einen handgemachten Malerei-Filter hinzu. Verwandeln Sie Ihre digitalen Fotos schnell in hochwertige und wasserzeichenfreie Ölgemälde, Illustrationen oder Aquarellkunstwerke.",
+          "imageAlt": {
+            "0": "Vorher - Originalfoto",
+            "1": "Nachher - Handgemachter Malerei-Effekt"
+          }
+        },
+        "aiAnimation": {
+          "subtitle": "KI-Animationsgenerator",
+          "title": "Anime- & Cartoon-Videos erstellen",
+          "description": "Generieren Sie fesselnde Anime- und Cartoon-Videos in verschiedenen Stilen. Wählen Sie aus berühmten Animator-Stilen wie Hayao Miyazaki, Makoto Shinkai und mehr. Verwandeln Sie Ihre Ideen in animierte Meisterwerke. Demnächst verfügbar."
+        },
+        "aiOutfitChange": {
+          "subtitle": "KI-Outfit-Wechsler",
+          "title": "KI-gestützter intelligenter Outfit-Wechsel",
+          "highlightedTitle": "Sofortige Transformation",
+          "description": "Laden Sie Ihr Foto hoch und wählen Sie verschiedene Kleidungsstile. Die KI hilft Ihnen, perfekte Outfit-Wechsel zu erreichen, während Ihre Gesichtszüge, Ausdrücke und Pose beibehalten werden. Perfekt für Modefotografie, Social-Media-Inhalte und kreatives Design.",
+          "imageAlt": {
+            "0": "Vorher - Pinker Pullover-Outfit",
+            "1": "Nachher - Brauner Jacken-Outfit"
+          }
+        }
+      },
+      "cta": "Jetzt erstellen"
+    },
+    "useCases": {
+      "sectionLabel": "KI-Erstellungs-Anwendungsfälle",
+      "title": "Was können Sie mit Vidlyo erstellen?",
+      "description": "Leistungsstarke KI-Tools für jeden kreativen Anwendungsfall. Von Marketing-Videos bis hin zu Social-Media-Inhalten, One-Stop-Lösungen für alle Ihre Bedürfnisse.",
+      "items": {
+        "marketing": {
+          "title": "Marketing-Videos",
+          "subtitle": "Produkt-Demos & Werbeinhalte",
+          "description": "Erstellen Sie atemberaubende Produktvideos, Werbeinhalte und Anzeigen-Kreatives mit KI. Perfekt für E-Commerce, Social-Media-Anzeigen und Markenkampagnen."
+        },
+        "social": {
+          "title": "Social-Media-Inhalte",
+          "subtitle": "Virale Shorts & ansprechende Posts",
+          "description": "Generieren Sie auffällige Videos und Bilder für TikTok, Instagram, YouTube Shorts. Erstellen Sie virale Inhalte, die sich in überfüllten Feeds abheben."
+        },
+        "avatar": {
+          "title": "KI-Avatar-Videos",
+          "subtitle": "Foto zu Video-Avatar",
+          "description": "Verwandeln Sie ein einzelnes Foto in ein vollständig animiertes KI-Avatar-Video mit bis zu 2 Minuten Länge. Komplett mit realistischer Bewegung, Lippensynchronisation und ausdrucksstarken Emotionen."
+        },
+        "animation": {
+          "title": "KI-Animation",
+          "subtitle": "Anime- & Cartoon-Stil-Videos",
+          "description": "Generieren Sie fesselnde Anime- und Cartoon-Videos in verschiedenen Stilen. Von Ghibli bis Pixar, erstellen Sie animierte Inhalte ohne Animationskenntnisse."
+        },
+        "musicVideo": {
+          "title": "KI-Musikvideos",
+          "subtitle": "Verwandeln Sie Songs in visuelle Geschichten",
+          "description": "Verwandeln Sie Ihre Songs in nur wenigen Minuten mit KI in fesselnde Musikvideos. Erstellen Sie atemberaubende Visuals, die zur Stimmung und zum Rhythmus Ihrer Musik passen."
+        },
+        "storytelling": {
+          "title": "Visuelles Storytelling",
+          "subtitle": "Konsistente Charaktere & Szenen",
+          "description": "Erstellen Sie Multi-Szenen-Videos mit konsistenten Charakteren und Einstellungen. Perfekt für Kurzfilme, Bildungsinhalte und narrative Projekte."
+        },
+        "productShots": {
+          "title": "Produktfotografie",
+          "subtitle": "Professionelle Produktbilder",
+          "description": "Generieren Sie atemberaubende Produktbilder mit perfekter Beleuchtung und Hintergründen. Ideal für E-Commerce-Listings, Kataloge und Marketingmaterialien."
+        },
+        "artCreation": {
+          "title": "KI-Kunstgenerierung",
+          "subtitle": "Digitale Kunst & Illustrationen",
+          "description": "Erstellen Sie einzigartige digitale Kunstwerke, Illustrationen und Konzeptkunst. Von realistisch bis abstrakt, erkunden Sie endlose kreative Möglichkeiten."
+        },
+        "videoEnhance": {
+          "title": "Video-Verbesserung",
+          "subtitle": "Hochskalieren & Qualität verbessern",
+          "description": "Verbessern Sie die Videoqualität mit KI. Skalieren Sie die Auflösung hoch, verbessern Sie die Klarheit und verwandeln Sie gewöhnliches Filmmaterial in professionelle Inhalte."
+        },
+        "styleTransfer": {
+          "title": "Stil-Transfer",
+          "subtitle": "Video-Ästhetik transformieren",
+          "description": "Wenden Sie künstlerische Stile auf Ihre Videos an. Verwandeln Sie Filmmaterial in Anime, Ölgemälde, Cyberpunk und 30+ kreative Stile."
+        },
+        "imageEdit": {
+          "title": "KI-Bildbearbeitung",
+          "subtitle": "Mit Text-Prompts bearbeiten",
+          "description": "Bearbeiten Sie Bilder mit natürlicher Sprache. Entfernen Sie Hintergründe, ändern Sie Elemente, verbessern Sie die Qualität – alles mit einfachen Textbeschreibungen."
+        },
+        "shorts": {
+          "title": "KI-Shorts-Generator",
+          "subtitle": "One-Click-Viral-Videos",
+          "description": "Erstellen Sie mit nur einem Klick atemberaubende Multi-Szenen-Short-Videos. Perfekt für TikTok, Reels und YouTube-Shorts-Inhalte."
+        }
+      }
+    },
+    "testimonials": {
+      "sectionLabel": "Testimonials",
+      "title": "Was Ersteller über Vidlyo sagen",
+      "items": {
+        "sarah": {
+          "name": "Sarah Mitchell",
+          "role": "Content-Ersteller",
+          "content": "Vidlyos KI-Video-Generator ist unglaublich! Ich erstelle in Minuten atemberaubende Videos aus Text-Prompts. Die Text-zu-Video-Qualität kann mit professioneller Produktion mithalten."
+        },
+        "james": {
+          "name": "James Chen",
+          "role": "Marketing-Manager",
+          "content": "Dieser KI-Video-Generator spart uns Stunden Produktionszeit. Bild zu Video KI ist perfekt für Produkt-Demos. Die beste KI-Erstellungsplattform für Marketing-Teams."
+        },
+        "emily": {
+          "name": "Emily Rodriguez",
+          "role": "Social-Media-Influencer",
+          "content": "Endlich eine All-in-One-KI-Erstellungsplattform! KI-Bildgenerator plus Video-Tools an einem Ort. Meine Engagement-Rate ist seit der Nutzung von Vidlyo durch die Decke gegangen."
+        }
+      }
+    },
+    "midCta": {
+      "title": "Ihre One-Stop",
+      "titleHighlight": "KI-Video- & Bilderstellungsplattform",
+      "description": "Erstellen Sie atemberaubende KI-Videos und Bilder mit Text-Prompts. Text zu Video, Bild zu Video, KI-Animation, KI-Bildgenerator – alles auf einer leistungsstarken Plattform.",
+      "cta": "Kostenlos starten"
+    },
+    "trustSecurity": {
+      "sectionLabel": "Datenschutz & Sicherheit",
+      "title": "Erstellen Sie mit KI",
+      "titleHighlight": "Sicher & Privat",
+      "description": "Ihre Kreationen sind persönlich. Vidlyo hält Ihre Inhalte verschlüsselt und privat. Erstellen Sie KI-Videos und Bilder mit Vertrauen – keine Datenweitergabe.",
+      "subDescription": "KI-Video-Generator ohne Einschränkungen beim Datenschutz. Was Sie erstellen, bleibt Ihres. Generieren Sie Inhalte, ohne sich über Datenerfassung Sorgen machen zu müssen.",
+      "features": {
+        "encryption": {
+          "title": "Verschlüsselte Verarbeitung",
+          "description": "KI-Video- und Bildgenerierung mit End-to-End-Verschlüsselung."
+        },
+        "private": {
+          "title": "Private KI-Erstellung",
+          "description": "Nur Sie können Ihre KI-generierten Inhalte anzeigen und herunterladen."
+        },
+        "secure": {
+          "title": "Sichere Verarbeitung",
+          "description": "KI-Generierung in isolierten sicheren Cloud-Umgebungen."
+        },
+        "noSharing": {
+          "title": "Keine Datenweitergabe",
+          "description": "KI-Erstellungsplattform, die Ihre Inhalte niemals teilt."
+        }
+      }
+    },
+    "faq": {
+      "sectionLabel": "FAQ",
+      "title": "Häufig gestellte Fragen",
+      "description": "Alles, was Sie über BuildWay wissen müssen",
+      "items": {
+        "noSignup": {
+          "question": "Was ist BuildWay?",
+          "answer": "BuildWay ist ein kuratiertes Verzeichnis der besten verfügbaren KI-Tools. Wir helfen Ihnen, KI-Tools zu entdecken, zu vergleichen und das richtige für Ihre Projekte auszuwählen, ob Sie Entwickler, Designer, Marketer oder Unternehmer sind."
+        },
+        "freeToUse": {
+          "question": "Ist BuildWay kostenlos nutzbar?",
+          "answer": "Ja! BuildWay ist vollständig kostenlos nutzbar. Sie können KI-Tools durchsuchen, suchen und entdecken, ohne Registrierung oder Zahlung erforderlich."
+        },
+        "upscale": {
+          "question": "Wie wählen Sie Tools aus?",
+          "answer": "Wir kuratieren jedes Tool sorgfältig basierend auf Qualität, Nutzerbewertungen, Funktionen und Zuverlässigkeit. Unser Team testet und bewertet Tools, um sicherzustellen, dass wir nur die besten Lösungen empfehlen."
+        },
+        "enhance": {
+          "question": "Kann ich mein KI-Tool einreichen?",
+          "answer": "Absolut! Wir begrüßen Tool-Einreichungen von Entwicklern und Unternehmen. Klicken Sie auf die Schaltfläche 'Tool einreichen', um Ihr KI-Tool mit unserer Community zu teilen."
+        },
+        "pixelated": {
+          "question": "Wie oft wird das Verzeichnis aktualisiert?",
+          "answer": "Wir aktualisieren unser Verzeichnis regelmäßig, fügen wöchentlich neue Tools hinzu und aktualisieren bestehende Listings, um sicherzustellen, dass Informationen aktuell und genau bleiben."
+        },
+        "secured": {
+          "question": "Bieten Sie Tool-Vergleiche an?",
+          "answer": "Ja! Jedes Tool-Listing enthält detaillierte Informationen, Bewertungen und Funktionen, um Ihnen zu helfen, verschiedene Optionen zu vergleichen und fundierte Entscheidungen zu treffen."
+        },
+        "mobileSupport": {
+          "question": "Kann ich BuildWay auf dem Handy nutzen?",
+          "answer": "Ja! BuildWay ist vollständig responsiv und funktioniert perfekt auf allen Geräten – Desktop, Tablet und Mobil. Durchsuchen und entdecken Sie KI-Tools unterwegs."
+        },
+        "regenerate": {
+          "question": "Wie sind Tools kategorisiert?",
+          "answer": "Tools sind nach Kategorien wie Produktivität, Design, Entwicklung, Marketing und mehr organisiert. Verwenden Sie unsere Such- und Filterfunktionen, um genau das zu finden, was Sie brauchen."
+        },
+        "commercial": {
+          "question": "Haben Sie Affiliate-Beziehungen?",
+          "answer": "Einige Tool-Listings können Affiliate-Links enthalten, die uns helfen, das Verzeichnis zu pflegen. Wir priorisieren immer ehrliche Bewertungen und empfehlen nur Tools, an die wir glauben."
+        }
+      },
+      "moreHelp": "Noch Fragen?",
+      "contactUs": "Kontaktieren Sie uns"
+    },
+    "intro": {
+      "sectionLabel": "Entdecken",
+      "sectionTitle": "Verwandeln Sie Ihre Ideen mit KI",
+      "what": {
+        "subtitle": "Einführung",
+        "title": "Was ist Vidlyo?",
+        "description": "Vidlyo ist Ihre One-Stop-KI-Video- & Bilderstellungsplattform. Generieren Sie atemberaubende Videos aus Text-Prompts, animieren Sie Fotos mit KI, erstellen Sie professionelle Bilder – alles auf einer leistungsstarken Plattform. Text zu Video, Bild zu Video, KI-Animation und mehr."
+      },
+      "why": {
+        "subtitle": "Warum uns wählen",
+        "title": "Warum Vidlyo KI-Erstellungsplattform wählen?",
+        "description": "Vidlyo kombiniert den besten KI-Video-Generator und KI-Bildgenerator in einer Plattform. Erstellen Sie professionelle Inhalte in Sekunden mit einfachen Text-Prompts. Keine technischen Kenntnisse erforderlich – beschreiben Sie einfach, was Sie wollen, und lassen Sie die KI die Magie wirken."
+      },
+      "struggling": {
+        "subtitle": "Loslegen",
+        "title": "Bereit, erstaunliche KI-Inhalte zu erstellen?",
+        "description": "Traditionelle Video- und Bilderstellung ist langsam und teuer. Vidlyo ändert das. Generieren Sie KI-Videos und Bilder mit einfachen Text-Prompts. Von Marketing-Inhalten bis hin zu Social-Media-Posts – erstellen Sie professionelle Visuals in Minuten, nicht Stunden."
+      }
+    },
+    "highlights": {
+      "title": "Warum Ersteller Vidlyo wählen",
+      "subtitle": "All-in-One-KI-Erstellungsplattform mit leistungsstarken Funktionen. KI-Video-Generator, KI-Bildgenerator, Animationstools – alles, was Sie brauchen, an einem Ort.",
+      "items": {
+        "easy": {
+          "title": "Einfache Text-Prompts",
+          "description": "Keine komplexe Software – beschreiben Sie einfach, was Sie wollen. Unsere KI versteht natürliche Sprache und erstellt atemberaubende Videos und Bilder aus Ihren Beschreibungen."
+        },
+        "models": {
+          "title": "Leistungsstarke KI-Modelle",
+          "description": "Zugang zu modernsten KI-Modellen für Video- und Bildgenerierung. Von schnellen Iterationen bis hin zu hochwertiger professioneller Ausgabe – wählen Sie das richtige Modell für Ihre Bedürfnisse."
+        },
+        "free": {
+          "title": "All-in-One-Plattform",
+          "description": "Text zu Video, Bild zu Video, KI-Animation, KI-Bildgenerator – alle Erstellungstools in einer Plattform. Kein Wechsel zwischen mehreren Apps erforderlich."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Starten Sie mit der Erstellung",
+      "titleHighlight": "Erstaunlicher KI-Inhalte",
+      "description": "Schließen Sie sich Millionen von Erstellern an, die Vidlyo nutzen. Generieren Sie atemberaubende KI-Videos und Bilder mit einfachen Text-Prompts. Ihre One-Stop-KI-Erstellungsplattform.",
+      "cta": "Kostenlos starten",
+      "trust": {
+        "gdpr": "Datenschutz geschützt",
+        "noStorage": "Sichere Verarbeitung",
+        "ssl": "SSL-verschlüsselt"
+      }
+    },
+    "quickEnhance": {
+      "badge": "Jetzt ausprobieren",
+      "title": "KI-Fotobearbeitung erleben",
+      "subtitle": "Laden Sie ein Foto hoch und erleben Sie die KI-Magie in Sekunden",
+      "upload": {
+        "title": "Bild hochladen",
+        "dragDrop": "Ziehen & ablegen oder klicken zum Hochladen",
+        "formats": "Unterstützt JPG, PNG, WEBP bis zu {size}MB",
+        "errorFormat": "Bitte laden Sie ein JPG-, PNG- oder WEBP-Bild hoch",
+        "errorSize": "Dateigröße muss kleiner als {size}MB sein",
+        "uploading": "Wird hochgeladen..."
+      },
+      "modes": {
+        "title": "Bearbeitungsmodus",
+        "skin": "KI-Verbesserung",
+        "upscale": "Hochskalieren",
+        "restore": "Wiederherstellen",
+        "comingSoon": "Demnächst verfügbar"
+      },
+      "enhance": "Bearbeitung starten",
+      "processing": "Wird bearbeitet...",
+      "download": "Herunterladen",
+      "downloadSuccess": "Download erfolgreich",
+      "downloadFallback": "Bild in neuem Tab geöffnet, bitte rechtsklicken zum Speichern",
+      "generateFirst": "Bitte zuerst Ergebnis generieren",
+      "tryAgain": "Erneut versuchen",
+      "error": "Bearbeitung fehlgeschlagen. Bitte erneut versuchen.",
+      "errors": {
+        "UNAUTHORIZED": "Bitte zuerst anmelden",
+        "INSUFFICIENT_CREDITS": "Unzureichende Credits. Sie benötigen {required} Credits.",
+        "INVALID_IMAGE_URL": "Ungültige Bild-URL",
+        "REPLICATE_API_ERROR": "KI-Verarbeitung fehlgeschlagen, bitte erneut versuchen",
+        "NETWORK_ERROR": "Netzwerkfehler, bitte überprüfen Sie Ihre Verbindung",
+        "TIMEOUT": "Bearbeitungszeitüberschreitung, bitte erneut versuchen",
+        "UNKNOWN": "Unbekannter Fehler, bitte kontaktieren Sie den Support"
+      },
+      "hint": "Kostenlose Nutzer: max. 2MB | Bezahlte Nutzer: max. 20MB | Größer benötigt? Kontaktieren Sie uns",
+      "result": {
+        "title": "Ergebnisvorschau",
+        "yourResult": "Ihr Ergebnis",
+        "sampleHint": "Laden Sie ein Bild hoch, um Ihr eigenes Ergebnis zu sehen"
+      }
+    },
+    "aiEditor": {
+      "badge": "Ihre One-Stop-KI-Erstellungsplattform",
+      "titlePart1": "Erstellen Sie atemberaubende",
+      "titleHighlight": "KI-Videos & Bilder",
+      "subtitle": "Verwandeln Sie Ihre Ideen mit leistungsstarker KI in Realität. Text zu Video, Bild zu Video, KI-Animation, KI-Bildgenerator – alles auf einer Plattform.",
+      "users": "Ersteller",
+      "rating": "Bewertung",
+      "imagesGenerated": "erstellte Kreationen",
+      "quickPrompts": {
+        "portrait": "Porträt",
+        "landscape": "Landschaft",
+        "abstract": "Abstrakte Kunst"
+      },
+      "inputBar": {
+        "placeholder": "Beschreiben Sie, was Sie erstellen oder bearbeiten möchten..."
+      },
+      "toolbar": {
+        "model": "Modell",
+        "ratio": "Verhältnis",
+        "more": "Mehr",
+        "public": "Öffentliche Sichtbarkeit",
+        "publicDescription": "In Community-Galerie anzeigen",
+        "credits": "{count} Credits",
+        "clear": "Löschen"
+      },
+      "imageUpload": {
+        "add": "Hinzufügen",
+        "manageImages": "Bilder verwalten",
+        "retry": "Erneut versuchen",
+        "errorFormat": "Nur JPG-, PNG-, WebP-Formate werden unterstützt",
+        "errorSize": "Dateigröße darf {size}MB nicht überschreiten",
+        "errorMaxImages": "Maximal {max} Bilder erlaubt",
+        "errorDuplicate": "Dieses Bild wurde bereits hochgeladen"
+      },
+      "tabs": {
+        "textToImage": "Text zu Bild"
+      },
+      "models": {
+        "title": "Modelle",
+        "description": "Schnelle und präzise Bildbearbeitungen"
+      },
+      "images": {
+        "title": "Bilder"
+      },
+      "uploader": {
+        "dragDrop": "Klicken oder ziehen zum Hochladen von Bildern",
+        "formats": "Unterstützt JPG, PNG, WebP, max. {size}MB",
+        "selected": "Ausgewählt {count}/{max}",
+        "add": "Hinzufügen",
+        "errorFormat": "Nur JPG-, PNG-, WebP-Formate werden unterstützt",
+        "errorSize": "Dateigröße darf {size}MB nicht überschreiten",
+        "errorMaxImages": "Maximal {max} Bilder erlaubt",
+        "errorDuplicate": "Dieses Bild wurde bereits hochgeladen"
+      },
+      "prompt": {
+        "title": "Prompt",
+        "placeholder": "Beschreiben Sie Ihre Bearbeitungsanforderungen, z.B. 'Entfernen Sie die Person im Hintergrund'"
+      },
+      "quickActions": {
+        "title": "Schnellaktionen"
+      },
+      "aspectRatio": {
+        "title": "Seitenverhältnis"
+      },
+      "optionsBar": {
+        "model": "Modell",
+        "ratio": "Verhältnis",
+        "public": "Öffentlich",
+        "publicTooltip": "Wenn aktiviert, werden generierte Bilder in der Community-Galerie angezeigt, damit andere sie sehen können",
+        "clear": "Löschen",
+        "generate": "Generieren ({credits} Credits)",
+        "generating": "Wird generiert..."
+      },
+      "result": {
+        "original": "Original",
+        "edited": "Bearbeitet",
+        "generated": "Generiert",
+        "edit": "Bearbeiten",
+        "download": "Herunterladen",
+        "clickToEnlarge": "Zum Vergrößern klicken"
+      },
+      "preview": {
+        "title": "Bildvorschau",
+        "reset": "Zurücksetzen",
+        "hint": "Klicken zum Zoomen · Ziehen zum Verschieben · Scrollen zum Zoomen",
+        "galleryHint": "Verwenden Sie ← → zum Navigieren · Klicken zum Zoomen",
+        "escHint": "ESC drücken zum Schließen"
+      },
+      "status": {
+        "uploading": "Bilder werden hochgeladen, bitte warten...",
+        "uploadFailed": "Einige Bilder konnten nicht hochgeladen werden, bitte entfernen und erneut versuchen",
+        "waitUpload": "Bitte warten Sie, bis alle Bilder hochgeladen sind",
+        "processing": "Wird bearbeitet...",
+        "aiProcessing": "Bitte warten, KI generiert Ihr Bild",
+        "cancel": "Abbrechen",
+        "uploadError": "Upload fehlgeschlagen",
+        "generateError": "Generierung fehlgeschlagen",
+        "retryHint": "Bitte später erneut versuchen",
+        "retry": "Erneut versuchen",
+        "refresh": "Aktualisieren",
+        "defaultPrompt": "Originalstil beibehalten, Qualität optimieren",
+        "generateFailed": "Generierung fehlgeschlagen, bitte erneut versuchen",
+        "characters": "Zeichen",
+        "promptRequired": "Bitte geben Sie einen Prompt ein, um ein Bild zu generieren"
+      },
+      "loginRequired": "Anmeldung erforderlich",
+      "generate": "Generieren",
+      "generating": "Wird generiert...",
+      "features": {
+        "hairColor": {
+          "name": "Haarfarbe ändern",
+          "description": "Verwandeln Sie die Haarfarbe mit KI – von natürlichen Tönen bis hin zu lebendigen Farben"
+        },
+        "switchClothing": {
+          "name": "Kleidung wechseln",
+          "description": "Virtuell verschiedene Outfits und Stile sofort anprobieren"
+        },
+        "replaceBackground": {
+          "name": "Hintergrund ersetzen",
+          "description": "Fotohintergründe in jede Szene oder Umgebung ändern"
+        },
+        "removeObject": {
+          "name": "Objekt entfernen",
+          "description": "Unerwünschte Elemente nahtlos aus Ihren Fotos entfernen"
+        },
+        "enhanceQuality": {
+          "name": "Qualität verbessern",
+          "description": "KI-gestützte Bildverbesserung für professionelle Ergebnisse"
+        },
+        "adjustExpression": {
+          "name": "Ausdruck anpassen",
+          "description": "Gesichtsausdrücke natürlich mit KI-Präzision modifizieren"
+        }
+      },
+      "creditsExhausted": "Ihre Credits sind aufgebraucht.",
+      "upgradeToContinue": "Upgraden, um fortzufahren"
+    },
+    "common": {
+      "before": "Vorher",
+      "after": "Nachher",
+      "comparison": "Vorher-Nachher-Vergleichs-Schieberegler"
+    },
+    "gallery": {
+      "title": "Lassen Sie sich inspirieren",
+      "subtitle": "Erkunden Sie atemberaubende KI-Videos und Bilder, die von unserer Community erstellt wurden",
+      "hint": "Hover, um Prompts und verwendete Modelle zu sehen",
+      "createSimilar": "Ähnliches erstellen"
+    },
+    "toolsShowcase": {
+      "badge": "KI-Erstellungstools",
+      "title": "Modernste KI-Tools für jeden kreativen Bedarf",
+      "subtitle": "Leistungsstarke KI-Video- und Bildtools, um Ihre Ideen zum Leben zu erwecken. Generieren, verbessern, transformieren – alles, was Sie für professionelle Inhaltserstellung brauchen.",
+      "tabs": {
+        "all": "Alle Tools",
+        "image": "Bild-Tools",
+        "video": "Video-Tools"
+      },
+      "viewMore": "Mehr Tools anzeigen",
+      "comingSoon": "Demnächst verfügbar",
+      "tools": {
+        "textToVideo": "Text zu Video KI",
+        "textToVideoDesc": "Verwandeln Sie Text-Prompts in atemberaubende, fesselnde Videos",
+        "imageToVideo": "Bild zu Video KI",
+        "imageToVideoDesc": "Animieren Sie Standbilder in realistische, dynamische Videos",
+        "referenceToVideo": "Referenz zu Video",
+        "referenceToVideoDesc": "Halten Sie Charaktere über alle Video-Frames hinweg konsistent",
+        "videoToVideo": "Video zu Video KI",
+        "videoToVideoDesc": "Verwandeln Sie Videos in 30+ kreative Animationsstile",
+        "aiAnimation": "KI-Animationsgenerator",
+        "aiAnimationDesc": "Generieren Sie Anime- und Cartoon-Videos in verschiedenen Stilen",
+        "aiShorts": "KI-Shorts-Generator",
+        "aiShortsDesc": "Erstellen Sie virale Short-Videos ohne Filmen",
+        "aiAvatar": "KI-Avatar-Generator",
+        "aiAvatarDesc": "Erstellen Sie lebensechte Video-Avatare aus einem einzelnen Foto",
+        "videoEnhance": "KI-Video-Enhancer",
+        "videoEnhanceDesc": "Verbessern Sie die Videoqualität mit KI-Technologie",
+        "textToImage": "KI-Bildgenerator",
+        "textToImageDesc": "Generieren Sie atemberaubende Bilder aus Textbeschreibungen",
+        "backgroundRemoval": "Hintergrundentfernung",
+        "backgroundRemovalDesc": "Entfernen Sie Hintergründe sofort mit KI-Präzision",
+        "imageEnhance": "KI-Bild-Enhancer",
+        "imageEnhanceDesc": "Verbessern Sie Bildqualität und Details automatisch",
+        "imageUpscale": "KI-Bild-Upscaler",
+        "imageUpscaleDesc": "Skalieren Sie Bilder auf 4K hoch, ohne Qualität zu verlieren",
+        "styleTransfer": "Stil-Transfer",
+        "styleTransferDesc": "Verwandeln Sie Fotos in Ghibli-, Anime- und mehr Stile",
+        "objectRemoval": "Objektentfernung",
+        "objectRemovalDesc": "Entfernen Sie unerwünschte Objekte nahtlos aus Fotos"
+      }
+    }
+  },
+  "Generator": {
+    "toolbar": {
+      "aiImage": "KI-Bild",
+      "aiVideo": "KI-Video",
+      "comingSoon": "Demnächst verfügbar",
+      "public": "Öffentliche Sichtbarkeit",
+      "publicDescription": "In Community-Galerie anzeigen",
+      "credits": "Credits",
+      "creditsCost": "Credits/Gen",
+      "aspectRatio": "Seitenverhältnis",
+      "resolution": "Auflösung",
+      "qualityNotSupported": "Qualitätsauswahl wird von diesem Modell nicht unterstützt",
+      "qualityModelHint": "Wechseln Sie zu Nano Banana Pro für Qualitätsoptionen",
+      "features": {
+        "title": "Funktionen",
+        "text-to-video": "Text/Bild zu Video",
+        "reference-to-video": "Referenz zu Video",
+        "frames-to-video": "Frames zu Video"
+      }
+    },
+    "presets": {
+      "refresh": "Voreinstellungen aktualisieren",
+      "portrait": "Porträt",
+      "landscape": "Landschaft",
+      "abstract": "Abstrakte Kunst",
+      "anime": "Anime-Stil",
+      "realistic": "Realistisch",
+      "fantasy": "Fantasy"
+    }
+  },
+  "ToolsPage": {
+    "badge": "KI-Tools-Verzeichnis",
+    "title": "KI-Tools entdecken",
+    "description": "Erkunden Sie unsere kuratierte Sammlung von KI-Tools für Bildgenerierung, Videobearbeitung, Textverarbeitung, Audioerstellung und mehr. Steigern Sie Ihre kreative Produktivität.",
+    "totalTools": "Gesamte Tools",
+    "backToTools": "Zurück zu Tools",
+    "visitWebsite": "Website besuchen",
+    "collectedOn": "Gesammelt am",
+    "toolNotFound": "Tool nicht gefunden",
+    "listedOn": "Gelistet am",
+    "reviews": {
+      "title": "{name} Rezensionen ({count})",
+      "averageRating": "{rating} von 5 Punkten",
+      "noRating": "Noch keine Bewertung",
+      "recommend": "Würden Sie {name} empfehlen? Hinterlassen Sie einen Kommentar",
+      "placeholder": "Was denken Sie?",
+      "charCount": "{current}/{max}",
+      "loginToComment": "Zum Kommentieren anmelden",
+      "submit": "Rezension einreichen",
+      "update": "Rezension aktualisieren",
+      "delete": "Löschen",
+      "deleteConfirm": "Sind Sie sicher, dass Sie diese Rezension löschen möchten?",
+      "noReviews": "Noch keine Rezensionen. Seien Sie der Erste, der seine Erfahrung teilt!",
+      "loadMore": "Mehr laden",
+      "submitSuccess": "Rezension erfolgreich eingereicht!",
+      "updateSuccess": "Rezension erfolgreich aktualisiert!",
+      "deleteSuccess": "Rezension erfolgreich gelöscht!",
+      "ratingRequired": "Bitte wählen Sie eine Bewertung",
+      "edited": "bearbeitet"
+    },
+    "searchResults": {
+      "found": "Gefunden",
+      "tools": "Tools",
+      "tool": "Tool",
+      "for": "für",
+      "about": "Über uns"
+    },
+    "totalToolsCount": "{count} kuratierte KI-Tools verfügbar",
+    "submit": {
+      "badge": "Tool einreichen",
+      "title": "Ihr KI-Tool einreichen",
+      "description": "Teilen Sie Ihr KI-Tool mit unserer Community. Wir überprüfen alle Einreichungen sorgfältig.",
+      "plans": {
+        "free": {
+          "title": "Kostenlos",
+          "price": "0 €",
+          "feature1": "Erhalten Sie 3 dofollow-Links zur SEO-Steigerung",
+          "feature2": "Permanenter Link mit Backlink-Wartung",
+          "feature3": "Überprüft und innerhalb von 1-2 Wochen gelistet",
+          "feature4": "Veröffentlichen Sie Ihr Produkt an dem Tag, an dem Sie möchten",
+          "limit1": "Backlink zu unserer Seite ist erforderlich",
+          "limit2": "Kein Kundensupport",
+          "cta": "Zur Überprüfung einreichen",
+          "backlinkRequired": "Kostenlose Auflistung erfordert einen Backlink zu unserer Seite."
+        },
+        "pro": {
+          "title": "Pro",
+          "popular": "BELIEBT",
+          "price": "4,99 €",
+          "feature1": "Erhalten Sie >= 3 dofollow-Links zur SEO-Steigerung",
+          "feature2": "Innerhalb von 48 Stunden gelistet",
+          "feature3": "Permanenter Link, kein Backlink erforderlich",
+          "feature4": "Empfohlene Platzierung an der Spitze der Listings",
+          "feature5": "Teilen über Social Media und Newsletter",
+          "feature6": "Premium-Kundensupport",
+          "cta": "Bezahlen & sofort veröffentlichen",
+          "comingSoonNote": "Sichere Zahlung über Creem. Sie werden nach dem Einreichen zur Kasse weitergeleitet."
+        }
+      },
+      "inclusionTips": {
+        "title": "Einreichungsrichtlinien",
+        "items": [
+          "Nur KI-bezogene Tools oder Websites werden akzeptiert. Nicht-KI-Tools werden abgelehnt",
+          "Die Tool-Website muss erreichbar sein. Defekte oder nicht erreichbare Links werden abgelehnt",
+          "Wir akzeptieren keine Tools oder Websites im Zusammenhang mit Erwachseneninhalten, Glücksspiel oder anderen Grauzonen-Branchen",
+          "Einreichungen mit identischer Funktionalität zu bereits gelisteten Tools können abgelehnt werden",
+          "Kostenlose Plan-Einreichungen erfordern einen Backlink zu unserer Seite auf Ihrer Website"
+        ]
+      },
+      "backlinkNotice": {
+        "title": "Backlink-Erkennungs-Hinweis",
+        "message": "Wir haben festgestellt, dass Ihre Website keinen Backlink zu uns enthält. Bitte fügen Sie einen Backlink auf Ihrer Website hinzu und reichen Sie dann erneut zur Überprüfung ein.",
+        "badgeTab": "Badge",
+        "textLinkTab": "Text-Link",
+        "themeLabel": "Badge-Thema wechseln:",
+        "dark": "Dunkel",
+        "light": "Hell",
+        "copyCode": "Code kopieren",
+        "preview": "Vorschau:",
+        "gotIt": "Verstanden",
+        "payAndPublish": "Bezahlen & sofort veröffentlichen"
+      },
+      "examples": {
+        "title": "Beispiel-Tools",
+        "description": "Hier sind einige Tools, die wir bereits vorgestellt haben und die Sie als Referenz verwenden können:",
+        "visitWebsite": "Website besuchen"
+      },
+      "form": {
+        "toolName": "Tool-Name",
+        "toolUrl": "Tool-URL",
+        "description": "Beschreibung",
+        "descriptionOptional": "Optional: Erzählen Sie uns mehr über dieses Tool",
+        "yourEmail": "Ihre E-Mail",
+        "emailHint": "Wir kontaktieren Sie, wenn wir Fragen haben",
+        "submitButton": "Tool einreichen",
+        "submitting": "Wird eingereicht...",
+        "logo": {
+          "label": "Logo",
+          "description": "Unterstützt JPEG, PNG, WebP · Max. 1MB",
+          "uploading": "Wird hochgeladen...",
+          "uploadLogo": "Logo hochladen",
+          "dragOrClick": "Ziehen oder klicken zum Hochladen"
+        },
+        "screenshot": {
+          "label": "Screenshot",
+          "description": "Unterstützt JPEG, PNG, WebP · Max. 5MB",
+          "uploading": "Wird hochgeladen...",
+          "dragOrClick": "Ziehen oder klicken zum Hochladen des Screenshots",
+          "addScreenshot": "Screenshot hinzufügen",
+          "selected": "Ausgewählt {count} / {max}"
+        },
+        "upload": {
+          "error": {
+            "invalidFormat": "Nur JPEG-, PNG-, WebP-Formate werden unterstützt",
+            "tooLarge": "Dateigröße darf {size}MB nicht überschreiten",
+            "uploadFailed": "Upload fehlgeschlagen, bitte erneut versuchen",
+            "maxImages": "Maximal {max} Screenshots erlaubt"
+          }
+        },
+        "loginRequired": {
+          "title": "Anmeldung erforderlich",
+          "description": "Sie müssen angemeldet sein, um ein Tool einzureichen. Bitte melden Sie sich zuerst an.",
+          "button": "Jetzt anmelden"
+        },
+        "success": {
+          "title": "Einreichung erfolgreich!",
+          "message": "Vielen Dank für Ihre Einreichung! Wir werden sie bald überprüfen.",
+          "continuePrompt": "✨ Sie können weitere Tools einreichen",
+          "continueSubmit": "Weiteres Tool einreichen",
+          "viewSubmissions": "Meine Einreichungen anzeigen",
+          "reviewNote": "Wir werden Ihre Einreichung innerhalb von 1-2 Wochen überprüfen."
+        },
+        "errors": {
+          "checkForm": "Bitte überprüfen Sie das Formular auf Fehler.",
+          "duplicateToolName": "Ein Tool mit diesem Namen wurde bereits eingereicht."
+        },
+        "viewBacklinkInstructions": "Backlink-Anweisungen anzeigen",
+        "backlinkVerification": {
+          "title": "Backlink-Verifizierung erforderlich",
+          "description": "Kostenlose Einreichung erfordert einen Backlink zu unserer Seite. Bitte fügen Sie zuerst einen Link auf Ihrer Website hinzu.",
+          "verifyButton": "Backlink verifizieren",
+          "verifying": "Wird verifiziert...",
+          "verified": "Verifiziert!",
+          "notFound": "Kein Backlink gefunden. Bitte fügen Sie einen Link zu unserer Seite hinzu und versuchen Sie es erneut.",
+          "enterUrlFirst": "Bitte geben Sie zuerst die Tool-URL ein",
+          "error": "Backlink-Verifizierung fehlgeschlagen. Bitte erneut versuchen.",
+          "dialogAutoVerifyFailed": "Wir haben festgestellt, dass Ihre Website keinen Backlink zu uns enthält. Bitte fügen Sie einen Backlink auf Ihrer Website hinzu und klicken Sie dann auf Verifizieren.",
+          "checkingBacklink": "Backlink wird überprüft...",
+          "step1": "Kopieren Sie den unten stehenden Code und fügen Sie ihn auf Ihrer Website ein.",
+          "step2": "Kommen Sie hierher zurück und klicken Sie auf 'Backlink verifizieren'."
+        }
+      }
+    },
+    "similarTools": {
+      "matchedTags": "{count} passende Tags"
+    }
+  }
+}

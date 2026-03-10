@@ -1,0 +1,226 @@
+{
+  "batchIndex": 7,
+  "successful": [
+    {
+      "slug": "slack-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A Slack app is a software application built to extend and customize the functionality of Slack, a cloud-based team collaboration and communication platform. These apps integrate with Slack's API to add new features, automate workflows, and connect external services directly within the Slack workspace.\n\nSlack apps can range from simple bots that respond to commands to complex integrations that sync data between multiple systems. They leverage various Slack platform capabilities including slash commands, interactive components, event subscriptions, and webhooks. Common use cases include project management tools, customer support systems, CI/CD notifications, and custom workflow automation.\n\nDevelopers build Slack apps using Slack's APIs and SDKs, which support multiple programming languages. Apps can be distributed privately within an organization or published to the Slack App Directory for public use. The platform provides OAuth 2.0 for secure authentication and granular permission scopes to control data access.\n\nSlack apps have become essential for organizations seeking to centralize their workflows and reduce context-switching between tools. They enable teams to receive notifications, take actions, and access information from various services without leaving their communication hub, thereby improving productivity and collaboration efficiency."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Slack App（Slack 应用）是指在 Slack 协作平台上运行的第三方应用程序或集成工具。这些应用通过 Slack API 与平台交互，为团队提供扩展功能和自动化能力。\n\nSlack App 可以实现多种功能：接收和发送消息、创建自定义命令、添加交互式组件（如按钮、表单）、集成外部服务（如 GitHub、Jira、Google Drive）、自动化工作流程等。开发者可以使用 Slack 提供的 SDK 和 API 构建自定义应用，也可以从 Slack App Directory 安装现成的应用。\n\n从技术架构角度，Slack App 通常包含以下组件：Bot 用户（用于自动化交互）、Slash 命令（快捷指令）、事件订阅（监听平台事件）、OAuth 认证（权限管理）等。应用可以部署在开发者自己的服务器上，通过 Webhook 或 Socket Mode 与 Slack 通信。\n\nSlack App 广泛应用于企业协作场景，帮助团队提升沟通效率、自动化重复任务、整合工作流程，是现代 SaaS 生态系统中平台化战略的典型实践。"
+        }
+      },
+      "en": {
+        "name": "Slack App",
+        "description": "Software applications that extend Slack's functionality through API integrations, bots, and workflow automation"
+      },
+      "zh": {
+        "name": "Slack 应用",
+        "description": "通过 API 集成、机器人和工作流自动化扩展 Slack 功能的软件应用程序"
+      }
+    },
+    {
+      "slug": "discord-bot",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Discord is an instant messaging and VoIP social platform that allows communication through voice calls, video calls, text messaging, and media. Communication can be private or in virtual communities called \"servers\". A server is a collection of persistent chat rooms and voice channels accessed by invitation links. Discord runs on Windows, macOS, Android, iOS, iPadOS, Linux, and in web browsers."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Discord Bot（Discord 机器人）是运行在 Discord 平台上的自动化应用程序，通过 Discord API 与服务器和用户进行交互。这些机器人可以执行各种自动化任务，包括消息管理、用户管理、内容审核、游戏集成、音乐播放、数据统计等功能。\n\nDiscord Bot 通常使用 JavaScript（discord.js）、Python（discord.py）、Java（JDA）等编程语言开发，通过 WebSocket 连接与 Discord 服务器保持实时通信。开发者需要在 Discord Developer Portal 创建应用程序，获取 Bot Token 进行身份验证，并配置相应的权限和 Intent。\n\n在技术应用方面，Discord Bot 广泛用于社区管理、客户服务、游戏服务器管理、内容分发等场景。许多企业和开源项目使用 Discord Bot 来增强社区互动、自动化工作流程、提供实时通知服务。常见的功能包括斜杠命令（Slash Commands）、按钮交互、嵌入消息、语音频道控制等。\n\nDiscord Bot 的开发需要遵守 Discord 的服务条款和 API 使用限制，包括速率限制、数据隐私保护等规范。成熟的 Bot 通常会实现分片（Sharding）机制以支持大规模服务器部署。"
+        }
+      },
+      "en": {
+        "name": "Discord Bot",
+        "description": "Automated applications that interact with Discord servers via API for moderation, management, and engagement"
+      },
+      "zh": {
+        "name": "Discord 机器人",
+        "description": "通过 API 与 Discord 服务器交互的自动化应用，用于管理、审核和互动增强"
+      }
+    },
+    {
+      "slug": "telegram-bot",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Telegram is a cloud-based, cross-platform social media and instant messaging (IM) service. It launched for iOS on 14 August 2013 and Android on 20 October 2013. It allows users to exchange messages, share media and files, and hold private and group voice or video calls as well as public livestreams. It is available for Android, iOS, Windows, macOS, Linux, and web browsers. Telegram offers end-to-end encryption in voice and video calls, and optionally in private chats if both participants use a mobile device."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Telegram Bot 是基于 Telegram 即时通讯平台的自动化程序接口，允许开发者创建能够与用户进行交互的机器人应用。通过 Telegram Bot API，开发者可以构建各种功能的机器人，包括客服助手、内容推送、游戏、支付处理、群组管理等。\n\nTelegram Bot 具有以下特点：完全免费且无消息数量限制；支持丰富的交互方式，包括自定义键盘、内联按钮、命令系统；可处理文本、图片、视频、文件等多种媒体类型；提供 Webhook 和长轮询两种消息接收方式；支持端到端加密的私密对话。\n\n在技术应用层面，Telegram Bot 广泛用于自动化工作流、数据监控告警、内容分发、社群运营等场景。其开发门槛相对较低，支持多种编程语言，拥有活跃的开发者社区。许多企业和个人开发者利用 Telegram Bot 构建轻量级应用，作为传统 App 的补充或替代方案，特别在需要快速部署、跨平台访问的场景中表现出色。"
+        }
+      },
+      "en": {
+        "name": "Telegram Bot",
+        "description": "Automated programs built on Telegram's API for interactive messaging, automation, and service delivery"
+      },
+      "zh": {
+        "name": "Telegram 机器人",
+        "description": "基于 Telegram API 构建的自动化程序，用于交互式消息传递、自动化和服务交付"
+      }
+    },
+    {
+      "slug": "whatsapp-bot",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A WhatsApp bot is an automated software application that operates within the WhatsApp messaging platform to interact with users through programmatic responses and actions. These bots leverage WhatsApp's Business API to provide automated customer service, send notifications, process transactions, and deliver information without human intervention.\n\nWhatsApp bots are built using webhooks and API endpoints that receive and respond to incoming messages in real-time. They can handle various tasks including answering frequently asked questions, scheduling appointments, processing orders, sending delivery updates, and providing personalized recommendations. The bots utilize natural language processing (NLP) and predefined conversation flows to understand user intent and deliver contextually relevant responses.\n\nOrganizations across e-commerce, healthcare, finance, and customer support sectors deploy WhatsApp bots to scale their communication capabilities while maintaining the familiar messaging interface that billions of users worldwide already use. These bots can integrate with backend systems, CRM platforms, and databases to access real-time information and execute business logic.\n\nWhatsApp bots must comply with WhatsApp's Business Policy and Commerce Policy, ensuring they provide value to users, maintain transparency about their automated nature, and respect user privacy. They represent a crucial component of conversational commerce and automated customer engagement strategies in the modern digital ecosystem."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "WhatsApp Bot（WhatsApp 机器人）是一种基于 WhatsApp Business API 构建的自动化程序，用于在 WhatsApp 平台上实现智能对话和业务流程自动化。这类机器人能够自动响应用户消息、处理客户咨询、发送通知、执行预定任务等功能。\n\n在技术实现上，WhatsApp Bot 通过官方 Business API 或第三方集成平台与 WhatsApp 服务器通信，利用 Webhook、消息模板、自然语言处理等技术实现智能交互。开发者可以使用 Node.js、Python、Java 等编程语言结合 WhatsApp API 客户端库来构建机器人应用。\n\n在商业应用中，WhatsApp Bot 广泛用于客户服务、营销推广、订单管理、预约提醒等场景。企业通过部署 WhatsApp Bot 可以提供 7×24 小时即时响应，降低人工客服成本，提升客户体验。常见应用包括电商订单查询、餐饮外卖预订、银行账户查询、医疗预约提醒等。\n\n由于 WhatsApp 拥有超过 20 亿全球用户，WhatsApp Bot 已成为企业数字化转型和客户触达的重要工具，特别在拉美、印度、东南亚等 WhatsApp 高渗透率市场具有显著价值。"
+        }
+      },
+      "en": {
+        "name": "WhatsApp Bot",
+        "description": "Automated software that interacts with users on WhatsApp for customer service, notifications, and transactions"
+      },
+      "zh": {
+        "name": "WhatsApp 机器人",
+        "description": "在 WhatsApp 平台上实现智能对话和业务流程自动化的程序"
+      }
+    },
+    {
+      "slug": "text-to-image",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Text-to-image refers to a category of artificial intelligence systems that generate visual images from natural language descriptions. These models use deep learning architectures, typically based on diffusion models, GANs (Generative Adversarial Networks), or transformer-based approaches, to interpret textual prompts and synthesize corresponding images.\n\nThe technology works by training on large datasets of image-text pairs, learning the relationships between linguistic concepts and visual representations. When given a text prompt, the model translates semantic information into pixel-level visual output, enabling users to create images ranging from photorealistic scenes to artistic illustrations without traditional design skills.\n\nText-to-image systems have significant applications across multiple domains: content creation for marketing and advertising, rapid prototyping in design workflows, concept visualization for creative industries, educational materials generation, and accessibility tools for visual communication. Popular implementations include DALL-E, Midjourney, and Stable Diffusion.\n\nKey technical considerations include prompt engineering (crafting effective text descriptions), output resolution and quality, style control, ethical concerns around generated content authenticity, and potential copyright implications. The technology continues to evolve with improvements in image fidelity, semantic understanding, and user control over generation parameters."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "text-to-image（文本生成图像）是一种人工智能技术，能够根据用户输入的文本描述自动生成对应的图像内容。该技术基于深度学习模型，特别是扩散模型（Diffusion Models）和生成对抗网络（GANs），通过训练大规模图像-文本配对数据集，学习文本语义与视觉元素之间的映射关系。\n\n用户只需用自然语言描述想要的画面，如\"一只在月光下的橙色猫咪\"，系统即可生成相应的图像。这项技术广泛应用于数字艺术创作、广告设计、游戏开发、产品原型设计等领域，显著降低了视觉内容创作的门槛和成本。\n\n代表性的 text-to-image 模型包括 Stable Diffusion、DALL-E、Midjourney 等。这些模型支持多种艺术风格、分辨率和细节控制，使非专业用户也能快速生成高质量图像。随着技术发展，text-to-image 正在从简单的图像生成向可控编辑、风格迁移、图像修复等更复杂的应用场景延伸，成为 AIGC（AI Generated Content）领域的核心技术之一。"
+        }
+      },
+      "en": {
+        "name": "Text-to-Image Generation",
+        "description": "AI systems that create visual images from natural language descriptions using deep learning models"
+      },
+      "zh": {
+        "name": "文本生成图像",
+        "description": "通过深度学习模型将自然语言描述转换为视觉图像的人工智能系统"
+      }
+    },
+    {
+      "slug": "image-to-image",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Image-to-image refers to a class of AI models and techniques that transform one image into another while preserving certain structural or semantic characteristics. These models take an input image and generate a modified output image based on specified parameters, styles, or conditions.\n\nIn machine learning, image-to-image translation encompasses various applications including style transfer, image enhancement, colorization, super-resolution, and domain adaptation. Popular architectures like pix2pix, CycleGAN, and diffusion-based models have demonstrated remarkable capabilities in tasks such as converting sketches to photorealistic images, transforming day scenes to night, or applying artistic styles while maintaining content structure.\n\nIn the context of generative AI and computer vision, image-to-image models are widely used for photo editing, medical imaging analysis, satellite imagery processing, and creative applications. Unlike text-to-image generation which creates images from textual descriptions, image-to-image workflows provide more precise control by using an existing image as the foundation, allowing users to modify specific attributes while preserving the overall composition.\n\nThese techniques have become essential tools in digital content creation, scientific visualization, and automated image processing pipelines, offering both professional and consumer applications across industries including entertainment, healthcare, architecture, and e-commerce."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**图像到图像转换（Image-to-Image）**\n\n图像到图像转换是一种计算机视觉和深度学习技术，指将输入图像转换为具有不同特征或风格的输出图像的过程。该技术通过训练神经网络模型学习输入图像与目标图像之间的映射关系，实现图像的智能转换和处理。\n\n在技术实现上，图像到图像转换通常采用生成对抗网络（GAN）、扩散模型（Diffusion Models）或变分自编码器（VAE）等深度学习架构。这些模型能够保持原始图像的结构信息，同时改变其视觉特征、风格或内容属性。\n\n主要应用场景包括：图像风格迁移（如将照片转换为艺术画作风格）、图像超分辨率重建、图像修复与去噪、语义分割图转真实图像、黑白照片上色、草图转真实图像等。在商业领域，该技术广泛应用于设计工具、照片编辑软件、游戏开发、建筑可视化、医学影像处理等场景。\n\n与文本到图像（Text-to-Image）生成不同，图像到图像转换以图像作为输入条件，能够更精确地控制输出结果的结构和布局，适合需要保持原始图像空间信息的应用场景。"
+        }
+      },
+      "en": {
+        "name": "Image-to-Image Translation",
+        "description": "AI models that transform input images into modified outputs while preserving structure and semantic characteristics"
+      },
+      "zh": {
+        "name": "图像到图像转换",
+        "description": "将输入图像转换为不同特征或风格的输出图像，同时保持结构和语义特征的 AI 模型"
+      }
+    },
+    {
+      "slug": "text-to-video",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "A text-to-video model is a form of generative artificial intelligence that uses a natural language description as input to produce a video relevant to the input text. Advancements during the 2020s in the generation of high-quality, text-conditioned videos have largely been driven by the development of video diffusion models."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**文本转视频 (Text-to-Video)**\n\n文本转视频是一种人工智能技术，能够根据用户输入的文本描述自动生成相应的视频内容。该技术基于深度学习模型，特别是扩散模型和生成对抗网络，通过理解文本语义来创建视觉场景、动作序列和视频效果。\n\n在技术实现上，文本转视频系统会解析文本中的关键信息，包括场景描述、人物动作、视觉风格等要素，然后逐帧生成连贯的视频画面。现代文本转视频模型能够处理复杂的时空关系，生成具有物理真实性和视觉连贯性的动态内容。\n\n该技术广泛应用于内容创作、广告制作、教育培训、游戏开发等领域。创作者可以通过简单的文字描述快速生成视频原型，大幅降低视频制作的时间成本和技术门槛。在商业应用中，文本转视频能够实现个性化营销内容的规模化生产，提升内容创作效率。\n\n代表性的文本转视频工具包括 Runway Gen-2、Pika、Stable Video Diffusion 等。随着技术发展，生成视频的质量、时长和可控性持续提升，正在重塑数字内容创作的工作流程。"
+        }
+      },
+      "en": {
+        "name": "Text-to-Video Generator",
+        "description": "AI tools that create videos from natural language descriptions using diffusion models"
+      },
+      "zh": {
+        "name": "文本转视频生成器",
+        "description": "通过文本描述自动生成视频内容的人工智能工具"
+      }
+    },
+    {
+      "slug": "text-to-speech",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Speech synthesis is the artificial production of human speech. A computer system used for this purpose is called a speech synthesizer, and can be implemented in software or hardware products. A text-to-speech (TTS) system converts normal language text into speech; other systems render symbolic linguistic representations like phonetic transcriptions into speech. The reverse process is speech recognition."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "文本转语音（Text-to-Speech，简称TTS）是一种将书面文字自动转换为语音输出的技术。该技术通过自然语言处理和语音合成算法，将文本内容转化为可听的语音，使计算机能够\"朗读\"文字信息。\n\n在技术实现上，TTS系统通常包含文本分析、语言处理、韵律生成和语音合成等核心模块。现代TTS技术广泛采用深度学习和神经网络模型，能够生成更加自然流畅、接近真人发音的语音效果，支持多种语言、方言和音色选择。\n\n在应用领域，文本转语音技术被广泛用于：辅助视障人士阅读数字内容、智能语音助手、有声读物制作、导航系统语音播报、客服机器人、在线教育平台、多媒体内容创作等场景。该技术显著提升了信息的可访问性和用户体验，是人机交互和无障碍设计的重要组成部分。\n\n随着AI技术的发展，TTS正朝着更高的自然度、表现力和个性化方向演进，成为语音交互生态中不可或缺的基础能力。"
+        }
+      },
+      "en": {
+        "name": "Text-to-Speech",
+        "description": "Technology that converts written text into natural-sounding spoken audio output"
+      },
+      "zh": {
+        "name": "文本转语音",
+        "description": "将书面文字自动转换为自然流畅语音输出的技术"
+      }
+    },
+    {
+      "slug": "speech-to-text",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Speech-to-text (STT), also known as automatic speech recognition (ASR), is a technology that converts spoken language into written text in real-time or from recorded audio. This feature utilizes machine learning algorithms, natural language processing, and acoustic models to analyze audio input, identify phonemes, words, and sentences, then transcribe them into digital text format.\n\nIn technical applications, speech-to-text serves as a critical component in voice assistants, transcription services, accessibility tools, and voice-controlled interfaces. The technology processes audio signals through multiple stages: audio preprocessing, feature extraction, acoustic modeling, language modeling, and decoding to produce accurate text output.\n\nCommon use cases include virtual assistants (Siri, Alexa, Google Assistant), meeting transcription software, medical dictation systems, customer service automation, and accessibility features for hearing-impaired users. Modern STT systems leverage deep learning architectures like recurrent neural networks (RNNs) and transformers to achieve high accuracy across multiple languages, accents, and acoustic environments.\n\nKey performance metrics include word error rate (WER), real-time factor, and latency. Implementation considerations involve handling background noise, speaker variability, domain-specific vocabulary, and privacy concerns related to audio data processing. Cloud-based and on-device STT solutions offer different trade-offs between accuracy, speed, and data security."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**语音转文本 (Speech-to-Text)**\n\n语音转文本是一种将人类语音信号自动转换为可读文字的技术功能。该技术基于自动语音识别（ASR）算法，通过分析音频波形、提取声学特征，并结合语言模型进行解码，最终输出对应的文本内容。\n\n在技术实现层面，语音转文本系统通常包含声学模型、语言模型和解码器三个核心组件。现代解决方案多采用深度学习技术，如循环神经网络（RNN）、长短期记忆网络（LSTM）或Transformer架构，以提高识别准确率和处理效率。\n\n该功能广泛应用于多个商业场景：智能助手（如Siri、Alexa）的语音交互、会议记录自动化、客服系统的通话转录、视频字幕生成、医疗病历录入、无障碍辅助工具等。在企业级应用中，语音转文本技术能够显著提升工作效率，降低人工成本，并为后续的文本分析、情感识别等高级功能提供数据基础。\n\n主流云服务提供商如Google Cloud、AWS、Azure均提供成熟的语音转文本API服务，支持多语言、实时转录、说话人识别等高级特性。"
+        }
+      },
+      "en": {
+        "name": "Speech-to-Text",
+        "description": "Technology that converts spoken language into written text using AI and speech recognition"
+      },
+      "zh": {
+        "name": "语音转文本",
+        "description": "使用人工智能和语音识别技术将口语转换为书面文字的功能"
+      }
+    },
+    {
+      "slug": "text-to-music",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Text-to-music refers to AI-powered technology that generates musical compositions from textual descriptions or prompts. This capability leverages deep learning models, particularly generative AI architectures like transformers and diffusion models, to interpret natural language input and synthesize corresponding audio output in the form of music.\n\nUsers can describe desired musical characteristics such as genre, mood, tempo, instrumentation, and style through text prompts (e.g., \"upbeat jazz piano with saxophone,\" \"melancholic orchestral piece\"), and the system produces original musical content matching those specifications. The technology typically employs large-scale training on diverse musical datasets to understand relationships between linguistic descriptions and acoustic features.\n\nText-to-music systems find applications across multiple domains including content creation for videos, games, and advertisements; rapid prototyping for composers and producers; personalized music generation for listeners; and accessibility tools for non-musicians to express musical ideas. Commercial implementations include platforms like MusicLM, MusicGen, and Stable Audio.\n\nThis technology represents a significant advancement in creative AI, democratizing music production while raising important discussions about copyright, artistic authenticity, and the role of human creativity in musical composition. As the field evolves, text-to-music capabilities continue to improve in audio quality, stylistic accuracy, and controllability."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "text-to-music（文本生成音乐）是一种人工智能技术功能，能够根据用户输入的文本描述自动创作和生成音乐作品。该技术基于深度学习模型，通过理解文本中的情感、风格、节奏、乐器等语义信息，将其转换为相应的音乐元素和旋律。\n\n用户可以通过自然语言描述期望的音乐特征，例如\"轻快的钢琴曲，带有爵士风格\"或\"史诗般的管弦乐配乐\"，系统即可生成符合描述的音频文件。这项技术广泛应用于内容创作、游戏开发、影视配乐、广告制作等领域，显著降低了音乐创作的门槛和成本。\n\ntext-to-music 技术通常采用生成对抗网络（GAN）、变分自编码器（VAE）或扩散模型等架构，经过大量音乐数据集训练。代表性应用包括 Google 的 MusicLM、Meta 的 MusicGen 等。该功能使非专业用户也能快速获得定制化的音乐内容，推动了 AI 辅助创作工具的普及和发展。"
+        }
+      },
+      "en": {
+        "name": "Text-to-Music Generator",
+        "description": "AI technology that creates original musical compositions from natural language descriptions and prompts"
+      },
+      "zh": {
+        "name": "文本生成音乐",
+        "description": "根据自然语言描述自动创作和生成音乐作品的人工智能技术"
+      }
+    }
+  ],
+  "failed": []
+}

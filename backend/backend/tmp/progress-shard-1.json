@@ -1,0 +1,30 @@
+{
+  "completedSlugs": [
+    "ai-art-generator",
+    "ai-code-assistant",
+    "ai-translation-tool",
+    "ai-writing-assistant",
+    "api",
+    "audio-editing",
+    "backlink-analysis",
+    "bug-detection",
+    "cloud-storage",
+    "code-refactoring",
+    "comment-system",
+    "content-marketing",
+    "data-analysis",
+    "debugging-tool"
+  ],
+  "failed": [
+    {
+      "slug": "ai-logo-generator",
+      "reason": "fr: invalid description length"
+    },
+    {
+      "slug": "crm-tool",
+      "reason": "write CONNECTION_CLOSED ep-green-mouse-ahikch8z-pooler.c-3.us-east-1.aws.neon.tech:5432"
+    }
+  ],
+  "updatedRows": 140,
+  "lastUpdatedAt": "2026-03-06T16:17:24.216Z"
+}

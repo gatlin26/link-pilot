@@ -1,0 +1,2220 @@
+{
+  "Metadata": {
+    "name": "BuildWay",
+    "title": "BuildWay - Découvrez les Meilleurs Outils IA | Annuaire d'Outils IA",
+    "description": "Découvrez et explorez les meilleurs outils IA pour tous vos besoins. Votre annuaire ultime d'outils IA avec collections sélectionnées, avis et recommandations."
+  },
+  "ImageTask": {
+    "submitting": "Envoi de la tâche...",
+    "submitted": "Tâche envoyée, génération en cours...",
+    "generating": "Génération en cours...",
+    "queuing": "Tâche en file d'attente...",
+    "completed": "Génération terminée !",
+    "cancelled": "Annulé",
+    "generationFailed": "Échec de la génération, veuillez réessayer",
+    "submitError": "Échec de l'envoi, veuillez réessayer",
+    "submitFailed": "Échec de l'envoi : {status}",
+    "requestFailed": "Échec de la requête : {status}",
+    "networkError": "Erreur réseau, veuillez réessayer",
+    "timeout": "Délai d'attente dépassé, veuillez réessayer plus tard"
+  },
+  "Common": {
+    "premium": "Premium",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "signUp": "Inscription",
+    "language": "Changer de langue",
+    "mode": {
+      "label": "Changer de mode",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    },
+    "theme": {
+      "label": "Changer de thème",
+      "default": "Par défaut",
+      "blue": "Bleu",
+      "green": "Vert",
+      "amber": "Ambre",
+      "neutral": "Neutre"
+    },
+    "copy": "Copier",
+    "saving": "Enregistrement...",
+    "save": "Enregistrer",
+    "loading": "Chargement...",
+    "cancel": "Annuler",
+    "logoutFailed": "Échec de la déconnexion",
+    "table": {
+      "totalRecords": "Total de {count} enregistrements",
+      "noResults": "Aucun résultat",
+      "loading": "Chargement...",
+      "columns": "Colonnes",
+      "rowsPerPage": "Lignes par page",
+      "page": "Page",
+      "firstPage": "Première page",
+      "lastPage": "Dernière page",
+      "nextPage": "Page suivante",
+      "previousPage": "Page précédente",
+      "ascending": "Croissant",
+      "descending": "Décroissant"
+    }
+  },
+  "PricingPage": {
+    "title": "Soumettre Votre Outil IA",
+    "description": "Faites apparaître votre outil IA dans notre annuaire",
+    "subtitle": "Payez une fois, utilisez à tout moment. Aucun abonnement requis.",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "submitTool": {
+      "title": "Faites Apparaître Votre Outil IA",
+      "subtitle": "Atteignez des milliers d'utilisateurs potentiels en référençant votre outil IA dans notre annuaire",
+      "badge": "Paiement Unique",
+      "packageName": "Soumission d'Outil",
+      "packageDescription": "Obtenez un placement permanent dans notre annuaire d'outils IA",
+      "oneTime": "Paiement unique, référencement à vie",
+      "submitButton": "Soumettre Votre Outil"
+    },
+    "PricingCard": {
+      "freePrice": "0 €",
+      "perMonth": "/mois",
+      "perYear": "/an",
+      "popular": "Le Plus Populaire",
+      "currentPlan": "Plan Actuel",
+      "yourCurrentPlan": "Votre Plan Actuel",
+      "getStartedForFree": "Inscription Gratuite",
+      "getLifetimeAccess": "Accès à Vie",
+      "getStarted": "Acheter Maintenant",
+      "notAvailable": "Non Disponible",
+      "daysTrial": "Essai gratuit de {days} jours"
+    },
+    "CheckoutButton": {
+      "loading": "Chargement...",
+      "checkoutFailed": "Échec de l'ouverture de la page de paiement",
+      "checkoutNetworkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer."
+    },
+    "credits": {
+      "features": {
+        "allModels": "Accès à tous les modèles IA",
+        "noExpiry": "Crédits valables 1 an",
+        "standardSupport": "Support standard",
+        "prioritySupport": "Support prioritaire",
+        "bestValue": "Meilleur rapport qualité-prix",
+        "bulkDiscount": "Meilleure remise en volume"
+      },
+      "registerGift": "Inscrivez-vous maintenant et recevez {amount} crédits gratuits !",
+      "validityNotice": "Les crédits des forfaits actuels sont valables 1 an"
+    },
+    "faqs": {
+      "title": "Questions Fréquemment Posées",
+      "subtitle": "Tout ce que vous devez savoir sur nos forfaits de crédits",
+      "items": {
+        "item-1": {
+          "question": "Quelle est la durée de validité des crédits ?",
+          "answer": "Les crédits achetés dans nos forfaits sont valables 1 an à partir de la date d'achat. Vous pouvez les utiliser à tout moment pendant cette période pour toute fonctionnalité de retouche photo IA."
+        },
+        "item-2": {
+          "question": "Comment acheter des crédits ?",
+          "answer": "Choisissez simplement un forfait de crédits qui correspond à vos besoins et cliquez sur 'Acheter Maintenant'. Vous serez redirigé vers une page de paiement sécurisée où vous pourrez finaliser votre achat par carte bancaire ou autres méthodes de paiement acceptées."
+        },
+        "item-3": {
+          "question": "Quelle est la différence entre les forfaits ?",
+          "answer": "Starter (200 crédits) est parfait pour les débutants. Popular (1000 crédits) offre le meilleur rapport qualité-prix avec support prioritaire. Pro (3000 crédits) offre la meilleure remise en volume pour les professionnels qui ont besoin de plus de crédits."
+        },
+        "item-4": {
+          "question": "Puis-je utiliser les crédits pour toutes les fonctionnalités IA ?",
+          "answer": "Oui ! Tous les crédits achetés peuvent être utilisés pour toute fonctionnalité de retouche photo IA sur notre plateforme, y compris la suppression d'arrière-plan, l'amélioration d'image, la mise à l'échelle et tous les autres modèles IA."
+        },
+        "item-5": {
+          "question": "Que se passe-t-il si mes crédits expirent ?",
+          "answer": "Les crédits expirent 1 an après l'achat. Nous vous recommandons de les utiliser avant l'expiration. Vous pouvez consulter votre solde de crédits et la date d'expiration dans votre tableau de bord."
+        },
+        "item-6": {
+          "question": "Puis-je transférer des crédits vers un autre compte ?",
+          "answer": "Non, les crédits ne sont pas transférables et sont liés au compte qui les a achetés. Cela nous aide à maintenir la sécurité et à prévenir la fraude."
+        },
+        "item-7": {
+          "question": "Proposez-vous des remboursements ?",
+          "answer": "Nous proposons des remboursements dans les 30 jours suivant l'achat si vous n'avez pas utilisé plus de 10% de vos crédits. Veuillez contacter notre équipe de support pour toute demande de remboursement."
+        },
+        "item-8": {
+          "question": "Quels modes de paiement acceptez-vous ?",
+          "answer": "Nous acceptons toutes les principales cartes de crédit, cartes de débit et PayPal. Tous les paiements sont traités en toute sécurité via Stripe, garantissant la protection de vos informations de paiement."
+        }
+      }
+    },
+    "modelCredits": {
+      "badge": "Modèles IA",
+      "title": "Utilisation des Crédits par Modèle",
+      "subtitle": "Différents modèles ont des fonctionnalités uniques et des coûts en crédits. Choisissez celui qui correspond le mieux à vos besoins.",
+      "columns": {
+        "model": "Nom du Modèle",
+        "features": "Fonctionnalités",
+        "useCases": "Cas d'Usage",
+        "credits": "Crédits"
+      },
+      "tags": {
+        "fastGeneration": "Génération Rapide",
+        "strongConsistency": "Forte Cohérence",
+        "strongComprehension": "Forte Compréhension",
+        "4kHd": "4K HD",
+        "multiImageGen": "Génération Multi-Images",
+        "ultraFast": "Ultra Rapide",
+        "highQuality": "Haute Qualité",
+        "asyncProcess": "Traitement Asynchrone"
+      },
+      "useCases": {
+        "nano-banana": "Génération rapide, créations quotidiennes, publications sur réseaux sociaux",
+        "nano-banana-pro": "Sortie haute résolution, usage commercial, matériaux d'impression",
+        "seedream-4-5": "Génération par lots, cohérence de style, création de séries",
+        "z-image-turbo": "Aperçu instantané, itération rapide, exploration créative"
+      },
+      "perGeneration": "crédits/gén",
+      "note": "La consommation de crédits varie selon le modèle. Les modèles premium offrent une qualité de sortie supérieure."
+    }
+  },
+  "PricePlans": {
+    "free": {
+      "name": "Gratuit",
+      "description": "Essayez la retouche photo IA gratuitement",
+      "features": {
+        "feature-1": "2 crédits par mois",
+        "feature-2": "Taille max du fichier 2 Mo",
+        "feature-3": "Résolution max 1024×1024",
+        "feature-4": "File de traitement standard",
+        "feature-5": "Conservation de l'historique 60 jours",
+        "feature-6": "Support communautaire"
+      },
+      "limits": {}
+    },
+    "basic": {
+      "name": "Basique",
+      "description": "Pour les besoins quotidiens de retouche photo",
+      "features": {
+        "feature-1": "200 crédits/mois",
+        "feature-2": "Taille max du fichier 20 Mo",
+        "feature-3": "Résolution max 2048×2048",
+        "feature-4": "File de traitement standard",
+        "feature-5": "Conservation de l'historique 1 an",
+        "feature-6": "Support par email (réponse 48h)"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Pour les professionnels et utilisateurs intensifs",
+      "features": {
+        "feature-1": "500 crédits/mois",
+        "feature-2": "Taille max du fichier 20 Mo",
+        "feature-3": "Résolution max 4096×4096 (4K)",
+        "feature-4": "File de traitement prioritaire",
+        "feature-5": "Conservation permanente de l'historique",
+        "feature-6": "Sauvegarder les préréglages personnalisés",
+        "feature-7": "Support prioritaire (réponse 24h)",
+        "feature-8": "Accès anticipé aux nouvelles fonctionnalités"
+      }
+    }
+  },
+  "CreditPackages": {
+    "starter": {
+      "name": "Starter",
+      "description": "Parfait pour les débutants"
+    },
+    "popular": {
+      "name": "Populaire",
+      "description": "Meilleur rapport qualité-prix"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Pour les professionnels"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "Désolé, la page que vous recherchez n'existe pas.",
+    "backToHome": "Retour à l'accueil"
+  },
+  "ErrorPage": {
+    "title": "Oups ! Une erreur s'est produite !",
+    "tryAgain": "Réessayer",
+    "backToHome": "Retour à l'accueil"
+  },
+  "AboutPage": {
+    "title": "À Propos",
+    "description": "BuildWay est votre annuaire ultime d'outils IA. Découvrez, comparez et choisissez les meilleurs outils IA pour vos projets.",
+    "authorName": "BuildWay",
+    "authorBio": "Annuaire et Plateforme de Découverte d'Outils IA",
+    "introduction": "BuildWay est un annuaire sélectionné des meilleurs outils IA disponibles. Que vous soyez développeur, designer, marketeur ou entrepreneur, nous vous aidons à découvrir et comparer les outils IA pour trouver la solution parfaite à vos besoins. Des outils de productivité à l'IA créative, nous simplifions la recherche du bon outil IA.",
+    "talkWithMe": "Contactez-Nous",
+    "followMe": "Suivez-nous"
+  },
+  "ChangelogPage": {
+    "title": "Journal des Modifications",
+    "description": "Suivez notre parcours alors que nous améliorons et développons continuellement notre annuaire d'outils IA",
+    "subtitle": "Chaque mise à jour apporte de nouveaux outils et de meilleures fonctionnalités",
+    "startPoint": "Où tout a commencé",
+    "latestVersion": "Dernière"
+  },
+  "ContactPage": {
+    "title": "Contact",
+    "description": "Nous vous aiderons à trouver le plan adapté à votre entreprise",
+    "subtitle": "Nous vous aiderons à trouver le plan adapté à votre entreprise",
+    "form": {
+      "title": "Contactez-Nous",
+      "description": "Si vous avez des questions ou des commentaires, veuillez contacter notre équipe",
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer",
+      "submitting": "Envoi en cours...",
+      "success": "Message envoyé avec succès",
+      "fail": "Échec de l'envoi du message",
+      "nameMinLength": "Le nom doit contenir au moins 3 caractères",
+      "nameMaxLength": "Le nom ne doit pas dépasser 30 caractères",
+      "emailValidation": "Veuillez entrer une adresse email valide",
+      "messageMinLength": "Le message doit contenir au moins 10 caractères",
+      "messageMaxLength": "Le message ne doit pas dépasser 500 caractères"
+    }
+  },
+  "WaitlistPage": {
+    "title": "Liste d'Attente",
+    "description": "Rejoignez notre liste d'attente pour le lancement de notre produit",
+    "subtitle": "Rejoignez notre liste d'attente pour le lancement de notre produit",
+    "form": {
+      "title": "Rejoignez Notre Liste d'Attente",
+      "description": "Nous vous notifierons lors du lancement de notre produit",
+      "email": "Email",
+      "subscribe": "S'abonner",
+      "subscribing": "Abonnement en cours...",
+      "success": "Abonnement réussi",
+      "fail": "Échec de l'abonnement",
+      "emailValidation": "Veuillez entrer une adresse email valide"
+    }
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Rejoignez la communauté",
+    "description": "Abonnez-vous à notre newsletter pour les dernières actualités et mises à jour",
+    "form": {
+      "email": "Email",
+      "subscribe": "S'abonner",
+      "subscribing": "Abonnement en cours...",
+      "success": "Abonnement réussi",
+      "fail": "Échec de l'abonnement",
+      "emailValidation": "Veuillez entrer une adresse email valide"
+    }
+  },
+  "AuthPage": {
+    "login": {
+      "title": "Connexion",
+      "welcomeBack": "Bon retour",
+      "email": "Email",
+      "password": "Mot de passe",
+      "signIn": "Se connecter",
+      "signUpHint": "Vous n'avez pas de compte ? Inscrivez-vous",
+      "forgotPassword": "Mot de passe oublié ?",
+      "signInWithGoogle": "Se connecter avec Google",
+      "signInWithGitHub": "Se connecter avec GitHub",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "or": "Ou continuer avec",
+      "emailRequired": "Veuillez entrer votre email",
+      "passwordRequired": "Veuillez entrer votre mot de passe",
+      "captchaInvalid": "Échec de la vérification captcha",
+      "captchaError": "Erreur de vérification captcha"
+    },
+    "register": {
+      "title": "Inscription",
+      "createAccount": "Créer un compte",
+      "name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "signUp": "S'inscrire",
+      "signInHint": "Vous avez déjà un compte ? Connectez-vous",
+      "checkEmail": "Veuillez vérifier votre boîte de réception",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "nameRequired": "Veuillez entrer votre nom",
+      "emailRequired": "Veuillez entrer votre email",
+      "passwordRequired": "Veuillez entrer votre mot de passe",
+      "captchaInvalid": "Échec de la vérification captcha",
+      "captchaError": "Erreur de vérification captcha"
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "email": "Email",
+      "send": "Envoyer le lien de réinitialisation",
+      "backToLogin": "Retour à la connexion",
+      "checkEmail": "Veuillez vérifier votre boîte de réception",
+      "emailRequired": "Veuillez entrer votre email"
+    },
+    "resetPassword": {
+      "title": "Réinitialiser le mot de passe",
+      "password": "Mot de passe",
+      "reset": "Réinitialiser le mot de passe",
+      "backToLogin": "Retour à la connexion",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "minLength": "Le mot de passe doit contenir au moins 8 caractères"
+    },
+    "error": {
+      "title": "Oups ! Une erreur s'est produite !",
+      "tryAgain": "Veuillez réessayer.",
+      "backToLogin": "Retour à la connexion",
+      "checkEmail": "Veuillez vérifier votre boîte de réception"
+    },
+    "common": {
+      "termsOfService": "Conditions d'Utilisation",
+      "privacyPolicy": "Politique de Confidentialité",
+      "byClickingContinue": "En cliquant sur continuer, vous acceptez nos ",
+      "and": " et "
+    }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "description": "Analyses d'outils IA, tendances de l'industrie et guides d'experts",
+    "subtitle": "Restez informé des dernières actualités sur les outils IA et la technologie",
+    "author": "Auteur",
+    "categories": "Catégories",
+    "tableOfContents": "Table des Matières",
+    "readTime": "{minutes} min de lecture",
+    "readTimeShort": "{minutes} min",
+    "all": "Tout",
+    "noPostsFound": "Aucun article trouvé",
+    "allPosts": "Tous les Articles",
+    "morePosts": "Plus d'Articles"
+  },
+  "DocsPage": {
+    "toc": "Table des Matières",
+    "search": "Rechercher dans la documentation",
+    "lastUpdate": "Dernière mise à jour le",
+    "searchNoResult": "Aucun résultat",
+    "previousPage": "Précédent",
+    "nextPage": "Suivant",
+    "chooseLanguage": "Sélectionner la langue",
+    "title": "Documentation MkSaaS",
+    "homepage": "Page d'accueil"
+  },
+  "PremiumContent": {
+    "title": "Débloquer le Contenu Premium",
+    "description": "Abonnez-vous à notre plan Pro pour accéder à tout le contenu premium et exclusif.",
+    "upgradeCta": "Passer à Pro",
+    "benefit1": "Tout le contenu premium",
+    "benefit2": "Contenu exclusif",
+    "benefit3": "Annulation à tout moment",
+    "signIn": "Se connecter",
+    "loginRequired": "Connectez-vous pour continuer la lecture",
+    "loginDescription": "Ceci est un contenu premium. Connectez-vous à votre compte pour accéder au contenu complet.",
+    "checkingAccess": "Vérification de l'accès...",
+    "loadingContent": "Chargement du contenu complet..."
+  },
+  "Marketing": {
+    "navbar": {
+      "tools": {
+        "title": "Outils"
+      },
+      "submit": {
+        "title": "Soumettre un Outil"
+      },
+      "features": {
+        "title": "Fonctionnalités"
+      },
+      "pricing": {
+        "title": "Tarifs"
+      },
+      "blog": {
+        "title": "Blog"
+      },
+      "about": {
+        "title": "À Propos"
+      },
+      "docs": {
+        "title": "Docs"
+      },
+      "ai": {
+        "title": "Outils IA",
+        "items": {
+          "text": {
+            "title": "IA Texte",
+            "description": "Montrez comment utiliser l'IA pour écrire du texte magnifique"
+          },
+          "image": {
+            "title": "IA Image",
+            "description": "Montrez comment utiliser l'IA pour générer de belles images"
+          },
+          "chat": {
+            "title": "IA Chat",
+            "description": "Montrez comment utiliser l'IA pour discuter avec vos clients"
+          },
+          "video": {
+            "title": "IA Vidéo",
+            "description": "Montrez comment utiliser l'IA pour générer des vidéos incroyables"
+          },
+          "audio": {
+            "title": "IA Audio",
+            "description": "Montrez comment utiliser l'IA pour générer de l'audio merveilleux"
+          }
+        }
+      },
+      "pages": {
+        "title": "Pages",
+        "items": {
+          "about": {
+            "title": "À Propos",
+            "description": "En savoir plus sur notre entreprise, notre mission et nos valeurs"
+          },
+          "contact": {
+            "title": "Contact",
+            "description": "Contactez notre équipe pour le support ou les demandes"
+          },
+          "waitlist": {
+            "title": "Liste d'Attente",
+            "description": "Rejoignez notre liste d'attente pour les dernières actualités et mises à jour"
+          },
+          "changelog": {
+            "title": "Journal des Modifications",
+            "description": "Voir les dernières mises à jour de nos produits"
+          },
+          "roadmap": {
+            "title": "Feuille de Route",
+            "description": "Explorez nos plans futurs et fonctionnalités à venir"
+          },
+          "cookiePolicy": {
+            "title": "Politique des Cookies",
+            "description": "Comment nous utilisons les cookies sur notre site web"
+          },
+          "privacyPolicy": {
+            "title": "Politique de Confidentialité",
+            "description": "Comment nous protégeons et gérons vos données"
+          },
+          "termsOfService": {
+            "title": "Conditions d'Utilisation",
+            "description": "L'accord juridique entre vous et notre entreprise"
+          }
+        }
+      },
+      "blocks": {
+        "title": "Blocs",
+        "items": {
+          "magicui": {
+            "title": "Blocs MagicUI"
+          },
+          "hero-section": {
+            "title": "Blocs Héros"
+          },
+          "logo-cloud": {
+            "title": "Blocs Nuage de Logos"
+          },
+          "integrations": {
+            "title": "Blocs Intégrations"
+          },
+          "features": {
+            "title": "Blocs Fonctionnalités"
+          },
+          "content": {
+            "title": "Blocs Contenu"
+          },
+          "stats": {
+            "title": "Blocs Statistiques"
+          },
+          "team": {
+            "title": "Blocs Équipe"
+          },
+          "testimonials": {
+            "title": "Blocs Témoignages"
+          },
+          "callToAction": {
+            "title": "Blocs Appel à l'Action"
+          },
+          "footer": {
+            "title": "Blocs Pied de Page"
+          },
+          "pricing": {
+            "title": "Blocs Tarifs"
+          },
+          "comparator": {
+            "title": "Blocs Comparateur"
+          },
+          "faq": {
+            "title": "Blocs FAQ"
+          },
+          "login": {
+            "title": "Blocs Connexion"
+          },
+          "signup": {
+            "title": "Blocs Inscription"
+          },
+          "forgot-password": {
+            "title": "Blocs Mot de Passe Oublié"
+          },
+          "contact": {
+            "title": "Blocs Contact"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "Votre annuaire ultime d'outils IA — découvrez, comparez et choisissez les meilleurs outils IA pour vos projets",
+      "product": {
+        "title": "Produit",
+        "items": {
+          "features": "Fonctionnalités",
+          "pricing": "Tarifs",
+          "faq": "FAQ"
+        }
+      },
+      "resources": {
+        "title": "Ressources",
+        "items": {
+          "blog": "Blog",
+          "docs": "Documentation",
+          "changelog": "Journal des Modifications",
+          "roadmap": "Feuille de Route"
+        }
+      },
+      "company": {
+        "title": "Entreprise",
+        "items": {
+          "about": "À Propos",
+          "contact": "Contact",
+          "waitlist": "Liste d'Attente"
+        }
+      },
+      "legal": {
+        "title": "Légal",
+        "items": {
+          "cookiePolicy": "Politique des Cookies",
+          "privacyPolicy": "Politique de Confidentialité",
+          "termsOfService": "Conditions d'Utilisation",
+          "refundPolicy": "Politique de Remboursement"
+        }
+      }
+    },
+    "avatar": {
+      "history": "Historique",
+      "billing": "Facturation",
+      "credits": "Crédits",
+      "settings": "Paramètres"
+    }
+  },
+  "Dashboard": {
+    "dashboard": {
+      "title": "Tableau de Bord"
+    },
+    "studio": {
+      "title": "Créer",
+      "create": "Nouvelle Création",
+      "myWorks": "Mes Œuvres",
+      "videos": "Vidéos",
+      "emptyTitle": "Aucune création pour le moment",
+      "emptyDescription": "Commencez à créer d'incroyables images générées par IA avec une simple invite texte."
+    },
+    "admin": {
+      "title": "Admin",
+      "users": {
+        "title": "Utilisateurs",
+        "fakeData": "Note : Données fictives pour démonstration, certaines fonctionnalités sont désactivées",
+        "error": "Échec de la récupération des utilisateurs",
+        "search": "Rechercher des utilisateurs...",
+        "columns": {
+          "columns": "Colonnes",
+          "name": "Nom",
+          "email": "Email",
+          "role": "Rôle",
+          "createdAt": "Créé le",
+          "customerId": "ID Client",
+          "status": "Statut",
+          "banReason": "Raison du Bannissement",
+          "banExpires": "Expiration du Bannissement"
+        },
+        "admin": "Admin",
+        "user": "Utilisateur",
+        "email": {
+          "verified": "Email Vérifié",
+          "unverified": "Email Non Vérifié"
+        },
+        "emailCopied": "Email copié dans le presse-papiers",
+        "banned": "Banni",
+        "active": "Actif",
+        "joined": "Inscrit le",
+        "updated": "Mis à jour le",
+        "ban": {
+          "reason": "Raison du Bannissement",
+          "reasonPlaceholder": "Entrez la raison du bannissement de cet utilisateur",
+          "defaultReason": "Spam",
+          "never": "Jamais",
+          "expires": "Expiration du Bannissement",
+          "selectDate": "Sélectionner une Date",
+          "button": "Bannir l'Utilisateur",
+          "success": "L'utilisateur a été banni",
+          "error": "Échec du bannissement de l'utilisateur"
+        },
+        "unban": {
+          "button": "Débannir l'Utilisateur",
+          "success": "L'utilisateur a été débanni",
+          "error": "Échec du débannissement de l'utilisateur"
+        },
+        "close": "Fermer"
+      },
+      "generations": {
+        "title": "Générations",
+        "searchPlaceholder": "Rechercher par email utilisateur...",
+        "totalRecords": "Total de {count} enregistrements",
+        "columns": {
+          "columns": "Colonnes",
+          "user": "Utilisateur",
+          "type": "Type",
+          "status": "Statut",
+          "prompt": "Prompt",
+          "model": "Modèle",
+          "inputImage": "Entrée",
+          "outputImage": "Sortie",
+          "credits": "Crédits",
+          "createdAt": "Créé le",
+          "error": "Erreur"
+        },
+        "filters": {
+          "status": "Statut",
+          "allStatus": "Tous les Statuts",
+          "pending": "En Attente",
+          "processing": "Traitement",
+          "completed": "Terminé",
+          "failed": "Échoué",
+          "type": "Type",
+          "allType": "Tous les Types",
+          "generate": "Générer",
+          "enhance": "Améliorer",
+          "edit": "Éditer",
+          "inpaint": "Inpainting",
+          "outpaint": "Outpainting",
+          "upscale": "Mise à l'Échelle"
+        }
+      },
+      "submissions": {
+        "title": "Soumissions d'Outils",
+        "description": "Voir toutes les soumissions d'outils de tous les utilisateurs",
+        "total": "Total de {count} enregistrements",
+        "empty": "Aucune soumission trouvée",
+        "status": {
+          "pending": "En Attente",
+          "approved": "Approuvé",
+          "rejected": "Rejeté"
+        },
+        "filter": {
+          "status": "Filtrer par Statut",
+          "all": "Tous"
+        },
+        "search": {
+          "placeholder": "Rechercher par nom d'outil, URL ou email..."
+        },
+        "columns": {
+          "name": "Nom de l'Outil",
+          "url": "URL de l'Outil",
+          "submitter": "Soumetteur",
+          "status": "Statut",
+          "submittedAt": "Soumis le",
+          "actions": "Actions"
+        },
+        "pagination": {
+          "showing": "Affichage de {from} - {to} sur {total}",
+          "page": "Page {current} / {total}"
+        },
+        "rejectReason": "Raison du Rejet",
+        "approve": "Approuver",
+        "reject": "Rejeter",
+        "view": "Voir",
+        "rejectDialog": {
+          "title": "Rejeter la Soumission",
+          "description": "Veuillez entrer la raison du rejet. L'utilisateur verra cette raison",
+          "reason": "Raison du Rejet",
+          "reasonPlaceholder": "Veuillez entrer la raison du rejet...",
+          "quickReasons": "Remplissage rapide",
+          "quickReason1": "Cet outil ne correspond pas au thème de notre annuaire d'outils IA",
+          "quickReason2": "Soumission en double détectée",
+          "quickReason3": "Le site web de l'outil est inaccessible ou a été fermé",
+          "quickReason4": "Un outil similaire existe déjà dans notre annuaire",
+          "quickReason5": "Les captures d'écran ou le logo soumis ne correspondent pas à l'outil réel",
+          "quickReason6": "L'outil manque de fonctionnalités ou de valeur substantielle",
+          "quickReason7": "Aucun lien retour trouvé sur votre site web. Veuillez en ajouter un et resoumettre",
+          "quickReason8": "Nous ne référençons pas d'outils ou sites web liés au contenu adulte, aux jeux d'argent ou à d'autres industries grises",
+          "cancel": "Annuler",
+          "submit": "Confirmer le Rejet",
+          "submitting": "Envoi en cours..."
+        },
+        "viewDialog": {
+          "title": "Détails de la Soumission",
+          "description": "Voir les informations détaillées sur la soumission",
+          "name": "Nom de l'Outil",
+          "url": "URL de l'Outil",
+          "descriptionLabel": "Description",
+          "status": "Statut",
+          "close": "Fermer"
+        }
+      },
+      "allRecords": {
+        "title": "Tous les Enregistrements de Soumission",
+        "description": "Voir tous les enregistrements de soumission des utilisateurs, y compris les soumissions d'outils",
+        "total": "Total de {count} enregistrements",
+        "empty": "Aucun enregistrement trouvé",
+        "status": {
+          "pending": "En Attente",
+          "approved": "Approuvé",
+          "rejected": "Rejeté"
+        },
+        "filter": {
+          "status": "Filtrer par Statut",
+          "all": "Tous"
+        },
+        "search": {
+          "placeholder": "Rechercher par nom, URL, description, nom d'utilisateur ou email..."
+        },
+        "columns": {
+          "name": "Nom",
+          "url": "URL",
+          "description": "Description",
+          "submitter": "Soumetteur",
+          "status": "Statut",
+          "submittedAt": "Soumis le"
+        },
+        "pagination": {
+          "showing": "Affichage de {from} - {to} sur {total}",
+          "page": "Page {current} / {total}"
+        }
+      },
+      "tools": {
+        "title": "Gestion des Outils",
+        "description": "Gérer tous les outils de l'annuaire",
+        "total": "Total de {count} outils",
+        "empty": "Aucun outil trouvé",
+        "add": "Ajouter un Outil",
+        "search": {
+          "placeholder": "Rechercher par nom d'outil, URL ou slug..."
+        },
+        "filter": {
+          "status": "Filtrer par Statut",
+          "all": "Tous",
+          "published": "Publié",
+          "publishedOnly": "Uniquement Publiés",
+          "draftOnly": "Uniquement Brouillons",
+          "pending": "En Attente",
+          "rejected": "Rejeté",
+          "featured": "En Vedette",
+          "featuredOnly": "Uniquement en Vedette",
+          "notFeatured": "Non en Vedette"
+        },
+        "columns": {
+          "name": "Nom",
+          "url": "URL",
+          "categories": "Catégories",
+          "tags": "Tags",
+          "status": "Statut",
+          "createdAt": "Créé le",
+          "actions": "Actions"
+        },
+        "status": {
+          "published": "Publié",
+          "draft": "Brouillon",
+          "featured": "En Vedette"
+        },
+        "actions": {
+          "edit": "Éditer",
+          "delete": "Supprimer"
+        },
+        "editDialog": {
+          "titleAdd": "Ajouter un Nouvel Outil",
+          "titleEdit": "Éditer l'Outil",
+          "descriptionAdd": "Ajouter un nouvel outil à l'annuaire",
+          "descriptionEdit": "Éditer les informations et le contenu de l'outil",
+          "basicInfo": "Informations de Base (Partagées)",
+          "analyzeWebsite": "Analyser le Site Web",
+          "analyzing": "L'IA analyse le site web...",
+          "generateContent": "Générer avec l'IA",
+          "generating": "L'IA génère du contenu, cela peut prendre 20-30 secondes...",
+          "referenceContent": "Contenu de Référence",
+          "fetchContent": "Récupérer depuis l'URL",
+          "fetchingContent": "Récupération du contenu du site web...",
+          "referenceContentPlaceholder": "Collez ou récupérez le contenu du site web ici. Ceci sera utilisé comme référence pour la génération de contenu IA.",
+          "save": "Enregistrer",
+          "saving": "Enregistrement...",
+          "cancel": "Annuler",
+          "featuredLabel": "En Vedette",
+          "publishedLabel": "Publié"
+        },
+        "deleteDialog": {
+          "title": "Supprimer l'Outil",
+          "description": "Êtes-vous sûr de vouloir supprimer cet outil ? Cette action est irréversible.",
+          "cancel": "Annuler",
+          "confirm": "Supprimer",
+          "deleting": "Suppression en cours..."
+        },
+        "pagination": {
+          "showing": "Affichage de {from} - {to} sur {total}",
+          "page": "Page {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Outil créé avec succès",
+          "updateSuccess": "Outil mis à jour avec succès",
+          "deleteSuccess": "Outil supprimé avec succès",
+          "error": "L'opération a échoué"
+        }
+      },
+      "tags": {
+        "title": "Gestion des Tags",
+        "description": "Gérer les tags et catégories des outils",
+        "total": "{count} tags au total",
+        "empty": "Aucun tag pour le moment",
+        "add": "Ajouter un Tag",
+        "search": {
+          "placeholder": "Rechercher par nom de tag ou slug..."
+        },
+        "filter": {
+          "category": "Filtrer par Catégorie",
+          "all": "Tous",
+          "published": "Statut de Publication",
+          "publishedOnly": "Publié",
+          "draftOnly": "Brouillon",
+          "featured": "Statut en Vedette",
+          "featuredOnly": "En Vedette",
+          "notFeatured": "Non en Vedette"
+        },
+        "columns": {
+          "name": "Nom",
+          "slug": "Slug",
+          "category": "Catégorie",
+          "color": "Couleur",
+          "usageCount": "Nombre d'Utilisations",
+          "status": "Statut",
+          "actions": "Actions"
+        },
+        "status": {
+          "published": "Publié",
+          "draft": "Brouillon",
+          "archived": "Archivé",
+          "featured": "En Vedette"
+        },
+        "category": {
+          "type": "Type",
+          "pricing": "Tarification",
+          "platform": "Plateforme",
+          "feature": "Fonctionnalité",
+          "general": "Général",
+          "other": "Autre"
+        },
+        "actions": {
+          "edit": "Éditer",
+          "delete": "Supprimer",
+          "view": "Voir"
+        },
+        "pagination": {
+          "showing": "Affichage de {from} - {to} sur {total}",
+          "page": "Page {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Tag créé avec succès",
+          "updateSuccess": "Tag mis à jour avec succès",
+          "deleteSuccess": "Tag supprimé avec succès",
+          "error": "L'opération a échoué"
+        },
+        "form": {
+          "create": "Créer un Tag",
+          "edit": "Éditer le Tag",
+          "slug": "Slug",
+          "slugPlaceholder": "outil-ia",
+          "slugHint": "Identifiant compatible URL",
+          "enName": "Nom en Anglais",
+          "enNamePlaceholder": "Outil IA",
+          "zhName": "Nom en Chinois",
+          "zhNamePlaceholder": "AI 工具",
+          "enDescription": "Description en Anglais",
+          "enDescriptionPlaceholder": "Outils alimentés par intelligence artificielle",
+          "zhDescription": "Description en Chinois",
+          "zhDescriptionPlaceholder": "由人工智能驱动的工具",
+          "category": "Catégorie",
+          "categoryPlaceholder": "Sélectionner une catégorie",
+          "color": "Couleur",
+          "colorPlaceholder": "#3B82F6",
+          "iconEmoji": "Emoji Icône",
+          "iconEmojiPlaceholder": "🤖",
+          "published": "Publié",
+          "featured": "En Vedette",
+          "cancel": "Annuler",
+          "save": "Enregistrer",
+          "saving": "Enregistrement..."
+        },
+        "deleteDialog": {
+          "title": "Supprimer le Tag",
+          "description": "Êtes-vous sûr de vouloir supprimer ce tag ? Cette action est irréversible.",
+          "cancel": "Annuler",
+          "confirm": "Confirmer la Suppression",
+          "deleting": "Suppression en cours..."
+        }
+      }
+    },
+    "settings": {
+      "title": "Paramètres",
+      "profile": {
+        "title": "Profil",
+        "description": "Gérer les informations de votre compte",
+        "avatar": {
+          "title": "Avatar",
+          "description": "Cliquez sur le bouton de téléchargement pour télécharger un avatar personnalisé",
+          "recommendation": "Un avatar est facultatif mais fortement recommandé",
+          "uploading": "Téléchargement en cours...",
+          "uploadAvatar": "Télécharger l'Avatar",
+          "success": "Avatar mis à jour avec succès",
+          "fail": "Échec de la mise à jour de l'avatar"
+        },
+        "name": {
+          "title": "Nom",
+          "description": "Veuillez entrer votre nom d'affichage",
+          "placeholder": "Entrez votre nom",
+          "minLength": "Veuillez utiliser au moins 3 caractères",
+          "maxLength": "Veuillez utiliser au maximum 30 caractères",
+          "hint": "Veuillez utiliser 3 à 30 caractères pour votre nom",
+          "success": "Nom mis à jour avec succès",
+          "fail": "Échec de la mise à jour du nom",
+          "saving": "Enregistrement...",
+          "save": "Enregistrer"
+        }
+      },
+      "billing": {
+        "title": "Facturation",
+        "description": "Gérer votre abonnement et les détails de facturation",
+        "status": {
+          "active": "Actif",
+          "trial": "Essai",
+          "free": "Gratuit",
+          "lifetime": "À Vie"
+        },
+        "interval": {
+          "month": "mois",
+          "year": "an",
+          "oneTime": "unique"
+        },
+        "currentPlan": {
+          "title": "Plan Actuel",
+          "description": "Détails de votre plan actuel",
+          "noPlan": "Vous n'avez aucun plan actif"
+        },
+        "CustomerPortalButton": {
+          "loading": "Chargement...",
+          "createCustomerPortalFailed": "Échec de l'ouverture du portail client Stripe"
+        },
+        "price": "Prix :",
+        "periodStartDate": "Date de début de période :",
+        "periodEndDate": "Date de fin de période :",
+        "trialEnds": "Fin de l'essai :",
+        "freePlanMessage": "Vous êtes actuellement sur le plan gratuit avec des fonctionnalités limitées",
+        "lifetimeMessage": "Vous avez un accès à vie à toutes les fonctionnalités premium",
+        "manageSubscription": "Gérer l'Abonnement et la Facturation",
+        "manageBilling": "Gérer la Facturation",
+        "upgradePlan": "Passer à un Plan Supérieur",
+        "retry": "Réessayer",
+        "errorMessage": "Échec de la récupération des données",
+        "paymentSuccess": "Paiement réussi"
+      },
+      "credits": {
+        "title": "Crédits",
+        "description": "Gérer vos transactions de crédits",
+        "tabs": {
+          "balance": "Solde",
+          "transactions": "Transactions"
+        },
+        "balance": {
+          "title": "Solde de Crédits",
+          "description": "Votre solde de crédits",
+          "credits": "Crédits",
+          "creditsDescription": "Vous avez {credits} crédits",
+          "creditsExpired": "Crédits expirés",
+          "creditsAdded": "Des crédits ont été ajoutés à votre compte",
+          "viewTransactions": "Voir les Transactions de Crédits",
+          "retry": "Réessayer",
+          "expiringCredits": "{credits} crédits expirant dans les {days} prochains jours"
+        },
+        "packages": {
+          "title": "Forfaits de Crédits",
+          "description": "Achetez des crédits supplémentaires pour utiliser nos services",
+          "purchase": "Acheter",
+          "processing": "Traitement en cours...",
+          "popular": "Populaire",
+          "completePurchase": "Finaliser Votre Achat",
+          "failedToFetchCredits": "Échec de la récupération des crédits",
+          "failedToCreatePaymentIntent": "Échec de la création de l'intention de paiement",
+          "failedToInitiatePayment": "Échec de l'initiation du paiement",
+          "cancel": "Annuler",
+          "purchaseFailed": "Échec de l'achat de crédits",
+          "checkoutFailed": "Échec de la création de la session de paiement",
+          "loading": "Chargement...",
+          "pay": "Payer"
+        },
+        "transactions": {
+          "title": "Transactions de Crédits",
+          "error": "Échec de la récupération des transactions de crédits",
+          "search": "Rechercher des transactions de crédits...",
+          "paymentIdCopied": "ID de paiement copié dans le presse-papiers",
+          "columns": {
+            "columns": "Colonnes",
+            "id": "ID",
+            "type": "Type",
+            "description": "Description",
+            "amount": "Montant",
+            "remainingAmount": "Montant Restant",
+            "paymentId": "ID de Paiement",
+            "expirationDate": "Date d'Expiration",
+            "expirationDateProcessedAt": "Date d'Expiration Traitée le",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le"
+          },
+          "types": {
+            "MONTHLY_REFRESH": "Rafraîchissement Mensuel",
+            "REGISTER_GIFT": "Cadeau d'Inscription",
+            "PURCHASE": "Crédits Achetés",
+            "USAGE": "Crédits Consommés",
+            "EXPIRE": "Crédits Expirés",
+            "SUBSCRIPTION_RENEWAL": "Renouvellement d'Abonnement",
+            "LIFETIME_MONTHLY": "Mensuel à Vie"
+          },
+          "detailViewer": {
+            "title": "Détail de la Transaction de Crédits",
+            "close": "Fermer"
+          },
+          "expired": "Expiré",
+          "never": "Pas de date d'expiration"
+        }
+      },
+      "history": {
+        "title": "Historique",
+        "description": "Voir votre historique de traitement d'images",
+        "empty": "Aucun historique pour le moment",
+        "prev": "Précédent",
+        "next": "Suivant",
+        "detail": "Détail de l'Image",
+        "input": "Original",
+        "output": "Résultat",
+        "credits": "crédits",
+        "type": {
+          "enhance": "Améliorer",
+          "generate": "Générer"
+        },
+        "status": {
+          "success": "Succès",
+          "failed": "Échoué"
+        }
+      },
+      "notification": {
+        "title": "Notification",
+        "description": "Gérer vos préférences de notification",
+        "newsletter": {
+          "title": "Abonnement à la Newsletter",
+          "description": "Gérer vos préférences d'abonnement à la newsletter",
+          "label": "S'abonner à la newsletter",
+          "hint": "Vous pouvez modifier vos préférences d'abonnement à tout moment",
+          "emailRequired": "L'email est requis pour s'abonner à la newsletter",
+          "subscribeSuccess": "Abonnement à la newsletter réussi",
+          "subscribeFail": "Échec de l'abonnement à la newsletter",
+          "unsubscribeSuccess": "Désabonnement de la newsletter réussi",
+          "unsubscribeFail": "Échec du désabonnement de la newsletter",
+          "error": "Une erreur s'est produite lors de la mise à jour de votre abonnement"
+        }
+      },
+      "security": {
+        "title": "Sécurité",
+        "description": "Gérer vos paramètres de sécurité",
+        "updatePassword": {
+          "title": "Changer le Mot de Passe",
+          "description": "Entrez votre mot de passe actuel et un nouveau mot de passe",
+          "currentPassword": "Mot de Passe Actuel",
+          "currentRequired": "Le mot de passe actuel est requis",
+          "newPassword": "Nouveau Mot de Passe",
+          "newMinLength": "Le mot de passe doit contenir au moins 8 caractères",
+          "hint": "Veuillez utiliser au moins 8 caractères pour le mot de passe",
+          "showPassword": "Afficher le mot de passe",
+          "hidePassword": "Masquer le mot de passe",
+          "success": "Mot de passe mis à jour avec succès",
+          "fail": "Échec de la mise à jour du mot de passe",
+          "saving": "Enregistrement...",
+          "save": "Enregistrer"
+        },
+        "resetPassword": {
+          "title": "Réinitialiser le Mot de Passe",
+          "description": "Réinitialiser le mot de passe pour activer la connexion par email",
+          "info": "La réinitialisation de votre mot de passe vous permettra de vous connecter en utilisant votre email et mot de passe en plus de vos méthodes de connexion sociale. Vous recevrez un email avec les instructions pour réinitialiser votre mot de passe",
+          "button": "Réinitialiser le Mot de Passe"
+        },
+        "deleteAccount": {
+          "title": "Supprimer le Compte",
+          "description": "Supprimer définitivement votre compte et tout son contenu",
+          "warning": "Cette action est irréversible, veuillez donc procéder avec prudence",
+          "button": "Supprimer le Compte",
+          "confirmTitle": "Supprimer le Compte",
+          "confirmDescription": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.",
+          "confirm": "Supprimer",
+          "cancel": "Annuler",
+          "deleting": "Suppression en cours...",
+          "success": "Compte supprimé avec succès",
+          "fail": "Échec de la suppression du compte"
+        }
+      },
+      "submissions": {
+        "title": "Mes Soumissions",
+        "description": "Voir vos enregistrements de soumission d'outils",
+        "total": "Total de {count} enregistrements",
+        "empty": "Aucune soumission pour le moment",
+        "successAfterPayment": "Paiement réussi ! Votre outil a été soumis et est maintenant en attente de révision.",
+        "status": {
+          "unpaid": "Non Payé",
+          "pending": "En Attente",
+          "approved": "Approuvé",
+          "rejected": "Rejeté"
+        },
+        "filter": {
+          "status": "Filtrer par Statut",
+          "all": "Tous"
+        },
+        "columns": {
+          "name": "Nom de l'Outil",
+          "url": "URL de l'Outil",
+          "status": "Statut",
+          "submittedAt": "Soumis le",
+          "actions": "Actions"
+        },
+        "pagination": {
+          "showing": "Affichage de {from} - {to} sur {total}",
+          "page": "Page {current} / {total}"
+        },
+        "rejectReason": "Raison du Rejet",
+        "edit": "Éditer",
+        "editDialog": {
+          "title": "Éditer la Soumission",
+          "description": "Modifiez les informations de votre soumission. Après modification, elle sera de nouveau soumise à révision",
+          "name": "Nom de l'Outil",
+          "url": "URL de l'Outil",
+          "logo": "Logo",
+          "screenshot": "Capture d'Écran",
+          "descriptionLabel": "Description",
+          "descriptionOptional": "La description est facultative",
+          "cancel": "Annuler",
+          "submit": "Enregistrer et Resoumettre",
+          "submitting": "Envoi en cours..."
+        }
+      }
+    },
+    "upgrade": {
+      "title": "Passer à Pro",
+      "description": "Passez à Pro pour accéder à toutes les fonctionnalités",
+      "button": "Passer à Pro"
+    }
+  },
+  "Mail": {
+    "common": {
+      "team": "Équipe {name}",
+      "copyright": "©️ {year} Tous Droits Réservés."
+    },
+    "verifyEmail": {
+      "title": "Bonjour, {name}.",
+      "body": "Veuillez cliquer sur le lien ci-dessous pour vérifier votre adresse email.",
+      "confirmEmail": "Confirmer l'email",
+      "subject": "Vérifiez votre email"
+    },
+    "forgotPassword": {
+      "title": "Bonjour, {name}.",
+      "body": "Veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe.",
+      "resetPassword": "Réinitialiser le mot de passe",
+      "subject": "Réinitialisez votre mot de passe"
+    },
+    "subscribeNewsletter": {
+      "body": "Merci de vous être abonné à Vidlyo ! Vous recevrez les derniers conseils sur la création de vidéos et images IA, les mises à jour de nouvelles fonctionnalités et des offres exclusives. Restez à l'écoute pour des outils et techniques de création IA puissants.",
+      "subject": "Bienvenue sur Vidlyo"
+    },
+    "contactMessage": {
+      "name": "Nom : {name}",
+      "email": "Email : {email}",
+      "message": "Message : {message}",
+      "subject": "Message de Contact depuis le Site Web"
+    }
+  },
+  "HomePage": {
+    "title": "BuildWay - Découvrez les Meilleurs Outils IA",
+    "description": "Découvrez des outils IA sélectionnés pour tous vos besoins. Trouvez la solution parfaite pour votre prochain projet.",
+    "hero": {
+      "badge": "🚀 Annuaire d'Outils IA",
+      "introduction": "Suivez-nous sur X",
+      "title": "Découvrez les Meilleurs Outils IA",
+      "subtitle": "Découvrez des outils IA sélectionnés pour tous vos besoins. Trouvez la solution parfaite pour votre prochain projet.",
+      "description": "Découvrez des outils IA sélectionnés pour tous vos besoins. Trouvez la solution parfaite pour votre prochain projet.",
+      "primary": "Commencer",
+      "secondary": "Voir la Démo",
+      "searchPlaceholder": "Rechercher des outils IA, catégories ou fonctionnalités...",
+      "stats": {
+        "tools": "Outils IA",
+        "categories": "Catégories",
+        "users": "Utilisateurs"
+      }
+    },
+    "latestTools": {
+      "title": "Derniers Outils IA",
+      "subtitle": "Récemment ajoutés à notre collection",
+      "justLaunched": "Nouveautés",
+      "viewAll": "Voir Tous les Outils",
+      "featuredTitle": "Sélection"
+    },
+    "submitCta": {
+      "badge": "Soumettre Votre Outil",
+      "title": "Partagez Votre Outil IA avec la Communauté",
+      "description": "Faites apparaître votre outil IA et gagnez en visibilité auprès des utilisateurs potentiels à la recherche de nouvelles solutions.",
+      "button": "Soumettre un Outil"
+    },
+    "logocloud": {
+      "title": "Vos entreprises préférées sont nos partenaires"
+    },
+    "integration": {
+      "title": "Intégrations",
+      "subtitle": "Intégrez vos outils préférés",
+      "description": "Connectez-vous facilement avec les plateformes et services populaires pour améliorer votre flux de travail.",
+      "learnMore": "En Savoir Plus",
+      "items": {
+        "item-1": {
+          "title": "Google Gemini",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-2": {
+          "title": "Replit",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-3": {
+          "title": "MagicUI",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-4": {
+          "title": "VSCodium",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-5": {
+          "title": "MediaWiki",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-6": {
+          "title": "Google PaLM",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        }
+      }
+    },
+    "integration2": {
+      "title": "Intégrez vos outils préférés",
+      "description": "Connectez-vous facilement avec les plateformes et services populaires pour améliorer votre flux de travail.",
+      "primaryButton": "Commencer",
+      "secondaryButton": "Voir la Démo"
+    },
+    "pricing": {
+      "title": "Tarifs",
+      "subtitle": "Tarifs",
+      "description": "Choisissez le plan qui vous convient le mieux"
+    },
+    "testimonials": {
+      "title": "Témoignages",
+      "subtitle": "Ce que disent nos clients",
+      "items": {
+        "item-1": {
+          "name": "Jonathan Yombo",
+          "role": "Ingénieur Logiciel",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "quote": "MkSaaS est vraiment extraordinaire et très pratique, pas besoin de se prendre la tête. Une vraie mine d'or."
+        },
+        "item-2": {
+          "name": "Yves Kalume",
+          "role": "GDE - Android",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg",
+          "quote": "Sans expérience en webdesign, j'ai refait tout mon site en quelques minutes avec tailwindcss grâce à MkSaaS."
+        },
+        "item-3": {
+          "name": "Yucel Faruksahan",
+          "role": "Créateur de Tailkits",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg",
+          "quote": "Excellent travail sur le modèle MkSaaS. C'est l'un des meilleurs sites web personnels que j'ai vus jusqu'à présent :)"
+        },
+        "item-4": {
+          "name": "Auteur anonyme",
+          "role": "Chef de Produit",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg",
+          "quote": "J'ai téléchargé l'un des modèles MkSaaS qui est très clair à comprendre dès le départ et vous pouvez modifier les codes/blocs pour qu'ils correspondent parfaitement à votre objectif."
+        },
+        "item-5": {
+          "name": "Shekinah Tshiokufila",
+          "role": "Ingénieur Logiciel Senior",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "quote": "MkSaaS redéfinit la norme du web design, avec ces blocs il offre un moyen facile et efficace pour ceux qui aiment la beauté mais qui manquent peut-être de temps pour l'implémenter."
+        },
+        "item-6": {
+          "name": "Oketa Fred",
+          "role": "Développeur Fullstack",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg",
+          "quote": "J'adore absolument MkSaaS ! Les blocs de composants sont magnifiquement conçus et faciles à utiliser, ce qui rend la création d'un site web attrayant très simple."
+        },
+        "item-7": {
+          "name": "Zeki",
+          "role": "Fondateur de ChatExtend",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg",
+          "quote": "MkSaaS est la fusion parfaite de simplicité et de polyvalence, nous permettant de créer des interfaces aussi magnifiques que conviviales."
+        },
+        "item-8": {
+          "name": "Joseph Kitheka",
+          "role": "Développeur Fullstack",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg",
+          "quote": "MkSaaS a transformé ma façon de développer des applications web. Leur vaste collection de composants UI, blocs et modèles a considérablement accéléré mon flux de travail."
+        },
+        "item-9": {
+          "name": "Khatab Wedaa",
+          "role": "Créateur de MerakiUI",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg",
+          "quote": "MkSaaS est une collection élégante, propre et responsive de composants tailwind css, très utile pour démarrer rapidement votre projet."
+        },
+        "item-10": {
+          "name": "Rodrigo Aguilar",
+          "role": "Créateur de TailwindAwesome",
+          "image": "https://randomuser.me/api/portraits/men/11.jpg",
+          "quote": "J'adore MkSaaS. Les blocs de composants sont bien structurés, simples à utiliser et magnifiquement conçus. Cela rend vraiment facile d'avoir un beau site web en un rien de temps."
+        },
+        "item-11": {
+          "name": "Eric Ampire",
+          "role": "@GoogleDevExpert pour Android",
+          "image": "https://randomuser.me/api/portraits/men/12.jpg",
+          "quote": "Les modèles MkSaaS sont la solution parfaite pour quiconque souhaite créer un site web magnifique et fonctionnel sans aucune expérience en web design."
+        },
+        "item-12": {
+          "name": "Roland Tubonge",
+          "role": "Ingénieur Logiciel",
+          "image": "https://randomuser.me/api/portraits/men/13.jpg",
+          "quote": "MkSaaS est si bien conçu que même avec une très faible connaissance du web design, vous pouvez faire des miracles. Laissez-vous séduire !"
+        }
+      }
+    },
+    "stats": {
+      "title": "Statistiques",
+      "subtitle": "MkSaaS en chiffres",
+      "description": "MkSaaS vous permet de créer des SaaS IA en quelques jours, simplement et sans effort",
+      "items": {
+        "item-1": {
+          "title": "Étoiles sur GitHub"
+        },
+        "item-2": {
+          "title": "Utilisateurs Actifs"
+        },
+        "item-3": {
+          "title": "Applications Alimentées"
+        }
+      }
+    },
+    "calltoaction": {
+      "title": "Commencer à Construire",
+      "description": "MkSaaS vous permet de créer des SaaS IA en quelques jours, simplement et sans effort",
+      "primaryButton": "Commencer",
+      "secondaryButton": "Voir la Démo"
+    },
+    "faqs": {
+      "title": "Questions Fréquemment Posées",
+      "subtitle": "Questions courantes sur l'annuaire d'outils IA",
+      "items": {
+        "item-1": {
+          "question": "Combien d'outils IA sont référencés sur ce site web ?",
+          "answer": "Nous sélectionnons et mettons à jour continuellement des outils IA de haute qualité couvrant divers domaines, notamment la génération d'images, la génération de vidéos, la rédaction de texte, l'audio musique, le développement de code, et plus encore. Notre collection ne cesse de croître à mesure que nous ajoutons de nouveaux outils."
+        },
+        "item-2": {
+          "question": "Comment puis-je soumettre mon outil IA ?",
+          "answer": "Cliquez sur le bouton 'Soumettre un Outil' sur la page d'accueil et remplissez les informations de base sur votre outil (nom, site web, description, catégorie, etc.). Nous examinerons votre soumission dans un délai de 1 à 3 jours ouvrables, et une fois approuvée, elle sera affichée sur le site web."
+        },
+        "item-3": {
+          "question": "Comment les outils sont-ils catégorisés ?",
+          "answer": "Nous catégorisons les outils par fonction en plusieurs catégories : génération d'images, génération de vidéos, rédaction de texte, audio musique, développement de code, design créativité, productivité, marketing SEO, analyse de données, assistants de chat, et plus encore. Chaque outil peut appartenir à plusieurs catégories."
+        },
+        "item-4": {
+          "question": "Tous les outils sont-ils gratuits ?",
+          "answer": "Non. Les outils que nous référençons incluent des outils entièrement gratuits, des outils avec essais gratuits, et des outils payants uniquement. La page de détail de chaque outil indiquera les informations de tarification, afin que vous puissiez choisir l'outil approprié en fonction de vos besoins."
+        },
+        "item-5": {
+          "question": "Comment rechercher un outil spécifique ?",
+          "answer": "Utilisez la boîte de recherche en haut de la page d'accueil et entrez des mots-clés pour rechercher. La recherche correspondra aux noms d'outils, descriptions et tags pour vous aider à trouver rapidement les outils dont vous avez besoin."
+        },
+        "item-6": {
+          "question": "Que sont les outils en vedette ?",
+          "answer": "Les outils en vedette sont des outils de haute qualité soigneusement sélectionnés par notre équipe éditoriale en fonction de la qualité, de la popularité, des avis utilisateurs et de l'exhaustivité des fonctionnalités. Ces outils excellent dans leurs domaines respectifs."
+        },
+        "item-7": {
+          "question": "À quelle fréquence l'annuaire est-il mis à jour ?",
+          "answer": "Nous mettons régulièrement à jour notre annuaire avec de nouveaux outils IA et supprimons ceux qui sont obsolètes ou discontinués. Notre équipe examine et ajoute de nouveaux outils sur une base hebdomadaire pour vous garantir l'accès aux solutions IA les plus récentes et les plus pertinentes."
+        },
+        "item-8": {
+          "question": "Puis-je demander l'ajout d'un outil spécifique ?",
+          "answer": "Oui ! Si vous connaissez un excellent outil IA qui n'est pas référencé, vous pouvez le soumettre via notre fonctionnalité 'Soumettre un Outil'. Nous examinons toutes les soumissions et ajoutons les outils qui répondent à nos normes de qualité et apportent de la valeur à notre communauté."
+        }
+      }
+    }
+  },
+  "AIImagePage": {
+    "title": "IA Image",
+    "description": "MkSaaS vous permet de créer des SaaS IA en quelques jours, simplement et sans effort"
+  },
+  "AIChatPage": {
+    "title": "IA Chat",
+    "description": "MkSaaS vous permet de créer des SaaS IA en quelques jours, simplement et sans effort"
+  },
+  "AIVideoPage": {
+    "title": "IA Vidéo",
+    "description": "MkSaaS vous permet de créer des SaaS IA en quelques jours, simplement et sans effort"
+  },
+  "AIAudioPage": {
+    "title": "IA Audio",
+    "description": "MkSaaS vous permet de créer des SaaS IA en quelques jours, simplement et sans effort"
+  },
+  "LandingPage": {
+    "metadata": {
+      "title": "Vidlyo - Générateur de Vidéos et Images IA | Plateforme de Création Tout-en-Un",
+      "description": "Votre plateforme de création de vidéos et images IA tout-en-un. Générez des images magnifiques, créez des vidéos à partir de texte ou d'images avec l'IA. Texte vers Vidéo, Image vers Vidéo, Générateur d'Animation IA et plus encore."
+    },
+    "hero": {
+      "badge": "Plateforme de Création Alimentée par l'IA",
+      "title": "Créez des",
+      "titleHighlight": "Vidéos et Images IA Magnifiques",
+      "subtitle": "Votre plateforme de création IA tout-en-un.",
+      "noPlasticSkin": "Texte vers Vidéo. Image vers Vidéo.",
+      "noBeautyFilter": "Animation IA. Générateur d'Images IA.",
+      "description": "Transformez vos idées en vidéos et images magnifiques avec l'IA. Générez à partir de prompts texte, animez des photos, créez de l'art IA — tout dans une plateforme puissante.",
+      "cta": "Commencer à Créer Gratuitement",
+      "ctaSecondary": "Voir les Exemples",
+      "users": "créateurs",
+      "rating": "note",
+      "scroll": "Défiler",
+      "processing": "Traitement",
+      "processingTime": "< 30 secondes"
+    },
+    "howItWorks": {
+      "sectionLabel": "Comment Ça Marche",
+      "title": "Créez des Vidéos et Images IA en 3 Étapes Simples",
+      "subtitle": "Transformez vos idées en visuels magnifiques. Entrez un prompt, choisissez votre style, et laissez l'IA faire la magie. Aucune compétence technique requise.",
+      "steps": {
+        "upload": {
+          "step": "01",
+          "title": "Entrez Votre Prompt Créatif",
+          "description": "Décrivez ce que vous voulez créer — une scène vidéo cinématographique, une œuvre d'art magnifique, ou un personnage animé. Téléchargez des images de référence pour encore de meilleurs résultats."
+        },
+        "choose": {
+          "step": "02",
+          "title": "Choisissez le Modèle IA et le Style",
+          "description": "Sélectionnez parmi nos puissants modèles IA. Choisissez le ratio d'aspect, la durée et le style. Notre générateur de vidéos IA et générateur d'images IA gèrent le reste."
+        },
+        "download": {
+          "step": "03",
+          "title": "Téléchargez Votre Création IA",
+          "description": "Votre vidéo ou image générée par l'IA est prête en quelques secondes. Prévisualisez, affinez si nécessaire, puis téléchargez en haute qualité. Des résultats professionnels à chaque fois."
+        }
+      }
+    },
+    "features": {
+      "sectionLabel": "Fonctionnalités",
+      "title": "Puissantes Fonctionnalités de Création d'Images IA",
+      "subtitle": "Tout ce dont vous avez besoin pour créer des images magnifiques avec l'IA. Du texte vers image au transfert de style, de la qualité professionnelle à la génération ultra-rapide. Les fonctionnalités vidéo arrivent bientôt.",
+      "items": {
+        "textToVideo": {
+          "subtitle": "Générateur de Vidéos IA",
+          "title": "Texte vers Vidéo IA",
+          "description": "Transformez vos prompts texte en vidéos magnifiques et captivantes. Décrivez n'importe quelle scène — plans cinématographiques, démos de produits, ou animations créatives — et regardez l'IA donner vie à votre vision avec un mouvement réaliste et de l'audio. Arrive bientôt."
+        },
+        "imageToVideo": {
+          "subtitle": "Image vers Vidéo IA",
+          "title": "Animez Vos Images avec l'IA",
+          "description": "Transformez des images fixes en vidéos dynamiques et réalistes. Téléchargez une photo et laissez l'IA ajouter un mouvement naturel, des expressions et de la vie. Parfait pour créer du contenu engageant à partir de photos existantes. Arrive bientôt."
+        },
+        "referenceToVideo": {
+          "subtitle": "Référence vers Vidéo",
+          "title": "Gardez les Personnages Cohérents dans les Vidéos",
+          "description": "Fournissez des images de référence de votre personnage, objet, ou scène, et gardez-les cohérents dans toutes les images de vos vidéos. Parfait pour le storytelling, le contenu de marque, et la création de séries. Arrive bientôt."
+        },
+        "textToImage": {
+          "subtitle": "Générateur d'Images IA",
+          "title": "Texte vers Images Magnifiques",
+          "description": "Transformez vos idées en visuels magnifiques avec l'IA. Décrivez simplement ce que vous voulez — paysages urbains futuristes, paysages sereins, ou tout ce que vous pouvez imaginer. Nos modèles IA avancés génèrent des images de haute qualité en quelques secondes."
+        },
+        "cartoonStyle": {
+          "subtitle": "Convertisseur de Style Cartoon",
+          "title": "Transformez les Photos en Style Cartoon",
+          "description": "En un seul clic, transformez vos photos en styles cartoon préférés, tels que Disney, Pixar, Les Simpson, et Cyberpunk gratuitement ! Mettez-vous en avant sur les réseaux sociaux."
+        },
+        "ghibliStyle": {
+          "subtitle": "Convertisseur de Style Ghibli",
+          "title": "Convertissez les Photos en Style Ghibli",
+          "highlightedTitle": "Style d'Animation Magique",
+          "description": "Transformez rapidement vos photos en œuvres d'art de style Ghibli avec une animation dessinée à la main luxuriante et des palettes de couleurs vibrantes. Capturez chaque détail de vos images et imprégnez-les d'éléments merveilleux et magiques.",
+          "imageAlt": {
+            "0": "Photo Originale",
+            "1": "Résultat Style Ghibli"
+          }
+        },
+        "handMadePaintings": {
+          "subtitle": "Convertisseur de Style Fait Main",
+          "title": "Changez les Photos en Peintures Faites Main",
+          "highlightedTitle": "",
+          "description": "Ajoutez facilement un filtre de peinture faite main à vos images. Convertissez rapidement vos photos numériques en œuvres d'art à l'huile, illustrations, ou aquarelles de haute qualité et sans filigrane.",
+          "imageAlt": {
+            "0": "Avant - Photo Originale",
+            "1": "Après - Effet Peinture Faite Main"
+          }
+        },
+        "aiAnimation": {
+          "subtitle": "Générateur d'Animation IA",
+          "title": "Créez des Vidéos Anime et Cartoon",
+          "description": "Générez des vidéos anime et cartoon captivantes dans divers styles. Choisissez parmi les styles d'animateurs célèbres, notamment Hayao Miyazaki, Makoto Shinkai, et plus encore. Transformez vos idées en chefs-d'œuvre animés. Arrive bientôt."
+        },
+        "aiOutfitChange": {
+          "subtitle": "Changeur de Tenue IA",
+          "title": "Changement de Tenue Intelligent IA",
+          "highlightedTitle": "Transformation Instantanée",
+          "description": "Téléchargez votre photo et choisissez différents styles de vêtements. L'IA vous aide à réaliser des changements de tenue parfaits tout en conservant vos traits du visage, expressions, et pose. Parfait pour la photographie de mode, le contenu des réseaux sociaux, et le design créatif.",
+          "imageAlt": {
+            "0": "Avant - Tenue Pull Rose",
+            "1": "Après - Tenue Veste Marron"
+          }
+        }
+      },
+      "cta": "Commencer à Créer Maintenant"
+    },
+    "useCases": {
+      "sectionLabel": "Cas d'Usage de Création IA",
+      "title": "Que Pouvez-Vous Créer avec Vidlyo ?",
+      "description": "Des outils IA puissants pour chaque scénario créatif. Des vidéos marketing au contenu social, des solutions tout-en-un pour tous vos besoins.",
+      "items": {
+        "marketing": {
+          "title": "Vidéos Marketing",
+          "subtitle": "Démos de produits et contenu promotionnel",
+          "description": "Créez des vidéos de produit magnifiques, du contenu promotionnel, et des publicités créatives avec l'IA. Parfait pour l'e-commerce, les publicités sur réseaux sociaux, et les campagnes de marque."
+        },
+        "social": {
+          "title": "Contenu pour Réseaux Sociaux",
+          "subtitle": "Shorts viraux et publications engageantes",
+          "description": "Générez des vidéos et images accrocheuses pour TikTok, Instagram, YouTube Shorts. Créez du contenu viral qui se démarque dans les fils d'actualité bondés."
+        },
+        "avatar": {
+          "title": "Vidéos Avatar IA",
+          "subtitle": "Photo vers avatar vidéo",
+          "description": "Transformez une seule photo en vidéo avatar IA entièrement animée jusqu'à 2 minutes de long. Avec mouvement réaliste, synchronisation labiale, et émotions expressives."
+        },
+        "animation": {
+          "title": "Animation IA",
+          "subtitle": "Vidéos de style anime et cartoon",
+          "description": "Générez des vidéos anime et cartoon captivantes dans divers styles. Du style Ghibli à Pixar, créez du contenu animé sans compétences en animation."
+        },
+        "musicVideo": {
+          "title": "Vidéos Musicales IA",
+          "subtitle": "Transformez les chansons en histoires visuelles",
+          "description": "Transformez vos chansons en vidéos musicales captivantes en quelques minutes avec l'IA. Créez des visuels magnifiques qui correspondent à l'ambiance et au rythme de votre musique."
+        },
+        "storytelling": {
+          "title": "Storytelling Visuel",
+          "subtitle": "Personnages et scènes cohérents",
+          "description": "Créez des vidéos multi-scènes avec des personnages et décors cohérents. Parfait pour les courts-métrages, le contenu éducatif, et les projets narratifs."
+        },
+        "productShots": {
+          "title": "Photographie de Produits",
+          "subtitle": "Images de produits professionnelles",
+          "description": "Générez des images de produits magnifiques avec un éclairage et des arrière-plans parfaits. Idéal pour les fiches produits e-commerce, catalogues, et matériaux marketing."
+        },
+        "artCreation": {
+          "title": "Génération d'Art IA",
+          "subtitle": "Art numérique et illustrations",
+          "description": "Créez des œuvres d'art numériques uniques, des illustrations, et des concept arts. Du réalisme à l'abstrait, explorez des possibilités créatives infinies."
+        },
+        "videoEnhance": {
+          "title": "Amélioration Vidéo",
+          "subtitle": "Mise à l'échelle et amélioration de la qualité",
+          "description": "Améliorez la qualité vidéo avec l'IA. Augmentez la résolution, améliorez la clarté, et transformez des images ordinaires en contenu de qualité professionnelle."
+        },
+        "styleTransfer": {
+          "title": "Transfert de Style",
+          "subtitle": "Transformez l'esthétique des vidéos",
+          "description": "Appliquez des styles artistiques à vos vidéos. Transformez des images en anime, peinture à l'huile, cyberpunk, et plus de 30 styles créatifs."
+        },
+        "imageEdit": {
+          "title": "Édition d'Images IA",
+          "subtitle": "Éditez avec des prompts texte",
+          "description": "Éditez des images en utilisant le langage naturel. Supprimez les arrière-plans, changez des éléments, améliorez la qualité — tout avec de simples descriptions texte."
+        },
+        "shorts": {
+          "title": "Générateur de Shorts IA",
+          "subtitle": "Vidéos virales en un clic",
+          "description": "Créez des vidéos courtes multi-scènes magnifiques en un seul clic. Parfait pour le contenu TikTok, Reels, et YouTube Shorts."
+        }
+      }
+    },
+    "testimonials": {
+      "sectionLabel": "Témoignages",
+      "title": "Ce Que Disent les Créateurs sur Vidlyo",
+      "items": {
+        "sarah": {
+          "name": "Sarah Mitchell",
+          "role": "Créatrice de Contenu",
+          "content": "Le générateur de vidéos IA de Vidlyo est incroyable ! Je crée des vidéos magnifiques à partir de prompts texte en quelques minutes. La qualité texte-vers-vidéo rivalise avec la production professionnelle."
+        },
+        "james": {
+          "name": "James Chen",
+          "role": "Responsable Marketing",
+          "content": "Ce générateur de vidéos IA nous fait gagner des heures de production. L'image vers vidéo IA est parfaite pour les démos de produits. La meilleure plateforme de création IA pour les équipes marketing."
+        },
+        "emily": {
+          "name": "Emily Rodriguez",
+          "role": "Influenceuse Réseaux Sociaux",
+          "content": "Enfin une plateforme de création IA tout-en-un ! Générateur d'images IA plus outils vidéo au même endroit. Mon engagement a explosé depuis que j'utilise Vidlyo."
+        }
+      }
+    },
+    "midCta": {
+      "title": "Votre Plateforme de Création",
+      "titleHighlight": "de Vidéos et Images IA Tout-en-Un",
+      "description": "Créez des vidéos et images IA magnifiques avec des prompts texte. Texte vers Vidéo, Image vers Vidéo, Animation IA, Générateur d'Images IA — tout dans une plateforme puissante.",
+      "cta": "Commencer à Créer Gratuitement"
+    },
+    "trustSecurity": {
+      "sectionLabel": "Confidentialité et Sécurité",
+      "title": "Créez avec l'IA",
+      "titleHighlight": "En Toute Sécurité et Confidentialité",
+      "description": "Vos créations sont personnelles. Vidlyo garde votre contenu chiffré et privé. Créez des vidéos et images IA en toute confiance — aucun partage de données.",
+      "subDescription": "Générateur de vidéos IA sans restrictions de confidentialité. Ce que vous créez reste à vous. Générez du contenu sans vous soucier de la collecte de données.",
+      "features": {
+        "encryption": {
+          "title": "Traitement Chiffré",
+          "description": "Génération de vidéos et images IA avec chiffrement de bout en bout."
+        },
+        "private": {
+          "title": "Création IA Privée",
+          "description": "Vous seul pouvez voir et télécharger votre contenu généré par l'IA."
+        },
+        "secure": {
+          "title": "Traitement Sécurisé",
+          "description": "Génération IA dans des environnements cloud sécurisés isolés."
+        },
+        "noSharing": {
+          "title": "Aucun Partage de Données",
+          "description": "Plateforme de création IA qui ne partage jamais votre contenu."
+        }
+      }
+    },
+    "faq": {
+      "sectionLabel": "FAQ",
+      "title": "Questions Fréquemment Posées",
+      "description": "Tout ce que vous devez savoir sur BuildWay",
+      "items": {
+        "noSignup": {
+          "question": "Qu'est-ce que BuildWay ?",
+          "answer": "BuildWay est un annuaire sélectionné des meilleurs outils IA disponibles. Nous vous aidons à découvrir, comparer et choisir les bons outils IA pour vos projets, que vous soyez développeur, designer, marketeur ou entrepreneur."
+        },
+        "freeToUse": {
+          "question": "BuildWay est-il gratuit ?",
+          "answer": "Oui ! BuildWay est entièrement gratuit. Vous pouvez parcourir, rechercher et découvrir des outils IA sans inscription ni paiement requis."
+        },
+        "upscale": {
+          "question": "Comment sélectionnez-vous les outils ?",
+          "answer": "Nous sélectionnons soigneusement chaque outil en fonction de la qualité, des avis utilisateurs, des fonctionnalités et de la fiabilité. Notre équipe teste et évalue les outils pour nous assurer que nous ne recommandons que les meilleures solutions."
+        },
+        "enhance": {
+          "question": "Puis-je soumettre mon outil IA ?",
+          "answer": "Absolument ! Nous accueillons les soumissions d'outils des développeurs et entreprises. Cliquez sur le bouton 'Soumettre un Outil' pour partager votre outil IA avec notre communauté."
+        },
+        "pixelated": {
+          "question": "À quelle fréquence l'annuaire est-il mis à jour ?",
+          "answer": "Nous mettons à jour notre annuaire régulièrement, ajoutant de nouveaux outils chaque semaine et mettant à jour les fiches existantes pour garantir que les informations restent actuelles et précises."
+        },
+        "secured": {
+          "question": "Proposez-vous des comparaisons d'outils ?",
+          "answer": "Oui ! Chaque fiche d'outil comprend des informations détaillées, des notes, et des fonctionnalités pour vous aider à comparer différentes options et prendre des décisions éclairées."
+        },
+        "mobileSupport": {
+          "question": "Puis-je utiliser BuildWay sur mobile ?",
+          "answer": "Oui ! BuildWay est entièrement responsive et fonctionne parfaitement sur tous les appareils — ordinateur, tablette, et mobile. Parcourez et découvrez des outils IA en déplacement."
+        },
+        "regenerate": {
+          "question": "Comment les outils sont-ils catégorisés ?",
+          "answer": "Les outils sont organisés par catégories comme productivité, design, développement, marketing, et plus encore. Utilisez nos fonctionnalités de recherche et de filtrage pour trouver exactement ce dont vous avez besoin."
+        },
+        "commercial": {
+          "question": "Avez-vous des relations d'affiliation ?",
+          "answer": "Certaines fiches d'outils peuvent inclure des liens d'affiliation, qui nous aident à maintenir l'annuaire. Nous priorisons toujours les avis honnêtes et ne recommandons que les outils en lesquels nous croyons."
+        }
+      },
+      "moreHelp": "Vous avez encore des questions ?",
+      "contactUs": "Contactez-nous"
+    },
+    "intro": {
+      "sectionLabel": "Découvrir",
+      "sectionTitle": "Transformez Vos Idées avec l'IA",
+      "what": {
+        "subtitle": "Introduction",
+        "title": "Qu'est-ce que Vidlyo ?",
+        "description": "Vidlyo est votre plateforme de création de vidéos et images IA tout-en-un. Générez des vidéos magnifiques à partir de prompts texte, animez des photos avec l'IA, créez des images professionnelles — tout dans une plateforme puissante. Texte vers Vidéo, Image vers Vidéo, Animation IA, et plus encore."
+      },
+      "why": {
+        "subtitle": "Pourquoi Nous Choisir",
+        "title": "Pourquoi Choisir la Plateforme de Création IA Vidlyo ?",
+        "description": "Vidlyo combine les meilleurs générateurs de vidéos et images IA dans une plateforme. Créez du contenu professionnel en quelques secondes avec de simples prompts texte. Aucune compétence technique requise — décrivez simplement ce que vous voulez et laissez l'IA faire la magie."
+      },
+      "struggling": {
+        "subtitle": "Commencer",
+        "title": "Prêt à Créer du Contenu IA Incroyable ?",
+        "description": "La création traditionnelle de vidéos et images est lente et coûteuse. Vidlyo change cela. Générez des vidéos et images IA avec de simples prompts texte. Du contenu marketing aux publications sur réseaux sociaux — créez des visuels professionnels en minutes, pas en heures."
+      }
+    },
+    "highlights": {
+      "title": "Pourquoi les Créateurs Choisissent Vidlyo",
+      "subtitle": "Plateforme de création IA tout-en-un avec des fonctionnalités puissantes. Générateur de vidéos IA, générateur d'images IA, outils d'animation — tout ce dont vous avez besoin au même endroit.",
+      "items": {
+        "easy": {
+          "title": "Prompts Texte Simples",
+          "description": "Pas de logiciel complexe — décrivez simplement ce que vous voulez. Notre IA comprend le langage naturel et crée des vidéos et images magnifiques à partir de vos descriptions."
+        },
+        "models": {
+          "title": "Modèles IA Puissants",
+          "description": "Accédez à des modèles IA de pointe pour la génération de vidéos et images. Des itérations rapides à la sortie professionnelle de haute qualité — choisissez le bon modèle pour vos besoins."
+        },
+        "free": {
+          "title": "Plateforme Tout-en-Un",
+          "description": "Texte vers Vidéo, Image vers Vidéo, Animation IA, Générateur d'Images IA — tous les outils de création dans une plateforme. Pas besoin de passer d'une application à l'autre."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Commencer à Créer",
+      "titleHighlight": "du Contenu IA Incroyable",
+      "description": "Rejoignez des millions de créateurs utilisant Vidlyo. Générez des vidéos et images IA magnifiques avec de simples prompts texte. Votre plateforme de création IA tout-en-un.",
+      "cta": "Commencer à Créer Gratuitement",
+      "trust": {
+        "gdpr": "Confidentialité Protégée",
+        "noStorage": "Traitement Sécurisé",
+        "ssl": "Chiffrement SSL"
+      }
+    },
+    "quickEnhance": {
+      "badge": "Essayez Maintenant",
+      "title": "Découvrez l'Édition Photo IA",
+      "subtitle": "Téléchargez une photo et assistez à la magie de l'IA en quelques secondes",
+      "upload": {
+        "title": "Télécharger une Image",
+        "dragDrop": "Glissez-déposez ou cliquez pour télécharger",
+        "formats": "Supporte JPG, PNG, WEBP jusqu'à {size} Mo",
+        "errorFormat": "Veuillez télécharger une image JPG, PNG ou WEBP",
+        "errorSize": "La taille du fichier doit être inférieure à {size} Mo",
+        "uploading": "Téléchargement en cours..."
+      },
+      "modes": {
+        "title": "Mode d'Édition",
+        "skin": "Amélioration IA",
+        "upscale": "Mise à l'Échelle",
+        "restore": "Restauration",
+        "comingSoon": "Bientôt Disponible"
+      },
+      "enhance": "Commencer l'Édition",
+      "processing": "Traitement en cours...",
+      "download": "Télécharger",
+      "downloadSuccess": "Téléchargement réussi",
+      "downloadFallback": "Image ouverte dans un nouvel onglet, veuillez faire un clic droit pour enregistrer",
+      "generateFirst": "Veuillez d'abord générer le résultat",
+      "tryAgain": "Réessayer",
+      "error": "Échec de l'édition. Veuillez réessayer.",
+      "errors": {
+        "UNAUTHORIZED": "Veuillez d'abord vous connecter",
+        "INSUFFICIENT_CREDITS": "Crédits insuffisants. Vous avez besoin de {required} crédits.",
+        "INVALID_IMAGE_URL": "URL d'image invalide",
+        "REPLICATE_API_ERROR": "Échec du traitement IA, veuillez réessayer",
+        "NETWORK_ERROR": "Erreur réseau, veuillez vérifier votre connexion",
+        "TIMEOUT": "Délai de traitement dépassé, veuillez réessayer",
+        "UNKNOWN": "Erreur inconnue, veuillez contacter le support"
+      },
+      "hint": "Utilisateurs gratuits : max 2 Mo | Utilisateurs payants : max 20 Mo | Besoin de plus ? Contactez-nous",
+      "result": {
+        "title": "Aperçu du Résultat",
+        "yourResult": "Votre Résultat",
+        "sampleHint": "Téléchargez une image pour voir votre propre résultat"
+      }
+    },
+    "aiEditor": {
+      "badge": "Votre Plateforme de Création IA Tout-en-Un",
+      "titlePart1": "Créez des",
+      "titleHighlight": "Vidéos et Images IA Magnifiques",
+      "subtitle": "Transformez vos idées en réalité avec une IA puissante. Texte vers Vidéo, Image vers Vidéo, Animation IA, Générateur d'Images IA — tout dans une plateforme.",
+      "users": "créateurs",
+      "rating": "note",
+      "imagesGenerated": "créations réalisées",
+      "quickPrompts": {
+        "portrait": "Portrait",
+        "landscape": "Paysage",
+        "abstract": "Art Abstrait"
+      },
+      "inputBar": {
+        "placeholder": "Décrivez ce que vous voulez créer ou éditer..."
+      },
+      "toolbar": {
+        "model": "Modèle",
+        "ratio": "Ratio",
+        "more": "Plus",
+        "public": "Visibilité Publique",
+        "publicDescription": "Afficher dans la galerie communautaire",
+        "credits": "{count} crédits",
+        "clear": "Effacer"
+      },
+      "imageUpload": {
+        "add": "Ajouter",
+        "manageImages": "Gérer les Images",
+        "retry": "Réessayer",
+        "errorFormat": "Seuls les formats JPG, PNG, WebP sont supportés",
+        "errorSize": "La taille du fichier ne peut pas dépasser {size} Mo",
+        "errorMaxImages": "Maximum {max} images autorisées",
+        "errorDuplicate": "Cette image a déjà été téléchargée"
+      },
+      "tabs": {
+        "textToImage": "Texte vers Image"
+      },
+      "models": {
+        "title": "Modèles",
+        "description": "Éditions d'images rapides et précises"
+      },
+      "images": {
+        "title": "Images"
+      },
+      "uploader": {
+        "dragDrop": "Cliquez ou glissez pour télécharger des images",
+        "formats": "Supporte JPG, PNG, WebP, max {size} Mo",
+        "selected": "Sélectionné {count}/{max}",
+        "add": "Ajouter",
+        "errorFormat": "Seuls les formats JPG, PNG, WebP sont supportés",
+        "errorSize": "La taille du fichier ne peut pas dépasser {size} Mo",
+        "errorMaxImages": "Maximum {max} images autorisées",
+        "errorDuplicate": "Cette image a déjà été téléchargée"
+      },
+      "prompt": {
+        "title": "Prompt",
+        "placeholder": "Décrivez vos besoins d'édition, par exemple 'Supprimer la personne en arrière-plan'"
+      },
+      "quickActions": {
+        "title": "Actions Rapides"
+      },
+      "aspectRatio": {
+        "title": "Ratio d'Aspect"
+      },
+      "optionsBar": {
+        "model": "Modèle",
+        "ratio": "Ratio",
+        "public": "Public",
+        "publicTooltip": "Lorsque activé, les images générées seront affichées dans la galerie communautaire pour que d'autres puissent les voir",
+        "clear": "Effacer",
+        "generate": "Générer ({credits} crédits)",
+        "generating": "Génération en cours..."
+      },
+      "result": {
+        "original": "Original",
+        "edited": "Édité",
+        "generated": "Généré",
+        "edit": "Éditer",
+        "download": "Télécharger",
+        "clickToEnlarge": "Cliquez pour agrandir"
+      },
+      "preview": {
+        "title": "Aperçu de l'Image",
+        "reset": "Réinitialiser",
+        "hint": "Cliquez pour zoomer · Glissez pour déplacer · Défilez pour zoomer",
+        "galleryHint": "Utilisez ← → pour naviguer · Cliquez pour zoomer",
+        "escHint": "Appuyez sur ÉCHAP pour fermer"
+      },
+      "status": {
+        "uploading": "Les images sont en cours de téléchargement, veuillez patienter...",
+        "uploadFailed": "Certaines images n'ont pas pu être téléchargées, veuillez les supprimer et réessayer",
+        "waitUpload": "Veuillez attendre que toutes les images aient fini de se télécharger",
+        "processing": "Traitement en cours...",
+        "aiProcessing": "Veuillez patienter, l'IA génère votre image",
+        "cancel": "Annuler",
+        "uploadError": "Échec du téléchargement",
+        "generateError": "Échec de la génération",
+        "retryHint": "Veuillez réessayer plus tard",
+        "retry": "Réessayer",
+        "refresh": "Actualiser",
+        "defaultPrompt": "Conserver le style original, optimiser la qualité",
+        "generateFailed": "Échec de la génération, veuillez réessayer",
+        "characters": "caractères",
+        "promptRequired": "Veuillez entrer un prompt pour générer une image"
+      },
+      "loginRequired": "Connexion Requise",
+      "generate": "Générer",
+      "generating": "Génération en cours...",
+      "features": {
+        "hairColor": {
+          "name": "Changer la couleur de cheveux",
+          "description": "Transformez la couleur des cheveux avec l'IA — des tons naturels aux nuances vibrantes"
+        },
+        "switchClothing": {
+          "name": "Changer de vêtements",
+          "description": "Essayez virtuellement différentes tenues et styles instantanément"
+        },
+        "replaceBackground": {
+          "name": "Remplacer l'arrière-plan",
+          "description": "Changez les arrière-plans de photos en n'importe quelle scène ou décor"
+        },
+        "removeObject": {
+          "name": "Supprimer un objet",
+          "description": "Effacez de manière transparente les éléments indésirables de vos photos"
+        },
+        "enhanceQuality": {
+          "name": "Améliorer la qualité",
+          "description": "Amélioration d'image alimentée par l'IA pour des résultats professionnels"
+        },
+        "adjustExpression": {
+          "name": "Ajuster l'expression",
+          "description": "Modifiez les expressions faciales naturellement avec la précision de l'IA"
+        }
+      },
+      "creditsExhausted": "Vos crédits sont épuisés.",
+      "upgradeToContinue": "Passez à Pro pour continuer"
+    },
+    "common": {
+      "before": "Avant",
+      "after": "Après",
+      "comparison": "Curseur de comparaison avant/après"
+    },
+    "gallery": {
+      "title": "Inspirez-Vous",
+      "subtitle": "Explorez les vidéos et images IA magnifiques créées par notre communauté",
+      "hint": "Survolez pour voir les prompts et modèles utilisés",
+      "createSimilar": "Créer Similaire"
+    },
+    "toolsShowcase": {
+      "badge": "Outils de Création IA",
+      "title": "Outils IA de Pointe pour Chaque Besoin Créatif",
+      "subtitle": "Des outils IA puissants pour vidéos et images pour donner vie à vos idées. Générez, améliorez, transformez — tout ce dont vous avez besoin pour la création de contenu professionnel.",
+      "tabs": {
+        "all": "Tous les Outils",
+        "image": "Outils Image",
+        "video": "Outils Vidéo"
+      },
+      "viewMore": "Voir Plus d'Outils",
+      "comingSoon": "Bientôt Disponible",
+      "tools": {
+        "textToVideo": "Texte vers Vidéo IA",
+        "textToVideoDesc": "Transformez les prompts texte en vidéos magnifiques et captivantes",
+        "imageToVideo": "Image vers Vidéo IA",
+        "imageToVideoDesc": "Animez des images fixes en vidéos réalistes et dynamiques",
+        "referenceToVideo": "Référence vers Vidéo",
+        "referenceToVideoDesc": "Gardez les personnages cohérents dans toutes les images vidéo",
+        "videoToVideo": "Vidéo vers Vidéo IA",
+        "videoToVideoDesc": "Transformez les vidéos en plus de 30 styles d'animation créatifs",
+        "aiAnimation": "Générateur d'Animation IA",
+        "aiAnimationDesc": "Générez des vidéos anime et cartoon dans divers styles",
+        "aiShorts": "Générateur de Shorts IA",
+        "aiShortsDesc": "Créez des vidéos courtes virales sans tournage nécessaire",
+        "aiAvatar": "Générateur d'Avatar IA",
+        "aiAvatarDesc": "Créez des avatars vidéo réalistes à partir d'une seule photo",
+        "videoEnhance": "Améliorateur de Vidéo IA",
+        "videoEnhanceDesc": "Améliorez la qualité vidéo avec la technologie IA",
+        "textToImage": "Générateur d'Images IA",
+        "textToImageDesc": "Générez des images magnifiques à partir de descriptions texte",
+        "backgroundRemoval": "Suppression d'Arrière-Plan",
+        "backgroundRemovalDesc": "Supprimez les arrière-plans instantanément avec la précision de l'IA",
+        "imageEnhance": "Améliorateur d'Image IA",
+        "imageEnhanceDesc": "Améliorez la qualité et les détails des images automatiquement",
+        "imageUpscale": "Mise à l'Échelle d'Image IA",
+        "imageUpscaleDesc": "Mettez les images à l'échelle 4K sans perte de qualité",
+        "styleTransfer": "Transfert de Style",
+        "styleTransferDesc": "Transformez les photos en styles Ghibli, anime, et plus encore",
+        "objectRemoval": "Suppression d'Objet",
+        "objectRemovalDesc": "Supprimez les objets indésirables des photos de manière transparente"
+      }
+    }
+  },
+  "Generator": {
+    "toolbar": {
+      "aiImage": "IA Image",
+      "aiVideo": "IA Vidéo",
+      "comingSoon": "Bientôt Disponible",
+      "public": "Visibilité Publique",
+      "publicDescription": "Afficher dans la galerie communautaire",
+      "credits": "Crédits",
+      "creditsCost": "crédits/gén",
+      "aspectRatio": "Ratio d'Aspect",
+      "resolution": "Résolution",
+      "qualityNotSupported": "La sélection de qualité n'est pas supportée par ce modèle",
+      "qualityModelHint": "Passez à Nano Banana Pro pour les options de qualité",
+      "features": {
+        "title": "Fonctionnalités",
+        "text-to-video": "Texte/Image vers Vidéo",
+        "reference-to-video": "Référence vers Vidéo",
+        "frames-to-video": "Images vers Vidéo"
+      }
+    },
+    "presets": {
+      "refresh": "Actualiser les préréglages",
+      "portrait": "Portrait",
+      "landscape": "Paysage",
+      "abstract": "Art Abstrait",
+      "anime": "Style Anime",
+      "realistic": "Réaliste",
+      "fantasy": "Fantaisie"
+    }
+  },
+  "ToolsPage": {
+    "badge": "Annuaire d'Outils IA",
+    "title": "Découvrir les Outils IA",
+    "description": "Explorez notre collection sélectionnée d'outils IA pour la génération d'images, l'édition vidéo, le traitement de texte, la création audio, et plus encore. Boostez votre productivité créative.",
+    "totalTools": "Total des Outils",
+    "backToTools": "Retour aux Outils",
+    "visitWebsite": "Visiter le Site Web",
+    "collectedOn": "Collecté le",
+    "toolNotFound": "Outil Non Trouvé",
+    "listedOn": "Répertorié le",
+    "reviews": {
+      "title": "Avis sur {name} ({count})",
+      "averageRating": "{rating} sur 5",
+      "noRating": "Pas encore de note",
+      "recommend": "Recommanderiez-vous {name} ? Laissez un commentaire",
+      "placeholder": "Qu'en pensez-vous ?",
+      "charCount": "{current}/{max}",
+      "loginToComment": "Connectez-vous pour commenter",
+      "submit": "Soumettre l'avis",
+      "update": "Mettre à jour l'avis",
+      "delete": "Supprimer",
+      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet avis ?",
+      "noReviews": "Pas encore d'avis. Soyez le premier à partager votre expérience !",
+      "loadMore": "Charger plus",
+      "submitSuccess": "Avis soumis avec succès !",
+      "updateSuccess": "Avis mis à jour avec succès !",
+      "deleteSuccess": "Avis supprimé avec succès !",
+      "ratingRequired": "Veuillez sélectionner une note",
+      "edited": "modifié"
+    },
+    "searchResults": {
+      "found": "Trouvé",
+      "tools": "outils",
+      "tool": "outil",
+      "for": "pour",
+      "about": "à propos de"
+    },
+    "totalToolsCount": "{count} outils IA sélectionnés disponibles",
+    "submit": {
+      "badge": "Soumettre un Outil",
+      "title": "Soumettre Votre Outil IA",
+      "description": "Partagez votre outil IA avec notre communauté. Nous examinons toutes les soumissions attentivement.",
+      "plans": {
+        "free": {
+          "title": "GRATUIT",
+          "price": "0 €",
+          "feature1": "Obtenez 3 liens dofollow pour booster votre SEO",
+          "feature2": "Lien permanent avec maintenance de backlink",
+          "feature3": "Examiné et répertorié sous 1 - 2 semaines",
+          "feature4": "Publiez votre produit le jour souhaité",
+          "limit1": "Un lien retour vers notre site est requis",
+          "limit2": "Pas de support client",
+          "cta": "Soumettre pour Révision",
+          "backlinkRequired": "Le référencement gratuit nécessite un lien retour vers notre site."
+        },
+        "pro": {
+          "title": "PRO",
+          "popular": "POPULAIRE",
+          "price": "4,99 €",
+          "feature1": "Obtenez >= 3 liens dofollow pour booster votre SEO",
+          "feature2": "Répertorié sous 48 heures",
+          "feature3": "Lien permanent, aucun backlink requis",
+          "feature4": "Placement en vedette en haut des listes",
+          "feature5": "Partage via réseaux sociaux et newsletters",
+          "feature6": "Support client premium",
+          "cta": "Payer et Publier Maintenant",
+          "comingSoonNote": "Paiement sécurisé via Creem. Vous serez redirigé vers la caisse après la soumission."
+        }
+      },
+      "inclusionTips": {
+        "title": "Directives de Soumission",
+        "items": [
+          "Seuls les outils ou sites web liés à l'IA sont acceptés. Les outils non-IA seront rejetés",
+          "Le site web de l'outil doit être accessible. Les liens brisés ou inaccessibles seront rejetés",
+          "Nous n'acceptons pas les outils ou sites web liés au contenu adulte, aux jeux d'argent, ou à d'autres industries grises",
+          "Les soumissions avec des fonctionnalités identiques à des outils déjà répertoriés peuvent être rejetées",
+          "Les soumissions au plan gratuit nécessitent un lien retour vers notre site sur votre site web"
+        ]
+      },
+      "backlinkNotice": {
+        "title": "Avis de Détection de Backlink",
+        "message": "Nous avons détecté que votre site web ne contient pas de lien retour vers nous. Veuillez ajouter un lien retour sur votre site web, puis resoumettre pour révision.",
+        "badgeTab": "Badge",
+        "textLinkTab": "Lien Texte",
+        "themeLabel": "Changer le Thème du Badge :",
+        "dark": "Sombre",
+        "light": "Clair",
+        "copyCode": "Copier le code",
+        "preview": "Aperçu :",
+        "gotIt": "Compris",
+        "payAndPublish": "Payer et Publier Maintenant"
+      },
+      "examples": {
+        "title": "Exemples d'Outils",
+        "description": "Voici quelques outils que nous avons déjà mis en vedette, que vous pouvez utiliser comme référence :",
+        "visitWebsite": "Visiter le Site Web"
+      },
+      "form": {
+        "toolName": "Nom de l'Outil",
+        "toolUrl": "URL de l'Outil",
+        "description": "Description",
+        "descriptionOptional": "Facultatif : Dites-nous en plus sur cet outil",
+        "yourEmail": "Votre Email",
+        "emailHint": "Nous vous contacterons si nous avons des questions",
+        "submitButton": "Soumettre l'Outil",
+        "submitting": "Envoi en cours...",
+        "logo": {
+          "label": "Logo",
+          "description": "Supporte JPEG, PNG, WebP · Max 1 Mo",
+          "uploading": "Téléchargement en cours...",
+          "uploadLogo": "Télécharger le Logo",
+          "dragOrClick": "Glissez ou cliquez pour télécharger"
+        },
+        "screenshot": {
+          "label": "Capture d'Écran",
+          "description": "Supporte JPEG, PNG, WebP · Max 5 Mo",
+          "uploading": "Téléchargement en cours...",
+          "dragOrClick": "Glissez ou cliquez pour télécharger une capture d'écran",
+          "addScreenshot": "Ajouter une Capture d'Écran",
+          "selected": "Sélectionné {count} / {max}"
+        },
+        "upload": {
+          "error": {
+            "invalidFormat": "Seuls les formats JPEG, PNG, WebP sont supportés",
+            "tooLarge": "La taille du fichier ne peut pas dépasser {size} Mo",
+            "uploadFailed": "Échec du téléchargement, veuillez réessayer",
+            "maxImages": "Maximum {max} captures d'écran autorisées"
+          }
+        },
+        "loginRequired": {
+          "title": "Connexion Requise",
+          "description": "Vous devez être connecté pour soumettre un outil. Veuillez d'abord vous connecter.",
+          "button": "Se Connecter Maintenant"
+        },
+        "success": {
+          "title": "Soumission Réussie !",
+          "message": "Merci pour votre soumission ! Nous l'examinerons bientôt.",
+          "continuePrompt": "Vous pouvez continuer à soumettre d'autres outils",
+          "continueSubmit": "Soumettre un Autre Outil",
+          "viewSubmissions": "Voir Mes Soumissions",
+          "reviewNote": "Nous examinerons votre soumission sous 1 à 2 semaines."
+        },
+        "errors": {
+          "checkForm": "Veuillez vérifier le formulaire pour les erreurs.",
+          "duplicateToolName": "Un outil avec ce nom a déjà été soumis."
+        },
+        "viewBacklinkInstructions": "Voir les instructions de backlink",
+        "backlinkVerification": {
+          "title": "Vérification de Backlink Requise",
+          "description": "La soumission gratuite nécessite un lien retour vers notre site. Veuillez d'abord ajouter un lien sur votre site web.",
+          "verifyButton": "Vérifier le Backlink",
+          "verifying": "Vérification en cours...",
+          "verified": "Vérifié !",
+          "notFound": "Aucun backlink trouvé. Veuillez ajouter un lien vers notre site et réessayer.",
+          "enterUrlFirst": "Veuillez d'abord entrer l'URL de l'outil",
+          "error": "Échec de la vérification du backlink. Veuillez réessayer.",
+          "dialogAutoVerifyFailed": "Nous avons détecté que votre site web ne contient pas de lien retour vers nous. Veuillez ajouter un backlink sur votre site web, puis cliquez sur Vérifier.",
+          "checkingBacklink": "Vérification du backlink...",
+          "step1": "Copiez le code ci-dessous et ajoutez-le à votre site web.",
+          "step2": "Revenez ici et cliquez sur 'Vérifier le Backlink'."
+        }
+      }
+    },
+    "similarTools": {
+      "matchedTags": "{count} tags correspondants"
+    }
+  }
+}

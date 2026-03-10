@@ -1,0 +1,226 @@
+{
+  "batchIndex": 9,
+  "successful": [
+    {
+      "slug": "copywriting",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Copywriting is the act or occupation of writing text for the purpose of advertising or other forms of marketing. Copywriting is aimed at selling products or services. The product, called copy or sales copy, is written content that aims to increase brand awareness and ultimately persuade a person or group to take a particular action."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**文案撰写 (Copywriting)**\n\n文案撰写是指为营销、广告、产品推广等商业目的创作具有说服力和吸引力的文字内容的专业活动。在软件产品和数字服务领域，文案撰写涵盖用户界面文本、产品描述、营销材料、电子邮件推送、社交媒体内容、落地页文案等多种形式。\n\n优秀的文案撰写需要深入理解目标受众的需求和痛点，运用清晰简洁的语言传达产品价值主张，激发用户的兴趣和行动意愿。在技术产品中，文案不仅要准确传达功能特性，还需要将复杂的技术概念转化为用户易于理解的表述，同时保持品牌调性的一致性。\n\n现代文案撰写常结合数据分析和A/B测试来优化转化效果，通过用户反馈持续改进内容策略。在产品开发流程中，文案撰写是用户体验设计的重要组成部分，直接影响产品的可用性、用户满意度和商业转化率。专业的文案撰写能够有效提升品牌认知度，建立用户信任，最终推动业务增长。"
+        }
+      },
+      "en": {
+        "name": "Copywriting",
+        "description": "Creating persuasive marketing text to promote products, services, and brands"
+      },
+      "zh": {
+        "name": "文案撰写",
+        "description": "创作具有说服力的营销文字内容，用于推广产品、服务和品牌"
+      }
+    },
+    {
+      "slug": "article-writing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**article-writing**\n\nA feature or capability that enables users to create, compose, and format written content in article form within a software application or platform. This functionality typically includes tools for text editing, formatting, structuring content with headings and paragraphs, embedding media elements, and organizing information in a coherent narrative format.\n\nIn content management systems (CMS), blogging platforms, and publishing tools, article-writing features provide interfaces for drafting long-form content with rich text editing capabilities. These may include WYSIWYG editors, markdown support, version control, auto-save functionality, and collaborative editing options.\n\nIn AI-assisted applications, article-writing refers to capabilities that help generate, refine, or enhance written content through automated suggestions, grammar checking, style improvements, or full content generation based on prompts and parameters.\n\nThe feature is essential for content creators, journalists, bloggers, marketers, and technical writers who need to produce structured, professional written materials. Modern article-writing tools often integrate SEO optimization, readability analysis, plagiarism detection, and multi-format export options to support various publishing workflows and distribution channels."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**文章撰写 (Article Writing)**\n\n文章撰写是指创作结构化、有目的性的书面内容的过程，通常用于传达信息、表达观点或提供价值。在技术和商业领域，文章撰写是内容营销、知识管理和品牌传播的核心功能。\n\n在软件产品中，文章撰写功能通常包括富文本编辑器、格式化工具、版本控制、协作编辑等特性。它广泛应用于内容管理系统（CMS）、博客平台、知识库系统、在线出版工具等场景。\n\n技术实现层面，文章撰写功能需要支持多种格式（如 Markdown、HTML、富文本），提供实时保存、草稿管理、SEO 优化、多媒体嵌入等能力。在企业应用中，还需集成工作流审批、权限管理、内容分发等功能。\n\n现代文章撰写工具越来越多地融入 AI 辅助功能，如智能纠错、内容建议、自动摘要等，以提升创作效率和内容质量。该功能是数字化内容生产的基础设施，对于媒体、教育、企业传播等领域具有重要价值。"
+        }
+      },
+      "en": {
+        "name": "Article Writing",
+        "description": "Create and format structured written content with editing tools, media embedding, and publishing capabilities"
+      },
+      "zh": {
+        "name": "文章撰写",
+        "description": "创作结构化书面内容的功能,包含编辑工具、多媒体嵌入和发布能力"
+      }
+    },
+    {
+      "slug": "social-media-content",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**social-media-content**\n\nA feature classification referring to functionality, components, or systems designed to create, manage, distribute, or display content specifically intended for social media platforms. This encompasses tools and capabilities for generating posts, stories, videos, images, and other media formats optimized for platforms like Facebook, Instagram, Twitter/X, LinkedIn, TikTok, and similar services.\n\nIn software applications, social-media-content features typically include content composition interfaces, media editing tools, scheduling capabilities, multi-platform publishing, hashtag management, and preview functionality that shows how content will appear across different social networks. These features often integrate with social media APIs to enable direct posting, engagement tracking, and analytics.\n\nFrom a technical perspective, this classification covers both user-facing features (content creation interfaces, filters, templates) and backend systems (content management, asset storage, API integrations, queue management for scheduled posts). It may also include AI-powered capabilities such as caption generation, image optimization, sentiment analysis, and content recommendation engines.\n\nBusiness applications leverage social-media-content features for marketing automation, brand management, customer engagement, and digital presence optimization. This tag helps development teams organize requirements, track feature development, and maintain clear boundaries between social media functionality and other application capabilities."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**社交媒体内容 (Social Media Content)**\n\n社交媒体内容是指在社交网络平台上创建、发布和分享的各类数字化信息，包括文本、图片、视频、音频、链接等多种媒体形式。在技术和商业领域，该标签通常用于标识与社交媒体内容管理、生成、分发和分析相关的功能模块。\n\n从技术角度，社交媒体内容功能涉及内容创作工具、多媒体处理、内容调度发布、跨平台适配、API集成等技术实现。从商业角度，它是数字营销、品牌传播、用户互动和社群运营的核心载体，直接影响企业的线上影响力和用户参与度。\n\n该功能通常包含内容编辑器、媒体库管理、发布日程安排、多账号管理、内容效果追踪等子功能。在现代软件系统中，社交媒体内容管理已成为CMS（内容管理系统）、营销自动化平台、电商系统等产品的标准功能模块，帮助企业和个人高效地进行社交媒体运营和内容营销。"
+        }
+      },
+      "en": {
+        "name": "Social Media Content",
+        "description": "Features for creating, managing, and publishing content across social platforms"
+      },
+      "zh": {
+        "name": "社交媒体内容",
+        "description": "用于在社交平台上创建、管理和发布内容的功能"
+      }
+    },
+    {
+      "slug": "email-writing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Email writing refers to the functionality, tools, or features within software applications that enable users to compose, format, and send electronic mail messages. In technical and business contexts, this encompasses both the user-facing interface components and the underlying systems that facilitate email composition.\n\nFrom a feature perspective, email writing typically includes text editing capabilities, formatting options (bold, italic, lists), attachment handling, recipient management (To, CC, BCC fields), subject line input, and draft saving functionality. Advanced implementations may incorporate rich text editors, template systems, auto-save mechanisms, spell-checking, and integration with contact management systems.\n\nIn software development, email writing features often involve WYSIWYG editors, email client APIs, SMTP protocol integration, and responsive design considerations for cross-platform compatibility. Modern email writing tools may also include AI-assisted composition, smart reply suggestions, scheduling capabilities, and collaborative editing features.\n\nThis tag is commonly applied to issues, features, or documentation related to the email composition interface, user experience improvements in email editors, bugs affecting message creation, or enhancements to email authoring workflows. It distinguishes the act of creating email content from other email-related functions such as receiving, organizing, or managing messages."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "email-writing（电子邮件撰写）是指使用软件工具或服务来创建、编辑和发送电子邮件的功能特性。在现代应用程序和平台中，这一功能通常包含文本编辑器、格式化工具、附件管理、收件人管理等核心组件。\n\n在技术实现层面，email-writing 功能涉及 SMTP 协议集成、富文本编辑器（如 TinyMCE、Quill）、邮件模板引擎、以及前端表单验证等技术栈。商业应用中，该功能常见于客户关系管理系统（CRM）、营销自动化平台、协作工具和企业通信软件中。\n\n高级的 email-writing 功能可能包括：智能撰写建议、语法检查、个性化变量插入、A/B 测试支持、定时发送、邮件追踪分析等增强特性。对于面向企业的解决方案，还需考虑合规性要求、批量发送能力、模板库管理和多语言支持。\n\n该标签通常用于标识产品功能模块、用户故事、技术文档或问题追踪系统中与电子邮件创建和编辑相关的内容，帮助开发团队和产品经理明确功能范围和技术需求。"
+        }
+      },
+      "en": {
+        "name": "Email Writing",
+        "description": "Software features enabling users to compose, format, and send electronic messages with editing tools and recipient management"
+      },
+      "zh": {
+        "name": "电子邮件撰写",
+        "description": "提供文本编辑、格式化和发送功能的邮件创建工具，包含收件人管理和附件处理"
+      }
+    },
+    {
+      "slug": "ad-copy",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Copywriting is the act or occupation of writing text for the purpose of advertising or other forms of marketing. Copywriting is aimed at selling products or services. The product, called copy or sales copy, is written content that aims to increase brand awareness and ultimately persuade a person or group to take a particular action."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**广告文案 (Ad Copy)**\n\n广告文案是指用于营销推广目的的文字内容，旨在吸引目标受众注意力、传达产品或服务价值，并促使其采取特定行动（如点击、购买、注册等）。在数字营销领域，ad-copy 通常指搜索引擎广告、社交媒体广告、展示广告等渠道中使用的文本内容。\n\n优质的广告文案需要具备以下特征：简洁明了、突出卖点、针对目标用户痛点、包含明确的行动号召（CTA）。在技术实现层面，广告文案常与 A/B 测试、转化率优化（CRO）、关键词定位等策略结合使用，通过数据分析不断优化文案效果。\n\n在内容管理系统、营销自动化平台或广告投放系统中，ad-copy 作为标签或分类，用于标识、组织和管理各类广告文案素材，便于团队协作、版本控制和效果追踪。该标签帮助区分广告内容与其他类型内容（如博客文章、产品描述等），使营销团队能够更高效地管理和优化广告投放策略。"
+        }
+      },
+      "en": {
+        "name": "Ad Copy",
+        "description": "Marketing text designed to promote products or services and drive specific user actions"
+      },
+      "zh": {
+        "name": "广告文案",
+        "description": "用于营销推广的文字内容，旨在传达价值并促使用户采取特定行动"
+      }
+    },
+    {
+      "slug": "product-description",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "In the PRINCE2 project management method, a product description (PDD) is a structured format that presents information about a project product. It is a management product (document), usually created by the project manager during the process of initiating a project in the initial stage of the PRINCE2 project management method. It is approved by the project board as part of the project plan documentation."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**产品描述 (Product Description)**\n\n产品描述是指对产品的特性、功能、规格、用途及价值主张进行系统性阐述的文本内容。在技术和商业领域中，产品描述是连接产品与用户的关键信息载体，用于传达产品的核心价值和差异化优势。\n\n在软件开发中，产品描述通常包含功能特性列表、技术规格、系统要求、使用场景等技术细节。在电商平台，产品描述侧重于展示产品卖点、使用方法、材质参数等消费者关注的信息。在产品管理领域，产品描述是需求文档和用户故事的重要组成部分，帮助团队理解产品定位和目标用户群体。\n\n优质的产品描述应具备准确性、完整性和可读性，既要满足搜索引擎优化(SEO)需求，也要符合用户信息获取习惯。在敏捷开发和DevOps实践中，产品描述常作为元数据标签用于版本管理、功能追踪和文档生成，是产品生命周期管理的基础数据之一。"
+        }
+      },
+      "en": {
+        "name": "Product Description",
+        "description": "Structured documentation detailing product features, specifications, and value proposition"
+      },
+      "zh": {
+        "name": "产品描述",
+        "description": "系统性阐述产品特性、功能、规格及价值主张的结构化文档"
+      }
+    },
+    {
+      "slug": "seo-content",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "SEO content refers to written, visual, or multimedia material specifically created and optimized to rank higher in search engine results pages (SERPs). This content is strategically crafted to align with search engine algorithms while providing genuine value to users.\n\nKey characteristics include keyword integration, proper heading structure, meta descriptions, internal and external linking, and mobile-friendly formatting. SEO content encompasses various formats such as blog posts, product descriptions, landing pages, guides, and multimedia elements.\n\nThe primary goal is to increase organic visibility, drive qualified traffic, and improve domain authority. Effective SEO content balances technical optimization with user intent, ensuring content answers searcher queries while meeting search engine ranking criteria.\n\nModern SEO content emphasizes E-E-A-T principles (Experience, Expertise, Authoritativeness, Trustworthiness) and focuses on semantic relevance rather than keyword stuffing. It requires ongoing optimization based on performance metrics, algorithm updates, and competitive analysis.\n\nThis approach serves dual purposes: satisfying search engine crawlers for better rankings and engaging human readers to achieve business objectives such as conversions, lead generation, or brand awareness. Quality SEO content remains a cornerstone of digital marketing strategies across industries."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "SEO内容（Search Engine Optimization Content）是指专门为提升搜索引擎排名而优化创作的网页内容。这类内容在保持对用户有价值的前提下，通过合理运用关键词、优化标题结构、改善可读性等技术手段，使网页更容易被搜索引擎抓取、索引和排名。\n\nSEO内容的核心要素包括：关键词研究与布局、高质量原创内容、合理的标题层级（H1-H6）、元描述优化、内外链建设、以及适配移动端的响应式设计。优质的SEO内容需要在搜索引擎算法要求和用户体验之间找到平衡点，既要满足搜索引擎的技术规范，又要为访问者提供真正有价值的信息。\n\n在商业应用中，SEO内容是数字营销的重要组成部分，能够提高网站的自然流量、增强品牌曝光度、降低获客成本。常见形式包括博客文章、产品描述、着陆页、FAQ页面等。随着搜索引擎算法不断进化，现代SEO内容更强调内容质量、用户意图匹配和整体用户体验，而非单纯的关键词堆砌。"
+        }
+      },
+      "en": {
+        "name": "SEO Content",
+        "description": "Optimized material designed to rank higher in search results while providing user value"
+      },
+      "zh": {
+        "name": "SEO 内容",
+        "description": "为提升搜索排名而优化的内容，兼顾用户价值与搜索引擎技术规范"
+      }
+    },
+    {
+      "slug": "script-writing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Script-writing in software development refers to the process of creating executable scripts—small programs or sequences of commands designed to automate tasks, manipulate data, or control system operations. Unlike full-scale application development, script-writing typically involves writing code in interpreted languages such as Python, Bash, JavaScript, or PowerShell to accomplish specific, often repetitive tasks efficiently.\n\nIn technical contexts, script-writing encompasses various applications including build automation, deployment pipelines, data processing, system administration, testing workflows, and DevOps operations. Scripts serve as the glue between different systems and tools, enabling seamless integration and workflow automation.\n\nThe practice emphasizes pragmatism and rapid development over architectural complexity. Scripts are generally shorter, more focused, and easier to modify than traditional compiled programs. They're commonly used for tasks like file manipulation, API interactions, database operations, log analysis, and environment configuration.\n\nIn business and product development, script-writing capabilities enable teams to increase productivity, reduce manual errors, and standardize processes. It's a fundamental skill for developers, system administrators, data engineers, and DevOps professionals. Modern script-writing often involves working with CLI tools, managing cloud resources, orchestrating containers, and integrating with CI/CD platforms to streamline software delivery and operational workflows."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**脚本编写 (Script Writing)**\n\n脚本编写是指使用脚本语言（如 Python、Bash、JavaScript、PowerShell 等）编写自动化程序的过程。在软件开发和系统管理领域，脚本通常用于执行重复性任务、批处理操作、系统配置、数据处理和工作流自动化。\n\n与编译型程序不同，脚本通常是解释执行的，具有开发快速、灵活性高、易于修改的特点。常见应用场景包括：构建和部署自动化（CI/CD 流程）、数据清洗和转换、系统监控和日志分析、测试自动化、以及日常运维任务。\n\n在现代软件工程中，脚本编写是 DevOps 实践的核心技能之一。优秀的脚本应具备良好的可读性、错误处理机制、参数化配置和适当的文档注释。脚本编写不仅提高了工作效率，还减少了人为错误，是实现基础设施即代码（Infrastructure as Code）和持续集成/持续部署的重要手段。\n\n该标签通常用于标识与自动化脚本开发、脚本优化、脚本维护相关的功能需求或技术讨论。"
+        }
+      },
+      "en": {
+        "name": "Script Writing",
+        "description": "Creating executable scripts to automate tasks, manipulate data, and streamline workflows"
+      },
+      "zh": {
+        "name": "脚本编写",
+        "description": "编写可执行脚本以实现任务自动化、数据处理和工作流优化"
+      }
+    },
+    {
+      "slug": "story-writing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Creative writing is any writing that goes beyond the boundaries of normal professional, journalistic, academic, or technical forms of literature, typically identified by an emphasis on craft and technique, such as narrative structure, character development, literary tropes, genre, and poetics. Both fictional and non-fictional works fall into this category, including such forms as novels, biographies, short stories, poems, and even some forms of journalism. In academic settings, creative writing is typically separated into fiction and poetry classes, with a focus on writing in an original style, as opposed to imitating pre-existing genres such as crime or horror. Writing for the screen and stage—screenwriting and playwriting—are often taught separately, but fit under the creative writing category as well."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**story-writing（故事编写）**\n\n在软件开发和产品管理领域，story-writing 指的是编写用户故事（User Story）的过程和能力。用户故事是敏捷开发方法中的核心工件，用于从最终用户视角描述软件功能需求。\n\n标准的用户故事遵循\"作为[角色]，我想要[功能]，以便[价值]\"的格式，强调用户需求而非技术实现。优秀的 story-writing 需要具备以下特征：\n\n- **用户中心**：聚焦真实用户场景和业务价值\n- **可测试性**：包含明确的验收标准（Acceptance Criteria）\n- **适度粒度**：故事规模适中，可在一个迭代周期内完成\n- **独立性**：尽量减少与其他故事的依赖关系\n\n在敏捷团队中，story-writing 通常由产品负责人（Product Owner）主导，但需要开发团队、设计师和利益相关者共同参与。良好的故事编写能力直接影响需求沟通效率、开发优先级排序和产品交付质量，是现代软件工程实践中不可或缺的技能。\n\n该标签常用于标识与用户故事创建、优化、模板设计相关的功能特性或工具能力。"
+        }
+      },
+      "en": {
+        "name": "Story Writing",
+        "description": "Tools for crafting user stories with acceptance criteria in agile development workflows"
+      },
+      "zh": {
+        "name": "故事编写",
+        "description": "用于在敏捷开发中编写包含验收标准的用户故事的工具"
+      }
+    },
+    {
+      "slug": "code-generation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Code generation refers to the automated process of producing source code, scripts, or executable programs from higher-level specifications, models, or templates. This technique enables developers to create boilerplate code, repetitive patterns, or entire application structures without manual writing.\n\nIn modern software development, code generation serves multiple purposes: reducing development time, minimizing human error, ensuring consistency across codebases, and maintaining standardized patterns. It can be implemented through various approaches including template-based generators, model-driven development tools, compiler intermediate representations, or AI-powered assistants that interpret natural language requirements.\n\nCommon applications include generating API clients from OpenAPI specifications, creating database access layers from schema definitions, scaffolding project structures, producing UI components from design systems, and transpiling between programming languages. Build tools, IDEs, and frameworks frequently incorporate code generation capabilities to streamline workflows.\n\nThe practice ranges from simple macro expansion and code snippets to sophisticated systems that generate complete, production-ready applications. Modern AI-assisted code generation tools can understand context, suggest implementations, and even write complex algorithms based on developer intent, significantly accelerating the software development lifecycle while allowing engineers to focus on higher-level architecture and business logic."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**代码生成 (Code Generation)**\n\n代码生成是指通过自动化工具、算法或人工智能系统，根据特定的输入、规范或模板自动创建源代码的过程。这项技术广泛应用于软件开发的多个环节，旨在提高开发效率、减少重复性工作并降低人为错误。\n\n在现代软件工程中，代码生成主要包括以下应用场景：基于模型驱动开发(MDD)自动生成业务逻辑代码；通过接口定义语言(IDL)生成API客户端和服务端代码；利用ORM框架根据数据库模式生成数据访问层代码；以及近年来兴起的基于AI的智能代码补全和生成。\n\n代码生成的核心价值在于标准化和自动化。它能够确保生成的代码遵循统一的编码规范和最佳实践，减少样板代码(boilerplate code)的编写工作量，加速原型开发和迭代周期。同时，代码生成工具通常支持多种编程语言和框架，为跨平台开发提供便利。\n\n随着大语言模型技术的发展，AI驱动的代码生成已成为开发者工具链的重要组成部分，显著改变了软件开发的工作流程和效率。"
+        }
+      },
+      "en": {
+        "name": "Code Generation",
+        "description": "Automated creation of source code from specifications, models, or AI-powered natural language inputs"
+      },
+      "zh": {
+        "name": "代码生成",
+        "description": "从规范、模型或自然语言输入自动创建源代码的技术"
+      }
+    }
+  ],
+  "failed": []
+}

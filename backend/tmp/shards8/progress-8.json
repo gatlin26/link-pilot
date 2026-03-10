@@ -1,0 +1,28 @@
+{
+  "completedSlugs": [
+    "for-designers",
+    "freemium",
+    "image-compression",
+    "logo-design",
+    "photo-editor",
+    "real-estate",
+    "script-writing",
+    "story-writing"
+  ],
+  "failed": [
+    {
+      "slug": "ios-app",
+      "reason": "de: content contains banned hype language"
+    },
+    {
+      "slug": "noise-reduction",
+      "reason": "en: content contains banned hype language"
+    },
+    {
+      "slug": "testing-tool",
+      "reason": "de: content contains banned hype language"
+    }
+  ],
+  "updatedRows": 80,
+  "lastUpdatedAt": "2026-03-06T16:27:08.278Z"
+}

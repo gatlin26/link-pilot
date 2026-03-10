@@ -1,0 +1,226 @@
+{
+  "batchIndex": 10,
+  "successful": [
+    {
+      "slug": "code-completion",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Code completion is an intelligent development feature that automatically suggests and generates code as developers type, predicting the next logical code segments based on context, syntax patterns, and learned programming conventions. This capability leverages static analysis, language models, and machine learning algorithms to offer real-time suggestions ranging from simple variable names and method calls to complete function implementations and multi-line code blocks.\n\nModern code completion systems analyze the current codebase, imported libraries, type definitions, and surrounding context to provide contextually relevant suggestions. Advanced implementations utilize large language models trained on vast code repositories to understand programming patterns, idioms, and best practices across multiple languages and frameworks.\n\nThe feature significantly enhances developer productivity by reducing keystrokes, minimizing syntax errors, and accelerating the discovery of API methods and parameters. It serves as an interactive documentation tool, helping developers explore unfamiliar codebases and learn new libraries more efficiently.\n\nCode completion ranges from basic autocomplete functionality found in traditional IDEs to sophisticated AI-powered assistants that can generate entire functions from natural language comments or contextual cues. This technology has become a fundamental component of modern development environments, bridging the gap between developer intent and implementation while maintaining code quality and consistency."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**代码补全 (Code Completion)**\n\n代码补全是一种智能编程辅助功能，通过分析代码上下文、语法规则和项目结构，自动预测并建议开发者可能输入的代码片段。当开发者输入部分代码时，系统会实时提供可选的补全选项，包括变量名、函数名、方法调用、参数列表、代码模板等。\n\n现代代码补全技术通常基于静态分析、语义理解和机器学习模型，能够理解编程语言的语法特性、API 文档、项目依赖关系，甚至学习开发者的编码习惯。高级的代码补全系统可以提供多行代码建议、智能重构提示，以及根据注释生成完整函数实现。\n\n这项功能显著提升了开发效率，减少了拼写错误和语法错误，降低了记忆 API 细节的负担，使开发者能够更专注于业务逻辑设计。代码补全已成为现代集成开发环境 (IDE) 和代码编辑器的标准配置，是提升开发体验和代码质量的核心特性之一。"
+        }
+      },
+      "en": {
+        "name": "Code Completion",
+        "description": "Intelligent feature that suggests and generates code in real-time based on context and patterns"
+      },
+      "zh": {
+        "name": "代码补全",
+        "description": "根据上下文和模式实时建议和生成代码的智能功能"
+      }
+    },
+    {
+      "slug": "code-review",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Code review is a systematic examination of source code by one or more developers other than the original author, aimed at identifying bugs, improving code quality, and ensuring adherence to coding standards before changes are merged into the main codebase.\n\nIn software development workflows, code review serves multiple critical functions: it acts as a quality gate to catch defects early, facilitates knowledge sharing across team members, maintains consistency in coding practices, and helps enforce architectural decisions. Modern code review typically occurs through pull requests or merge requests in version control systems like Git, where reviewers can comment on specific lines, suggest improvements, and approve or request changes.\n\nThe practice encompasses various aspects including logic correctness, security vulnerabilities, performance implications, test coverage, documentation completeness, and code maintainability. Effective code reviews balance thoroughness with efficiency, focusing on meaningful feedback rather than stylistic nitpicking. They promote collaborative learning and collective code ownership within development teams.\n\nCode review can be conducted through different approaches: pair programming (real-time review), tool-assisted automated reviews, or asynchronous reviews via platforms like GitHub, GitLab, or Bitbucket. Organizations often establish review guidelines and checklists to standardize the process and ensure consistent quality across projects."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**代码审查 (Code Review)**\n\n代码审查是软件开发过程中的一项质量保证实践，指由开发团队成员系统性地检查、评估他人编写的源代码的过程。其主要目的是在代码合并到主分支之前发现潜在的缺陷、逻辑错误、安全漏洞和性能问题，同时确保代码符合团队的编码规范和最佳实践。\n\n在现代软件工程中,代码审查通常通过拉取请求(Pull Request)或合并请求(Merge Request)的形式进行。审查者会检查代码的可读性、可维护性、测试覆盖率、架构设计合理性等多个维度,并提供建设性的反馈意见。这一过程不仅能提高代码质量,还能促进团队知识共享、统一技术标准,帮助初级开发者快速成长。\n\n代码审查已成为敏捷开发和持续集成/持续部署(CI/CD)流程中的标准环节,被广泛应用于各类软件项目中。研究表明,有效的代码审查能显著降低生产环境中的缺陷率,提升软件的整体质量和团队协作效率。"
+        }
+      },
+      "en": {
+        "name": "Code Review",
+        "description": "Systematic examination of source code by peers to identify bugs, improve quality, and ensure standards"
+      },
+      "zh": {
+        "name": "代码审查",
+        "description": "团队成员系统性检查源代码以发现缺陷、提升质量并确保规范的实践"
+      }
+    },
+    {
+      "slug": "bug-detection",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Bug detection refers to the systematic process of identifying defects, errors, or unexpected behaviors in software code before they impact end users. This encompasses both automated and manual techniques used throughout the software development lifecycle to discover issues ranging from syntax errors and logic flaws to security vulnerabilities and performance bottlenecks.\n\nIn modern software engineering, bug detection typically involves multiple approaches: static analysis tools that examine code without execution, dynamic testing that runs code under various conditions, unit and integration tests, code reviews, and increasingly, AI-powered analysis systems. These methods help catch issues early when they're less costly to fix.\n\nThe feature is critical for maintaining code quality, ensuring system reliability, and reducing technical debt. Effective bug detection strategies can prevent production incidents, improve user experience, and lower maintenance costs. Organizations often integrate bug detection into continuous integration/continuous deployment (CI/CD) pipelines, enabling real-time feedback during development.\n\nAdvanced bug detection systems may employ machine learning to identify patterns associated with common defects, predict potential failure points, and prioritize issues based on severity and impact. This proactive approach helps development teams address problems before they escalate into critical failures."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "bug-detection（缺陷检测）是软件开发和质量保证领域中的一项核心功能，指通过自动化工具、静态分析、动态测试或人工审查等手段，系统性地识别代码中的错误、漏洞和潜在问题的过程。\n\n在技术层面，bug-detection 涵盖多种实现方式：静态代码分析工具可在编译前扫描源代码，发现语法错误、类型不匹配、内存泄漏等问题；动态分析则在程序运行时监测异常行为、性能瓶颈和资源消耗；单元测试和集成测试通过预设场景验证功能正确性；而基于机器学习的智能检测系统能够识别复杂的逻辑缺陷和安全漏洞。\n\n在商业应用中，有效的缺陷检测能够显著降低软件维护成本，提升产品质量和用户体验，减少生产环境故障风险。现代 DevOps 流程通常将 bug-detection 集成到持续集成/持续部署（CI/CD）管道中，实现缺陷的早期发现和快速修复。该功能对于关键业务系统、金融应用和安全敏感型软件尤为重要，是保障软件可靠性和稳定性的基础能力。"
+        }
+      },
+      "en": {
+        "name": "Bug Detection",
+        "description": "Automated tools and methods to identify code defects, errors, and vulnerabilities early in development"
+      },
+      "zh": {
+        "name": "缺陷检测",
+        "description": "通过自动化工具和方法在开发早期识别代码缺陷、错误和漏洞"
+      }
+    },
+    {
+      "slug": "code-refactoring",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Code refactoring is the systematic process of restructuring existing code without changing its external behavior or functionality. It involves improving the internal structure, design, and implementation of software to enhance readability, maintainability, performance, and extensibility while preserving the same input-output behavior.\n\nCommon refactoring techniques include extracting methods, renaming variables for clarity, eliminating code duplication, simplifying complex conditional logic, and reorganizing class hierarchies. The practice is fundamental to agile development methodologies and continuous improvement of codebases.\n\nRefactoring serves multiple purposes: reducing technical debt, making code easier to understand and modify, improving system architecture, facilitating easier testing, and preparing code for new features. It's typically performed incrementally alongside feature development rather than as a separate phase.\n\nModern development environments provide automated refactoring tools that safely perform common transformations while updating all references throughout the codebase. Best practices include maintaining comprehensive test coverage before refactoring, making small incremental changes, and committing frequently to version control.\n\nThis practice is essential for long-term software health, preventing code decay, and maintaining development velocity as projects mature and teams evolve."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**代码重构 (Code Refactoring)**\n\n代码重构是指在不改变软件外部行为和功能的前提下,对现有代码的内部结构进行优化和改进的过程。其核心目标是提升代码质量、可读性、可维护性和可扩展性,同时降低技术债务。\n\n重构的常见实践包括:提取重复代码为独立函数、简化复杂的条件逻辑、优化类和模块的职责划分、改善命名规范、消除代码异味(code smell)等。这是一个持续性的工程实践,通常伴随着完善的单元测试来确保重构过程不引入新的缺陷。\n\n在敏捷开发和持续集成环境中,代码重构被视为保持代码库健康的关键手段。它帮助团队应对需求变化,降低后期维护成本,提高开发效率。现代集成开发环境(IDE)通常提供自动化重构工具,如变量重命名、方法提取、接口抽取等功能,大幅降低了重构的风险和工作量。\n\n合理的重构策略能够延长软件生命周期,提升团队协作效率,是软件工程中不可或缺的质量保障实践。"
+        }
+      },
+      "en": {
+        "name": "Code Refactoring",
+        "description": "Restructuring existing code to improve quality and maintainability without changing external behavior"
+      },
+      "zh": {
+        "name": "代码重构",
+        "description": "在不改变外部行为的前提下优化代码内部结构，提升质量和可维护性"
+      }
+    },
+    {
+      "slug": "documentation-generation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Documentation generation refers to the automated or semi-automated process of creating technical documentation from source code, annotations, comments, or structured data. This practice enables development teams to maintain up-to-date reference materials, API specifications, user guides, and code documentation with reduced manual effort.\n\nCommon implementations include tools that parse inline code comments (such as JSDoc, Javadoc, or Python docstrings) to produce formatted HTML, PDF, or Markdown documentation. Modern documentation generation systems may also extract type definitions, function signatures, and usage examples directly from codebases, ensuring accuracy and consistency between code and documentation.\n\nKey applications include API documentation for libraries and services, SDK reference guides, internal code documentation for development teams, and user-facing help systems. Documentation generation tools often integrate with continuous integration pipelines, automatically updating documentation with each code change.\n\nBenefits include reduced documentation maintenance overhead, improved consistency between code and documentation, standardized formatting across projects, and lower barriers to keeping documentation current. This approach is particularly valuable in agile development environments where code evolves rapidly and manual documentation updates can lag behind implementation changes."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**documentation-generation（文档生成）**\n\n文档生成是指通过自动化工具或程序从源代码、注释、元数据或其他结构化信息中自动创建技术文档的过程。这项功能广泛应用于软件开发生命周期中，旨在减少手动编写文档的工作量，提高文档的准确性和一致性。\n\n在技术领域，文档生成工具可以从代码注释（如 JSDoc、JavaDoc、Sphinx）中提取 API 说明，生成函数、类、模块的使用手册；也可以基于数据库架构自动生成数据字典，或从 OpenAPI 规范生成 REST API 文档。现代文档生成系统还支持多种输出格式，包括 HTML、PDF、Markdown 等。\n\n在商业应用中，文档生成能够确保产品文档与代码同步更新，降低维护成本，提升开发团队效率。它特别适用于需要频繁迭代的敏捷开发环境，以及需要维护大量 API 接口的企业级项目。通过自动化文档生成，团队可以将更多精力投入到核心功能开发，同时为用户和开发者提供及时、准确的技术参考资料。"
+        }
+      },
+      "en": {
+        "name": "Documentation Generation",
+        "description": "Automated tools that create technical docs from source code, comments, and structured data"
+      },
+      "zh": {
+        "name": "文档生成",
+        "description": "从源代码、注释和结构化数据自动创建技术文档的工具"
+      }
+    },
+    {
+      "slug": "unit-testing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Unit testing is a software testing methodology where individual units or components of code—typically functions, methods, or classes—are tested in isolation to verify they work correctly. Each test focuses on a single piece of functionality, validating that it produces expected outputs for given inputs and handles edge cases appropriately.\n\nUnit tests are automated, fast-executing, and form the foundation of a comprehensive testing strategy. They're written by developers during or immediately after coding, often following test-driven development (TDD) practices where tests are written before implementation code. These tests use frameworks like JUnit, pytest, Jest, or NUnit depending on the programming language.\n\nThe primary benefits include early bug detection, simplified debugging by pinpointing exact failure locations, documentation of code behavior, and confidence when refactoring. Unit tests should be independent, repeatable, and require no external dependencies like databases or APIs—using mocks, stubs, or fakes instead.\n\nIn modern software development, unit testing is considered essential for maintaining code quality, enabling continuous integration/deployment pipelines, and reducing long-term maintenance costs. High unit test coverage indicates well-tested code, though coverage metrics alone don't guarantee quality. Effective unit tests are readable, maintainable, and test behavior rather than implementation details."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "单元测试（Unit Testing）是软件开发中的一种测试方法，指对程序中最小可测试单元进行检查和验证的过程。这些最小单元通常是单个函数、方法或类。单元测试的核心目标是在代码集成之前，独立验证每个单元的功能是否符合预期。\n\n在实践中，开发人员编写测试代码来调用目标单元，输入特定参数，并断言输出结果或行为是否正确。单元测试具有以下特点：测试粒度细、执行速度快、易于定位问题、可自动化运行。它是测试金字塔的基础层，应该覆盖代码库的大部分逻辑。\n\n单元测试在现代软件工程中扮演着关键角色。它能够及早发现缺陷，降低修复成本；支持代码重构，提供安全网；改善代码设计，促进模块化；作为活文档，展示代码用法。常见的单元测试框架包括 JUnit（Java）、pytest（Python）、Jest（JavaScript）等。\n\n在敏捷开发和持续集成环境中，单元测试是质量保障的重要实践，通常与测试驱动开发（TDD）方法论结合使用，帮助团队构建可靠、可维护的软件系统。"
+        }
+      },
+      "en": {
+        "name": "Unit Testing",
+        "description": "Automated testing of individual code components in isolation to verify correctness and behavior"
+      },
+      "zh": {
+        "name": "单元测试",
+        "description": "对程序中最小可测试单元进行独立验证的自动化测试方法"
+      }
+    },
+    {
+      "slug": "logo-design",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Logo design is the creative process of developing a unique visual symbol or mark that represents a brand, company, product, or organization. It encompasses the strategic combination of typography, imagery, color theory, and graphic elements to create a distinctive identifier that communicates brand values, personality, and positioning in the marketplace.\n\nIn the technical and business context, logo design serves as the cornerstone of visual brand identity systems. It must be scalable across various media formats—from digital platforms to print materials—while maintaining clarity and recognition at any size. Effective logo design balances aesthetic appeal with functional requirements, including versatility, memorability, timelessness, and appropriateness for the target audience.\n\nThe discipline involves multiple iterations, from conceptual sketching and digital rendering to refinement based on stakeholder feedback. Modern logo design often requires consideration of responsive design principles, ensuring optimal display across devices and platforms. Technical deliverables typically include vector files (SVG, AI, EPS) for scalability, along with specifications for color values (RGB, CMYK, Pantone), spacing guidelines, and usage rules.\n\nLogo design intersects with user experience (UX), marketing strategy, and brand architecture, making it a critical investment for businesses establishing or evolving their market presence. Professional logo design follows established principles while innovating to create distinctive marks that differentiate brands in competitive landscapes."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "logo-design（标志设计）是指为品牌、企业、产品或服务创建独特视觉标识的专业设计过程。它涉及运用图形、文字、色彩和排版等设计元素，创造出能够代表品牌核心价值、传达品牌个性并便于识别记忆的视觉符号。\n\n在技术和商业领域，logo-design 是品牌视觉识别系统（VI）的核心组成部分。一个成功的标志设计需要具备简洁性、可识别性、可扩展性和时代适应性等特征，能够在不同媒介和尺寸下保持清晰可辨，包括网站、移动应用、印刷品、产品包装等多种应用场景。\n\n现代 logo-design 通常使用矢量图形软件（如 Adobe Illustrator、Figma）进行创作，以确保在任意缩放下都能保持清晰度。设计过程包括品牌调研、概念开发、草图绘制、数字化制作、色彩方案确定和最终交付等阶段。交付物通常包含多种格式（SVG、PNG、PDF 等）和配色方案，以满足不同使用需求。\n\n在软件开发和数字产品中，logo-design 标签常用于标识与品牌标志相关的设计资源、组件或功能模块。"
+        }
+      },
+      "en": {
+        "name": "Logo Design",
+        "description": "Visual identity creation combining typography, color, and graphics to build memorable brand marks"
+      },
+      "zh": {
+        "name": "标志设计",
+        "description": "运用图形、文字和色彩创建独特品牌视觉标识的专业设计服务"
+      }
+    },
+    {
+      "slug": "mockup-generation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Mockup Generation**\n\nMockup generation refers to the automated or semi-automated process of creating visual representations of user interfaces, products, or designs before actual development or manufacturing begins. In software development and product design contexts, this involves producing static or interactive prototypes that simulate the appearance and basic functionality of an application, website, or physical product.\n\nModern mockup generation typically leverages design tools, templates, and increasingly AI-powered systems to rapidly produce wireframes, high-fidelity designs, or 3D renderings. These mockups serve multiple purposes: facilitating stakeholder communication, validating design concepts, gathering user feedback, and guiding development teams during implementation.\n\nThe practice encompasses various fidelity levels, from low-fidelity sketches and wireframes to pixel-perfect, interactive prototypes. In contemporary workflows, mockup generation tools often integrate with design systems, component libraries, and version control systems to maintain consistency and accelerate iteration cycles.\n\nKey applications include UI/UX design, product visualization, marketing materials, and client presentations. The technology has evolved from manual graphic design work to sophisticated platforms offering drag-and-drop interfaces, AI-assisted layout suggestions, and automatic responsive design adaptation. Effective mockup generation reduces development costs, minimizes miscommunication, and enables rapid experimentation with design alternatives before committing resources to full implementation."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**模型生成 (Mockup Generation)**\n\n模型生成是指通过自动化工具或人工智能技术，快速创建产品、界面或系统的视觉原型的过程。在软件开发和产品设计领域，这项功能允许设计师和开发者基于需求描述、草图或参数配置，自动生成高保真或低保真的界面模型。\n\n该技术广泛应用于用户界面设计、移动应用开发、网站原型制作等场景。通过模型生成，团队可以在开发前期快速验证设计理念，与利益相关者进行有效沟通，并在实际编码前识别潜在的用户体验问题。现代模型生成工具通常集成了设计系统、组件库和智能布局算法，能够根据品牌规范和设计模式自动生成符合标准的界面元素。\n\n相比传统手工绘制原型的方式，自动化模型生成显著提升了设计迭代速度，降低了早期设计成本，使产品团队能够更快地从概念转向实现。这项功能在敏捷开发和精益创业方法论中尤为重要，是现代产品开发流程中不可或缺的环节。"
+        }
+      },
+      "en": {
+        "name": "Mockup Generator",
+        "description": "Tools that create visual prototypes and UI representations before development begins"
+      },
+      "zh": {
+        "name": "原型生成器",
+        "description": "在开发前创建可视化原型和界面表现的工具"
+      }
+    },
+    {
+      "slug": "color-palette",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A color palette is a predefined collection of colors selected and organized for consistent use across a design system, application, or brand identity. In software development and digital design, color palettes serve as a foundational element that ensures visual coherence, accessibility, and brand recognition throughout user interfaces.\n\nColor palettes typically include primary, secondary, and accent colors, along with their various shades, tints, and tones. They may also encompass semantic colors for specific UI states such as success, warning, error, and informational messages. Modern design systems often implement color palettes as design tokens, enabling seamless synchronization between design tools and code implementations.\n\nIn technical contexts, color palettes are defined using standardized color models like RGB, HEX, HSL, or CMYK, depending on the medium. They play a crucial role in maintaining accessibility standards by ensuring sufficient contrast ratios between text and backgrounds, meeting WCAG guidelines for users with visual impairments.\n\nEffective color palettes balance aesthetic appeal with functional requirements, supporting both light and dark themes while maintaining readability and usability. They streamline the design-to-development workflow by providing a single source of truth for color usage, reducing inconsistencies and accelerating the creation of cohesive digital experiences across multiple platforms and touchpoints."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**色彩调色板 (Color Palette)**\n\n色彩调色板是指在设计系统、用户界面或品牌视觉体系中，经过精心选择和组织的一组颜色集合。它定义了产品或项目中可使用的标准颜色，包括主色、辅助色、中性色、状态色（如成功、警告、错误）等不同层级的色彩方案。\n\n在软件开发中，色彩调色板通常以代码形式实现，包含十六进制值、RGB/RGBA 值或 HSL 值等颜色表示方式。现代设计系统会将调色板定义为可复用的设计令牌（Design Tokens），确保整个产品的视觉一致性。\n\n色彩调色板的核心价值在于：建立统一的视觉语言、提升品牌识别度、确保无障碍访问性（通过满足 WCAG 对比度标准）、简化设计决策流程，以及便于团队协作。优秀的调色板需要考虑色彩心理学、文化差异、可访问性要求，以及在不同设备和环境下的显示效果。\n\n在实际应用中，色彩调色板常见于 UI 框架、设计工具（如 Figma、Sketch）、CSS 变量定义，以及品牌指南文档中，是构建可扩展设计系统的基础组成部分。"
+        }
+      },
+      "en": {
+        "name": "Color Palette",
+        "description": "Predefined collection of colors for consistent design across applications and brand identity"
+      },
+      "zh": {
+        "name": "色彩调色板",
+        "description": "用于应用程序和品牌视觉的预定义颜色集合，确保设计一致性"
+      }
+    },
+    {
+      "slug": "font-pairing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Font pairing refers to the practice of selecting and combining two or more typefaces that work harmoniously together in a design composition. This technique is fundamental to typography and visual design, where designers strategically match fonts with complementary characteristics—such as contrasting weights, styles, or classifications—to create visual hierarchy, improve readability, and enhance aesthetic appeal.\n\nEffective font pairing typically involves combining fonts from different categories, such as pairing a serif typeface with a sans-serif, or mixing display fonts with body text fonts. The goal is to achieve both contrast and cohesion, ensuring that the selected fonts complement rather than compete with each other while maintaining consistent visual language across the design.\n\nIn digital products and web design, font pairing plays a crucial role in establishing brand identity, guiding user attention, and creating intuitive information architecture. Common applications include pairing headline fonts with body copy fonts, combining primary and secondary typefaces in user interfaces, and selecting font families that perform well across different screen sizes and resolutions.\n\nSuccessful font pairing requires understanding typographic principles including x-height, letter spacing, weight variations, and overall character proportions. Modern design systems often codify font pairing decisions to ensure consistency across digital touchpoints and maintain brand coherence."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**字体配对 (Font Pairing)**\n\n字体配对是指在设计项目中有意识地选择和组合两种或多种字体，使其在视觉上协调统一，同时保持层次感和可读性的设计技术。这是平面设计、网页设计和品牌视觉系统中的核心技能之一。\n\n有效的字体配对通常遵循对比与和谐的原则。设计师会考虑字体的分类（如衬线体、无衬线体、手写体等）、字重、字宽、x-高度等特征，选择在风格上互补或形成视觉对比的字体组合。常见的配对策略包括：衬线体与无衬线体的搭配、同字体家族内不同字重的组合、或具有相似几何特征但风格不同的字体配对。\n\n在实际应用中，字体配对直接影响信息的层级传达、品牌调性的表达和用户的阅读体验。优秀的字体配对能够增强内容的可读性，建立清晰的视觉层次，并强化设计的整体美感。在数字产品设计中，字体配对还需要考虑跨平台兼容性、加载性能和无障碍访问等技术因素。"
+        }
+      },
+      "en": {
+        "name": "Font Pairing",
+        "description": "The practice of combining typefaces harmoniously to create visual hierarchy and enhance design aesthetics"
+      },
+      "zh": {
+        "name": "字体配对",
+        "description": "有意识地组合多种字体以实现视觉协调、层次分明和提升设计美感的技术"
+      }
+    }
+  ],
+  "failed": []
+}

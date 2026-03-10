@@ -1,0 +1,226 @@
+{
+  "batchIndex": 16,
+  "successful": [
+    {
+      "slug": "offline-mode",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Offline Mode**\n\nA feature or operational state that enables an application, device, or system to function without an active internet connection or network connectivity. In offline mode, software maintains core functionality by utilizing locally cached data, pre-downloaded content, or stored resources on the device's storage.\n\nThis capability is particularly valuable for mobile applications, progressive web apps (PWAs), and cloud-based services that need to ensure continuity of service in environments with unreliable connectivity or when users deliberately disconnect from networks. Common implementations include email clients that allow message composition and reading of previously synced emails, document editors that save changes locally for later synchronization, and media applications that enable playback of downloaded content.\n\nOffline mode typically involves synchronization mechanisms that reconcile local changes with remote servers once connectivity is restored, handling potential conflicts through various merge strategies. The feature enhances user experience by reducing dependency on constant network availability, improving application responsiveness, and enabling productivity in low-connectivity scenarios such as during flights, in remote locations, or in areas with poor network infrastructure.\n\nModern offline-first architectures prioritize this functionality as a core design principle rather than an afterthought, using technologies like service workers, local databases, and intelligent caching strategies."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**离线模式 (Offline Mode)**\n\n离线模式是指应用程序、系统或服务在没有网络连接的情况下仍能继续运行并提供核心功能的工作状态。该功能通过在本地设备上缓存数据、资源和业务逻辑,使用户能够在断网环境下访问已下载的内容、编辑文档、浏览数据或执行特定操作。\n\n在技术实现上,离线模式通常依赖本地存储技术(如 IndexedDB、LocalStorage)、服务工作线程(Service Workers)和数据同步机制。当网络恢复时,系统会自动将离线期间产生的变更与服务器进行同步,确保数据一致性。\n\n该功能广泛应用于移动应用、渐进式 Web 应用(PWA)、协作工具、内容管理系统和企业软件中。对于经常处于弱网或无网环境的用户(如旅行者、野外工作人员),离线模式显著提升了应用的可用性和用户体验。它也是现代应用程序提高可靠性和用户留存率的重要特性,特别是在网络基础设施不稳定的地区具有关键价值。"
+        }
+      },
+      "en": {
+        "name": "Offline Mode",
+        "description": "Enables applications to function without internet connectivity using cached data and local resources"
+      },
+      "zh": {
+        "name": "离线模式",
+        "description": "允许应用程序在无网络连接时通过本地缓存数据和资源继续运行"
+      }
+    },
+    {
+      "slug": "multi-language",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**multi-language**\n\nA feature or capability that enables software applications, systems, or platforms to support, process, or display content in multiple human languages simultaneously or interchangeably. This encompasses internationalization (i18n) and localization (l10n) functionalities that allow users to interact with products in their preferred language.\n\nIn technical implementation, multi-language support typically involves separating translatable content from code, using resource files or databases to store language-specific strings, and implementing language detection and switching mechanisms. It may include support for different character sets (UTF-8, Unicode), right-to-left (RTL) text rendering, locale-specific formatting for dates, numbers, and currencies, and culturally appropriate content adaptation.\n\nFrom a business perspective, multi-language capabilities are essential for global market expansion, improving user accessibility, and meeting regulatory compliance requirements in different regions. Applications with robust multi-language support can serve diverse user bases, reduce barriers to adoption, and enhance user experience across geographical boundaries.\n\nCommon implementations include language selection interfaces, automatic locale detection, translation management systems, and content delivery networks optimized for regional content distribution. This feature is critical for enterprise software, e-commerce platforms, mobile applications, and web services targeting international audiences."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**多语言支持 (Multi-language)**\n\n多语言支持是指软件系统、应用程序或平台能够适配和运行多种自然语言的功能特性。该特性使产品能够为不同语言背景的用户提供本地化体验，包括用户界面文本、内容展示、输入输出处理等方面的语言切换能力。\n\n在技术实现层面，多语言支持通常涉及国际化（i18n）和本地化（l10n）两个核心环节。国际化是指在软件架构设计阶段将可翻译内容与代码逻辑分离，采用资源文件、语言包等方式管理文本；本地化则是针对特定地区和语言进行翻译适配，包括日期格式、货币符号、文化习俗等区域性差异的处理。\n\n在商业应用中，多语言支持是产品全球化战略的关键要素，能够显著扩大目标市场覆盖范围，提升用户体验和产品竞争力。对于跨国企业、电商平台、SaaS 服务等面向国际市场的产品而言，完善的多语言支持能力是进入不同地区市场的基础设施，直接影响用户获取成本和市场渗透率。"
+        }
+      },
+      "en": {
+        "name": "Multi-language Support",
+        "description": "Software capability enabling content display and interaction in multiple languages with localization features"
+      },
+      "zh": {
+        "name": "多语言支持",
+        "description": "使软件能够适配多种语言并提供本地化体验的功能特性"
+      }
+    },
+    {
+      "slug": "custom-branding",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Custom branding refers to the capability that allows organizations or users to personalize a product, application, or service with their own visual identity and brand elements. This feature typically includes the ability to modify logos, color schemes, typography, domain names, and other visual components to align with corporate brand guidelines or individual preferences.\n\nIn software and SaaS contexts, custom branding enables white-label solutions where businesses can rebrand third-party platforms as their own, creating a seamless brand experience for end users. This is particularly valuable for enterprises, resellers, and agencies who want to maintain brand consistency across all customer touchpoints.\n\nCommon implementations include customizable login pages, email templates, user interfaces, mobile applications, and customer portals. Advanced custom branding may extend to custom URLs, SSL certificates, and complete theme customization.\n\nThe feature serves multiple business objectives: strengthening brand recognition, building customer trust, differentiating from competitors, and creating professional appearances. It's especially critical in B2B software, multi-tenant platforms, and customer-facing applications where brand identity directly impacts user perception and business credibility.\n\nCustom branding typically requires administrative privileges and may be offered as a premium feature in tiered pricing models, reflecting its strategic value for business users."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**custom-branding（自定义品牌）**\n\n自定义品牌是指允许用户或企业根据自身品牌形象和视觉识别系统，对软件产品、应用程序或服务平台的外观、标识和用户界面元素进行个性化定制的功能特性。\n\n在技术实现层面，自定义品牌通常包括：修改产品的配色方案、替换默认Logo和图标、自定义字体样式、调整界面布局、添加企业专属的视觉元素等。这项功能广泛应用于SaaS平台、白标解决方案、企业级软件和多租户系统中。\n\n在商业应用场景中，自定义品牌功能使企业能够：\n- 保持品牌一致性，强化品牌认知度\n- 为最终用户提供无缝的品牌体验\n- 在使用第三方技术解决方案时隐藏原始供应商标识\n- 提升产品的专业性和可信度\n- 满足企业客户对品牌独立性的需求\n\n该功能对于B2B软件服务商尤为重要，是产品差异化和增值服务的关键组成部分，通常作为高级订阅计划或企业版本的核心功能提供。"
+        }
+      },
+      "en": {
+        "name": "Custom Branding",
+        "description": "Personalize products with your own logos, colors, and brand identity for seamless user experience"
+      },
+      "zh": {
+        "name": "自定义品牌",
+        "description": "使用自有标识、配色和品牌元素对产品进行个性化定制"
+      }
+    },
+    {
+      "slug": "white-label",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A white-label solution refers to a product, service, or software developed by one company that other companies can rebrand and resell as their own. The term originates from the practice of placing a blank white label on a product, allowing the reseller to add their own branding.\n\nIn software development and SaaS contexts, white-label products are fully functional applications or platforms that can be customized with a client's logo, color scheme, domain name, and branding elements while maintaining the underlying technology and infrastructure. This approach enables businesses to offer sophisticated solutions to their customers without investing in development from scratch.\n\nCommon applications include white-label mobile apps, payment processing systems, CRM platforms, and e-commerce solutions. The provider handles technical maintenance, updates, and infrastructure, while the reseller focuses on marketing, sales, and customer relationships.\n\nKey benefits include reduced time-to-market, lower development costs, and the ability to offer comprehensive solutions without extensive technical expertise. However, white-label solutions may offer limited customization compared to custom-built alternatives and can create vendor dependency. This model is particularly popular among agencies, startups, and businesses seeking to expand their service offerings rapidly while maintaining brand consistency."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**White-Label（白标）**\n\nWhite-label 是一种商业模式和技术实现方式，指由一家公司开发的产品或服务，被另一家公司以自己的品牌名称重新包装和销售。在这种模式下，原始开发商提供核心功能和技术支持，而购买方可以自定义品牌标识、界面外观和用户体验，使产品看起来像是自己开发的。\n\n在软件和 SaaS 领域，white-label 解决方案允许企业快速进入市场，无需从零开始构建技术基础设施。常见应用场景包括：支付处理系统、客户关系管理（CRM）平台、电子商务解决方案、移动应用程序等。\n\nWhite-label 的核心特征是品牌可定制性和技术透明性。购买方通常可以修改 logo、配色方案、域名和用户界面元素，但底层技术架构和功能由原始供应商维护和更新。这种模式为企业提供了成本效益和快速部署的优势，同时保持了品牌独立性和市场竞争力。\n\n对于技术团队而言，实现 white-label 功能需要考虑多租户架构、主题定制系统、品牌资源管理和配置灵活性等技术要素。"
+        }
+      },
+      "en": {
+        "name": "White-Label Solution",
+        "description": "Rebrandable products or services that companies can customize and resell under their own brand"
+      },
+      "zh": {
+        "name": "白标解决方案",
+        "description": "可由企业定制品牌并以自有名义销售的产品或服务"
+      }
+    },
+    {
+      "slug": "business",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Business**\n\nIn the technology and software development context, \"business\" refers to the commercial, organizational, and operational aspects of creating, delivering, and monetizing products or services. This encompasses business logic (the rules and workflows that define how an application operates), business requirements (the functional needs that software must fulfill to achieve organizational goals), and business intelligence (data-driven insights for decision-making).\n\nWithin software architecture, the business layer contains domain-specific logic separate from technical infrastructure, ensuring that core operational rules remain independent of implementation details. Business metrics track key performance indicators (KPIs) such as revenue, user acquisition, conversion rates, and customer lifetime value.\n\nThe term also applies to B2B (business-to-business) solutions designed for enterprise clients, as opposed to B2C (business-to-consumer) products targeting individual users. Business analysis involves identifying stakeholder needs, documenting requirements, and ensuring technical solutions align with strategic objectives.\n\nIn agile development, business value prioritizes features based on their impact on organizational goals. Business continuity planning addresses disaster recovery and operational resilience, while business process automation streamlines repetitive workflows through technology.\n\nUnderstanding business context is essential for developers, product managers, and technical leaders to build solutions that deliver measurable value beyond pure technical excellence."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**business（商业/业务）**\n\n在技术和商业领域，business 指代与企业运营、商业活动和价值创造相关的各类事务。该标签涵盖多个维度：\n\n**核心含义：**\n- 企业的商业模式、盈利策略和市场定位\n- 组织的业务流程、运营管理和资源配置\n- 商业决策、战略规划和绩效评估\n\n**技术应用场景：**\n- **业务逻辑层**：软件架构中处理商业规则和业务流程的核心模块\n- **业务分析**：通过数据分析支持商业决策和业务优化\n- **业务系统**：ERP、CRM、SCM 等企业级应用系统\n- **业务需求**：软件开发中源于商业目标的功能性需求\n\n**实践领域：**\n包括市场营销、销售管理、财务会计、供应链管理、客户关系管理等。在软件工程中，business 标签通常标识与业务相关的代码、文档、需求或讨论，区别于纯技术实现细节。\n\n该标签强调技术与商业价值的结合，体现了技术服务于业务目标的理念。"
+        }
+      },
+      "en": {
+        "name": "Business",
+        "description": "Commercial operations, organizational strategy, and business logic in software development"
+      },
+      "zh": {
+        "name": "商业/业务",
+        "description": "企业运营、组织战略和软件开发中的业务逻辑"
+      }
+    },
+    {
+      "slug": "education",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Education**\n\nIn technology and business contexts, \"education\" refers to structured learning initiatives, platforms, and content designed to develop knowledge, skills, and competencies. This encompasses both traditional educational institutions adopting digital tools and technology-driven learning solutions.\n\nIn the tech industry, education manifests through:\n\n- **EdTech platforms**: Learning management systems (LMS), online course providers, and educational software that deliver scalable instruction\n- **Developer education**: Documentation, tutorials, API guides, and training programs that enable users to effectively utilize products and services\n- **Corporate training**: Employee development programs, certification courses, and skill-building initiatives delivered through digital channels\n- **User onboarding**: In-product education features like tooltips, walkthroughs, and interactive tutorials that reduce friction and improve adoption\n\nThe education tag typically categorizes content, products, or services related to learning delivery, curriculum development, student/learner management, assessment tools, or knowledge transfer mechanisms. It's commonly applied to SaaS products serving schools and universities, professional development platforms, coding bootcamps, and enterprise training solutions.\n\nIn business strategy, education often represents a market vertical, customer acquisition channel, or value-add service that builds user competency and loyalty while reducing support costs."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**education（教育）**\n\n在技术和商业领域，education 标签通常指代与教育相关的产品、服务、内容或功能模块。该标签涵盖广泛的应用场景：\n\n**技术应用层面：**\n- 在线学习平台（MOOC、LMS 学习管理系统）\n- 教育科技产品（EdTech）的分类标识\n- 教育类应用程序和软件的功能模块\n- 知识库、文档系统中的教学内容分类\n- API 和数据库中教育相关数据的标记\n\n**商业应用层面：**\n- 企业培训系统和员工发展项目\n- 客户教育和产品使用指导\n- 内容营销中的教育性资源\n- SaaS 产品中的用户引导和教程功能\n\n**常见使用场景：**\n内容管理系统的分类标签、电商平台的商品类目、社交媒体的话题标记、搜索引擎优化的关键词标注等。该标签帮助系统识别、组织和检索教育相关资源，提升用户体验和内容可发现性。\n\n在数据分析中，education 标签也用于用户画像构建、行为分析和个性化推荐，是现代数字产品中重要的元数据标识。"
+        }
+      },
+      "en": {
+        "name": "Education",
+        "description": "Learning platforms, training programs, and educational tools for skill development and knowledge transfer"
+      },
+      "zh": {
+        "name": "教育",
+        "description": "用于技能培养和知识传递的学习平台、培训项目和教育工具"
+      }
+    },
+    {
+      "slug": "healthcare",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Healthcare refers to the organized system of services, practices, and technologies dedicated to maintaining, improving, and restoring human health through prevention, diagnosis, treatment, and management of illness and injury. In technical and business contexts, healthcare encompasses a broad ecosystem including medical facilities, pharmaceutical companies, health insurance providers, medical device manufacturers, and digital health platforms.\n\nThe healthcare sector has become increasingly technology-driven, incorporating electronic health records (EHR), telemedicine, artificial intelligence diagnostics, wearable health monitors, and data analytics for population health management. Healthcare IT systems focus on interoperability, patient data security (HIPAA compliance in the US), and clinical decision support.\n\nFrom a business perspective, healthcare represents one of the largest economic sectors globally, involving complex stakeholder relationships between providers, payers, patients, and regulators. Key considerations include regulatory compliance, reimbursement models, quality metrics, patient outcomes, and cost containment.\n\nIn software development and cloud services, healthcare applications must address stringent privacy requirements, data sovereignty, audit trails, and industry-specific standards like HL7 and FHIR for health information exchange. The sector continues evolving toward value-based care models, personalized medicine, and patient-centered digital experiences."
+        },
+        "zh": {
+          "source": "wikipedia",
+          "content": "醫療保健，也可稱為醫療衛生，又稱健康照護 是對人們的疾病、創傷、和其他身心障礙，透過預防、診斷、治療的方式，來維持或者是改善。醫療保健由醫事人員和醫療相關專業人員提供。包括有牙科、藥學、助產師、護理人員、驗光、聽力學、心理學、職能治療、物理治療、運動防護等（請參考醫療衛生科學）。服務可分成初級照護、二級照護、和三級照護，另外也包括公共衛生的工作。\n"
+        }
+      },
+      "en": {
+        "name": "Healthcare",
+        "description": "Services and technologies for maintaining, improving, and restoring human health through prevention, diagnosis, and treatment"
+      },
+      "zh": {
+        "name": "医疗保健",
+        "description": "通过预防、诊断和治疗来维持、改善和恢复人类健康的服务与技术"
+      }
+    },
+    {
+      "slug": "finance",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Finance refers to the management, creation, and study of money, investments, and other financial instruments. In technical and business contexts, finance encompasses the systems, processes, and technologies used to handle monetary transactions, assess financial risks, allocate capital, and optimize resource utilization.\n\nWithin software engineering and technology domains, finance typically relates to:\n\n**Financial Technology (FinTech)**: Applications and platforms that facilitate banking, payments, lending, investment management, and cryptocurrency transactions. This includes payment gateways, trading systems, blockchain networks, and digital wallets.\n\n**Financial Data Processing**: Systems that handle large-scale financial data analysis, real-time market data feeds, risk modeling, algorithmic trading, and regulatory compliance reporting.\n\n**Enterprise Finance Systems**: Software solutions for accounting, budgeting, financial planning and analysis (FP&A), enterprise resource planning (ERP), and business intelligence tools that support financial decision-making.\n\n**Security and Compliance**: Implementation of encryption, authentication, audit trails, and adherence to financial regulations such as PCI-DSS, SOX, GDPR, and anti-money laundering (AML) requirements.\n\nFinance-related projects demand high reliability, data accuracy, security, and performance, often requiring specialized knowledge of financial instruments, market mechanisms, regulatory frameworks, and mathematical modeling techniques."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**finance（金融/财务）**\n\n在技术和商业领域，finance 标签通常指代与金融服务、财务管理、资金运作相关的系统、应用或功能模块。\n\n**技术应用场景：**\n- **金融科技（FinTech）**：涵盖支付系统、数字银行、区块链金融、智能投顾等创新金融技术解决方案\n- **财务管理系统**：企业资源规划（ERP）中的财务模块，包括会计核算、预算管理、成本控制、财务报表生成等功能\n- **交易系统**：证券交易平台、外汇交易系统、加密货币交易所等高频交易和结算系统\n- **风险管理**：信用评估、反欺诈检测、合规监控等金融风控技术\n\n**关键特征：**\n该领域对系统的安全性、准确性、实时性要求极高，通常涉及复杂的数学模型、大数据分析、机器学习算法。开发此类系统需要深入理解金融业务逻辑、监管合规要求，以及处理高并发、分布式事务等技术挑战。\n\n**应用范围：**\n银行、保险、证券、基金、支付、借贷、财富管理等金融服务的数字化实现，以及企业内部的财务信息化建设。"
+        }
+      },
+      "en": {
+        "name": "Finance & Financial Technology",
+        "description": "Systems and applications for financial services, payment processing, trading, and enterprise financial management"
+      },
+      "zh": {
+        "name": "金融与财务技术",
+        "description": "用于金融服务、支付处理、交易系统和企业财务管理的系统与应用"
+      }
+    },
+    {
+      "slug": "e-commerce",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "E-commerce (electronic commerce) refers to the buying and selling of goods or services using the internet, and the transfer of money and data to execute these transactions. It encompasses a wide range of online business activities for products and services, conducted through various digital platforms including websites, mobile applications, and social media channels.\n\nE-commerce operates through multiple business models: B2C (Business-to-Consumer) where companies sell directly to end users, B2B (Business-to-Business) involving transactions between companies, C2C (Consumer-to-Consumer) enabling individuals to sell to each other through platforms like marketplaces, and B2G (Business-to-Government) for commercial transactions with government entities.\n\nThe technical infrastructure of e-commerce includes payment gateways, shopping cart systems, inventory management, customer relationship management (CRM), and secure data transmission protocols. Modern e-commerce platforms integrate advanced technologies such as AI-powered recommendation engines, chatbots for customer service, and analytics tools for tracking user behavior and optimizing conversion rates.\n\nKey components include product catalogs, secure checkout processes, multiple payment options (credit cards, digital wallets, cryptocurrencies), order fulfillment systems, and customer support mechanisms. E-commerce has revolutionized retail by enabling 24/7 accessibility, global reach, personalized shopping experiences, and reduced operational costs compared to traditional brick-and-mortar stores."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "电子商务（E-commerce）是指通过互联网、移动网络等电子化方式进行商品和服务交易的商业活动模式。它涵盖了在线零售、批发、数字产品销售、服务预订等多种交易形式，突破了传统商业的时空限制。\n\n在技术层面，电子商务系统通常包括前端展示界面、购物车机制、支付网关集成、订单管理系统、库存管理、物流追踪等核心模块。常见的技术架构涉及 Web 应用开发、数据库设计、API 接口、安全加密、分布式系统等领域。\n\n电子商务的主要应用场景包括：B2C（企业对消费者）、B2B（企业对企业）、C2C（消费者对消费者）、O2O（线上到线下）等模式。技术实现上需要处理高并发访问、交易安全、用户体验优化、数据分析、个性化推荐等关键问题。\n\n现代电子商务平台还整合了移动支付、社交媒体营销、人工智能客服、大数据分析等先进技术，形成了完整的数字化商业生态系统，已成为全球商业活动的重要组成部分。"
+        }
+      },
+      "en": {
+        "name": "E-commerce Platform",
+        "description": "Online systems for buying and selling goods or services through digital channels"
+      },
+      "zh": {
+        "name": "电子商务平台",
+        "description": "通过互联网进行商品和服务交易的在线系统"
+      }
+    },
+    {
+      "slug": "real-estate",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Real estate refers to physical property consisting of land and any permanent structures or improvements attached to it, including buildings, homes, natural resources, and infrastructure. In technical and business contexts, real estate encompasses both the tangible assets and the legal rights associated with ownership, use, and transfer of such properties.\n\nThe term is widely used across multiple domains: in software development, real-estate often describes the allocation and optimization of screen space, user interface layouts, or server infrastructure; in business and finance, it represents a major asset class for investment, development, and portfolio diversification; in data management, it may refer to storage space allocation and optimization strategies.\n\nReal estate transactions involve complex processes including property valuation, legal documentation, financing arrangements, and regulatory compliance. The industry has increasingly adopted technology solutions such as property management systems, virtual tours, blockchain-based title records, and AI-powered valuation models.\n\nIn cloud computing and IT infrastructure, \"real estate\" metaphorically describes the physical space required for data centers, server racks, and networking equipment, where efficient space utilization directly impacts operational costs and scalability. The term also applies to digital advertising, where \"ad real estate\" refers to valuable placement positions on websites and applications."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**real-estate（房地产）**\n\n房地产是指土地及其附着物的总称，包括土地、建筑物及其他不可移动的地上定着物。在技术和商业领域，该标签通常用于标识与房地产行业相关的应用、系统、数据和服务。\n\n在软件开发中，real-estate 标签常见于：\n- **房产交易平台**：在线房屋买卖、租赁系统\n- **物业管理系统**：楼宇管理、租户管理、维护调度\n- **房地产数据分析**：市场趋势分析、价格预测、投资评估\n- **地理信息系统（GIS）**：地图可视化、位置服务、区域分析\n- **智能建筑技术**：物联网设备集成、能源管理、安防系统\n\n该领域的技术应用涉及大数据处理、机器学习、移动应用开发、云计算等多个技术栈。常见功能包括房源搜索、虚拟看房（VR/AR）、电子签约、支付集成、客户关系管理（CRM）等。\n\n在商业模式上，房地产技术（PropTech）正在改变传统行业运作方式，提升交易效率，优化用户体验，并为投资决策提供数据支持。"
+        }
+      },
+      "en": {
+        "name": "Real Estate",
+        "description": "Property management, transaction platforms, and PropTech solutions for the real estate industry"
+      },
+      "zh": {
+        "name": "房地产",
+        "description": "房产管理、交易平台及房地产科技解决方案"
+      }
+    }
+  ],
+  "failed": []
+}

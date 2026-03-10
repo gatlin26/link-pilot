@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ahrefs 拦截器测试</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      background: #1e1e1e;
+      color: #d4d4d4;
+    }
+    .log {
+      background: #252526;
+      padding: 10px;
+      margin: 10px 0;
+      border-left: 3px solid #007acc;
+      font-size: 12px;
+    }
+    .success { border-left-color: #4ec9b0; }
+    .error { border-left-color: #f48771; }
+    .warning { border-left-color: #dcdcaa; }
+    button {
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #005a9e;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Ahrefs 拦截器测试工具</h1>
+
+  <div>
+    <button onclick="testBridgeExists()">1. 检查桥接脚本</button>
+    <button onclick="testFetchIntercept()">2. 测试 Fetch 拦截</button>
+    <button onclick="testXHRIntercept()">3. 测试 XHR 拦截</button>
+    <button onclick="clearLogs()">清除日志</button>
+  </div>
+
+  <div id="logs"></div>
+
+  <script>
+    const BRIDGE_CHANNEL = '__LINK_PILOT_AHREFS_BRIDGE__';
+    const BRIDGE_SOURCE_MAIN = 'link_pilot_ahrefs_main';
+    const BRIDGE_SOURCE_CONTENT = 'link_pilot_ahrefs_content';
+
+    function log(message, type = 'info') {
+      const div = document.createElement('div');
+      div.className = `log ${type}`;
+      div.textContent = `[${new Date().toISOString()}] ${message}`;
+      document.getElementById('logs').appendChild(div);
+      console.log(message);
+    }
+
+    function clearLogs() {
+      document.getElementById('logs').innerHTML = '';
+    }
+
+    // 监听桥接消息
+    window.addEventListener('message', (event) => {
+      if (event.source !== window) return;
+      const data = event.data;
+      if (!data || data.channel !== BRIDGE_CHANNEL) return;
+      if (data.source !== BRIDGE_SOURCE_MAIN) return;
+
+      log(`📨 收到桥接消息: ${data.type}`, 'success');
+      if (data.payload) {
+        log(`   数据: ${JSON.stringify(data.payload)}`, 'info');
+      }
+    });
+
+    function testBridgeExists() {
+      log('🔍 检查桥接脚本是否存在...', 'info');
+
+      const state = window['__linkPilotAhrefsBridgeState__'];
+      if (state) {
+        log('✅ 桥接脚本已加载', 'success');
+        log(`   active: ${state.active}`, 'info');
+        log(`   readyForStreaming: ${state.readyForStreaming}`, 'info');
+        log(`   listenerBound: ${state.listenerBound}`, 'info');
+        log(`   bufferedResponses: ${state.bufferedResponses.length}`, 'info');
+      } else {
+        log('❌ 桥接脚本未找到', 'error');
+      }
+    }
+
+    function testFetchIntercept() {
+      log('🧪 测试 Fetch 拦截...', 'info');
+
+      // 发送启动命令
+      window.postMessage({
+        channel: BRIDGE_CHANNEL,
+        source: BRIDGE_SOURCE_CONTENT,
+        type: 'START_INTERCEPT',
+      }, '*');
+
+      log('📤 已发送 START_INTERCEPT 命令', 'info');
+
+      // 模拟 Ahrefs API 请求
+      setTimeout(() => {
+        log('🌐 发起测试 Fetch 请求...', 'info');
+        fetch('https://httpbin.org/json')
+          .then(res => res.json())
+          .then(data => {
+            log('✅ Fetch 请求完成', 'success');
+          })
+          .catch(err => {
+            log(`❌ Fetch 请求失败: ${err.message}`, 'error');
+          });
+      }, 500);
+    }
+
+    function testXHRIntercept() {
+      log('🧪 测试 XHR 拦截...', 'info');
+
+      // 发送启动命令
+      window.postMessage({
+        channel: BRIDGE_CHANNEL,
+        source: BRIDGE_SOURCE_CONTENT,
+        type: 'START_INTERCEPT',
+      }, '*');
+
+      log('📤 已发送 START_INTERCEPT 命令', 'info');
+
+      // 模拟 Ahrefs API 请求
+      setTimeout(() => {
+        log('🌐 发起测试 XHR 请求...', 'info');
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://httpbin.org/json');
+        xhr.onload = () => {
+          log('✅ XHR 请求完成', 'success');
+        };
+        xhr.onerror = () => {
+          log('❌ XHR 请求失败', 'error');
+        };
+        xhr.send();
+      }, 500);
+    }
+
+    // 页面加载时自动检查
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        log('🚀 页面加载完成，开始自动检查...', 'info');
+        testBridgeExists();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

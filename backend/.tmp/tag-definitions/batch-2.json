@@ -1,0 +1,226 @@
+{
+  "batchIndex": 2,
+  "successful": [
+    {
+      "slug": "3d-modeling",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "In 3D computer graphics, 3D modeling is the process of developing a mathematical coordinate-based representation of a surface of an object in three dimensions via specialized software by manipulating edges, vertices, and polygons in a simulated 3D space."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "3D建模（3D Modeling）是指使用专业软件在三维空间中创建物体数字表示的技术过程。通过定义物体的几何形状、表面特征和空间位置，建模师可以构建出虚拟的三维模型。\n\n该技术广泛应用于多个领域：在游戏开发中用于创建角色、场景和道具；在影视制作中实现特效和动画；在建筑设计中进行可视化呈现；在工业设计中用于产品原型开发；在医疗领域辅助手术规划和教学。\n\n常见的建模方法包括多边形建模、曲面建模、实体建模和雕刻建模等。主流软件工具有Blender、Maya、3ds Max、Cinema 4D等。现代3D建模还涉及纹理贴图、材质设置、光照渲染等后续工作流程。\n\n随着虚拟现实（VR）、增强现实（AR）和元宇宙概念的发展，3D建模技术的重要性日益凸显，已成为数字内容创作的核心技能之一。该技术要求从业者具备空间想象能力、艺术审美和技术操作能力的综合素质。"
+        }
+      },
+      "en": {
+        "name": "3D Modeling",
+        "description": "Software for creating three-dimensional digital representations of objects through geometric manipulation"
+      },
+      "zh": {
+        "name": "3D 建模",
+        "description": "通过几何操作在三维空间中创建物体数字表示的专业软件"
+      }
+    },
+    {
+      "slug": "animation-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An animation tool is a software application or platform designed to create, edit, and produce animated content through digital means. These tools enable artists, designers, and developers to generate motion graphics, character animations, visual effects, and interactive animations for various media including films, games, websites, and mobile applications.\n\nAnimation tools range from professional-grade software suites offering frame-by-frame animation, rigging systems, and advanced rendering capabilities, to lightweight web-based applications focused on specific animation tasks like UI transitions or simple motion graphics. They typically provide features such as timeline editors, keyframe manipulation, easing functions, layer management, and export options for different formats and platforms.\n\nModern animation tools often incorporate procedural animation techniques, physics simulations, and AI-assisted features to streamline workflows. They may support various animation methodologies including 2D vector animation, 3D modeling and animation, stop-motion simulation, and skeletal animation systems. Many tools also offer integration with other creative software and support collaborative workflows through cloud-based features.\n\nThese tools serve diverse user groups from professional animators and motion designers to developers implementing animations in user interfaces, making them essential components in digital content creation pipelines across entertainment, advertising, education, and software development industries."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "animation-tool（动画工具）是指用于创建、编辑和制作动画内容的软件应用程序或开发库。这类工具涵盖了从传统二维动画到现代三维动画、运动图形和交互式动画的广泛领域。\n\n在技术层面，动画工具可分为几类：专业动画制作软件（如 Adobe Animate、Blender、Maya）、基于代码的动画库（如 GSAP、Anime.js、Framer Motion）、以及集成在开发环境中的动画系统（如 CSS 动画、Unity 动画系统）。这些工具提供关键帧编辑、时间轴控制、缓动函数、骨骼绑定、粒子系统等核心功能。\n\n在商业应用中，动画工具广泛用于影视制作、游戏开发、网页设计、移动应用开发、广告营销和教育培训等领域。它们帮助设计师和开发者创建视觉吸引力强的用户界面、产品演示、品牌动效和交互体验，从而提升用户参与度和产品价值。\n\n现代动画工具越来越注重实时渲染、协作功能、跨平台兼容性和与其他设计工具的集成，以满足快速迭代和多团队协作的需求。"
+        }
+      },
+      "en": {
+        "name": "Animation Tool",
+        "description": "Software for creating, editing, and producing animated content for films, games, web, and apps"
+      },
+      "zh": {
+        "name": "动画工具",
+        "description": "用于创建、编辑和制作影视、游戏、网页和应用动画内容的软件"
+      }
+    },
+    {
+      "slug": "code-editor",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "A source-code editor is a text editor program designed specifically for editing the source code of computer programs. It includes basic functionality such as syntax highlighting, and sometimes debugging. It may be a standalone application or it may be built into an integrated development environment (IDE)."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**代码编辑器 (Code Editor)**\n\n代码编辑器是一种专门用于编写、编辑和管理程序源代码的软件工具。与普通文本编辑器相比,代码编辑器提供了针对编程任务优化的功能特性,包括语法高亮显示、代码自动完成、智能缩进、括号匹配、代码折叠等。\n\n现代代码编辑器通常支持多种编程语言,并提供插件扩展系统以增强功能。主流代码编辑器分为轻量级编辑器(如 Visual Studio Code、Sublime Text、Atom)和集成开发环境(IDE,如 IntelliJ IDEA、Eclipse)。轻量级编辑器启动快速、资源占用少,适合快速编辑和小型项目;而 IDE 则提供更完整的开发工具链,包括调试器、编译器集成、项目管理等。\n\n代码编辑器在软件开发流程中扮演核心角色,直接影响开发者的工作效率和代码质量。许多编辑器还支持版本控制集成、实时协作、远程开发等现代化功能,已成为软件工程师日常工作不可或缺的基础工具。选择合适的代码编辑器取决于项目需求、编程语言、团队协作方式和个人偏好。"
+        }
+      },
+      "en": {
+        "name": "Code Editor",
+        "description": "Software designed for writing and editing source code with syntax highlighting and programming features"
+      },
+      "zh": {
+        "name": "代码编辑器",
+        "description": "专门用于编写和编辑程序源代码的软件工具，提供语法高亮等编程功能"
+      }
+    },
+    {
+      "slug": "developer-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A developer tool is a software application, utility, or platform designed to assist programmers and software engineers in creating, testing, debugging, deploying, and maintaining software applications. These tools streamline the development workflow by automating repetitive tasks, improving code quality, and enhancing productivity.\n\nDeveloper tools encompass a wide range of categories including integrated development environments (IDEs), code editors, version control systems, debuggers, profilers, build automation tools, package managers, testing frameworks, and deployment platforms. They may also include command-line utilities, browser developer consoles, API testing tools, and collaboration platforms.\n\nModern developer tools often feature intelligent code completion, syntax highlighting, refactoring capabilities, and integration with continuous integration/continuous deployment (CI/CD) pipelines. They support various programming languages, frameworks, and development methodologies, enabling developers to work efficiently across different technology stacks.\n\nThe primary purpose of developer tools is to reduce development time, minimize errors, facilitate collaboration among team members, and improve overall software quality. They serve as essential infrastructure in the software development lifecycle, bridging the gap between human creativity and machine execution while enabling developers to focus on solving complex problems rather than managing technical overhead."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**开发者工具 (Developer Tool)**\n\n开发者工具是指专门为软件开发人员设计的应用程序、平台、框架或服务，旨在提高开发效率、简化工作流程并增强代码质量。这类工具涵盖软件开发生命周期的各个阶段，包括编码、调试、测试、部署和维护。\n\n典型的开发者工具包括：集成开发环境（IDE）、代码编辑器、版本控制系统（如 Git）、调试器、性能分析工具、API 测试工具、持续集成/持续部署（CI/CD）平台、包管理器、容器化工具（如 Docker）以及各类命令行工具。现代开发者工具还包括 AI 辅助编程工具、代码审查平台和协作开发环境。\n\n在技术生态系统中，开发者工具是基础设施的重要组成部分，直接影响开发团队的生产力和软件产品的质量。优秀的开发者工具能够自动化重复性任务、减少人为错误、促进团队协作，并帮助开发者快速定位和解决问题。随着云计算和 DevOps 理念的普及，开发者工具正朝着更加智能化、集成化和云原生的方向发展。"
+        }
+      },
+      "en": {
+        "name": "Developer Tool",
+        "description": "Software applications and utilities that assist programmers in building, testing, and deploying code"
+      },
+      "zh": {
+        "name": "开发者工具",
+        "description": "帮助程序员构建、测试和部署代码的软件应用和实用工具"
+      }
+    },
+    {
+      "slug": "api-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An API tool is a software utility, application, or platform designed to facilitate the development, testing, management, or consumption of Application Programming Interfaces (APIs). These tools streamline the process of working with APIs by providing features such as request building, response inspection, authentication handling, documentation generation, and automated testing capabilities.\n\nAPI tools serve multiple purposes across the software development lifecycle. They enable developers to explore and interact with APIs without writing code, validate API functionality, monitor performance metrics, and debug integration issues. Common examples include API clients like Postman and Insomnia, testing frameworks like REST Assured, documentation generators like Swagger/OpenAPI, and API management platforms like Apigee or Kong.\n\nIn modern software architecture, API tools are essential for microservices development, third-party integrations, and building scalable distributed systems. They support various API protocols including REST, GraphQL, SOAP, and gRPC. Organizations use these tools to accelerate development cycles, ensure API reliability, maintain consistency across services, and improve collaboration between frontend and backend teams.\n\nThe category encompasses both standalone applications and integrated development environment (IDE) plugins, ranging from simple command-line utilities to comprehensive enterprise-grade platforms with advanced features like mock servers, automated testing suites, and analytics dashboards."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "API工具（API Tool）是指用于创建、测试、管理、监控和使用应用程序编程接口（API）的软件工具或平台。这类工具旨在简化API的开发生命周期，提高开发效率和API质量。\n\n常见的API工具类型包括：API设计工具（如Swagger/OpenAPI编辑器）、API测试工具（如Postman、Insomnia）、API文档生成工具、API网关、API监控工具以及API模拟工具等。这些工具帮助开发者进行接口设计、请求构建、响应验证、性能测试、版本管理和协作开发。\n\n在现代软件开发中，API工具已成为不可或缺的基础设施。它们支持RESTful API、GraphQL、gRPC等多种API架构风格，提供可视化界面和自动化功能，降低API开发和集成的复杂度。对于微服务架构、云原生应用和第三方服务集成场景，API工具能够显著提升开发团队的协作效率，确保API的稳定性、安全性和可维护性，是企业数字化转型和技术生态建设的重要支撑。"
+        }
+      },
+      "en": {
+        "name": "API Tool",
+        "description": "Software utilities for developing, testing, managing, and consuming APIs efficiently"
+      },
+      "zh": {
+        "name": "API 工具",
+        "description": "用于开发、测试、管理和使用 API 的软件工具"
+      }
+    },
+    {
+      "slug": "testing-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Test automation is the use of software for controlling the execution of tests and comparing actual outcome with predicted. Test automation supports testing the system under test (SUT) without manual interaction which can lead to faster test execution and testing more often. Test automation is a key aspect of continuous testing and often for continuous integration and continuous delivery (CI/CD)."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**测试工具 (Testing Tool)**\n\n测试工具是指用于软件开发生命周期中验证和确保软件质量的各类应用程序、框架或平台。这类工具帮助开发团队自动化或辅助执行测试活动，包括功能测试、性能测试、安全测试、集成测试等多个维度。\n\n常见的测试工具类型包括：单元测试框架（如 Jest、JUnit、pytest）、端到端测试工具（如 Selenium、Cypress、Playwright）、API 测试工具（如 Postman、REST Assured）、性能测试工具（如 JMeter、Gatling）以及持续集成测试平台等。\n\n测试工具的核心价值在于提高测试效率、增强测试覆盖率、减少人为错误，并支持持续集成/持续部署（CI/CD）流程。通过自动化测试，团队能够快速发现缺陷、验证代码变更的影响，确保软件在发布前达到质量标准。\n\n在现代软件工程实践中，测试工具已成为 DevOps 和敏捷开发不可或缺的组成部分，帮助企业缩短交付周期、降低维护成本，并提升最终用户体验。"
+        }
+      },
+      "en": {
+        "name": "Testing Tool",
+        "description": "Software for automating test execution, validation, and quality assurance across development lifecycle"
+      },
+      "zh": {
+        "name": "测试工具",
+        "description": "用于自动化测试执行、验证和质量保证的软件应用程序或框架"
+      }
+    },
+    {
+      "slug": "debugging-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "A debugger is software for executing a computer program in an environment that allows for programming-level inspection and control. A debugger is often used to debug, but can be used for other goals including testing. Common features of a debugger include stepping through code line-by-line, breaking into the program's flow of control, managing breakpoints, and reporting and modifying memory."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**调试工具 (Debugging Tool)**\n\n调试工具是软件开发过程中用于识别、定位和修复代码缺陷的专业工具集合。这类工具通过提供代码执行监控、变量状态检查、断点设置、调用栈追踪等功能，帮助开发人员系统性地分析程序运行时的异常行为和逻辑错误。\n\n常见的调试工具包括集成开发环境(IDE)内置的调试器、独立调试工具(如GDB、LLDB)、性能分析器、内存泄漏检测工具、日志分析工具等。现代调试工具通常支持断点调试、单步执行、变量监视、表达式求值、远程调试等核心功能，部分高级工具还提供时间旅行调试、可视化数据流分析等特性。\n\n在商业应用中，调试工具对提升软件质量、缩短开发周期、降低维护成本具有重要价值。企业级调试工具往往集成了团队协作、问题追踪、自动化测试等功能，支持分布式系统和微服务架构的复杂调试场景。选择合适的调试工具能够显著提高开发效率，是现代软件工程实践中不可或缺的技术基础设施。"
+        }
+      },
+      "en": {
+        "name": "Debugging Tool",
+        "description": "Software for inspecting, controlling, and fixing code defects during program execution"
+      },
+      "zh": {
+        "name": "调试工具",
+        "description": "用于在程序执行过程中检查、控制和修复代码缺陷的软件"
+      }
+    },
+    {
+      "slug": "deployment-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A deployment tool is a software application or platform designed to automate and streamline the process of releasing software applications from development environments to production or other target environments. These tools manage the complex workflow of packaging code, configuring infrastructure, distributing artifacts, and executing deployment procedures across various systems and platforms.\n\nDeployment tools handle critical tasks including dependency management, environment configuration, rollback capabilities, and deployment orchestration. They support various deployment strategies such as blue-green deployments, canary releases, and rolling updates to minimize downtime and risk. Modern deployment tools often integrate with continuous integration/continuous deployment (CI/CD) pipelines, version control systems, and cloud infrastructure providers.\n\nCommon examples include Jenkins, GitLab CI/CD, CircleCI, Ansible, Kubernetes, Docker, Terraform, and AWS CodeDeploy. These tools range from simple script-based solutions to sophisticated platforms offering features like automated testing, monitoring integration, and multi-environment management.\n\nOrganizations use deployment tools to increase deployment frequency, reduce human error, ensure consistency across environments, and accelerate time-to-market. They are essential components of DevOps practices, enabling teams to deliver software updates reliably and efficiently while maintaining system stability and security."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**部署工具 (Deployment Tool)**\n\n部署工具是用于自动化软件应用程序从开发环境到生产环境的发布和配置过程的软件系统。这类工具负责将代码、配置文件、依赖项和相关资源传输到目标服务器或云平台，并确保应用程序能够正确运行。\n\n主要功能包括：代码打包与构建、环境配置管理、版本控制、回滚机制、健康检查和监控集成。常见的部署工具有 Jenkins、GitLab CI/CD、Docker、Kubernetes、Ansible、Terraform 等。\n\n部署工具在现代 DevOps 实践中扮演关键角色，能够显著提高发布频率、减少人为错误、缩短上线时间，并支持持续集成/持续部署（CI/CD）流程。根据应用场景，部署工具可分为容器编排工具、配置管理工具、基础设施即代码（IaC）工具等类型。\n\n选择合适的部署工具需要考虑团队规模、技术栈、基础设施类型（本地部署或云端）、自动化程度需求等因素。成熟的部署工具能够支持蓝绿部署、金丝雀发布等高级部署策略，确保服务的高可用性和稳定性。"
+        }
+      },
+      "en": {
+        "name": "Deployment Tool",
+        "description": "Software that automates releasing applications from development to production environments"
+      },
+      "zh": {
+        "name": "部署工具",
+        "description": "自动化软件从开发环境发布到生产环境的系统"
+      }
+    },
+    {
+      "slug": "seo-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An SEO tool is a software application or platform designed to assist with search engine optimization activities. These tools help website owners, digital marketers, and SEO professionals analyze, monitor, and improve their website's visibility and ranking in search engine results pages (SERPs).\n\nSEO tools typically offer functionalities across several key areas: keyword research and analysis to identify high-value search terms; on-page optimization recommendations for content, meta tags, and site structure; backlink analysis to evaluate and build quality link profiles; technical SEO audits to identify crawlability issues, page speed problems, and mobile responsiveness; rank tracking to monitor keyword positions over time; and competitor analysis to benchmark performance against rivals.\n\nCommon examples include comprehensive platforms like SEMrush, Ahrefs, and Moz, as well as specialized tools like Google Search Console, Screaming Frog for technical audits, and Yoast SEO for content optimization. These tools leverage data from search engines, web crawlers, and proprietary algorithms to provide actionable insights that help improve organic search performance, increase website traffic, and enhance overall digital presence. They are essential resources in modern digital marketing strategies, enabling data-driven decision-making and continuous optimization efforts."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "SEO工具（SEO Tool）是指用于搜索引擎优化的各类软件、平台或服务，旨在帮助网站提升在搜索引擎结果页面（SERP）中的排名和可见度。这类工具涵盖多个功能维度：关键词研究与分析、网站技术审计、反向链接监测、竞争对手分析、内容优化建议、排名追踪等。\n\n常见的SEO工具包括综合性平台（如SEMrush、Ahrefs、Moz）和专项工具（如Google Search Console、Screaming Frog、Yoast SEO）。这些工具通过数据采集、算法分析和可视化报告，帮助营销人员、网站管理员和SEO专家识别优化机会、监控网站健康状况、评估SEO策略效果。\n\n在商业应用中，SEO工具是数字营销不可或缺的组成部分，能够显著提高工作效率，降低优化成本，并通过数据驱动决策来改善网站的自然搜索流量。随着搜索引擎算法的不断演进，现代SEO工具也在持续整合人工智能和机器学习技术，提供更智能的优化建议和预测分析能力。"
+        }
+      },
+      "en": {
+        "name": "SEO Tool",
+        "description": "Software for optimizing website visibility, rankings, and performance in search engines"
+      },
+      "zh": {
+        "name": "SEO 工具",
+        "description": "用于优化网站在搜索引擎中的可见度、排名和表现的软件"
+      }
+    },
+    {
+      "slug": "analytics-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An analytics tool is a software application or platform designed to collect, process, analyze, and visualize data to extract meaningful insights and support data-driven decision-making. These tools enable organizations to track key performance indicators (KPIs), monitor user behavior, measure business metrics, and identify trends or patterns within their data.\n\nAnalytics tools span various domains including web analytics (tracking website traffic and user interactions), business intelligence (analyzing operational and financial data), product analytics (understanding feature usage and user engagement), and marketing analytics (measuring campaign performance and ROI). They typically offer capabilities such as data aggregation from multiple sources, real-time reporting, customizable dashboards, segmentation, and predictive modeling.\n\nCommon examples include Google Analytics for web traffic analysis, Mixpanel for product analytics, Tableau for business intelligence visualization, and Adobe Analytics for enterprise marketing measurement. These tools may be cloud-based SaaS platforms, on-premises solutions, or open-source frameworks.\n\nThe primary value of analytics tools lies in their ability to transform raw data into actionable insights, enabling stakeholders to optimize strategies, improve user experiences, increase operational efficiency, and measure the impact of their initiatives. Modern analytics tools often incorporate machine learning capabilities to provide automated insights and anomaly detection."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "analytics-tool（分析工具）是指用于收集、处理、分析和可视化数据的软件应用程序或平台。这类工具帮助组织从原始数据中提取有价值的洞察，支持数据驱动的决策制定。\n\n在技术领域，分析工具涵盖多个应用场景：网站分析（如 Google Analytics）追踪用户行为和流量；商业智能工具（如 Tableau、Power BI）进行企业数据分析和报表生成；应用性能监控工具（如 New Relic）分析系统性能指标；日志分析工具（如 ELK Stack）处理和分析系统日志数据。\n\n这些工具通常具备数据采集、数据清洗、统计分析、趋势预测、可视化呈现等核心功能。它们可以是独立的软件产品、云服务平台，或集成在其他系统中的模块。\n\n分析工具在产品优化、市场营销、运营管理、风险控制等业务场景中发挥关键作用，帮助企业理解用户需求、优化业务流程、提升运营效率、发现市场机会。随着大数据和人工智能技术的发展，现代分析工具越来越注重实时分析、预测性分析和自动化洞察能力。"
+        }
+      },
+      "en": {
+        "name": "Analytics Tool",
+        "description": "Software that collects, analyzes, and visualizes data to extract insights and support data-driven decisions"
+      },
+      "zh": {
+        "name": "数据分析工具",
+        "description": "收集、分析和可视化数据以提取洞察并支持数据驱动决策的软件"
+      }
+    }
+  ],
+  "failed": []
+}

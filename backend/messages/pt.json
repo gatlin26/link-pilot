@@ -1,0 +1,2220 @@
+{
+  "Metadata": {
+    "name": "BuildWay",
+    "title": "BuildWay - Descubra as Melhores Ferramentas de IA | Diretório de Ferramentas de IA",
+    "description": "Descubra e explore as melhores ferramentas de IA para todas as necessidades. Seu diretório definitivo de ferramentas de IA com coleções selecionadas, avaliações e recomendações."
+  },
+  "ImageTask": {
+    "submitting": "Enviando tarefa...",
+    "submitted": "Tarefa enviada, gerando...",
+    "generating": "Gerando...",
+    "queuing": "Tarefa em fila...",
+    "completed": "Geração concluída!",
+    "cancelled": "Cancelado",
+    "generationFailed": "Falha na geração, tente novamente",
+    "submitError": "Falha no envio, tente novamente",
+    "submitFailed": "Falha no envio: {status}",
+    "requestFailed": "Falha na solicitação: {status}",
+    "networkError": "Erro de rede, tente novamente",
+    "timeout": "Tempo limite da tarefa, tente novamente mais tarde"
+  },
+  "Common": {
+    "premium": "Premium",
+    "login": "Entrar",
+    "logout": "Sair",
+    "signUp": "Cadastrar",
+    "language": "Alternar idioma",
+    "mode": {
+      "label": "Alternar modo",
+      "light": "Claro",
+      "dark": "Escuro",
+      "system": "Sistema"
+    },
+    "theme": {
+      "label": "Alternar tema",
+      "default": "Padrão",
+      "blue": "Azul",
+      "green": "Verde",
+      "amber": "Âmbar",
+      "neutral": "Neutro"
+    },
+    "copy": "Copiar",
+    "saving": "Salvando...",
+    "save": "Salvar",
+    "loading": "Carregando...",
+    "cancel": "Cancelar",
+    "logoutFailed": "Falha ao sair",
+    "table": {
+      "totalRecords": "Total de {count} registros",
+      "noResults": "Nenhum resultado",
+      "loading": "Carregando...",
+      "columns": "Colunas",
+      "rowsPerPage": "Linhas por página",
+      "page": "Página",
+      "firstPage": "Primeira Página",
+      "lastPage": "Última Página",
+      "nextPage": "Próxima Página",
+      "previousPage": "Página Anterior",
+      "ascending": "Crescente",
+      "descending": "Decrescente"
+    }
+  },
+  "PricingPage": {
+    "title": "Envie Sua Ferramenta de IA",
+    "description": "Tenha sua ferramenta de IA em destaque em nosso diretório",
+    "subtitle": "Pague uma vez, use a qualquer momento. Sem assinatura necessária.",
+    "monthly": "Mensal",
+    "yearly": "Anual",
+    "submitTool": {
+      "title": "Tenha Sua Ferramenta de IA em Destaque",
+      "subtitle": "Alcance milhares de usuários potenciais listando sua ferramenta de IA em nosso diretório",
+      "badge": "Pagamento Único",
+      "packageName": "Envio de Ferramenta",
+      "packageDescription": "Obtenha colocação permanente em nosso diretório de ferramentas de IA",
+      "oneTime": "Pagamento único, listagem vitalícia",
+      "submitButton": "Envie Sua Ferramenta"
+    },
+    "PricingCard": {
+      "freePrice": "$0",
+      "perMonth": "/mês",
+      "perYear": "/ano",
+      "popular": "Mais Popular",
+      "currentPlan": "Plano Atual",
+      "yourCurrentPlan": "Seu Plano Atual",
+      "getStartedForFree": "Cadastre-se Grátis",
+      "getLifetimeAccess": "Obter Acesso Vitalício",
+      "getStarted": "Comprar Agora",
+      "notAvailable": "Não Disponível",
+      "daysTrial": "{days} dias de teste grátis"
+    },
+    "CheckoutButton": {
+      "loading": "Carregando...",
+      "checkoutFailed": "Falha ao abrir página de checkout",
+      "checkoutNetworkError": "Erro de rede. Verifique sua conexão e tente novamente."
+    },
+    "credits": {
+      "features": {
+        "allModels": "Acesso a todos os modelos de IA",
+        "noExpiry": "Créditos válidos por 1 ano",
+        "standardSupport": "Suporte padrão",
+        "prioritySupport": "Suporte prioritário",
+        "bestValue": "Melhor custo-benefício",
+        "bulkDiscount": "Melhor desconto por volume"
+      },
+      "registerGift": "Cadastre-se agora e ganhe {amount} créditos grátis!",
+      "validityNotice": "Os créditos dos pacotes atuais são válidos por 1 ano"
+    },
+    "faqs": {
+      "title": "Perguntas Frequentes",
+      "subtitle": "Tudo o que você precisa saber sobre nossos pacotes de créditos",
+      "items": {
+        "item-1": {
+          "question": "Por quanto tempo os créditos são válidos?",
+          "answer": "Os créditos adquiridos em nossos pacotes são válidos por 1 ano a partir da data de compra. Você pode usá-los a qualquer momento durante este período para qualquer recurso de edição de fotos com IA."
+        },
+        "item-2": {
+          "question": "Como faço para comprar créditos?",
+          "answer": "Basta escolher um pacote de créditos que atenda às suas necessidades e clicar em 'Comprar Agora'. Você será redirecionado para uma página de checkout segura onde poderá concluir sua compra usando cartão de crédito ou outros métodos de pagamento suportados."
+        },
+        "item-3": {
+          "question": "Qual é a diferença entre os pacotes?",
+          "answer": "Starter (200 créditos) é perfeito para iniciantes. Popular (1000 créditos) oferece o melhor custo-benefício com suporte prioritário. Pro (3000 créditos) fornece o melhor desconto por volume para profissionais que precisam de mais créditos."
+        },
+        "item-4": {
+          "question": "Posso usar créditos para todos os recursos de IA?",
+          "answer": "Sim! Todos os créditos comprados podem ser usados para qualquer recurso de edição de fotos com IA em nossa plataforma, incluindo remoção de fundo, aprimoramento de imagem, upscaling e todos os outros modelos de IA."
+        },
+        "item-5": {
+          "question": "O que acontece se meus créditos expirarem?",
+          "answer": "Os créditos expiram 1 ano após a compra. Recomendamos usá-los antes do vencimento. Você pode verificar seu saldo de créditos e a data de expiração no painel da sua conta."
+        },
+        "item-6": {
+          "question": "Posso transferir créditos para outra conta?",
+          "answer": "Não, os créditos são intransferíveis e vinculados à conta que os comprou. Isso nos ajuda a manter a segurança e prevenir fraudes."
+        },
+        "item-7": {
+          "question": "Vocês oferecem reembolsos?",
+          "answer": "Oferecemos reembolsos dentro de 30 dias após a compra se você não tiver usado mais de 10% dos seus créditos. Entre em contato com nossa equipe de suporte para obter assistência com solicitações de reembolso."
+        },
+        "item-8": {
+          "question": "Quais métodos de pagamento vocês aceitam?",
+          "answer": "Aceitamos todos os principais cartões de crédito, cartões de débito e PayPal. Todos os pagamentos são processados com segurança através do Stripe, garantindo que suas informações de pagamento estejam protegidas."
+        }
+      }
+    },
+    "modelCredits": {
+      "badge": "Modelos de IA",
+      "title": "Uso de Créditos por Modelo",
+      "subtitle": "Diferentes modelos têm recursos únicos e custos de crédito. Escolha o melhor para suas necessidades.",
+      "columns": {
+        "model": "Nome do Modelo",
+        "features": "Recursos",
+        "useCases": "Casos de Uso",
+        "credits": "Créditos"
+      },
+      "tags": {
+        "fastGeneration": "Geração Rápida",
+        "strongConsistency": "Alta Consistência",
+        "strongComprehension": "Alta Compreensão",
+        "4kHd": "4K HD",
+        "multiImageGen": "Geração Multi-Imagem",
+        "ultraFast": "Ultra Rápido",
+        "highQuality": "Alta Qualidade",
+        "asyncProcess": "Processamento Assíncrono"
+      },
+      "useCases": {
+        "nano-banana": "Geração rápida, criações diárias, posts em redes sociais",
+        "nano-banana-pro": "Saída de alta resolução, uso comercial, materiais impressos",
+        "seedream-4-5": "Geração em lote, consistência de estilo, criação de séries",
+        "z-image-turbo": "Pré-visualização instantânea, iteração rápida, exploração criativa"
+      },
+      "perGeneration": "créditos/geração",
+      "note": "O consumo de créditos varia por modelo. Modelos premium oferecem saída de maior qualidade."
+    }
+  },
+  "PricePlans": {
+    "free": {
+      "name": "Grátis",
+      "description": "Experimente a edição de fotos com IA gratuitamente",
+      "features": {
+        "feature-1": "2 créditos por mês",
+        "feature-2": "Tamanho máximo de arquivo 2MB",
+        "feature-3": "Resolução máxima 1024×1024",
+        "feature-4": "Fila de processamento padrão",
+        "feature-5": "Retenção de histórico por 60 dias",
+        "feature-6": "Suporte da comunidade"
+      },
+      "limits": {}
+    },
+    "basic": {
+      "name": "Básico",
+      "description": "Para necessidades diárias de edição de fotos",
+      "features": {
+        "feature-1": "200 créditos/mês",
+        "feature-2": "Tamanho máximo de arquivo 20MB",
+        "feature-3": "Resolução máxima 2048×2048",
+        "feature-4": "Fila de processamento padrão",
+        "feature-5": "Retenção de histórico por 1 ano",
+        "feature-6": "Suporte por e-mail (48h resposta)"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Para profissionais e usuários avançados",
+      "features": {
+        "feature-1": "500 créditos/mês",
+        "feature-2": "Tamanho máximo de arquivo 20MB",
+        "feature-3": "Resolução máxima 4096×4096 (4K)",
+        "feature-4": "Fila de processamento prioritária",
+        "feature-5": "Retenção permanente de histórico",
+        "feature-6": "Salvar predefinições personalizadas",
+        "feature-7": "Suporte prioritário (24h resposta)",
+        "feature-8": "Acesso antecipado a novos recursos"
+      }
+    }
+  },
+  "CreditPackages": {
+    "starter": {
+      "name": "Starter",
+      "description": "Perfeito para iniciantes"
+    },
+    "popular": {
+      "name": "Popular",
+      "description": "Melhor custo-benefício"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Para profissionais"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "Desculpe, a página que você está procurando não existe.",
+    "backToHome": "Voltar para a página inicial"
+  },
+  "ErrorPage": {
+    "title": "Ops! Algo deu errado!",
+    "tryAgain": "Tentar novamente",
+    "backToHome": "Voltar para a página inicial"
+  },
+  "AboutPage": {
+    "title": "Sobre",
+    "description": "BuildWay é seu diretório definitivo de ferramentas de IA. Descubra, compare e escolha as melhores ferramentas de IA para seus projetos.",
+    "authorName": "BuildWay",
+    "authorBio": "Diretório e Plataforma de Descoberta de Ferramentas de IA",
+    "introduction": "BuildWay é um diretório selecionado das melhores ferramentas de IA disponíveis. Seja você um desenvolvedor, designer, profissional de marketing ou empreendedor, ajudamos você a descobrir e comparar ferramentas de IA para encontrar a solução perfeita para suas necessidades. De ferramentas de produtividade a IA criativa, tornamos simples e eficiente encontrar a ferramenta de IA certa.",
+    "talkWithMe": "Fale Conosco",
+    "followMe": "Siga-nos"
+  },
+  "ChangelogPage": {
+    "title": "Histórico de Alterações",
+    "description": "Acompanhe nossa jornada de melhorias contínuas e expansão do diretório de ferramentas de IA",
+    "subtitle": "Cada atualização traz novas ferramentas e recursos melhores",
+    "startPoint": "Onde tudo começou",
+    "latestVersion": "Mais Recente"
+  },
+  "ContactPage": {
+    "title": "Contato",
+    "description": "Ajudaremos você a encontrar o plano certo para seu negócio",
+    "subtitle": "Ajudaremos você a encontrar o plano certo para seu negócio",
+    "form": {
+      "title": "Fale Conosco",
+      "description": "Se você tiver alguma dúvida ou feedback, entre em contato com nossa equipe",
+      "name": "Nome",
+      "email": "E-mail",
+      "message": "Mensagem",
+      "submit": "Enviar",
+      "submitting": "Enviando...",
+      "success": "Mensagem enviada com sucesso",
+      "fail": "Falha ao enviar mensagem",
+      "nameMinLength": "O nome deve ter pelo menos 3 caracteres",
+      "nameMaxLength": "O nome não deve exceder 30 caracteres",
+      "emailValidation": "Por favor, insira um endereço de e-mail válido",
+      "messageMinLength": "A mensagem deve ter pelo menos 10 caracteres",
+      "messageMaxLength": "A mensagem não deve exceder 500 caracteres"
+    }
+  },
+  "WaitlistPage": {
+    "title": "Lista de Espera",
+    "description": "Junte-se à nossa lista de espera para o lançamento do nosso produto",
+    "subtitle": "Junte-se à nossa lista de espera para o lançamento do nosso produto",
+    "form": {
+      "title": "Junte-se à Nossa Lista de Espera",
+      "description": "Notificaremos você quando lançarmos nosso produto",
+      "email": "E-mail",
+      "subscribe": "Inscrever-se",
+      "subscribing": "Inscrevendo...",
+      "success": "Inscrito com sucesso",
+      "fail": "Falha ao inscrever",
+      "emailValidation": "Por favor, insira um endereço de e-mail válido"
+    }
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Junte-se à comunidade",
+    "description": "Inscreva-se em nossa newsletter para receber as últimas notícias e atualizações",
+    "form": {
+      "email": "E-mail",
+      "subscribe": "Inscrever-se",
+      "subscribing": "Inscrevendo...",
+      "success": "Inscrito com sucesso",
+      "fail": "Falha ao inscrever",
+      "emailValidation": "Por favor, insira um endereço de e-mail válido"
+    }
+  },
+  "AuthPage": {
+    "login": {
+      "title": "Entrar",
+      "welcomeBack": "Bem-vindo de volta",
+      "email": "E-mail",
+      "password": "Senha",
+      "signIn": "Entrar",
+      "signUpHint": "Não tem uma conta? Cadastre-se",
+      "forgotPassword": "Esqueceu a senha?",
+      "signInWithGoogle": "Entrar com Google",
+      "signInWithGitHub": "Entrar com GitHub",
+      "showPassword": "Mostrar senha",
+      "hidePassword": "Ocultar senha",
+      "or": "Ou continue com",
+      "emailRequired": "Por favor, insira seu e-mail",
+      "passwordRequired": "Por favor, insira sua senha",
+      "captchaInvalid": "Falha na verificação do captcha",
+      "captchaError": "Erro na verificação do captcha"
+    },
+    "register": {
+      "title": "Cadastrar",
+      "createAccount": "Criar uma conta",
+      "name": "Nome",
+      "email": "E-mail",
+      "password": "Senha",
+      "signUp": "Cadastrar",
+      "signInHint": "Já tem uma conta? Entre",
+      "checkEmail": "Por favor, verifique sua caixa de entrada de e-mail",
+      "showPassword": "Mostrar senha",
+      "hidePassword": "Ocultar senha",
+      "nameRequired": "Por favor, insira seu nome",
+      "emailRequired": "Por favor, insira seu e-mail",
+      "passwordRequired": "Por favor, insira sua senha",
+      "captchaInvalid": "Falha na verificação do captcha",
+      "captchaError": "Erro na verificação do captcha"
+    },
+    "forgotPassword": {
+      "title": "Esqueceu a Senha",
+      "email": "E-mail",
+      "send": "Enviar link de redefinição",
+      "backToLogin": "Voltar para o login",
+      "checkEmail": "Por favor, verifique sua caixa de entrada de e-mail",
+      "emailRequired": "Por favor, insira seu e-mail"
+    },
+    "resetPassword": {
+      "title": "Redefinir Senha",
+      "password": "Senha",
+      "reset": "Redefinir senha",
+      "backToLogin": "Voltar para o login",
+      "showPassword": "Mostrar senha",
+      "hidePassword": "Ocultar senha",
+      "minLength": "A senha deve ter pelo menos 8 caracteres"
+    },
+    "error": {
+      "title": "Ops! Algo deu errado!",
+      "tryAgain": "Por favor, tente novamente.",
+      "backToLogin": "Voltar para o login",
+      "checkEmail": "Por favor, verifique sua caixa de entrada de e-mail"
+    },
+    "common": {
+      "termsOfService": "Termos de Serviço",
+      "privacyPolicy": "Política de Privacidade",
+      "byClickingContinue": "Ao clicar em continuar, você concorda com nossos ",
+      "and": " e "
+    }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "description": "Insights sobre ferramentas de IA, tendências do setor e guias especializados",
+    "subtitle": "Mantenha-se atualizado com as novidades em ferramentas de IA e tecnologia",
+    "author": "Autor",
+    "categories": "Categorias",
+    "tableOfContents": "Índice",
+    "readTime": "{minutes} min de leitura",
+    "readTimeShort": "{minutes} min",
+    "all": "Todos",
+    "noPostsFound": "Nenhum post encontrado",
+    "allPosts": "Todos os Posts",
+    "morePosts": "Mais Posts"
+  },
+  "DocsPage": {
+    "toc": "Índice",
+    "search": "Pesquisar documentação",
+    "lastUpdate": "Última atualização em",
+    "searchNoResult": "Nenhum resultado",
+    "previousPage": "Anterior",
+    "nextPage": "Próximo",
+    "chooseLanguage": "Selecionar idioma",
+    "title": "Documentação MkSaaS",
+    "homepage": "Página Inicial"
+  },
+  "PremiumContent": {
+    "title": "Desbloqueie Conteúdo Premium",
+    "description": "Assine nosso Pro plano para acessar todo o conteúdo premium e conteúdo exclusivo.",
+    "upgradeCta": "Fazer Upgrade Agora",
+    "benefit1": "Todo conteúdo premium",
+    "benefit2": "Conteúdo exclusivo",
+    "benefit3": "Cancele a qualquer momento",
+    "signIn": "Entrar",
+    "loginRequired": "Entre para continuar lendo",
+    "loginDescription": "Este é conteúdo premium. Entre na sua conta para acessar o conteúdo completo.",
+    "checkingAccess": "Verificando acesso...",
+    "loadingContent": "Carregando conteúdo completo..."
+  },
+  "Marketing": {
+    "navbar": {
+      "tools": {
+        "title": "Ferramentas"
+      },
+      "submit": {
+        "title": "Enviar Ferramenta"
+      },
+      "features": {
+        "title": "Recursos"
+      },
+      "pricing": {
+        "title": "Preços"
+      },
+      "blog": {
+        "title": "Blog"
+      },
+      "about": {
+        "title": "Sobre"
+      },
+      "docs": {
+        "title": "Docs"
+      },
+      "ai": {
+        "title": "Ferramentas de IA",
+        "items": {
+          "text": {
+            "title": "IA de Texto",
+            "description": "Mostre como usar IA para escrever textos incríveis"
+          },
+          "image": {
+            "title": "IA de Imagem",
+            "description": "Mostre como usar IA para gerar imagens bonitas"
+          },
+          "chat": {
+            "title": "IA de Chat",
+            "description": "Mostre como usar IA para conversar com seus clientes"
+          },
+          "video": {
+            "title": "IA de Vídeo",
+            "description": "Mostre como usar IA para gerar vídeos incríveis"
+          },
+          "audio": {
+            "title": "IA de Áudio",
+            "description": "Mostre como usar IA para gerar áudio maravilhoso"
+          }
+        }
+      },
+      "pages": {
+        "title": "Páginas",
+        "items": {
+          "about": {
+            "title": "Sobre",
+            "description": "Saiba mais sobre nossa empresa, missão e valores"
+          },
+          "contact": {
+            "title": "Contato",
+            "description": "Entre em contato com nossa equipe para suporte ou dúvidas"
+          },
+          "waitlist": {
+            "title": "Lista de Espera",
+            "description": "Junte-se à nossa lista de espera para últimas notícias e atualizações"
+          },
+          "changelog": {
+            "title": "Histórico de Alterações",
+            "description": "Veja as últimas atualizações de nossos produtos"
+          },
+          "roadmap": {
+            "title": "Roteiro",
+            "description": "Explore nossos planos futuros e recursos próximos"
+          },
+          "cookiePolicy": {
+            "title": "Política de Cookies",
+            "description": "Como usamos cookies em nosso site"
+          },
+          "privacyPolicy": {
+            "title": "Política de Privacidade",
+            "description": "Como protegemos e tratamos seus dados"
+          },
+          "termsOfService": {
+            "title": "Termos de Serviço",
+            "description": "O acordo legal entre você e nossa empresa"
+          }
+        }
+      },
+      "blocks": {
+        "title": "Blocos",
+        "items": {
+          "magicui": {
+            "title": "Blocos MagicUI"
+          },
+          "hero-section": {
+            "title": "Blocos de Hero"
+          },
+          "logo-cloud": {
+            "title": "Blocos de Logo Cloud"
+          },
+          "integrations": {
+            "title": "Blocos de Integrações"
+          },
+          "features": {
+            "title": "Blocos de Recursos"
+          },
+          "content": {
+            "title": "Blocos de Conteúdo"
+          },
+          "stats": {
+            "title": "Blocos de Estatísticas"
+          },
+          "team": {
+            "title": "Blocos de Equipe"
+          },
+          "testimonials": {
+            "title": "Blocos de Depoimentos"
+          },
+          "callToAction": {
+            "title": "Blocos de Call to Action"
+          },
+          "footer": {
+            "title": "Blocos de Rodapé"
+          },
+          "pricing": {
+            "title": "Blocos de Preços"
+          },
+          "comparator": {
+            "title": "Blocos de Comparador"
+          },
+          "faq": {
+            "title": "Blocos de FAQ"
+          },
+          "login": {
+            "title": "Blocos de Login"
+          },
+          "signup": {
+            "title": "Blocos de Cadastro"
+          },
+          "forgot-password": {
+            "title": "Blocos de Esqueci a Senha"
+          },
+          "contact": {
+            "title": "Blocos de Contato"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "Seu diretório definitivo de ferramentas de IA — descubra, compare e escolha as melhores ferramentas de IA para seus projetos",
+      "product": {
+        "title": "Produto",
+        "items": {
+          "features": "Recursos",
+          "pricing": "Preços",
+          "faq": "FAQ"
+        }
+      },
+      "resources": {
+        "title": "Recursos",
+        "items": {
+          "blog": "Blog",
+          "docs": "Documentação",
+          "changelog": "Histórico de Alterações",
+          "roadmap": "Roteiro"
+        }
+      },
+      "company": {
+        "title": "Empresa",
+        "items": {
+          "about": "Sobre",
+          "contact": "Contato",
+          "waitlist": "Lista de Espera"
+        }
+      },
+      "legal": {
+        "title": "Legal",
+        "items": {
+          "cookiePolicy": "Política de Cookies",
+          "privacyPolicy": "Política de Privacidade",
+          "termsOfService": "Termos de Serviço",
+          "refundPolicy": "Política de Reembolso"
+        }
+      }
+    },
+    "avatar": {
+      "history": "Histórico",
+      "billing": "Faturamento",
+      "credits": "Créditos",
+      "settings": "Configurações"
+    }
+  },
+  "Dashboard": {
+    "dashboard": {
+      "title": "Painel"
+    },
+    "studio": {
+      "title": "Criar",
+      "create": "Nova Criação",
+      "myWorks": "Meus Trabalhos",
+      "videos": "Vídeos",
+      "emptyTitle": "Nenhuma criação ainda",
+      "emptyDescription": "Comece a criar imagens incríveis geradas por IA com apenas um prompt de texto."
+    },
+    "admin": {
+      "title": "Admin",
+      "users": {
+        "title": "Usuários",
+        "fakeData": "Nota: Dados simulados para demonstração, alguns recursos estão desativados",
+        "error": "Falha ao obter usuários",
+        "search": "Pesquisar usuários...",
+        "columns": {
+          "columns": "Colunas",
+          "name": "Nome",
+          "email": "E-mail",
+          "role": "Função",
+          "createdAt": "Criado em",
+          "customerId": "ID do Cliente",
+          "status": "Status",
+          "banReason": "Motivo do Banimento",
+          "banExpires": "Expiração do Banimento"
+        },
+        "admin": "Admin",
+        "user": "Usuário",
+        "email": {
+          "verified": "E-mail Verificado",
+          "unverified": "E-mail Não Verificado"
+        },
+        "emailCopied": "E-mail copiado para a área de transferência",
+        "banned": "Banido",
+        "active": "Ativo",
+        "joined": "Entrou em",
+        "updated": "Atualizado em",
+        "ban": {
+          "reason": "Motivo do Banimento",
+          "reasonPlaceholder": "Digite o motivo para banir este usuário",
+          "defaultReason": "Spam",
+          "never": "Nunca",
+          "expires": "Expiração do Banimento",
+          "selectDate": "Selecionar Data",
+          "button": "Banir Usuário",
+          "success": "Usuário foi banido",
+          "error": "Falha ao banir usuário"
+        },
+        "unban": {
+          "button": "Desbanir Usuário",
+          "success": "Usuário foi desbanido",
+          "error": "Falha ao desbanir usuário"
+        },
+        "close": "Fechar"
+      },
+      "generations": {
+        "title": "Gerações",
+        "searchPlaceholder": "Pesquisar e-mail do usuário...",
+        "totalRecords": "Total de {count} registros",
+        "columns": {
+          "columns": "Colunas",
+          "user": "Usuário",
+          "type": "Tipo",
+          "status": "Status",
+          "prompt": "Prompt",
+          "model": "Modelo",
+          "inputImage": "Entrada",
+          "outputImage": "Saída",
+          "credits": "Créditos",
+          "createdAt": "Criado em",
+          "error": "Erro"
+        },
+        "filters": {
+          "status": "Status",
+          "allStatus": "Todos os Status",
+          "pending": "Pendente",
+          "processing": "Processando",
+          "completed": "Concluído",
+          "failed": "Falhou",
+          "type": "Tipo",
+          "allType": "Todos os Tipos",
+          "generate": "Gerar",
+          "enhance": "Aprimorar",
+          "edit": "Editar",
+          "inpaint": "Inpaint",
+          "outpaint": "Outpaint",
+          "upscale": "Upscale"
+        }
+      },
+      "submissions": {
+        "title": "Envios de Ferramentas",
+        "description": "Ver todos os envios de ferramentas de todos os usuários",
+        "total": "Total de {count} registros",
+        "empty": "Nenhum envio encontrado",
+        "status": {
+          "pending": "Pendente",
+          "approved": "Aprovado",
+          "rejected": "Rejeitado"
+        },
+        "filter": {
+          "status": "Filtro de Status",
+          "all": "Todos"
+        },
+        "search": {
+          "placeholder": "Pesquisar nome da ferramenta, URL ou e-mail..."
+        },
+        "columns": {
+          "name": "Nome da Ferramenta",
+          "url": "URL da Ferramenta",
+          "submitter": "Enviado por",
+          "status": "Status",
+          "submittedAt": "Enviado em",
+          "actions": "Ações"
+        },
+        "pagination": {
+          "showing": "Mostrando {from} - {to} de {total}",
+          "page": "Página {current} / {total}"
+        },
+        "rejectReason": "Motivo da Rejeição",
+        "approve": "Aprovar",
+        "reject": "Rejeitar",
+        "view": "Visualizar",
+        "rejectDialog": {
+          "title": "Rejeitar Envio",
+          "description": "Por favor, insira o motivo da rejeição. O usuário verá este motivo",
+          "reason": "Motivo da Rejeição",
+          "reasonPlaceholder": "Por favor, insira o motivo da rejeição...",
+          "quickReasons": "Preenchimento rápido",
+          "quickReason1": "Esta ferramenta não está alinhada com o tema do nosso diretório de ferramentas de IA",
+          "quickReason2": "Envio duplicado detectado",
+          "quickReason3": "O site da ferramenta está inacessível ou foi removido",
+          "quickReason4": "Uma ferramenta similar já existe em nosso diretório",
+          "quickReason5": "As capturas de tela ou logotipo enviados não correspondem à ferramenta real",
+          "quickReason6": "A ferramenta carece de funcionalidade ou valor substancial",
+          "quickReason7": "Nenhum backlink encontrado em seu site. Por favor, adicione um e reenvie",
+          "quickReason8": "Não listamos ferramentas ou sites relacionados a conteúdo adulto, jogos de azar ou outras indústrias de área cinza",
+          "cancel": "Cancelar",
+          "submit": "Confirmar Rejeição",
+          "submitting": "Enviando..."
+        },
+        "viewDialog": {
+          "title": "Detalhes do Envio",
+          "description": "Ver informações detalhadas sobre o envio",
+          "name": "Nome da Ferramenta",
+          "url": "URL da Ferramenta",
+          "descriptionLabel": "Descrição",
+          "status": "Status",
+          "close": "Fechar"
+        }
+      },
+      "allRecords": {
+        "title": "Todos os Registros de Envio",
+        "description": "Ver todos os registros de envio dos usuários, incluindo envios de ferramentas",
+        "total": "Total de {count} registros",
+        "empty": "Nenhum registro encontrado",
+        "status": {
+          "pending": "Pendente",
+          "approved": "Aprovado",
+          "rejected": "Rejeitado"
+        },
+        "filter": {
+          "status": "Filtro de Status",
+          "all": "Todos"
+        },
+        "search": {
+          "placeholder": "Pesquisar nome, URL, descrição, nome de usuário ou e-mail..."
+        },
+        "columns": {
+          "name": "Nome",
+          "url": "URL",
+          "description": "Descrição",
+          "submitter": "Enviado por",
+          "status": "Status",
+          "submittedAt": "Enviado em"
+        },
+        "pagination": {
+          "showing": "Mostrando {from} - {to} de {total}",
+          "page": "Página {current} / {total}"
+        }
+      },
+      "tools": {
+        "title": "Gerenciamento de Ferramentas",
+        "description": "Gerenciar todas as ferramentas no diretório",
+        "total": "Total de {count} ferramentas",
+        "empty": "Nenhuma ferramenta encontrada",
+        "add": "Adicionar Ferramenta",
+        "search": {
+          "placeholder": "Pesquisar nome da ferramenta, URL ou slug..."
+        },
+        "filter": {
+          "status": "Filtro de Status",
+          "all": "Todos",
+          "published": "Publicado",
+          "publishedOnly": "Apenas Publicados",
+          "draftOnly": "Apenas Rascunhos",
+          "pending": "Pendente",
+          "rejected": "Rejeitado",
+          "featured": "Destaque",
+          "featuredOnly": "Apenas em Destaque",
+          "notFeatured": "Não em Destaque"
+        },
+        "columns": {
+          "name": "Nome",
+          "url": "URL",
+          "categories": "Categorias",
+          "tags": "Tags",
+          "status": "Status",
+          "createdAt": "Criado em",
+          "actions": "Ações"
+        },
+        "status": {
+          "published": "Publicado",
+          "draft": "Rascunho",
+          "featured": "Destaque"
+        },
+        "actions": {
+          "edit": "Editar",
+          "delete": "Excluir"
+        },
+        "editDialog": {
+          "titleAdd": "Adicionar Nova Ferramenta",
+          "titleEdit": "Editar Ferramenta",
+          "descriptionAdd": "Adicionar uma nova ferramenta ao diretório",
+          "descriptionEdit": "Editar informações e conteúdo da ferramenta",
+          "basicInfo": "Informações Básicas (Compartilhadas)",
+          "analyzeWebsite": "Analisar Site",
+          "analyzing": "IA está analisando o site...",
+          "generateContent": "Gerar com IA",
+          "generating": "IA está gerando conteúdo, isso pode levar 20-30 segundos...",
+          "referenceContent": "Conteúdo de Referência",
+          "fetchContent": "Buscar da URL",
+          "fetchingContent": "Buscando conteúdo do site...",
+          "referenceContentPlaceholder": "Cole ou busque o conteúdo do site aqui. Isso será usado como referência para geração de conteúdo com IA.",
+          "save": "Salvar",
+          "saving": "Salvando...",
+          "cancel": "Cancelar",
+          "featuredLabel": "Destaque",
+          "publishedLabel": "Publicado"
+        },
+        "deleteDialog": {
+          "title": "Excluir Ferramenta",
+          "description": "Tem certeza de que deseja excluir esta ferramenta? Esta ação não pode ser desfeita.",
+          "cancel": "Cancelar",
+          "confirm": "Excluir",
+          "deleting": "Excluindo..."
+        },
+        "pagination": {
+          "showing": "Mostrando {from} - {to} de {total}",
+          "page": "Página {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Ferramenta criada com sucesso",
+          "updateSuccess": "Ferramenta atualizada com sucesso",
+          "deleteSuccess": "Ferramenta excluída com sucesso",
+          "error": "Operação falhou"
+        }
+      },
+      "tags": {
+        "title": "Gerenciamento de Tags",
+        "description": "Gerenciar tags e categorias de ferramentas",
+        "total": "{count} tags no total",
+        "empty": "Nenhuma tag ainda",
+        "add": "Adicionar Tag",
+        "search": {
+          "placeholder": "Pesquisar nome da tag ou slug..."
+        },
+        "filter": {
+          "category": "Filtrar por Categoria",
+          "all": "Todos",
+          "published": "Status de Publicação",
+          "publishedOnly": "Publicado",
+          "draftOnly": "Rascunho",
+          "featured": "Status de Destaque",
+          "featuredOnly": "Destaque",
+          "notFeatured": "Não em Destaque"
+        },
+        "columns": {
+          "name": "Nome",
+          "slug": "Slug",
+          "category": "Categoria",
+          "color": "Cor",
+          "usageCount": "Contagem de Uso",
+          "status": "Status",
+          "actions": "Ações"
+        },
+        "status": {
+          "published": "Publicado",
+          "draft": "Rascunho",
+          "archived": "Arquivado",
+          "featured": "Destaque"
+        },
+        "category": {
+          "type": "Tipo",
+          "pricing": "Preço",
+          "platform": "Plataforma",
+          "feature": "Recurso",
+          "general": "Geral",
+          "other": "Outro"
+        },
+        "actions": {
+          "edit": "Editar",
+          "delete": "Excluir",
+          "view": "Visualizar"
+        },
+        "pagination": {
+          "showing": "Mostrando {from} - {to} de {total}",
+          "page": "Página {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Tag criada com sucesso",
+          "updateSuccess": "Tag atualizada com sucesso",
+          "deleteSuccess": "Tag excluída com sucesso",
+          "error": "Operação falhou"
+        },
+        "form": {
+          "create": "Criar Tag",
+          "edit": "Editar Tag",
+          "slug": "Slug",
+          "slugPlaceholder": "ferramenta-ia",
+          "slugHint": "Identificador amigável para URL",
+          "enName": "Nome em Inglês",
+          "enNamePlaceholder": "AI Tool",
+          "zhName": "Nome em Chinês",
+          "zhNamePlaceholder": "AI 工具",
+          "enDescription": "Descrição em Inglês",
+          "enDescriptionPlaceholder": "Ferramentas alimentadas por inteligência artificial",
+          "zhDescription": "Descrição em Chinês",
+          "zhDescriptionPlaceholder": "由人工智能驱动的工具",
+          "category": "Categoria",
+          "categoryPlaceholder": "Selecionar categoria",
+          "color": "Cor",
+          "colorPlaceholder": "#3B82F6",
+          "iconEmoji": "Emoji de Ícone",
+          "iconEmojiPlaceholder": "🤖",
+          "published": "Publicado",
+          "featured": "Destaque",
+          "cancel": "Cancelar",
+          "save": "Salvar",
+          "saving": "Salvando..."
+        },
+        "deleteDialog": {
+          "title": "Excluir Tag",
+          "description": "Tem certeza de que deseja excluir esta tag? Esta ação não pode ser desfeita.",
+          "cancel": "Cancelar",
+          "confirm": "Confirmar Exclusão",
+          "deleting": "Excluindo..."
+        }
+      }
+    },
+    "settings": {
+      "title": "Configurações",
+      "profile": {
+        "title": "Perfil",
+        "description": "Gerenciar suas informações de conta",
+        "avatar": {
+          "title": "Avatar",
+          "description": "Clique no botão de upload para enviar um personalizado",
+          "recommendation": "Um avatar é opcional mas fortemente recomendado",
+          "uploading": "Enviando...",
+          "uploadAvatar": "Enviar Avatar",
+          "success": "Avatar atualizado com sucesso",
+          "fail": "Falha ao atualizar avatar"
+        },
+        "name": {
+          "title": "Nome",
+          "description": "Por favor, insira seu nome de exibição",
+          "placeholder": "Digite seu nome",
+          "minLength": "Por favor, use no mínimo 3 caracteres",
+          "maxLength": "Por favor, use no máximo 30 caracteres",
+          "hint": "Por favor, use 3-30 caracteres para seu nome",
+          "success": "Nome atualizado com sucesso",
+          "fail": "Falha ao atualizar nome",
+          "saving": "Salvando...",
+          "save": "Salvar"
+        }
+      },
+      "billing": {
+        "title": "Faturamento",
+        "description": "Gerenciar sua assinatura e detalhes de faturamento",
+        "status": {
+          "active": "Ativo",
+          "trial": "Teste",
+          "free": "Grátis",
+          "lifetime": "Vitalício"
+        },
+        "interval": {
+          "month": "mês",
+          "year": "ano",
+          "oneTime": "único"
+        },
+        "currentPlan": {
+          "title": "Plano Atual",
+          "description": "Detalhes do seu plano atual",
+          "noPlan": "Você não tem um plano ativo"
+        },
+        "CustomerPortalButton": {
+          "loading": "Carregando...",
+          "createCustomerPortalFailed": "Falha ao abrir portal do cliente Stripe"
+        },
+        "price": "Preço:",
+        "periodStartDate": "Data de início do período:",
+        "periodEndDate": "Data de término do período:",
+        "trialEnds": "Teste termina:",
+        "freePlanMessage": "Você está atualmente no plano grátis com recursos limitados",
+        "lifetimeMessage": "Você tem acesso vitalício a todos os recursos premium",
+        "manageSubscription": "Gerenciar Assinatura e Faturamento",
+        "manageBilling": "Gerenciar Faturamento",
+        "upgradePlan": "Fazer Upgrade do Plano",
+        "retry": "Tentar novamente",
+        "errorMessage": "Falha ao obter dados",
+        "paymentSuccess": "Pagamento bem-sucedido"
+      },
+      "credits": {
+        "title": "Créditos",
+        "description": "Gerenciar suas transações de crédito",
+        "tabs": {
+          "balance": "Saldo",
+          "transactions": "Transações"
+        },
+        "balance": {
+          "title": "Saldo de Créditos",
+          "description": "Seu saldo de créditos",
+          "credits": "Créditos",
+          "creditsDescription": "Você tem {credits} créditos",
+          "creditsExpired": "Créditos expirados",
+          "creditsAdded": "Créditos foram adicionados à sua conta",
+          "viewTransactions": "Ver Transações de Crédito",
+          "retry": "Tentar novamente",
+          "expiringCredits": "{credits} créditos expirando nos próximos {days} dias"
+        },
+        "packages": {
+          "title": "Pacotes de Créditos",
+          "description": "Compre créditos adicionais para usar nossos serviços",
+          "purchase": "Comprar",
+          "processing": "Processando...",
+          "popular": "Popular",
+          "completePurchase": "Complete Sua Compra",
+          "failedToFetchCredits": "Falha ao buscar créditos",
+          "failedToCreatePaymentIntent": "Falha ao criar intenção de pagamento",
+          "failedToInitiatePayment": "Falha ao iniciar pagamento",
+          "cancel": "Cancelar",
+          "purchaseFailed": "Falha na compra de créditos",
+          "checkoutFailed": "Falha ao criar sessão de checkout",
+          "loading": "Carregando...",
+          "pay": "Pagar"
+        },
+        "transactions": {
+          "title": "Transações de Crédito",
+          "error": "Falha ao obter transações de crédito",
+          "search": "Pesquisar transações de crédito...",
+          "paymentIdCopied": "ID do pagamento copiado para a área de transferência",
+          "columns": {
+            "columns": "Colunas",
+            "id": "ID",
+            "type": "Tipo",
+            "description": "Descrição",
+            "amount": "Quantidade",
+            "remainingAmount": "Quantidade Restante",
+            "paymentId": "ID do Pagamento",
+            "expirationDate": "Data de Expiração",
+            "expirationDateProcessedAt": "Data de Expiração Processada em",
+            "createdAt": "Criado em",
+            "updatedAt": "Atualizado em"
+          },
+          "types": {
+            "MONTHLY_REFRESH": "Atualização Mensal",
+            "REGISTER_GIFT": "Presente de Registro",
+            "PURCHASE": "Créditos Comprados",
+            "USAGE": "Créditos Consumidos",
+            "EXPIRE": "Créditos Expirados",
+            "SUBSCRIPTION_RENEWAL": "Renovação de Assinatura",
+            "LIFETIME_MONTHLY": "Mensal Vitalício"
+          },
+          "detailViewer": {
+            "title": "Detalhe da Transação de Crédito",
+            "close": "Fechar"
+          },
+          "expired": "Expirado",
+          "never": "Sem data de expiração"
+        }
+      },
+      "history": {
+        "title": "Histórico",
+        "description": "Ver seu histórico de processamento de imagens",
+        "empty": "Nenhum histórico ainda",
+        "prev": "Anterior",
+        "next": "Próximo",
+        "detail": "Detalhe da Imagem",
+        "input": "Original",
+        "output": "Resultado",
+        "credits": "créditos",
+        "type": {
+          "enhance": "Aprimorar",
+          "generate": "Gerar"
+        },
+        "status": {
+          "success": "Sucesso",
+          "failed": "Falhou"
+        }
+      },
+      "notification": {
+        "title": "Notificação",
+        "description": "Gerenciar suas preferências de notificação",
+        "newsletter": {
+          "title": "Assinatura de Newsletter",
+          "description": "Gerenciar suas preferências de assinatura de newsletter",
+          "label": "Inscrever-se na newsletter",
+          "hint": "Você pode alterar suas preferências de assinatura a qualquer momento",
+          "emailRequired": "E-mail é necessário para se inscrever na newsletter",
+          "subscribeSuccess": "Inscrito com sucesso na newsletter",
+          "subscribeFail": "Falha ao se inscrever na newsletter",
+          "unsubscribeSuccess": "Cancelada inscrição da newsletter com sucesso",
+          "unsubscribeFail": "Falha ao cancelar inscrição da newsletter",
+          "error": "Ocorreu um erro ao atualizar sua assinatura"
+        }
+      },
+      "security": {
+        "title": "Segurança",
+        "description": "Gerenciar suas configurações de segurança",
+        "updatePassword": {
+          "title": "Alterar Senha",
+          "description": "Digite sua senha atual e uma nova senha",
+          "currentPassword": "Senha Atual",
+          "currentRequired": "Senha atual é obrigatória",
+          "newPassword": "Nova Senha",
+          "newMinLength": "A senha deve ter pelo menos 8 caracteres",
+          "hint": "Por favor, use pelo menos 8 caracteres para a senha",
+          "showPassword": "Mostrar senha",
+          "hidePassword": "Ocultar senha",
+          "success": "Senha atualizada com sucesso",
+          "fail": "Falha ao atualizar senha",
+          "saving": "Salvando...",
+          "save": "Salvar"
+        },
+        "resetPassword": {
+          "title": "Redefinir Senha",
+          "description": "Redefinir senha para habilitar login por e-mail",
+          "info": "Redefinir sua senha permitirá que você faça login usando seu e-mail e senha além dos métodos de login social. Você receberá um e-mail com instruções para redefinir sua senha",
+          "button": "Redefinir Senha"
+        },
+        "deleteAccount": {
+          "title": "Excluir Conta",
+          "description": "Remover permanentemente sua conta e todo o seu conteúdo",
+          "warning": "Esta ação não é reversível, então continue com cautela",
+          "button": "Excluir Conta",
+          "confirmTitle": "Excluir Conta",
+          "confirmDescription": "Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+          "confirm": "Excluir",
+          "cancel": "Cancelar",
+          "deleting": "Excluindo...",
+          "success": "Conta excluída com sucesso",
+          "fail": "Falha ao excluir conta"
+        }
+      },
+      "submissions": {
+        "title": "Meus Envios",
+        "description": "Ver seus registros de envio de ferramentas",
+        "total": "Total de {count} registros",
+        "empty": "Nenhum envio ainda",
+        "successAfterPayment": "Pagamento bem-sucedido! Sua ferramenta foi enviada e está aguardando revisão.",
+        "status": {
+          "unpaid": "Não Pago",
+          "pending": "Pendente",
+          "approved": "Aprovado",
+          "rejected": "Rejeitado"
+        },
+        "filter": {
+          "status": "Filtro de Status",
+          "all": "Todos"
+        },
+        "columns": {
+          "name": "Nome da Ferramenta",
+          "url": "URL da Ferramenta",
+          "status": "Status",
+          "submittedAt": "Enviado em",
+          "actions": "Ações"
+        },
+        "pagination": {
+          "showing": "Mostrando {from} - {to} de {total}",
+          "page": "Página {current} / {total}"
+        },
+        "rejectReason": "Motivo da Rejeição",
+        "edit": "Editar",
+        "editDialog": {
+          "title": "Editar Envio",
+          "description": "Modifique as informações do seu envio. Após a modificação, ele reentrará no processo de revisão",
+          "name": "Nome da Ferramenta",
+          "url": "URL da Ferramenta",
+          "logo": "Logotipo",
+          "screenshot": "Captura de Tela",
+          "descriptionLabel": "Descrição",
+          "descriptionOptional": "Descrição é opcional",
+          "cancel": "Cancelar",
+          "submit": "Salvar e Reenviar",
+          "submitting": "Enviando..."
+        }
+      }
+    },
+    "upgrade": {
+      "title": "Upgrade",
+      "description": "Faça upgrade para Pro para acessar todos os recursos",
+      "button": "Fazer Upgrade"
+    }
+  },
+  "Mail": {
+    "common": {
+      "team": "Equipe {name}",
+      "copyright": "©️ {year} Todos os Direitos Reservados."
+    },
+    "verifyEmail": {
+      "title": "Olá, {name}.",
+      "body": "Por favor, clique no link abaixo para verificar seu endereço de e-mail.",
+      "confirmEmail": "Confirmar e-mail",
+      "subject": "Verifique seu e-mail"
+    },
+    "forgotPassword": {
+      "title": "Olá, {name}.",
+      "body": "Por favor, clique no link abaixo para redefinir sua senha.",
+      "resetPassword": "Redefinir senha",
+      "subject": "Redefina sua senha"
+    },
+    "subscribeNewsletter": {
+      "body": "Obrigado por se inscrever no Vidlyo! Você receberá as últimas dicas sobre criação de vídeo e imagem com IA, atualizações de novos recursos e ofertas exclusivas. Fique atento para ferramentas e técnicas poderosas de criação com IA.",
+      "subject": "Bem-vindo ao Vidlyo"
+    },
+    "contactMessage": {
+      "name": "Nome: {name}",
+      "email": "E-mail: {email}",
+      "message": "Mensagem: {message}",
+      "subject": "Mensagem de Contato do Site"
+    }
+  },
+  "HomePage": {
+    "title": "BuildWay - Descubra as Melhores Ferramentas de IA",
+    "description": "Descubra ferramentas de IA selecionadas para todas as necessidades. Encontre a solução perfeita para seu próximo projeto.",
+    "hero": {
+      "badge": "🚀 Diretório de Ferramentas de IA",
+      "introduction": "Siga-nos no X",
+      "title": "Descubra as Melhores Ferramentas de IA",
+      "subtitle": "Descubra ferramentas de IA selecionadas para todas as necessidades. Encontre a solução perfeita para seu próximo projeto.",
+      "description": "Descubra ferramentas de IA selecionadas para todas as necessidades. Encontre a solução perfeita para seu próximo projeto.",
+      "primary": "Começar",
+      "secondary": "Ver Demo",
+      "searchPlaceholder": "Pesquisar ferramentas de IA, categorias ou recursos...",
+      "stats": {
+        "tools": "Ferramentas de IA",
+        "categories": "Categorias",
+        "users": "Usuários"
+      }
+    },
+    "latestTools": {
+      "title": "Últimas Ferramentas de IA",
+      "subtitle": "Adicionadas recentemente à nossa coleção",
+      "justLaunched": "Recém-lançados",
+      "viewAll": "Ver Todas as Ferramentas",
+      "featuredTitle": "Em Destaque"
+    },
+    "submitCta": {
+      "badge": "Envie Sua Ferramenta",
+      "title": "Compartilhe Sua Ferramenta de IA com a Comunidade",
+      "description": "Tenha sua ferramenta de IA em destaque e ganhe mais exposição para usuários potenciais descobrindo novas soluções.",
+      "button": "Enviar Ferramenta"
+    },
+    "logocloud": {
+      "title": "Suas empresas favoritas são nossas parceiras"
+    },
+    "integration": {
+      "title": "Integrações",
+      "subtitle": "Integre com suas ferramentas favoritas",
+      "description": "Conecte-se perfeitamente com plataformas e serviços populares para aprimorar seu fluxo de trabalho.",
+      "learnMore": "Saiba Mais",
+      "items": {
+        "item-1": {
+          "title": "Google Gemini",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-2": {
+          "title": "Replit",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-3": {
+          "title": "MagicUI",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-4": {
+          "title": "VSCodium",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-5": {
+          "title": "MediaWiki",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-6": {
+          "title": "Google PaLM",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        }
+      }
+    },
+    "integration2": {
+      "title": "Integre com suas ferramentas favoritas",
+      "description": "Conecte-se perfeitamente com plataformas e serviços populares para aprimorar seu fluxo de trabalho.",
+      "primaryButton": "Começar",
+      "secondaryButton": "Ver Demo"
+    },
+    "pricing": {
+      "title": "Preços",
+      "subtitle": "Preços",
+      "description": "Escolha o plano que funciona melhor para você"
+    },
+    "testimonials": {
+      "title": "Depoimentos",
+      "subtitle": "O que nossos clientes estão dizendo",
+      "items": {
+        "item-1": {
+          "name": "Jonathan Yombo",
+          "role": "Engenheiro de Software",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "quote": "MkSaaS é realmente extraordinário e muito prático, não precisa quebrar a cabeça. Uma verdadeira mina de ouro."
+        },
+        "item-2": {
+          "name": "Yves Kalume",
+          "role": "GDE - Android",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg",
+          "quote": "Sem experiência em webdesign, acabei de redesenhar meu site inteiro em poucos minutos com tailwindcss graças ao MkSaaS."
+        },
+        "item-3": {
+          "name": "Yucel Faruksahan",
+          "role": "Criador do Tailkits",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg",
+          "quote": "Ótimo trabalho no template MkSaaS. Este é um dos melhores sites pessoais que já vi :)"
+        },
+        "item-4": {
+          "name": "Autor Anônimo",
+          "role": "Gerente de Produto",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg",
+          "quote": "Baixei um dos templates MkSaaS que é muito claro de entender no início e você pode modificar os códigos/blocos para se adequar perfeitamente ao propósito da página."
+        },
+        "item-5": {
+          "name": "Shekinah Tshiokufila",
+          "role": "Engenheiro de Software Sênior",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "quote": "MkSaaS está redefinindo o padrão de design web, com esses blocos fornece uma maneira fácil e eficiente para aqueles que amam a beleza mas podem não ter tempo para implementá-la."
+        },
+        "item-6": {
+          "name": "Oketa Fred",
+          "role": "Desenvolvedor Fullstack",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg",
+          "quote": "Eu absolutamente amo o MkSaaS! Os blocos de componentes são lindamente projetados e fáceis de usar, o que torna criar um site bonito muito fácil."
+        },
+        "item-7": {
+          "name": "Zeki",
+          "role": "Fundador do ChatExtend",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg",
+          "quote": "MkSaaS é a fusão perfeita de simplicidade e versatilidade, permitindo-nos criar UIs tão impressionantes quanto amigáveis."
+        },
+        "item-8": {
+          "name": "Joseph Kitheka",
+          "role": "Desenvolvedor Fullstack",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg",
+          "quote": "MkSaaS transformou a maneira como desenvolvo aplicações web. Sua extensa coleção de componentes de UI, blocos e templates acelerou significativamente meu fluxo de trabalho."
+        },
+        "item-9": {
+          "name": "Khatab Wedaa",
+          "role": "Criador do MerakiUI",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg",
+          "quote": "MkSaaS é um componente elegante, limpo e responsivo de tailwind css, é muito útil para começar rápido com seu projeto."
+        },
+        "item-10": {
+          "name": "Rodrigo Aguilar",
+          "role": "Criador do TailwindAwesome",
+          "image": "https://randomuser.me/api/portraits/men/11.jpg",
+          "quote": "Eu amo o MkSaaS ❤️. Os blocos de componentes são bem estruturados, simples de usar e lindamente projetados. Torna muito fácil ter um site bonito em pouco tempo."
+        },
+        "item-11": {
+          "name": "Eric Ampire",
+          "role": "@GoogleDevExpert para Android",
+          "image": "https://randomuser.me/api/portraits/men/12.jpg",
+          "quote": "Os templates MkSaaS são a solução perfeita para qualquer pessoa que queira criar um site bonito e funcional sem nenhuma experiência em webdesign."
+        },
+        "item-12": {
+          "name": "Roland Tubonge",
+          "role": "Engenheiro de Software",
+          "image": "https://randomuser.me/api/portraits/men/13.jpg",
+          "quote": "MkSaaS é tão bem projetado que mesmo com um conhecimento muito limitado de webdesign você pode fazer milagres. Deixe-se seduzir!"
+        }
+      }
+    },
+    "stats": {
+      "title": "Estatísticas",
+      "subtitle": "MkSaaS em números",
+      "description": "MkSaaS permite que você faça SaaS de IA em dias, simples e sem esforço",
+      "items": {
+        "item-1": {
+          "title": "Estrelas no GitHub"
+        },
+        "item-2": {
+          "title": "Usuários Ativos"
+        },
+        "item-3": {
+          "title": "Aplicações Alimentadas"
+        }
+      }
+    },
+    "calltoaction": {
+      "title": "Comece a Construir",
+      "description": "MkSaaS permite que você faça SaaS de IA em dias, simples e sem esforço",
+      "primaryButton": "Começar",
+      "secondaryButton": "Ver Demo"
+    },
+    "faqs": {
+      "title": "Perguntas Frequentes",
+      "subtitle": "Perguntas comuns sobre o diretório de ferramentas de IA",
+      "items": {
+        "item-1": {
+          "question": "Quantas ferramentas de IA estão listadas neste site?",
+          "answer": "Nós continuamente selecionamos e atualizamos ferramentas de IA de alta qualidade cobrindo vários campos, incluindo geração de imagem, geração de vídeo, escrita de texto, áudio e música, desenvolvimento de código e mais. Nossa coleção está constantemente crescendo à medida que adicionamos novas ferramentas."
+        },
+        "item-2": {
+          "question": "Como posso enviar minha ferramenta de IA?",
+          "answer": "Clique no botão 'Enviar Ferramenta' na página inicial e preencha as informações básicas sobre sua ferramenta (nome, site, descrição, categoria, etc.). Revisaremos seu envio em 1-3 dias úteis e, uma vez aprovado, será exibido no site."
+        },
+        "item-3": {
+          "question": "Como as ferramentas são categorizadas?",
+          "answer": "Categorizamos as ferramentas por função em várias categorias: geração de imagem, geração de vídeo, escrita de texto, áudio e música, desenvolvimento de código, design criativo, produtividade, marketing SEO, análise de dados, assistentes de chat e mais. Cada ferramenta pode pertencer a várias categorias."
+        },
+        "item-4": {
+          "question": "Todas as ferramentas são gratuitas?",
+          "answer": "Não. As ferramentas que listamos incluem ferramentas completamente gratuitas, ferramentas com testes gratuitos e ferramentas pagas apenas. A página de detalhes de cada ferramenta indicará informações de preço, para que você possa escolher a ferramenta certa com base em suas necessidades."
+        },
+        "item-5": {
+          "question": "Como faço para pesquisar uma ferramenta específica?",
+          "answer": "Use a caixa de pesquisa na parte superior da página inicial e digite palavras-chave para pesquisar. A pesquisa corresponderá a nomes de ferramentas, descrições e tags para ajudá-lo a encontrar rapidamente as ferramentas de que precisa."
+        },
+        "item-6": {
+          "question": "O que são ferramentas em destaque?",
+          "answer": "Ferramentas em destaque são ferramentas de alta qualidade cuidadosamente selecionadas por nossa equipe editorial com base em qualidade, popularidade, avaliações de usuários e completude de recursos. Essas ferramentas se destacam em seus respectivos campos."
+        },
+        "item-7": {
+          "question": "Com que frequência o diretório é atualizado?",
+          "answer": "Atualizamos regularmente nosso diretório com novas ferramentas de IA e removemos as obsoletas ou descontinuadas. Nossa equipe revisa e adiciona novas ferramentas semanalmente para garantir que você tenha acesso às soluções de IA mais recentes e relevantes."
+        },
+        "item-8": {
+          "question": "Posso solicitar que uma ferramenta específica seja adicionada?",
+          "answer": "Sim! Se você conhece uma ótima ferramenta de IA que não está listada, pode enviá-la através do nosso recurso 'Enviar Ferramenta'. Revisamos todos os envios e adicionamos ferramentas que atendem aos nossos padrões de qualidade e fornecem valor à nossa comunidade."
+        }
+      }
+    }
+  },
+  "AIImagePage": {
+    "title": "IA de Imagem",
+    "description": "MkSaaS permite que você faça SaaS de IA em dias, simples e sem esforço"
+  },
+  "AIChatPage": {
+    "title": "IA de Chat",
+    "description": "MkSaaS permite que você faça SaaS de IA em dias, simples e sem esforço"
+  },
+  "AIVideoPage": {
+    "title": "IA de Vídeo",
+    "description": "MkSaaS permite que você faça SaaS de IA em dias, simples e sem esforço"
+  },
+  "AIAudioPage": {
+    "title": "IA de Áudio",
+    "description": "MkSaaS permite que você faça SaaS de IA em dias, simples e sem esforço"
+  },
+  "LandingPage": {
+    "metadata": {
+      "title": "Vidlyo - Gerador de Vídeo e Imagem com IA | Plataforma de Criação Tudo-em-Um",
+      "description": "Sua plataforma de criação de vídeo e imagem com IA tudo-em-um. Gere imagens impressionantes, crie vídeos a partir de texto ou imagens com IA. Texto para Vídeo, Imagem para Vídeo, Gerador de Animação com IA e mais."
+    },
+    "hero": {
+      "badge": "Plataforma de Criação com IA",
+      "title": "Crie Vídeos e Imagens",
+      "titleHighlight": "Incríveis com IA",
+      "subtitle": "Sua plataforma de criação com IA tudo-em-um.",
+      "noPlasticSkin": "Texto para Vídeo. Imagem para Vídeo.",
+      "noBeautyFilter": "Animação com IA. Gerador de Imagem com IA.",
+      "description": "Transforme suas ideias em vídeos e imagens impressionantes com IA. Gere a partir de prompts de texto, anime fotos, crie arte com IA — tudo em uma plataforma poderosa.",
+      "cta": "Comece a Criar Grátis",
+      "ctaSecondary": "Ver Exemplos",
+      "users": "criadores",
+      "rating": "avaliação",
+      "scroll": "Rolar",
+      "processing": "Processando",
+      "processingTime": "< 30 segundos"
+    },
+    "howItWorks": {
+      "sectionLabel": "Como Funciona",
+      "title": "Crie Vídeos e Imagens com IA em 3 Passos Simples",
+      "subtitle": "Transforme suas ideias em visuais impressionantes. Digite um prompt, escolha seu estilo e deixe a IA fazer a mágica. Não são necessárias habilidades técnicas.",
+      "steps": {
+        "upload": {
+          "step": "01",
+          "title": "Digite Seu Prompt Criativo",
+          "description": "Descreva o que você quer criar — uma cena de vídeo cinematográfica, arte impressionante ou personagem animado. Envie imagens de referência para resultados ainda melhores."
+        },
+        "choose": {
+          "step": "02",
+          "title": "Escolha o Modelo e Estilo de IA",
+          "description": "Selecione entre nossos poderosos modelos de IA. Escolha proporção, duração e estilo. Nosso gerador de vídeo com IA e gerador de imagem com IA cuidam do resto."
+        },
+        "download": {
+          "step": "03",
+          "title": "Baixe Sua Criação com IA",
+          "description": "Seu vídeo ou imagem gerada por IA está pronto em segundos. Pré-visualize, refine se necessário, depois baixe em alta qualidade. Resultados profissionais sempre."
+        }
+      }
+    },
+    "features": {
+      "sectionLabel": "Recursos",
+      "title": "Recursos Poderosos de Criação de Imagem com IA",
+      "subtitle": "Tudo o que você precisa para criar imagens impressionantes com IA. De texto para imagem a transferência de estilo, qualidade profissional a geração ultra rápida. Recursos de vídeo em breve.",
+      "items": {
+        "textToVideo": {
+          "subtitle": "Gerador de Vídeo com IA",
+          "title": "Texto para Vídeo com IA",
+          "description": "Transforme seus prompts de texto em vídeos impressionantes e cativantes. Descreva qualquer cena — tomadas cinematográficas, demonstrações de produtos ou animações criativas — e veja a IA dar vida à sua visão com movimento realista e áudio. Em breve."
+        },
+        "imageToVideo": {
+          "subtitle": "Imagem para Vídeo com IA",
+          "title": "Anime Suas Imagens com IA",
+          "description": "Transforme imagens estáticas em vídeos dinâmicos e realistas. Envie uma foto e deixe a IA adicionar movimento natural, expressões e vida. Perfeito para criar conteúdo envolvente a partir de fotos existentes. Em breve."
+        },
+        "referenceToVideo": {
+          "subtitle": "Referência para Vídeo",
+          "title": "Mantenha Personagens Consistentes em Vídeos",
+          "description": "Forneça imagens de referência de seu personagem, objeto ou cena e mantenha-os consistentes em todos os quadros de seus vídeos. Perfeito para narrativas, conteúdo de marca e criação de séries. Em breve."
+        },
+        "textToImage": {
+          "subtitle": "Gerador de Imagem com IA",
+          "title": "Texto para Imagens Impressionantes",
+          "description": "Transforme suas ideias em visuais impressionantes com IA. Simplesmente descreva o que você quer — paisagens futuristas, paisagens serenas ou qualquer coisa que possa imaginar. Nossos modelos avançados de IA geram imagens de alta qualidade em segundos."
+        },
+        "cartoonStyle": {
+          "subtitle": "Conversor de Estilo Cartoon",
+          "title": "Transforme Foto em Estilo Cartoon",
+          "description": "Em apenas um clique, transforme suas fotos em estilos cartoon favoritos, como Disney, Pixar, Simpsons e Cyberpunk gratuitamente! Entre em destaque nas redes sociais."
+        },
+        "ghibliStyle": {
+          "subtitle": "Conversor de Estilo Ghibli",
+          "title": "Converta Foto para Estilo Ghibli",
+          "highlightedTitle": "Estilo de Animação Mágico",
+          "description": "Transforme rapidamente suas fotos em arte no estilo Ghibli com animação desenhada à mão exuberante e paletas de cores vibrantes. Capture cada detalhe em suas imagens e infunda-os com elementos caprichosos e mágicos.",
+          "imageAlt": {
+            "0": "Foto Original",
+            "1": "Resultado no Estilo Ghibli"
+          }
+        },
+        "handMadePaintings": {
+          "subtitle": "Conversor de Estilo Pintado à Mão",
+          "title": "Transforme Fotos em Pinturas Feitas à Mão",
+          "highlightedTitle": "",
+          "description": "Adicione facilmente um filtro de pintura feita à mão às suas imagens. Converta rapidamente suas fotos digitais em obras de arte a óleo, ilustrações ou aquarelas de alta qualidade e sem marca d'água.",
+          "imageAlt": {
+            "0": "Antes - Foto Original",
+            "1": "Depois - Efeito de Pintura Feita à Mão"
+          }
+        },
+        "aiAnimation": {
+          "subtitle": "Gerador de Animação com IA",
+          "title": "Crie Vídeos de Anime e Cartoon",
+          "description": "Gere vídeos cativantes de anime e cartoon em vários estilos. Escolha entre estilos de animadores famosos, incluindo Hayao Miyazaki, Makoto Shinkai e mais. Transforme suas ideias em obras-primas animadas. Em breve."
+        },
+        "aiOutfitChange": {
+          "subtitle": "Trocador de Roupa com IA",
+          "title": "Troca de Roupa Inteligente com IA",
+          "highlightedTitle": "Transformação Instantânea",
+          "description": "Envie sua foto e escolha diferentes estilos de roupas. A IA ajuda você a alcançar trocas de roupa perfeitas mantendo suas características faciais, expressões e pose. Perfeito para fotografia de moda, conteúdo de redes sociais e design criativo.",
+          "imageAlt": {
+            "0": "Antes - Roupa de Suéter Rosa",
+            "1": "Depois - Roupa de Jaqueta Marrom"
+          }
+        }
+      },
+      "cta": "Comece a Criar Agora"
+    },
+    "useCases": {
+      "sectionLabel": "Casos de Uso de Criação com IA",
+      "title": "O Que Você Pode Criar com o Vidlyo?",
+      "description": "Ferramentas de IA poderosas para cada cenário criativo. De vídeos de marketing a conteúdo social, soluções tudo-em-um para todas as suas necessidades.",
+      "items": {
+        "marketing": {
+          "title": "Vídeos de Marketing",
+          "subtitle": "Demonstrações de produtos e conteúdo promocional",
+          "description": "Crie vídeos de produto impressionantes, conteúdo promocional e criativos de anúncios com IA. Perfeito para e-commerce, anúncios em redes sociais e campanhas de marca."
+        },
+        "social": {
+          "title": "Conteúdo para Redes Sociais",
+          "subtitle": "Shorts virais e posts envolventes",
+          "description": "Gere vídeos e imagens chamativas para TikTok, Instagram, YouTube Shorts. Crie conteúdo viral que se destaca em feeds lotados."
+        },
+        "avatar": {
+          "title": "Vídeos de Avatar com IA",
+          "subtitle": "Foto para vídeo avatar",
+          "description": "Transforme uma única foto em um vídeo avatar totalmente animado com até 2 minutos de duração. Completo com movimento realista, sincronização labial e emoções expressivas."
+        },
+        "animation": {
+          "title": "Animação com IA",
+          "subtitle": "Vídeos no estilo anime e cartoon",
+          "description": "Gere vídeos cativantes de anime e cartoon em vários estilos. Do Ghibli à Pixar, crie conteúdo animado sem habilidades de animação."
+        },
+        "musicVideo": {
+          "title": "Vídeos Musicais com IA",
+          "subtitle": "Transforme músicas em histórias visuais",
+          "description": "Transforme suas músicas em vídeos musicais cativantes em apenas minutos com IA. Crie visuais impressionantes que combinam com o humor e ritmo da sua música."
+        },
+        "storytelling": {
+          "title": "Narrativa Visual",
+          "subtitle": "Personagens e cenas consistentes",
+          "description": "Crie vídeos de várias cenas com personagens e cenários consistentes. Perfeito para curtas-metragens, conteúdo educacional e projetos narrativos."
+        },
+        "productShots": {
+          "title": "Fotografia de Produto",
+          "subtitle": "Imagens de produto profissionais",
+          "description": "Gere imagens de produto impressionantes com iluminação e fundos perfeitos. Ideal para listagens de e-commerce, catálogos e materiais de marketing."
+        },
+        "artCreation": {
+          "title": "Geração de Arte com IA",
+          "subtitle": "Arte digital e ilustrações",
+          "description": "Crie arte digital única, ilustrações e arte conceitual. Do realista ao abstrato, explore infinitas possibilidades criativas."
+        },
+        "videoEnhance": {
+          "title": "Aprimoramento de Vídeo",
+          "subtitle": "Upscaling e melhoria de qualidade",
+          "description": "Aprimore a qualidade do vídeo com IA. Faça upscaling de resolução, melhore a clareza e transforme filmagens comuns em conteúdo de qualidade profissional."
+        },
+        "styleTransfer": {
+          "title": "Transferência de Estilo",
+          "subtitle": "Transforme a estética do vídeo",
+          "description": "Aplique estilos artísticos aos seus vídeos. Transforme filmagens em anime, pintura a óleo, cyberpunk e mais de 30 estilos criativos."
+        },
+        "imageEdit": {
+          "title": "Edição de Imagem com IA",
+          "subtitle": "Edite com prompts de texto",
+          "description": "Edite imagens usando linguagem natural. Remova fundos, altere elementos, aprimore a qualidade — tudo com descrições de texto simples."
+        },
+        "shorts": {
+          "title": "Gerador de Shorts com IA",
+          "subtitle": "Vídeos virais com um clique",
+          "description": "Crie vídeos curtos de várias cenas impressionantes com apenas um clique. Perfeito para conteúdo de TikTok, Reels e YouTube Shorts."
+        }
+      }
+    },
+    "testimonials": {
+      "sectionLabel": "Depoimentos",
+      "title": "O Que os Criadores Dizem Sobre o Vidlyo",
+      "items": {
+        "sarah": {
+          "name": "Sarah Mitchell",
+          "role": "Criadora de Conteúdo",
+          "content": "O gerador de vídeo com IA do Vidlyo é incrível! Crio vídeos impressionantes a partir de prompts de texto em minutos. A qualidade de texto para vídeo rivaliza com produção profissional."
+        },
+        "james": {
+          "name": "James Chen",
+          "role": "Gerente de Marketing",
+          "content": "Este gerador de vídeo com IA economiza horas de tempo de produção. Imagem para vídeo com IA é perfeito para demonstrações de produto. Melhor plataforma de criação com IA para equipes de marketing."
+        },
+        "emily": {
+          "name": "Emily Rodriguez",
+          "role": "Influenciadora de Redes Sociais",
+          "content": "Finalmente uma plataforma de criação com IA tudo-em-um! Gerador de imagem com IA mais ferramentas de vídeo em um só lugar. Meu engajamento disparou desde que comecei a usar o Vidlyo."
+        }
+      }
+    },
+    "midCta": {
+      "title": "Sua Plataforma",
+      "titleHighlight": "Tudo-em-Um de Criação de Vídeo e Imagem com IA",
+      "description": "Crie vídeos e imagens impressionantes com IA com prompts de texto. Texto para Vídeo, Imagem para Vídeo, Animação com IA, Gerador de Imagem com IA — tudo em uma plataforma poderosa.",
+      "cta": "Comece a Criar Grátis"
+    },
+    "trustSecurity": {
+      "sectionLabel": "Privacidade e Segurança",
+      "title": "Crie com IA",
+      "titleHighlight": "Com Segurança e Privacidade",
+      "description": "Suas criações são pessoais. O Vidlyo mantém seu conteúdo criptografado e privado. Crie vídeos e imagens com IA com confiança — sem compartilhamento de dados.",
+      "subDescription": "Gerador de vídeo com IA sem restrições de privacidade. O que você cria permanece seu. Gere conteúdo sem se preocupar com coleta de dados.",
+      "features": {
+        "encryption": {
+          "title": "Processamento Criptografado",
+          "description": "Geração de vídeo e imagem com IA com criptografia de ponta a ponta."
+        },
+        "private": {
+          "title": "Criação Privada com IA",
+          "description": "Apenas você pode visualizar e baixar seu conteúdo gerado por IA."
+        },
+        "secure": {
+          "title": "Processamento Seguro",
+          "description": "Geração com IA em ambientes de nuvem seguros isolados."
+        },
+        "noSharing": {
+          "title": "Sem Compartilhamento de Dados",
+          "description": "Plataforma de criação com IA que nunca compartilha seu conteúdo."
+        }
+      }
+    },
+    "faq": {
+      "sectionLabel": "FAQ",
+      "title": "Perguntas Frequentes",
+      "description": "Tudo o que você precisa saber sobre o BuildWay",
+      "items": {
+        "noSignup": {
+          "question": "O que é o BuildWay?",
+          "answer": "BuildWay é um diretório selecionado das melhores ferramentas de IA disponíveis. Ajudamos você a descobrir, comparar e escolher as ferramentas de IA certas para seus projetos, seja você um desenvolvedor, designer, profissional de marketing ou empreendedor."
+        },
+        "freeToUse": {
+          "question": "O BuildWay é gratuito para usar?",
+          "answer": "Sim! O BuildWay é completamente gratuito para usar. Você pode navegar, pesquisar e descobrir ferramentas de IA sem nenhum registro ou pagamento necessário."
+        },
+        "upscale": {
+          "question": "Como vocês selecionam as ferramentas?",
+          "answer": "Selecionamos cuidadosamente cada ferramenta com base em qualidade, avaliações de usuários, recursos e confiabilidade. Nossa equipe testa e avalia as ferramentas para garantir que recomendemos apenas as melhores soluções."
+        },
+        "enhance": {
+          "question": "Posso enviar minha ferramenta de IA?",
+          "answer": "Absolutamente! Aceitamos envios de ferramentas de desenvolvedores e empresas. Clique no botão 'Enviar Ferramenta' para compartilhar sua ferramenta de IA com nossa comunidade."
+        },
+        "pixelated": {
+          "question": "Com que frequência o diretório é atualizado?",
+          "answer": "Atualizamos nosso diretório regularmente, adicionando novas ferramentas semanalmente e atualizando listagens existentes para garantir que as informações permaneçam atuais e precisas."
+        },
+        "secured": {
+          "question": "Vocês oferecem comparações de ferramentas?",
+          "answer": "Sim! Cada listagem de ferramenta inclui informações detalhadas, avaliações e recursos para ajudá-lo a comparar diferentes opções e tomar decisões informadas."
+        },
+        "mobileSupport": {
+          "question": "Posso usar o BuildWay no celular?",
+          "answer": "Sim! O BuildWay é totalmente responsivo e funciona perfeitamente em todos os dispositivos — desktop, tablet e celular. Navegue e descubra ferramentas de IA em qualquer lugar."
+        },
+        "regenerate": {
+          "question": "Como as ferramentas são categorizadas?",
+          "answer": "As ferramentas são organizadas por categorias como produtividade, design, desenvolvimento, marketing e mais. Use nossos recursos de pesquisa e filtro para encontrar exatamente o que você precisa."
+        },
+        "commercial": {
+          "question": "Vocês têm relações de afiliados?",
+          "answer": "Algumas listagens de ferramentas podem incluir links de afiliados, que nos ajudam a manter o diretório. Sempre priorizamos avaliações honestas e apenas recomendamos ferramentas em que acreditamos."
+        }
+      },
+      "moreHelp": "Ainda tem dúvidas?",
+      "contactUs": "Fale conosco"
+    },
+    "intro": {
+      "sectionLabel": "Descubra",
+      "sectionTitle": "Transforme Suas Ideias com IA",
+      "what": {
+        "subtitle": "Introdução",
+        "title": "O que é o Vidlyo?",
+        "description": "Vidlyo é sua plataforma tudo-em-um de criação de vídeo e imagem com IA. Gere vídeos impressionantes a partir de prompts de texto, anime fotos com IA, crie imagens profissionais — tudo em uma plataforma poderosa. Texto para Vídeo, Imagem para Vídeo, Animação com IA e mais."
+      },
+      "why": {
+        "subtitle": "Por Que Nos Escolher",
+        "title": "Por Que Escolher a Plataforma de Criação com IA Vidlyo?",
+        "description": "Vidlyo combina o melhor gerador de vídeo com IA e gerador de imagem com IA em uma plataforma. Crie conteúdo profissional em segundos com prompts de texto simples. Não são necessárias habilidades técnicas — apenas descreva o que você quer e deixe a IA fazer a mágica."
+      },
+      "struggling": {
+        "subtitle": "Comece",
+        "title": "Pronto para Criar Conteúdo Incrível com IA?",
+        "description": "A criação tradicional de vídeo e imagem é lenta e cara. Vidlyo muda isso. Gere vídeos e imagens com IA com prompts de texto simples. De conteúdo de marketing a posts em redes sociais — crie visuais profissionais em minutos, não horas."
+      }
+    },
+    "highlights": {
+      "title": "Por Que os Criadores Escolhem o Vidlyo",
+      "subtitle": "Plataforma tudo-em-um de criação com IA com recursos poderosos. Gerador de vídeo com IA, gerador de imagem com IA, ferramentas de animação — tudo o que você precisa em um só lugar.",
+      "items": {
+        "easy": {
+          "title": "Prompts de Texto Simples",
+          "description": "Sem software complexo — apenas descreva o que você quer. Nossa IA entende linguagem natural e cria vídeos e imagens impressionantes a partir de suas descrições."
+        },
+        "models": {
+          "title": "Modelos de IA Poderosos",
+          "description": "Acesse modelos de IA de ponta para geração de vídeo e imagem. De iterações rápidas a saída profissional de alta qualidade — escolha o modelo certo para suas necessidades."
+        },
+        "free": {
+          "title": "Plataforma Tudo-em-Um",
+          "description": "Texto para Vídeo, Imagem para Vídeo, Animação com IA, Gerador de Imagem com IA — todas as ferramentas de criação em uma plataforma. Não há necessidade de alternar entre vários aplicativos."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Comece a Criar",
+      "titleHighlight": "Conteúdo Incrível com IA",
+      "description": "Junte-se a milhões de criadores usando o Vidlyo. Gere vídeos e imagens impressionantes com IA com prompts de texto simples. Sua plataforma tudo-em-um de criação com IA.",
+      "cta": "Comece a Criar Grátis",
+      "trust": {
+        "gdpr": "Privacidade Protegida",
+        "noStorage": "Processamento Seguro",
+        "ssl": "SSL Criptografado"
+      }
+    },
+    "quickEnhance": {
+      "badge": "Experimente Agora",
+      "title": "Experimente a Edição de Fotos com IA",
+      "subtitle": "Envie uma foto e teste a mágica da IA em segundos",
+      "upload": {
+        "title": "Enviar Imagem",
+        "dragDrop": "Arraste e solte ou clique para enviar",
+        "formats": "Suporta JPG, PNG, WEBP até {size}MB",
+        "errorFormat": "Por favor, envie imagem JPG, PNG ou WEBP",
+        "errorSize": "O tamanho do arquivo deve ser menor que {size}MB",
+        "uploading": "Enviando..."
+      },
+      "modes": {
+        "title": "Modo de Edição",
+        "skin": "Aprimoramento com IA",
+        "upscale": "Upscale",
+        "restore": "Restaurar",
+        "comingSoon": "Em Breve"
+      },
+      "enhance": "Iniciar Edição",
+      "processing": "Processando...",
+      "download": "Baixar",
+      "downloadSuccess": "Download bem-sucedido",
+      "downloadFallback": "Imagem aberta em nova aba, clique com o botão direito para salvar",
+      "generateFirst": "Por favor, gere o resultado primeiro",
+      "tryAgain": "Tentar Novamente",
+      "error": "Falha na edição. Por favor, tente novamente.",
+      "errors": {
+        "UNAUTHORIZED": "Por favor, faça login primeiro",
+        "INSUFFICIENT_CREDITS": "Créditos insuficientes. Você precisa de {required} créditos.",
+        "INVALID_IMAGE_URL": "URL de imagem inválida",
+        "REPLICATE_API_ERROR": "Falha no processamento de IA, tente novamente",
+        "NETWORK_ERROR": "Erro de rede, verifique sua conexão",
+        "TIMEOUT": "Tempo limite de processamento, tente novamente",
+        "UNKNOWN": "Erro desconhecido, entre em contato com o suporte"
+      },
+      "hint": "Usuários gratuitos: máx. 2MB | Usuários pagos: máx. 20MB | Precisa de mais? Fale conosco",
+      "result": {
+        "title": "Pré-visualização do Resultado",
+        "yourResult": "Seu Resultado",
+        "sampleHint": "Envie uma imagem para ver seu próprio resultado"
+      }
+    },
+    "aiEditor": {
+      "badge": "Sua Plataforma Tudo-em-Um de Criação com IA",
+      "titlePart1": "Crie Vídeos e Imagens",
+      "titleHighlight": "Incríveis com IA",
+      "subtitle": "Transforme suas ideias em realidade com IA poderosa. Texto para Vídeo, Imagem para Vídeo, Animação com IA, Gerador de Imagem com IA — tudo em uma plataforma.",
+      "users": "criadores",
+      "rating": "avaliação",
+      "imagesGenerated": "criações feitas",
+      "quickPrompts": {
+        "portrait": "Retrato",
+        "landscape": "Paisagem",
+        "abstract": "Arte Abstrata"
+      },
+      "inputBar": {
+        "placeholder": "Descreva o que você quer criar ou editar..."
+      },
+      "toolbar": {
+        "model": "Modelo",
+        "ratio": "Proporção",
+        "more": "Mais",
+        "public": "Visibilidade Pública",
+        "publicDescription": "Mostrar na galeria da comunidade",
+        "credits": "{count} créditos",
+        "clear": "Limpar"
+      },
+      "imageUpload": {
+        "add": "Adicionar",
+        "manageImages": "Gerenciar Imagens",
+        "retry": "Tentar novamente",
+        "errorFormat": "Apenas formatos JPG, PNG, WebP são suportados",
+        "errorSize": "O tamanho do arquivo não pode exceder {size}MB",
+        "errorMaxImages": "Máximo de {max} imagens permitido",
+        "errorDuplicate": "Esta imagem já foi enviada"
+      },
+      "tabs": {
+        "textToImage": "Texto para Imagem"
+      },
+      "models": {
+        "title": "Modelos",
+        "description": "Edições rápidas e precisas de imagem"
+      },
+      "images": {
+        "title": "Imagens"
+      },
+      "uploader": {
+        "dragDrop": "Clique ou arraste para enviar imagens",
+        "formats": "Suporta JPG, PNG, WebP, máx. {size}MB",
+        "selected": "Selecionado {count}/{max}",
+        "add": "Adicionar",
+        "errorFormat": "Apenas formatos JPG, PNG, WebP são suportados",
+        "errorSize": "O tamanho do arquivo não pode exceder {size}MB",
+        "errorMaxImages": "Máximo de {max} imagens permitido",
+        "errorDuplicate": "Esta imagem já foi enviada"
+      },
+      "prompt": {
+        "title": "Prompt",
+        "placeholder": "Descreva seus requisitos de edição, como 'Remova a pessoa no fundo'"
+      },
+      "quickActions": {
+        "title": "Ações Rápidas"
+      },
+      "aspectRatio": {
+        "title": "Proporção"
+      },
+      "optionsBar": {
+        "model": "Modelo",
+        "ratio": "Proporção",
+        "public": "Público",
+        "publicTooltip": "Quando habilitado, as imagens geradas serão exibidas na galeria da comunidade para outros verem",
+        "clear": "Limpar",
+        "generate": "Gerar ({credits} créditos)",
+        "generating": "Gerando..."
+      },
+      "result": {
+        "original": "Original",
+        "edited": "Editado",
+        "generated": "Gerado",
+        "edit": "Editar",
+        "download": "Baixar",
+        "clickToEnlarge": "Clique para ampliar"
+      },
+      "preview": {
+        "title": "Pré-visualização da Imagem",
+        "reset": "Redefinir",
+        "hint": "Clique para ampliar · Arraste para mover · Role para zoom",
+        "galleryHint": "Use ← → para navegar · Clique para zoom",
+        "escHint": "Pressione ESC para fechar"
+      },
+      "status": {
+        "uploading": "Imagens estão sendo enviadas, aguarde...",
+        "uploadFailed": "Algumas imagens falharam ao enviar, remova e tente novamente",
+        "waitUpload": "Aguarde todas as imagens terminarem de enviar",
+        "processing": "Processando...",
+        "aiProcessing": "Aguarde, a IA está gerando sua imagem",
+        "cancel": "Cancelar",
+        "uploadError": "Falha no envio",
+        "generateError": "Falha na geração",
+        "retryHint": "Por favor, tente novamente mais tarde",
+        "retry": "Tentar novamente",
+        "refresh": "Atualizar",
+        "defaultPrompt": "Mantenha o estilo original, otimize a qualidade",
+        "generateFailed": "Falha na geração, tente novamente",
+        "characters": "caracteres",
+        "promptRequired": "Por favor, insira um prompt para gerar uma imagem"
+      },
+      "loginRequired": "Login Necessário",
+      "generate": "Gerar",
+      "generating": "Gerando...",
+      "features": {
+        "hairColor": {
+          "name": "Mudar cor do cabelo",
+          "description": "Transforme a cor do cabelo com IA — de tons naturais a cores vibrantes"
+        },
+        "switchClothing": {
+          "name": "Trocar roupa",
+          "description": "Experimente virtualmente diferentes roupas e estilos instantaneamente"
+        },
+        "replaceBackground": {
+          "name": "Substituir fundo",
+          "description": "Altere os fundos das fotos para qualquer cena ou cenário"
+        },
+        "removeObject": {
+          "name": "Remover objeto",
+          "description": "Apague elementos indesejados de suas fotos perfeitamente"
+        },
+        "enhanceQuality": {
+          "name": "Aprimorar qualidade",
+          "description": "Aprimoramento de imagem com IA para resultados profissionais"
+        },
+        "adjustExpression": {
+          "name": "Ajustar expressão",
+          "description": "Modifique expressões faciais naturalmente com precisão de IA"
+        }
+      },
+      "creditsExhausted": "Seus créditos foram esgotados.",
+      "upgradeToContinue": "Faça upgrade para continuar"
+    },
+    "common": {
+      "before": "Antes",
+      "after": "Depois",
+      "comparison": "Controle deslizante de comparação antes e depois"
+    },
+    "gallery": {
+      "title": "Inspire-se",
+      "subtitle": "Explore vídeos e imagens impressionantes criados por nossa comunidade",
+      "hint": "Passe o mouse para ver prompts e modelos usados",
+      "createSimilar": "Criar Similar"
+    },
+    "toolsShowcase": {
+      "badge": "Ferramentas de Criação com IA",
+      "title": "Ferramentas de IA de Ponta para Cada Necessidade Criativa",
+      "subtitle": "Ferramentas poderosas de vídeo e imagem com IA para dar vida às suas ideias. Gere, aprimore, transforme — tudo o que você precisa para criação de conteúdo profissional.",
+      "tabs": {
+        "all": "Todas as Ferramentas",
+        "image": "Ferramentas de Imagem",
+        "video": "Ferramentas de Vídeo"
+      },
+      "viewMore": "Ver Mais Ferramentas",
+      "comingSoon": "Em Breve",
+      "tools": {
+        "textToVideo": "Texto para Vídeo com IA",
+        "textToVideoDesc": "Transforme prompts de texto em vídeos impressionantes e cativantes",
+        "imageToVideo": "Imagem para Vídeo com IA",
+        "imageToVideoDesc": "Anime imagens estáticas em vídeos realistas e dinâmicos",
+        "referenceToVideo": "Referência para Vídeo",
+        "referenceToVideoDesc": "Mantenha personagens consistentes em todos os quadros de vídeo",
+        "videoToVideo": "Vídeo para Vídeo com IA",
+        "videoToVideoDesc": "Transforme vídeos em mais de 30 estilos de animação criativos",
+        "aiAnimation": "Gerador de Animação com IA",
+        "aiAnimationDesc": "Gere vídeos de anime e cartoon em vários estilos",
+        "aiShorts": "Gerador de Shorts com IA",
+        "aiShortsDesc": "Crie vídeos curtos virais sem necessidade de filmagem",
+        "aiAvatar": "Gerador de Avatar com IA",
+        "aiAvatarDesc": "Crie avatares de vídeo realistas a partir de uma única foto",
+        "videoEnhance": "Aprimorador de Vídeo com IA",
+        "videoEnhanceDesc": "Aprimore a qualidade do vídeo com tecnologia de IA",
+        "textToImage": "Gerador de Imagem com IA",
+        "textToImageDesc": "Gere imagens impressionantes a partir de descrições de texto",
+        "backgroundRemoval": "Remoção de Fundo",
+        "backgroundRemovalDesc": "Remova fundos instantaneamente com precisão de IA",
+        "imageEnhance": "Aprimorador de Imagem com IA",
+        "imageEnhanceDesc": "Aprimore a qualidade e detalhes da imagem automaticamente",
+        "imageUpscale": "Upscaler de Imagem com IA",
+        "imageUpscaleDesc": "Faça upscale de imagens para 4K sem perder qualidade",
+        "styleTransfer": "Transferência de Estilo",
+        "styleTransferDesc": "Transforme fotos em estilos Ghibli, anime e mais",
+        "objectRemoval": "Remoção de Objeto",
+        "objectRemovalDesc": "Remova objetos indesejados de fotos perfeitamente"
+      }
+    }
+  },
+  "Generator": {
+    "toolbar": {
+      "aiImage": "IA de Imagem",
+      "aiVideo": "IA de Vídeo",
+      "comingSoon": "Em Breve",
+      "public": "Visibilidade Pública",
+      "publicDescription": "Mostrar na galeria da comunidade",
+      "credits": "Créditos",
+      "creditsCost": "créditos/geração",
+      "aspectRatio": "Proporção",
+      "resolution": "Resolução",
+      "qualityNotSupported": "Seleção de qualidade não suportada por este modelo",
+      "qualityModelHint": "Mude para Nano Banana Pro para opções de qualidade",
+      "features": {
+        "title": "Recursos",
+        "text-to-video": "Texto/Imagem para Vídeo",
+        "reference-to-video": "Referência para Vídeo",
+        "frames-to-video": "Quadros para Vídeo"
+      }
+    },
+    "presets": {
+      "refresh": "Atualizar predefinições",
+      "portrait": "Retrato",
+      "landscape": "Paisagem",
+      "abstract": "Arte Abstrata",
+      "anime": "Estilo Anime",
+      "realistic": "Realista",
+      "fantasy": "Fantasia"
+    }
+  },
+  "ToolsPage": {
+    "badge": "Diretório de Ferramentas de IA",
+    "title": "Descubra Ferramentas de IA",
+    "description": "Explore nossa coleção selecionada de ferramentas de IA para geração de imagem, edição de vídeo, processamento de texto, criação de áudio e mais. Aumente sua produtividade criativa.",
+    "totalTools": "Total de Ferramentas",
+    "backToTools": "Voltar para Ferramentas",
+    "visitWebsite": "Visitar Site",
+    "collectedOn": "Coletado em",
+    "toolNotFound": "Ferramenta Não Encontrada",
+    "listedOn": "Listado em",
+    "searchResults": {
+      "found": "Encontrado",
+      "tools": "ferramentas",
+      "tool": "ferramenta",
+      "for": "para",
+      "about": "sobre"
+    },
+    "totalToolsCount": "{count} ferramentas de IA selecionadas disponíveis",
+    "reviews": {
+      "title": "Avaliações de {name} ({count})",
+      "averageRating": "{rating} de 5 estrelas",
+      "noRating": "Sem avaliação ainda",
+      "recommend": "Você recomendaria {name}? Deixe um comentário",
+      "placeholder": "Compartilhe sua experiência...",
+      "charCount": "{current}/{max}",
+      "loginToComment": "Faça login para comentar",
+      "submit": "Enviar avaliação",
+      "update": "Atualizar avaliação",
+      "delete": "Excluir",
+      "deleteConfirm": "Tem certeza de que deseja excluir esta avaliação?",
+      "noReviews": "Ainda não há avaliações. Seja o primeiro a compartilhar sua experiência!",
+      "loadMore": "Carregar mais",
+      "submitSuccess": "Avaliação enviada com sucesso!",
+      "updateSuccess": "Avaliação atualizada com sucesso!",
+      "deleteSuccess": "Avaliação excluída com sucesso!",
+      "ratingRequired": "Por favor, selecione uma avaliação",
+      "edited": "editado"
+    },
+    "submit": {
+      "badge": "Enviar Ferramenta",
+      "title": "Envie Sua Ferramenta de IA",
+      "description": "Compartilhe sua ferramenta de IA com nossa comunidade. Revisamos todos os envios cuidadosamente.",
+      "plans": {
+        "free": {
+          "title": "GRÁTIS",
+          "price": "$0",
+          "feature1": "Obtenha 3 links dofollow para impulsionar seu SEO",
+          "feature2": "Link permanente com manutenção de backlink",
+          "feature3": "Revisado e listado em 1 - 2 semanas",
+          "feature4": "Publique seu produto no dia que quiser",
+          "limit1": "Backlink para nosso site é obrigatório",
+          "limit2": "Sem suporte ao cliente",
+          "cta": "Enviar para Revisão",
+          "backlinkRequired": "Listagem gratuita requer um backlink para nosso site."
+        },
+        "pro": {
+          "title": "PRO",
+          "popular": "POPULAR",
+          "price": "$4,99",
+          "feature1": "Obtenha >= 3 links dofollow para impulsionar seu SEO",
+          "feature2": "Listado em até 48 horas",
+          "feature3": "Link permanente, sem backlink necessário",
+          "feature4": "Colocação em destaque no topo das listagens",
+          "feature5": "Compartilhamento através de redes sociais e newsletters",
+          "feature6": "Suporte premium ao cliente",
+          "cta": "Pagar e Publicar Agora",
+          "comingSoonNote": "Pagamento seguro via Creem. Você será redirecionado para o checkout após enviar."
+        }
+      },
+      "inclusionTips": {
+        "title": "Diretrizes de Envio",
+        "items": [
+          "Apenas ferramentas ou sites relacionados a IA são aceitos. Ferramentas não relacionadas a IA serão rejeitadas",
+          "O site da ferramenta deve estar acessível. Links quebrados ou inacessíveis serão rejeitados",
+          "Não aceitamos ferramentas ou sites relacionados a conteúdo adulto, jogos de azar ou outras indústrias de área cinza",
+          "Envios com funcionalidade idêntica a ferramentas já listadas podem ser rejeitados",
+          "Envios do plano gratuito requerem um backlink para nosso site em seu website"
+        ]
+      },
+      "backlinkNotice": {
+        "title": "Aviso de Detecção de Backlink",
+        "message": "Detectamos que seu site não contém um backlink para nós. Por favor, adicione um backlink em seu site e reenvie para revisão.",
+        "badgeTab": "Badge",
+        "textLinkTab": "Link de Texto",
+        "themeLabel": "Alternar Tema do Badge:",
+        "dark": "Escuro",
+        "light": "Claro",
+        "copyCode": "Copiar código",
+        "preview": "Pré-visualização:",
+        "gotIt": "Entendi",
+        "payAndPublish": "Pagar e Publicar Agora"
+      },
+      "examples": {
+        "title": "Ferramentas de Exemplo",
+        "description": "Aqui estão algumas ferramentas que já destacamos, que você pode usar como referência:",
+        "visitWebsite": "Visitar Site"
+      },
+      "form": {
+        "toolName": "Nome da Ferramenta",
+        "toolUrl": "URL da Ferramenta",
+        "description": "Descrição",
+        "descriptionOptional": "Opcional: Conte-nos mais sobre esta ferramenta",
+        "yourEmail": "Seu E-mail",
+        "emailHint": "Entraremos em contato se tivermos dúvidas",
+        "submitButton": "Enviar Ferramenta",
+        "submitting": "Enviando...",
+        "logo": {
+          "label": "Logotipo",
+          "description": "Suporta JPEG, PNG, WebP · Máx. 1MB",
+          "uploading": "Enviando...",
+          "uploadLogo": "Enviar Logotipo",
+          "dragOrClick": "Arraste ou clique para enviar"
+        },
+        "screenshot": {
+          "label": "Captura de Tela",
+          "description": "Suporta JPEG, PNG, WebP · Máx. 5MB",
+          "uploading": "Enviando...",
+          "dragOrClick": "Arraste ou clique para enviar captura de tela",
+          "addScreenshot": "Adicionar Captura de Tela",
+          "selected": "Selecionado {count} / {max}"
+        },
+        "upload": {
+          "error": {
+            "invalidFormat": "Apenas formatos JPEG, PNG, WebP são suportados",
+            "tooLarge": "O tamanho do arquivo não pode exceder {size}MB",
+            "uploadFailed": "Falha no envio, tente novamente",
+            "maxImages": "Máximo de {max} capturas de tela permitidas"
+          }
+        },
+        "loginRequired": {
+          "title": "Login Necessário",
+          "description": "Você precisa estar logado para enviar uma ferramenta. Por favor, faça login primeiro.",
+          "button": "Entrar Agora"
+        },
+        "success": {
+          "title": "Envio Bem-Sucedido!",
+          "message": "Obrigado pelo seu envio! Revisaremos em breve.",
+          "continuePrompt": "✨ Você pode continuar enviando mais ferramentas",
+          "continueSubmit": "Enviar Outra Ferramenta",
+          "viewSubmissions": "Ver Meus Envios",
+          "reviewNote": "Revisaremos seu envio em 1-2 semanas."
+        },
+        "errors": {
+          "checkForm": "Por favor, verifique o formulário por erros.",
+          "duplicateToolName": "Uma ferramenta com este nome já foi enviada."
+        },
+        "viewBacklinkInstructions": "Ver instruções de backlink",
+        "backlinkVerification": {
+          "title": "Verificação de Backlink Necessária",
+          "description": "Envio gratuito requer um backlink para nosso site. Por favor, adicione um link em seu site primeiro.",
+          "verifyButton": "Verificar Backlink",
+          "verifying": "Verificando...",
+          "verified": "Verificado!",
+          "notFound": "Nenhum backlink encontrado. Por favor, adicione um link para nosso site e tente novamente.",
+          "enterUrlFirst": "Por favor, insira a URL da ferramenta primeiro",
+          "error": "Falha ao verificar backlink. Por favor, tente novamente.",
+          "dialogAutoVerifyFailed": "Detectamos que seu site não contém um backlink para nós. Por favor, adicione um backlink em seu site e clique em Verificar.",
+          "checkingBacklink": "Verificando backlink...",
+          "step1": "Copie o código abaixo e adicione ao seu site.",
+          "step2": "Volte aqui e clique em 'Verificar Backlink'."
+        }
+      }
+    },
+    "similarTools": {
+      "matchedTags": "{count} tags correspondentes"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+ai-logo-generator
+for-developers
+gaming
+image-editing
+keyword-research
+low-code
+note-taking
+photo-enhancement
+real-time-collaboration
+seo-content
+style-transfer
+text-to-image
+version-control
+voice-cloning
+windows-app

@@ -1,0 +1,204 @@
+{
+  "batchIndex": 18,
+  "successful": [
+    {
+      "slug": "customer-service",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Customer service refers to the support and assistance provided by a business to its customers before, during, and after a purchase or interaction. It encompasses all touchpoints where customers engage with a company to seek help, resolve issues, obtain information, or provide feedback.\n\nIn technical and business contexts, customer service operates through multiple channels including phone support, email, live chat, social media, self-service portals, and knowledge bases. Modern customer service increasingly leverages technology such as CRM systems, ticketing platforms, chatbots, and AI-powered automation to improve efficiency and response times.\n\nEffective customer service is critical for customer satisfaction, retention, and brand loyalty. It involves understanding customer needs, providing timely and accurate solutions, maintaining professional communication, and ensuring positive experiences throughout the customer journey. Key metrics include response time, resolution rate, customer satisfaction scores (CSAT), and Net Promoter Score (NPS).\n\nOrganizations typically structure customer service through dedicated teams or departments, often integrating with sales, technical support, and product development. The field has evolved from reactive problem-solving to proactive engagement, focusing on building long-term relationships and creating value beyond transactional interactions."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**客户服务 (Customer Service)**\n\n客户服务是指企业或组织为满足客户需求、解决客户问题、提升客户体验而提供的一系列支持活动和服务流程。在技术和商业领域，客户服务涵盖售前咨询、售中支持、售后维护等全生命周期服务。\n\n现代客户服务通常整合多种渠道，包括电话热线、在线聊天、电子邮件、社交媒体、自助服务门户等。随着技术发展，智能客服系统、聊天机器人、工单管理系统、CRM（客户关系管理）平台等工具被广泛应用，以提高服务效率和质量。\n\n在软件和互联网行业，客户服务还包括技术支持、故障排查、产品培训、功能咨询等专业服务。优质的客户服务能够提升客户满意度和忠诚度，降低客户流失率，增强品牌竞争力。\n\n关键指标包括响应时间、解决率、客户满意度评分（CSAT）、净推荐值（NPS）等。企业通过持续优化服务流程、培训服务人员、应用新技术来提升客户服务水平，从而实现业务增长和客户价值最大化。"
+        }
+      },
+      "en": {
+        "name": "Customer Service",
+        "description": "Support and assistance provided to customers across multiple channels throughout their journey"
+      },
+      "zh": {
+        "name": "客户服务",
+        "description": "企业通过多渠道为客户提供的全生命周期支持与帮助"
+      }
+    },
+    {
+      "slug": "hr",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**HR (Human Resources)**\n\nHR refers to the organizational function responsible for managing all aspects of the employee lifecycle and workforce operations. This encompasses recruitment, onboarding, training and development, compensation and benefits administration, performance management, employee relations, and compliance with labor laws and regulations.\n\nIn modern organizations, HR serves as a strategic partner that aligns talent management with business objectives. The function has evolved from traditional personnel administration to encompass workforce analytics, organizational development, culture building, and employee engagement initiatives.\n\nHR professionals utilize various technologies including Human Resource Information Systems (HRIS), Applicant Tracking Systems (ATS), and performance management platforms to streamline operations and make data-driven decisions. Key responsibilities include talent acquisition, retention strategies, succession planning, conflict resolution, and ensuring workplace safety and compliance.\n\nThe field also addresses critical areas such as diversity, equity, and inclusion (DEI), employee wellness programs, remote work policies, and change management. In the tech industry specifically, HR plays a vital role in attracting specialized talent, managing competitive compensation structures, and fostering innovation-friendly cultures.\n\nEffective HR practices directly impact organizational performance, employee satisfaction, and legal compliance, making it an essential function in businesses of all sizes."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**hr（水平线/人力资源）**\n\n在技术领域，\"hr\"主要有两个含义：\n\n**1. HTML水平线元素（Horizontal Rule）**\n`<hr>`是HTML中的一个标准元素，用于在页面中创建主题分隔线。它在视觉上表现为一条水平线，用于分隔文档中不同的内容区块或主题段落。该元素是自闭合标签，不需要结束标签。在现代Web开发中，`<hr>`的样式可通过CSS自定义，包括颜色、粗细、边框样式等。它常用于文章分段、内容区域划分、视觉层次构建等场景。\n\n**2. 人力资源（Human Resources）**\n在商业和企业管理领域，\"HR\"是人力资源部门的缩写。该部门负责员工招聘、培训、绩效管理、薪酬福利、劳动关系等工作。在技术公司中，HR系统通常指人力资源管理软件（HRMS/HRM），用于自动化和优化人事管理流程，包括考勤管理、薪资核算、员工信息管理等功能。\n\n根据使用场景，\"hr\"标签可能指代前端开发中的HTML元素，或企业管理相关的人力资源主题。"
+        }
+      },
+      "en": {
+        "name": "HR (Human Resources)",
+        "description": "Organizational function managing employee lifecycle, recruitment, training, compensation, and workforce operations"
+      },
+      "zh": {
+        "name": "HR（人力资源）",
+        "description": "负责员工招聘、培训、绩效管理、薪酬福利等企业人事管理职能"
+      }
+    },
+    {
+      "slug": "recruiting",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Recruiting refers to the systematic process of identifying, attracting, evaluating, and hiring qualified candidates to fill job positions within an organization. In the technology and business sectors, recruiting encompasses both traditional methods and modern digital approaches, including job postings, talent sourcing through professional networks, campus recruitment, employee referrals, and headhunting.\n\nThe recruiting process typically involves several stages: defining job requirements, sourcing candidates through various channels, screening applications, conducting interviews, assessing technical and cultural fit, and extending job offers. In tech companies, recruiting often emphasizes specialized skills such as software development, data science, cloud architecture, and cybersecurity expertise.\n\nModern recruiting leverages technology platforms like applicant tracking systems (ATS), LinkedIn, GitHub, and specialized job boards to streamline candidate discovery and management. Technical recruiting may include coding assessments, system design interviews, and portfolio reviews to evaluate candidates' practical abilities.\n\nEffective recruiting strategies focus on employer branding, candidate experience, diversity and inclusion initiatives, and competitive compensation packages. The field has evolved to include talent acquisition specialists, technical recruiters, and recruitment marketing professionals who employ data-driven approaches to identify and engage top talent in increasingly competitive markets."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**recruiting（招聘）**\n\n招聘是指组织或企业为填补职位空缺，通过系统化流程吸引、筛选和聘用合格人才的活动。在技术和商业领域，招聘涵盖职位发布、简历筛选、面试评估、背景调查、录用决策等完整环节。\n\n现代招聘已演变为战略性人才获取（Talent Acquisition），强调雇主品牌建设、候选人体验优化和数据驱动决策。技术行业的招聘特别注重技术能力评估、文化契合度和团队协作能力。\n\n常见招聘渠道包括：招聘网站、社交媒体、猎头服务、内部推荐、校园招聘等。技术招聘常采用编程测试、技术面试、系统设计讨论等专业评估方式。\n\n随着人工智能和自动化技术发展，招聘流程日益数字化，出现了 ATS（申请人跟踪系统）、AI 简历筛选、视频面试平台等工具，提升了招聘效率和候选人匹配精准度。\n\n有效的招聘不仅关注填补当前空缺，更着眼于构建人才储备库，支持组织长期发展战略。"
+        }
+      },
+      "en": {
+        "name": "Recruiting",
+        "description": "Process of identifying, attracting, and hiring qualified candidates for job positions"
+      },
+      "zh": {
+        "name": "招聘",
+        "description": "通过系统化流程吸引、筛选和聘用合格人才以填补职位空缺的活动"
+      }
+    },
+    {
+      "slug": "for-developers",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**for-developers**\n\nA content classification tag used to identify resources, documentation, tools, products, or services specifically designed for or targeted at software developers and engineering professionals. This designation indicates that the material requires technical knowledge and is intended for individuals involved in software development, system architecture, API integration, or related technical implementation work.\n\nContent marked \"for-developers\" typically includes technical documentation, API references, SDK guides, code samples, developer tools, programming tutorials, architectural specifications, and integration instructions. It distinguishes technical resources from end-user documentation, marketing materials, or business-oriented content.\n\nIn product ecosystems, this tag helps segment audiences and ensures developers can quickly locate relevant technical information without navigating through non-technical content. It's commonly used in documentation portals, knowledge bases, content management systems, and developer platforms to facilitate efficient information discovery.\n\nThe tag serves both organizational and user experience purposes: internally, it aids content governance and workflow management; externally, it improves developer experience by providing clear pathways to technical resources. This classification is essential for platforms serving multiple audience types, ensuring developers receive appropriate depth and technical accuracy in the information they access."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**for-developers（面向开发者）**\n\n指专门为软件开发人员设计、提供或优化的产品、服务、工具、文档或内容。这类资源通常具有以下特征：技术深度较高、包含代码示例和API文档、提供可编程接口、支持自动化集成，以及遵循开发者社区的最佳实践。\n\n在技术领域，\"for-developers\"标识的内容涵盖开发工具（IDE、调试器、版本控制系统）、技术框架和库、云服务API、SDK（软件开发工具包）、开发者文档、技术教程等。这些资源强调可扩展性、灵活性和技术控制力，允许开发者根据具体需求进行定制和集成。\n\n在商业应用中，该标签帮助企业精准定位技术受众，区分面向最终用户的产品和面向开发者的解决方案。开发者导向的产品通常采用技术营销策略，通过开源社区、技术博客、代码仓库和开发者大会等渠道进行推广。这类产品的成功依赖于完善的技术文档、活跃的开发者社区支持，以及持续的技术创新。\n\n该标签在产品分类、内容管理、市场定位和用户体验设计中起到重要的区分和导向作用。"
+        }
+      },
+      "en": {
+        "name": "For Developers",
+        "description": "Technical resources, tools, and documentation designed specifically for software engineers and development professionals"
+      },
+      "zh": {
+        "name": "面向开发者",
+        "description": "专为软件工程师和开发专业人员设计的技术资源、工具和文档"
+      }
+    },
+    {
+      "slug": "for-designers",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A label used to identify content, resources, tools, or documentation specifically created for or relevant to designers. This tag helps filter and organize materials that address design-related needs, workflows, and considerations within software development, product creation, or digital projects.\n\nIn technical and business contexts, \"for-designers\" typically marks items such as design systems, UI/UX guidelines, prototyping tools, asset libraries, accessibility standards, visual specifications, or API documentation written with designers in mind. It bridges the gap between technical implementation and design intent, ensuring designers have appropriate resources without requiring deep engineering knowledge.\n\nThis classification is commonly found in documentation platforms, component libraries, design-to-development handoff tools, and collaborative environments where cross-functional teams work together. It helps designers quickly locate relevant information about design tokens, component behaviors, styling options, responsive breakpoints, and visual customization capabilities.\n\nThe tag also indicates content that prioritizes design thinking, user experience principles, and visual communication over pure technical implementation details. Organizations use this label to improve discoverability and ensure designers can efficiently access the tools and information they need to make informed decisions throughout the product development lifecycle."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**for-designers（面向设计师）**\n\n该标签用于标识专门为设计师群体创建或优化的资源、工具、内容或功能。在技术和商业领域中，它代表着针对设计专业人员的特定需求和工作流程而定制的解决方案。\n\n标记为\"for-designers\"的内容通常具有以下特征：注重视觉呈现和用户体验、提供设计相关的工具和功能、包含设计系统或组件库、支持常见设计软件的集成（如 Figma、Sketch、Adobe XD）、或提供设计规范和最佳实践指导。\n\n在产品开发和内容管理中，使用此标签有助于：\n- 帮助设计师快速定位相关资源和文档\n- 区分技术实现与设计规范的内容\n- 促进设计团队与开发团队之间的协作\n- 优化设计师的学习路径和工作效率\n\n该标签广泛应用于设计系统文档、UI 组件库、设计工具插件、教程资源、API 文档的设计部分等场景，是连接设计与技术的重要分类标识。"
+        }
+      },
+      "en": {
+        "name": "For Designers",
+        "description": "Resources, tools, and documentation tailored for design professionals and their workflows"
+      },
+      "zh": {
+        "name": "面向设计师",
+        "description": "专为设计专业人员及其工作流程定制的资源、工具和文档"
+      }
+    },
+    {
+      "slug": "for-marketers",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "The \"for-marketers\" tag identifies content, tools, features, or resources specifically designed to serve the needs of marketing professionals. This designation indicates materials that address marketing-specific use cases, workflows, and objectives rather than general business or technical audiences.\n\nContent tagged \"for-marketers\" typically focuses on areas such as campaign management, audience segmentation, performance analytics, content creation, brand positioning, customer engagement, and conversion optimization. It may include marketing automation platforms, analytics dashboards, A/B testing tools, social media management systems, email marketing solutions, or customer relationship management (CRM) integrations tailored for marketing teams.\n\nIn software and SaaS contexts, this tag helps marketing professionals quickly identify relevant functionality within broader platforms. For example, a project management tool might tag certain features \"for-marketers\" to highlight campaign planning templates, creative asset management, or marketing-specific reporting capabilities.\n\nThe tag serves as a filtering and discovery mechanism, enabling marketers to navigate complex product ecosystems efficiently. It acknowledges that marketing professionals have distinct requirements around creativity, data-driven decision making, multi-channel coordination, and ROI measurement that differ from engineering, sales, or operations teams.\n\nThis classification helps vendors communicate value propositions clearly while helping marketing practitioners find solutions aligned with their specific responsibilities and success metrics."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**for-marketers（面向营销人员）**\n\n该标签用于标识专门为营销从业者设计或相关的内容、工具、功能或资源。在技术和商业领域中，此标签帮助筛选出与市场营销工作直接相关的信息。\n\n标记为\"for-marketers\"的内容通常包括：营销自动化工具、客户关系管理（CRM）系统、数据分析平台、广告投放工具、社交媒体管理解决方案、内容管理系统、电子邮件营销服务、转化率优化工具等。这些资源旨在帮助营销人员更有效地规划活动、分析受众行为、优化营销策略、衡量投资回报率（ROI）并提升品牌影响力。\n\n在软件产品和SaaS平台中，该标签常用于区分面向不同用户角色的功能模块。例如，同一产品可能同时服务于开发人员、营销人员和销售团队，使用此类标签可以让营销人员快速找到与其工作职责相关的功能和文档。\n\n该标签的应用场景包括：产品文档分类、教程筛选、功能权限设置、内容推荐系统、知识库组织等，有助于提升营销人员的工作效率和用户体验。"
+        }
+      },
+      "en": {
+        "name": "For Marketers",
+        "description": "Content, tools, and features designed specifically for marketing professionals and their workflows"
+      },
+      "zh": {
+        "name": "面向营销人员",
+        "description": "专为营销从业者及其工作流程设计的内容、工具和功能"
+      }
+    },
+    {
+      "slug": "for-writers",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A \"for-writers\" tag is a content classification label used in digital platforms, documentation systems, and content management tools to identify resources, features, or materials specifically designed for individuals engaged in writing activities. This encompasses technical writers, content creators, documentation specialists, copywriters, and authors working across various domains.\n\nIn technical and business contexts, this tag helps segment content that addresses writing-specific needs such as style guides, grammar tools, writing workflows, collaboration features, version control for documents, and publishing pipelines. It may denote writing-focused software features, API documentation for text processing, content creation templates, or educational resources about writing methodologies.\n\nThe tag serves multiple organizational purposes: it enables efficient content discovery through filtering and search, facilitates targeted feature development in writing tools, and helps marketing teams reach appropriate audiences. In software products, \"for-writers\" might indicate functionality like distraction-free editing modes, markdown support, word count tracking, or integration with publishing platforms.\n\nThis classification is particularly relevant in content management systems, note-taking applications, IDE extensions, and SaaS platforms where writing is a primary user activity. It distinguishes writing-centric features from those serving developers, designers, or other user personas, ensuring resources reach their intended audience effectively."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**for-writers（面向写作者）**\n\n\"for-writers\" 是一个内容分类标签，用于标识专门为写作者、内容创作者和文字工作者设计的工具、资源或功能。在技术和商业领域中，这个标签通常应用于以下场景：\n\n**应用范围：**\n- 写作辅助软件和工具（如文本编辑器、语法检查器、写作管理平台）\n- 内容创作相关的 API 和开发工具\n- 面向作家、编辑、记者、博主等文字工作者的产品功能\n- 写作流程优化、协作编辑、版本控制等专业功能\n\n**技术特征：**\n该标签帮助开发者和产品经理识别目标用户群体，确保功能设计符合写作者的工作流程需求。在软件开发中，带有此标签的功能通常注重文本处理能力、创作体验优化、内容组织管理等方面。\n\n**商业价值：**\n通过明确的用户定位，帮助企业精准触达写作者群体，提供针对性的解决方案，如降低写作门槛、提升创作效率、改善内容质量等，从而在内容创作工具市场中建立竞争优势。"
+        }
+      },
+      "en": {
+        "name": "Writing Tools & Resources",
+        "description": "Software, features, and content designed specifically for writers, authors, and content creators"
+      },
+      "zh": {
+        "name": "写作工具与资源",
+        "description": "专为作家、写作者和内容创作者设计的软件、功能和内容资源"
+      }
+    },
+    {
+      "slug": "for-students",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A \"for-students\" tag is a classification label used in educational technology platforms, content management systems, and digital learning environments to identify resources, materials, tools, or features specifically designed or curated for student users. This designation helps differentiate content intended for learners from materials meant for educators, administrators, or other stakeholders.\n\nIn technical implementations, this tag serves multiple purposes: it enables content filtering and personalized user experiences, facilitates role-based access control in learning management systems, and supports targeted content delivery based on user profiles. The tag is commonly applied to educational software licenses, tutorial materials, documentation, pricing tiers, and feature sets that cater to students' unique needs and constraints.\n\nFrom a business perspective, \"for-students\" often indicates special pricing models, simplified interfaces, or limited feature sets appropriate for academic use. Many software companies offer student-specific versions of their products with reduced costs or extended trial periods to support education and build long-term user relationships.\n\nThis classification is particularly prevalent in SaaS platforms, development tools, creative software, and productivity applications where vendors recognize students as a distinct user segment with specific requirements, budgets, and use cases that differ from professional or enterprise customers."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**for-students（面向学生）**\n\n该标签用于标识专门为学生群体设计、开发或提供的技术产品、服务、资源或内容。在技术和商业领域，\"for-students\"通常指向以下几类应用场景：\n\n**教育技术领域**：标记适合学生使用的学习平台、在线课程、编程工具、协作软件等教育资源。这些产品往往具有简化的用户界面、教学导向的功能设计，以及符合学生认知水平的内容呈现方式。\n\n**商业定价策略**：许多软件公司和云服务提供商会为学生提供特殊的定价方案或免费许可，使用此标签标识学生优惠项目，帮助学生以较低成本获取专业工具和服务。\n\n**内容分级**：在技术文档、教程、开源项目中，该标签帮助区分面向不同受众的内容，使学生能够快速找到适合其技能水平和学习需求的资源。\n\n该标签的使用有助于教育机构、学生和内容提供者之间建立更精准的连接，促进技术教育的普及和学生技能的培养。在产品设计和市场推广中，明确\"for-students\"定位也是重要的用户细分策略。"
+        }
+      },
+      "en": {
+        "name": "For Students",
+        "description": "Products, services, and resources specifically designed or priced for student users in educational settings"
+      },
+      "zh": {
+        "name": "面向学生",
+        "description": "专为学生群体设计或提供特殊定价的产品、服务和教育资源"
+      }
+    },
+    {
+      "slug": "for-teams",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**for-teams**\n\nA designation used in software products, services, and features to indicate functionality specifically designed for collaborative group use rather than individual users. This label typically signifies enhanced capabilities for team coordination, shared resources, centralized management, and multi-user workflows.\n\nIn commercial contexts, \"for-teams\" often denotes a pricing tier or product variant that includes features such as shared workspaces, role-based access controls, team analytics, collaborative editing, centralized billing, and administrative dashboards. These offerings are engineered to address organizational needs including permission management, audit trails, team communication, and resource allocation across multiple users.\n\nThe tag is commonly applied to SaaS products, development tools, project management platforms, and enterprise software where team collaboration is essential. It distinguishes team-oriented features from individual or personal-use functionality, helping organizations identify solutions that support coordinated workflows, knowledge sharing, and collective productivity.\n\nProducts marked \"for-teams\" typically require different licensing models, support structures, and integration capabilities compared to individual-user versions, reflecting the complexity of managing multiple users, ensuring data governance, and facilitating seamless collaboration within organizational contexts."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**for-teams（面向团队）**\n\n指专门为团队协作和多人使用场景设计的产品、功能或服务方案。这类解决方案通常具备以下特征：支持多用户账户管理、权限分级控制、协作工具集成、共享资源池、统一计费管理等。\n\n在软件产品中，\"for-teams\" 版本通常区别于个人版，提供团队工作空间、成员邀请机制、角色权限配置、活动日志审计、集中式管理控制台等企业级功能。常见应用场景包括：代码协作平台的团队仓库、项目管理工具的团队看板、云存储服务的团队共享空间、开发工具的团队许可证等。\n\n该标签在产品定价策略中也具有重要意义，通常采用按席位数（per seat）或按团队规模的订阅模式。相比个人版，团队版更注重协作效率、数据安全、合规性要求和可扩展性，适用于需要多人协同完成任务、统一管理资源和保障信息安全的组织场景。"
+        }
+      },
+      "en": {
+        "name": "Team Collaboration Tools",
+        "description": "Software and features designed for multi-user workflows, shared workspaces, and organizational coordination"
+      },
+      "zh": {
+        "name": "团队协作工具",
+        "description": "专为多用户工作流、共享空间和组织协调设计的软件与功能"
+      }
+    }
+  ],
+  "failed": []
+}

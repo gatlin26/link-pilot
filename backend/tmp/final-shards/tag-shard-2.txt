@@ -1,0 +1,4 @@
+infographic
+text-to-image
+video-generation
+web-app

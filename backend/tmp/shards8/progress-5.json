@@ -1,0 +1,21 @@
+{
+  "completedSlugs": [
+    "enterprise",
+    "for-writers",
+    "hr-tool",
+    "influencer-discovery",
+    "lifetime-deal",
+    "multi-language",
+    "open-source",
+    "productivity-tool",
+    "research"
+  ],
+  "failed": [
+    {
+      "slug": "social-media-scheduling",
+      "reason": "Expected 1 results, received 74"
+    }
+  ],
+  "updatedRows": 90,
+  "lastUpdatedAt": "2026-03-06T16:26:41.318Z"
+}

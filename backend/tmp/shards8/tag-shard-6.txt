@@ -1,0 +1,14 @@
+file-sharing
+free
+icon-generation
+infographic
+linux-app
+music-generation
+paid
+project-management
+sales
+social-media-tool
+team-chat
+ui-design
+video-to-text
+webhook

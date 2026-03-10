@@ -1,0 +1,226 @@
+{
+  "batchIndex": 1,
+  "successful": [
+    {
+      "slug": "ai-writing-assistant",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An AI writing assistant is a software application or tool that leverages artificial intelligence, particularly natural language processing (NLP) and machine learning models, to help users create, edit, and improve written content. These systems can perform various functions including grammar and style correction, content generation, text summarization, tone adjustment, and contextual suggestions.\n\nAI writing assistants typically employ large language models (LLMs) trained on extensive text corpora to understand language patterns, context, and writing conventions. They can assist with diverse writing tasks such as drafting emails, creating marketing copy, generating code documentation, composing articles, or refining technical documents.\n\nCommon capabilities include real-time writing suggestions, automated proofreading, content expansion or condensation, translation, and maintaining consistency in voice and style. These tools are widely adopted across industries including content marketing, software development, education, journalism, and business communications.\n\nModern AI writing assistants range from simple grammar checkers to sophisticated systems capable of generating coherent long-form content, adapting to specific writing styles, and providing context-aware recommendations. They serve as productivity enhancers, helping users overcome writer's block, improve clarity, and accelerate content creation workflows while maintaining human oversight for quality and accuracy."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "AI写作助手是一类基于人工智能技术的软件工具，旨在辅助用户进行文本创作、编辑和优化。这类应用通常采用大型语言模型（LLM）作为核心技术，能够理解自然语言输入并生成符合语境的文本内容。\n\n主要功能包括：内容生成（如文章撰写、创意构思）、文本改写与润色、语法纠错、风格调整、多语言翻译等。AI写作助手广泛应用于营销文案创作、技术文档编写、学术论文辅助、社交媒体内容制作等场景。\n\n在技术实现上，这类工具通常集成自然语言处理（NLP）、机器学习和深度学习算法，通过训练海量文本数据来理解语言模式和写作规范。商业应用中，AI写作助手可显著提升内容生产效率，降低创作门槛，但同时也引发了关于原创性、版权归属和内容质量把控的讨论。\n\n代表性产品包括各类智能写作平台、文档协作工具中的AI功能模块，以及集成在IDE、浏览器等环境中的写作辅助插件。该技术正在重塑内容创作行业的工作流程和生产模式。"
+        }
+      },
+      "en": {
+        "name": "AI Writing Assistant",
+        "description": "Software that uses AI and NLP to help create, edit, and improve written content with real-time suggestions"
+      },
+      "zh": {
+        "name": "AI 写作助手",
+        "description": "基于人工智能和自然语言处理技术，辅助用户进行文本创作、编辑和优化的软件工具"
+      }
+    },
+    {
+      "slug": "ai-code-assistant",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An AI code assistant is a software tool powered by artificial intelligence and machine learning models that helps developers write, review, debug, and optimize code. These assistants leverage large language models trained on vast codebases to understand programming languages, frameworks, and software development patterns.\n\nAI code assistants provide capabilities including code completion, generation from natural language descriptions, bug detection, refactoring suggestions, documentation generation, and answering technical questions. They integrate into development environments through IDEs, command-line interfaces, or web platforms, offering real-time assistance during the coding process.\n\nThese tools analyze context from the current codebase, understand developer intent, and generate relevant code snippets or entire functions. They support multiple programming languages and can adapt to different coding styles and project requirements. Advanced AI code assistants can perform complex tasks like explaining unfamiliar code, suggesting architectural improvements, writing tests, and helping with debugging by analyzing error messages and stack traces.\n\nCommon examples include GitHub Copilot, Amazon CodeWhisperer, and various IDE-integrated assistants. They aim to increase developer productivity, reduce repetitive tasks, and lower the barrier to entry for learning new technologies while maintaining code quality and best practices."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "AI代码助手（AI Code Assistant）是一类基于人工智能技术的软件开发辅助工具，通过大语言模型和机器学习算法为开发者提供智能化的编程支持。\n\n这类工具的核心功能包括：代码自动补全、代码生成、错误检测与修复、代码重构建议、技术文档查询、以及自然语言到代码的转换。AI代码助手能够理解多种编程语言的语法和语义，根据上下文提供精准的代码建议，显著提升开发效率。\n\n在技术应用层面，AI代码助手可集成到IDE、命令行工具或独立应用中，支持实时交互和异步协作。它们能够分析代码库结构、识别最佳实践、检测潜在漏洞，并提供符合项目规范的解决方案。\n\n在商业价值方面，这类工具帮助企业降低开发成本、缩短产品上市时间、减少代码缺陷率，同时降低初级开发者的学习曲线。代表性产品包括GitHub Copilot、Amazon CodeWhisperer、Cursor等。\n\n随着AI技术的发展，AI代码助手正从简单的代码补全演进为能够理解业务需求、进行架构设计、执行复杂重构的智能开发伙伴。"
+        }
+      },
+      "en": {
+        "name": "AI Code Assistant",
+        "description": "Intelligent tools that help developers write, debug, and optimize code using AI"
+      },
+      "zh": {
+        "name": "AI 代码助手",
+        "description": "基于人工智能技术帮助开发者编写、调试和优化代码的智能工具"
+      }
+    },
+    {
+      "slug": "ai-research-assistant",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An AI research assistant is a specialized artificial intelligence system designed to support and augment research activities across academic, scientific, and professional domains. These systems leverage natural language processing, machine learning, and knowledge retrieval capabilities to help researchers with tasks such as literature review, data analysis, hypothesis generation, citation management, and document summarization.\n\nAI research assistants can process large volumes of academic papers, extract relevant information, identify patterns and connections across studies, and provide synthesized insights that would be time-consuming for humans to compile manually. They typically offer features like semantic search, automated annotation, reference organization, and intelligent question-answering based on research corpora.\n\nIn practical applications, these tools serve scientists, academics, graduate students, and R&D professionals by accelerating the research process, reducing information overload, and enabling more efficient knowledge discovery. They complement human expertise rather than replace it, handling routine information processing tasks while researchers focus on critical thinking, experimental design, and creative problem-solving.\n\nThe technology represents a convergence of information retrieval, computational linguistics, and domain-specific knowledge bases, increasingly becoming essential infrastructure in modern research workflows across fields from biomedicine to social sciences."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "AI研究助手（AI Research Assistant）是一类基于人工智能技术的软件工具或系统，旨在辅助研究人员、学者和专业人士进行学术研究和知识探索工作。\n\n这类工具通常集成了自然语言处理、机器学习和知识图谱等技术，能够执行文献检索、论文摘要生成、数据分析、引用管理、研究趋势识别等任务。AI研究助手可以快速处理大量学术文献，提取关键信息，识别研究空白，并为研究者提供相关建议和洞察。\n\n在应用场景上，AI研究助手广泛服务于高校、科研机构、企业研发部门和独立研究者。它们能够显著提升文献综述效率，加速假设验证过程，协助实验设计，并促进跨学科知识发现。部分高级系统还具备协作写作、数据可视化、研究方法推荐等功能。\n\n随着大语言模型技术的发展，现代AI研究助手正在向更智能、更交互的方向演进，能够进行深度对话、理解复杂查询，并提供个性化的研究支持，成为科研工作流程中不可或缺的数字化工具。"
+        }
+      },
+      "en": {
+        "name": "AI Research Assistant",
+        "description": "Intelligent tools that support academic research through literature review, data analysis, and knowledge discovery"
+      },
+      "zh": {
+        "name": "AI 研究助手",
+        "description": "通过文献综述、数据分析和知识发现来辅助学术研究的智能工具"
+      }
+    },
+    {
+      "slug": "ai-email-assistant",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An AI email assistant is a software application or service that leverages artificial intelligence technologies—including natural language processing (NLP), machine learning, and large language models—to automate, enhance, or streamline email-related tasks. These assistants can perform various functions such as drafting email responses, summarizing lengthy email threads, prioritizing incoming messages, scheduling meetings, managing inbox organization, and suggesting contextually appropriate replies.\n\nAI email assistants are designed to improve productivity by reducing the time users spend on routine email management. They can analyze email content to understand intent, sentiment, and urgency, enabling intelligent categorization and automated responses. Advanced implementations may integrate with calendar systems, CRM platforms, and other business tools to provide comprehensive communication management.\n\nCommon use cases include customer service automation, executive assistant functions, sales outreach optimization, and personal productivity enhancement. These tools typically operate as standalone applications, browser extensions, or integrated features within existing email clients like Gmail, Outlook, or enterprise communication platforms.\n\nThe technology behind AI email assistants continues to evolve, with modern systems capable of maintaining conversational context, adapting to individual writing styles, and learning from user preferences to deliver increasingly personalized assistance while maintaining appropriate tone and professionalism in business communications."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "AI邮件助手是一种基于人工智能技术的软件应用，旨在帮助用户更高效地管理和处理电子邮件。该类型的应用通常集成了自然语言处理（NLP）、机器学习和生成式AI等技术，能够自动执行多种邮件相关任务。\n\n核心功能包括：智能邮件分类与优先级排序、自动回复生成、邮件内容摘要、语气调整与润色、多语言翻译、日程安排提取等。AI邮件助手可以学习用户的写作风格和沟通习惯，生成个性化的邮件草稿，显著减少撰写时间。\n\n在商业应用中，AI邮件助手能够提升团队协作效率，加快客户响应速度，改善沟通质量。对于需要处理大量邮件的专业人士、客服团队和销售人员尤为实用。部分高级应用还具备情感分析、紧急邮件识别、跟进提醒等智能功能。\n\n随着大语言模型技术的发展，AI邮件助手正在从简单的模板填充工具演进为能够理解上下文、把握沟通意图的智能助理，成为现代数字办公环境中不可或缺的生产力工具。"
+        }
+      },
+      "en": {
+        "name": "AI Email Assistant",
+        "description": "Software that uses AI to automate email tasks like drafting, summarizing, and organizing messages"
+      },
+      "zh": {
+        "name": "AI 邮件助手",
+        "description": "使用人工智能自动处理邮件撰写、摘要和分类等任务的软件工具"
+      }
+    },
+    {
+      "slug": "ai-translation-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An AI translation tool is a software application or service that leverages artificial intelligence, particularly machine learning and natural language processing (NLP) technologies, to automatically translate text, speech, or other content between different languages. These tools utilize neural machine translation (NMT) models, often based on transformer architectures, to understand context, semantics, and linguistic nuances, delivering translations that are more accurate and natural-sounding than traditional rule-based or statistical methods.\n\nAI translation tools are widely deployed across various domains including e-commerce, customer support, content localization, real-time communication, and document processing. They can handle multiple language pairs simultaneously and continuously improve through training on large multilingual datasets. Modern implementations often incorporate features such as context awareness, domain-specific terminology adaptation, and quality estimation mechanisms.\n\nThese tools range from standalone applications and browser extensions to API services integrated into larger platforms. They serve businesses seeking to expand globally, content creators targeting international audiences, and individuals requiring quick language assistance. Key considerations include translation accuracy, language coverage, processing speed, data privacy, and the ability to handle specialized vocabulary or cultural context. Leading examples include services from major technology companies as well as specialized translation platforms designed for specific industries or use cases."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "AI翻译工具是指利用人工智能技术，特别是自然语言处理（NLP）和机器学习算法，实现不同语言之间自动转换的软件应用或服务。这类工具通过训练大规模多语言语料库，能够理解源语言的语义、语境和文化内涵，并生成目标语言的准确译文。\n\n现代AI翻译工具主要基于神经机器翻译（NMT）架构，相比传统的基于规则或统计的翻译方法，能提供更流畅、更符合目标语言习惯的翻译结果。这些工具广泛应用于跨境电商、国际商务沟通、技术文档本地化、内容创作、学术研究等领域。\n\n典型的AI翻译工具包括独立应用程序、浏览器插件、API服务和集成在其他软件中的翻译功能。它们通常支持实时翻译、批量文档处理、语音翻译等多种模式。随着大语言模型的发展，新一代AI翻译工具在处理专业术语、保持语境一致性和适应特定领域方面表现出更强的能力，成为全球化时代不可或缺的技术基础设施。"
+        }
+      },
+      "en": {
+        "name": "AI Translation Tool",
+        "description": "Software that uses neural networks and NLP to automatically translate text between languages with contextual accuracy"
+      },
+      "zh": {
+        "name": "AI 翻译工具",
+        "description": "利用神经网络和自然语言处理技术实现多语言间自动转换的智能软件"
+      }
+    },
+    {
+      "slug": "design-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A design tool is a software application or platform used to create, modify, and refine visual and interactive elements for digital or physical products. These tools enable designers, developers, and creative professionals to conceptualize ideas, produce mockups, prototypes, and final deliverables across various disciplines including user interface (UI) design, user experience (UX) design, graphic design, web design, and product design.\n\nDesign tools range from vector graphics editors and prototyping platforms to collaborative design systems and code-based design environments. They typically provide features such as artboards, layers, components, design tokens, version control, and real-time collaboration capabilities. Modern design tools often integrate with development workflows, supporting design-to-code handoff and maintaining design consistency across teams.\n\nCommon categories include interface design tools (Figma, Sketch, Adobe XD), graphic design software (Adobe Illustrator, Photoshop), prototyping platforms (InVision, Framer), and specialized tools for animation, 3D modeling, or wireframing. The evolution of design tools has shifted toward cloud-based, collaborative platforms that bridge the gap between design and development, enabling more efficient workflows and better cross-functional communication in software development and product creation processes."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**设计工具 (Design Tool)**\n\n设计工具是指用于创建、编辑和优化视觉内容、用户界面、产品原型或其他设计资产的软件应用程序或平台。这类工具广泛应用于图形设计、UI/UX 设计、产品设计、网页设计等领域。\n\n现代设计工具通常提供矢量绘图、位图编辑、原型制作、协作共享等核心功能。代表性产品包括 Figma、Sketch、Adobe XD、Photoshop、Illustrator 等。随着云计算和协作需求的发展，基于浏览器的在线设计工具逐渐成为主流，支持多人实时协作、版本控制和开发者交接。\n\n在软件开发流程中，设计工具是连接产品构思与技术实现的关键环节。设计师使用这些工具创建视觉规范、交互原型和设计系统，开发人员则基于设计稿进行前端实现。优秀的设计工具能够提升团队协作效率，确保设计一致性，并通过插件生态系统扩展功能，如自动生成代码、设计令牌导出等，从而缩短产品从设计到上线的周期。"
+        }
+      },
+      "en": {
+        "name": "Design Tool",
+        "description": "Software for creating visual interfaces, prototypes, and design assets with collaboration features"
+      },
+      "zh": {
+        "name": "设计工具",
+        "description": "用于创建视觉界面、原型和设计资产的协作软件平台"
+      }
+    },
+    {
+      "slug": "graphic-design",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Graphic design is the professional practice of creating visual content to communicate messages, ideas, and information to specific audiences. It combines typography, imagery, color theory, and layout principles to produce designs across both digital and print media.\n\nIn technical and business contexts, graphic design encompasses the creation of brand identities, marketing materials, user interfaces, packaging, publications, and digital assets. Designers utilize industry-standard software tools such as Adobe Creative Suite, Figma, and Sketch to develop visual solutions that balance aesthetic appeal with functional communication goals.\n\nThe discipline requires understanding of design principles including hierarchy, contrast, balance, alignment, and whitespace management. Modern graphic design increasingly intersects with UX/UI design, motion graphics, and web development, requiring designers to consider responsive layouts, accessibility standards, and cross-platform compatibility.\n\nProfessional graphic designers work across various industries including advertising agencies, corporate marketing departments, publishing houses, and as independent consultants. The field demands both creative vision and technical proficiency, with deliverables ranging from logos and brochures to social media graphics and interactive digital experiences. Effective graphic design serves strategic business objectives by enhancing brand recognition, improving user engagement, and facilitating clear visual communication."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "平面设计（Graphic Design）是一门视觉传达艺术与技术相结合的专业领域，通过运用图形、文字、色彩、版式等视觉元素，创造具有美学价值和传播功能的视觉内容。其核心目标是将信息、理念或品牌形象以视觉化方式有效传达给目标受众。\n\n在技术领域，平面设计涵盖数字媒体设计、用户界面（UI）设计、网页设计等方向，设计师需熟练使用 Adobe Photoshop、Illustrator、Figma 等专业工具，掌握色彩理论、排版原则、视觉层次等设计基础。在商业应用中，平面设计广泛应用于品牌标识系统、产品包装、广告宣传、企业视觉识别（VI）、营销物料等场景，是企业建立品牌形象、提升市场竞争力的重要手段。\n\n现代平面设计已从传统印刷媒体扩展至数字化、交互化领域，与用户体验设计（UX）、动态图形设计（Motion Graphics）等学科交叉融合，成为数字产品开发、内容营销、品牌传播不可或缺的专业能力。优秀的平面设计不仅追求视觉美感，更注重功能性、可读性和用户体验的平衡。"
+        }
+      },
+      "en": {
+        "name": "Graphic Design",
+        "description": "Visual communication tools combining typography, imagery, and layout for brand identity, marketing, and digital content creation"
+      },
+      "zh": {
+        "name": "平面设计",
+        "description": "结合图形、文字、色彩创造视觉内容，用于品牌标识、营销物料和数字媒体的专业工具"
+      }
+    },
+    {
+      "slug": "ui-design",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "UI Design (User Interface Design) refers to the process of creating the visual layout, interactive elements, and aesthetic components of digital products such as websites, mobile applications, and software interfaces. It focuses on optimizing the presentation layer that users directly interact with, encompassing elements like buttons, icons, typography, color schemes, spacing, and responsive layouts.\n\nUI Design bridges the gap between user experience (UX) strategy and visual implementation, translating wireframes and user flows into polished, functional interfaces. It emphasizes visual hierarchy, consistency, accessibility, and brand alignment while ensuring that interactive elements are intuitive and visually appealing.\n\nThe discipline requires proficiency in design tools like Figma, Sketch, or Adobe XD, along with understanding of design systems, component libraries, and front-end development constraints. Modern UI Design incorporates principles such as Material Design, Human Interface Guidelines, and responsive design patterns to create interfaces that work seamlessly across multiple devices and screen sizes.\n\nEffective UI Design balances aesthetic appeal with functional usability, considering factors like cognitive load, visual feedback, micro-interactions, and accessibility standards (WCAG). It plays a critical role in product success by directly influencing user engagement, satisfaction, and conversion rates. UI Designers collaborate closely with UX designers, developers, and product managers to deliver cohesive digital experiences."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "UI设计（User Interface Design，用户界面设计）是指为软件产品、网站、移动应用等数字产品创建可视化界面的过程。它专注于产品的外观呈现、布局结构、交互元素和视觉风格的设计。\n\nUI设计的核心目标是创建美观、直观且易于使用的界面，使用户能够高效地完成任务。设计师需要考虑色彩搭配、字体排版、图标设计、按钮样式、间距布局等视觉元素，同时确保界面符合品牌形象和设计规范。\n\n在技术领域，UI设计是产品开发流程中的关键环节，通常与UX设计（用户体验设计）紧密配合。UI设计师使用Figma、Sketch、Adobe XD等专业工具创建设计稿和原型，并与前端开发人员协作实现最终效果。\n\n优秀的UI设计能够提升产品的可用性、增强用户满意度、强化品牌认知，并最终影响产品的商业表现。在移动互联网时代，UI设计已成为产品竞争力的重要组成部分，广泛应用于电商平台、社交媒体、企业软件、游戏应用等各类数字产品中。"
+        }
+      },
+      "en": {
+        "name": "UI Design",
+        "description": "Creating visual interfaces and interactive elements for digital products like apps and websites"
+      },
+      "zh": {
+        "name": "UI 设计",
+        "description": "为应用程序和网站等数字产品创建可视化界面和交互元素"
+      }
+    },
+    {
+      "slug": "video-editor",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A video editor is a software application or tool designed for manipulating, arranging, and enhancing video content through various editing operations. These applications enable users to perform tasks such as trimming and splitting clips, applying transitions and effects, adjusting color grading, synchronizing audio, adding text overlays, and composing multiple video layers. Video editors range from consumer-grade applications with intuitive interfaces for basic editing to professional-grade systems offering advanced features like multi-camera editing, motion tracking, and high-resolution format support.\n\nIn the technical domain, video editors serve as essential tools for content creators, filmmakers, marketers, and media professionals. They typically support various video codecs and file formats, provide timeline-based editing interfaces, and offer rendering capabilities for exporting finished projects. Modern video editors often incorporate AI-powered features such as automatic scene detection, smart cropping, and intelligent audio enhancement.\n\nFrom a business perspective, video editors are critical for producing marketing materials, social media content, educational videos, and entertainment media. The market includes standalone desktop applications, cloud-based platforms, and mobile solutions, catering to different user needs and skill levels. Professional video editors integrate with broader production workflows, supporting collaboration features and compatibility with industry-standard formats and protocols."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "视频编辑器（Video Editor）是一种用于处理、编辑和制作视频内容的软件应用程序或工具。它允许用户对视频素材进行剪辑、拼接、特效添加、音频处理、色彩校正等操作，以创建符合特定需求的视频作品。\n\n在技术领域，视频编辑器通常分为专业级（如 Adobe Premiere Pro、Final Cut Pro、DaVinci Resolve）和消费级（如剪映、必剪、快影）两大类。专业级编辑器提供更强大的功能，包括多轨道编辑、高级色彩分级、3D 效果、多机位同步等；消费级编辑器则注重易用性和快速产出，适合社交媒体内容创作。\n\n在商业应用中，视频编辑器广泛用于影视制作、广告营销、教育培训、企业宣传、自媒体运营等场景。随着短视频和流媒体的兴起，视频编辑器已成为内容创作的核心工具。现代视频编辑器还集成了 AI 功能，如智能剪辑、自动字幕生成、场景识别等，大幅提升了编辑效率。\n\n该标签通常用于标识与视频编辑相关的软件产品、技术文档、教程资源或职位需求。"
+        }
+      },
+      "en": {
+        "name": "Video Editor",
+        "description": "Software for editing, arranging, and enhancing video content with effects, transitions, and audio"
+      },
+      "zh": {
+        "name": "视频编辑器",
+        "description": "用于剪辑、处理和制作视频内容的软件工具，支持特效、转场和音频编辑"
+      }
+    },
+    {
+      "slug": "photo-editor",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A photo editor is a software application or digital tool designed to modify, enhance, and manipulate digital images and photographs. These applications provide users with capabilities ranging from basic adjustments like cropping, resizing, and color correction to advanced features such as layer manipulation, masking, retouching, and compositing.\n\nPhoto editors serve both professional and consumer markets. Professional-grade editors like Adobe Photoshop offer comprehensive toolsets for graphic designers, photographers, and digital artists, including RAW file processing, non-destructive editing, and precise color management. Consumer-oriented editors prioritize accessibility with intuitive interfaces, preset filters, and automated enhancement features.\n\nModern photo editors typically include core functionalities such as exposure and contrast adjustment, color grading, blemish removal, text overlay, and special effects application. Advanced tools may incorporate AI-powered features like object removal, background replacement, and intelligent selection.\n\nPhoto editors exist across multiple platforms including desktop applications, web-based services, and mobile apps. They play essential roles in various industries including advertising, e-commerce, social media content creation, journalism, and personal photography. The category encompasses both standalone applications and integrated editing modules within larger creative suites or photography workflow systems."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**照片编辑器 (Photo Editor)**\n\n照片编辑器是一类专门用于处理、修改和优化数字图像的软件应用程序。这类工具允许用户对照片进行各种编辑操作，包括但不限于裁剪、调整亮度/对比度/饱和度、色彩校正、滤镜应用、瑕疵修复、背景移除、图层合成等功能。\n\n在技术领域，照片编辑器可分为专业级（如 Adobe Photoshop、Lightroom）和消费级（如美图秀秀、Snapseed）两大类。专业级工具提供精细的像素级控制和高级图像处理算法，适用于摄影师、设计师等专业人士；消费级工具则注重易用性和快速效果，面向普通用户的日常需求。\n\n在商业应用中，照片编辑器广泛用于电商产品图处理、社交媒体内容创作、广告设计、新闻出版等场景。随着人工智能技术的发展，现代照片编辑器越来越多地集成智能抠图、自动美颜、AI 修复等功能，大幅提升了编辑效率和效果质量。该类软件既有桌面端应用，也有移动端 APP 和基于浏览器的在线工具等多种形态。"
+        }
+      },
+      "en": {
+        "name": "Photo Editor",
+        "description": "Software for modifying, enhancing, and manipulating digital images with features like cropping, color correction, and retouching"
+      },
+      "zh": {
+        "name": "照片编辑器",
+        "description": "用于修改、优化和处理数字图像的软件，提供裁剪、色彩校正、修图等功能"
+      }
+    }
+  ],
+  "failed": []
+}

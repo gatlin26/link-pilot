@@ -1,0 +1,226 @@
+{
+  "batchIndex": 11,
+  "successful": [
+    {
+      "slug": "icon-generation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Icon generation refers to the automated process of creating graphical icons through computational methods, typically involving algorithms, design systems, or artificial intelligence. This capability enables the programmatic production of visual symbols, pictograms, and interface elements without manual design work.\n\nIn software development, icon generation encompasses several approaches: procedural generation using vector graphics algorithms, template-based systems that apply variations to base designs, and AI-powered tools that create icons from text descriptions or style parameters. Modern icon generation systems can produce assets in multiple formats (SVG, PNG, ICO), sizes, and style variations while maintaining visual consistency.\n\nThis feature is particularly valuable in design systems, application development, and content management platforms where consistent iconography at scale is essential. Icon generation tools often support customization parameters such as color schemes, stroke weights, corner radius, and stylistic themes, enabling developers and designers to rapidly prototype and iterate on visual elements.\n\nThe technology has evolved from simple geometric shape manipulation to sophisticated neural network models capable of understanding design principles and generating contextually appropriate icons. Icon generation significantly reduces production time, ensures design consistency across large projects, and democratizes access to quality visual assets for teams without dedicated design resources."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**图标生成 (Icon Generation)**\n\n图标生成是指通过自动化技术手段创建图形化图标的过程，广泛应用于软件开发、UI/UX 设计和数字产品开发领域。该功能通常基于人工智能、算法或模板系统，能够根据用户输入的参数（如风格、颜色、尺寸、主题）快速生成符合设计规范的图标资源。\n\n在现代开发工作流中，图标生成技术显著提升了设计效率，减少了手动绘制的时间成本。常见应用场景包括：应用程序界面图标、网站导航元素、品牌标识系统、以及多平台适配的图标资源包生成。技术实现方式涵盖矢量图形生成、基于深度学习的图像合成、以及参数化设计系统。\n\n该功能特别适用于需要快速原型设计、批量生成多种尺寸规格图标、或保持视觉风格一致性的项目。许多现代设计工具和开发平台已集成图标生成能力，支持 SVG、PNG 等多种输出格式，并可与设计系统和组件库无缝集成，成为提升产品开发效率的重要工具。"
+        }
+      },
+      "en": {
+        "name": "Icon Generation",
+        "description": "Automated tools for creating graphical icons through AI, algorithms, or design systems"
+      },
+      "zh": {
+        "name": "图标生成",
+        "description": "通过 AI、算法或设计系统自动创建图形化图标的工具"
+      }
+    },
+    {
+      "slug": "illustration",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An illustration is a visual representation created to clarify, explain, or enhance written content, concepts, or ideas. In technical and business contexts, illustrations serve as communication tools that simplify complex information, making it more accessible and engaging for target audiences.\n\nIllustrations encompass various forms including diagrams, infographics, technical drawings, conceptual artwork, and decorative graphics. They are widely used in user interfaces, documentation, marketing materials, educational content, and product design to improve comprehension and user experience.\n\nIn software development, illustrations often appear as onboarding graphics, empty state visuals, error messages, and feature explanations. They help reduce cognitive load by presenting information visually rather than through text alone. In business applications, illustrations support brand identity, convey abstract concepts, and guide users through workflows.\n\nTechnical illustrations specifically refer to precise visual representations of products, systems, or processes, commonly found in manuals, patents, and engineering documentation. These require accuracy and attention to detail to effectively communicate technical specifications.\n\nThe effectiveness of illustrations depends on clarity, relevance, and consistency with the overall design system. Modern digital products increasingly rely on custom illustration systems to differentiate their brand and create memorable user experiences while maintaining accessibility standards."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**illustration（插图/图解）**\n\n在技术和商业领域中，illustration 指用于解释、说明或装饰内容的视觉图形元素。作为一项重要的产品特性，插图系统通常包含以下应用场景：\n\n**技术实现层面：**\n- UI/UX 设计中的矢量图形、图标和装饰性元素\n- 技术文档中的流程图、架构图和示意图\n- 数据可视化中的图表和信息图表\n- 空状态页面、引导流程和错误提示的配图\n\n**商业价值：**\n- 提升用户体验和界面美观度\n- 降低认知负担，帮助用户快速理解复杂概念\n- 强化品牌识别和视觉一致性\n- 增强内容的吸引力和可读性\n\n在现代软件开发中，插图通常以 SVG、PNG 等格式存储，支持响应式设计和主题切换。优秀的插图系统应具备可扩展性、一致性和可访问性，确保在不同设备和场景下都能有效传达信息。许多设计系统（Design System）都将插图作为核心组件之一进行统一管理和维护。"
+        }
+      },
+      "en": {
+        "name": "Illustration",
+        "description": "Visual graphics that clarify content, enhance user experience, and strengthen brand identity in digital products"
+      },
+      "zh": {
+        "name": "插图",
+        "description": "用于阐释内容、提升用户体验并强化品牌识别的视觉图形元素"
+      }
+    },
+    {
+      "slug": "infographic",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An infographic is a visual representation that combines graphics, charts, icons, and text to present complex information, data, or knowledge in a clear, engaging, and easily digestible format. The term is a portmanteau of \"information\" and \"graphic.\"\n\nIn technical and business contexts, infographics serve as powerful communication tools that transform dense datasets, statistics, processes, or concepts into visually appealing narratives. They leverage design principles, color theory, and information hierarchy to guide viewers through content systematically, making abstract or numerical information more accessible and memorable.\n\nCommon applications include marketing materials, educational content, data journalism, technical documentation, and business presentations. Infographics typically incorporate elements such as flowcharts, timelines, comparison tables, statistical visualizations, and illustrative icons to support the narrative structure.\n\nThe effectiveness of an infographic lies in its ability to reduce cognitive load by presenting information spatially and visually, enabling faster comprehension than text-heavy alternatives. In digital environments, infographics are highly shareable content assets that can enhance user engagement, improve information retention, and simplify the communication of technical specifications, product features, research findings, or industry trends to both technical and non-technical audiences."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**信息图表 (Infographic)**\n\n信息图表是一种将复杂数据、信息或知识通过视觉化设计呈现的内容形式，结合图形、图表、图标、插图和简洁文字，使信息更易于理解和传播。\n\n在技术和商业领域，信息图表广泛应用于数据可视化、产品功能说明、业务流程展示、市场分析报告等场景。其核心价值在于：\n\n**应用场景：**\n- 技术文档中的架构图、流程图和系统概览\n- 营销材料中的统计数据、趋势分析和对比说明\n- 产品介绍中的功能特性、使用步骤和优势展示\n- 企业报告中的业绩数据、市场洞察和战略规划\n\n**特点优势：**\n- 提高信息传达效率，降低理解门槛\n- 增强内容吸引力和记忆度\n- 便于社交媒体分享和二次传播\n- 适合移动端浏览和快速浏览\n\n优秀的信息图表需要平衡美观性与准确性，确保视觉设计服务于信息传递，而非喧宾夺主。在技术产品和企业传播中，信息图表已成为不可或缺的内容形式。"
+        }
+      },
+      "en": {
+        "name": "Infographic",
+        "description": "Visual content combining graphics, charts, and text to present complex information in an engaging, easily digestible format"
+      },
+      "zh": {
+        "name": "信息图表",
+        "description": "结合图形、图表和文字，将复杂信息以视觉化方式清晰呈现的内容形式"
+      }
+    },
+    {
+      "slug": "video-editing",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Video editing refers to the process and functionality of manipulating, arranging, and modifying video content to create a final output. As a software feature, it encompasses a range of capabilities including trimming and cutting clips, sequencing multiple video segments, applying transitions and effects, adjusting color grading and audio levels, adding text overlays and graphics, and rendering the final composition.\n\nIn technical applications, video editing features typically provide users with timeline-based interfaces, non-destructive editing workflows, multi-track support for layering video and audio elements, and real-time preview capabilities. Modern video editing implementations often include advanced functionalities such as keyframe animation, chroma keying, motion tracking, and support for various codecs and resolution formats including 4K and HDR.\n\nFrom a business perspective, video editing features are essential in content creation platforms, social media applications, marketing tools, and professional post-production software. They enable users ranging from casual content creators to professional filmmakers to craft compelling visual narratives. The feature's complexity can vary significantly—from basic trim-and-merge operations in mobile apps to sophisticated multi-camera editing and color correction in professional suites. Performance optimization, format compatibility, and intuitive user experience are critical considerations when implementing video editing capabilities in any software product."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "视频编辑是指对视频素材进行剪辑、处理和优化的技术过程，包括剪切、拼接、调色、添加特效、字幕、音频处理等操作，以创建符合特定需求的视频内容。\n\n在软件功能分类中，video-editing 标签通常用于标识具备视频编辑能力的应用程序、工具或功能模块。这类功能涵盖基础的时间线编辑、多轨道处理、转场效果、滤镜应用，以及高级的色彩分级、运动跟踪、关键帧动画等专业特性。\n\n从技术实现角度，视频编辑功能需要处理多种视频编码格式（如 H.264、H.265、VP9）、分辨率标准（从标清到 4K/8K）以及帧率调整。现代视频编辑工具通常支持非线性编辑（NLE）、实时预览、GPU 加速渲染等技术特性。\n\n在商业应用中，视频编辑功能广泛应用于内容创作、营销推广、教育培训、社交媒体等领域。该标签帮助用户快速识别和筛选具备视频处理能力的产品，是"
+        }
+      },
+      "en": {
+        "name": "Video Editing",
+        "description": "Software tools for manipulating, arranging, and modifying video content with timeline-based workflows"
+      },
+      "zh": {
+        "name": "视频编辑",
+        "description": "用于剪辑、处理和优化视频素材的软件工具，支持时间线编辑和多轨道处理"
+      }
+    },
+    {
+      "slug": "video-generation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Video generation refers to the automated creation of video content using artificial intelligence and machine learning technologies. This process involves synthesizing visual sequences from various inputs such as text descriptions, images, audio, or other video clips, without requiring traditional manual video production methods.\n\nModern video generation systems leverage deep learning architectures, including generative adversarial networks (GANs), diffusion models, and transformer-based models, to produce realistic and coherent video sequences. These technologies can generate entirely new video content, modify existing footage, or create animations based on specified parameters.\n\nApplications span multiple domains: content creation for marketing and entertainment, synthetic training data for computer vision systems, video editing and post-production enhancement, personalized video messaging, and educational content development. The technology enables rapid prototyping of visual concepts, automated video summarization, and the creation of visual effects that would be costly or impossible to produce conventionally.\n\nVideo generation capabilities continue to advance, with improvements in temporal consistency, resolution quality, motion realism, and the ability to maintain coherent narratives across longer sequences. This feature represents a significant shift in digital content production, democratizing video creation while raising important considerations around authenticity, copyright, and ethical use."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**视频生成 (Video Generation)**\n\n视频生成是指利用人工智能技术，特别是深度学习和生成式模型，自动创建视频内容的过程。该技术通过训练大规模神经网络模型，能够根据文本描述、图像、音频或其他输入数据，生成连贯、逼真的视频序列。\n\n在技术实现上，视频生成主要依赖扩散模型、生成对抗网络(GAN)、变分自编码器(VAE)等架构，能够处理帧间连续性、时间一致性、物理规律等复杂问题。当前主流应用包括文本到视频(Text-to-Video)、图像到视频(Image-to-Video)、视频编辑与增强等场景。\n\n在商业领域，视频生成技术广泛应用于内容创作、广告营销、影视制作、教育培训、游戏开发等行业。它能够显著降低视频制作成本，提高创作效率，使非专业用户也能快速生成高质量视频内容。同时，该技术也在虚拟主播、数字人、元宇宙等新兴领域发挥重要作用，推动着数字内容产业的创新发展。"
+        }
+      },
+      "en": {
+        "name": "AI Video Generator",
+        "description": "Tools that create video content from text, images, or audio using deep learning models"
+      },
+      "zh": {
+        "name": "AI 视频生成器",
+        "description": "使用深度学习模型从文本、图像或音频创建视频内容的工具"
+      }
+    },
+    {
+      "slug": "video-transcription",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Video transcription refers to the process of converting spoken audio content from video files into written text format. This technology combines speech recognition, natural language processing, and sometimes human review to generate accurate textual representations of dialogue, narration, and other audio elements within video content.\n\nIn technical and business contexts, video transcription serves multiple purposes: improving content accessibility for deaf and hard-of-hearing audiences, enabling search engine optimization through indexable text, facilitating content translation and localization, and supporting compliance with accessibility regulations like WCAG and ADA. Modern video transcription solutions typically employ automatic speech recognition (ASR) engines powered by machine learning models, often enhanced with speaker diarization to identify different speakers, timestamp synchronization, and punctuation prediction.\n\nThe feature is commonly implemented in video platforms, content management systems, educational technology, media production workflows, and enterprise communication tools. Transcription accuracy depends on factors including audio quality, speaker clarity, background noise, accents, and technical terminology. Advanced implementations may include real-time transcription capabilities, multi-language support, custom vocabulary training, and integration with subtitle generation systems. Video transcription has become essential for content creators, educators, businesses, and media organizations seeking to maximize content reach, improve user experience, and ensure regulatory compliance."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**视频转录 (Video Transcription)**\n\n视频转录是指将视频内容中的音频对话、旁白、背景声音等语音信息转换为文本格式的技术过程。该功能通过自动语音识别(ASR)技术或人工听写方式，将视频中的口语内容准确记录为可编辑、可搜索的文字文档。\n\n在技术实现上，视频转录通常采用机器学习和自然语言处理算法，能够识别多种语言、方言和说话者，并自动添加时间戳、标点符号和段落分隔。现代转录系统还支持说话人识别、情感分析和关键词提取等高级功能。\n\n应用场景广泛，包括：\n- **内容创作**：为视频添加字幕，提升可访问性和SEO优化\n- **会议记录**：将视频会议内容转为文字纪要\n- **媒体制作**：辅助视频编辑和后期制作流程\n- **教育培训**：生成课程讲义和学习资料\n- **法律合规**：创建音视频证据的文字记录\n\n视频转录不仅提高了内容的可用性和可检索性，还为听障人士提供了无障碍访问支持，是现代数字媒体处理中的重要基础功能。"
+        }
+      },
+      "en": {
+        "name": "Video Transcription",
+        "description": "Convert spoken audio from videos into accurate, searchable text with timestamps and speaker identification"
+      },
+      "zh": {
+        "name": "视频转录",
+        "description": "将视频中的语音内容转换为可搜索的文本，支持时间戳和说话人识别"
+      }
+    },
+    {
+      "slug": "subtitle-generation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Subtitle generation refers to the automated or semi-automated process of creating text captions that display dialogue, narration, sound effects, and other audio content in video media. This feature encompasses both the technical capability to produce subtitles and the workflows involved in their creation, synchronization, and formatting.\n\nIn modern applications, subtitle generation typically involves speech recognition technology, natural language processing, and timing algorithms to convert spoken audio into accurately timed text overlays. Advanced implementations may include automatic translation for multilingual subtitle creation, speaker identification, and contextual formatting adjustments.\n\nThis feature is essential across multiple domains including video streaming platforms, content management systems, video editing software, and accessibility tools. It serves critical functions such as improving content accessibility for deaf and hard-of-hearing audiences, enabling viewing in sound-sensitive environments, supporting language learning, and facilitating content localization for global markets.\n\nSubtitle generation systems may operate through various methods: real-time processing for live broadcasts, batch processing for pre-recorded content, or hybrid approaches combining automated generation with human review and correction. Quality metrics typically focus on accuracy, synchronization precision, readability, and compliance with standards such as WebVTT, SRT, or broadcast-specific formats."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**字幕生成 (Subtitle Generation)**\n\n字幕生成是一种自动化技术功能，用于为视频、音频等多媒体内容创建文本字幕。该技术通常结合语音识别（ASR）、自然语言处理（NLP）和时间轴同步算法，将音频内容转换为带有精确时间戳的文本字幕文件。\n\n在技术实现层面，字幕生成系统需要完成语音转文字、断句分段、时间轴对齐、格式化输出等核心流程。现代字幕生成工具还支持多语言识别、说话人区分、标点符号自动添加等高级功能，并可输出 SRT、VTT、ASS 等标准字幕格式。\n\n在商业应用中，字幕生成广泛用于视频平台、在线教育、会议记录、媒体制作等场景。它能显著提升内容的可访问性，帮助听障用户、非母语观众理解内容，同时改善 SEO 效果和用户体验。随着 AI 技术发展，字幕生成的准确率和效率持续提升，已成为内容创作和分发流程中的标准功能模块。"
+        }
+      },
+      "en": {
+        "name": "Subtitle Generation",
+        "description": "Automated creation of timed text captions for video content using speech recognition and NLP"
+      },
+      "zh": {
+        "name": "字幕生成",
+        "description": "使用语音识别和自然语言处理技术为视频内容自动创建带时间轴的文本字幕"
+      }
+    },
+    {
+      "slug": "video-translation",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Video translation refers to the process of converting spoken or written content in a video from one language to another, enabling cross-linguistic accessibility and global content distribution. This encompasses multiple technical approaches: subtitle/caption translation, voice-over dubbing, and advanced AI-powered solutions that synchronize translated audio with original lip movements.\n\nModern video translation leverages machine learning, natural language processing, and speech synthesis technologies to automate workflows that traditionally required human translators and voice actors. Key components include automatic speech recognition (ASR) for transcription, neural machine translation (NMT) for linguistic conversion, and text-to-speech (TTS) systems for audio generation.\n\nIn commercial applications, video translation enables businesses to localize marketing content, educational materials, entertainment media, and corporate communications for international audiences. Platforms offering video translation services typically support multiple language pairs, preserve timing and context, and maintain speaker characteristics when possible.\n\nQuality considerations include translation accuracy, cultural adaptation, audio-visual synchronization, and preservation of tone and intent. Advanced implementations may feature lip-sync technology, voice cloning, and real-time translation capabilities for live streaming scenarios."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "视频翻译（Video Translation）是一种多媒体内容本地化技术，通过自动或半自动方式将视频中的语音、字幕和文本元素转换为目标语言。该技术通常整合了语音识别（ASR）、机器翻译（MT）、语音合成（TTS）等多项人工智能能力。\n\n在技术实现层面，视频翻译包含以下核心流程：提取源语言音频并转录为文本、将文本翻译为目标语言、生成目标语言配音或字幕、与原视频进行时间轴同步。高级实现还可能包括唇形同步、说话人声音克隆、多语言轨道管理等功能。\n\n该技术广泛应用于在线教育、跨境电商、流媒体平台、企业培训、国际会议等场景，能够显著降低内容本地化成本，加速全球化传播。随着深度学习技术的发展，现代视频翻译系统在准确性、自然度和处理效率方面持续提升，已成为内容创作者和企业拓展国际市场的重要工具。\n\n作为软件功能标签，video-translation 通常标识具备视频多语言转换能力的产品特性或开发需求。"
+        }
+      },
+      "en": {
+        "name": "Video Translation",
+        "description": "AI-powered tools that convert video content across languages with subtitles, dubbing, and voice synthesis"
+      },
+      "zh": {
+        "name": "视频翻译",
+        "description": "基于人工智能的多语言视频内容转换工具，支持字幕、配音和语音合成"
+      }
+    },
+    {
+      "slug": "video-compression",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Video compression is a digital signal processing technique that reduces the size of video files by removing redundant or less perceptible information while maintaining acceptable visual quality. This process employs various algorithms and codecs (such as H.264, H.265/HEVC, VP9, and AV1) to encode video data more efficiently than raw formats.\n\nThe compression works through spatial compression (reducing redundancy within individual frames) and temporal compression (eliminating similarities between consecutive frames). Modern video compression standards utilize techniques like motion estimation, discrete cosine transform (DCT), quantization, and entropy coding to achieve significant file size reduction—often by 95% or more compared to uncompressed video.\n\nIn practical applications, video compression is essential for streaming services, video conferencing, broadcasting, social media platforms, and digital storage. It enables efficient bandwidth utilization, faster transmission speeds, and reduced storage requirements. The technology balances three critical factors: file size, visual quality, and encoding/decoding speed. Different compression levels and codecs are chosen based on specific use cases—for instance, real-time applications prioritize speed, while archival purposes emphasize quality preservation. As video content continues to dominate internet traffic and 4K/8K resolutions become standard, advanced compression techniques remain crucial for managing data efficiently across networks and storage systems."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "视频压缩是一种通过算法减少视频文件大小的技术过程，在保持可接受的视觉质量前提下，降低视频数据的存储空间和传输带宽需求。该技术利用空间冗余（单帧内相似像素）和时间冗余（连续帧间的相似内容）来实现数据压缩。\n\n常见的视频压缩标准包括 H.264/AVC、H.265/HEVC、VP9 和 AV1 等。这些编解码器采用帧内预测、帧间预测、变换编码、量化和熵编码等多种技术手段，可将原始视频大小压缩至原来的 1% 甚至更小。\n\n在实际应用中，视频压缩广泛用于流媒体服务、视频会议、监控系统、移动应用和社交媒体平台。压缩过程需要在文件大小、视频质量、编码速度和解码复杂度之间进行权衡。有损压缩会不可逆地丢失部分信息以获得更高压缩比，而无损压缩则完整保留原始数据但压缩率较低。\n\n选择合适的压缩参数（如比特率、分辨率、帧率）对于优化用户体验和降低基础设施成本至关重要。"
+        }
+      },
+      "en": {
+        "name": "Video Compression",
+        "description": "Technology that reduces video file size while maintaining quality using codecs like H.264, H.265, and AV1"
+      },
+      "zh": {
+        "name": "视频压缩",
+        "description": "通过 H.264、H.265 等编解码器减少视频文件大小同时保持画质的技术"
+      }
+    },
+    {
+      "slug": "screen-recording",
+      "category": "feature",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Screen recording refers to the process of capturing video output from a computer display, mobile device, or other digital screen in real-time. This functionality enables users to create video files that document on-screen activities, including application usage, software demonstrations, gameplay, video calls, or any visual content displayed on the screen.\n\nIn software development, screen recording is commonly implemented as a feature that allows applications to capture display content programmatically, often with options to include audio narration, webcam overlay, cursor highlighting, and system sound. The technology typically utilizes APIs provided by operating systems or specialized libraries to access frame buffer data and encode it into standard video formats like MP4, AVI, or WebM.\n\nScreen recording serves multiple purposes across various domains: creating educational tutorials and training materials, documenting software bugs for technical support, producing marketing demonstrations, recording gaming sessions for content creation, and capturing video conferences for later review. Modern implementations often include advanced capabilities such as selective area recording, real-time annotation, scheduled recording, and cloud-based storage integration.\n\nThe feature is widely integrated into operating systems, video conferencing platforms, content creation tools, and specialized screen capture applications, making it an essential component of digital communication and documentation workflows."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**屏幕录制 (Screen Recording)**\n\n屏幕录制是一种捕获计算机、移动设备或其他数字显示设备屏幕上实时活动的技术功能。该功能可以记录屏幕上的所有视觉内容，包括应用程序操作、鼠标移动、键盘输入、窗口切换等用户交互行为，并将其保存为视频文件格式（如 MP4、AVI、MOV 等）。\n\n在技术领域，屏幕录制广泛应用于软件演示、教学视频制作、技术文档编写、bug 复现记录、用户行为分析等场景。现代屏幕录制工具通常支持全屏录制、区域选择录制、多显示器录制，并可同步录制系统音频、麦克风音频，部分工具还提供实时标注、鼠标高亮、快捷键显示等辅助功能。\n\n在商业应用中，屏幕录制常用于在线课程制作、产品演示、客户支持、远程协作、合规审计等领域。该功能已成为现代操作系统（Windows、macOS、iOS、Android）的标准内置功能，同时也有众多第三方专业工具提供更丰富的编辑和管理能力。屏幕录制技术的发展显著提升了知识传播效率和远程协作体验。"
+        }
+      },
+      "en": {
+        "name": "Screen Recording",
+        "description": "Capture video output from displays to document activities, create tutorials, or record demonstrations"
+      },
+      "zh": {
+        "name": "屏幕录制",
+        "description": "捕获屏幕视频内容，用于制作教程、记录演示或文档编写"
+      }
+    }
+  ],
+  "failed": []
+}

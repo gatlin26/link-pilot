@@ -1,0 +1,226 @@
+{
+  "batchIndex": 5,
+  "successful": [
+    {
+      "slug": "free-trial",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Freeware is software, often proprietary, that is distributed at no monetary cost to the end user. There is no agreed-upon set of rights, license, or EULA that defines freeware unambiguously; every publisher defines its own rules for the freeware it offers. For instance, modification, redistribution by third parties, and reverse engineering are permitted by some publishers but prohibited by others. Unlike with free and open-source software, which are also often distributed free of charge, the source code for freeware is typically not made available. Freeware may be intended to benefit its producer by, for example, encouraging sales of a more capable version, as in the freemium and shareware business models; or by collecting and selling user's personal data."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**免费试用 (Free Trial)**\n\n免费试用是一种常见的定价策略和营销手段，允许潜在用户在有限的时间内免费体验产品或服务的全部或部分功能，无需预先支付费用。这种模式广泛应用于SaaS（软件即服务）、云计算平台、订阅制服务等技术产品领域。\n\n免费试用通常设有明确的时间限制（如7天、14天或30天），期间用户可以评估产品是否满足其需求。试用期结束后，用户需要选择付费订阅以继续使用，或者服务将自动终止。部分产品采用\"信用卡试用\"模式，要求用户预先绑定支付方式，试用期结束后自动转为付费；另一些则采用\"无需信用卡\"模式，降低用户尝试门槛。\n\n对于企业而言，免费试用能够有效降低用户决策成本，提高转化率，同时让用户在实际使用中建立对产品的信任和依赖。对于用户而言，这提供了一个无风险的机会来验证产品价值，确保投资回报。在技术产品的定价页面中，免费试用选项通常作为重要的行动号召（CTA）元素呈现。"
+        }
+      },
+      "en": {
+        "name": "Free Trial",
+        "description": "Time-limited access to products or services at no cost, allowing users to evaluate before purchasing"
+      },
+      "zh": {
+        "name": "免费试用",
+        "description": "在限定时间内免费体验产品或服务的全部或部分功能，帮助用户在付费前进行评估"
+      }
+    },
+    {
+      "slug": "pay-per-use",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Pay-per-use is a pricing model where customers are charged based on their actual consumption or usage of a product or service, rather than paying a fixed subscription fee or upfront cost. Also known as usage-based pricing or consumption-based pricing, this model calculates costs according to specific metrics such as compute hours, API calls, data transfer volume, transactions processed, or resources consumed.\n\nThis pricing approach is prevalent in cloud computing services (AWS, Azure, Google Cloud), SaaS applications, telecommunications, and utility services. It offers several advantages: customers only pay for what they use, reducing waste and upfront investment; businesses can scale costs proportionally with demand; and it lowers barriers to entry for new users who can start small and grow incrementally.\n\nThe model typically involves metering mechanisms to track usage accurately, transparent pricing tiers or rates per unit, and billing cycles that reflect actual consumption. Pay-per-use aligns vendor revenue with customer value delivery, making it particularly suitable for variable workloads, seasonal businesses, or organizations seeking cost optimization and flexibility. However, it can lead to unpredictable costs if usage spikes unexpectedly, requiring careful monitoring and budget management."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**按量付费 (Pay-per-use)**\n\n按量付费是一种基于实际使用量计费的定价模式，用户仅需为其实际消耗的资源或服务付费，而非预先支付固定费用。这种模式在云计算、SaaS 服务、API 调用等技术领域广泛应用。\n\n在云服务中，按量付费通常以计算时长、存储容量、网络流量、API 请求次数等可量化指标作为计费依据。例如，云服务器按运行小时数计费，对象存储按存储空间和访问次数计费，CDN 按流量消耗计费。这种模式的核心优势在于成本与实际需求直接挂钩，避免了资源闲置造成的浪费。\n\n按量付费为企业提供了极大的灵活性，特别适合业务量波动较大、初创阶段或需要快速扩展的场景。用户可以根据业务需求动态调整资源使用，无需长期承诺或大额预付款。同时，这种模式也要求用户具备良好的成本监控和优化能力，以避免因使用不当导致的费用超支。\n\n与之相对的定价模式包括包年包月、预留实例等固定费用模式，各有适用场景。"
+        }
+      },
+      "en": {
+        "name": "Pay-per-use",
+        "description": "Pricing model where customers pay based on actual consumption of resources or services"
+      },
+      "zh": {
+        "name": "按量付费",
+        "description": "根据实际使用的资源或服务量进行计费的定价模式"
+      }
+    },
+    {
+      "slug": "enterprise",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Enterprise**\n\nIn the context of pricing and software licensing, \"enterprise\" refers to a tier or plan specifically designed for large organizations with complex operational requirements, extensive user bases, and mission-critical needs. Enterprise pricing typically represents the highest service level offered by software vendors and technology providers.\n\nEnterprise plans are characterized by advanced features including enhanced security controls, dedicated support channels, service level agreements (SLAs), custom integrations, scalability for thousands of users, and compliance certifications required by large corporations. These offerings often include priority technical support, account management, professional services, and customization options not available in standard or business tiers.\n\nUnlike self-service plans with transparent pricing, enterprise pricing is typically customized based on factors such as user count, usage volume, deployment requirements, and specific feature needs. Pricing is usually negotiated directly with sales teams and may involve annual or multi-year contracts.\n\nThe enterprise designation signals that the solution is production-ready for organizations requiring high availability, robust governance, audit capabilities, and integration with existing enterprise systems. This tier addresses the needs of Fortune 500 companies, government agencies, and large institutions that demand reliability, compliance, and comprehensive vendor support."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**Enterprise（企业级）**\n\n在技术和商业领域，Enterprise 指面向大型组织和企业客户的产品、服务或解决方案等级。企业级产品通常具有以下特征：\n\n**功能特性：** 支持大规模用户并发访问、复杂的权限管理体系、高级安全与合规功能、可定制化配置、以及与现有企业系统的深度集成能力。\n\n**性能保障：** 提供更高的服务等级协议（SLA）、99.9% 以上的可用性保证、专属技术支持团队、优先故障响应机制，以及性能优化服务。\n\n**定价模式：** 采用按需定制的报价策略，通常包含批量许可折扣、年度或多年合约、专属客户成功经理服务，以及灵活的付费方式（如按席位、按使用量或固定费用）。\n\n**目标客户：** 主要服务于员工规模在数百至数万人的中大型企业、跨国公司、政府机构等对系统稳定性、安全性和可扩展性有严格要求的组织。\n\n企业级方案代表了产品线中的最高服务层级，旨在满足复杂业务场景和严苛的企业标准。"
+        }
+      },
+      "en": {
+        "name": "Enterprise Pricing",
+        "description": "Custom pricing tier for large organizations with advanced features, dedicated support, and scalability"
+      },
+      "zh": {
+        "name": "企业级定价",
+        "description": "面向大型组织的定制化价格方案，提供高级功能、专属支持和可扩展性"
+      }
+    },
+    {
+      "slug": "lifetime-deal",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A lifetime deal (LTD) is a pricing model where customers pay a one-time fee to gain permanent access to a software product or service, rather than subscribing to recurring monthly or annual payments. This model is commonly used by early-stage SaaS companies and software startups to generate immediate revenue, build an initial user base, and gather product feedback.\n\nLifetime deals typically offer significant discounts compared to the cumulative cost of ongoing subscriptions, making them attractive to early adopters and budget-conscious users. They are frequently promoted through deal platforms like AppSumo, PitchGround, and StackSocial, which specialize in curating and marketing LTDs to their communities.\n\nFor vendors, lifetime deals provide quick capital injection for product development and marketing, while helping establish market presence. However, they also present challenges including reduced long-term recurring revenue, potential support costs that exceed the one-time payment, and the risk of attracting deal-seekers rather than ideal customers.\n\nBuyers benefit from substantial cost savings and protection against future price increases, though they assume the risk that the product may discontinue or fail to receive ongoing updates. LTDs often include tiered pricing structures with different feature sets and usage limits, and may specify terms regarding future updates, support duration, and refund policies."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**Lifetime Deal（终身交易/买断制）**\n\nLifetime Deal 是一种软件产品定价策略，指用户通过一次性付费即可永久使用产品或服务，无需支付后续的订阅费用。这种模式在 SaaS（软件即服务）行业中较为常见，特别是在产品早期推广阶段。\n\n该定价模式的核心特征包括：用户支付单次费用后获得产品的终身访问权限，通常还包含未来的功能更新和技术支持。对于开发者而言，Lifetime Deal 可以快速获取早期用户、积累现金流、收集产品反馈，并建立初始用户基础。对于用户来说，相比长期订阅可以节省大量成本，特别适合长期使用需求。\n\n常见的 Lifetime Deal 平台包括 AppSumo、PitchGround 等，这些平台专门为初创软件产品提供限时买断优惠。需要注意的是，部分 Lifetime Deal 可能附带使用限制条款，如功能范围、使用配额或服务期限等具体约束条件。这种定价策略在项目管理工具、设计软件、营销自动化工具等领域应用广泛。"
+        }
+      },
+      "en": {
+        "name": "Lifetime Deal",
+        "description": "One-time payment model offering permanent access to software without recurring subscription fees"
+      },
+      "zh": {
+        "name": "终身交易",
+        "description": "通过一次性付费获得软件永久使用权，无需支付订阅费用的定价模式"
+      }
+    },
+    {
+      "slug": "credit-based",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A credit-based pricing model is a payment structure where customers purchase or receive a predetermined allocation of credits that can be redeemed for products, services, or resource consumption. Each credit typically represents a unit of value that corresponds to specific actions, API calls, compute time, storage capacity, or feature access within a platform or service.\n\nIn this model, credits are deducted from the customer's balance as they utilize services, with different operations consuming varying amounts of credits based on their resource intensity or value. Credits may be purchased in bulk packages, earned through subscriptions, or allocated on a recurring basis. Some implementations include credit expiration policies, rollover provisions, or tiered pricing where bulk purchases offer better per-credit rates.\n\nCredit-based systems are prevalent in cloud computing platforms, API services, SaaS applications, and digital marketplaces. They provide flexibility for customers with variable usage patterns while offering predictable revenue streams for providers. This model enables granular cost control, simplifies billing for diverse service offerings, and allows customers to prepay for services at potentially discounted rates. Organizations often prefer credit-based pricing for its transparency in cost allocation across different teams or projects, and its ability to accommodate both light and heavy users within a single pricing framework."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**基于积分的定价模式（Credit-Based Pricing）**\n\n基于积分的定价模式是一种预付费或订阅制的计费方式，用户预先购买或获得一定数量的\"积分\"（Credits），然后根据实际使用的服务或资源消耗相应的积分额度。这种模式广泛应用于云计算、API 服务、SaaS 平台等技术领域。\n\n在该模式下，不同的服务操作或资源类型会对应不同的积分消耗率。例如，AI 模型调用可能根据输入输出的 token 数量扣除积分，云存储服务按存储容量和时长计费，API 请求按调用次数或复杂度收费。用户可以灵活控制支出，按需使用服务，避免固定月费造成的资源浪费。\n\n基于积分的定价具有透明度高、可预测性强的特点，企业可以更精确地进行成本核算和预算管理。同时，服务提供商通常会设置积分有效期、批量购买折扣等机制，以平衡用户灵活性和商业收益。这种模式特别适合使用量波动较大或需要精细化成本控制的场景。"
+        }
+      },
+      "en": {
+        "name": "Credit-Based Pricing",
+        "description": "Payment model where customers purchase credits to redeem for services and resources"
+      },
+      "zh": {
+        "name": "基于积分的定价",
+        "description": "用户预先购买积分，根据实际使用的服务或资源消耗相应额度的计费方式"
+      }
+    },
+    {
+      "slug": "usage-based",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Usage-Based**\n\nA pricing model where customers are charged based on their actual consumption or utilization of a product or service, rather than paying a fixed subscription fee. Also known as consumption-based pricing, pay-as-you-go, or metered billing.\n\nIn usage-based pricing, costs scale directly with measurable metrics such as API calls, data storage volume, compute hours, bandwidth consumed, transactions processed, or active users. This model is prevalent in cloud computing (AWS, Azure, GCP), SaaS platforms, telecommunications, and utility services.\n\nKey characteristics include variable monthly costs that fluctuate with demand, lower barriers to entry for new customers, and alignment between value delivered and price paid. Customers benefit from cost predictability during low-usage periods and the ability to scale without renegotiating contracts. Providers gain from capturing more revenue during high-usage periods and reducing customer acquisition friction.\n\nCommon implementation approaches include tiered usage rates (volume discounts), hybrid models combining base fees with usage charges, and committed usage discounts for predictable workloads. Usage-based pricing requires robust metering infrastructure, transparent billing systems, and clear communication of pricing metrics to maintain customer trust and satisfaction."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**usage-based（基于使用量的定价）**\n\n基于使用量的定价是一种灵活的商业定价模式，企业根据客户实际使用产品或服务的数量、频率或资源消耗量来收费，而非采用固定的订阅费用。这种模式在云计算、SaaS（软件即服务）、API 服务和基础设施领域尤为常见。\n\n典型的计量维度包括：API 调用次数、数据存储容量、带宽使用量、计算时间、活跃用户数或交易笔数等。例如，AWS 按实际使用的计算资源和存储空间计费，Stripe 按处理的交易量收取手续费，Twilio 根据发送的短信和通话时长收费。\n\n这种定价模式的优势在于降低了客户的初始使用门槛，使小型企业和初创公司能够以较低成本开始使用服务，随着业务增长按需扩展。对供应商而言，能够更公平地反映服务成本，并激励客户优化资源使用。然而，这也可能导致成本的不可预测性，需要客户密切监控使用情况以控制开支。\n\n基于使用量的定价体现了\"按需付费\"（pay-as-you-go）的理念，是现代云原生和数字化服务的重要商业模式之一。"
+        }
+      },
+      "en": {
+        "name": "Usage-Based Pricing",
+        "description": "Pricing model where customers pay based on actual consumption of services or resources"
+      },
+      "zh": {
+        "name": "基于使用量定价",
+        "description": "根据客户实际消耗的服务或资源量来收费的定价模式"
+      }
+    },
+    {
+      "slug": "web-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "A web application is application software that is created with web technologies and runs via a web browser. Web applications emerged during the late 1990s and allowed for the server to dynamically build a response to the request, in contrast to static web pages."
+        },
+        "zh": {
+          "source": "wikipedia",
+          "content": "网络应用程序 分为客户端到服务器架构或无服务器后端架构。其中的客户端就是网页浏览器。常見的網頁應用程式有Webmail、網路购物、網路拍賣、wiki、網路論壇、網誌、網路遊戲等诸多應用。\n"
+        }
+      },
+      "en": {
+        "name": "Web Application",
+        "description": "Software that runs in web browsers using server-side processing and web technologies"
+      },
+      "zh": {
+        "name": "网络应用程序",
+        "description": "通过网页浏览器运行的应用软件，使用服务器动态处理和网络技术"
+      }
+    },
+    {
+      "slug": "mobile-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "A mobile application or app is a computer program or software application designed to run on a mobile device such as a phone, tablet, or watch. Mobile applications often stand in contrast to desktop applications which are designed to run on desktop computers, and web applications which run in mobile web browsers rather than directly on the mobile device."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**移动应用（Mobile App）**\n\n移动应用是专门为智能手机、平板电脑等移动设备开发的应用程序软件。它通过移动操作系统（如 iOS、Android）运行，为用户提供特定功能或服务。\n\n移动应用主要分为三类：原生应用（Native App）使用平台特定语言开发，性能最优但开发成本高；Web 应用通过浏览器访问，跨平台但功能受限；混合应用（Hybrid App）结合两者优势，在原生容器中运行 Web 技术。\n\n在技术实现上，移动应用需要考虑触摸交互、屏幕适配、离线功能、推送通知、位置服务等移动设备特性。开发者通常使用 Swift/Objective-C（iOS）、Kotlin/Java（Android）或跨平台框架如 React Native、Flutter 进行开发。\n\n商业应用广泛，涵盖社交、电商、金融、教育、娱乐等领域。移动应用已成为企业数字化战略的核心组成部分，通过应用商店分发，为用户提供便捷的移动端服务体验。其开发需遵循平台规范、注重用户体验设计、保障数据安全，并持续优化性能与功能。"
+        }
+      },
+      "en": {
+        "name": "Mobile App",
+        "description": "Software applications designed to run on mobile devices like smartphones and tablets"
+      },
+      "zh": {
+        "name": "移动应用",
+        "description": "专为智能手机、平板电脑等移动设备设计的应用程序软件"
+      }
+    },
+    {
+      "slug": "desktop-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Application software is software that is intended for end-user use – not operating, administering or programming a computer. It includes programs such as word processors, web browsers, media players, and mobile applications used in daily tasks. An application is any program that can be categorized as application software. Application is a subjective classification that is often used to differentiate from system and utility software."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**桌面应用程序（Desktop App）**\n\n桌面应用程序是指安装并运行在个人计算机操作系统上的软件应用，包括 Windows、macOS、Linux 等平台。与 Web 应用或移动应用不同，桌面应用直接利用本地系统资源，通常具有更强的性能表现和更丰富的系统集成能力。\n\n桌面应用可以访问本地文件系统、硬件设备、系统 API 等底层资源，适合处理复杂计算、大规模数据处理、专业图形渲染等高性能需求场景。常见的开发技术包括原生开发（如 C++、C#、Swift）和跨平台框架（如 Electron、Qt、Flutter Desktop）。\n\n在商业应用中，桌面应用广泛用于企业办公软件（如 Microsoft Office）、专业设计工具（如 Adobe Creative Suite）、开发工具（如 IDE）、游戏等领域。尽管云计算和 Web 技术快速发展，桌面应用凭借其离线可用性、数据隐私保护、性能优势等特点，在特定场景下仍具有不可替代的价值。\n\n现代桌面应用开发趋向于混合架构，结合 Web 技术的灵活性与原生能力的高性能，为用户提供更优质的体验。"
+        }
+      },
+      "en": {
+        "name": "Desktop Application",
+        "description": "Software installed and running locally on personal computers with direct system access"
+      },
+      "zh": {
+        "name": "桌面应用程序",
+        "description": "安装并运行在个人计算机操作系统上，可直接访问本地系统资源的软件"
+      }
+    },
+    {
+      "slug": "browser-extension",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "A browser extension is a software module for customizing a web browser. Browsers typically allow users to install a variety of extensions, including user interface modifications, cookie management, ad blocking, and the custom scripting and styling of web pages."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "浏览器扩展（Browser Extension）是一种可以安装在网页浏览器中的小型软件程序，用于扩展或增强浏览器的功能。它通常由 HTML、CSS 和 JavaScript 等 Web 技术开发，可以修改网页内容、添加新功能、改善用户体验或与外部服务集成。\n\n浏览器扩展的应用场景广泛，包括广告拦截、密码管理、截图工具、翻译助手、开发者工具、隐私保护等。主流浏览器如 Chrome、Firefox、Safari、Edge 都提供了扩展商店和开发 API，允许开发者发布和分发扩展程序。\n\n从技术角度看，浏览器扩展通过 manifest 文件定义权限和配置，可以访问浏览器 API、操作 DOM、拦截网络请求、管理标签页等。从商业角度看，浏览器扩展是重要的产品形态，可以作为独立产品变现，也可以作为主产品的补充渠道，帮助企业触达用户、提供增值服务。\n\n开发浏览器扩展需要遵循各浏览器的开发规范和审核政策，特别要注意用户隐私保护和安全性要求。"
+        }
+      },
+      "en": {
+        "name": "Browser Extension",
+        "description": "Software modules that customize and enhance web browser functionality through added features"
+      },
+      "zh": {
+        "name": "浏览器扩展",
+        "description": "安装在浏览器中用于扩展功能、改善体验的小型软件程序"
+      }
+    }
+  ],
+  "failed": []
+}

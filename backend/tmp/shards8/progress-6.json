@@ -1,0 +1,23 @@
+{
+  "completedSlugs": [
+    "file-sharing",
+    "free",
+    "icon-generation",
+    "linux-app",
+    "music-generation",
+    "paid",
+    "project-management",
+    "sales",
+    "social-media-tool",
+    "team-chat",
+    "ui-design"
+  ],
+  "failed": [
+    {
+      "slug": "infographic",
+      "reason": "Expected 1 results, received 74"
+    }
+  ],
+  "updatedRows": 110,
+  "lastUpdatedAt": "2026-03-06T16:27:50.277Z"
+}

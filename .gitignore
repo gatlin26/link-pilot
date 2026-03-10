@@ -23,3 +23,8 @@ tsconfig.tsbuildinfo
 
 # compiled
 **/tailwind-output.css
+
+# 环境变量文件
+backend/env.local
+backend/env.prod
+backend/.env*

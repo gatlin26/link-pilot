@@ -1,0 +1,1 @@
+ALTER TABLE "tool_submissions" ALTER COLUMN "category" DROP NOT NULL;

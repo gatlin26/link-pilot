@@ -1,0 +1,226 @@
+{
+  "batchIndex": 4,
+  "successful": [
+    {
+      "slug": "crm-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A CRM tool (Customer Relationship Management tool) is a software application designed to help organizations manage, analyze, and optimize their interactions with current and potential customers throughout the customer lifecycle. These tools centralize customer data, including contact information, communication history, purchase records, preferences, and support tickets, into a unified platform accessible across departments.\n\nCRM tools typically encompass several core functionalities: contact management for organizing customer information, sales pipeline tracking to monitor deals and opportunities, marketing automation for campaign management and lead nurturing, customer service features including ticketing systems, and analytics dashboards for performance insights. Modern CRM systems often integrate with email, calendar, social media, and other business applications to provide a comprehensive view of customer relationships.\n\nThese tools serve multiple business objectives: improving customer retention, streamlining sales processes, enhancing team collaboration, personalizing customer experiences, and driving data-driven decision-making. CRM tools range from simple contact management systems to enterprise-grade platforms with AI-powered predictive analytics, workflow automation, and advanced reporting capabilities. Popular examples include Salesforce, HubSpot, Microsoft Dynamics 365, and Zoho CRM. Organizations across industries—from small businesses to large enterprises—utilize CRM tools to build stronger customer relationships, increase operational efficiency, and ultimately drive revenue growth."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "CRM工具（Customer Relationship Management Tool，客户关系管理工具）是一类用于帮助企业管理和优化客户关系的软件应用系统。这类工具通过集中存储、分析和管理客户数据，使企业能够更有效地跟踪销售线索、维护客户信息、自动化营销流程，并提升客户服务质量。\n\nCRM工具的核心功能通常包括：联系人管理、销售机会跟踪、销售漏斗可视化、客户互动历史记录、任务和日程管理、报表分析等。现代CRM系统还常集成邮件营销、客户支持工单、数据分析仪表板等高级功能。\n\n在技术实现上，CRM工具可以是本地部署的企业级软件，也可以是基于云的SaaS服务。主流产品如Salesforce、HubSpot、Zoho CRM等已成为行业标准。这类工具广泛应用于销售、市场营销、客户服务等部门，帮助企业提高客户满意度、增加销售转化率、优化业务流程，最终实现收入增长和客户忠诚度提升。对于软件开发而言，CRM工具也可能指集成到其他应用中的客户管理模块或API服务。"
+        }
+      },
+      "en": {
+        "name": "CRM Tool",
+        "description": "Software for managing customer relationships, sales pipelines, and marketing automation"
+      },
+      "zh": {
+        "name": "CRM 工具",
+        "description": "用于管理客户关系、销售流程和营销自动化的软件系统"
+      }
+    },
+    {
+      "slug": "customer-support",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Customer support is a range of services to assist customers in making cost effective and correct use of a product. It includes assistance in planning, installation, training, troubleshooting, maintenance, upgrading, and disposal of a product. Regarding technology products such as mobile phones, televisions, computers, software products or other electronic or mechanical goods, it is termed technical support. It aims to ensure users can effectively operate the product and resolve any issues that may arise throughout its lifecycle."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**客户支持 (Customer Support)**\n\n客户支持是指企业或组织为帮助客户解决产品或服务使用过程中遇到的问题、疑问和需求而提供的一系列辅助服务。在技术和商业领域，客户支持通常包括售前咨询、售后服务、技术故障排查、产品使用指导、投诉处理等多个方面。\n\n现代客户支持体系通常采用多渠道服务模式，包括电话热线、在线聊天、电子邮件、工单系统、自助服务门户、社交媒体等。在软件和 SaaS 行业，客户支持还涉及系统集成协助、API 技术支持、版本升级指导等专业技术服务。\n\n优质的客户支持是提升客户满意度、增强客户忠诚度、降低客户流失率的关键因素。企业通常会建立客户支持团队，配备专业的客服人员和技术支持工程师，并使用 CRM 系统、工单管理系统等工具来追踪和管理客户问题。客户支持的效率和质量直接影响企业的品牌形象和市场竞争力，是企业运营中不可或缺的重要环节。"
+        }
+      },
+      "en": {
+        "name": "Customer Support",
+        "description": "Services helping users effectively operate products and resolve issues throughout their lifecycle"
+      },
+      "zh": {
+        "name": "客户支持",
+        "description": "帮助用户解决产品使用问题、提供咨询和技术协助的服务体系"
+      }
+    },
+    {
+      "slug": "hr-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An HR tool (Human Resources tool) is a software application or platform designed to streamline, automate, and optimize human resources management processes within organizations. These tools encompass a wide range of functionalities including recruitment and applicant tracking, employee onboarding, payroll processing, benefits administration, performance management, time and attendance tracking, learning and development, and workforce analytics.\n\nHR tools can be standalone applications focused on specific functions or comprehensive Human Resource Information Systems (HRIS) that integrate multiple HR processes into a unified platform. Modern HR tools typically leverage cloud-based architectures, enabling remote access, real-time data synchronization, and scalability across organizations of varying sizes.\n\nKey benefits include reduced administrative burden, improved data accuracy, enhanced compliance with labor regulations, better employee experience, and data-driven decision-making through analytics and reporting capabilities. These tools often feature self-service portals allowing employees to manage their own information, request time off, access pay stubs, and complete training modules.\n\nCommon examples include applicant tracking systems (ATS), performance review platforms, payroll software, and employee engagement tools. The HR technology market continues to evolve with integration of artificial intelligence, machine learning, and automation to further enhance recruitment screening, predictive analytics, and personalized employee experiences."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**hr-tool（人力资源工具）**\n\nhr-tool 是指用于支持和优化人力资源管理各项职能的软件工具或系统。这类工具涵盖员工生命周期管理的多个环节，包括招聘与人才获取、入职管理、考勤与排班、薪酬福利计算、绩效评估、培训发展、员工自助服务等核心功能模块。\n\n在技术实现层面，现代 hr-tool 通常采用云端 SaaS 架构，集成人工智能、数据分析、工作流自动化等技术，实现人力资源数据的集中管理和智能化处理。典型应用场景包括：简历筛选与候选人追踪（ATS）、电子签核流程、智能排班算法、薪资自动核算、员工画像分析等。\n\n这类工具的核心价值在于提升 HR 部门的运营效率，降低人工操作错误，支持数据驱动的决策制定，并改善员工体验。从小型企业的基础考勤系统到大型企业的综合 HRIS（人力资源信息系统）或 HCM（人力资本管理）平台，hr-tool 已成为现代企业数字化转型的重要组成部分，帮助组织更有效地管理和发展人力资本。"
+        }
+      },
+      "en": {
+        "name": "HR Tool",
+        "description": "Software that streamlines recruitment, payroll, performance management, and employee lifecycle processes"
+      },
+      "zh": {
+        "name": "人力资源工具",
+        "description": "用于优化招聘、薪酬、绩效管理及员工全生命周期管理的软件系统"
+      }
+    },
+    {
+      "slug": "finance-tool",
+      "category": "type",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A finance-tool is a software application, platform, or utility designed to facilitate financial operations, analysis, and decision-making processes. These tools encompass a broad spectrum of functionalities including accounting automation, budgeting, financial forecasting, investment portfolio management, payment processing, expense tracking, and regulatory compliance reporting.\n\nIn technical contexts, finance-tools typically integrate with existing business systems through APIs, support real-time data synchronization, and employ algorithms for tasks such as risk assessment, fraud detection, and predictive analytics. They may leverage technologies like machine learning for pattern recognition, blockchain for secure transactions, or cloud computing for scalability.\n\nCommon examples include enterprise resource planning (ERP) financial modules, personal finance management applications, trading platforms, tax preparation software, and cryptocurrency wallets. These tools serve diverse user groups from individual consumers managing personal budgets to financial institutions executing complex derivative transactions.\n\nKey characteristics include data security compliance (such as PCI-DSS or SOC 2), multi-currency support, audit trail capabilities, and integration with banking systems. Modern finance-tools increasingly emphasize user experience, mobile accessibility, and automated workflows to reduce manual data entry and human error while improving financial visibility and operational efficiency."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**finance-tool（金融工具）**\n\n金融工具是指用于金融数据处理、分析、交易或管理的软件应用程序、API接口、算法模块或技术组件。在软件开发领域，finance-tool 标签通常标识与金融业务相关的技术实现，包括但不限于：\n\n**核心功能领域：**\n- 支付处理与结算系统\n- 财务数据分析与可视化\n- 投资组合管理与风险评估\n- 交易执行与订单管理\n- 会计核算与报表生成\n- 加密货币与区块链应用\n- 信贷评估与反欺诈检测\n\n**技术特征：**\n此类工具通常需要处理高精度数值计算、确保数据安全性与合规性、支持实时数据流处理，并遵循金融行业标准（如ISO 20022、PCI DSS等）。开发时需特别关注交易原子性、审计追踪、监管报告等关键需求。\n\n**应用场景：**\n广泛应用于银行系统、证券交易平台、财务管理软件、金融科技（FinTech）产品、企业ERP系统的财务模块等。该标签帮助开发者快速识别和分类金融领域的技术解决方案。"
+        }
+      },
+      "en": {
+        "name": "Finance Tool",
+        "description": "Software applications and platforms for financial operations, analysis, trading, and management"
+      },
+      "zh": {
+        "name": "金融工具",
+        "description": "用于金融数据处理、分析、交易或管理的软件应用程序和平台"
+      }
+    },
+    {
+      "slug": "free",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Free** (in pricing context)\n\nA pricing model where a product, service, or feature is provided to users at no monetary cost. In the technology and software industry, \"free\" typically manifests in several strategic approaches:\n\n**Freemium Model**: Core functionality is offered at no charge, while advanced features, increased capacity, or premium support require payment. This approach allows users to experience value before committing financially.\n\n**Free Trial**: Time-limited access to full or partial functionality, designed to demonstrate product value and convert users to paid subscriptions after the trial period expires.\n\n**Open Source/Community Edition**: Software made available without licensing fees, often with revenue generated through enterprise support, hosting services, or proprietary extensions.\n\n**Ad-Supported Free Tier**: Services provided at no direct cost to users, with revenue generated through advertising or data monetization.\n\nThe \"free\" designation serves multiple business objectives: reducing adoption friction, building user base and market share, generating network effects, collecting user feedback, and creating conversion funnels to paid tiers. However, \"free\" rarely means zero cost to the provider—infrastructure, development, and support expenses are typically offset through alternative revenue streams or subsidized by paying customers. Understanding the sustainability model behind any free offering is essential for evaluating long-term viability and potential limitations."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**free（免费）**\n\n在定价策略和商业模式中，\"free\"标签表示产品、服务或功能无需付费即可使用。这是一种常见的市场策略，旨在降低用户获取门槛，扩大用户基数。\n\n在技术和软件领域，免费模式通常包含以下几种形式：\n\n1. **完全免费**：产品或服务永久免费，无任何使用限制\n2. **免费增值（Freemium）**：基础功能免费，高级功能需付费升级\n3. **限时免费**：在特定时间段内免费使用，之后需付费\n4. **免费试用**：提供有限期限的免费体验，到期后需订阅\n\n免费策略的商业价值在于通过免费服务吸引用户，建立品牌认知度和用户忠诚度，再通过广告、数据变现、增值服务或企业版本实现盈利。在开源软件、SaaS平台、移动应用等领域广泛应用。\n\n对用户而言，免费标签意味着零成本试用机会，但需注意可能存在的功能限制、数据隐私政策以及后续的升级成本。"
+        }
+      },
+      "en": {
+        "name": "Free Pricing",
+        "description": "Products or services offered at no cost, using freemium, trial, or ad-supported models"
+      },
+      "zh": {
+        "name": "免费定价",
+        "description": "无需付费即可使用的产品或服务，包括免费增值、试用或广告支持等模式"
+      }
+    },
+    {
+      "slug": "freemium",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Freemium is a pricing strategy that combines \"free\" and \"premium\" elements, where a product or service is offered at no cost with basic features, while advanced functionality requires paid subscription or one-time purchase. This model is prevalent in software-as-a-service (SaaS), mobile applications, and digital platforms.\n\nThe free tier serves multiple purposes: lowering barriers to entry, enabling user acquisition at scale, and allowing potential customers to experience the product's value before committing financially. Users can access core functionality indefinitely without payment, making it distinct from free trials which are time-limited.\n\nPremium tiers typically unlock enhanced capabilities such as increased storage, advanced features, priority support, removal of advertisements, or access to professional tools. The conversion from free to paid users represents the primary revenue mechanism, with conversion rates typically ranging from 2-5% in most industries.\n\nSuccessful freemium models balance providing sufficient value in the free tier to attract and retain users while creating compelling reasons to upgrade. This strategy is particularly effective for products with low marginal costs per user, network effects that benefit from large user bases, and clear differentiation between free and premium features. Examples include Spotify, Dropbox, LinkedIn, and Slack, which have leveraged freemium to achieve significant market penetration and sustainable revenue growth."
+        },
+        "zh": {
+          "source": "wikipedia",
+          "content": "免费增值，是一种应用于专有软件（通常是像软件、多媒体、游戏或Web服务等数字产品）的一种商业模式，它提供長時間的免费使用，但其中的一些先进的特性、功能或虚拟物品则需要付费。该英文单词“freemium”是一个混合型新词，来源于“free”（免费）和“premium”（额外费用）。通常情况下这种產品本身免費供人下載，一般情况下也不会被標示為「免費軟體」，因為想要體驗完整的產品仍然是需要付費購買的（俗稱內購），不過僅提供付錢去除廣告的則不在此限。\n"
+        }
+      },
+      "en": {
+        "name": "Freemium",
+        "description": "Business model offering basic features free with paid upgrades for advanced functionality"
+      },
+      "zh": {
+        "name": "免费增值",
+        "description": "提供基础功能免费使用，高级功能需付费升级的商业模式"
+      }
+    },
+    {
+      "slug": "paid",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Paid**\n\nIn software and digital services, \"paid\" refers to products, features, or services that require monetary payment to access or use. This pricing model contrasts with free offerings and represents a fundamental business strategy for monetizing software applications, platforms, and digital content.\n\nPaid offerings typically fall into several categories: one-time purchases (perpetual licenses), subscription-based models (recurring payments), freemium upgrades (premium features beyond free tiers), and pay-per-use systems (consumption-based pricing). The paid designation indicates that users must complete a financial transaction before gaining access to the specified functionality or content.\n\nIn product catalogs and documentation, the \"paid\" tag helps users quickly identify which features or services require payment, enabling informed decision-making about resource allocation and budget planning. This classification is essential for transparent pricing communication and helps organizations segment their offerings across different customer tiers.\n\nThe paid model supports sustainable software development by generating revenue streams that fund ongoing maintenance, feature development, customer support, and infrastructure costs. It also typically implies certain service level agreements, enhanced support options, and additional guarantees compared to free alternatives."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**paid（付费）**\n\n在技术和商业领域中，\"paid\" 标签用于标识需要付费才能使用的产品、服务或功能。这是定价模型分类中的基础标签，与\"免费\"（free）、\"试用\"（trial）等标签相对应。\n\n付费模式通常包括以下几种形式：一次性购买、订阅制（按月/年收费）、按使用量计费，或混合定价策略。在软件即服务（SaaS）、应用程序、API 服务、云计算资源等领域广泛应用。\n\n标记为 \"paid\" 的项目通常意味着用户需要完成支付流程才能获得完整访问权限或解锁高级功能。这种标签帮助用户快速识别产品的商业属性，便于在浏览、筛选和比较不同服务时做出决策。\n\n在产品文档、API 文档、功能列表或服务目录中使用此标签，可以提高信息透明度，明确告知用户该功能或服务的获取方式，避免产生误解。对于开发者和企业用户而言，这个标签是评估技术方案成本和可行性的重要参考指标。"
+        }
+      },
+      "en": {
+        "name": "Paid",
+        "description": "Products or services requiring monetary payment for access or use"
+      },
+      "zh": {
+        "name": "付费",
+        "description": "需要支付费用才能访问或使用的产品或服务"
+      }
+    },
+    {
+      "slug": "subscription",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A subscription is a business model and pricing strategy where customers pay a recurring fee at regular intervals (monthly, quarterly, or annually) to access a product, service, or content. In the technology and SaaS (Software as a Service) industry, subscriptions have become the dominant monetization approach, replacing traditional one-time purchase models.\n\nSubscription pricing typically offers tiered plans with varying features, usage limits, and support levels, allowing customers to select options that match their needs and budget. This model provides businesses with predictable, recurring revenue streams and enables continuous product improvement and customer relationship management.\n\nKey characteristics include automatic renewal, flexible cancellation policies, and often a trial period for new users. Subscriptions may be usage-based (metered by consumption), seat-based (per user), or feature-based (access to specific capabilities). Common examples include streaming services, cloud infrastructure platforms, productivity software, and digital publications.\n\nThe subscription model benefits customers through lower upfront costs, regular updates, and scalability, while providing vendors with ongoing customer engagement, reduced piracy, and opportunities for upselling. Modern subscription management requires robust billing systems, customer lifecycle tracking, and churn prevention strategies to maintain sustainable growth."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**订阅（Subscription）**\n\n订阅是一种基于周期性付费的商业模式，用户通过定期支付费用（通常按月、季度或年度计费）来持续获得产品或服务的使用权限。在软件和数字服务领域，订阅模式已成为主流的定价策略。\n\n在技术产品中，订阅通常包含以下特征：\n- **持续访问权**：用户在订阅期内可持续使用服务，无需一次性购买\n- **自动续费机制**：系统自动在周期结束时扣费并延续服务\n- **分层定价**：提供不同功能级别的订阅套餐（如基础版、专业版、企业版）\n- **灵活性**：用户可随时升级、降级或取消订阅\n\n订阅模式的优势在于为企业提供可预测的经常性收入（MRR/ARR），同时降低用户的初始使用门槛。常见应用场景包括SaaS软件服务、云计算资源、流媒体平台、API调用服务等。对于用户而言，订阅模式确保能够持续获得产品更新、技术支持和新功能，无需额外付费购买升级版本。\n\n在计费系统中，订阅管理涉及账户状态追踪、支付处理、使用量监控和账单生成等核心功能。"
+        }
+      },
+      "en": {
+        "name": "Subscription",
+        "description": "Recurring payment model where customers pay regular fees to access products or services continuously"
+      },
+      "zh": {
+        "name": "订阅",
+        "description": "用户通过定期付费持续获得产品或服务使用权限的商业模式"
+      }
+    },
+    {
+      "slug": "one-time-payment",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A one-time payment is a single, non-recurring financial transaction where a customer pays the full price for a product or service upfront, with no subsequent charges or ongoing billing obligations. This pricing model contrasts with subscription-based or recurring payment structures.\n\nIn software and digital products, one-time payments typically grant perpetual access or ownership rights to a specific version of the product. Customers pay once and can use that version indefinitely, though they may need to pay separately for major upgrades or new versions. This model is common for traditional software licenses, mobile applications, digital assets, and certain SaaS products offering lifetime deals.\n\nFor businesses, one-time payments provide immediate revenue recognition and simplified billing infrastructure, eliminating the need for recurring payment processing and subscription management systems. However, they may result in lower customer lifetime value compared to subscription models and can create challenges in predicting future revenue streams.\n\nFrom a customer perspective, one-time payments offer cost predictability, no long-term commitment, and freedom from recurring charges. This model appeals to users who prefer ownership over access, have budget constraints that favor single purchases, or want to avoid subscription fatigue. The one-time payment structure remains prevalent in e-commerce, professional software tools, and premium mobile applications."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**一次性付款 (One-Time Payment)**\n\n一次性付款是一种定价模式，指用户或客户仅需支付单次费用即可永久获得产品、服务或特定功能的使用权，无需后续的周期性付款。这种付费方式与订阅制（subscription）或按使用量计费（pay-as-you-go）形成对比。\n\n在软件行业中，一次性付款通常适用于买断式软件许可证、永久访问权限或终身会员资格。用户完成支付后，即可无限期使用产品的特定版本，不受时间限制。这种模式为用户提供了成本可预测性和长期价值，特别适合不希望承担持续费用负担的客户群体。\n\n对于企业而言，一次性付款模式可以快速获得现金流，降低客户流失风险，但可能缺乏订阅模式带来的稳定经常性收入。常见应用场景包括：独立软件工具、移动应用内购买、在线课程、数字资产（如模板、插件）等。\n\n需要注意的是，一次性付款通常不包含未来的重大版本升级或持续技术支持，这些服务可能需要额外付费或升级到更高级别的许可证。"
+        }
+      },
+      "en": {
+        "name": "One-Time Payment",
+        "description": "Single upfront purchase with no recurring charges, granting perpetual access to products or services"
+      },
+      "zh": {
+        "name": "一次性付款",
+        "description": "单次支付即可永久使用产品或服务，无需后续周期性费用"
+      }
+    },
+    {
+      "slug": "open-source",
+      "category": "pricing",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Open-source refers to a software licensing and distribution model where the source code is made publicly available for anyone to view, modify, and distribute. In the context of pricing, open-source typically indicates that the core software is provided free of charge, with the source code accessible under licenses such as MIT, Apache, GPL, or BSD.\n\nFrom a business perspective, open-source pricing models often follow several strategies: offering the base product for free while charging for enterprise features, support services, hosting, or managed solutions (often called \"open-core\" or \"freemium\" models). Organizations may also generate revenue through consulting, training, certification programs, or premium add-ons.\n\nThe open-source designation in pricing contexts signals transparency, community-driven development, and reduced vendor lock-in. It allows organizations to evaluate software without upfront costs, customize solutions to their needs, and benefit from community contributions and peer review. However, \"open-source\" doesn't always mean zero cost—enterprises often pay for professional support, compliance guarantees, service-level agreements (SLAs), or enhanced features.\n\nThis pricing approach has become increasingly popular in infrastructure software, development tools, databases, and cloud-native technologies, where the open-source foundation builds trust and adoption while commercial offerings provide sustainability for maintainers and vendors."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**开源 (Open Source)**\n\n开源是一种软件授权和分发模式，指软件的源代码对公众开放，允许任何人查看、使用、修改和分发。在定价策略中，开源通常代表免费或基于社区的商业模式。\n\n**核心特征：**\n- 源代码完全公开透明，遵循开源许可协议（如 MIT、Apache、GPL 等）\n- 用户拥有自由使用、研究、修改和再分发的权利\n- 通常由社区驱动开发，鼓励协作和贡献\n\n**商业应用：**\n在定价分类中，开源产品通常采用以下策略：\n- **免费核心 + 付费服务**：基础功能免费，通过技术支持、托管服务、企业版功能获利\n- **双重许可**：社区版开源免费，商业版收费\n- **开源营销**：通过开源建立品牌影响力，推广相关付费产品\n\n开源模式降低了用户的采用门槛，促进技术创新和知识共享，同时也为企业提供了灵活的商业化路径。许多成功的技术公司（如 Red Hat、MongoDB）都基于开源模式建立了可持续的商业生态。"
+        }
+      },
+      "en": {
+        "name": "Open Source",
+        "description": "Software with publicly available source code, typically free with optional paid support or enterprise features"
+      },
+      "zh": {
+        "name": "开源",
+        "description": "源代码公开透明的软件，通常免费提供核心功能，可选付费支持或企业版"
+      }
+    }
+  ],
+  "failed": []
+}

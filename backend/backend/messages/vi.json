@@ -1,0 +1,2220 @@
+{
+  "Metadata": {
+    "name": "BuildWay",
+    "title": "BuildWay - Discover the Best AI Tools | AI Tools Directory",
+    "description": "Discover and explore the best AI tools for every need. Your ultimate AI tools directory with curated collections, reviews, and recommendations."
+  },
+  "ImageTask": {
+    "submitting": "Submitting task...",
+    "submitted": "Task submitted, generating...",
+    "generating": "Generating...",
+    "queuing": "Task queuing...",
+    "completed": "Generation completed!",
+    "cancelled": "Cancelled",
+    "generationFailed": "Generation failed, please retry",
+    "submitError": "Submit failed, please retry",
+    "submitFailed": "Submit failed: {status}",
+    "requestFailed": "Request failed: {status}",
+    "networkError": "Network error, please retry",
+    "timeout": "Task timeout, please retry later"
+  },
+  "Common": {
+    "premium": "Premium",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "signUp": "Đăng ký",
+    "language": "Chuyển ngôn ngữ",
+    "mode": {
+      "label": "Chuyển chế độ",
+      "light": "Sáng",
+      "dark": "Tối",
+      "system": "Hệ thống"
+    },
+    "theme": {
+      "label": "Chuyển chủ đề",
+      "default": "Mặc định",
+      "blue": "Xanh dương",
+      "green": "Xanh lá",
+      "amber": "Vàng cam",
+      "neutral": "Trung tính"
+    },
+    "copy": "Sao chép",
+    "saving": "Đang lưu...",
+    "save": "Lưu",
+    "loading": "Đang tải...",
+    "cancel": "Hủy",
+    "logoutFailed": "Failed to log out",
+    "table": {
+      "totalRecords": "Tổng {count} bản ghi",
+      "noResults": "Không có kết quả",
+      "loading": "Đang tải...",
+      "columns": "Cột",
+      "rowsPerPage": "Hàng mỗi trang",
+      "page": "Trang",
+      "firstPage": "Trang đầu",
+      "lastPage": "Trang cuối",
+      "nextPage": "Trang tiếp",
+      "previousPage": "Trang trước",
+      "ascending": "Tăng dần",
+      "descending": "Giảm dần"
+    }
+  },
+  "PricingPage": {
+    "title": "Submit Your AI Tool",
+    "description": "Get your AI tool featured on our directory",
+    "subtitle": "Pay once, use anytime. No subscription required.",
+    "monthly": "Hàng tháng",
+    "yearly": "Hàng năm",
+    "submitTool": {
+      "title": "Get Your AI Tool Featured",
+      "subtitle": "Reach thousands of potential users by listing your AI tool on our directory",
+      "badge": "One-Time Payment",
+      "packageName": "Tool Submission",
+      "packageDescription": "Get permanent placement in our AI tools directory",
+      "oneTime": "One-time payment, lifetime listing",
+      "submitButton": "Submit Your Tool"
+    },
+    "PricingCard": {
+      "freePrice": "$0",
+      "perMonth": "/tháng",
+      "perYear": "/năm",
+      "popular": "Phổ biến nhất",
+      "currentPlan": "Gói hiện tại",
+      "yourCurrentPlan": "Gói hiện tại của bạn",
+      "getStartedForFree": "Đăng ký miễn phí",
+      "getLifetimeAccess": "Get Lifetime Access",
+      "getStarted": "Mua ngay",
+      "notAvailable": "Không khả dụng",
+      "daysTrial": "Dùng thử {days} ngày"
+    },
+    "CheckoutButton": {
+      "loading": "Đang tải...",
+      "checkoutFailed": "Failed to open checkout page",
+      "checkoutNetworkError": "Network error. Please check your connection and try again."
+    },
+    "credits": {
+      "features": {
+        "allModels": "Access to all AI models",
+        "noExpiry": "Credits valid for 1 year",
+        "standardSupport": "Standard support",
+        "prioritySupport": "Priority support",
+        "bestValue": "Best value for money",
+        "bulkDiscount": "Best bulk discount"
+      },
+      "registerGift": "Sign up now and get {amount} free credits!",
+      "validityNotice": "Credits from current packages are valid for 1 year"
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about our credit packages",
+      "items": {
+        "item-1": {
+          "question": "How long are credits valid?",
+          "answer": "Credits purchased from our packages are valid for 1 year from the date of purchase. You can use them anytime during this period for any AI photo editing feature."
+        },
+        "item-2": {
+          "question": "How do I purchase credits?",
+          "answer": "Simply choose a credit package that suits your needs and click 'Buy Now'. You'll be redirected to a secure checkout page where you can complete your purchase using credit card or other supported payment methods."
+        },
+        "item-3": {
+          "question": "What's the difference between the packages?",
+          "answer": "Starter (200 credits) is perfect for beginners. Popular (1000 credits) offers the best value with priority support. Pro (3000 credits) provides the best bulk discount for professionals who need more credits."
+        },
+        "item-4": {
+          "question": "Can I use credits for all AI features?",
+          "answer": "Yes! All purchased credits can be used for any AI photo editing feature on our platform, including background removal, image enhancement, upscaling, and all other AI models."
+        },
+        "item-5": {
+          "question": "What happens if my credits expire?",
+          "answer": "Credits expire 1 year after purchase. We recommend using them before expiration. You can check your credit balance and expiration date in your account dashboard."
+        },
+        "item-6": {
+          "question": "Can I transfer credits to another account?",
+          "answer": "No, credits are non-transferable and tied to the account that purchased them. This helps us maintain security and prevent fraud."
+        },
+        "item-7": {
+          "question": "Do you offer refunds?",
+          "answer": "We offer refunds within 30 days of purchase if you haven't used more than 10% of your credits. Please contact our support team for assistance with refund requests."
+        },
+        "item-8": {
+          "question": "What payment methods do you accept?",
+          "answer": "We accept all major credit cards, debit cards, and PayPal. All payments are processed securely through Stripe, ensuring your payment information is protected."
+        }
+      }
+    },
+    "modelCredits": {
+      "badge": "AI Models",
+      "title": "Model Credits Usage",
+      "subtitle": "Different models have unique features and credit costs. Choose the best one for your needs.",
+      "columns": {
+        "model": "Model Name",
+        "features": "Tính năng",
+        "useCases": "Use Cases",
+        "credits": "Tín dụng"
+      },
+      "tags": {
+        "fastGeneration": "Fast Generation",
+        "strongConsistency": "Strong Consistency",
+        "strongComprehension": "Strong Comprehension",
+        "4kHd": "4K HD",
+        "multiImageGen": "Multi-Image Gen",
+        "ultraFast": "Ultra Fast",
+        "highQuality": "High Quality",
+        "asyncProcess": "Async Process"
+      },
+      "useCases": {
+        "nano-banana": "Quick generation, daily creations, social media posts",
+        "nano-banana-pro": "High-resolution output, commercial use, print materials",
+        "seedream-4-5": "Batch generation, style consistency, series creation",
+        "z-image-turbo": "Instant preview, rapid iteration, creative exploration"
+      },
+      "perGeneration": "credits/gen",
+      "note": "Credit consumption varies by model. Premium models offer higher quality output."
+    }
+  },
+  "PricePlans": {
+    "free": {
+      "name": "Miễn phí",
+      "description": "Try AI photo editing for free",
+      "features": {
+        "feature-1": "2 credits mỗi tháng",
+        "feature-2": "Max file size 2MB",
+        "feature-3": "Max resolution 1024×1024",
+        "feature-4": "Standard processing queue",
+        "feature-5": "60-day history retention",
+        "feature-6": "Community support"
+      },
+      "limits": {}
+    },
+    "basic": {
+      "name": "Basic",
+      "description": "For everyday photo editing needs",
+      "features": {
+        "feature-1": "200 credits/tháng",
+        "feature-2": "Max file size 20MB",
+        "feature-3": "Max resolution 2048×2048",
+        "feature-4": "Standard processing queue",
+        "feature-5": "1-year history retention",
+        "feature-6": "Email support (48h response)"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "For professionals and power users",
+      "features": {
+        "feature-1": "500 credits/tháng",
+        "feature-2": "Max file size 20MB",
+        "feature-3": "Max resolution 4096×4096 (4K)",
+        "feature-4": "Priority processing queue",
+        "feature-5": "Permanent history retention",
+        "feature-6": "Save custom presets",
+        "feature-7": "Priority support (24h response)",
+        "feature-8": "Early access to new features"
+      }
+    }
+  },
+  "CreditPackages": {
+    "starter": {
+      "name": "Starter",
+      "description": "Perfect for beginners"
+    },
+    "popular": {
+      "name": "Popular",
+      "description": "Best value"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "For professionals"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "Sorry, the page you are looking for does not exist.",
+    "backToHome": "Back to home"
+  },
+  "ErrorPage": {
+    "title": "Oops! Something went wrong!",
+    "tryAgain": "Try again",
+    "backToHome": "Back to home"
+  },
+  "AboutPage": {
+    "title": "Về chúng tôi",
+    "description": "BuildWay is your ultimate AI tools directory. Discover, compare, and choose the best AI tools for your projects.",
+    "authorName": "BuildWay",
+    "authorBio": "AI Tools Directory & Discovery Platform",
+    "introduction": "BuildWay is a curated directory of the best AI tools available. Whether you're a developer, designer, marketer, or entrepreneur, we help you discover and compare AI tools to find the perfect solution for your needs. From productivity tools to creative AI, we make finding the right AI tool simple and efficient.",
+    "talkWithMe": "Contact Us",
+    "followMe": "Follow us"
+  },
+  "ChangelogPage": {
+    "title": "Changelog",
+    "description": "Track our journey as we continuously improve and expand our AI tools directory",
+    "subtitle": "Every update brings new tools and better features",
+    "startPoint": "Where it all began",
+    "latestVersion": "Latest"
+  },
+  "ContactPage": {
+    "title": "Liên hệ",
+    "description": "We'll help you find the right plan for your business",
+    "subtitle": "We'll help you find the right plan for your business",
+    "form": {
+      "title": "Contact Us",
+      "description": "If you have any questions or feedback, please reach out to our team",
+      "name": "Tên",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Gửi",
+      "submitting": "Đang gửi...",
+      "success": "Message sent successfully",
+      "fail": "Failed to send message",
+      "nameMinLength": "Name must be at least 3 characters",
+      "nameMaxLength": "Name must not exceed 30 characters",
+      "emailValidation": "Please enter a valid email address",
+      "messageMinLength": "Message must be at least 10 characters",
+      "messageMaxLength": "Message must not exceed 500 characters"
+    }
+  },
+  "WaitlistPage": {
+    "title": "Waitlist",
+    "description": "Join our waitlist for the launch of our product",
+    "subtitle": "Join our waitlist for the launch of our product",
+    "form": {
+      "title": "Join Our Waitlist",
+      "description": "We will notify you when we launch our product",
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Subscribed successfully",
+      "fail": "Failed to subscribe",
+      "emailValidation": "Please enter a valid email address"
+    }
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Join the community",
+    "description": "Subscribe to our newsletter for the latest news and updates",
+    "form": {
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Subscribed successfully",
+      "fail": "Failed to subscribe",
+      "emailValidation": "Please enter a valid email address"
+    }
+  },
+  "AuthPage": {
+    "login": {
+      "title": "Đăng nhập",
+      "welcomeBack": "Chào mừng trở lại",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "signIn": "Sign In",
+      "signUpHint": "Chưa có tài khoản? Đăng ký",
+      "forgotPassword": "Quên mật khẩu?",
+      "signInWithGoogle": "Sign In with Google",
+      "signInWithGitHub": "Sign In with GitHub",
+      "showPassword": "Hiển thị mật khẩu",
+      "hidePassword": "Ẩn mật khẩu",
+      "or": "Hoặc tiếp tục với",
+      "emailRequired": "Please enter your email",
+      "passwordRequired": "Please enter your password",
+      "captchaInvalid": "Captcha verification failed",
+      "captchaError": "Captcha verification error"
+    },
+    "register": {
+      "title": "Đăng ký",
+      "createAccount": "Tạo tài khoản",
+      "name": "Tên",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "signUp": "Sign Up",
+      "signInHint": "Đã có tài khoản? Đăng nhập",
+      "checkEmail": "Vui lòng kiểm tra hộp thư của bạn",
+      "showPassword": "Hiển thị mật khẩu",
+      "hidePassword": "Ẩn mật khẩu",
+      "nameRequired": "Please enter your name",
+      "emailRequired": "Please enter your email",
+      "passwordRequired": "Please enter your password",
+      "captchaInvalid": "Captcha verification failed",
+      "captchaError": "Captcha verification error"
+    },
+    "forgotPassword": {
+      "title": "Quên mật khẩu",
+      "email": "Email",
+      "send": "Gửi liên kết đặt lại",
+      "backToLogin": "Quay lại đăng nhập",
+      "checkEmail": "Vui lòng kiểm tra hộp thư của bạn",
+      "emailRequired": "Please enter your email"
+    },
+    "resetPassword": {
+      "title": "Đặt lại mật khẩu",
+      "password": "Mật khẩu",
+      "reset": "Reset password",
+      "backToLogin": "Quay lại đăng nhập",
+      "showPassword": "Hiển thị mật khẩu",
+      "hidePassword": "Ẩn mật khẩu",
+      "minLength": "Password must be at least 8 characters"
+    },
+    "error": {
+      "title": "Oops! Something went wrong!",
+      "tryAgain": "Please try again.",
+      "backToLogin": "Quay lại đăng nhập",
+      "checkEmail": "Vui lòng kiểm tra hộp thư của bạn"
+    },
+    "common": {
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "byClickingContinue": "By clicking continue, you agree to our ",
+      "and": " and "
+    }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "description": "AI tools insights, industry trends, and expert guides",
+    "subtitle": "Stay updated with the latest in AI tools and technology",
+    "author": "Author",
+    "categories": "Categories",
+    "tableOfContents": "Table of Contents",
+    "readTime": "{minutes} phút đọc",
+    "readTimeShort": "{minutes} phút",
+    "all": "Tất cả",
+    "noPostsFound": "No posts found",
+    "allPosts": "All Posts",
+    "morePosts": "More Posts"
+  },
+  "DocsPage": {
+    "toc": "Table of Contents",
+    "search": "Search docs",
+    "lastUpdate": "Last updated on",
+    "searchNoResult": "Không có kết quả",
+    "previousPage": "Trước",
+    "nextPage": "Tiếp",
+    "chooseLanguage": "Select language",
+    "title": "MkSaaS Docs",
+    "homepage": "Homepage"
+  },
+  "PremiumContent": {
+    "title": "Unlock Premium Content",
+    "description": "Subscribe to our Pro plan to access all premium content and exclusive content.",
+    "upgradeCta": "Upgrade Now",
+    "benefit1": "All premium content",
+    "benefit2": "Exclusive content",
+    "benefit3": "Cancel anytime",
+    "signIn": "Sign In",
+    "loginRequired": "Sign in to continue reading",
+    "loginDescription": "This is premium content. Sign in to your account to access the full content.",
+    "checkingAccess": "Checking access...",
+    "loadingContent": "Loading full content..."
+  },
+  "Marketing": {
+    "navbar": {
+      "tools": {
+        "title": "Công cụ"
+      },
+      "submit": {
+        "title": "Gửi công cụ"
+      },
+      "features": {
+        "title": "Tính năng"
+      },
+      "pricing": {
+        "title": "Giá cả"
+      },
+      "blog": {
+        "title": "Blog"
+      },
+      "about": {
+        "title": "Về chúng tôi"
+      },
+      "docs": {
+        "title": "Tài liệu"
+      },
+      "ai": {
+        "title": "AI Tools",
+        "items": {
+          "text": {
+            "title": "AI Text",
+            "description": "Show how to use AI to write stunning text"
+          },
+          "image": {
+            "title": "AI Image",
+            "description": "Show how to use AI to generate beautiful images"
+          },
+          "chat": {
+            "title": "AI Chat",
+            "description": "Show how to use AI to chat with your customers"
+          },
+          "video": {
+            "title": "AI Video",
+            "description": "Show how to use AI to generate amazing videos"
+          },
+          "audio": {
+            "title": "AI Audio",
+            "description": "Show how to use AI to generate wonderful audio"
+          }
+        }
+      },
+      "pages": {
+        "title": "Pages",
+        "items": {
+          "about": {
+            "title": "Về chúng tôi",
+            "description": "Learn more about our company, mission, and values"
+          },
+          "contact": {
+            "title": "Liên hệ",
+            "description": "Get in touch with our team for support or inquiries"
+          },
+          "waitlist": {
+            "title": "Waitlist",
+            "description": "Join our waitlist for latest news and updates"
+          },
+          "changelog": {
+            "title": "Changelog",
+            "description": "See the latest updates to our products"
+          },
+          "roadmap": {
+            "title": "Roadmap",
+            "description": "Explore our future plans and upcoming features"
+          },
+          "cookiePolicy": {
+            "title": "Cookie Policy",
+            "description": "How we use the cookies on our website"
+          },
+          "privacyPolicy": {
+            "title": "Privacy Policy",
+            "description": "How we protect and handle your data"
+          },
+          "termsOfService": {
+            "title": "Terms of Service",
+            "description": "The legal agreement between you and our company"
+          }
+        }
+      },
+      "blocks": {
+        "title": "Blocks",
+        "items": {
+          "magicui": {
+            "title": "MagicUI Blocks"
+          },
+          "hero-section": {
+            "title": "Hero Blocks"
+          },
+          "logo-cloud": {
+            "title": "Logo Cloud Blocks"
+          },
+          "integrations": {
+            "title": "Integrations Blocks"
+          },
+          "features": {
+            "title": "Features Blocks"
+          },
+          "content": {
+            "title": "Content Blocks"
+          },
+          "stats": {
+            "title": "Stats Blocks"
+          },
+          "team": {
+            "title": "Team Blocks"
+          },
+          "testimonials": {
+            "title": "Testimonials Blocks"
+          },
+          "callToAction": {
+            "title": "Call to Action Blocks"
+          },
+          "footer": {
+            "title": "Footer Blocks"
+          },
+          "pricing": {
+            "title": "Pricing Blocks"
+          },
+          "comparator": {
+            "title": "Comparator Blocks"
+          },
+          "faq": {
+            "title": "FAQ Blocks"
+          },
+          "login": {
+            "title": "Login Blocks"
+          },
+          "signup": {
+            "title": "Signup Blocks"
+          },
+          "forgot-password": {
+            "title": "Forgot Password Blocks"
+          },
+          "contact": {
+            "title": "Contact Blocks"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "Your ultimate AI tools directory — discover, compare, and choose the best AI tools for your projects",
+      "product": {
+        "title": "Product",
+        "items": {
+          "features": "Tính năng",
+          "pricing": "Giá cả",
+          "faq": "FAQ"
+        }
+      },
+      "resources": {
+        "title": "Resources",
+        "items": {
+          "blog": "Blog",
+          "docs": "Tài liệu",
+          "changelog": "Changelog",
+          "roadmap": "Roadmap"
+        }
+      },
+      "company": {
+        "title": "Company",
+        "items": {
+          "about": "Về chúng tôi",
+          "contact": "Liên hệ",
+          "waitlist": "Waitlist"
+        }
+      },
+      "legal": {
+        "title": "Legal",
+        "items": {
+          "cookiePolicy": "Cookie Policy",
+          "privacyPolicy": "Privacy Policy",
+          "termsOfService": "Terms of Service",
+          "refundPolicy": "Refund Policy"
+        }
+      }
+    },
+    "avatar": {
+      "history": "Lịch sử",
+      "billing": "Thanh toán",
+      "credits": "Tín dụng",
+      "settings": "Cài đặt"
+    }
+  },
+  "Dashboard": {
+    "dashboard": {
+      "title": "Bảng điều khiển"
+    },
+    "studio": {
+      "title": "Tạo",
+      "create": "New Creation",
+      "myWorks": "My Works",
+      "videos": "Videos",
+      "emptyTitle": "No creations yet",
+      "emptyDescription": "Start creating amazing AI-generated images with just a text prompt."
+    },
+    "admin": {
+      "title": "Admin",
+      "users": {
+        "title": "Users",
+        "fakeData": "Note: Faked data for demonstration, some features are disabled",
+        "error": "Failed to get users",
+        "search": "Search users...",
+        "columns": {
+          "columns": "Cột",
+          "name": "Tên",
+          "email": "Email",
+          "role": "Role",
+          "createdAt": "Created At",
+          "customerId": "Customer ID",
+          "status": "Status",
+          "banReason": "Ban Reason",
+          "banExpires": "Ban Expires"
+        },
+        "admin": "Admin",
+        "user": "User",
+        "email": {
+          "verified": "Email Verified",
+          "unverified": "Email Unverified"
+        },
+        "emailCopied": "Email copied to clipboard",
+        "banned": "Banned",
+        "active": "Hoạt động",
+        "joined": "Joined at",
+        "updated": "Updated at",
+        "ban": {
+          "reason": "Ban Reason",
+          "reasonPlaceholder": "Enter the reason for banning this user",
+          "defaultReason": "Spamming",
+          "never": "Không bao giờ",
+          "expires": "Ban Expires",
+          "selectDate": "Select Date",
+          "button": "Ban User",
+          "success": "User has been banned",
+          "error": "Failed to ban user"
+        },
+        "unban": {
+          "button": "Unban User",
+          "success": "User has been unbanned",
+          "error": "Failed to unban user"
+        },
+        "close": "Đóng"
+      },
+      "generations": {
+        "title": "Generations",
+        "searchPlaceholder": "Search user email...",
+        "totalRecords": "Tổng {count} bản ghi",
+        "columns": {
+          "columns": "Cột",
+          "user": "User",
+          "type": "Type",
+          "status": "Status",
+          "prompt": "Prompt",
+          "model": "Model",
+          "inputImage": "Input",
+          "outputImage": "Output",
+          "credits": "Tín dụng",
+          "createdAt": "Created At",
+          "error": "Lỗi"
+        },
+        "filters": {
+          "status": "Status",
+          "allStatus": "All Status",
+          "pending": "Đang chờ",
+          "processing": "Đang xử lý",
+          "completed": "Hoàn thành",
+          "failed": "Thất bại",
+          "type": "Type",
+          "allType": "All Types",
+          "generate": "Generate",
+          "enhance": "Enhance",
+          "edit": "Sửa",
+          "inpaint": "Inpaint",
+          "outpaint": "Outpaint",
+          "upscale": "Upscale"
+        }
+      },
+      "submissions": {
+        "title": "Tool Submissions",
+        "description": "View all tool submissions from all users",
+        "total": "Tổng {count} bản ghi",
+        "empty": "No submissions found",
+        "status": {
+          "pending": "Đang chờ",
+          "approved": "Đã duyệt",
+          "rejected": "Đã từ chối"
+        },
+        "filter": {
+          "status": "Status Filter",
+          "all": "Tất cả"
+        },
+        "search": {
+          "placeholder": "Search tool name, URL or email..."
+        },
+        "columns": {
+          "name": "Tool Name",
+          "url": "Tool URL",
+          "submitter": "Submitter",
+          "status": "Status",
+          "submittedAt": "Submitted At",
+          "actions": "Actions"
+        },
+        "pagination": {
+          "showing": "Showing {from} - {to} of {total}",
+          "page": "Page {current} / {total}"
+        },
+        "rejectReason": "Reject Reason",
+        "approve": "Approve",
+        "reject": "Reject",
+        "view": "Xem",
+        "rejectDialog": {
+          "title": "Reject Submission",
+          "description": "Please enter the rejection reason. The user will see this reason",
+          "reason": "Reject Reason",
+          "reasonPlaceholder": "Please enter the rejection reason...",
+          "quickReasons": "Quick fill",
+          "quickReason1": "This tool does not align with our AI tools directory theme",
+          "quickReason2": "Duplicate submission detected",
+          "quickReason3": "The tool website is inaccessible or has been taken down",
+          "quickReason4": "A similar tool already exists in our directory",
+          "quickReason5": "The submitted screenshots or logo do not match the actual tool",
+          "quickReason6": "The tool lacks substantial functionality or value",
+          "quickReason7": "No backlink found on your website. Please add one and resubmit",
+          "quickReason8": "We do not list tools or websites related to adult content, gambling, or other grey-area industries",
+          "cancel": "Hủy",
+          "submit": "Confirm Reject",
+          "submitting": "Đang gửi..."
+        },
+        "viewDialog": {
+          "title": "Submission Details",
+          "description": "View detailed information about the submission",
+          "name": "Tool Name",
+          "url": "Tool URL",
+          "descriptionLabel": "Description",
+          "status": "Status",
+          "close": "Đóng"
+        }
+      },
+      "allRecords": {
+        "title": "All Submission Records",
+        "description": "View all user submission records, including tool submissions",
+        "total": "Tổng {count} bản ghi",
+        "empty": "No records found",
+        "status": {
+          "pending": "Đang chờ",
+          "approved": "Đã duyệt",
+          "rejected": "Đã từ chối"
+        },
+        "filter": {
+          "status": "Status Filter",
+          "all": "Tất cả"
+        },
+        "search": {
+          "placeholder": "Search name, URL, description, username or email..."
+        },
+        "columns": {
+          "name": "Tên",
+          "url": "URL",
+          "description": "Description",
+          "submitter": "Submitter",
+          "status": "Status",
+          "submittedAt": "Submitted At"
+        },
+        "pagination": {
+          "showing": "Showing {from} - {to} of {total}",
+          "page": "Page {current} / {total}"
+        }
+      },
+      "tools": {
+        "title": "Tools Management",
+        "description": "Manage all tools in the directory",
+        "total": "Total {count} tools",
+        "empty": "No tools found",
+        "add": "Add Tool",
+        "search": {
+          "placeholder": "Search tool name, URL or slug..."
+        },
+        "filter": {
+          "status": "Status Filter",
+          "all": "Tất cả",
+          "published": "Đã xuất bản",
+          "publishedOnly": "Published Only",
+          "draftOnly": "Draft Only",
+          "pending": "Đang chờ",
+          "rejected": "Đã từ chối",
+          "featured": "Nổi bật",
+          "featuredOnly": "Featured Only",
+          "notFeatured": "Not Featured"
+        },
+        "columns": {
+          "name": "Tên",
+          "url": "URL",
+          "categories": "Categories",
+          "tags": "Tags",
+          "status": "Status",
+          "createdAt": "Created At",
+          "actions": "Actions"
+        },
+        "status": {
+          "published": "Đã xuất bản",
+          "draft": "Bản nháp",
+          "featured": "Nổi bật"
+        },
+        "actions": {
+          "edit": "Sửa",
+          "delete": "Xóa"
+        },
+        "editDialog": {
+          "titleAdd": "Add New Tool",
+          "titleEdit": "Edit Tool",
+          "descriptionAdd": "Add a new tool to the directory",
+          "descriptionEdit": "Edit tool information and content",
+          "basicInfo": "Basic Info (Shared)",
+          "analyzeWebsite": "Analyze Website",
+          "analyzing": "AI is analyzing the website...",
+          "generateContent": "AI Generate",
+          "generating": "AI is generating content, this may take 20-30 seconds...",
+          "referenceContent": "Reference Content",
+          "fetchContent": "Fetch from URL",
+          "fetchingContent": "Fetching content from website...",
+          "referenceContentPlaceholder": "Paste or fetch website content here. This will be used as reference for AI content generation.",
+          "save": "Lưu",
+          "saving": "Đang lưu...",
+          "cancel": "Hủy",
+          "featuredLabel": "Nổi bật",
+          "publishedLabel": "Đã xuất bản"
+        },
+        "deleteDialog": {
+          "title": "Delete Tool",
+          "description": "Are you sure you want to delete this tool? This action cannot be undone.",
+          "cancel": "Hủy",
+          "confirm": "Xóa",
+          "deleting": "Đang xóa..."
+        },
+        "pagination": {
+          "showing": "Showing {from} - {to} of {total}",
+          "page": "Page {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Tool created successfully",
+          "updateSuccess": "Tool updated successfully",
+          "deleteSuccess": "Tool deleted successfully",
+          "error": "Operation failed"
+        }
+      },
+      "tags": {
+        "title": "Tag Management",
+        "description": "Manage tool tags and categories",
+        "total": "{count} tags in total",
+        "empty": "No tags yet",
+        "add": "Add Tag",
+        "search": {
+          "placeholder": "Search tag name or slug..."
+        },
+        "filter": {
+          "category": "Filter by Category",
+          "all": "Tất cả",
+          "published": "Publication Status",
+          "publishedOnly": "Đã xuất bản",
+          "draftOnly": "Bản nháp",
+          "featured": "Featured Status",
+          "featuredOnly": "Nổi bật",
+          "notFeatured": "Not Featured"
+        },
+        "columns": {
+          "name": "Tên",
+          "slug": "Slug",
+          "category": "Category",
+          "color": "Color",
+          "usageCount": "Usage Count",
+          "status": "Status",
+          "actions": "Actions"
+        },
+        "status": {
+          "published": "Đã xuất bản",
+          "draft": "Bản nháp",
+          "archived": "Đã lưu trữ",
+          "featured": "Nổi bật"
+        },
+        "category": {
+          "type": "Type",
+          "pricing": "Giá cả",
+          "platform": "Platform",
+          "feature": "Feature",
+          "general": "General",
+          "other": "Other"
+        },
+        "actions": {
+          "edit": "Sửa",
+          "delete": "Xóa",
+          "view": "Xem"
+        },
+        "pagination": {
+          "showing": "Showing {from} - {to} of {total}",
+          "page": "Page {current} / {total}"
+        },
+        "toast": {
+          "createSuccess": "Tag created successfully",
+          "updateSuccess": "Tag updated successfully",
+          "deleteSuccess": "Tag deleted successfully",
+          "error": "Operation failed"
+        },
+        "form": {
+          "create": "Create Tag",
+          "edit": "Edit Tag",
+          "slug": "Slug",
+          "slugPlaceholder": "ai-tool",
+          "slugHint": "URL-friendly identifier",
+          "enName": "English Name",
+          "enNamePlaceholder": "AI Tool",
+          "zhName": "Chinese Name",
+          "zhNamePlaceholder": "AI 工具",
+          "enDescription": "English Description",
+          "enDescriptionPlaceholder": "Tools powered by artificial intelligence",
+          "zhDescription": "Chinese Description",
+          "zhDescriptionPlaceholder": "由人工智能驱动的工具",
+          "category": "Category",
+          "categoryPlaceholder": "Select category",
+          "color": "Color",
+          "colorPlaceholder": "#3B82F6",
+          "iconEmoji": "Icon Emoji",
+          "iconEmojiPlaceholder": "🤖",
+          "published": "Đã xuất bản",
+          "featured": "Nổi bật",
+          "cancel": "Hủy",
+          "save": "Lưu",
+          "saving": "Đang lưu..."
+        },
+        "deleteDialog": {
+          "title": "Delete Tag",
+          "description": "Are you sure you want to delete this tag? This action cannot be undone.",
+          "cancel": "Hủy",
+          "confirm": "Confirm Delete",
+          "deleting": "Đang xóa..."
+        }
+      }
+    },
+    "settings": {
+      "title": "Cài đặt",
+      "profile": {
+        "title": "Hồ sơ",
+        "description": "Manage your account information",
+        "avatar": {
+          "title": "Avatar",
+          "description": "Click upload button to upload a custom one",
+          "recommendation": "An avatar is optional but strongly recommended",
+          "uploading": "Uploading...",
+          "uploadAvatar": "Upload Avatar",
+          "success": "Avatar updated successfully",
+          "fail": "Failed to update avatar"
+        },
+        "name": {
+          "title": "Tên",
+          "description": "Please enter your display name",
+          "placeholder": "Enter your name",
+          "minLength": "Please use 3 characters at minimum",
+          "maxLength": "Please use 30 characters at maximum",
+          "hint": "Please use 3-30 characters for your name",
+          "success": "Name updated successfully",
+          "fail": "Failed to update name",
+          "saving": "Đang lưu...",
+          "save": "Lưu"
+        }
+      },
+      "billing": {
+        "title": "Thanh toán",
+        "description": "Manage your subscription and billing details",
+        "status": {
+          "active": "Hoạt động",
+          "trial": "Dùng thử",
+          "free": "Miễn phí",
+          "lifetime": "Trọn đờii"
+        },
+        "interval": {
+          "month": "month",
+          "year": "year",
+          "oneTime": "one-time"
+        },
+        "currentPlan": {
+          "title": "Gói hiện tại",
+          "description": "Your current plan details",
+          "noPlan": "You have no active plan"
+        },
+        "CustomerPortalButton": {
+          "loading": "Đang tải...",
+          "createCustomerPortalFailed": "Failed to open Stripe customer portal"
+        },
+        "price": "Price:",
+        "periodStartDate": "Period start date:",
+        "periodEndDate": "Period end date:",
+        "trialEnds": "Trial ends:",
+        "freePlanMessage": "You are currently on the free plan with limited features",
+        "lifetimeMessage": "You have lifetime access to all premium features",
+        "manageSubscription": "Manage Subscription and Billing",
+        "manageBilling": "Manage Billing",
+        "upgradePlan": "Upgrade Plan",
+        "retry": "Thử lại",
+        "errorMessage": "Failed to get data",
+        "paymentSuccess": "Payment successful"
+      },
+      "credits": {
+        "title": "Tín dụng",
+        "description": "Manage your credit transactions",
+        "tabs": {
+          "balance": "Balance",
+          "transactions": "Transactions"
+        },
+        "balance": {
+          "title": "Credit Balance",
+          "description": "Your credit balance",
+          "credits": "Tín dụng",
+          "creditsDescription": "You have {credits} credits",
+          "creditsExpired": "Credits expired",
+          "creditsAdded": "Credits have been added to your account",
+          "viewTransactions": "View Credit Transactions",
+          "retry": "Thử lại",
+          "expiringCredits": "{credits} credits expiring in the next {days} days"
+        },
+        "packages": {
+          "title": "Credit Packages",
+          "description": "Purchase additional credits to use our services",
+          "purchase": "Purchase",
+          "processing": "Đang xử lý...",
+          "popular": "Popular",
+          "completePurchase": "Complete Your Purchase",
+          "failedToFetchCredits": "Failed to fetch credits",
+          "failedToCreatePaymentIntent": "Failed to create payment intent",
+          "failedToInitiatePayment": "Failed to initiate payment",
+          "cancel": "Hủy",
+          "purchaseFailed": "Purchase credits failed",
+          "checkoutFailed": "Failed to create checkout session",
+          "loading": "Đang tải...",
+          "pay": "Pay"
+        },
+        "transactions": {
+          "title": "Credit Transactions",
+          "error": "Failed to get credit transactions",
+          "search": "Search credit transactions...",
+          "paymentIdCopied": "Payment ID copied to clipboard",
+          "columns": {
+            "columns": "Cột",
+            "id": "ID",
+            "type": "Type",
+            "description": "Description",
+            "amount": "Amount",
+            "remainingAmount": "Remaining Amount",
+            "paymentId": "Payment ID",
+            "expirationDate": "Expiration Date",
+            "expirationDateProcessedAt": "Expiration Date Processed At",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At"
+          },
+          "types": {
+            "MONTHLY_REFRESH": "Monthly Refresh",
+            "REGISTER_GIFT": "Register Gift",
+            "PURCHASE": "Purchased Credits",
+            "USAGE": "Consumed Credits",
+            "EXPIRE": "Expired Credits",
+            "SUBSCRIPTION_RENEWAL": "Subscription Renewal",
+            "LIFETIME_MONTHLY": "Lifetime Monthly"
+          },
+          "detailViewer": {
+            "title": "Credit Transaction Detail",
+            "close": "Đóng"
+          },
+          "expired": "Expired",
+          "never": "No expiration date"
+        }
+      },
+      "history": {
+        "title": "Lịch sử",
+        "description": "View your image processing history",
+        "empty": "No history yet",
+        "prev": "Trước",
+        "next": "Tiếp",
+        "detail": "Image Detail",
+        "input": "Original",
+        "output": "Result",
+        "credits": "credits",
+        "type": {
+          "enhance": "Enhance",
+          "generate": "Generate"
+        },
+        "status": {
+          "success": "Thành công",
+          "failed": "Thất bại"
+        }
+      },
+      "notification": {
+        "title": "Notification",
+        "description": "Manage your notification preferences",
+        "newsletter": {
+          "title": "Newsletter Subscription",
+          "description": "Manage your newsletter subscription preferences",
+          "label": "Subscribe to newsletter",
+          "hint": "You can change your subscription preferences at any time",
+          "emailRequired": "Email is required to subscribe to the newsletter",
+          "subscribeSuccess": "Successfully subscribed to the newsletter",
+          "subscribeFail": "Failed to subscribe to the newsletter",
+          "unsubscribeSuccess": "Successfully unsubscribed from the newsletter",
+          "unsubscribeFail": "Failed to unsubscribe from the newsletter",
+          "error": "An error occurred while updating your subscription"
+        }
+      },
+      "security": {
+        "title": "Security",
+        "description": "Manage your security settings",
+        "updatePassword": {
+          "title": "Change Password",
+          "description": "Enter your current password and a new password",
+          "currentPassword": "Current Password",
+          "currentRequired": "Current password is required",
+          "newPassword": "New Password",
+          "newMinLength": "Password must be at least 8 characters",
+          "hint": "Please use at least 8 characters for password",
+          "showPassword": "Hiển thị mật khẩu",
+          "hidePassword": "Ẩn mật khẩu",
+          "success": "Password updated successfully",
+          "fail": "Failed to update password",
+          "saving": "Đang lưu...",
+          "save": "Lưu"
+        },
+        "resetPassword": {
+          "title": "Đặt lại mật khẩu",
+          "description": "Reset password to enable email login",
+          "info": "Resetting your password will allow you to sign in using your email and password in addition to your social login methods. You will receive an email with instructions to reset your password",
+          "button": "Đặt lại mật khẩu"
+        },
+        "deleteAccount": {
+          "title": "Delete Account",
+          "description": "Permanently remove your account and all of its contents",
+          "warning": "This action is not reversible, so please continue with caution",
+          "button": "Delete Account",
+          "confirmTitle": "Delete Account",
+          "confirmDescription": "Are you sure you want to delete your account? This action cannot be undone.",
+          "confirm": "Xóa",
+          "cancel": "Hủy",
+          "deleting": "Đang xóa...",
+          "success": "Account deleted successfully",
+          "fail": "Failed to delete account"
+        }
+      },
+      "submissions": {
+        "title": "My Submissions",
+        "description": "View your tool submission records",
+        "total": "Tổng {count} bản ghi",
+        "empty": "No submissions yet",
+        "successAfterPayment": "Payment successful! Your tool has been submitted and is now awaiting review.",
+        "status": {
+          "unpaid": "Unpaid",
+          "pending": "Đang chờ",
+          "approved": "Đã duyệt",
+          "rejected": "Đã từ chối"
+        },
+        "filter": {
+          "status": "Status Filter",
+          "all": "Tất cả"
+        },
+        "columns": {
+          "name": "Tool Name",
+          "url": "Tool URL",
+          "status": "Status",
+          "submittedAt": "Submitted At",
+          "actions": "Actions"
+        },
+        "pagination": {
+          "showing": "Showing {from} - {to} of {total}",
+          "page": "Page {current} / {total}"
+        },
+        "rejectReason": "Reject Reason",
+        "edit": "Sửa",
+        "editDialog": {
+          "title": "Edit Submission",
+          "description": "Modify your submission information. After modification, it will re-enter the review process",
+          "name": "Tool Name",
+          "url": "Tool URL",
+          "logo": "Logo",
+          "screenshot": "Screenshot",
+          "descriptionLabel": "Description",
+          "descriptionOptional": "Description is optional",
+          "cancel": "Hủy",
+          "submit": "Save and Resubmit",
+          "submitting": "Đang gửi..."
+        }
+      }
+    },
+    "upgrade": {
+      "title": "Nâng cấp",
+      "description": "Upgrade to Pro to access all features",
+      "button": "Nâng cấp"
+    }
+  },
+  "Mail": {
+    "common": {
+      "team": "{name} Team",
+      "copyright": "©️ {year} All Rights Reserved."
+    },
+    "verifyEmail": {
+      "title": "Hi, {name}.",
+      "body": "Please click the link below to verify your email address.",
+      "confirmEmail": "Confirm email",
+      "subject": "Verify your email"
+    },
+    "forgotPassword": {
+      "title": "Hi, {name}.",
+      "body": "Please click the link below to reset your password.",
+      "resetPassword": "Reset password",
+      "subject": "Reset your password"
+    },
+    "subscribeNewsletter": {
+      "body": "Thank you for subscribing to Vidlyo! You'll receive the latest tips on AI video & image creation, new feature updates, and exclusive offers. Stay tuned for powerful AI creation tools and techniques.",
+      "subject": "Welcome to Vidlyo"
+    },
+    "contactMessage": {
+      "name": "Name: {name}",
+      "email": "Email: {email}",
+      "message": "Message: {message}",
+      "subject": "Contact Message from Website"
+    }
+  },
+  "HomePage": {
+    "title": "BuildWay - Discover the Best AI Tools",
+    "description": "Discover curated AI tools for every need. Find the perfect solution for your next project.",
+    "hero": {
+      "badge": "🚀 AI Tools Directory",
+      "introduction": "Follow us on X",
+      "title": "Discover the Best AI Tools",
+      "subtitle": "Discover curated AI tools for every need. Find the perfect solution for your next project.",
+      "description": "Discover curated AI tools for every need. Find the perfect solution for your next project.",
+      "primary": "Bắt đầu",
+      "secondary": "See Demo",
+      "searchPlaceholder": "Search AI tools, categories, or features...",
+      "stats": {
+        "tools": "AI Tools",
+        "categories": "Categories",
+        "users": "Users"
+      }
+    },
+    "latestTools": {
+      "title": "Latest AI Tools",
+      "subtitle": "Recently added to our collection",
+      "justLaunched": "Mới ra mắt",
+      "viewAll": "View All Tools",
+      "featuredTitle": "Nổi bật"
+    },
+    "submitCta": {
+      "badge": "Submit Your Tool",
+      "title": "Share Your AI Tool with the Community",
+      "description": "Get your AI tool featured and gain more exposure to potential users discovering new solutions.",
+      "button": "Gửi công cụ"
+    },
+    "logocloud": {
+      "title": "Your favorite companies are our partners"
+    },
+    "integration": {
+      "title": "Integrations",
+      "subtitle": "Integrate with your favorite tools",
+      "description": "Connect seamlessly with popular platforms and services to enhance your workflow.",
+      "learnMore": "Learn More",
+      "items": {
+        "item-1": {
+          "title": "Google Gemini",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-2": {
+          "title": "Replit",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-3": {
+          "title": "MagicUI",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-4": {
+          "title": "VSCodium",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-5": {
+          "title": "MediaWiki",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-6": {
+          "title": "Google PaLM",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        }
+      }
+    },
+    "integration2": {
+      "title": "Integrate with your favorite tools",
+      "description": "Connect seamlessly with popular platforms and services to enhance your workflow.",
+      "primaryButton": "Bắt đầu",
+      "secondaryButton": "See Demo"
+    },
+    "pricing": {
+      "title": "Giá cả",
+      "subtitle": "Giá cả",
+      "description": "Choose the plan that works best for you"
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What our customers are saying",
+      "items": {
+        "item-1": {
+          "name": "Jonathan Yombo",
+          "role": "Software Engineer",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "quote": "MkSaaS is really extraordinary and very practical, no need to break your head. A real gold mine."
+        },
+        "item-2": {
+          "name": "Yves Kalume",
+          "role": "GDE - Android",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg",
+          "quote": "With no experience in webdesign I just redesigned my entire website in a few minutes with tailwindcss thanks to MkSaaS."
+        },
+        "item-3": {
+          "name": "Yucel Faruksahan",
+          "role": "Tailkits Creator",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg",
+          "quote": "Great work on MkSaaS template. This is one of the best personal website that I have seen so far :)"
+        },
+        "item-4": {
+          "name": "Anonymous author",
+          "role": "Product Manager",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg",
+          "quote": "I downloaded the one of MkSaaS template which is very clear to understand at the start and you could modify the codes/blocks to fit perfectly on your purpose of the page."
+        },
+        "item-5": {
+          "name": "Shekinah Tshiokufila",
+          "role": "Senior Software Engineer",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "quote": "MkSaaS is redefining the standard of web design, with these blocks it provides an easy and efficient way for those who love beauty but may lack the time to implement it."
+        },
+        "item-6": {
+          "name": "Oketa Fred",
+          "role": "Fullstack Developer",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg",
+          "quote": "I absolutely love MkSaaS! The component blocks are beautifully designed and easy to use, which makes creating a great-looking website a breeze."
+        },
+        "item-7": {
+          "name": "Zeki",
+          "role": "Founder of ChatExtend",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg",
+          "quote": "MkSaaS is the perfect fusion of simplicity and versatility, enabling us to create UIs that are as stunning as they are user-friendly."
+        },
+        "item-8": {
+          "name": "Joseph Kitheka",
+          "role": "Fullstack Developer",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg",
+          "quote": "MkSaaS has transformed the way I develop web applications. Their extensive collection of UI components, blocks, and templates has significantly accelerated my workflow."
+        },
+        "item-9": {
+          "name": "Khatab Wedaa",
+          "role": "MerakiUI Creator",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg",
+          "quote": "MkSaaS is an elegant, clean, and responsive tailwind css components it's very helpful to start fast with your project."
+        },
+        "item-10": {
+          "name": "Rodrigo Aguilar",
+          "role": "TailwindAwesome Creator",
+          "image": "https://randomuser.me/api/portraits/men/11.jpg",
+          "quote": "I love MkSaaS ❤️. The component blocks are well-structured, simple to use, and beautifully designed. It makes it really easy to have a good-looking website in no time."
+        },
+        "item-11": {
+          "name": "Eric Ampire",
+          "role": "@GoogleDevExpert for Android",
+          "image": "https://randomuser.me/api/portraits/men/12.jpg",
+          "quote": "MkSaaS templates are the perfect solution for anyone who wants to create a beautiful and functional website without any web design experience."
+        },
+        "item-12": {
+          "name": "Roland Tubonge",
+          "role": "Software Engineer",
+          "image": "https://randomuser.me/api/portraits/men/13.jpg",
+          "quote": "MkSaaS is so well designed that even with a very poor knowledge of web design you can do miracles. Let yourself be seduced!"
+        }
+      }
+    },
+    "stats": {
+      "title": "Stats",
+      "subtitle": "MkSaaS in numbers",
+      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "items": {
+        "item-1": {
+          "title": "Stars on GitHub"
+        },
+        "item-2": {
+          "title": "Active Users"
+        },
+        "item-3": {
+          "title": "Powered Apps"
+        }
+      }
+    },
+    "calltoaction": {
+      "title": "Start Building",
+      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "primaryButton": "Bắt đầu",
+      "secondaryButton": "See Demo"
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Common questions about the AI tools directory",
+      "items": {
+        "item-1": {
+          "question": "How many AI tools are listed on this website?",
+          "answer": "We continuously curate and update high-quality AI tools covering various fields including image generation, video generation, text writing, audio music, code development, and more. Our collection is constantly growing as we add new tools."
+        },
+        "item-2": {
+          "question": "How can I submit my AI tool?",
+          "answer": "Click the 'Submit Tool' button on the homepage and fill in the basic information about your tool (name, website, description, category, etc.). We will review your submission within 1-3 business days, and once approved, it will be displayed on the website."
+        },
+        "item-3": {
+          "question": "How are tools categorized?",
+          "answer": "We categorize tools by function into multiple categories: image generation, video generation, text writing, audio music, code development, design creativity, productivity, marketing SEO, data analysis, chat assistants, and more. Each tool may belong to multiple categories."
+        },
+        "item-4": {
+          "question": "Are all tools free?",
+          "answer": "No. The tools we list include completely free tools, tools with free trials, and paid-only tools. Each tool's detail page will indicate pricing information, so you can choose the right tool based on your needs."
+        },
+        "item-5": {
+          "question": "How do I search for a specific tool?",
+          "answer": "Use the search box at the top of the homepage and enter keywords to search. The search will match tool names, descriptions, and tags to help you quickly find the tools you need."
+        },
+        "item-6": {
+          "question": "What are featured tools?",
+          "answer": "Featured tools are high-quality tools carefully selected by our editorial team based on quality, popularity, user reviews, and feature completeness. These tools excel in their respective fields."
+        },
+        "item-7": {
+          "question": "How often is the directory updated?",
+          "answer": "We regularly update our directory with new AI tools and remove outdated or discontinued ones. Our team reviews and adds new tools on a weekly basis to ensure you have access to the latest and most relevant AI solutions."
+        },
+        "item-8": {
+          "question": "Can I request a specific tool to be added?",
+          "answer": "Yes! If you know of a great AI tool that isn't listed, you can submit it through our 'Submit Tool' feature. We review all submissions and add tools that meet our quality standards and provide value to our community."
+        }
+      }
+    }
+  },
+  "AIImagePage": {
+    "title": "AI Image",
+    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+  },
+  "AIChatPage": {
+    "title": "AI Chat",
+    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+  },
+  "AIVideoPage": {
+    "title": "AI Video",
+    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+  },
+  "AIAudioPage": {
+    "title": "AI Audio",
+    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+  },
+  "LandingPage": {
+    "metadata": {
+      "title": "Vidlyo - AI Video & Image Generator | One-Stop Creation Platform",
+      "description": "Your one-stop AI video & image creation platform. Generate stunning images, create videos from text or images with AI. Text to Video, Image to Video, AI Animation Generator and more."
+    },
+    "hero": {
+      "badge": "AI-Powered Creation Platform",
+      "title": "Create Stunning",
+      "titleHighlight": "AI Videos & Images",
+      "subtitle": "Your one-stop AI creation platform.",
+      "noPlasticSkin": "Text to Video. Image to Video.",
+      "noBeautyFilter": "AI Animation. AI Image Generator.",
+      "description": "Transform your ideas into stunning videos and images with AI. Generate from text prompts, animate photos, create AI art — all in one powerful platform.",
+      "cta": "Start Creating Free",
+      "ctaSecondary": "See Examples",
+      "users": "creators",
+      "rating": "rating",
+      "scroll": "Scroll",
+      "processing": "Đang xử lý",
+      "processingTime": "< 30 seconds"
+    },
+    "howItWorks": {
+      "sectionLabel": "How It Works",
+      "title": "Create AI Videos & Images in 3 Simple Steps",
+      "subtitle": "Transform your ideas into stunning visuals. Enter a prompt, choose your style, and let AI do the magic. No technical skills needed.",
+      "steps": {
+        "upload": {
+          "step": "01",
+          "title": "Enter Your Creative Prompt",
+          "description": "Describe what you want to create — a cinematic video scene, stunning artwork, or animated character. Upload reference images for even better results."
+        },
+        "choose": {
+          "step": "02",
+          "title": "Choose AI Model & Style",
+          "description": "Select from our powerful AI models. Pick aspect ratio, duration, and style. Our AI video generator and image generator handle the rest."
+        },
+        "download": {
+          "step": "03",
+          "title": "Download Your AI Creation",
+          "description": "Your AI-generated video or image is ready in seconds. Preview, refine if needed, then download in high quality. Professional results every time."
+        }
+      }
+    },
+    "features": {
+      "sectionLabel": "Tính năng",
+      "title": "Powerful AI Image Creation Features",
+      "subtitle": "Everything you need to create stunning images with AI. From text-to-image to style transfer, professional quality to lightning-fast generation. Video features coming soon.",
+      "items": {
+        "textToVideo": {
+          "subtitle": "AI Video Generator",
+          "title": "Text to Video AI",
+          "description": "Turn your text prompts into stunning, captivating videos. Describe any scene — cinematic shots, product demos, or creative animations — and watch AI bring your vision to life with realistic motion and audio. Coming soon."
+        },
+        "imageToVideo": {
+          "subtitle": "Image to Video AI",
+          "title": "Animate Your Images with AI",
+          "description": "Transform still images into dynamic, realistic videos. Upload a photo and let AI add natural motion, expressions, and life. Perfect for creating engaging content from existing photos. Coming soon."
+        },
+        "referenceToVideo": {
+          "subtitle": "Reference to Video",
+          "title": "Keep Characters Consistent Across Videos",
+          "description": "Provide reference images of your character, object, or scene, and keep them consistent across all frames in your videos. Perfect for storytelling, brand content, and series creation. Coming soon."
+        },
+        "textToImage": {
+          "subtitle": "AI Image Generator",
+          "title": "Text to Stunning Images",
+          "description": "Transform your ideas into stunning visuals with AI. Simply describe what you want — futuristic cityscapes, serene landscapes, or anything you can imagine. Our advanced AI models generate high-quality images in seconds."
+        },
+        "cartoonStyle": {
+          "subtitle": "Cartoon Style Converter",
+          "title": "Transform Photo into Cartoon-Style",
+          "description": "In just one click, transform your photos into favored cartoon styles, such as Disney, Pixar, Simpsons, and Cyberpunk for free! Step into the spotlight on social media."
+        },
+        "ghibliStyle": {
+          "subtitle": "Ghibli Style Converter",
+          "title": "Convert Photo to Ghibli-Style",
+          "highlightedTitle": "Magical Animation Style",
+          "description": "Quickly turn your photos into Ghibli-style artwork with lush, hand-drawn animation and vibrant color palettes. Capture every detail in your images and infuse them with whimsical and magical elements.",
+          "imageAlt": {
+            "0": "Original Photo",
+            "1": "Ghibli-Style Result"
+          }
+        },
+        "handMadePaintings": {
+          "subtitle": "Hand-Made Style Converter",
+          "title": "Change Photos to Hand-Made Paintings",
+          "highlightedTitle": "",
+          "description": "Effortlessly add a hand-made painting filter to your images. Swiftly convert your digital photos into high-quality and watermark-free oil paintings, illustrations, or watercolor artwork.",
+          "imageAlt": {
+            "0": "Before - Original Photo",
+            "1": "After - Hand-Made Painting Effect"
+          }
+        },
+        "aiAnimation": {
+          "subtitle": "AI Animation Generator",
+          "title": "Create Anime & Cartoon Videos",
+          "description": "Generate captivating anime and cartoon videos in various styles. Choose from famous animator styles including Hayao Miyazaki, Makoto Shinkai, and more. Transform your ideas into animated masterpieces. Coming soon."
+        },
+        "aiOutfitChange": {
+          "subtitle": "AI Outfit Changer",
+          "title": "AI Smart Outfit Change",
+          "highlightedTitle": "Instant Transformation",
+          "description": "Upload your photo and choose different clothing styles. AI helps you achieve perfect outfit changes while maintaining your facial features, expressions, and pose. Perfect for fashion photography, social media content, and creative design.",
+          "imageAlt": {
+            "0": "Before - Pink Sweater Outfit",
+            "1": "After - Brown Jacket Outfit"
+          }
+        }
+      },
+      "cta": "Start Creating Now"
+    },
+    "useCases": {
+      "sectionLabel": "AI Creation Use Cases",
+      "title": "What Can You Create with Vidlyo?",
+      "description": "Powerful AI tools for every creative scenario. From marketing videos to social content, one-stop solutions for all your needs.",
+      "items": {
+        "marketing": {
+          "title": "Marketing Videos",
+          "subtitle": "Product demos & promotional content",
+          "description": "Create stunning product videos, promotional content, and ad creatives with AI. Perfect for e-commerce, social media ads, and brand campaigns."
+        },
+        "social": {
+          "title": "Social Media Content",
+          "subtitle": "Viral shorts & engaging posts",
+          "description": "Generate eye-catching videos and images for TikTok, Instagram, YouTube Shorts. Create viral content that stands out in crowded feeds."
+        },
+        "avatar": {
+          "title": "AI Avatar Videos",
+          "subtitle": "Photo to video avatar",
+          "description": "Transform a single photo into a fully animated AI avatar video up to 2 minutes long. Complete with realistic movement, lip sync, and expressive emotions."
+        },
+        "animation": {
+          "title": "AI Animation",
+          "subtitle": "Anime & cartoon style videos",
+          "description": "Generate captivating anime and cartoon videos in various styles. From Ghibli to Pixar, create animated content without animation skills."
+        },
+        "musicVideo": {
+          "title": "AI Music Videos",
+          "subtitle": "Turn songs into visual stories",
+          "description": "Turn your songs into captivating music videos in just minutes with AI. Create stunning visuals that match your music's mood and rhythm."
+        },
+        "storytelling": {
+          "title": "Visual Storytelling",
+          "subtitle": "Consistent characters & scenes",
+          "description": "Create multi-scene videos with consistent characters and settings. Perfect for short films, educational content, and narrative projects."
+        },
+        "productShots": {
+          "title": "Product Photography",
+          "subtitle": "Professional product images",
+          "description": "Generate stunning product images with perfect lighting and backgrounds. Ideal for e-commerce listings, catalogs, and marketing materials."
+        },
+        "artCreation": {
+          "title": "AI Art Generation",
+          "subtitle": "Digital art & illustrations",
+          "description": "Create unique digital artwork, illustrations, and concept art. From realistic to abstract, explore endless creative possibilities."
+        },
+        "videoEnhance": {
+          "title": "Video Enhancement",
+          "subtitle": "Upscale & improve quality",
+          "description": "Enhance video quality with AI. Upscale resolution, improve clarity, and transform ordinary footage into professional-grade content."
+        },
+        "styleTransfer": {
+          "title": "Style Transfer",
+          "subtitle": "Transform video aesthetics",
+          "description": "Apply artistic styles to your videos. Transform footage into anime, oil painting, cyberpunk, and 30+ creative styles."
+        },
+        "imageEdit": {
+          "title": "AI Image Editing",
+          "subtitle": "Edit with text prompts",
+          "description": "Edit images using natural language. Remove backgrounds, change elements, enhance quality — all with simple text descriptions."
+        },
+        "shorts": {
+          "title": "AI Shorts Generator",
+          "subtitle": "One-click viral videos",
+          "description": "Create breathtaking multi-scene short videos with just one click. Perfect for TikTok, Reels, and YouTube Shorts content."
+        }
+      }
+    },
+    "testimonials": {
+      "sectionLabel": "Testimonials",
+      "title": "What Creators Say About Vidlyo",
+      "items": {
+        "sarah": {
+          "name": "Sarah Mitchell",
+          "role": "Content Creator",
+          "content": "Vidlyo's AI video generator is incredible! I create stunning videos from text prompts in minutes. The text-to-video quality rivals professional production."
+        },
+        "james": {
+          "name": "James Chen",
+          "role": "Marketing Manager",
+          "content": "This AI video generator saves us hours of production time. Image to video AI is perfect for product demos. Best AI creation platform for marketing teams."
+        },
+        "emily": {
+          "name": "Emily Rodriguez",
+          "role": "Social Media Influencer",
+          "content": "Finally an all-in-one AI creation platform! AI image generator plus video tools in one place. My engagement has skyrocketed since using Vidlyo."
+        }
+      }
+    },
+    "midCta": {
+      "title": "Your One-Stop",
+      "titleHighlight": "AI Video & Image Creation Platform",
+      "description": "Create stunning AI videos and images with text prompts. Text to Video, Image to Video, AI Animation, AI Image Generator — all in one powerful platform.",
+      "cta": "Start Creating Free"
+    },
+    "trustSecurity": {
+      "sectionLabel": "Privacy & Security",
+      "title": "Create with AI",
+      "titleHighlight": "Safely & Privately",
+      "description": "Your creations are personal. Vidlyo keeps your content encrypted and private. Create AI videos and images with confidence — no data sharing.",
+      "subDescription": "AI video generator with no restrictions on privacy. What you create stays yours. Generate content without worrying about data collection.",
+      "features": {
+        "encryption": {
+          "title": "Encrypted Processing",
+          "description": "AI video and image generation with end-to-end encryption."
+        },
+        "private": {
+          "title": "Private AI Creation",
+          "description": "Only you can view and download your AI-generated content."
+        },
+        "secure": {
+          "title": "Secure Processing",
+          "description": "AI generation in isolated secure cloud environments."
+        },
+        "noSharing": {
+          "title": "No Data Sharing",
+          "description": "AI creation platform that never shares your content."
+        }
+      }
+    },
+    "faq": {
+      "sectionLabel": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Everything you need to know about BuildWay",
+      "items": {
+        "noSignup": {
+          "question": "What is BuildWay?",
+          "answer": "BuildWay is a curated directory of the best AI tools available. We help you discover, compare, and choose the right AI tools for your projects, whether you're a developer, designer, marketer, or entrepreneur."
+        },
+        "freeToUse": {
+          "question": "Is BuildWay free to use?",
+          "answer": "Yes! BuildWay is completely free to use. You can browse, search, and discover AI tools without any registration or payment required."
+        },
+        "upscale": {
+          "question": "How do you select tools?",
+          "answer": "We carefully curate each tool based on quality, user reviews, features, and reliability. Our team tests and evaluates tools to ensure we only recommend the best solutions."
+        },
+        "enhance": {
+          "question": "Can I submit my AI tool?",
+          "answer": "Absolutely! We welcome tool submissions from developers and companies. Click the 'Submit Tool' button to share your AI tool with our community."
+        },
+        "pixelated": {
+          "question": "How often is the directory updated?",
+          "answer": "We update our directory regularly, adding new tools weekly and updating existing listings to ensure information stays current and accurate."
+        },
+        "secured": {
+          "question": "Do you offer tool comparisons?",
+          "answer": "Yes! Each tool listing includes detailed information, ratings, and features to help you compare different options and make informed decisions."
+        },
+        "mobileSupport": {
+          "question": "Can I use BuildWay on mobile?",
+          "answer": "Yes! BuildWay is fully responsive and works perfectly on all devices — desktop, tablet, and mobile. Browse and discover AI tools on the go."
+        },
+        "regenerate": {
+          "question": "How are tools categorized?",
+          "answer": "Tools are organized by categories like productivity, design, development, marketing, and more. Use our search and filter features to find exactly what you need."
+        },
+        "commercial": {
+          "question": "Do you have affiliate relationships?",
+          "answer": "Some tool listings may include affiliate links, which help us maintain the directory. We always prioritize honest reviews and only recommend tools we believe in."
+        }
+      },
+      "moreHelp": "Still have questions?",
+      "contactUs": "Contact us"
+    },
+    "intro": {
+      "sectionLabel": "Discover",
+      "sectionTitle": "Transform Your Ideas with AI",
+      "what": {
+        "subtitle": "Introduction",
+        "title": "What is Vidlyo?",
+        "description": "Vidlyo is your one-stop AI video & image creation platform. Generate stunning videos from text prompts, animate photos with AI, create professional images — all in one powerful platform. Text to Video, Image to Video, AI Animation, and more."
+      },
+      "why": {
+        "subtitle": "Why Choose Us",
+        "title": "Why Choose Vidlyo AI Creation Platform?",
+        "description": "Vidlyo combines the best AI video generator and AI image generator in one platform. Create professional content in seconds with simple text prompts. No technical skills needed — just describe what you want and let AI do the magic."
+      },
+      "struggling": {
+        "subtitle": "Bắt đầu",
+        "title": "Ready to Create Amazing AI Content?",
+        "description": "Traditional video and image creation is slow and expensive. Vidlyo changes that. Generate AI videos and images with simple text prompts. From marketing content to social media posts — create professional visuals in minutes, not hours."
+      }
+    },
+    "highlights": {
+      "title": "Why Creators Choose Vidlyo",
+      "subtitle": "All-in-one AI creation platform with powerful features. AI video generator, AI image generator, animation tools — everything you need in one place.",
+      "items": {
+        "easy": {
+          "title": "Simple Text Prompts",
+          "description": "No complex software — just describe what you want. Our AI understands natural language and creates stunning videos and images from your descriptions."
+        },
+        "models": {
+          "title": "Powerful AI Models",
+          "description": "Access cutting-edge AI models for video and image generation. From fast iterations to high-quality professional output — choose the right model for your needs."
+        },
+        "free": {
+          "title": "All-in-One Platform",
+          "description": "Text to Video, Image to Video, AI Animation, AI Image Generator — all creation tools in one platform. No need to switch between multiple apps."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Start Creating",
+      "titleHighlight": "Amazing AI Content",
+      "description": "Join millions of creators using Vidlyo. Generate stunning AI videos and images with simple text prompts. Your one-stop AI creation platform.",
+      "cta": "Start Creating Free",
+      "trust": {
+        "gdpr": "Privacy Protected",
+        "noStorage": "Secure Processing",
+        "ssl": "SSL Encrypted"
+      }
+    },
+    "quickEnhance": {
+      "badge": "Try It Now",
+      "title": "Experience AI Photo Editing",
+      "subtitle": "Upload a photo and witness the AI magic in seconds",
+      "upload": {
+        "title": "Upload Image",
+        "dragDrop": "Drag & drop or click to upload",
+        "formats": "Supports JPG, PNG, WEBP up to {size}MB",
+        "errorFormat": "Please upload JPG, PNG or WEBP image",
+        "errorSize": "File size must be less than {size}MB",
+        "uploading": "Uploading..."
+      },
+      "modes": {
+        "title": "Edit Mode",
+        "skin": "AI Enhance",
+        "upscale": "Upscale",
+        "restore": "Restore",
+        "comingSoon": "Coming Soon"
+      },
+      "enhance": "Start Edit",
+      "processing": "Đang xử lý...",
+      "download": "Tải xuống",
+      "downloadSuccess": "Download successful",
+      "downloadFallback": "Image opened in new tab, please right-click to save",
+      "generateFirst": "Please generate result first",
+      "tryAgain": "Try Again",
+      "error": "Edit failed. Please try again.",
+      "errors": {
+        "UNAUTHORIZED": "Please login first",
+        "INSUFFICIENT_CREDITS": "Insufficient credits. You need {required} credits.",
+        "INVALID_IMAGE_URL": "Invalid image URL",
+        "REPLICATE_API_ERROR": "AI processing failed, please try again",
+        "NETWORK_ERROR": "Network error, please check your connection",
+        "TIMEOUT": "Processing timeout, please try again",
+        "UNKNOWN": "Unknown error, please contact support"
+      },
+      "hint": "Free users: max 2MB | Paid users: max 20MB | Need larger? Contact us",
+      "result": {
+        "title": "Result Preview",
+        "yourResult": "Your Result",
+        "sampleHint": "Upload an image to see your own result"
+      }
+    },
+    "aiEditor": {
+      "badge": "Your One-Stop AI Creation Platform",
+      "titlePart1": "Create Stunning",
+      "titleHighlight": "AI Videos & Images",
+      "subtitle": "Transform your ideas into reality with powerful AI. Text to Video, Image to Video, AI Animation, AI Image Generator — all in one platform.",
+      "users": "creators",
+      "rating": "rating",
+      "imagesGenerated": "creations made",
+      "quickPrompts": {
+        "portrait": "Portrait",
+        "landscape": "Landscape",
+        "abstract": "Abstract Art"
+      },
+      "inputBar": {
+        "placeholder": "Describe what you want to create or edit..."
+      },
+      "toolbar": {
+        "model": "Model",
+        "ratio": "Ratio",
+        "more": "Thêm",
+        "public": "Public Visibility",
+        "publicDescription": "Show in community gallery",
+        "credits": "{count} credits",
+        "clear": "Xóa"
+      },
+      "imageUpload": {
+        "add": "Thêm",
+        "manageImages": "Manage Images",
+        "retry": "Thử lại",
+        "errorFormat": "Only JPG, PNG, WebP formats are supported",
+        "errorSize": "File size cannot exceed {size}MB",
+        "errorMaxImages": "Maximum {max} images allowed",
+        "errorDuplicate": "This image has already been uploaded"
+      },
+      "tabs": {
+        "textToImage": "Text to Image"
+      },
+      "models": {
+        "title": "Models",
+        "description": "Quick and precise image edits"
+      },
+      "images": {
+        "title": "Images"
+      },
+      "uploader": {
+        "dragDrop": "Click or drag to upload images",
+        "formats": "Supports JPG, PNG, WebP, max {size}MB",
+        "selected": "Selected {count}/{max}",
+        "add": "Thêm",
+        "errorFormat": "Only JPG, PNG, WebP formats are supported",
+        "errorSize": "File size cannot exceed {size}MB",
+        "errorMaxImages": "Maximum {max} images allowed",
+        "errorDuplicate": "This image has already been uploaded"
+      },
+      "prompt": {
+        "title": "Prompt",
+        "placeholder": "Describe your editing requirements, such as \"Remove the person in the background\""
+      },
+      "quickActions": {
+        "title": "Quick Actions"
+      },
+      "aspectRatio": {
+        "title": "Aspect Ratio"
+      },
+      "optionsBar": {
+        "model": "Model",
+        "ratio": "Ratio",
+        "public": "Public",
+        "publicTooltip": "When enabled, generated images will be displayed in the community gallery for others to see",
+        "clear": "Xóa",
+        "generate": "Generate ({credits} credits)",
+        "generating": "Generating..."
+      },
+      "result": {
+        "original": "Original",
+        "edited": "Edited",
+        "generated": "Generated",
+        "edit": "Sửa",
+        "download": "Tải xuống",
+        "clickToEnlarge": "Click to enlarge"
+      },
+      "preview": {
+        "title": "Image Preview",
+        "reset": "Đặt lại",
+        "hint": "Click to zoom in · Drag to pan · Scroll to zoom",
+        "galleryHint": "Use ← → to navigate · Click to zoom",
+        "escHint": "Press ESC to close"
+      },
+      "status": {
+        "uploading": "Images are uploading, please wait...",
+        "uploadFailed": "Some images failed to upload, please remove and retry",
+        "waitUpload": "Please wait for all images to finish uploading",
+        "processing": "Đang xử lý...",
+        "aiProcessing": "Please wait, AI is generating your image",
+        "cancel": "Hủy",
+        "uploadError": "Upload failed",
+        "generateError": "Generation failed",
+        "retryHint": "Please try again later",
+        "retry": "Thử lại",
+        "refresh": "Làm mới",
+        "defaultPrompt": "Keep original style, optimize quality",
+        "generateFailed": "Generation failed, please retry",
+        "characters": "characters",
+        "promptRequired": "Please enter a prompt to generate an image"
+      },
+      "loginRequired": "Login Required",
+      "generate": "Generate",
+      "generating": "Generating...",
+      "features": {
+        "hairColor": {
+          "name": "Change hair color",
+          "description": "Transform hair color with AI - from natural tones to vibrant shades"
+        },
+        "switchClothing": {
+          "name": "Switch clothing",
+          "description": "Virtually try on different outfits and styles instantly"
+        },
+        "replaceBackground": {
+          "name": "Replace background",
+          "description": "Change photo backgrounds to any scene or setting"
+        },
+        "removeObject": {
+          "name": "Remove object",
+          "description": "Seamlessly erase unwanted elements from your photos"
+        },
+        "enhanceQuality": {
+          "name": "Enhance quality",
+          "description": "AI-powered image enhancement for professional results"
+        },
+        "adjustExpression": {
+          "name": "Adjust expression",
+          "description": "Modify facial expressions naturally with AI precision"
+        }
+      },
+      "creditsExhausted": "Your credits have been exhausted.",
+      "upgradeToContinue": "Upgrade to continue"
+    },
+    "common": {
+      "before": "Before",
+      "after": "After",
+      "comparison": "Before and after comparison slider"
+    },
+    "gallery": {
+      "title": "Get Inspired",
+      "subtitle": "Explore stunning AI videos and images created by our community",
+      "hint": "Hover to see prompts and models used",
+      "createSimilar": "Create Similar"
+    },
+    "toolsShowcase": {
+      "badge": "AI Creation Tools",
+      "title": "Cutting-Edge AI Tools for Every Creative Need",
+      "subtitle": "Powerful AI video and image tools to bring your ideas to life. Generate, enhance, transform — everything you need for professional content creation.",
+      "tabs": {
+        "all": "All Tools",
+        "image": "Image Tools",
+        "video": "Video Tools"
+      },
+      "viewMore": "View More Tools",
+      "comingSoon": "Coming Soon",
+      "tools": {
+        "textToVideo": "Text to Video AI",
+        "textToVideoDesc": "Turn text prompts into stunning, captivating videos",
+        "imageToVideo": "Image to Video AI",
+        "imageToVideoDesc": "Animate still images into realistic, dynamic videos",
+        "referenceToVideo": "Reference to Video",
+        "referenceToVideoDesc": "Keep characters consistent across all video frames",
+        "videoToVideo": "Video to Video AI",
+        "videoToVideoDesc": "Transform videos into 30+ creative animation styles",
+        "aiAnimation": "AI Animation Generator",
+        "aiAnimationDesc": "Generate anime and cartoon videos in various styles",
+        "aiShorts": "AI Shorts Generator",
+        "aiShortsDesc": "Create viral short videos with no filming needed",
+        "aiAvatar": "AI Avatar Generator",
+        "aiAvatarDesc": "Create lifelike video avatars from a single photo",
+        "videoEnhance": "AI Video Enhancer",
+        "videoEnhanceDesc": "Enhance video quality with AI technology",
+        "textToImage": "AI Image Generator",
+        "textToImageDesc": "Generate stunning images from text descriptions",
+        "backgroundRemoval": "Background Removal",
+        "backgroundRemovalDesc": "Remove backgrounds instantly with AI precision",
+        "imageEnhance": "AI Image Enhancer",
+        "imageEnhanceDesc": "Enhance image quality and details automatically",
+        "imageUpscale": "AI Image Upscaler",
+        "imageUpscaleDesc": "Upscale images to 4K without losing quality",
+        "styleTransfer": "Style Transfer",
+        "styleTransferDesc": "Transform photos into Ghibli, anime, and more styles",
+        "objectRemoval": "Object Removal",
+        "objectRemovalDesc": "Remove unwanted objects from photos seamlessly"
+      }
+    }
+  },
+  "Generator": {
+    "toolbar": {
+      "aiImage": "AI Image",
+      "aiVideo": "AI Video",
+      "comingSoon": "Coming Soon",
+      "public": "Public Visibility",
+      "publicDescription": "Show in community gallery",
+      "credits": "Tín dụng",
+      "creditsCost": "credits/gen",
+      "aspectRatio": "Aspect Ratio",
+      "resolution": "Resolution",
+      "qualityNotSupported": "Quality selection not supported by this model",
+      "qualityModelHint": "Switch to Nano Banana Pro for quality options",
+      "features": {
+        "title": "Tính năng",
+        "text-to-video": "Text/Image to Video",
+        "reference-to-video": "Reference to Video",
+        "frames-to-video": "Frames to Video"
+      }
+    },
+    "presets": {
+      "refresh": "Refresh presets",
+      "portrait": "Portrait",
+      "landscape": "Landscape",
+      "abstract": "Abstract Art",
+      "anime": "Anime Style",
+      "realistic": "Realistic",
+      "fantasy": "Fantasy"
+    }
+  },
+  "ToolsPage": {
+    "badge": "AI Tools Directory",
+    "title": "Discover AI Tools",
+    "description": "Explore our curated collection of AI tools for image generation, video editing, text processing, audio creation, and more. Boost your creative productivity.",
+    "totalTools": "Total Tools",
+    "backToTools": "Back to Tools",
+    "visitWebsite": "Visit Website",
+    "collectedOn": "Collected on",
+    "toolNotFound": "Tool Not Found",
+    "listedOn": "Listed on",
+    "reviews": {
+      "title": "{name} Đánh giá ({count})",
+      "averageRating": "{rating} trên 5",
+      "noRating": "Chưa có đánh giá",
+      "recommend": "Bạn có muốn giới thiệu {name}? Để lại nhận xét",
+      "placeholder": "Chia sẻ trải nghiệm của bạn...",
+      "charCount": "{current}/{max}",
+      "loginToComment": "Login to comment",
+      "submit": "Submit Review",
+      "update": "Update Review",
+      "delete": "Xóa",
+      "deleteConfirm": "Bạn có chắc muốn xóa đánh giá này?",
+      "noReviews": "Chưa có đánh giá. Hãy là người đầu tiên chia sẻ trải nghiệm!",
+      "loadMore": "Load More",
+      "submitSuccess": "Review submitted successfully!",
+      "updateSuccess": "Review updated successfully!",
+      "deleteSuccess": "Review deleted successfully!",
+      "ratingRequired": "Please select a rating",
+      "edited": "edited"
+    },
+    "searchResults": {
+      "found": "Found",
+      "tools": "tools",
+      "tool": "tool",
+      "for": "for",
+      "about": "about"
+    },
+    "totalToolsCount": "{count} curated AI tools available",
+    "submit": {
+      "badge": "Gửi công cụ",
+      "title": "Submit Your AI Tool",
+      "description": "Share your AI tool with our community. We review all submissions carefully.",
+      "plans": {
+        "free": {
+          "title": "FREE",
+          "price": "$0",
+          "feature1": "Get 3 dofollow links to boost your SEO",
+          "feature2": "Permanent link with backlink maintenance",
+          "feature3": "Reviewed and listed within 1 - 2 weeks",
+          "feature4": "Publish your product the day you want",
+          "limit1": "Backlink to our site is required",
+          "limit2": "No customer support",
+          "cta": "Submit for Review",
+          "backlinkRequired": "Free listing requires a backlink to our site."
+        },
+        "pro": {
+          "title": "PRO",
+          "popular": "POPULAR",
+          "price": "$4.99",
+          "feature1": "Get >= 3 dofollow links to boost your SEO",
+          "feature2": "Listed within 48 hours",
+          "feature3": "Permanent link, no backlink required",
+          "feature4": "Featured placement at the top of listings",
+          "feature5": "Share through social media and newsletters",
+          "feature6": "Premium customer support",
+          "cta": "Pay & Publish Right Now",
+          "comingSoonNote": "Secure payment via Creem. You will be redirected to checkout after submitting."
+        }
+      },
+      "inclusionTips": {
+        "title": "Submission Guidelines",
+        "items": [
+          "Only AI-related tools or websites are accepted. Non-AI tools will be rejected",
+          "The tool website must be accessible. Broken or inaccessible links will be rejected",
+          "We do not accept tools or websites related to adult content, gambling, or other grey-area industries",
+          "Submissions with functionality identical to already-listed tools may be rejected",
+          "Free plan submissions require a backlink to our site on your website"
+        ]
+      },
+      "backlinkNotice": {
+        "title": "Backlink Detection Notice",
+        "message": "We detected that your website does not contain a backlink to us. Please add a backlink on your website, then resubmit for review.",
+        "badgeTab": "Badge",
+        "textLinkTab": "Text Link",
+        "themeLabel": "Switch Badge Theme:",
+        "dark": "Tối",
+        "light": "Sáng",
+        "copyCode": "Copy code",
+        "preview": "Preview:",
+        "gotIt": "Got it",
+        "payAndPublish": "Pay & Publish Right Now"
+      },
+      "examples": {
+        "title": "Example Tools",
+        "description": "Here are some tools we've already featured, which you can use as a reference:",
+        "visitWebsite": "Visit Website"
+      },
+      "form": {
+        "toolName": "Tool Name",
+        "toolUrl": "Tool URL",
+        "description": "Description",
+        "descriptionOptional": "Optional: Tell us more about this tool",
+        "yourEmail": "Your Email",
+        "emailHint": "We'll contact you if we have questions",
+        "submitButton": "Gửi công cụ",
+        "submitting": "Đang gửi...",
+        "logo": {
+          "label": "Logo",
+          "description": "Supports JPEG, PNG, WebP · Max 1MB",
+          "uploading": "Uploading...",
+          "uploadLogo": "Upload Logo",
+          "dragOrClick": "Drag or click to upload"
+        },
+        "screenshot": {
+          "label": "Screenshot",
+          "description": "Supports JPEG, PNG, WebP · Max 5MB",
+          "uploading": "Uploading...",
+          "dragOrClick": "Drag or click to upload screenshot",
+          "addScreenshot": "Add Screenshot",
+          "selected": "Selected {count} / {max}"
+        },
+        "upload": {
+          "error": {
+            "invalidFormat": "Only JPEG, PNG, WebP formats are supported",
+            "tooLarge": "File size cannot exceed {size}MB",
+            "uploadFailed": "Upload failed, please try again",
+            "maxImages": "Maximum {max} screenshots allowed"
+          }
+        },
+        "loginRequired": {
+          "title": "Login Required",
+          "description": "You need to be logged in to submit a tool. Please log in first.",
+          "button": "Login Now"
+        },
+        "success": {
+          "title": "Submission Successful!",
+          "message": "Thank you for your submission! We will review it soon.",
+          "continuePrompt": "✨ You can continue to submit more tools",
+          "continueSubmit": "Submit Another Tool",
+          "viewSubmissions": "View My Submissions",
+          "reviewNote": "We will review your submission within 1-2 weeks."
+        },
+        "errors": {
+          "checkForm": "Please check the form for errors.",
+          "duplicateToolName": "A tool with this name has already been submitted."
+        },
+        "viewBacklinkInstructions": "View backlink instructions",
+        "backlinkVerification": {
+          "title": "Backlink Verification Required",
+          "description": "Free submission requires a backlink to our site. Please add a link on your website first.",
+          "verifyButton": "Verify Backlink",
+          "verifying": "Verifying...",
+          "verified": "Verified!",
+          "notFound": "No backlink found. Please add a link to our site and try again.",
+          "enterUrlFirst": "Please enter tool URL first",
+          "error": "Failed to verify backlink. Please try again.",
+          "dialogAutoVerifyFailed": "We detected that your website does not contain a backlink to us. Please add a backlink on your website, then click Verify.",
+          "checkingBacklink": "Checking backlink...",
+          "step1": "Copy the code below and add it to your website.",
+          "step2": "Come back here and click \"Verify Backlink\"."
+        }
+      }
+    },
+    "similarTools": {
+      "matchedTags": "Khớp {count} thẻ"
+    }
+  }
+}

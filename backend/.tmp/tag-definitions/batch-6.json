@@ -1,0 +1,226 @@
+{
+  "batchIndex": 6,
+  "successful": [
+    {
+      "slug": "api",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "\nAn application programming interface (API) is a connection between computers or between computer programs. It is a type of software interface, offering a service to other pieces of software. A document or standard that describes how to build such a connection or interface is called an API specification. A computer system that meets this standard is said to implement or expose an API. The term API may refer either to the specification or to the implementation."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "API（Application Programming Interface，应用程序编程接口）是一组预定义的函数、协议和工具，用于构建软件应用程序之间的交互。它定义了不同软件组件之间通信的规则和规范，使开发者能够在不了解内部实现细节的情况下，调用其他系统或服务的功能。\n\n在平台技术领域，API 是实现系统集成和服务互联的核心机制。它允许第三方开发者访问平台的数据和功能，促进生态系统的建设。常见的 API 类型包括 RESTful API、GraphQL API、SOAP API 等，每种都有其特定的应用场景和技术特点。\n\nAPI 在现代软件架构中扮演着关键角色，支持微服务架构、云计算服务、移动应用开发等多个领域。通过标准化的接口定义，API 降低了系统耦合度，提高了代码复用性和开发效率。企业通过开放 API 可以实现业务能力的对外输出，构建开放平台战略，创造新的商业价值。良好的 API 设计需要考虑安全性、可扩展性、版本管理和文档完整性等多个维度。"
+        }
+      },
+      "en": {
+        "name": "API",
+        "description": "Software interfaces enabling communication between applications through predefined protocols and functions"
+      },
+      "zh": {
+        "name": "API",
+        "description": "通过预定义协议和函数实现应用程序间通信的软件接口"
+      }
+    },
+    {
+      "slug": "chrome-extension",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A Chrome extension is a software program built using web technologies (HTML, CSS, JavaScript) that extends and customizes the functionality of the Google Chrome browser. These extensions integrate directly into the browser interface, allowing users to modify web pages, add new features, enhance productivity, or interact with web services in ways not possible through standard browser capabilities.\n\nChrome extensions operate within a sandboxed environment and utilize Chrome's Extension APIs to access browser features such as tabs, bookmarks, history, storage, and network requests. They can manifest as browser action buttons, page actions, content scripts that modify web pages, background scripts for persistent functionality, or combinations thereof.\n\nThe Chrome Web Store serves as the primary distribution platform where developers publish extensions after review. Extensions follow a manifest-driven architecture, with a manifest.json file defining permissions, resources, and capabilities. Common use cases include ad blocking, password management, developer tools, productivity enhancement, web scraping, and UI customization.\n\nSecurity is enforced through Chrome's permission system, requiring extensions to explicitly declare required capabilities. The same extension architecture, with minor modifications, is compatible with other Chromium-based browsers like Microsoft Edge, Brave, and Opera, making it a widely-adopted platform for browser enhancement and automation."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Chrome 扩展程序(Chrome Extension)是一种基于 Web 技术开发的浏览器插件,专门为 Google Chrome 及其他基于 Chromium 内核的浏览器设计。它使用 HTML、CSS 和 JavaScript 等标准 Web 技术构建,通过 Chrome Extension API 与浏览器进行交互,能够修改或增强浏览器的功能和用户体验。\n\nChrome 扩展程序可以实现多种功能,包括但不限于:修改网页内容和样式、拦截和处理网络请求、管理浏览器标签页、添加右键菜单项、显示通知消息等。开发者通过 manifest.json 配置文件定义扩展的权限、资源和行为,并可将完成的扩展发布到 Chrome Web Store 供用户安装使用。\n\n在技术应用层面,Chrome 扩展广泛用于广告拦截、密码管理、开发者工具、生产力提升、隐私保护等场景。对于企业而言,可以开发定制化扩展来优化内部工作流程或为用户提供增值服务。Chrome 扩展采用沙箱机制和权限系统来保障安全性,同时支持跨平台运行,是现代 Web 生态系统中重要的扩展性解决方案。"
+        }
+      },
+      "en": {
+        "name": "Chrome Extension",
+        "description": "Browser plugins built with web technologies to extend Chrome's functionality and customize user experience"
+      },
+      "zh": {
+        "name": "Chrome 扩展程序",
+        "description": "使用 Web 技术开发的浏览器插件，用于扩展 Chrome 功能并定制用户体验"
+      }
+    },
+    {
+      "slug": "ios-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "An iOS app is a software application specifically designed and developed to run on Apple's iOS operating system, which powers devices including iPhone, iPad, and iPod Touch. These applications are built using Apple's development frameworks, primarily Swift or Objective-C programming languages, and the iOS SDK (Software Development Kit).\n\niOS apps are distributed through Apple's App Store, which serves as the primary marketplace for discovering, downloading, and updating applications. Developers must adhere to Apple's strict Human Interface Guidelines and App Store Review Guidelines to ensure quality, security, and user experience standards.\n\nThese applications leverage iOS-specific features such as Touch ID, Face ID, ARKit for augmented reality, Core ML for machine learning, HealthKit, and various hardware capabilities unique to Apple devices. iOS apps can range from simple utilities to complex enterprise solutions, games, productivity tools, and social platforms.\n\nThe development process typically involves using Xcode, Apple's integrated development environment, and requires enrollment in the Apple Developer Program for distribution. iOS apps are known for their polished user interfaces, consistent design patterns, and tight integration with Apple's ecosystem of services and devices, making them a crucial component of Apple's business model and user experience strategy."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "iOS App 是指专门为苹果公司的 iOS 操作系统开发的移动应用程序。这些应用运行在 iPhone、iPad 和 iPod Touch 等设备上，通过 App Store 进行分发和下载。\n\niOS App 通常使用 Swift 或 Objective-C 编程语言开发，遵循苹果的人机界面指南（Human Interface Guidelines）和开发规范。开发者需要使用 Xcode 集成开发环境，并通过苹果开发者计划获得证书和配置文件才能发布应用。\n\niOS App 的特点包括：严格的审核机制确保应用质量和安全性；统一的设计语言提供一致的用户体验；强大的系统集成能力，可调用相机、定位、通知等原生功能；以及完善的应用内购买和订阅机制。\n\n在商业领域，iOS App 因其用户群体的高消费能力和付费意愿，成为企业移动战略的重要组成部分。许多企业通过 iOS App 提供服务、销售产品或建立品牌形象。开发 iOS App 需要考虑设备适配、性能优化、隐私保护等技术要求，以及符合 App Store 的审核标准。"
+        }
+      },
+      "en": {
+        "name": "iOS App",
+        "description": "Software applications built for Apple's iOS operating system, distributed through the App Store"
+      },
+      "zh": {
+        "name": "iOS 应用",
+        "description": "专为苹果 iOS 操作系统开发的移动应用程序，通过 App Store 分发"
+      }
+    },
+    {
+      "slug": "android-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "Android is an operating system based on a modified version of the Linux kernel and other open-source software, designed primarily for touchscreen-based mobile devices such as smartphones and tablet computers. Android has historically been developed by a consortium of developers known as the Open Handset Alliance, but its most widely used version is primarily developed by Google. First released in 2008, Android is the world's most widely used operating system; it is the most used operating system for smartphones, and also most used for tablets; the latest version, released on June 10, 2025, is Android 16."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Android 应用（Android App）是指专门为 Android 操作系统开发的移动应用程序。Android 是由 Google 主导开发的开源移动操作系统，基于 Linux 内核，目前是全球市场份额最大的移动平台。\n\nAndroid 应用主要使用 Java 或 Kotlin 编程语言开发，通过 Android SDK（软件开发工具包）构建，并以 APK（Android Package）或 AAB（Android App Bundle）格式打包分发。应用通过 Google Play 商店或其他第三方应用市场向用户提供下载和安装。\n\n在技术架构上，Android 应用采用组件化设计，包括 Activity（界面）、Service（后台服务）、Broadcast Receiver（广播接收器）和 Content Provider（内容提供者）四大核心组件。开发者可以利用丰富的系统 API 访问设备硬件功能，如摄像头、GPS、传感器等。\n\n在商业应用中，Android 应用覆盖社交、电商、金融、教育、娱乐等各个领域，是企业数字化转型和移动互联网业务的重要载体。由于 Android 平台的开放性和广泛的设备支持，Android 应用开发已成为移动应用开发的主流方向之一。"
+        }
+      },
+      "en": {
+        "name": "Android App",
+        "description": "Mobile applications built for Android OS using Java or Kotlin, distributed via Google Play"
+      },
+      "zh": {
+        "name": "Android 应用",
+        "description": "为 Android 操作系统开发的移动应用程序，使用 Java 或 Kotlin 构建"
+      }
+    },
+    {
+      "slug": "mac-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A mac-app refers to a software application specifically designed, developed, and distributed to run on Apple's macOS operating system. These applications are built to leverage macOS-specific frameworks, APIs, and design guidelines, ensuring optimal performance and native integration with the Mac ecosystem.\n\nMac apps can be distributed through multiple channels: the Mac App Store (Apple's official distribution platform with strict review guidelines and sandboxing requirements), direct downloads from developer websites, or enterprise deployment systems. They typically utilize Apple's development technologies including Swift, Objective-C, AppKit, SwiftUI, and Cocoa frameworks.\n\nThese applications must adhere to Apple's Human Interface Guidelines (HIG) to provide consistent user experiences across the platform, including support for features like Touch Bar, Continuity, Handoff, and system-wide services. Mac apps can range from simple utilities to complex professional software spanning categories such as productivity, creative tools, development environments, and business applications.\n\nModern mac-apps increasingly support Apple Silicon (M-series chips) architecture alongside Intel-based Macs, often distributed as universal binaries. They integrate with macOS security features including Gatekeeper, notarization, and app sandboxing to ensure user safety and system integrity. The mac-app ecosystem represents a significant market segment within Apple's platform, serving both consumer and professional users with specialized software solutions."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "mac-app 是指专门为 macOS 操作系统开发和设计的应用程序。这类应用程序遵循 Apple 的设计规范和开发标准，能够充分利用 macOS 的系统特性和硬件能力。\n\nmac-app 通常通过以下渠道分发：Mac App Store（官方应用商店）、开发者官网直接下载，或第三方软件分发平台。开发者可以使用 Swift、Objective-C 等编程语言，配合 Xcode 集成开发环境和 AppKit、SwiftUI 等框架进行开发。\n\n这类应用需要满足 Apple 的技术要求，包括代码签名、沙盒机制、隐私权限声明等安全规范。在 Mac App Store 发布的应用还需通过严格的审核流程，确保符合功能性、安全性和用户体验标准。\n\nmac-app 涵盖各类软件类型，从生产力工具、创意设计软件、开发工具到娱乐应用等。随着 Apple Silicon 芯片的推出，现代 mac-app 还需考虑对 ARM 架构的原生支持，以获得最佳性能表现。该标签在技术讨论、软件开发、应用分发和用户支持等场景中被广泛使用。"
+        }
+      },
+      "en": {
+        "name": "macOS Application",
+        "description": "Software designed for Apple's macOS, distributed via App Store or direct download"
+      },
+      "zh": {
+        "name": "macOS 应用程序",
+        "description": "专为 Apple macOS 系统设计的软件，通过应用商店或官网分发"
+      }
+    },
+    {
+      "slug": "windows-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "wikipedia",
+          "content": "The Microsoft Store is a digital distribution platform operated by Microsoft. It was created as an app store for Windows 8 as the primary means of distributing Universal Windows Platform apps. With Windows 10 1803, Microsoft merged its other distribution platforms into Microsoft Store, making it a unified distribution point for apps, console games, and digital videos. Digital music was included until the end of 2017, and E-books were included until 2019."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Windows App 是指专门为 Microsoft Windows 操作系统开发的应用程序。这类应用可以采用多种技术栈构建，包括传统的 Win32 API、Windows Forms、WPF（Windows Presentation Foundation）、UWP（Universal Windows Platform）以及现代的 WinUI 3 等框架。\n\nWindows App 通常以 .exe 可执行文件形式分发，可以直接在 Windows 系统上安装运行，也可以通过 Microsoft Store 进行分发。这类应用能够充分利用 Windows 系统的原生功能，如文件系统访问、系统通知、硬件集成等，提供与操作系统深度整合的用户体验。\n\n在企业和个人应用场景中，Windows App 涵盖了从生产力工具、开发环境、多媒体软件到游戏等各类应用。随着跨平台技术的发展，许多 Windows App 也开始采用 Electron、.NET MAUI 等框架，以实现代码复用和多平台部署。对于开发者而言，Windows App 开发需要考虑不同 Windows 版本的兼容性、用户权限管理、安全性以及性能优化等因素。"
+        }
+      },
+      "en": {
+        "name": "Windows App",
+        "description": "Native applications built specifically for Microsoft Windows operating system"
+      },
+      "zh": {
+        "name": "Windows 应用",
+        "description": "专为 Microsoft Windows 操作系统开发的原生应用程序"
+      }
+    },
+    {
+      "slug": "linux-app",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A Linux application (linux-app) refers to software programs specifically designed to run on Linux-based operating systems. These applications are built to leverage the Linux kernel and its associated libraries, utilities, and system calls. Linux apps can range from command-line tools and system utilities to full-featured desktop applications with graphical user interfaces (GUI).\n\nLinux applications are typically distributed through package managers (such as apt, yum, or pacman) or as standalone binaries, AppImages, Flatpaks, or Snap packages. They may be open-source or proprietary, covering diverse use cases including development tools, server applications, multimedia software, office suites, and enterprise solutions.\n\nIn the context of software development and deployment, linux-app tags are used to categorize projects, documentation, or resources specifically targeting the Linux platform. This distinction is important for developers managing cross-platform codebases, DevOps teams configuring deployment pipelines, and organizations maintaining platform-specific builds.\n\nLinux applications benefit from the operating system's stability, security features, and extensive customization capabilities, making them popular choices for servers, embedded systems, cloud infrastructure, and developer workstations. The tag helps identify compatibility requirements, installation procedures, and platform-specific considerations in technical documentation and software repositories."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**linux-app**\n\nLinux 应用程序（Linux Application）是指专门为 Linux 操作系统开发或移植的软件程序。这类应用可以是图形界面程序（GUI）或命令行工具（CLI），涵盖办公、开发、多媒体、系统管理等各个领域。\n\nLinux 应用程序通常以多种形式分发：传统的二进制包（如 .deb、.rpm）、通用格式（如 AppImage、Flatpak、Snap）、或直接通过源代码编译安装。得益于 Linux 的开源特性，大量应用程序采用开源许可证发布，用户可以自由使用、修改和分发。\n\n在企业和开发环境中，Linux 应用程序因其稳定性、安全性和可定制性而广受青睐。常见的 Linux 应用包括 Firefox 浏览器、LibreOffice 办公套件、GIMP 图像编辑器、Docker 容器平台等。随着云计算和容器技术的发展，Linux 应用程序在服务器端和云原生场景中占据主导地位。\n\n该标签通常用于标识、分类和检索针对 Linux 平台的软件资源，帮助用户快速定位适用于 Linux 系统的应用程序。"
+        }
+      },
+      "en": {
+        "name": "Linux Application",
+        "description": "Software programs designed to run on Linux-based operating systems and distributions"
+      },
+      "zh": {
+        "name": "Linux 应用程序",
+        "description": "专为 Linux 操作系统开发的软件程序，包括图形界面和命令行工具"
+      }
+    },
+    {
+      "slug": "wordpress-plugin",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A WordPress plugin is a modular software component that extends the functionality of WordPress, the world's most popular content management system (CMS). Plugins are written primarily in PHP and integrate seamlessly with WordPress core through a well-defined API, allowing developers to add features, modify behavior, or enhance existing capabilities without altering the core codebase.\n\nWordPress plugins can range from simple utilities that add a single feature (such as contact forms or SEO optimization) to complex applications that transform WordPress into e-commerce platforms, membership sites, or learning management systems. They leverage WordPress's hook system (actions and filters) to inject custom functionality at specific execution points.\n\nThe WordPress Plugin Directory hosts over 60,000 free plugins, while premium plugins are available through third-party marketplaces. Plugins follow a standardized structure with a main PHP file containing metadata headers, and may include additional PHP files, JavaScript, CSS, and other assets.\n\nKey characteristics include: easy installation via the WordPress admin dashboard, automatic updates, activation/deactivation without code modification, and compatibility requirements specified by WordPress and PHP versions. Well-developed plugins adhere to WordPress Coding Standards, implement security best practices, and provide internationalization support. The plugin ecosystem has made WordPress highly extensible, enabling non-developers to build sophisticated websites while providing developers with a robust framework for custom solutions."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "WordPress 插件（WordPress Plugin）是一种用于扩展 WordPress 核心功能的软件组件。它采用模块化架构设计，允许开发者在不修改 WordPress 核心代码的前提下，为网站添加新功能或修改现有特性。\n\nWordPress 插件基于 PHP 编写，通过 WordPress 提供的钩子（Hooks）系统与核心程序交互，包括动作钩子（Actions）和过滤器钩子（Filters）。插件可以实现多样化的功能，如 SEO 优化、电子商务、表单构建、安全防护、性能优化、社交媒体集成等。\n\n在商业应用中，WordPress 插件生态系统已形成成熟的市场模式。开发者可以通过 WordPress 官方插件目录免费发布插件，或在第三方平台销售高级版本。企业常使用插件快速构建定制化网站功能，降低开发成本和时间投入。\n\nWordPress 插件遵循 GPL 开源协议，拥有庞大的开发者社区。截至目前，官方插件库收录超过 60,000 个免费插件，涵盖几乎所有网站功能需求。选择和使用插件时需注意兼容性、安全性、更新频率和性能影响等因素。"
+        }
+      },
+      "en": {
+        "name": "WordPress Plugin",
+        "description": "Modular software components that extend WordPress functionality without modifying core code"
+      },
+      "zh": {
+        "name": "WordPress 插件",
+        "description": "用于扩展 WordPress 功能的模块化软件组件，无需修改核心代码"
+      }
+    },
+    {
+      "slug": "figma-plugin",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A Figma plugin is a software extension that adds custom functionality to Figma, a collaborative web-based design and prototyping platform. These plugins are built using Figma's Plugin API and can automate workflows, integrate external services, manipulate design elements, or extend the platform's native capabilities.\n\nFigma plugins are developed using JavaScript/TypeScript and run within Figma's sandboxed environment. They can access and modify design files, layers, components, and styles programmatically. Common use cases include design system management, content population, accessibility checking, asset optimization, version control integration, and automated documentation generation.\n\nThe Figma plugin ecosystem has become a significant part of the design-to-development workflow, enabling designers and developers to streamline repetitive tasks, maintain consistency across projects, and bridge gaps between design and implementation. Plugins can be published to Figma's Community for public use or kept private for organizational purposes.\n\nDevelopers create Figma plugins to solve specific design challenges, improve team productivity, or provide specialized tools for industries like UI/UX design, marketing, and product development. The platform's robust API and active developer community have fostered a thriving marketplace of both free and commercial plugins that enhance Figma's core functionality."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "Figma 插件是基于 Figma 设计平台开发的扩展程序，用于增强和扩展 Figma 的核心功能。开发者可以使用 Figma Plugin API（主要基于 TypeScript/JavaScript）创建自定义工具，实现设计自动化、内容生成、数据导入导出、设计系统管理等功能。\n\nFigma 插件运行在沙箱环境中，通过 Figma 的文档对象模型（DOM）与设计文件交互，可以读取、创建和修改图层、样式、组件等设计元素。插件架构采用双线程模型：主线程处理 UI 界面，沙箱线程执行核心逻辑并访问 Figma API。\n\n常见应用场景包括：设计令牌（Design Tokens）同步、图标库管理、内容填充、可访问性检查、设计规范验证、代码生成等。许多企业和团队通过开发内部插件来优化设计工作流，提高协作效率。\n\nFigma 插件可以在 Figma Community 发布分享，支持免费或付费模式。对于设计师和开发者而言，插件生态系统是 Figma 平台价值的重要组成部分，显著提升了设计到开发的整体效率。"
+        }
+      },
+      "en": {
+        "name": "Figma Plugin",
+        "description": "Extensions that add custom functionality to Figma for design automation and workflow enhancement"
+      },
+      "zh": {
+        "name": "Figma 插件",
+        "description": "为 Figma 添加自定义功能的扩展程序，用于设计自动化和工作流优化"
+      }
+    },
+    {
+      "slug": "vscode-extension",
+      "category": "platform",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "A VSCode extension is a software plugin that extends the functionality of Visual Studio Code, Microsoft's popular open-source code editor. These extensions are built using web technologies (TypeScript/JavaScript, HTML, CSS) and leverage the VSCode Extension API to add new features, language support, debuggers, themes, and tools to the editor.\n\nExtensions can provide diverse capabilities including syntax highlighting for programming languages, code completion and IntelliSense, debugging tools, version control integration, code formatting, linting, snippets, and custom UI components. They are distributed through the Visual Studio Code Marketplace, where developers can publish and users can discover thousands of community-created and official extensions.\n\nThe extension ecosystem is a core strength of VSCode, allowing developers to customize their development environment to match specific workflows, languages, and frameworks. Popular extensions include language servers for Python, Java, and C++, Git integration tools, Docker management utilities, and productivity enhancers like Prettier and ESLint.\n\nDevelopers create VSCode extensions using the Extension API, which provides access to editor features, workspace management, language services, and UI customization. Extensions run in a separate process to maintain editor stability and performance, communicating with the main editor through a well-defined protocol."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "VSCode Extension（Visual Studio Code 扩展）是为 Visual Studio Code 编辑器开发的插件程序，用于扩展和增强 VSCode 的核心功能。这些扩展基于 VSCode Extension API 构建，使用 TypeScript 或 JavaScript 编写，通过标准化的扩展清单文件（package.json）进行配置和发布。\n\nVSCode 扩展可以实现多种功能增强，包括但不限于：语言支持（语法高亮、智能提示、代码补全）、主题定制、调试器集成、代码片段、格式化工具、版本控制集成、以及自定义命令和视图。开发者可以通过 VSCode Marketplace 发布和分发扩展，用户则可以直接在编辑器内搜索、安装和管理这些扩展。\n\n作为现代软件开发生态的重要组成部分，VSCode 扩展极大地提升了开发效率和用户体验。流行的扩展如 ESLint、Prettier、GitLens 等已成为许多开发团队的标准工具。扩展的开放性和丰富性是 VSCode 成为最受欢迎代码编辑器之一的关键因素，它允许开发者根据特定需求定制开发环境，形成了一个活跃的开发者社区和生态系统。"
+        }
+      },
+      "en": {
+        "name": "VSCode Extension",
+        "description": "Software plugins that extend Visual Studio Code with new features, languages, and tools"
+      },
+      "zh": {
+        "name": "VSCode 扩展",
+        "description": "为 Visual Studio Code 编辑器提供功能增强和定制化能力的插件程序"
+      }
+    }
+  ],
+  "failed": []
+}

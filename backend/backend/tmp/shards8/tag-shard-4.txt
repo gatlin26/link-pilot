@@ -1,0 +1,14 @@
+education
+for-teams
+hr
+image-to-video
+legal
+mockup-generation
+one-time-payment
+productivity
+report-generation
+social-media-content
+task-assignment
+text-to-video
+video-editor
+watermark-removal

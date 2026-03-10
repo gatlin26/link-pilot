@@ -1,0 +1,2337 @@
+{
+  "Metadata": {
+    "name": "BuildWay",
+    "title": "BuildWay - 发现最好的 AI 工具 | AI 工具导航",
+    "description": "发现和探索满足各种需求的最佳 AI 工具。你的终极 AI 工具导航站，提供精选集合、评价和推荐。"
+  },
+  "ImageTask": {
+    "submitting": "正在提交任务...",
+    "submitted": "任务已提交，正在生成...",
+    "generating": "正在生成中...",
+    "queuing": "任务排队中...",
+    "completed": "生成完成！",
+    "cancelled": "已取消",
+    "generationFailed": "生成失败，请重试",
+    "submitError": "提交失败，请重试",
+    "submitFailed": "提交失败: {status}",
+    "requestFailed": "请求失败: {status}",
+    "networkError": "网络错误，请重试",
+    "timeout": "任务超时，请稍后重试"
+  },
+  "Common": {
+    "premium": "付费文章",
+    "login": "登录",
+    "logout": "退出",
+    "signUp": "注册",
+    "language": "切换语言",
+    "mode": {
+      "label": "切换模式",
+      "light": "浅色模式",
+      "dark": "深色模式",
+      "system": "跟随系统"
+    },
+    "theme": {
+      "label": "切换主题",
+      "default": "默认",
+      "blue": "蓝色",
+      "green": "绿色",
+      "amber": "橙色",
+      "neutral": "中性"
+    },
+    "copy": "复制",
+    "save": "保存",
+    "saving": "保存中...",
+    "loading": "加载中...",
+    "cancel": "取消",
+    "logoutFailed": "退出失败",
+    "table": {
+      "totalRecords": "总共 {count} 条记录",
+      "noResults": "无结果",
+      "loading": "加载中...",
+      "columns": "列",
+      "rowsPerPage": "每页行数",
+      "page": "页",
+      "firstPage": "第一页",
+      "lastPage": "最后一页",
+      "nextPage": "下一页",
+      "previousPage": "上一页",
+      "ascending": "升序",
+      "descending": "降序"
+    }
+  },
+  "PricingPage": {
+    "title": "提交您的 AI 工具",
+    "description": "让您的 AI 工具在我们的目录中展示",
+    "subtitle": "一次购买，永久使用，无需订阅",
+    "monthly": "月付",
+    "yearly": "年付",
+    "submitTool": {
+      "title": "让您的 AI 工具被更多人发现",
+      "subtitle": "通过在我们的目录中列出您的 AI 工具，触达数千名潜在用户",
+      "badge": "一次性付费",
+      "packageName": "工具提交",
+      "packageDescription": "在我们的 AI 工具目录中获得永久展示位置",
+      "oneTime": "一次性付费，永久展示",
+      "submitButton": "提交您的工具"
+    },
+    "PricingCard": {
+      "freePrice": "$0",
+      "perMonth": "/月",
+      "perYear": "/年",
+      "popular": "最受欢迎",
+      "currentPlan": "当前方案",
+      "yourCurrentPlan": "您的当前方案",
+      "getStartedForFree": "免费注册",
+      "getLifetimeAccess": "开启终身会员",
+      "getStarted": "立即购买",
+      "notAvailable": "不可用",
+      "daysTrial": "{days} 天试用期"
+    },
+    "CheckoutButton": {
+      "loading": "加载中...",
+      "checkoutFailed": "打开结账页面失败",
+      "checkoutNetworkError": "网络连接失败，请检查网络或稍后重试"
+    },
+    "credits": {
+      "features": {
+        "allModels": "使用所有 AI 模型",
+        "noExpiry": "积分有效期1年",
+        "standardSupport": "标准支持",
+        "prioritySupport": "优先支持",
+        "bestValue": "性价比最高",
+        "bulkDiscount": "批量优惠最大"
+      },
+      "registerGift": "立即注册即送 {amount} 积分！",
+      "validityNotice": "当前套餐积分有效期是 1 年"
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "关于积分套餐的一切问题",
+      "items": {
+        "item-1": {
+          "question": "积分有效期是多长？",
+          "answer": "购买的积分自购买之日起有效期为 1 年。在此期间，您可以随时使用积分进行任何 AI 照片编辑功能。"
+        },
+        "item-2": {
+          "question": "如何购买积分？",
+          "answer": "只需选择适合您需求的积分套餐，然后点击「立即购买」。您将被重定向到安全的结账页面，可以使用信用卡或其他支持的支付方式完成购买。"
+        },
+        "item-3": {
+          "question": "不同套餐有什么区别？",
+          "answer": "入门版（200 积分）适合初学者。热门版（1000 积分）提供最佳性价比和优先支持。专业版（3000 积分）为需要更多积分的专业人士提供最佳批量折扣。"
+        },
+        "item-4": {
+          "question": "积分可以用于所有 AI 功能吗？",
+          "answer": "是的！所有购买的积分都可以用于我们平台上的任何 AI 照片编辑功能，包括背景移除、图像增强、放大以及所有其他 AI 模型。"
+        },
+        "item-5": {
+          "question": "如果积分过期了怎么办？",
+          "answer": "积分在购买后 1 年过期。我们建议在过期前使用它们。您可以在账户仪表板中查看积分余额和过期日期。"
+        },
+        "item-6": {
+          "question": "我可以将积分转移到另一个账户吗？",
+          "answer": "不可以，积分不可转让，且与购买账户绑定。这有助于我们维护安全性并防止欺诈。"
+        },
+        "item-7": {
+          "question": "你们提供退款吗？",
+          "answer": "如果您使用的积分不超过购买积分的 10%，我们会在购买后 30 天内提供退款。如需退款，请联系我们的支持团队。"
+        },
+        "item-8": {
+          "question": "你们接受哪些支付方式？",
+          "answer": "我们接受所有主要信用卡、借记卡和 PayPal。所有支付都通过 Stripe 安全处理，确保您的支付信息受到保护。"
+        }
+      }
+    },
+    "modelCredits": {
+      "badge": "AI 模型",
+      "title": "模型积分消耗",
+      "subtitle": "不同模型有不同的特性和积分消耗，选择最适合您需求的模型",
+      "columns": {
+        "model": "模型名称",
+        "features": "特性",
+        "useCases": "适用场景",
+        "credits": "积分"
+      },
+      "tags": {
+        "fastGeneration": "极速出图",
+        "strongConsistency": "一致性强",
+        "strongComprehension": "理解力强",
+        "4kHd": "4K高清",
+        "multiImageGen": "多图生成",
+        "ultraFast": "超快速",
+        "highQuality": "高质量",
+        "asyncProcess": "异步处理"
+      },
+      "useCases": {
+        "nano-banana": "快速出图、日常创作、社交媒体配图",
+        "nano-banana-pro": "高清大图、商业用途、印刷品",
+        "seedream-4-5": "批量生成、风格一致、系列创作",
+        "z-image-turbo": "即时预览、快速迭代、灵感探索"
+      },
+      "perGeneration": "积分/次",
+      "note": "积分消耗因模型而异，高级模型提供更高质量的输出"
+    }
+  },
+  "PricePlans": {
+    "free": {
+      "name": "免费版",
+      "description": "免费体验 AI 图片编辑",
+      "features": {
+        "feature-1": "每月 2 积分",
+        "feature-2": "最大文件 2MB",
+        "feature-3": "最高分辨率 1024×1024",
+        "feature-4": "标准处理队列",
+        "feature-5": "历史记录保留 60 天",
+        "feature-6": "社区支持"
+      },
+      "limits": {}
+    },
+    "basic": {
+      "name": "基础版",
+      "description": "满足日常图片编辑需求",
+      "features": {
+        "feature-1": "每月 200 积分",
+        "feature-2": "最大文件 20MB",
+        "feature-3": "最高分辨率 2048×2048",
+        "feature-4": "标准处理队列",
+        "feature-5": "历史记录保留 1 年",
+        "feature-6": "邮件支持（48小时响应）"
+      }
+    },
+    "pro": {
+      "name": "专业版",
+      "description": "专业人士和高级用户的首选",
+      "features": {
+        "feature-1": "每月 500 积分",
+        "feature-2": "最大文件 20MB",
+        "feature-3": "最高分辨率 4096×4096（4K）",
+        "feature-4": "优先处理队列",
+        "feature-5": "历史记录永久保留",
+        "feature-6": "保存自定义预设",
+        "feature-7": "优先邮件支持（24小时响应）",
+        "feature-8": "抢先体验新功能"
+      }
+    }
+  },
+  "CreditPackages": {
+    "starter": {
+      "name": "入门版",
+      "description": "适合新手体验"
+    },
+    "popular": {
+      "name": "超值版",
+      "description": "性价比最高"
+    },
+    "pro": {
+      "name": "专业版",
+      "description": "专业用户首选"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "抱歉，您正在寻找的页面不存在",
+    "backToHome": "返回首页"
+  },
+  "ErrorPage": {
+    "title": "哎呀！出错了！",
+    "tryAgain": "重试",
+    "backToHome": "返回首页"
+  },
+  "AboutPage": {
+    "title": "关于我们",
+    "description": "BuildWay 是您的终极 AI 工具导航平台。发现、比较并选择最适合您项目的 AI 工具。",
+    "authorName": "BuildWay",
+    "authorBio": "AI 工具导航与发现平台",
+    "introduction": "BuildWay 是一个精心策划的优质 AI 工具目录。无论您是开发者、设计师、营销人员还是创业者，我们都能帮助您发现和比较 AI 工具，找到满足您需求的完美解决方案。从生产力工具到创意 AI，我们让寻找合适的 AI 工具变得简单高效。",
+    "talkWithMe": "联系我们",
+    "followMe": "关注我们"
+  },
+  "ChangelogPage": {
+    "title": "更新日志",
+    "description": "追踪我们持续改进和扩展 AI 工具目录的历程",
+    "subtitle": "每一次更新，都带来新工具和更好的功能",
+    "startPoint": "一切的开始",
+    "latestVersion": "最新版本",
+    "viewMore": "查看更多"
+  },
+  "ContactPage": {
+    "title": "联系我们",
+    "description": "我们帮助您找到合适的计划",
+    "subtitle": "我们帮助您找到合适的计划",
+    "form": {
+      "title": "联系我们",
+      "description": "如果您有任何问题或反馈，请随时联系我们的团队",
+      "name": "姓名",
+      "email": "邮箱",
+      "message": "消息",
+      "submit": "提交",
+      "submitting": "提交中...",
+      "success": "消息发送成功",
+      "fail": "消息发送失败",
+      "nameMinLength": "姓名必须至少包含 3 个字符",
+      "nameMaxLength": "姓名必须不超过 30 个字符",
+      "emailValidation": "请输入有效的邮箱地址",
+      "messageMinLength": "消息必须至少包含 10 个字符",
+      "messageMaxLength": "消息必须不超过 500 个字符"
+    }
+  },
+  "WaitlistPage": {
+    "title": "等待队列",
+    "description": "加入等待队列，及时获取最新消息和更新",
+    "subtitle": "加入等待队列，及时获取最新消息和更新",
+    "form": {
+      "title": "加入等待队列",
+      "description": "我们将在产品发布时及时通知您",
+      "email": "邮箱",
+      "subscribe": "加入等待队列",
+      "subscribing": "加入等待队列中...",
+      "success": "加入等待队列成功",
+      "fail": "加入等待队列失败",
+      "emailValidation": "请输入有效的邮箱地址"
+    }
+  },
+  "Newsletter": {
+    "title": "邮件列表",
+    "subtitle": "加入我们的社区",
+    "description": "订阅邮件列表，及时获取最新消息和更新",
+    "form": {
+      "email": "邮箱",
+      "subscribe": "订阅",
+      "subscribing": "订阅中...",
+      "success": "订阅成功",
+      "fail": "订阅失败",
+      "emailValidation": "请输入有效的邮箱地址"
+    }
+  },
+  "AuthPage": {
+    "login": {
+      "title": "登录",
+      "welcomeBack": "欢迎回来",
+      "email": "邮箱",
+      "password": "密码",
+      "signIn": "登录",
+      "signUpHint": "没有账号？注册",
+      "forgotPassword": "忘记密码？",
+      "signInWithGoogle": "使用 Google 登录",
+      "signInWithGitHub": "使用 GitHub 登录",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "or": "或以社媒账号登录",
+      "emailRequired": "请输入邮箱",
+      "passwordRequired": "请输入密码",
+      "captchaInvalid": "验证码验证失败",
+      "captchaError": "验证码验证出错"
+    },
+    "register": {
+      "title": "注册",
+      "createAccount": "创建账号",
+      "name": "姓名",
+      "email": "邮箱",
+      "password": "密码",
+      "signUp": "注册",
+      "signInHint": "已经有账号？登录",
+      "checkEmail": "请检查您的邮箱",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "nameRequired": "请输入姓名",
+      "emailRequired": "请输入邮箱",
+      "passwordRequired": "请输入密码",
+      "captchaInvalid": "验证码验证失败",
+      "captchaError": "验证码验证出错"
+    },
+    "forgotPassword": {
+      "title": "忘记密码",
+      "email": "邮箱",
+      "send": "发送重置密码链接",
+      "backToLogin": "返回登录",
+      "checkEmail": "请检查您的邮箱",
+      "emailRequired": "请输入邮箱"
+    },
+    "resetPassword": {
+      "title": "重置密码",
+      "password": "密码",
+      "reset": "重置密码",
+      "backToLogin": "返回登录",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "minLength": "密码必须至少包含 8 个字符"
+    },
+    "error": {
+      "title": "哎呀！出错了！",
+      "tryAgain": "请重试",
+      "backToLogin": "返回登录",
+      "checkEmail": "请检查您的邮箱"
+    },
+    "common": {
+      "termsOfService": "服务条款",
+      "privacyPolicy": "隐私政策",
+      "byClickingContinue": "继续即表示您同意我们的 ",
+      "and": " 和 "
+    }
+  },
+  "BlogPage": {
+    "title": "博客",
+    "description": "AI 工具洞察、行业趋势与专家指南",
+    "subtitle": "了解 AI 工具和技术的最新动态",
+    "author": "作者",
+    "categories": "分类",
+    "tableOfContents": "目录",
+    "readTime": "{minutes} 分钟阅读",
+    "readTimeShort": "{minutes} 分钟",
+    "all": "全部",
+    "noPostsFound": "没有找到文章",
+    "allPosts": "全部文章",
+    "morePosts": "更多文章"
+  },
+  "DocsPage": {
+    "toc": "目录",
+    "search": "搜索文档",
+    "lastUpdate": "最后更新于",
+    "searchNoResult": "没有结果",
+    "previousPage": "上一页",
+    "nextPage": "下一页",
+    "chooseLanguage": "选择语言",
+    "title": "MkSaaS文档",
+    "homepage": "首页"
+  },
+  "PremiumContent": {
+    "title": "解锁付费内容",
+    "description": "订阅我们的付费计划，访问所有付费内容和独家内容。",
+    "upgradeCta": "立即升级",
+    "benefit1": "所有内容",
+    "benefit2": "独家内容",
+    "benefit3": "随时取消",
+    "signIn": "登录",
+    "loginRequired": "登录以继续阅读",
+    "loginDescription": "这是一篇付费内容，请登录您的账户以访问完整内容。",
+    "checkingAccess": "检查阅读权限...",
+    "loadingContent": "加载完整内容..."
+  },
+  "Marketing": {
+    "navbar": {
+      "tools": {
+        "title": "工具"
+      },
+      "submit": {
+        "title": "提交工具"
+      },
+      "features": {
+        "title": "功能"
+      },
+      "pricing": {
+        "title": "价格"
+      },
+      "blog": {
+        "title": "博客"
+      },
+      "about": {
+        "title": "关于"
+      },
+      "docs": {
+        "title": "文档"
+      },
+      "ai": {
+        "title": "AI 工具",
+        "items": {
+          "text": {
+            "title": "AI 文本",
+            "description": "展示如何使用 AI 生成精彩文本"
+          },
+          "image": {
+            "title": "AI 图像",
+            "description": "展示如何使用 AI 生成精美图像"
+          },
+          "chat": {
+            "title": "AI 聊天",
+            "description": "展示如何使用 AI 与客户聊天"
+          },
+          "video": {
+            "title": "AI 视频",
+            "description": "展示如何使用 AI 生成惊人视频"
+          },
+          "audio": {
+            "title": "AI 音频",
+            "description": "展示如何使用 AI 生成动听音频"
+          }
+        }
+      },
+      "pages": {
+        "title": "内置页面",
+        "items": {
+          "about": {
+            "title": "关于我们",
+            "description": "了解更多关于我们的公司、使命和价值观"
+          },
+          "contact": {
+            "title": "联系我们",
+            "description": "与我们的团队联系，以获取支持或咨询"
+          },
+          "waitlist": {
+            "title": "邮件列表",
+            "description": "加入我们的邮件列表，获取最新消息和更新"
+          },
+          "changelog": {
+            "title": "更新日志",
+            "description": "查看我们产品的更新历史，查看最新动态"
+          },
+          "roadmap": {
+            "title": "路线图",
+            "description": "探索我们的未来计划和即将推出的功能"
+          },
+          "cookiePolicy": {
+            "title": "Cookie 政策",
+            "description": "关于我们如何在网站上使用 Cookie 的信息"
+          },
+          "privacyPolicy": {
+            "title": "隐私政策",
+            "description": "关于我们将如何保护和处理您在网站上的数据"
+          },
+          "termsOfService": {
+            "title": "服务条款",
+            "description": "关于您与我们公司之间的法律协议和条款"
+          }
+        }
+      },
+      "blocks": {
+        "title": "内置组件",
+        "items": {
+          "magicui": {
+            "title": "MagicUI 组件"
+          },
+          "hero-section": {
+            "title": "Hero 组件"
+          },
+          "logo-cloud": {
+            "title": "Logo Cloud 组件"
+          },
+          "features": {
+            "title": "Features 组件"
+          },
+          "integrations": {
+            "title": "Integrations 组件"
+          },
+          "content": {
+            "title": "Content 组件"
+          },
+          "stats": {
+            "title": "Stats 组件"
+          },
+          "team": {
+            "title": "Team 组件"
+          },
+          "testimonials": {
+            "title": "Testimonials 组件"
+          },
+          "callToAction": {
+            "title": "Call to Action 组件"
+          },
+          "footer": {
+            "title": "Footer 组件"
+          },
+          "pricing": {
+            "title": "Pricing 组件"
+          },
+          "comparator": {
+            "title": "Comparator 组件"
+          },
+          "faq": {
+            "title": "FAQ 组件"
+          },
+          "login": {
+            "title": "Login 组件"
+          },
+          "signup": {
+            "title": "Signup 组件"
+          },
+          "forgot-password": {
+            "title": "Forgot Password 组件"
+          },
+          "contact": {
+            "title": "Contact 组件"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "你的终极 AI 工具导航站 — 发现、比较并选择最适合你项目的 AI 工具",
+      "product": {
+        "title": "产品",
+        "items": {
+          "features": "功能",
+          "pricing": "价格",
+          "faq": "常见问题"
+        }
+      },
+      "resources": {
+        "title": "资源",
+        "items": {
+          "blog": "博客",
+          "docs": "文档",
+          "changelog": "更新日志",
+          "roadmap": "路线图"
+        }
+      },
+      "company": {
+        "title": "公司",
+        "items": {
+          "about": "关于我们",
+          "contact": "联系我们",
+          "waitlist": "邮件列表"
+        }
+      },
+      "legal": {
+        "title": "法律",
+        "items": {
+          "cookiePolicy": "Cookie政策",
+          "privacyPolicy": "隐私政策",
+          "termsOfService": "服务条款",
+          "refundPolicy": "退款政策"
+        }
+      }
+    },
+    "avatar": {
+      "history": "历史记录",
+      "billing": "账单",
+      "credits": "积分",
+      "settings": "设置"
+    }
+  },
+  "Dashboard": {
+    "dashboard": {
+      "title": "仪表盘"
+    },
+    "studio": {
+      "title": "创作",
+      "create": "开始创作",
+      "myWorks": "我的作品",
+      "videos": "视频",
+      "emptyTitle": "还没有作品",
+      "emptyDescription": "用简单的文字提示，开始创作精彩的 AI 图片吧。"
+    },
+    "admin": {
+      "title": "系统管理",
+      "dashboard": {
+        "title": "仪表盘",
+        "stats": {
+          "users": "用户总数",
+          "submissions": "提交总数",
+          "tools": "已发布工具",
+          "pending": "待审核",
+          "newTools": "近 30 天新增 {count} 个工具"
+        },
+        "latestPayments": "最新订单",
+        "latestSubmissions": "最新提交",
+        "viewAll": "查看全部",
+        "emptyPayments": "暂无订单",
+        "emptySubmissions": "暂无提交",
+        "errorTitle": "加载仪表盘失败",
+        "payments": {
+          "user": "用户",
+          "type": "类型",
+          "status": "状态",
+          "date": "日期",
+          "subscription": "订阅",
+          "oneTime": "一次性"
+        },
+        "submissions": {
+          "name": "工具名称",
+          "submitter": "提交者",
+          "status": "状态",
+          "date": "日期"
+        }
+      },
+      "users": {
+        "title": "用户管理",
+        "fakeData": "注：只为演示功能，数据为假数据，封禁功能不可用",
+        "error": "获取用户失败",
+        "search": "搜索用户...",
+        "columns": {
+          "columns": "显示列",
+          "name": "姓名",
+          "email": "邮箱",
+          "role": "角色",
+          "createdAt": "创建时间",
+          "customerId": "客户ID",
+          "status": "状态",
+          "banReason": "封禁原因",
+          "banExpires": "封禁到期时间"
+        },
+        "admin": "管理员",
+        "user": "用户",
+        "email": {
+          "verified": "邮箱已验证",
+          "unverified": "邮箱未验证"
+        },
+        "emailCopied": "邮箱已复制到剪贴板",
+        "banned": "账号被封禁",
+        "active": "账号正常",
+        "joined": "加入时间",
+        "updated": "更新时间",
+        "ban": {
+          "reason": "封禁原因",
+          "reasonPlaceholder": "请输入封禁该用户的原因",
+          "defaultReason": "垃圾信息",
+          "never": "永不解禁",
+          "expires": "封禁到期时间",
+          "selectDate": "选择日期",
+          "button": "封禁用户",
+          "success": "用户已被封禁",
+          "error": "封禁用户失败"
+        },
+        "unban": {
+          "button": "解除封禁",
+          "success": "用户已被解除封禁",
+          "error": "解除封禁失败"
+        },
+        "close": "关闭"
+      },
+      "generations": {
+        "title": "生成记录",
+        "searchPlaceholder": "搜索用户邮箱...",
+        "totalRecords": "共 {count} 条记录",
+        "columns": {
+          "columns": "显示列",
+          "user": "用户",
+          "type": "类型",
+          "status": "状态",
+          "prompt": "提示词",
+          "model": "模型",
+          "inputImage": "输入图",
+          "outputImage": "输出图",
+          "credits": "积分",
+          "createdAt": "创建时间",
+          "error": "错误信息"
+        },
+        "filters": {
+          "status": "状态",
+          "allStatus": "全部状态",
+          "pending": "等待中",
+          "processing": "处理中",
+          "completed": "已完成",
+          "failed": "失败",
+          "type": "类型",
+          "allType": "全部类型",
+          "generate": "生成",
+          "enhance": "增强",
+          "edit": "编辑",
+          "inpaint": "重绘",
+          "outpaint": "扩展",
+          "upscale": "放大"
+        }
+      },
+      "submissions": {
+        "title": "工具提交",
+        "description": "查看所有用户提交的工具记录",
+        "total": "共 {count} 条记录",
+        "empty": "暂无提交记录",
+        "status": {
+          "pending": "待审核",
+          "approved": "已通过",
+          "rejected": "已拒绝"
+        },
+        "filter": {
+          "status": "状态筛选",
+          "all": "全部"
+        },
+        "search": {
+          "placeholder": "搜索工具名称、URL 或邮箱..."
+        },
+        "columns": {
+          "name": "工具名称",
+          "url": "工具URL",
+          "submitter": "提交者",
+          "status": "状态",
+          "submittedAt": "提交时间",
+          "actions": "操作"
+        },
+        "pagination": {
+          "showing": "显示第 {from} - {to} 条，共 {total} 条",
+          "page": "第 {current} / {total} 页"
+        },
+        "rejectReason": "拒绝原因",
+        "approve": "批准",
+        "reject": "拒绝",
+        "view": "查看",
+        "rejectDialog": {
+          "title": "拒绝提交",
+          "description": "请输入拒绝原因，用户将看到此原因",
+          "reason": "拒绝原因",
+          "reasonPlaceholder": "请输入拒绝原因...",
+          "quickReasons": "快捷填写",
+          "quickReason1": "工具与本站 AI 工具主题方向不符",
+          "quickReason2": "出现重复提交的情况",
+          "quickReason3": "工具网站无法正常访问或已下线",
+          "quickReason4": "已收录同类工具，暂不接受重复功能",
+          "quickReason5": "截图或 Logo 与工具实际情况不符，请重新上传",
+          "quickReason6": "工具功能过于简单，缺乏实质性价值",
+          "quickReason7": "未检测到外链，请添加后重新提交",
+          "quickReason8": "本站不收录色情、赌博等灰产相关工具或网站",
+          "cancel": "取消",
+          "submit": "确认拒绝",
+          "submitting": "提交中..."
+        },
+        "viewDialog": {
+          "title": "提交详情",
+          "description": "查看提交的详细信息",
+          "name": "工具名称",
+          "url": "工具URL",
+          "descriptionLabel": "描述",
+          "status": "状态",
+          "close": "关闭"
+        }
+      },
+      "allRecords": {
+        "title": "所有提交记录",
+        "description": "查看所有用户提交的记录，包括工具提交等",
+        "total": "共 {count} 条记录",
+        "empty": "暂无提交记录",
+        "status": {
+          "pending": "待审核",
+          "approved": "已通过",
+          "rejected": "已拒绝"
+        },
+        "filter": {
+          "status": "状态筛选",
+          "all": "全部"
+        },
+        "search": {
+          "placeholder": "搜索名称、URL、描述、用户名或邮箱..."
+        },
+        "columns": {
+          "name": "名称",
+          "url": "URL",
+          "description": "描述",
+          "submitter": "提交者",
+          "status": "状态",
+          "submittedAt": "提交时间"
+        },
+        "pagination": {
+          "showing": "显示第 {from} - {to} 条，共 {total} 条",
+          "page": "第 {current} / {total} 页"
+        }
+      },
+      "tools": {
+        "title": "工具管理",
+        "description": "管理目录中的所有工具",
+        "total": "共 {count} 个工具",
+        "empty": "暂无工具",
+        "add": "添加工具",
+        "search": {
+          "placeholder": "搜索工具名称、URL 或 slug..."
+        },
+        "filter": {
+          "status": "状态筛选",
+          "all": "全部",
+          "published": "发布状态",
+          "publishedOnly": "已发布",
+          "draftOnly": "草稿",
+          "pending": "待审核",
+          "rejected": "已拒绝",
+          "featured": "精选状态",
+          "featuredOnly": "精选",
+          "notFeatured": "非精选"
+        },
+        "columns": {
+          "name": "名称",
+          "url": "URL",
+          "categories": "分类",
+          "tags": "标签",
+          "status": "状态",
+          "createdAt": "创建时间",
+          "actions": "操作"
+        },
+        "status": {
+          "published": "已发布",
+          "draft": "草稿",
+          "featured": "精选"
+        },
+        "actions": {
+          "edit": "编辑",
+          "delete": "删除",
+          "feature": "设为精选",
+          "unfeature": "取消精选"
+        },
+        "editDialog": {
+          "titleAdd": "添加新工具",
+          "titleEdit": "编辑工具",
+          "descriptionAdd": "添加新工具到目录",
+          "descriptionEdit": "编辑工具信息和内容",
+          "basicInfo": "基础信息 (所有语言共享)",
+          "analyzeWebsite": "分析网站",
+          "analyzing": "AI 正在分析网站...",
+          "generateContent": "AI 生成",
+          "generating": "AI 正在生成内容，这可能需要 20-30 秒...",
+          "referenceContent": "参考内容",
+          "fetchContent": "从网站获取",
+          "fetchingContent": "正在从网站获取内容...",
+          "referenceContentPlaceholder": "在此粘贴或获取网站内容。这将作为 AI 生成内容的参考资料。",
+          "save": "保存",
+          "saving": "保存中...",
+          "cancel": "取消",
+          "featuredLabel": "精选",
+          "publishedLabel": "发布"
+        },
+        "deleteDialog": {
+          "title": "删除工具",
+          "description": "确定要删除此工具吗？此操作无法撤销。",
+          "cancel": "取消",
+          "confirm": "删除",
+          "deleting": "删除中..."
+        },
+        "pagination": {
+          "showing": "显示第 {from} - {to} 条，共 {total} 条",
+          "page": "第 {current} / {total} 页"
+        },
+        "toast": {
+          "createSuccess": "工具创建成功",
+          "updateSuccess": "工具更新成功",
+          "deleteSuccess": "工具删除成功",
+          "featuredSuccess": "已设为精选",
+          "unfeaturedSuccess": "已取消精选",
+          "error": "操作失败"
+        }
+      },
+      "tags": {
+        "title": "标签管理",
+        "description": "管理工具标签和分类",
+        "total": "共 {count} 个标签",
+        "empty": "暂无标签",
+        "add": "添加标签",
+        "search": {
+          "placeholder": "搜索标签 slug..."
+        },
+        "filter": {
+          "category": "分类筛选",
+          "all": "全部",
+          "status": "状态筛选",
+          "statusAll": "全部状态",
+          "statusDraft": "草稿",
+          "statusPublished": "已发布",
+          "statusArchived": "已归档",
+          "published": "发布状态",
+          "publishedOnly": "已发布",
+          "draftOnly": "草稿",
+          "featured": "精选状态",
+          "featuredOnly": "精选",
+          "notFeatured": "非精选"
+        },
+        "columns": {
+          "name": "名称",
+          "slug": "Slug",
+          "category": "分类",
+          "color": "颜色",
+          "usageCount": "使用次数",
+          "status": "状态",
+          "createdAt": "创建时间",
+          "updatedAt": "更新时间",
+          "actions": "操作"
+        },
+        "status": {
+          "published": "已发布",
+          "draft": "草稿",
+          "archived": "已归档",
+          "featured": "精选"
+        },
+        "category": {
+          "type": "类型",
+          "pricing": "定价",
+          "platform": "平台",
+          "feature": "功能",
+          "general": "通用",
+          "other": "其他"
+        },
+        "actions": {
+          "edit": "编辑",
+          "delete": "删除",
+          "view": "查看"
+        },
+        "pagination": {
+          "showing": "显示第 {from} - {to} 条，共 {total} 条",
+          "page": "第 {current} / {total} 页"
+        },
+        "toast": {
+          "createSuccess": "标签创建成功",
+          "updateSuccess": "标签更新成功",
+          "deleteSuccess": "标签删除成功",
+          "autofillSuccess": "多语言补全成功",
+          "autofillPartial": "部分语言补全成功",
+          "autofillError": "多语言补全失败",
+          "error": "操作失败"
+        },
+        "form": {
+          "create": "创建标签",
+          "edit": "编辑标签",
+          "commonFields": "公共字段",
+          "slug": "Slug",
+          "slugPlaceholder": "ai-tool",
+          "slugHint": "URL 友好的标识符",
+          "enName": "英文名称",
+          "enNamePlaceholder": "AI Tool",
+          "zhName": "中文名称",
+          "zhNamePlaceholder": "AI 工具",
+          "enDescription": "英文描述",
+          "enDescriptionPlaceholder": "Tools powered by artificial intelligence",
+          "zhDescription": "中文描述",
+          "zhDescriptionPlaceholder": "由人工智能驱动的工具",
+          "name": "名称",
+          "description": "描述",
+          "content": "详细内容",
+          "category": "分类",
+          "categoryPlaceholder": "选择分类",
+          "color": "颜色",
+          "colorPlaceholder": "#3B82F6",
+          "iconEmoji": "图标 Emoji",
+          "iconEmojiPlaceholder": "🤖",
+          "published": "已发布",
+          "featured": "精选",
+          "referenceContent": "参考内容",
+          "referenceContentPlaceholder": "粘贴参考内容，用于 AI 生成多语言翻译...",
+          "autofillMissing": "根据参考内容补全缺失",
+          "autofilling": "AI 正在补全多语言...",
+          "cancel": "取消",
+          "save": "保存",
+          "saving": "保存中..."
+        },
+        "deleteDialog": {
+          "title": "删除标签",
+          "description": "确定要删除此标签吗？此操作无法撤销。",
+          "impactWarning": "此标签将从 {count} 个工具中移除",
+          "cancel": "取消",
+          "confirm": "确认删除",
+          "deleting": "删除中..."
+        }
+      },
+      "reviews": {
+        "title": "评论管理",
+        "description": "管理用户对工具的评分和评论",
+        "total": "共 {count} 条评论",
+        "empty": "暂无评论",
+        "noComment": "无评论内容",
+        "search": {
+          "placeholder": "搜索评论内容、用户名或工具名称..."
+        },
+        "filter": {
+          "status": "状态筛选",
+          "all": "全部"
+        },
+        "columns": {
+          "tool": "工具",
+          "user": "用户",
+          "rating": "评分",
+          "comment": "评论内容",
+          "status": "状态",
+          "createdAt": "发布时间",
+          "actions": "操作"
+        },
+        "status": {
+          "published": "已发布",
+          "hidden": "已屏蔽"
+        },
+        "actions": {
+          "view": "查看",
+          "hide": "屏蔽",
+          "show": "显示",
+          "delete": "删除"
+        },
+        "pagination": {
+          "showing": "显示第 {from} - {to} 条，共 {total} 条",
+          "page": "第 {current} / {total} 页"
+        },
+        "viewDialog": {
+          "title": "评论详情",
+          "description": "查看评论的完整信息",
+          "tool": "工具",
+          "user": "用户",
+          "rating": "评分",
+          "comment": "评论内容",
+          "status": "状态",
+          "createdAt": "发布时间",
+          "close": "关闭"
+        },
+        "deleteDialog": {
+          "title": "删除评论",
+          "description": "确定要删除此评论吗？删除后可以在数据库中恢复。",
+          "cancel": "取消",
+          "confirm": "确认删除",
+          "deleting": "删除中..."
+        },
+        "toast": {
+          "statusUpdated": "状态更新成功",
+          "deleted": "评论已删除",
+          "error": "操作失败"
+        }
+      }
+    },
+    "settings": {
+      "title": "设置",
+      "profile": {
+        "title": "账户",
+        "description": "管理您的账户信息",
+        "avatar": {
+          "title": "头像",
+          "description": "点击上传按钮上传自定义头像",
+          "recommendation": "头像是可选的，但强烈推荐设置",
+          "uploading": "上传中...",
+          "uploadAvatar": "上传头像",
+          "success": "头像更新成功",
+          "fail": "更新头像失败"
+        },
+        "name": {
+          "title": "名字",
+          "description": "请输入您的名字",
+          "placeholder": "名字",
+          "minLength": "请至少使用 3 个字符",
+          "maxLength": "请最多使用 30 个字符",
+          "hint": "请使用 3-30 个字符",
+          "success": "名字更新成功",
+          "fail": "更新名字失败",
+          "saving": "保存中...",
+          "save": "保存"
+        }
+      },
+      "billing": {
+        "title": "账单",
+        "description": "管理您的订阅和账单信息",
+        "status": {
+          "active": "已激活",
+          "trial": "试用中",
+          "free": "免费版",
+          "lifetime": "终身版"
+        },
+        "interval": {
+          "month": "月",
+          "year": "年",
+          "oneTime": "一次性"
+        },
+        "currentPlan": {
+          "title": "当前方案",
+          "description": "您当前的方案详情",
+          "noPlan": "您没有激活的方案"
+        },
+        "CustomerPortalButton": {
+          "loading": "加载中...",
+          "createCustomerPortalFailed": "打开Stripe客户界面失败"
+        },
+        "price": "价格：",
+        "periodStartDate": "周期开始日期：",
+        "periodEndDate": "周期结束日期：",
+        "trialEnds": "试用结束日期：",
+        "freePlanMessage": "您当前使用的是功能有限的免费方案",
+        "lifetimeMessage": "您拥有所有高级功能的终身使用权限",
+        "manageSubscription": "管理订阅和账单",
+        "manageBilling": "管理账单",
+        "upgradePlan": "升级方案",
+        "retry": "重试",
+        "errorMessage": "获取数据失败",
+        "paymentSuccess": "支付成功"
+      },
+      "credits": {
+        "title": "积分",
+        "description": "管理您的积分交易",
+        "tabs": {
+          "balance": "积分余额",
+          "transactions": "交易记录"
+        },
+        "balance": {
+          "title": "积分余额",
+          "description": "您的积分余额",
+          "credits": "积分",
+          "creditsDescription": "您有 {credits} 积分",
+          "creditsExpired": "积分已过期",
+          "creditsAdded": "积分已添加到您的账户",
+          "viewTransactions": "查看积分记录",
+          "retry": "重试",
+          "expiringCredits": "{credits} 积分将在 {days} 天内过期"
+        },
+        "packages": {
+          "title": "积分套餐",
+          "description": "购买积分以使用我们的更多服务",
+          "purchase": "购买",
+          "processing": "处理中...",
+          "popular": "热门",
+          "completePurchase": "请支付订单",
+          "failedToFetchCredits": "获取积分失败",
+          "failedToCreatePaymentIntent": "创建付款意向失败",
+          "failedToInitiatePayment": "发起付款失败",
+          "cancel": "取消",
+          "purchaseFailed": "购买积分失败",
+          "checkoutFailed": "创建支付会话失败",
+          "loading": "加载中...",
+          "pay": "支付"
+        },
+        "transactions": {
+          "title": "积分记录",
+          "error": "获取积分交易记录失败",
+          "search": "搜索积分交易记录...",
+          "paymentIdCopied": "支付ID已复制到剪贴板",
+          "columns": {
+            "columns": "列",
+            "id": "ID",
+            "type": "类型",
+            "description": "描述",
+            "amount": "金额",
+            "remainingAmount": "剩余金额",
+            "paymentId": "支付编号",
+            "expirationDate": "过期日期",
+            "expirationDateProcessedAt": "过期处理时间",
+            "createdAt": "创建时间",
+            "updatedAt": "更新时间"
+          },
+          "types": {
+            "MONTHLY_REFRESH": "每月赠送",
+            "REGISTER_GIFT": "注册赠送",
+            "PURCHASE": "购买积分",
+            "USAGE": "使用积分",
+            "EXPIRE": "过期积分",
+            "SUBSCRIPTION_RENEWAL": "订阅月度积分",
+            "LIFETIME_MONTHLY": "终身月度积分"
+          },
+          "detailViewer": {
+            "title": "积分交易详情",
+            "close": "关闭"
+          },
+          "expired": "已过期",
+          "never": "无过期日期"
+        }
+      },
+      "history": {
+        "title": "历史记录",
+        "description": "查看您的图片处理历史",
+        "empty": "暂无历史记录",
+        "prev": "上一页",
+        "next": "下一页",
+        "detail": "图片详情",
+        "input": "原图",
+        "output": "结果",
+        "credits": "积分",
+        "type": {
+          "enhance": "增强",
+          "generate": "生成"
+        },
+        "status": {
+          "success": "成功",
+          "failed": "失败"
+        }
+      },
+      "notification": {
+        "title": "通知",
+        "description": "管理您的通知设置",
+        "newsletter": {
+          "title": "订阅",
+          "description": "管理您的邮件列表订阅偏好",
+          "label": "订阅邮件列表",
+          "hint": "您可以随时更改订阅偏好",
+          "emailRequired": "订阅邮件列表需要邮箱",
+          "subscribeSuccess": "成功订阅邮件列表",
+          "subscribeFail": "订阅邮件列表失败",
+          "unsubscribeSuccess": "成功取消订阅邮件列表",
+          "unsubscribeFail": "取消订阅邮件列表失败",
+          "error": "更新订阅时发生错误"
+        }
+      },
+      "security": {
+        "title": "安全",
+        "description": "管理您的安全设置",
+        "updatePassword": {
+          "title": "修改密码",
+          "description": "输入您的当前密码和新密码",
+          "currentPassword": "当前密码",
+          "currentRequired": "当前密码是必填项",
+          "newPassword": "新密码",
+          "newMinLength": "密码必须至少包含 8 个字符",
+          "hint": "请至少使用 8 个字符作为密码",
+          "showPassword": "显示密码",
+          "hidePassword": "隐藏密码",
+          "success": "密码更新成功",
+          "fail": "更新密码失败",
+          "saving": "保存中...",
+          "save": "保存"
+        },
+        "resetPassword": {
+          "title": "重置密码",
+          "description": "重置密码以启用邮箱登录",
+          "info": "重置密码将允许您除了社交登录方式外，还可以使用邮箱和密码登录，您将收到一封包含重置密码链接的电子邮件",
+          "button": "重置密码"
+        },
+        "deleteAccount": {
+          "title": "删除账号",
+          "description": "永久删除您的账号和所有内容",
+          "warning": "此操作是不可逆的，请谨慎操作",
+          "button": "删除账号",
+          "confirmTitle": "删除账号",
+          "confirmDescription": "您确定要删除您的账号吗？此操作无法撤销",
+          "confirm": "删除",
+          "cancel": "取消",
+          "deleting": "删除中...",
+          "success": "账号删除成功",
+          "fail": "删除账号失败"
+        }
+      },
+      "submissions": {
+        "title": "我的提交",
+        "description": "查看您提交的工具记录",
+        "total": "共 {count} 条记录",
+        "empty": "暂无提交记录",
+        "successAfterPayment": "支付成功！您的工具已提交并进入审核队列，我们会尽快处理。",
+        "status": {
+          "unpaid": "未支付",
+          "pending": "待审核",
+          "approved": "已通过",
+          "rejected": "已拒绝"
+        },
+        "filter": {
+          "status": "状态筛选",
+          "all": "全部"
+        },
+        "columns": {
+          "name": "工具名称",
+          "url": "工具URL",
+          "status": "状态",
+          "submittedAt": "提交时间",
+          "actions": "操作"
+        },
+        "pagination": {
+          "showing": "显示第 {from} - {to} 条，共 {total} 条",
+          "page": "第 {current} / {total} 页"
+        },
+        "rejectReason": "拒绝原因",
+        "edit": "编辑",
+        "editDialog": {
+          "title": "编辑提交",
+          "description": "修改您的提交信息，修改后将重新进入审核流程",
+          "name": "工具名称",
+          "url": "工具URL",
+          "logo": "Logo",
+          "screenshot": "截图",
+          "descriptionLabel": "描述",
+          "descriptionOptional": "描述是可选的",
+          "cancel": "取消",
+          "submit": "保存并重新提交",
+          "submitting": "提交中..."
+        }
+      }
+    },
+    "upgrade": {
+      "title": "升级",
+      "description": "升级到Pro以获取所有功能",
+      "button": "升级"
+    }
+  },
+  "Mail": {
+    "common": {
+      "team": "{name} 团队",
+      "copyright": "©️ {year} 版权所有。"
+    },
+    "verifyEmail": {
+      "title": "你好，{name}。",
+      "body": "请点击下面的链接验证您的邮箱地址。",
+      "confirmEmail": "确认邮箱",
+      "subject": "验证您的邮箱"
+    },
+    "forgotPassword": {
+      "title": "你好，{name}。",
+      "body": "请点击下面的链接重置您的密码。",
+      "resetPassword": "重置密码",
+      "subject": "重置您的密码"
+    },
+    "subscribeNewsletter": {
+      "body": "感谢您订阅 Vidlyo！您将收到最新的 AI 视频与图片创作技巧、新功能更新和专属优惠。敬请期待强大的 AI 创作工具和技术分享。",
+      "subject": "欢迎加入 Vidlyo"
+    },
+    "contactMessage": {
+      "name": "姓名: {name}",
+      "email": "邮箱: {email}",
+      "message": "消息: {message}",
+      "subject": "来自网站的联系消息"
+    }
+  },
+  "HomePage": {
+    "title": "BuildWay - 发现最好的 AI 工具",
+    "description": "发现精选 AI 工具，满足你的每一个需求。为你的项目找到完美的解决方案。",
+    "hero": {
+      "badge": "🚀 AI 工具导航",
+      "introduction": "在 X 上关注我们",
+      "title": "发现最好的 AI 工具",
+      "subtitle": "发现精选 AI 工具，满足你的每一个需求。为你的下一个项目找到完美的解决方案。",
+      "description": "发现精选 AI 工具，满足你的每一个需求。为你的下一个项目找到完美的解决方案。",
+      "primary": "开始使用",
+      "secondary": "查看演示",
+      "searchPlaceholder": "搜索 AI 工具、分类或功能...",
+      "stats": {
+        "tools": "AI 工具",
+        "categories": "分类",
+        "users": "用户"
+      }
+    },
+    "latestTools": {
+      "title": "最新 AI 工具",
+      "subtitle": "最近收录的优质工具",
+      "justLaunched": "最新发布",
+      "viewAll": "查看全部工具",
+      "featuredTitle": "精选推荐"
+    },
+    "submitCta": {
+      "badge": "提交工具",
+      "title": "与社区分享你的 AI 工具",
+      "description": "让你的 AI 工具被收录展示，获得更多寻找新解决方案的潜在用户曝光。",
+      "button": "提交工具"
+    },
+    "logocloud": {
+      "title": "您最爱公司都是我们的合作伙伴"
+    },
+    "integration": {
+      "title": "集成",
+      "subtitle": "与您最喜欢的工具集成",
+      "description": "无缝连接流行的平台和服务，以增强您的工作流程。",
+      "learnMore": "了解更多",
+      "items": {
+        "item-1": {
+          "title": "Google Gemini",
+          "description": "这里是Google Gemini的描述，详细介绍Google Gemini的功能和优势。"
+        },
+        "item-2": {
+          "title": "Replit",
+          "description": "这里是Replit的描述，详细介绍Replit的功能和优势。"
+        },
+        "item-3": {
+          "title": "MagicUI",
+          "description": "这里是MagicUI的描述，详细介绍MagicUI的功能和优势。"
+        },
+        "item-4": {
+          "title": "VSCodium",
+          "description": "这里是VSCodium的描述，详细介绍VSCodium的功能和优势。"
+        },
+        "item-5": {
+          "title": "MediaWiki",
+          "description": "这里是MediaWiki的描述，详细介绍MediaWiki的功能和优势。"
+        },
+        "item-6": {
+          "title": "Google PaLM",
+          "description": "这里是Google PaLM的描述，详细介绍Google PaLM的功能和优势。"
+        }
+      }
+    },
+    "integration2": {
+      "title": "与您最喜欢的工具集成",
+      "description": "无缝连接流行的平台和服务，以增强您的工作流程。",
+      "primaryButton": "开始使用",
+      "secondaryButton": "查看演示"
+    },
+    "pricing": {
+      "title": "价格",
+      "subtitle": "价格",
+      "description": "选择最适合您的付费计划"
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "关于 AI 工具导航站的常见问题",
+      "items": {
+        "item-1": {
+          "question": "这个网站收录了多少个 AI 工具？",
+          "answer": "我们持续精选和更新优质 AI 工具，涵盖图像生成、视频生成、文本写作、音频音乐、代码开发等多个领域。我们的收录集合不断增长，持续添加新工具。"
+        },
+        "item-2": {
+          "question": "如何提交我的 AI 工具？",
+          "answer": "点击首页的「提交工具」按钮，填写工具的基本信息（名称、网址、描述、分类等）即可。我们会在 1-3 个工作日内审核您的提交，审核通过后会在网站上展示。"
+        },
+        "item-3": {
+          "question": "工具是如何分类的？",
+          "answer": "我们按照功能将工具分为多个分类：图像生成、视频生成、文本写作、音频音乐、代码开发、设计创意、生产力、营销 SEO、数据分析、聊天助手等。每个工具可能属于多个分类。"
+        },
+        "item-4": {
+          "question": "所有工具都是免费的吗？",
+          "answer": "不是。我们收录的工具包括完全免费、提供免费试用和纯付费工具。每个工具的详情页面都会标注定价信息，您可以根据自己的需求选择合适的工具。"
+        },
+        "item-5": {
+          "question": "如何搜索特定的工具？",
+          "answer": "使用首页顶部的搜索框，输入关键词即可搜索。搜索会匹配工具的名称、描述和标签，帮助您快速找到需要的工具。"
+        },
+        "item-6": {
+          "question": "什么是精选工具？",
+          "answer": "精选工具是我们编辑团队根据工具的质量、知名度、用户评价和功能完整性精心挑选的优质工具。这些工具在各自的领域都有出色的表现。"
+        },
+        "item-7": {
+          "question": "目录多久更新一次？",
+          "answer": "我们定期更新目录，添加新的 AI 工具，并移除过时或已停用的工具。我们的团队每周都会审查并添加新工具，确保您能够访问最新、最相关的 AI 解决方案。"
+        },
+        "item-8": {
+          "question": "我可以请求添加特定的工具吗？",
+          "answer": "可以！如果您知道某个优秀的 AI 工具尚未被收录，可以通过我们的「提交工具」功能提交。我们会审查所有提交，并添加符合质量标准并为社区提供价值的工具。"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "客户评价",
+      "subtitle": "我们的客户对我们的评价",
+      "items": {
+        "item-1": {
+          "name": "Jonathan Yombo",
+          "role": "软件工程师",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "quote": "MkSaaS 非常出色且实用，无需费心，一个真正的金矿。"
+        },
+        "item-2": {
+          "name": "Yves Kalume",
+          "role": "Android GDE",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg",
+          "quote": "没有网页设计经验，我只需几分钟就可以用 Tailwindcss 重新设计我的整个网站，感谢 MkSaaS。"
+        },
+        "item-3": {
+          "name": "Yucel Faruksahan",
+          "role": "Tailkits 创建者",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg",
+          "quote": "MkSaaS 模板做得很好，这是我见过最好的 SaaS 模板，没有之一 :)"
+        },
+        "item-4": {
+          "name": "Anonymous author",
+          "role": "产品经理",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg",
+          "quote": "我不熟悉 Tailwind，我想自己做一些页面，我在网上搜索了很多英雄页面和区块。然而，大多数都没有给我一个清晰的想法，或者需要一些 HTML/CSS 编码背景来从原始文件中做一些更改，或者太贵了。我下载了其中一个 MkSaaS 模板，它非常容易理解，你可以在开始时修改代码/区块以完美地适应你的页面目的。"
+        },
+        "item-5": {
+          "name": "Shekinah Tshiokufila",
+          "role": "高级软件工程师",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "quote": "MkSaaS 正在重新定义网页设计标准，这些区块为那些喜欢美丽但可能缺乏时间实现它的人提供了简单且高效的方式。我只能推荐这个不可思议的奇迹。"
+        },
+        "item-6": {
+          "name": "Oketa Fred",
+          "role": "全栈开发工程师",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg",
+          "quote": "我绝对喜欢 MkSaaS！这些组件区块设计精美且易于使用，使创建一个出色的网站变得轻而易举。"
+        },
+        "item-7": {
+          "name": "Zeki",
+          "role": "ChatExtend 创始人",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg",
+          "quote": "使用 MkSaaS 就像解锁了一个秘密的设计超能力。它是简单性和多功能性的完美融合，使我们能够创建既令人惊叹又用户友好的界面。"
+        },
+        "item-8": {
+          "name": "Joseph Kitheka",
+          "role": "全栈开发工程师",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg",
+          "quote": "MkSaaS 改变了我的网页开发方式。他们的 UI 组件、区块和模板极大地加速了我的工作流程。定制每个方面的灵活性使我能够创建独特的用户体验。MkSaaS 是现代网页开发的游戏规则改变者！"
+        },
+        "item-9": {
+          "name": "Khatab Wedaa",
+          "role": "MerakiUI 创建者",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg",
+          "quote": "MkSaaS 是一个优雅、干净且响应式的 SaaS 模板，它非常有助于快速开始您的项目。"
+        },
+        "item-10": {
+          "name": "Rodrigo Aguilar",
+          "role": "TailwindAwesome 创建者",
+          "image": "https://randomuser.me/api/portraits/men/11.jpg",
+          "quote": "我爱 MkSaaS ❤️。这些组件区块结构良好，易于使用，设计精美。它使创建一个出色的网站变得非常容易。"
+        },
+        "item-11": {
+          "name": "Eric Ampire",
+          "role": "Google 开发者专家",
+          "image": "https://randomuser.me/api/portraits/men/12.jpg",
+          "quote": "MkSaaS 模板是任何想要创建一个美丽且功能齐全的网站但没有网页设计经验的人的完美解决方案。这些模板易于使用，可定制，并且响应迅速。我强烈推荐 MkSaaS 模板给任何想要创建网站的人。"
+        },
+        "item-12": {
+          "name": "Roland Tubonge",
+          "role": "软件工程师",
+          "image": "https://randomuser.me/api/portraits/men/13.jpg",
+          "quote": "MkSaaS 设计得如此出色，即使没有网页设计经验，您也可以创造奇迹。让自己被吸引！"
+        }
+      }
+    },
+    "stats": {
+      "title": "统计",
+      "subtitle": "MkSaaS 相关的数字",
+      "description": "MkSaaS 可让您在几天内轻松构建您的 AI SaaS",
+      "items": {
+        "item-1": {
+          "title": "GitHub 上的星星"
+        },
+        "item-2": {
+          "title": "使用 MkSaaS 的活跃用户"
+        },
+        "item-3": {
+          "title": "使用 MkSaaS 启动的应用"
+        }
+      }
+    },
+    "calltoaction": {
+      "title": "开始构建",
+      "description": "MkSaaS 可让您在几天内轻松构建您的 AI SaaS",
+      "primaryButton": "开始使用",
+      "secondaryButton": "查看演示"
+    }
+  },
+  "AIImagePage": {
+    "title": "AI 图片",
+    "description": "MkSaaS 让您在几天内轻松构建您的 AI SaaS，简单且毫不费力"
+  },
+  "AIChatPage": {
+    "title": "AI 聊天",
+    "description": "MkSaaS 让您在几天内轻松构建您的 AI SaaS，简单且毫不费力"
+  },
+  "AIVideoPage": {
+    "title": "AI 视频",
+    "description": "MkSaaS 让您在几天内轻松构建您的 AI SaaS，简单且毫不费力"
+  },
+  "AIAudioPage": {
+    "title": "AI 音频",
+    "description": "MkSaaS 让您在几天内轻松构建您的 AI SaaS，简单且毫不费力"
+  },
+  "LandingPage": {
+    "metadata": {
+      "title": "Vidlyo - AI 视频与图片生成器 | 一站式创作平台",
+      "description": "一站式 AI 视频与图片创作平台。文字生成视频、图片生成视频、AI 动画生成、AI 图片生成器等强大功能，让创意轻松变现实。"
+    },
+    "hero": {
+      "badge": "AI 智能创作平台",
+      "title": "创作惊艳的",
+      "titleHighlight": "AI 视频与图片",
+      "subtitle": "一站式 AI 创作平台。",
+      "noPlasticSkin": "文字生成视频。图片生成视频。",
+      "noBeautyFilter": "AI 动画。AI 图片生成。",
+      "description": "用 AI 将创意变为现实。文字提示生成视频、照片动画化、创作 AI 艺术 — 一个强大平台搞定一切。",
+      "cta": "免费开始创作",
+      "ctaSecondary": "查看案例",
+      "users": "创作者",
+      "rating": "评分",
+      "scroll": "滚动",
+      "processing": "处理时间",
+      "processingTime": "< 30 秒"
+    },
+    "howItWorks": {
+      "sectionLabel": "使用方法",
+      "title": "3 步创作 AI 视频与图片",
+      "subtitle": "将创意转化为精美视觉内容。输入提示词、选择风格、让 AI 施展魔法。无需技术技能。",
+      "steps": {
+        "upload": {
+          "step": "01",
+          "title": "输入创意提示词",
+          "description": "描述您想创作的内容 — 电影级视频场景、精美艺术作品或动画角色。上传参考图片效果更佳。"
+        },
+        "choose": {
+          "step": "02",
+          "title": "选择 AI 模型和风格",
+          "description": "从强大的 AI 模型中选择。设置宽高比、时长和风格。AI 视频生成器和图片生成器会处理剩下的工作。"
+        },
+        "download": {
+          "step": "03",
+          "title": "下载 AI 创作成果",
+          "description": "AI 生成的视频或图片几秒内完成。预览效果，需要时可调整，然后下载高质量成品。专业效果每次都有保证。"
+        }
+      }
+    },
+    "features": {
+      "sectionLabel": "功能特性",
+      "title": "强大的 AI 图片创作功能",
+      "subtitle": "创作精美图片所需的一切。从文字生成图片到风格转换，专业品质与极速生成兼得。视频功能即将推出。",
+      "items": {
+        "textToVideo": {
+          "subtitle": "AI 视频生成器",
+          "title": "文字生成视频 AI",
+          "description": "将文字提示转化为精彩绝伦的视频。描述任何场景 — 电影级镜头、产品演示或创意动画 — 看 AI 用逼真的动态和音效将您的想象变为现实。即将推出。"
+        },
+        "imageToVideo": {
+          "subtitle": "图片生成视频 AI",
+          "title": "用 AI 让图片动起来",
+          "description": "将静态图片转化为动态逼真的视频。上传照片，让 AI 添加自然的动作、表情和生命力。完美适合从现有照片创作引人入胜的内容。即将推出。"
+        },
+        "referenceToVideo": {
+          "subtitle": "参考图生成视频",
+          "title": "保持角色在视频中的一致性",
+          "description": "提供角色、物体或场景的参考图片，在视频的所有帧中保持一致。完美适合故事叙述、品牌内容和系列创作。即将推出。"
+        },
+        "textToImage": {
+          "subtitle": "AI 图片生成器",
+          "title": "文字生成精美图片",
+          "description": "用 AI 将创意转化为精美图像。只需描述您想要的内容 — 未来城市景观、宁静风景，或任何您能想象的事物。先进 AI 模型几秒内生成高质量图像。"
+        },
+        "cartoonStyle": {
+          "subtitle": "卡通风格转换",
+          "title": "将照片转换为卡通风格",
+          "description": "只需一键，即可将你的照片转换为喜爱的卡通风格，如迪士尼、皮克斯、辛普森和赛博朋克等，完全免费！在社交媒体上脱颖而出。"
+        },
+        "ghibliStyle": {
+          "subtitle": "吉卜力风格转换",
+          "title": "将照片转换为吉卜力风格",
+          "highlightedTitle": "魔法动画风格",
+          "description": "快速将你的照片转换为吉卜力风格的艺术作品，拥有丰富的手绘动画风格和充满活力的调色板。捕捉图像中的每一个细节，并注入奇幻和魔法元素。",
+          "imageAlt": {
+            "0": "转换前原图",
+            "1": "吉卜力风格效果"
+          }
+        },
+        "handMadePaintings": {
+          "subtitle": "手绘风格转换",
+          "title": "将照片转换为手绘风格",
+          "highlightedTitle": "",
+          "description": "轻松为你的图片添加手绘风格滤镜。快速将数字照片转换为高质量、无水印的油画、插画或水彩艺术作品。",
+          "imageAlt": {
+            "0": "转换前 - 原始照片",
+            "1": "转换后 - 手绘风格效果"
+          }
+        },
+        "aiAnimation": {
+          "subtitle": "AI 动画生成器",
+          "title": "创作动漫和卡通视频",
+          "description": "生成各种风格的精彩动漫和卡通视频。可选宫崎骏、新海诚等著名动画师风格。将创意变成动画杰作。即将推出。"
+        },
+        "aiOutfitChange": {
+          "subtitle": "AI 换装生成器",
+          "title": "AI 智能换装",
+          "highlightedTitle": "瞬间变身",
+          "description": "上传你的照片，选择不同的服装风格，AI 帮你实现完美换装效果。保持人物特征、表情和姿态不变，只需一键即可体验各种时尚造型。完美适合时尚摄影、社交媒体内容和创意设计。",
+          "imageAlt": {
+            "0": "换装前 - 粉色毛衣造型",
+            "1": "换装后 - 棕色夹克造型"
+          }
+        }
+      },
+      "cta": "立即开始创作"
+    },
+    "useCases": {
+      "sectionLabel": "AI 创作应用场景",
+      "title": "用 Vidlyo 能创作什么？",
+      "description": "强大的 AI 工具覆盖每一个创作场景。从营销视频到社交内容，一站式解决所有需求。",
+      "items": {
+        "marketing": {
+          "title": "营销视频",
+          "subtitle": "产品演示与推广内容",
+          "description": "用 AI 创作精美的产品视频、推广内容和广告创意。完美适合电商、社交媒体广告和品牌营销活动。"
+        },
+        "social": {
+          "title": "社交媒体内容",
+          "subtitle": "爆款短视频与吸睛帖子",
+          "description": "为抖音、小红书、B站生成吸睛的视频和图片。创作在拥挤信息流中脱颖而出的爆款内容。"
+        },
+        "avatar": {
+          "title": "AI 数字人视频",
+          "subtitle": "照片生成视频数字人",
+          "description": "将一张照片转化为长达 2 分钟的 AI 数字人视频。配备逼真的动作、口型同步和丰富的表情。"
+        },
+        "animation": {
+          "title": "AI 动画",
+          "subtitle": "动漫和卡通风格视频",
+          "description": "生成各种风格的精彩动漫和卡通视频。从吉卜力到皮克斯，无需动画技能也能创作动画内容。"
+        },
+        "musicVideo": {
+          "title": "AI 音乐视频",
+          "subtitle": "将歌曲变成视觉故事",
+          "description": "用 AI 在几分钟内将您的歌曲变成精彩的音乐视频。创作与音乐情绪和节奏相匹配的精美画面。"
+        },
+        "storytelling": {
+          "title": "视觉叙事",
+          "subtitle": "一致的角色与场景",
+          "description": "创作角色和场景一致的多场景视频。完美适合短片、教育内容和叙事项目。"
+        },
+        "productShots": {
+          "title": "产品摄影",
+          "subtitle": "专业产品图片",
+          "description": "生成光线和背景完美的精美产品图片。非常适合电商商品图、产品目录和营销素材。"
+        },
+        "artCreation": {
+          "title": "AI 艺术创作",
+          "subtitle": "数字艺术与插画",
+          "description": "创作独特的数字艺术品、插画和概念设计。从写实到抽象，探索无限创意可能。"
+        },
+        "videoEnhance": {
+          "title": "视频增强",
+          "subtitle": "放大与提升画质",
+          "description": "用 AI 增强视频质量。提升分辨率、改善清晰度，将普通素材变成专业级内容。"
+        },
+        "styleTransfer": {
+          "title": "风格转换",
+          "subtitle": "转换视频美学风格",
+          "description": "为视频应用艺术风格。将素材转换为动漫、油画、赛博朋克等 30+ 种创意风格。"
+        },
+        "imageEdit": {
+          "title": "AI 图片编辑",
+          "subtitle": "用文字提示编辑",
+          "description": "用自然语言编辑图片。去除背景、更改元素、增强画质 — 只需简单的文字描述。"
+        },
+        "shorts": {
+          "title": "AI 短视频生成器",
+          "subtitle": "一键生成爆款视频",
+          "description": "一键创作精彩的多场景短视频。完美适合抖音、快手、B站短视频内容。"
+        }
+      }
+    },
+    "testimonials": {
+      "sectionLabel": "用户评价",
+      "title": "创作者对 Vidlyo 的评价",
+      "items": {
+        "sarah": {
+          "name": "Sarah Mitchell",
+          "role": "内容创作者",
+          "content": "Vidlyo 的 AI 视频生成器太棒了！几分钟内就能从文字提示创作精美视频。文字生成视频的质量堪比专业制作。"
+        },
+        "james": {
+          "name": "James Chen",
+          "role": "市场经理",
+          "content": "这款 AI 视频生成器为我们节省了大量制作时间。图片生成视频 AI 非常适合产品演示。营销团队的最佳 AI 创作平台。"
+        },
+        "emily": {
+          "name": "Emily Rodriguez",
+          "role": "社交媒体博主",
+          "content": "终于找到一站式 AI 创作平台！AI 图片生成器加视频工具集于一身。自从用了 Vidlyo，我的互动量飙升。"
+        }
+      }
+    },
+    "midCta": {
+      "title": "一站式",
+      "titleHighlight": "AI 视频与图片创作平台",
+      "description": "用文字提示创作精美 AI 视频和图片。文字生成视频、图片生成视频、AI 动画、AI 图片生成器 — 一个强大平台搞定一切。",
+      "cta": "免费开始创作"
+    },
+    "trustSecurity": {
+      "sectionLabel": "隐私与安全",
+      "title": "安全私密地",
+      "titleHighlight": "AI 创作",
+      "description": "您的创作是私人的。Vidlyo 将您的内容加密保密。放心创作 AI 视频和图片 — 不分享数据。",
+      "subDescription": "AI 视频生成器无隐私限制。您创作的内容归您所有。生成内容无需担心数据收集。",
+      "features": {
+        "encryption": {
+          "title": "加密处理",
+          "description": "端到端加密的 AI 视频和图片生成。"
+        },
+        "private": {
+          "title": "私密 AI 创作",
+          "description": "只有您可以查看和下载 AI 生成的内容。"
+        },
+        "secure": {
+          "title": "安全处理",
+          "description": "AI 生成在隔离的安全云环境中进行。"
+        },
+        "noSharing": {
+          "title": "不分享数据",
+          "description": "AI 创作平台永不分享您的内容。"
+        }
+      }
+    },
+    "faq": {
+      "sectionLabel": "常见问题",
+      "title": "常见问题解答",
+      "description": "关于 BuildWay 你需要知道的一切",
+      "items": {
+        "noSignup": {
+          "question": "什么是 BuildWay？",
+          "answer": "BuildWay 是一个精心策划的优质 AI 工具目录。我们帮助你发现、比较和选择适合你项目的 AI 工具，无论你是开发者、设计师、营销人员还是创业者。"
+        },
+        "freeToUse": {
+          "question": "BuildWay 免费使用吗？",
+          "answer": "是的！BuildWay 完全免费使用。你可以浏览、搜索和发现 AI 工具，无需注册或付费。"
+        },
+        "upscale": {
+          "question": "你们如何筛选工具？",
+          "answer": "我们根据质量、用户评价、功能和可靠性精心筛选每个工具。我们的团队会测试和评估工具，确保只推荐最好的解决方案。"
+        },
+        "enhance": {
+          "question": "我可以提交我的 AI 工具吗？",
+          "answer": "当然可以！我们欢迎开发者和公司提交工具。点击「提交工具」按钮，与我们的社区分享你的 AI 工具。"
+        },
+        "pixelated": {
+          "question": "目录多久更新一次？",
+          "answer": "我们定期更新目录，每周添加新工具，并更新现有列表，确保信息保持最新和准确。"
+        },
+        "secured": {
+          "question": "你们提供工具对比吗？",
+          "answer": "是的！每个工具列表都包含详细信息、评分和功能，帮助你比较不同选项并做出明智的决策。"
+        },
+        "mobileSupport": {
+          "question": "可以在手机上使用 BuildWay 吗？",
+          "answer": "可以！BuildWay 完全响应式，在所有设备上都能完美运行 — 桌面、平板和手机。随时随地浏览和发现 AI 工具。"
+        },
+        "regenerate": {
+          "question": "工具如何分类？",
+          "answer": "工具按生产力、设计、开发、营销等类别组织。使用我们的搜索和筛选功能，找到你需要的工具。"
+        },
+        "commercial": {
+          "question": "你们有联盟关系吗？",
+          "answer": "某些工具列表可能包含联盟链接，这有助于我们维护目录。我们始终优先考虑诚实的评价，只推荐我们信任的工具。"
+        }
+      },
+      "moreHelp": "还有其他问题？",
+      "contactUs": "联系我们"
+    },
+    "intro": {
+      "sectionLabel": "探索",
+      "sectionTitle": "用 AI 将创意变为现实",
+      "what": {
+        "subtitle": "产品介绍",
+        "title": "什么是 Vidlyo？",
+        "description": "Vidlyo 是您的一站式 AI 视频与图片创作平台。用文字提示生成精美视频、用 AI 让照片动起来、创作专业图片 — 一个强大平台搞定一切。文字生成视频、图片生成视频、AI 动画等功能应有尽有。"
+      },
+      "why": {
+        "subtitle": "为什么选择我们",
+        "title": "为什么选择 Vidlyo AI 创作平台？",
+        "description": "Vidlyo 将最好的 AI 视频生成器和 AI 图片生成器集于一身。用简单的文字提示几秒内创作专业内容。无需技术技能 — 只需描述您想要的，让 AI 施展魔法。"
+      },
+      "struggling": {
+        "subtitle": "开始使用",
+        "title": "准备好创作精彩 AI 内容了吗？",
+        "description": "传统视频和图片创作既慢又贵。Vidlyo 改变了这一切。用简单的文字提示生成 AI 视频和图片。从营销内容到社交媒体帖子 — 几分钟内创作专业视觉内容，而不是几小时。"
+      }
+    },
+    "highlights": {
+      "title": "创作者为何选择 Vidlyo",
+      "subtitle": "一站式 AI 创作平台，功能强大。AI 视频生成器、AI 图片生成器、动画工具 — 您需要的一切都在这里。",
+      "items": {
+        "easy": {
+          "title": "简单文字提示",
+          "description": "无需复杂软件 — 只需描述您想要的内容。我们的 AI 理解自然语言，从您的描述创作精美视频和图片。"
+        },
+        "models": {
+          "title": "强大 AI 模型",
+          "description": "使用前沿 AI 模型进行视频和图片生成。从快速迭代到高质量专业输出 — 选择适合您需求的模型。"
+        },
+        "free": {
+          "title": "一站式平台",
+          "description": "文字生成视频、图片生成视频、AI 动画、AI 图片生成器 — 所有创作工具集于一身。无需在多个应用间切换。"
+        }
+      }
+    },
+    "finalCta": {
+      "title": "开始创作",
+      "titleHighlight": "精彩 AI 内容",
+      "description": "加入数百万使用 Vidlyo 的创作者。用简单的文字提示生成精美 AI 视频和图片。您的一站式 AI 创作平台。",
+      "cta": "免费开始创作",
+      "trust": {
+        "gdpr": "隐私保护",
+        "noStorage": "安全处理",
+        "ssl": "SSL 加密"
+      }
+    },
+    "quickEnhance": {
+      "badge": "立即体验",
+      "title": "体验 AI 图片编辑",
+      "subtitle": "上传一张照片，见证 AI 的魔力",
+      "upload": {
+        "title": "上传图片",
+        "dragDrop": "拖拽或点击上传",
+        "formats": "支持 JPG、PNG、WEBP，最大 {size}MB",
+        "errorFormat": "请上传 JPG、PNG 或 WEBP 格式的图片",
+        "errorSize": "文件大小不能超过 {size}MB",
+        "uploading": "上传中..."
+      },
+      "modes": {
+        "title": "编辑模式",
+        "skin": "AI 增强",
+        "upscale": "超分辨率",
+        "restore": "图片修复",
+        "comingSoon": "即将推出"
+      },
+      "enhance": "开始编辑",
+      "processing": "处理中...",
+      "download": "下载",
+      "downloadSuccess": "下载成功",
+      "downloadFallback": "已在新标签页打开图片，请右键保存",
+      "generateFirst": "请先生成结果",
+      "tryAgain": "重试",
+      "error": "编辑失败，请重试",
+      "errors": {
+        "UNAUTHORIZED": "请先登录",
+        "INSUFFICIENT_CREDITS": "积分不足，需要 {required} 积分",
+        "INVALID_IMAGE_URL": "图片地址无效",
+        "REPLICATE_API_ERROR": "AI 处理失败，请重试",
+        "NETWORK_ERROR": "网络错误，请检查您的网络连接",
+        "TIMEOUT": "处理超时，请重试",
+        "UNKNOWN": "未知错误，请联系客服"
+      },
+      "hint": "免费用户：最大 2MB | 付费用户：最大 20MB | 需要更大？联系我们",
+      "result": {
+        "title": "效果预览",
+        "yourResult": "您的结果",
+        "sampleHint": "上传图片查看您的专属效果"
+      }
+    },
+    "aiEditor": {
+      "badge": "一站式 AI 创作平台",
+      "titlePart1": "创作惊艳的",
+      "titleHighlight": "AI 视频与图片",
+      "subtitle": "用强大的 AI 将创意变为现实。文字生成视频、图片生成视频、AI 动画、AI 图片生成器 — 一个平台搞定一切。",
+      "users": "创作者",
+      "rating": "评分",
+      "imagesGenerated": "个作品已生成",
+      "quickPrompts": {
+        "portrait": "人像",
+        "landscape": "风景",
+        "abstract": "抽象艺术"
+      },
+      "inputBar": {
+        "placeholder": "描述您想要创建或编辑的内容..."
+      },
+      "toolbar": {
+        "model": "模型",
+        "ratio": "比例",
+        "more": "更多",
+        "public": "公开可见",
+        "publicDescription": "在社区画廊中展示",
+        "credits": "{count} 积分",
+        "clear": "清除"
+      },
+      "imageUpload": {
+        "add": "添加",
+        "manageImages": "管理图片",
+        "retry": "重试",
+        "errorFormat": "仅支持 JPG、PNG、WebP 格式",
+        "errorSize": "文件大小不能超过 {size}MB",
+        "errorMaxImages": "最多只能上传 {max} 张图片",
+        "errorDuplicate": "该图片已上传过，请勿重复添加"
+      },
+      "tabs": {
+        "textToImage": "文生图"
+      },
+      "models": {
+        "title": "模型",
+        "description": "快速精准的图片编辑"
+      },
+      "images": {
+        "title": "图片"
+      },
+      "uploader": {
+        "dragDrop": "点击或拖拽上传图片",
+        "formats": "支持 JPG、PNG、WebP，最大 {size}MB",
+        "selected": "已选 {count}/{max} 张",
+        "add": "添加",
+        "errorFormat": "仅支持 JPG、PNG、WebP 格式",
+        "errorSize": "文件大小不能超过 {size}MB",
+        "errorMaxImages": "最多只能上传 {max} 张图片",
+        "errorDuplicate": "该图片已上传过，请勿重复添加"
+      },
+      "prompt": {
+        "title": "提示词",
+        "placeholder": "描述您的编辑需求，例如 \"移除背景中的人物\""
+      },
+      "quickActions": {
+        "title": "快捷功能"
+      },
+      "aspectRatio": {
+        "title": "宽高比"
+      },
+      "optionsBar": {
+        "model": "模型",
+        "ratio": "比例",
+        "public": "公开可见",
+        "publicTooltip": "开启后，生成的图片将在社区画廊中展示，其他用户可以看到",
+        "clear": "清除",
+        "generate": "生成 ({credits}积分)",
+        "generating": "生成中..."
+      },
+      "result": {
+        "original": "原图",
+        "edited": "生成",
+        "generated": "AI 生成",
+        "edit": "编辑",
+        "download": "下载",
+        "clickToEnlarge": "点击放大"
+      },
+      "preview": {
+        "title": "图片预览",
+        "reset": "重置",
+        "hint": "点击放大 · 拖拽移动 · 滚轮缩放",
+        "galleryHint": "使用 ← → 切换图片 · 点击放大",
+        "escHint": "按 ESC 关闭"
+      },
+      "status": {
+        "uploading": "图片正在上传中，请稍候...",
+        "uploadFailed": "部分图片上传失败，请删除后重试",
+        "waitUpload": "请等待所有图片上传完成",
+        "processing": "正在处理...",
+        "aiProcessing": "请稍候，AI 正在为您生成图片",
+        "cancel": "取消",
+        "uploadError": "上传失败",
+        "generateError": "生成失败",
+        "retryHint": "请稍后重试",
+        "retry": "重试",
+        "refresh": "刷新",
+        "defaultPrompt": "保持原图风格，优化画质",
+        "generateFailed": "生成失败，请重试",
+        "characters": "字符",
+        "promptRequired": "请输入提示词来生成图片"
+      },
+      "loginRequired": "需要登录",
+      "generate": "生成",
+      "generating": "生成中...",
+      "features": {
+        "hairColor": {
+          "name": "更换发色",
+          "description": "使用 AI 改变发色 - 从自然色调到鲜艳色彩"
+        },
+        "switchClothing": {
+          "name": "更换服装",
+          "description": "虚拟试穿不同的服装和风格"
+        },
+        "replaceBackground": {
+          "name": "替换背景",
+          "description": "将照片背景更换为任何场景或环境"
+        },
+        "removeObject": {
+          "name": "移除物体",
+          "description": "无缝擦除照片中不需要的元素"
+        },
+        "enhanceQuality": {
+          "name": "增强质量",
+          "description": "AI 驱动的图像增强，获得专业效果"
+        },
+        "adjustExpression": {
+          "name": "调整表情",
+          "description": "使用 AI 精准自然地修改面部表情"
+        }
+      },
+      "creditsExhausted": "您的积分已用完。",
+      "upgradeToContinue": "升级继续使用"
+    },
+    "common": {
+      "before": "之前",
+      "after": "之后",
+      "comparison": "前后对比滑块"
+    },
+    "gallery": {
+      "title": "获取灵感",
+      "subtitle": "探索社区创作者用 AI 生成的精美视频和图片",
+      "hint": "悬停查看提示词和模型",
+      "createSimilar": "创建相似"
+    },
+    "toolsShowcase": {
+      "badge": "AI 创作工具",
+      "title": "前沿 AI 工具，满足每一个创作需求",
+      "subtitle": "强大的 AI 视频和图片工具，将您的创意变为现实。生成、增强、转换 — 专业内容创作所需的一切。",
+      "tabs": {
+        "all": "全部工具",
+        "image": "图片工具",
+        "video": "视频工具"
+      },
+      "viewMore": "查看更多工具",
+      "comingSoon": "即将推出",
+      "tools": {
+        "textToVideo": "文字生成视频 AI",
+        "textToVideoDesc": "将文字提示转化为精彩绝伦的视频",
+        "imageToVideo": "图片生成视频 AI",
+        "imageToVideoDesc": "将静态图片变成逼真的动态视频",
+        "referenceToVideo": "参考图生成视频",
+        "referenceToVideoDesc": "保持角色在所有视频帧中的一致性",
+        "videoToVideo": "视频转视频 AI",
+        "videoToVideoDesc": "将视频转换为 30+ 种创意动画风格",
+        "aiAnimation": "AI 动画生成器",
+        "aiAnimationDesc": "生成各种风格的动漫和卡通视频",
+        "aiShorts": "AI 短视频生成器",
+        "aiShortsDesc": "无需拍摄即可创作爆款短视频",
+        "aiAvatar": "AI 数字人生成器",
+        "aiAvatarDesc": "从一张照片创建逼真的视频数字人",
+        "videoEnhance": "AI 视频增强",
+        "videoEnhanceDesc": "用 AI 技术提升视频质量",
+        "textToImage": "AI 图片生成器",
+        "textToImageDesc": "根据文字描述生成精美图像",
+        "backgroundRemoval": "AI 抠图",
+        "backgroundRemovalDesc": "AI 精准识别，一键去除背景",
+        "imageEnhance": "AI 图片增强",
+        "imageEnhanceDesc": "自动提升图片质量和细节",
+        "imageUpscale": "AI 图片放大",
+        "imageUpscaleDesc": "无损放大图片至 4K 分辨率",
+        "styleTransfer": "风格转换",
+        "styleTransferDesc": "将照片转换为吉卜力、动漫等风格",
+        "objectRemoval": "物体移除",
+        "objectRemovalDesc": "无缝移除照片中的多余物体"
+      }
+    }
+  },
+  "Generator": {
+    "toolbar": {
+      "aiImage": "AI 图片",
+      "aiVideo": "AI 视频",
+      "comingSoon": "即将推出",
+      "public": "公开可见",
+      "publicDescription": "在社区画廊中展示",
+      "credits": "积分",
+      "creditsCost": "积分/次",
+      "aspectRatio": "宽高比",
+      "resolution": "分辨率",
+      "qualityNotSupported": "当前模型不支持质量选择",
+      "qualityModelHint": "切换到 Nano Banana Pro 以使用质量选项",
+      "features": {
+        "title": "功能",
+        "text-to-video": "文字/图片转视频",
+        "reference-to-video": "参考视频生成",
+        "frames-to-video": "帧序列转视频"
+      }
+    },
+    "presets": {
+      "refresh": "刷新预设",
+      "portrait": "人像",
+      "landscape": "风景",
+      "abstract": "抽象艺术",
+      "anime": "动漫风格",
+      "realistic": "写实",
+      "fantasy": "奇幻"
+    }
+  },
+  "ToolsPage": {
+    "badge": "AI 工具目录",
+    "title": "发现 AI 工具",
+    "description": "探索我们精心策划的 AI 工具集合，涵盖图像生成、视频编辑、文本处理、音频创作等多个领域，助您提升创作效率。",
+    "totalTools": "工具总数",
+    "backToTools": "返回工具列表",
+    "visitWebsite": "访问官网",
+    "collectedOn": "收录于",
+    "toolNotFound": "工具未找到",
+    "listedOn": "收录于",
+    "reviews": {
+      "title": "{name} 评论 ({count})",
+      "averageRating": "{rating} 分（满分 5 分）",
+      "noRating": "暂无评分",
+      "recommend": "你会推荐 {name} 吗？留下你的评价",
+      "placeholder": "分享你的使用体验...",
+      "charCount": "{current}/{max}",
+      "loginToComment": "登录后评论",
+      "submit": "提交评论",
+      "update": "更新评论",
+      "delete": "删除",
+      "deleteConfirm": "确定要删除这条评论吗？",
+      "noReviews": "还没有评论，成为第一个分享体验的人吧！",
+      "loadMore": "加载更多",
+      "submitSuccess": "评论提交成功！",
+      "updateSuccess": "评论更新成功！",
+      "deleteSuccess": "评论删除成功！",
+      "ratingRequired": "请选择评分",
+      "edited": "已编辑"
+    },
+    "similarTools": {
+      "title": "相似产品",
+      "loading": "加载相似产品中...",
+      "noTools": "暂无相似产品",
+      "matchedTags": "匹配 {count} 个标签"
+    },
+    "searchResults": {
+      "found": "找到",
+      "tools": "个相关工具",
+      "tool": "个相关工具",
+      "for": "关于",
+      "about": "关于"
+    },
+    "totalToolsCount": "共收录 {count} 个优质 AI 工具",
+    "submit": {
+      "badge": "提交工具",
+      "title": "提交您的 AI 工具",
+      "description": "与我们的社区分享您的 AI 工具。我们会仔细审核所有提交。",
+      "plans": {
+        "free": {
+          "title": "免费版",
+          "price": "¥0",
+          "feature1": "获得 3 个 dofollow 链接以提升您的 SEO",
+          "feature2": "永久链接并提供反向链接维护",
+          "feature3": "1 - 2 周内审核并列出",
+          "feature4": "您可以自由选择发布日期",
+          "limit1": "需在您的网站添加指向我们的反向链接",
+          "limit2": "不提供客户支持",
+          "cta": "提交审核",
+          "backlinkRequired": "免费收录需在您站内添加指向我们的反链。"
+        },
+        "pro": {
+          "title": "专业版",
+          "popular": "最受欢迎",
+          "price": "$4.99",
+          "feature1": "获得 ≥3 个 dofollow 链接以提升您的 SEO",
+          "feature2": "48 小时内列出，随时发布",
+          "feature3": "永久链接，无需添加反向链接",
+          "feature4": "在列表中获得置顶推荐位置",
+          "feature5": "通过社交媒体和新闻稿分享",
+          "feature6": "高级客户支持",
+          "cta": "立即支付并发布",
+          "comingSoonNote": "支付由 Creem 安全托管，提交后会自动跳转到结算页面。"
+        }
+      },
+      "inclusionTips": {
+        "title": "收录须知",
+        "items": [
+          "仅收录 AI 相关工具或网站，非 AI 工具将直接拒绝",
+          "工具网站必须可正常访问，无法打开的链接将被拒绝",
+          "不收录色情、赌博等灰产相关工具或网站",
+          "已收录同类工具时，重复功能的提交可能被拒绝",
+          "免费版需在您的网站上添加指向本站的反向链接"
+        ]
+      },
+      "backlinkNotice": {
+        "title": "反向链接检测说明",
+        "message": "我们检测到您的网站尚未添加指向我们的反向链接。请在站内添加反链后重新提交审核。",
+        "badgeTab": "徽章",
+        "textLinkTab": "文本链接",
+        "themeLabel": "徽章主题：",
+        "dark": "深色",
+        "light": "浅色",
+        "copyCode": "复制代码",
+        "preview": "预览：",
+        "gotIt": "知道了",
+        "payAndPublish": "立即支付并发布"
+      },
+      "examples": {
+        "title": "参考案例",
+        "description": "以下是我们已收录的工具案例，可作为提交参考：",
+        "visitWebsite": "访问网站"
+      },
+      "form": {
+        "toolName": "工具名称",
+        "toolUrl": "工具URL",
+        "description": "描述",
+        "descriptionOptional": "可选：告诉我们更多关于这个工具的信息",
+        "yourEmail": "您的邮箱",
+        "emailHint": "如有问题，我们会联系您",
+        "submitButton": "提交工具",
+        "submitting": "提交中...",
+        "logo": {
+          "label": "Logo",
+          "description": "支持 JPEG, PNG, WebP · 最大 1MB",
+          "uploading": "上传中...",
+          "uploadLogo": "上传 Logo",
+          "dragOrClick": "拖拽或点击上传"
+        },
+        "screenshot": {
+          "label": "截图",
+          "description": "支持 JPEG, PNG, WebP · 最大 5MB",
+          "uploading": "上传中...",
+          "dragOrClick": "拖拽或点击上传截图",
+          "addScreenshot": "添加截图",
+          "selected": "已选择 {count} / {max} 张"
+        },
+        "upload": {
+          "error": {
+            "invalidFormat": "仅支持 JPEG、PNG、WebP 格式",
+            "tooLarge": "文件大小不能超过 {size}MB",
+            "uploadFailed": "上传失败，请重试",
+            "maxImages": "最多只能上传 {max} 张截图"
+          }
+        },
+        "loginRequired": {
+          "title": "请先登录",
+          "description": "提交工具需要登录账户，请先登录后再提交。",
+          "button": "立即登录"
+        },
+        "success": {
+          "title": "提交成功！",
+          "message": "感谢您的提交！我们会尽快审核。",
+          "continuePrompt": "✨ 您可以继续提交更多工具",
+          "continueSubmit": "继续提交工具",
+          "viewSubmissions": "查看我的提交",
+          "reviewNote": "我们将在 1-2 周内审核您的提交。"
+        },
+        "errors": {
+          "checkForm": "请检查表单中的错误。",
+          "duplicateToolName": "已存在同名工具的提交，请勿重复提交。"
+        },
+        "viewBacklinkInstructions": "查看反链说明",
+        "backlinkVerification": {
+          "title": "外链验证必填",
+          "description": "免费提交需要在您的网站添加指向我们的外链。请先在您的网站上添加链接。",
+          "verifyButton": "验证外链",
+          "verifying": "验证中...",
+          "verified": "验证通过！",
+          "notFound": "未检测到外链。请在您的网站添加链接后重试。",
+          "enterUrlFirst": "请先填写工具URL",
+          "error": "外链验证失败，请重试。",
+          "dialogAutoVerifyFailed": "我们检测到您的网站尚未添加指向我们的外链。请在您的网站添加反链后点击验证。",
+          "checkingBacklink": "正在检测外链...",
+          "step1": "复制下方代码，添加到您的网站页面中。",
+          "step2": "添加完成后，回到这里点击「验证外链」。"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "batchIndex": 17,
+  "successful": [
+    {
+      "slug": "legal",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Legal**\n\nIn technology and business contexts, \"legal\" refers to matters pertaining to law, regulations, compliance, and contractual obligations that govern software development, data handling, intellectual property, and commercial operations.\n\nThe legal tag encompasses several critical areas:\n\n**Compliance & Regulations**: Adherence to laws such as GDPR, CCPA, HIPAA, and industry-specific regulations governing data privacy, security, and user rights.\n\n**Intellectual Property**: Copyright, patents, trademarks, and licensing agreements that protect software, code, designs, and proprietary technologies.\n\n**Contracts & Agreements**: Terms of service, end-user license agreements (EULAs), service level agreements (SLAs), and vendor contracts that define rights, responsibilities, and liabilities.\n\n**Risk Management**: Legal considerations in software deployment, including liability limitations, warranty disclaimers, and indemnification clauses.\n\n**Documentation**: Legal notices, privacy policies, cookie policies, and compliance documentation required for applications and services.\n\nIn software engineering, legal considerations influence architecture decisions, data storage practices, API design, and feature implementation. Development teams must collaborate with legal counsel to ensure products meet regulatory requirements, protect user data appropriately, and mitigate legal risks. This tag is commonly used to categorize issues, documentation, or code sections requiring legal review or containing legally-sensitive implementations."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**legal（法律相关）**\n\n在技术和商业领域中，\"legal\" 标签用于标识与法律、合规性、法规要求相关的内容、文档、流程或功能模块。\n\n该标签通常应用于以下场景：\n\n- **文档管理**：标记法律文件、服务条款、隐私政策、用户协议、许可证文本等需要法律审查的内容\n- **软件开发**：标识涉及合规性检查、数据保护法规（如 GDPR、CCPA）、知识产权保护的代码模块或功能\n- **业务流程**：区分需要法务部门审批、法律咨询或合规审查的工作流程\n- **风险管理**：标注可能涉及法律风险、监管要求或审计需求的业务活动\n\n在项目管理和协作平台中，使用 \"legal\" 标签有助于团队快速识别需要法律专业人员介入的事项，确保组织运营符合相关法律法规要求，降低法律风险。该标签也常用于内容分类系统，帮助用户快速定位法律相关资源和信息。"
+        }
+      },
+      "en": {
+        "name": "Legal & Compliance",
+        "description": "Matters related to law, regulations, contracts, and compliance requirements in technology and business"
+      },
+      "zh": {
+        "name": "法律与合规",
+        "description": "涉及法律法规、合同协议、合规要求和知识产权保护的相关事项"
+      }
+    },
+    {
+      "slug": "entertainment",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Entertainment refers to content, services, or experiences designed to engage, amuse, or provide enjoyment to audiences. In technical and business contexts, entertainment encompasses a broad industry vertical that includes media production, distribution platforms, gaming, streaming services, live events, and interactive experiences.\n\nFrom a technology perspective, entertainment represents a major driver of digital innovation, encompassing video streaming architectures, content delivery networks (CDNs), recommendation algorithms, digital rights management (DRM), and immersive technologies like virtual reality (VR) and augmented reality (AR). The entertainment sector heavily relies on cloud infrastructure, data analytics for audience insights, and machine learning for personalization.\n\nIn business applications, entertainment is used as a category tag for content classification, market segmentation, advertising targeting, and analytics. It helps organizations organize media libraries, track user engagement metrics, and optimize content strategies. The entertainment industry generates substantial revenue through subscription models, advertising, licensing, and direct sales.\n\nThis classification is essential for content management systems, e-commerce platforms, social media networks, and business intelligence tools to properly categorize and analyze entertainment-related products, services, and user behaviors across digital ecosystems."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**娱乐（Entertainment）**\n\n娱乐是指为受众提供消遣、愉悦和放松体验的内容、活动或服务的统称。在数字化和技术驱动的现代商业环境中，娱乐已发展成为一个多元化的产业领域，涵盖影视制作、音乐、游戏、直播、短视频、虚拟现实体验等多种形式。\n\n在技术领域，娱乐标签通常用于标识与娱乐内容相关的应用程序、平台、服务或数据分类。这包括流媒体服务（如视频点播、音乐播放）、游戏应用、社交娱乐平台、内容推荐系统等。娱乐技术的核心在于通过算法优化、用户体验设计、内容分发网络等手段，提升用户的参与度和满意度。\n\n在商业应用中，娱乐分类帮助企业进行市场细分、用户画像构建、内容管理和精准营销。通过对娱乐内容的标签化管理，平台能够实现个性化推荐、提高用户留存率，并优化广告投放效果。娱乐产业与人工智能、大数据、云计算等技术深度融合，正在重塑内容创作、分发和消费的全链路生态。"
+        }
+      },
+      "en": {
+        "name": "Entertainment",
+        "description": "Content, services, and experiences designed to engage, amuse, and provide enjoyment to audiences"
+      },
+      "zh": {
+        "name": "娱乐",
+        "description": "为受众提供消遣、愉悦和放松体验的内容、活动或服务"
+      }
+    },
+    {
+      "slug": "gaming",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Gaming refers to the activity of playing electronic or digital games, typically on platforms such as personal computers, gaming consoles, mobile devices, or web browsers. In the technology and business context, gaming encompasses a multi-billion dollar industry that includes game development, publishing, distribution, esports, streaming, and related hardware manufacturing.\n\nThe gaming sector spans multiple categories: casual mobile games, AAA console/PC titles, massively multiplayer online games (MMOs), virtual reality (VR) experiences, and cloud gaming services. From a technical perspective, gaming involves complex software engineering, graphics rendering, network infrastructure, artificial intelligence, and user experience design.\n\nIn business terms, gaming represents diverse revenue models including premium purchases, free-to-play with in-app purchases, subscriptions, advertising, and microtransactions. The industry has evolved into a major entertainment medium, often surpassing film and music in revenue generation.\n\nGaming also encompasses competitive esports, game streaming platforms, content creation, and community engagement. Modern gaming infrastructure relies heavily on cloud computing, content delivery networks (CDNs), real-time multiplayer networking, and cross-platform compatibility. The term is widely used in software categorization, app stores, content management systems, and digital marketing to classify gaming-related products, services, and content."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "gaming（游戏）是指以电子设备为载体，通过交互式数字内容为用户提供娱乐体验的产业和技术领域。在技术层面，gaming 涵盖游戏引擎开发、图形渲染、物理模拟、网络同步、人工智能等核心技术；在商业层面，包括游戏开发、发行、运营、电竞赛事等完整产业链。\n\n该标签在技术文档中通常指代与游戏相关的软件开发、硬件优化、平台服务等内容。应用场景包括：游戏引擎（Unity、Unreal Engine）、图形 API（DirectX、Vulkan、OpenGL）、云游戏技术、跨平台开发框架、游戏服务器架构、反作弊系统等。\n\n在商业应用中，gaming 标签用于标识游戏行业相关的产品、服务和解决方案，如游戏分发平台（Steam、Epic Games Store）、游戏直播服务、社交功能集成、支付系统、数据分析工具等。随着技术发展，gaming 领域与 VR/AR、区块链、人工智能等前沿技术深度融合，形成了独特的技术生态系统。"
+        }
+      },
+      "en": {
+        "name": "Gaming",
+        "description": "Digital entertainment platforms, game development tools, and esports infrastructure"
+      },
+      "zh": {
+        "name": "游戏",
+        "description": "数字娱乐平台、游戏开发工具和电竞基础设施"
+      }
+    },
+    {
+      "slug": "travel",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Travel**\n\nIn technology and business contexts, \"travel\" refers to the movement of people between geographical locations, as well as the digital systems, platforms, and services that facilitate, manage, and optimize such movement. The travel industry encompasses transportation (airlines, railways, car rentals), accommodation (hotels, vacation rentals), booking platforms, and related services.\n\nIn software development, travel-related applications include reservation systems, itinerary management tools, travel expense tracking, and location-based services. Travel APIs enable integration of flight searches, hotel bookings, and payment processing into digital platforms. The sector heavily utilizes technologies such as mobile applications, real-time data synchronization, geolocation services, and payment gateways.\n\nFrom a business perspective, travel also refers to corporate travel management—the policies, processes, and tools organizations use to manage employee business trips, including expense reporting, compliance tracking, and travel policy enforcement. Modern travel technology emphasizes user experience optimization, personalization through machine learning, dynamic pricing algorithms, and seamless multi-modal journey planning. The industry increasingly focuses on sustainability metrics, contactless services, and integration with emerging technologies like blockchain for secure transactions and AI for predictive analytics and customer service automation."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**travel（旅行/差旅）**\n\n在技术和商业领域中，travel 标签通常指代与旅行、出行相关的业务场景、数据分类或功能模块。\n\n**技术应用场景：**\n- 在软件系统中用于标识旅行预订、行程管理、差旅报销等相关功能模块\n- 在数据分类中标记与交通、住宿、景点、路线规划等旅行相关的信息\n- 在电商平台中区分旅游产品类目，如机票、酒店、旅游套餐等\n- 在移动应用中标识地图导航、行程规划、旅行攻略等服务\n\n**商业应用领域：**\n- 企业差旅管理系统（TMC）中的核心业务标签\n- 在线旅游平台（OTA）的产品分类标识\n- 财务系统中用于区分差旅费用类别\n- CRM 系统中标记客户的旅行偏好和历史记录\n\n该标签在旅游科技（Travel Tech）、企业服务（SaaS）、移动互联网等行业中广泛使用，是构建旅行相关产品和服务的基础分类标识，便于系统进行数据组织、检索和业务逻辑处理。"
+        }
+      },
+      "en": {
+        "name": "Travel",
+        "description": "Digital platforms and systems for booking, managing, and optimizing travel experiences and corporate trips"
+      },
+      "zh": {
+        "name": "旅行",
+        "description": "用于预订、管理和优化旅行体验及企业差旅的数字平台和系统"
+      }
+    },
+    {
+      "slug": "productivity",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Productivity refers to the measure of efficiency in converting inputs into outputs, typically expressed as the ratio of output produced to resources consumed within a given timeframe. In technology and business contexts, it encompasses both individual performance and organizational effectiveness in achieving goals while optimizing time, effort, and resources.\n\nIn software development, productivity relates to code quality, feature delivery speed, and developer efficiency. Tools and methodologies like automation, CI/CD pipelines, and agile frameworks aim to enhance team productivity by reducing friction and streamlining workflows.\n\nFor knowledge workers, productivity involves effective task management, focus optimization, and leveraging digital tools to maximize output quality and quantity. Modern productivity solutions include project management platforms, collaboration software, and AI-powered assistants that automate routine tasks.\n\nThe concept extends beyond mere output volume to include work quality, innovation capacity, and sustainable performance. High productivity balances efficiency with effectiveness, ensuring that increased output aligns with strategic objectives and maintains quality standards.\n\nIn business metrics, productivity is measured through KPIs such as revenue per employee, task completion rates, and time-to-market. Organizations continuously seek productivity improvements through process optimization, technology adoption, and workforce development to maintain competitive advantage and drive growth."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**生产力 (Productivity)**\n\n生产力是指在特定时间内完成工作任务的效率和产出质量的综合度量。在技术和商业领域，生产力通常用于评估个人、团队或组织将投入资源（时间、精力、资本）转化为有价值成果的能力。\n\n在软件开发领域，生产力体现为代码质量、开发速度、bug修复效率以及功能交付的及时性。现代生产力工具包括项目管理软件、自动化测试框架、CI/CD流水线、代码编辑器和协作平台等，这些工具旨在减少重复性工作，优化工作流程，提升团队协作效率。\n\n在商业环境中，生产力是衡量企业竞争力的关键指标，直接影响成本控制、市场响应速度和创新能力。提升生产力的策略包括：采用敏捷开发方法、实施自动化解决方案、优化工作流程、提供员工培训以及使用数据分析来识别瓶颈。\n\n高生产力不仅意味着更快的工作速度，更强调工作质量、可持续性和创新价值的平衡，是现代技术团队和企业追求的核心目标之一。"
+        }
+      },
+      "en": {
+        "name": "Productivity Tools",
+        "description": "Software and platforms that enhance work efficiency, task management, and output quality"
+      },
+      "zh": {
+        "name": "生产力工具",
+        "description": "提升工作效率、任务管理和产出质量的软件与平台"
+      }
+    },
+    {
+      "slug": "creativity",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Creativity refers to the cognitive ability to generate novel, original, and valuable ideas, solutions, or expressions by combining existing knowledge in innovative ways. In technical and business contexts, creativity encompasses both divergent thinking (exploring multiple possible solutions) and convergent thinking (refining ideas into practical implementations).\n\nIn software development, creativity manifests through innovative algorithm design, novel user interface patterns, and elegant problem-solving approaches that balance functionality with user experience. It drives breakthrough features, architectural innovations, and unique product differentiators in competitive markets.\n\nWithin business strategy, creativity fuels product innovation, market positioning, and adaptive responses to industry disruptions. It's essential for design thinking methodologies, where cross-functional teams ideate solutions to complex user problems. Creative processes often involve brainstorming, prototyping, iterative refinement, and risk-taking.\n\nModern organizations increasingly recognize creativity as a measurable competency, fostering it through collaborative environments, diverse teams, and cultures that encourage experimentation and tolerate failure. In AI and machine learning contexts, creativity also refers to generative capabilities—systems that produce original content, designs, or solutions based on learned patterns.\n\nEffective creativity in technical fields requires balancing imaginative thinking with practical constraints like technical feasibility, resource limitations, and market viability, ultimately transforming abstract concepts into tangible innovations that deliver user and business value."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**创造力 (Creativity)**\n\n创造力是指产生新颖、独特且有价值的想法、解决方案或作品的能力。在技术和商业领域，创造力不仅涉及艺术性的创新，更强调实用性和问题解决能力。\n\n在软件开发中，创造力体现在设计创新的算法、构建独特的用户体验、或找到突破性的技术解决方案。在产品设计领域，创造力帮助团队识别用户未被满足的需求，并开发差异化的产品功能。在商业战略中，创造力推动企业探索新的商业模式、市场机会和竞争优势。\n\n技术领域的创造力通常结合了发散思维（产生多种可能性）和收敛思维（评估并选择最佳方案）。它需要跨学科知识、批判性思考、实验精神和风险承担意愿。现代企业越来越重视培养创造力文化，通过头脑风暴、设计思维工作坊、快速原型开发等方法激发团队创新。\n\n在人工智能和机器学习领域，创造力也成为研究热点，探索如何让算法生成具有创造性的内容，如代码生成、艺术创作和内容推荐等应用场景。"
+        }
+      },
+      "en": {
+        "name": "Creativity",
+        "description": "The ability to generate novel, original ideas and solutions by combining knowledge in innovative ways"
+      },
+      "zh": {
+        "name": "创造力",
+        "description": "通过创新方式组合知识，产生新颖、独特且有价值的想法和解决方案的能力"
+      }
+    },
+    {
+      "slug": "communication",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Communication refers to the process of exchanging information, ideas, or data between systems, applications, or individuals through various channels and protocols. In technical contexts, it encompasses both human-to-human interaction and machine-to-machine data transfer.\n\nIn software engineering, communication involves the transmission of data between components, services, or distributed systems using protocols such as HTTP, WebSocket, gRPC, or message queues. It includes synchronous methods like API calls and asynchronous patterns like event-driven architectures. Effective communication design ensures reliability, scalability, and maintainability of software systems.\n\nIn business and organizational contexts, communication represents the flow of information across teams, departments, and stakeholders. This includes documentation, meetings, status updates, and collaborative tools that facilitate knowledge sharing and decision-making processes.\n\nKey aspects include communication protocols (defining how data is formatted and transmitted), communication patterns (request-response, publish-subscribe, streaming), and communication channels (network connections, APIs, messaging systems). Modern development emphasizes clear communication interfaces, well-documented APIs, and robust error handling to ensure system interoperability and team collaboration."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**communication（沟通/通信）**\n\n在技术和商业领域中，communication 指信息在不同实体之间进行传递、交换和理解的过程。该术语涵盖两个主要维度：\n\n**技术层面：** 指系统、设备或软件组件之间的数据传输与交互。包括网络通信协议（如 HTTP、TCP/IP）、API 接口调用、消息队列、进程间通信（IPC）等。在分布式系统、微服务架构中，communication 是确保各模块协同工作的核心机制。\n\n**商业与团队层面：** 指组织内外部的信息交流与协作方式。涵盖团队沟通、跨部门协作、客户关系管理、项目进度同步等场景。有效的 communication 能够减少误解、提高效率、促进创新。\n\n在软件开发中，该标签常用于标识与通信相关的功能模块、文档或问题，如通信协议实现、消息传递机制、团队协作工具等。良好的 communication 设计需要考虑可靠性、安全性、实时性和可扩展性，是构建高质量软件系统和高效团队的基础要素。"
+        }
+      },
+      "en": {
+        "name": "Communication",
+        "description": "Information exchange between systems, applications, or teams through protocols and channels"
+      },
+      "zh": {
+        "name": "通信/沟通",
+        "description": "系统、应用或团队之间通过协议和渠道进行的信息交换"
+      }
+    },
+    {
+      "slug": "learning",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "**Learning**\n\nIn technology and business contexts, \"learning\" refers to the systematic process of acquiring knowledge, skills, or capabilities through experience, study, or instruction. This encompasses both human learning and machine learning paradigms.\n\nIn software development, learning often describes the continuous improvement of systems and individuals. Machine learning specifically denotes algorithms that improve performance through data exposure without explicit programming. Organizations implement learning management systems (LMS) to facilitate employee training and skill development.\n\nThe term also applies to adaptive systems that modify behavior based on user interactions, feedback loops that inform product iterations, and organizational learning cultures that promote knowledge sharing and innovation. In agile methodologies, learning cycles are embedded through retrospectives and iterative development.\n\nModern applications include reinforcement learning in AI systems, transfer learning in neural networks, and continuous learning pipelines in DevOps practices. The concept extends to learning curves in project management, which measure efficiency gains over time, and learning analytics that track educational or training effectiveness through data-driven insights."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**learning（学习）**\n\n在技术和商业领域，learning 指个人、组织或系统通过经验、实践和信息获取来改进性能、增强能力的持续过程。\n\n在软件工程中，learning 涵盖开发者掌握新编程语言、框架、工具和最佳实践的过程。现代技术栈更新迭代快速，持续学习已成为技术人员的核心竞争力。\n\n在机器学习（Machine Learning）领域，learning 特指算法通过训练数据自动识别模式、优化参数并提升预测准确度的过程，包括监督学习、无监督学习和强化学习等范式。\n\n在组织管理中，learning 体现为知识管理、经验传承和能力建设，通过培训体系、文档沉淀和实践复盘促进团队成长。学习型组织能够快速适应市场变化，保持创新活力。\n\n在产品开发中，learning 强调从用户反馈、数据分析和市场验证中获取洞察，迭代优化产品方向。敏捷开发和精益创业方法论都将持续学习作为核心原则。\n\n该标签常用于标记学习资源、教程文档、技能培养计划、知识库条目等内容，帮助用户系统化地获取和积累专业知识。"
+        }
+      },
+      "en": {
+        "name": "Learning",
+        "description": "Systematic acquisition of knowledge and skills through experience, study, or data-driven improvement"
+      },
+      "zh": {
+        "name": "学习",
+        "description": "通过经验、实践和数据驱动持续获取知识、提升能力的系统化过程"
+      }
+    },
+    {
+      "slug": "research",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Research refers to the systematic investigation and study of materials, sources, and phenomena to establish facts, reach new conclusions, or validate existing knowledge. In technical and business contexts, research encompasses both theoretical exploration and practical application of methodologies to solve problems, innovate products, or improve processes.\n\nIn software development, research involves exploring new technologies, frameworks, algorithms, and architectural patterns to determine their feasibility and applicability. This includes proof-of-concept implementations, performance benchmarking, and comparative analysis of different solutions.\n\nIn business environments, research extends to market analysis, user behavior studies, competitive intelligence, and data-driven decision making. It forms the foundation for strategic planning, product development, and innovation initiatives.\n\nResearch activities typically involve literature review, experimentation, data collection and analysis, prototyping, and documentation of findings. The outcomes inform technical decisions, guide product roadmaps, and reduce risks associated with adopting new technologies or entering new markets.\n\nEffective research requires critical thinking, analytical skills, and the ability to synthesize information from multiple sources. It bridges the gap between theoretical knowledge and practical implementation, enabling organizations to make informed decisions based on evidence rather than assumptions."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "# research（研究）\n\nresearch 标签用于标识与研究活动、研究项目或研究成果相关的内容。在技术和商业领域，该标签涵盖多个维度的应用场景。\n\n在学术和科研领域，research 指代系统性的调查和探索活动，旨在发现新知识、验证假设或解决特定问题。这包括基础研究（探索理论和原理）和应用研究（解决实际问题）。\n\n在企业环境中，research 通常关联市场研究、用户研究、竞品分析等商业智能活动。研发部门（R&D）使用此标签管理技术创新项目、产品原型开发和可行性研究。\n\n在软件开发领域，research 标签常用于标记技术调研任务、概念验证（POC）项目、新技术评估和架构探索等工作。团队通过此标签追踪前期研究工作，为技术决策提供依据。\n\n该标签也广泛应用于知识管理系统、项目管理工具和文档分类中，帮助组织区分研究性工作与执行性工作，便于资源分配和进度跟踪。"
+        }
+      },
+      "en": {
+        "name": "Research",
+        "description": "Systematic investigation to discover knowledge, validate hypotheses, or inform decisions"
+      },
+      "zh": {
+        "name": "研究",
+        "description": "系统性调查以发现知识、验证假设或为决策提供依据"
+      }
+    },
+    {
+      "slug": "sales",
+      "category": "general",
+      "references": {
+        "en": {
+          "source": "ai-generated",
+          "content": "Sales refers to the activities, processes, and transactions involved in exchanging goods or services for monetary compensation. In business and technology contexts, sales encompasses the entire customer acquisition lifecycle, from lead generation and prospecting to negotiation, closing deals, and post-sale relationship management.\n\nIn modern organizations, sales functions are often supported by specialized software systems including Customer Relationship Management (CRM) platforms, sales automation tools, and analytics dashboards that track metrics such as conversion rates, pipeline velocity, and revenue forecasts. Sales teams typically work closely with marketing, product, and customer success departments to optimize the buyer journey and maximize customer lifetime value.\n\nThe field distinguishes between various sales models: B2B (business-to-business), B2C (business-to-consumer), inside sales (remote selling), field sales (in-person), and enterprise sales (complex, high-value transactions). Digital transformation has introduced e-commerce, social selling, and AI-powered sales enablement tools that automate routine tasks and provide data-driven insights.\n\nKey performance indicators in sales include quota attainment, average deal size, sales cycle length, and customer acquisition cost. Effective sales strategies require understanding customer needs, articulating value propositions, handling objections, and building trust-based relationships that drive sustainable revenue growth."
+        },
+        "zh": {
+          "source": "ai-generated",
+          "content": "**销售 (Sales)**\n\n销售是指企业或个人通过交换活动，将产品、服务或解决方案提供给客户以获取经济回报的商业过程。在现代商业体系中，销售不仅是简单的交易行为，更是一个涵盖客户需求分析、方案设计、谈判协商、合同签订及售后服务的完整业务流程。\n\n在技术领域，销售通常分为多个类型：B2B（企业对企业）销售侧重于为企业客户提供技术产品或服务；B2C（企业对消费者）销售面向终端用户；SaaS销售专注于软件即服务的订阅模式。现代销售高度依赖CRM（客户关系管理）系统、销售自动化工具和数据分析平台来提升效率和转化率。\n\n销售团队的核心职责包括：潜在客户开发、需求挖掘、产品演示、报价谈判、订单管理和客户维护。在技术驱动的商业环境中，销售人员需要具备产品知识、行业洞察和数据分析能力，通过精准的客户画像和销售漏斗管理来实现业绩目标。销售指标通常包括销售额、转化率、客户获取成本和客户生命周期价值等关键绩效指标。"
+        }
+      },
+      "en": {
+        "name": "Sales",
+        "description": "Business processes for exchanging products or services for revenue through customer acquisition and relationship management"
+      },
+      "zh": {
+        "name": "销售",
+        "description": "通过客户获取和关系管理将产品或服务转化为收入的商业流程"
+      }
+    }
+  ],
+  "failed": []
+}

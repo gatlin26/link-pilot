@@ -1,0 +1,1 @@
+ALTER TABLE "image_record" ADD COLUMN "is_public" boolean DEFAULT true;

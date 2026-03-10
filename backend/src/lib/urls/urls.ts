@@ -1,0 +1,152 @@
+import { routing } from '@/i18n/routing';
+import type { Locale } from 'next-intl';
+
+/**
+ * Normalize the app base URL.
+ *
+ * Why:
+ * - Avoid trailing slashes, which can cause double-slash URLs.
+ * - Prevent "split-brain" domains (apex vs www) that trigger 307 redirects.
+ *   Redirects are **not allowed** for CORS preflight requests, which breaks
+ *   Better Auth calls like `/api/auth/get-session` and also breaks manifest
+ *   loading when Next renders an absolute manifest URL.
+ */
+function normalizeBaseUrl(raw: string): string {
+  const trimmed = raw.trim().replace(/\/+$/, '');
+
+  // Ensure we can parse URLs; `new URL("localhost:3000")` would throw.
+  const withProtocol = trimmed.match(/^https?:\/\//)
+    ? trimmed
+    : `https://${trimmed}`;
+  const url = new URL(withProtocol);
+
+  // Project-specific canonicalization:
+  // If someone sets NEXT_PUBLIC_BASE_URL to `https://editphoto-ai.com`,
+  // the site actually runs on `https://www.editphoto-ai.com` (or redirects there).
+  // Using the apex domain here causes CORS failures due to 307 redirects.
+  if (url.hostname === 'editphoto-ai.com') {
+    url.hostname = 'www.editphoto-ai.com';
+  }
+
+  return url.toString().replace(/\/+$/, '');
+}
+
+function resolveServerBaseUrl(): string {
+  const envUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
+
+  const fallback = `http://localhost:${process.env.PORT ?? 3000}`;
+  return normalizeBaseUrl(envUrl ?? fallback);
+}
+
+/**
+ * Get the base URL of the application
+ */
+export function getBaseUrl(): string {
+  // On the client, always use the current origin to guarantee same-origin requests.
+  // This prevents CORS issues when the site is accessed via `www` but env points to apex.
+  if (typeof window !== 'undefined' && window.location?.origin) {
+    return normalizeBaseUrl(window.location.origin);
+  }
+
+  // On the server, rely on env / Vercel-provided host, with normalization.
+  return resolveServerBaseUrl();
+}
+
+/**
+ * Check if the locale should be appended to the URL
+ */
+export function shouldAppendLocale(locale?: Locale | null): boolean {
+  return !!locale && locale !== routing.defaultLocale && locale !== 'default';
+}
+
+/**
+ * Get the URL of the application with the locale appended
+ */
+export function getUrlWithLocale(url: string, locale?: Locale | null): string {
+  const baseUrl = getBaseUrl();
+  return shouldAppendLocale(locale)
+    ? `${baseUrl}/${locale}${url}`
+    : `${baseUrl}${url}`;
+}
+
+/**
+ * Adds locale to the callbackURL parameter in authentication URLs
+ *
+ * Example:
+ * Input: http://localhost:3000/api/auth/reset-password/token?callbackURL=/auth/reset-password
+ * Output: http://localhost:3000/api/auth/reset-password/token?callbackURL=/zh/auth/reset-password
+ *
+ * Input: http://localhost:3000/api/auth/verify-email?token=eyJhbGciOiJIUzI1NiJ9&callbackURL=/dashboard
+ * Output: http://localhost:3000/api/auth/verify-email?token=eyJhbGciOiJIUzI1NiJ9&callbackURL=/zh/dashboard
+ *
+ * @param url - The original URL with callbackURL parameter
+ * @param locale - The locale to add to the callbackURL
+ * @returns The URL with locale added to callbackURL if necessary
+ */
+export function getUrlWithLocaleInCallbackUrl(
+  url: string,
+  locale: Locale
+): string {
+  // If we shouldn't append locale, return original URL
+  if (!shouldAppendLocale(locale)) {
+    return url;
+  }
+
+  try {
+    // Parse the URL
+    const urlObj = new URL(url);
+
+    // Check if there's a callbackURL parameter
+    const callbackURL = urlObj.searchParams.get('callbackURL');
+
+    if (callbackURL) {
+      // Only modify the callbackURL if it doesn't already include the locale
+      if (!callbackURL.match(new RegExp(`^/${locale}(/|$)`))) {
+        // Add locale to the callbackURL
+        const localizedCallbackURL = callbackURL.startsWith('/')
+          ? `/${locale}${callbackURL}`
+          : `/${locale}/${callbackURL}`;
+
+        // Update the search parameter
+        urlObj.searchParams.set('callbackURL', localizedCallbackURL);
+      }
+    }
+
+    return urlObj.toString();
+  } catch (error) {
+    // If URL parsing fails, return the original URL
+    console.warn('Failed to parse URL for locale insertion:', url, error);
+    return url;
+  }
+}
+
+/**
+ * Get the URL of the image, if the image is a relative path, it will be prefixed with the base URL
+ * @param image - The image URL
+ * @returns The URL of the image
+ */
+export function getImageUrl(image: string): string {
+  const baseUrl = getBaseUrl();
+  if (image.startsWith('http://') || image.startsWith('https://')) {
+    return image;
+  }
+  if (image.startsWith('/')) {
+    return `${baseUrl}${image}`;
+  }
+  return `${baseUrl}/${image}`;
+}
+
+/**
+ * Get the Stripe dashboard customer URL
+ * @param customerId - The Stripe customer ID
+ * @returns The Stripe dashboard customer URL
+ */
+export function getStripeDashboardCustomerUrl(customerId: string): string {
+  if (process.env.NODE_ENV === 'development') {
+    return `https://dashboard.stripe.com/test/customers/${customerId}`;
+  }
+  return `https://dashboard.stripe.com/customers/${customerId}`;
+}
