@@ -100,25 +100,41 @@ export class FormDetector {
   private async detectWithHeuristics(): Promise<FormDetectionResult> {
     const fields: FormField[] = [];
 
-    // 检测 name 字段
+    // 检测 name 字段（扩展中英文关键词）
     const nameField = this.detectField('name', [
       'input[name*="name"]:not([name*="email"]):not([name*="user"])',
       'input[id*="name"]:not([id*="email"]):not([id*="user"])',
       'input[placeholder*="name" i]:not([placeholder*="email" i])',
       'input[type="text"][name*="author"]',
+      'input[name*="姓名"]',
+      'input[id*="姓名"]',
+      'input[placeholder*="姓名"]',
+      'input[name*="昵称"]',
+      'input[id*="昵称"]',
+      'input[placeholder*="昵称"]',
+      'input[name*="称呼"]',
+      'input[placeholder*="您的名字"]',
+      'input[placeholder*="your name" i]',
     ]);
     if (nameField) fields.push(nameField);
 
-    // 检测 email 字段
+    // 检测 email 字段（扩展中英文关键词）
     const emailField = this.detectField('email', [
       'input[type="email"]',
       'input[name*="email"]',
       'input[id*="email"]',
       'input[placeholder*="email" i]',
+      'input[name*="邮箱"]',
+      'input[id*="邮箱"]',
+      'input[placeholder*="邮箱"]',
+      'input[name*="邮件"]',
+      'input[placeholder*="电子邮件"]',
+      'input[placeholder*="your email" i]',
+      'input[placeholder*="e-mail" i]',
     ]);
     if (emailField) fields.push(emailField);
 
-    // 检测 website 字段
+    // 检测 website 字段（扩展中英文关键词）
     const websiteField = this.detectField('website', [
       'input[name*="url"]',
       'input[name*="website"]',
@@ -128,10 +144,18 @@ export class FormDetector {
       'input[placeholder*="website" i]',
       'input[placeholder*="url" i]',
       'input[type="url"]',
+      'input[name*="网址"]',
+      'input[id*="网址"]',
+      'input[placeholder*="网址"]',
+      'input[name*="网站"]',
+      'input[id*="网站"]',
+      'input[placeholder*="网站"]',
+      'input[placeholder*="your website" i]',
+      'input[placeholder*="your site" i]',
     ]);
     if (websiteField) fields.push(websiteField);
 
-    // 检测 comment 字段
+    // 检测 comment 字段（扩展中英文关键词）
     const commentField = this.detectField('comment', [
       'textarea[name*="comment"]',
       'textarea[id*="comment"]',
@@ -139,10 +163,20 @@ export class FormDetector {
       'textarea[name*="message"]',
       'textarea[id*="message"]',
       'textarea[name*="content"]',
+      'textarea[name*="评论"]',
+      'textarea[id*="评论"]',
+      'textarea[placeholder*="评论"]',
+      'textarea[name*="留言"]',
+      'textarea[id*="留言"]',
+      'textarea[placeholder*="留言"]',
+      'textarea[name*="内容"]',
+      'textarea[placeholder*="说点什么"]',
+      'textarea[placeholder*="your comment" i]',
+      'textarea[placeholder*="your message" i]',
     ]);
     if (commentField) fields.push(commentField);
 
-    // 检测 submit 按钮
+    // 检测 submit 按钮（扩展中英文关键词）
     const submitField = this.detectField('submit', [
       'button[type="submit"]',
       'input[type="submit"]',
@@ -151,6 +185,13 @@ export class FormDetector {
       'button:contains("Send")',
       'button[name*="submit"]',
       'button[id*="submit"]',
+      'button:contains("提交")',
+      'button:contains("发表")',
+      'button:contains("发送")',
+      'button:contains("评论")',
+      'input[value*="提交"]',
+      'input[value*="发表"]',
+      'input[value*="发送"]',
     ]);
     if (submitField) fields.push(submitField);
 
@@ -264,10 +305,22 @@ export class FormDetector {
     const id = element.id.toLowerCase();
     const placeholder = element.getAttribute('placeholder')?.toLowerCase() || '';
 
+    // 中英文关键词映射
+    const keywords: Record<string, string[]> = {
+      name: ['name', 'author', '姓名', '昵称', '称呼'],
+      email: ['email', 'e-mail', '邮箱', '邮件'],
+      website: ['url', 'website', 'site', '网址', '网站'],
+      comment: ['comment', 'message', 'content', '评论', '留言', '内容'],
+      submit: ['submit', 'post', 'send', '提交', '发表', '发送'],
+    };
+
     // 根据属性匹配度提升置信度
-    if (name.includes(type)) confidence += 0.3;
-    if (id.includes(type)) confidence += 0.2;
-    if (placeholder.includes(type)) confidence += 0.1;
+    const typeKeywords = keywords[type] || [];
+    for (const keyword of typeKeywords) {
+      if (name.includes(keyword)) confidence += 0.25;
+      if (id.includes(keyword)) confidence += 0.15;
+      if (placeholder.includes(keyword)) confidence += 0.1;
+    }
 
     // 根据元素类型提升置信度
     if (type === 'email' && element.getAttribute('type') === 'email') confidence += 0.2;

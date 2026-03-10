@@ -117,3 +117,43 @@ export enum PageType {
   RESOURCE_LIST = 'resource_list',
   UNKNOWN = 'unknown',
 }
+
+/**
+ * 递归队列状态
+ */
+export enum RecursiveQueueStatus {
+  PENDING = 'pending',
+  IN_PROGRESS = 'in_progress',
+  COMPLETED = 'completed',
+  FAILED = 'failed',
+  SKIPPED = 'skipped',
+}
+
+/**
+ * 递归会话状态
+ */
+export enum RecursiveSessionStatus {
+  INITIALIZED = 'initialized',
+  RUNNING = 'running',
+  PAUSED = 'paused',
+  COMPLETED = 'completed',
+  STOPPED = 'stopped',
+  FAILED = 'failed',
+}
+
+/**
+ * 递归策略
+ */
+export enum RecursiveStrategy {
+  DEPTH_FIRST = 'depth_first',
+  BREADTH_FIRST = 'breadth_first',
+}
+
+/**
+ * 去重策略
+ */
+export enum DeduplicationStrategy {
+  URL_LEVEL = 'url_level',
+  DOMAIN_LEVEL = 'domain_level',
+  HYBRID = 'hybrid',
+}

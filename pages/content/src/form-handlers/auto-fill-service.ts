@@ -4,6 +4,8 @@
  */
 
 import type { FormField } from './form-detector';
+import { confidenceCalculator, AutoFillBehavior, ConfidenceLevel } from './confidence-calculator';
+import { extensionSettingsStorage } from '@extension/storage';
 
 /**
  * 填充数据
@@ -30,9 +32,51 @@ export interface FillResult {
 }
 
 /**
+ * 填充决策
+ */
+export interface FillDecision {
+  /** 建议的行为 */
+  behavior: AutoFillBehavior;
+  /** 置信度等级 */
+  confidenceLevel: ConfidenceLevel;
+  /** 置信度分数 */
+  confidence: number;
+  /** 是否应该自动填充 */
+  shouldAutoFill: boolean;
+  /** 是否应该提示用户 */
+  shouldPromptUser: boolean;
+}
+
+/**
  * 自动填充服务
  */
 export class AutoFillService {
+  /** 保存填充前的字段值，用于撤销 */
+  private previousValues: Map<HTMLElement, string> = new Map();
+
+  /**
+   * 决定是否应该填充表单
+   */
+  async decideFill(confidence: number): Promise<FillDecision> {
+    const settings = await extensionSettingsStorage.get();
+    const autoFillThreshold = settings.auto_fill_confidence_threshold || 0.9;
+    const promptThreshold = settings.prompt_confidence_threshold || 0.6;
+
+    const behavior = confidenceCalculator.decideBehavior(
+      confidence,
+      autoFillThreshold,
+      promptThreshold
+    );
+    const confidenceLevel = confidenceCalculator.getConfidenceLevel(confidence);
+
+    return {
+      behavior,
+      confidenceLevel,
+      confidence,
+      shouldAutoFill: behavior === AutoFillBehavior.AUTO_FILL,
+      shouldPromptUser: behavior === AutoFillBehavior.PROMPT_USER,
+    };
+  }
   /**
    * 填充表单
    */
@@ -41,6 +85,17 @@ export class AutoFillService {
     const failedFields: string[] = [];
 
     try {
+      // 清空之前的撤销数据
+      this.previousValues.clear();
+
+      // 保存填充前的值
+      for (const field of fields) {
+        if (field.type === 'submit') continue;
+        if (field.element instanceof HTMLInputElement || field.element instanceof HTMLTextAreaElement) {
+          this.previousValues.set(field.element, field.element.value);
+        }
+      }
+
       // 填充各个字段
       for (const field of fields) {
         if (field.type === 'submit') continue; // 跳过提交按钮
@@ -89,6 +144,38 @@ export class AutoFillService {
         error: error instanceof Error ? error.message : '未知错误',
       };
     }
+  }
+
+  /**
+   * 撤销填充
+   */
+  undo(): boolean {
+    if (this.previousValues.size === 0) {
+      return false;
+    }
+
+    try {
+      this.previousValues.forEach((value, element) => {
+        if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+          element.value = value;
+          element.dispatchEvent(new Event('input', { bubbles: true }));
+          element.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+
+      this.previousValues.clear();
+      return true;
+    } catch (error) {
+      console.error('撤销填充失败:', error);
+      return false;
+    }
+  }
+
+  /**
+   * 检查是否可以撤销
+   */
+  canUndo(): boolean {
+    return this.previousValues.size > 0;
   }
 
   /**

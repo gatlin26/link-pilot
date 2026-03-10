@@ -18,7 +18,7 @@ import type { FillPageState, WebsiteProfile } from '@extension/shared';
 import { autoFillService, formDetector, type FormField, type FormDetectionResult } from '../form-handlers';
 import { templateLearner } from '../template';
 import { createAhrefsInterceptor } from '../collectors/ahrefs-api-interceptor';
-import { isAhrefsBacklinkChecker } from '../collectors/ahrefs-detector';
+import { isAhrefsBacklinkChecker, detectVerificationPage, waitForVerificationComplete } from '../collectors/ahrefs-detector';
 import type { CollectedBacklink } from '@extension/shared';
 
 const PASSIVE_INTERCEPT_MAX_COUNT = 20;
@@ -76,13 +76,10 @@ function schedulePassiveInterceptorRestart(): void {
 }
 
 async function ensureMainWorldBridge(): Promise<void> {
-  const response = await chrome.runtime.sendMessage({
-    type: 'ENSURE_AHREFS_MAIN_BRIDGE',
-  }) as { success?: boolean; error?: string };
-
-  if (!response?.success) {
-    throw new Error(response?.error || '主世界桥接注入失败');
-  }
+  // 主世界桥接脚本已通过 manifest 自动注入
+  // 不需要手动请求注入，直接返回
+  console.log('[Content Script] 桥接脚本已通过 manifest 自动注入');
+  return Promise.resolve();
 }
 
 function createAndStartInterceptor(maxCount: number, passiveMode: boolean): void {
@@ -495,6 +492,14 @@ function handleMessage(
       sendResponse({ success: true });
       return false;
 
+    case 'CHECK_VERIFICATION_PAGE':
+      handleCheckVerificationPage(sendResponse);
+      return false;
+
+    case 'WAIT_FOR_VERIFICATION':
+      void handleWaitForVerification(message, sendResponse);
+      return true;
+
     default:
       sendResponse({ success: false, error: `未知的消息类型: ${message.type}` });
       return false;
@@ -560,6 +565,43 @@ function handleStopApiInterceptor(sendResponse: (response: BaseResponse) => void
   } catch (error) {
     console.error('[Content Script] 停止 API 拦截器失败:', error);
     sendResponse({ success: false, error: error instanceof Error ? error.message : '未知错误' });
+  }
+}
+
+function handleCheckVerificationPage(sendResponse: (response: BaseResponse) => void): void {
+  try {
+    const result = detectVerificationPage();
+    sendResponse({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.error('[Content Script] 检测验证页面失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '检测失败',
+    });
+  }
+}
+
+async function handleWaitForVerification(message: BaseMessage, sendResponse: (response: BaseResponse) => void): Promise<void> {
+  try {
+    const payload = (message.payload ?? {}) as { timeoutMs?: number };
+    const timeoutMs = typeof payload.timeoutMs === 'number' ? payload.timeoutMs : 300000;
+
+    console.log('[Content Script] 开始等待验证完成，超时时间:', timeoutMs, 'ms');
+    const completed = await waitForVerificationComplete(timeoutMs);
+
+    sendResponse({
+      success: true,
+      data: { completed },
+    });
+  } catch (error) {
+    console.error('[Content Script] 等待验证失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '等待验证失败',
+    });
   }
 }
 

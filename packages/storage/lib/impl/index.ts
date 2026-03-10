@@ -12,3 +12,5 @@ export * from './extension-settings-storage.js';
 export * from './website-profile-storage.js';
 export * from './managed-backlink-storage.js';
 export * from './submission-session-storage.js';
+export * from './recursive-queue-storage.js';
+export * from './recursive-config-storage.js';

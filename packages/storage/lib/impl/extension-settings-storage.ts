@@ -11,6 +11,11 @@ const defaultSettings: ExtensionSettings = {
   next_backlink_count: 1,
   unique_backlink_domain: true,
   show_manual_fill_hints: false,
+  auto_fill_confidence_threshold: 0.9,
+  prompt_confidence_threshold: 0.6,
+  enable_assisted_learning: true,
+  show_field_mapping_preview: false,
+  auto_save_template_after_fill: true,
 };
 
 const storage = createStorage<ExtensionSettings>(

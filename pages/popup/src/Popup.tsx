@@ -13,8 +13,9 @@ import type { FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGrou
 import { useSubmissionSession } from './hooks/useSubmissionSession';
 import { buildCommentCandidates } from './utils/comment-generator';
 import { ManualCollector } from './components/ManualCollector';
+import { DevTools } from './components/DevTools';
 
-type PopupTab = 'fill' | 'backlinks' | 'collection';
+type PopupTab = 'fill' | 'backlinks' | 'collection' | 'devtools';
 
 export interface PopupViewProps {
   layout?: 'popup' | 'side-panel';
@@ -211,6 +212,13 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
       }
       setPageState(response.data ?? null);
     } catch (error) {
+      // 如果是连接错误，说明当前页面没有 content script，这是正常的
+      if (error instanceof Error && error.message.includes('Receiving end does not exist')) {
+        console.log('[Popup] 当前页面没有 content script，跳过');
+        setPageState(null);
+        setErrorMessage('');
+        return;
+      }
       setErrorMessage(error instanceof Error ? error.message : '页面通信失败');
       setPageState(null);
     } finally {
@@ -435,6 +443,7 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
           { id: 'fill' as const, label: '填表' },
           { id: 'backlinks' as const, label: '外链' },
           { id: 'collection' as const, label: '采集' },
+          { id: 'devtools' as const, label: '🛠️' },
         ].map(tab => (
           <button
             key={tab.id}
@@ -686,6 +695,10 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
 
         {activeTab === 'collection' && (
           <ManualCollector isLight={isLight} />
+        )}
+
+        {activeTab === 'devtools' && (
+          <DevTools />
         )}
       </div>
     </div>

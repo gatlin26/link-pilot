@@ -7,6 +7,7 @@ import { templateStorage } from '@extension/storage';
 import type { SiteTemplate, FieldMapping } from '@extension/shared';
 import { PageType } from '@extension/shared';
 import type { FormField } from '../form-handlers/form-detector';
+import { confidenceCalculator } from '../form-handlers/confidence-calculator';
 
 /**
  * 学习结果
@@ -33,7 +34,8 @@ export class TemplateLearner {
     domain: string,
     pageType: PageType,
     path: string,
-    fields: FormField[]
+    fields: FormField[],
+    learningSource: 'auto' | 'user_assisted' = 'auto'
   ): Promise<LearnResult> {
     try {
       // 生成路径模式
@@ -53,6 +55,12 @@ export class TemplateLearner {
         // 检查是否需要更新
         if (this.shouldUpdateTemplate(existingTemplate, fieldMappings)) {
           // 创建新版本
+          const confidence = confidenceCalculator.calculateTemplateConfidence(
+            learningSource,
+            existingTemplate.usage_count || 0,
+            existingTemplate.success_count || 0
+          );
+
           const newTemplate: SiteTemplate = {
             id: this.generateId(),
             domain,
@@ -62,6 +70,10 @@ export class TemplateLearner {
             submit_selector: this.getSubmitSelector(fields),
             version: existingTemplate.version + 1,
             updated_at: new Date().toISOString(),
+            learning_source: learningSource,
+            usage_count: 0,
+            success_count: 0,
+            confidence_score: confidence,
           };
 
           await templateStorage.add(newTemplate);
@@ -81,6 +93,12 @@ export class TemplateLearner {
         }
       } else {
         // 创建新模板
+        const confidence = confidenceCalculator.calculateTemplateConfidence(
+          learningSource,
+          0,
+          0
+        );
+
         const newTemplate: SiteTemplate = {
           id: this.generateId(),
           domain,
@@ -90,6 +108,10 @@ export class TemplateLearner {
           submit_selector: this.getSubmitSelector(fields),
           version: 1,
           updated_at: new Date().toISOString(),
+          learning_source: learningSource,
+          usage_count: 0,
+          success_count: 0,
+          confidence_score: confidence,
         };
 
         await templateStorage.add(newTemplate);
@@ -204,14 +226,17 @@ export class TemplateLearner {
   /**
    * 从当前页面学习模板
    */
-  async learnFromCurrentPage(fields: FormField[]): Promise<LearnResult> {
+  async learnFromCurrentPage(
+    fields: FormField[],
+    learningSource: 'auto' | 'user_assisted' = 'auto'
+  ): Promise<LearnResult> {
     const domain = this.extractDomain(window.location.href);
     const path = window.location.pathname;
 
     // 判断页面类型（目前只支持博客评论）
     const pageType = PageType.BLOG_COMMENT;
 
-    return this.learnFromSubmission(domain, pageType, path, fields);
+    return this.learnFromSubmission(domain, pageType, path, fields, learningSource);
   }
 
   /**

@@ -14,6 +14,10 @@ import {
   SyncEntityType,
   SyncJobStatus,
   SyncOperation,
+  RecursiveQueueStatus,
+  RecursiveSessionStatus,
+  RecursiveStrategy,
+  DeduplicationStrategy,
 } from './enums.js';
 
 /**
@@ -190,6 +194,21 @@ export interface SiteTemplate {
 
   /** 更新时间 */
   updated_at: string;
+
+  /** 学习来源 */
+  learning_source?: 'auto' | 'user_assisted';
+
+  /** 使用次数 */
+  usage_count?: number;
+
+  /** 成功次数 */
+  success_count?: number;
+
+  /** 最后使用时间 */
+  last_used_at?: string;
+
+  /** 模板置信度 */
+  confidence_score?: number;
 }
 
 /**
@@ -398,6 +417,21 @@ export interface ExtensionSettings {
 
   /** 显示手动填充提示（MVP 中未启用页面侧边提示时保持 false） */
   show_manual_fill_hints: boolean;
+
+  /** 自动填充的置信度阈值 */
+  auto_fill_confidence_threshold?: number;
+
+  /** 提示用户的置信度阈值 */
+  prompt_confidence_threshold?: number;
+
+  /** 启用用户辅助学习 */
+  enable_assisted_learning?: boolean;
+
+  /** 显示字段映射预览 */
+  show_field_mapping_preview?: boolean;
+
+  /** 填充后自动保存模板 */
+  auto_save_template_after_fill?: boolean;
 }
 
 /**
@@ -487,4 +521,93 @@ export interface FillPageState {
   field_types: Array<'name' | 'email' | 'website' | 'comment' | 'submit'>;
   backlink_in_current_group: boolean;
   selected_website_link_present: boolean;
+}
+
+/**
+ * 站点过滤规则
+ */
+export interface SiteFilterRule {
+  id: string;
+  name: string;
+  business_types?: BusinessType[];
+  domain_patterns?: string[];
+  deduplication_level: 'url' | 'domain';
+  enabled: boolean;
+}
+
+/**
+ * 递归采集配置
+ */
+export interface RecursiveCollectionConfig {
+  max_depth: number;
+  max_links_per_url: number;
+  max_total_urls: number;
+  collection_interval_ms: number;
+  max_retries: number;
+  deduplication: DeduplicationStrategy;
+  site_filters: SiteFilterRule[];
+  auto_pause_on_limit: boolean;
+  target_group_id?: string;
+}
+
+/**
+ * 递归采集统计信息
+ */
+export interface RecursiveCollectionStats {
+  total_urls: number;
+  pending_count: number;
+  in_progress_count: number;
+  completed_count: number;
+  failed_count: number;
+  skipped_count: number;
+  total_backlinks_collected: number;
+  total_backlinks_added: number;
+  current_depth: number;
+  max_depth_reached: number;
+  by_depth: Record<
+    number,
+    {
+      total: number;
+      completed: number;
+      failed: number;
+    }
+  >;
+}
+
+/**
+ * 递归队列项
+ */
+export interface RecursiveQueueItem {
+  id: string;
+  url: string;
+  domain: string;
+  depth: number;
+  parent_id: string | null;
+  status: RecursiveQueueStatus;
+  collected_count?: number;
+  retry_count: number;
+  error_message?: string;
+  created_at: string;
+  updated_at: string;
+  started_at?: string;
+  completed_at?: string;
+}
+
+/**
+ * 递归采集会话
+ */
+export interface RecursiveCollectionSession {
+  id: string;
+  initial_url: string;
+  strategy: RecursiveStrategy;
+  max_depth: number;
+  max_links_per_url: number;
+  status: RecursiveSessionStatus;
+  config: RecursiveCollectionConfig;
+  stats: RecursiveCollectionStats;
+  created_at: string;
+  updated_at: string;
+  started_at?: string;
+  paused_at?: string;
+  completed_at?: string;
 }

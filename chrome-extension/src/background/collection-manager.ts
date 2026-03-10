@@ -33,6 +33,15 @@ interface BatchCollectionResult {
 }
 
 /**
+ * 采集回调接口
+ */
+export interface CollectionCallbacks {
+  onCollectionStart?: (targetUrl: string) => void;
+  onCollectionComplete?: (result: CollectionResult) => void;
+  onCollectionError?: (error: Error) => void;
+}
+
+/**
  * 活动标签页信息
  */
 interface ActiveTab {
@@ -295,8 +304,11 @@ class CollectionManager {
     maxCount: number = 20,
     targetGroupId?: string,
     collectionUrlOverride?: string,
+    callbacks?: CollectionCallbacks,
+    reuseTabId?: number, // 新增：复用现有标签页
   ): Promise<CollectionResult> {
     let tabId: number | null = null;
+    let shouldCloseTab = true; // 是否应该关闭标签页
 
     try {
       await this.resetDebugLogs({
@@ -305,7 +317,10 @@ class CollectionManager {
         maxCount,
         at: new Date().toISOString(),
       });
-      await this.logInfo('开始手动采集', { targetUrl, maxCount });
+      await this.logInfo('开始手动采集', { targetUrl, maxCount, reuseTabId });
+
+      // 调用开始回调
+      callbacks?.onCollectionStart?.(targetUrl);
 
       // 重置状态
       this.currentBatchId = crypto.randomUUID();
@@ -314,10 +329,33 @@ class CollectionManager {
       const ahrefsUrl =
         collectionUrlOverride || `https://ahrefs.com/backlink-checker?input=${encodeURIComponent(targetUrl)}`;
 
-      const tab = await chrome.tabs.create({
-        url: ahrefsUrl,
-        active: true,
-      });
+      let tab: chrome.tabs.Tab;
+
+      // 方案 3：会话保持 - 复用现有标签页
+      if (reuseTabId) {
+        try {
+          // 检查标签页是否存在
+          tab = await chrome.tabs.get(reuseTabId);
+          // 导航到新 URL
+          await chrome.tabs.update(reuseTabId, { url: ahrefsUrl, active: true });
+          await this.logInfo('复用现有标签页', { tabId: reuseTabId, ahrefsUrl });
+          shouldCloseTab = false; // 不关闭复用的标签页
+        } catch (error) {
+          // 标签页不存在，创建新的
+          await this.logWarn('复用标签页失败，创建新标签页', {
+            error: error instanceof Error ? error.message : String(error),
+          });
+          tab = await chrome.tabs.create({
+            url: ahrefsUrl,
+            active: true,
+          });
+        }
+      } else {
+        tab = await chrome.tabs.create({
+          url: ahrefsUrl,
+          active: true,
+        });
+      }
 
       if (!tab.id) {
         await this.logError('创建采集标签页失败');
@@ -344,8 +382,18 @@ class CollectionManager {
       await this.waitForTabLoad(tab.id);
       await this.logInfo('页面加载完成', { tabId: tab.id, tabUrl: tab.url });
 
+      // 额外等待，确保页面完全稳定，避免触发安全检测
+      // 随机延迟 2-4 秒，模拟人类行为
+      const stabilizeDelay = 2000 + Math.floor(Math.random() * 2000);
+      await this.logInfo('等待页面稳定', { tabId: tab.id, delay: stabilizeDelay });
+      await new Promise(resolve => setTimeout(resolve, stabilizeDelay));
+
+      // 等待 content script 就绪
       await this.waitForContentReady(tab.id);
-      await this.ensureMainWorldBridge(tab.id);
+
+      // 主世界桥接脚本已通过 manifest 自动注入
+      // 不需要手动注入，直接启动拦截器
+      await this.logInfo('准备启动拦截器（桥接脚本已自动注入）', { tabId: tab.id });
 
       await this.startApiInterceptor(tab.id, maxCount);
 
@@ -360,52 +408,74 @@ class CollectionManager {
       if (result.success && result.data?.length) {
         console.log('[Collection Manager] 采集成功，共', result.data.length, '条');
 
-        // 转换并保存数据
-        const opportunities = this.convertToOpportunities(result.data);
-        await opportunityStorage.addBatch(opportunities);
+        // 使用去重方法保存数据
+        const saveResult = await this.saveBacklinksToStorage(result.data);
+        console.log('[Collection Manager] 保存结果 - 新增:', saveResult.saved, '跳过:', saveResult.skipped);
+
         const libraryResult = await this.addToManagedBacklinkLibrary(result.data, targetGroupId);
 
         // 保存批次信息
         await collectionBatchStorage.add({
           id: this.currentBatchId!,
           source_platform: SourcePlatform.AHREFS,
-          count: opportunities.length,
+          count: saveResult.saved,
           collected_at: new Date().toISOString(),
           sync_status: 'pending',
           synced_count: 0,
         });
 
-        return {
+        const successResult = {
           success: true,
-          count: opportunities.length,
+          count: saveResult.saved,
           addedToLibrary: libraryResult.added,
           skippedInLibrary: libraryResult.skipped,
           groupId: libraryResult.groupId,
         };
+
+        // 调用完成回调
+        callbacks?.onCollectionComplete?.(successResult);
+
+        return successResult;
       } else {
         await this.logWarn('采集结束但无有效数据', { error: result.error });
-        return {
+        const failResult = {
           success: false,
           error: result.error || '未找到可采集的外链',
           debugLogs: await this.getDebugLogStrings(30),
         };
+
+        // 调用错误回调
+        if (result.error) {
+          callbacks?.onCollectionError?.(new Error(result.error));
+        }
+
+        return failResult;
       }
     } catch (error) {
       await this.logError('手动采集失败', {
         error: error instanceof Error ? error.message : String(error),
       });
       this.activeTab = null;
+
+      // 调用错误回调
+      if (error instanceof Error) {
+        callbacks?.onCollectionError?.(error);
+      }
+
       return {
         success: false,
         error: error instanceof Error ? error.message : '采集失败',
         debugLogs: await this.getDebugLogStrings(30),
       };
     } finally {
-      if (tabId) {
+      if (tabId && shouldCloseTab) {
         unbindCollectionTab(tabId);
         await chrome.tabs.remove(tabId).catch(err => {
           console.warn('[Collection Manager] 关闭采集标签页失败:', err);
         });
+      } else if (tabId) {
+        unbindCollectionTab(tabId);
+        await this.logInfo('保留标签页以供复用', { tabId });
       }
     }
   }
@@ -701,6 +771,60 @@ class CollectionManager {
     }));
   }
 
+  /**
+   * 保存外链到存储（带去重）
+   */
+  async saveBacklinksToStorage(backlinks: CollectedBacklink[]): Promise<{ saved: number; skipped: number }> {
+    console.log('[Collection Manager] 开始保存外链，总数:', backlinks.length);
+
+    // 获取现有的 opportunities
+    const existingOpportunities = await opportunityStorage.getAll();
+
+    // 创建去重集合（使用 URL 去重）
+    const existingUrls = new Set(existingOpportunities.map(opp => this.normalizeUrl(opp.url)));
+    const existingDomains = new Set(existingOpportunities.map(opp => opp.domain.toLowerCase()));
+
+    console.log('[Collection Manager] 现有 URL 数量:', existingUrls.size);
+    console.log('[Collection Manager] 现有域名数量:', existingDomains.size);
+
+    // 过滤重复的外链
+    const newBacklinks = backlinks.filter(backlink => {
+      const normalizedUrl = this.normalizeUrl(backlink.referring_page_url);
+      const domain = backlink.referring_domain.toLowerCase();
+
+      // URL 级别去重
+      if (existingUrls.has(normalizedUrl)) {
+        console.log('[Collection Manager] URL 已存在，跳过:', normalizedUrl);
+        return false;
+      }
+
+      // 域名级别去重（可选，根据需求启用）
+      // if (existingDomains.has(domain)) {
+      //   console.log('[Collection Manager] 域名已存在，跳过:', domain);
+      //   return false;
+      // }
+
+      return true;
+    });
+
+    console.log('[Collection Manager] 去重后新外链数量:', newBacklinks.length);
+
+    if (newBacklinks.length === 0) {
+      return { saved: 0, skipped: backlinks.length };
+    }
+
+    // 转换为 Opportunity 并保存
+    const opportunities = this.convertToOpportunities(newBacklinks);
+    await opportunityStorage.addBatch(opportunities);
+
+    console.log('[Collection Manager] 保存完成，新增:', opportunities.length, '条');
+
+    return {
+      saved: opportunities.length,
+      skipped: backlinks.length - newBacklinks.length,
+    };
+  }
+
   private normalizeUrl(value: string): string {
     return value.trim().replace(/\/+$/, '').toLowerCase();
   }
@@ -831,7 +955,7 @@ class CollectionManager {
 }
 
 // 创建并初始化管理器实例
-const collectionManager = new CollectionManager();
+export const collectionManager = new CollectionManager();
 collectionManager.init();
 
 // 注册消息处理器
@@ -852,31 +976,6 @@ messageRouter.register('CHECK_IF_COLLECTED', (message, sender, sendResponse) => 
     });
 
   return true; // 异步响应
-});
-
-messageRouter.register('ENSURE_AHREFS_MAIN_BRIDGE', (_message, sender, sendResponse) => {
-  const tabId = sender.tab?.id;
-  if (!tabId) {
-    sendResponse({
-      success: false,
-      error: '无法识别当前标签页',
-    });
-    return false;
-  }
-
-  collectionManager
-    .ensureAhrefsMainWorldBridge(tabId)
-    .then(() => {
-      sendResponse({ success: true });
-    })
-    .catch(error => {
-      sendResponse({
-        success: false,
-        error: error instanceof Error ? error.message : '主世界桥接注入失败',
-      });
-    });
-
-  return true;
 });
 
 messageRouter.register('START_MANUAL_COLLECTION', (message, sender, sendResponse) => {
@@ -970,6 +1069,39 @@ messageRouter.register('START_BATCH_COLLECTION', (message, sender, sendResponse)
         results: [],
         error: error instanceof Error ? error.message : '批量采集失败',
       });
+    });
+
+  return true; // 异步响应
+});
+
+// 注册自动采集完成消息处理器
+messageRouter.register('AUTO_COLLECTION_COMPLETE', (message, sender, sendResponse) => {
+  const { backlinks } = message.payload || {};
+  const tabId = sender.tab?.id;
+
+  console.log('[Collection Manager] 收到自动采集数据:', backlinks?.length || 0, '条，来自标签页:', tabId);
+
+  if (!backlinks || !Array.isArray(backlinks) || backlinks.length === 0) {
+    console.warn('[Collection Manager] 自动采集数据为空');
+    sendResponse({ success: false, error: '数据为空' });
+    return false;
+  }
+
+  // 直接保存数据到 opportunityStorage
+  collectionManager
+    .saveBacklinksToStorage(backlinks)
+    .then(result => {
+      console.log('[Collection Manager] 自动采集数据已保存 - 新增:', result.saved, '跳过:', result.skipped);
+      sendResponse({
+        success: true,
+        count: backlinks.length,
+        saved: result.saved,
+        skipped: result.skipped
+      });
+    })
+    .catch(error => {
+      console.error('[Collection Manager] 保存自动采集数据失败:', error);
+      sendResponse({ success: false, error: error instanceof Error ? error.message : '保存失败' });
     });
 
   return true; // 异步响应

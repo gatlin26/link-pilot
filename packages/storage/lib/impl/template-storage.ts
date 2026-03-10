@@ -101,4 +101,38 @@ export const templateStorage = {
       lastUpdated: new Date().toISOString(),
     });
   },
+
+  /**
+   * 记录模板使用
+   */
+  recordUsage: async (id: string, success: boolean): Promise<void> => {
+    await storage.set(state => ({
+      templates: state.templates.map(t => {
+        if (t.id === id) {
+          const usageCount = (t.usage_count || 0) + 1;
+          const successCount = (t.success_count || 0) + (success ? 1 : 0);
+          return {
+            ...t,
+            usage_count: usageCount,
+            success_count: successCount,
+            last_used_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          };
+        }
+        return t;
+      }),
+      lastUpdated: new Date().toISOString(),
+    }));
+  },
+
+  /**
+   * 获取模板成功率
+   */
+  getSuccessRate: async (id: string): Promise<number> => {
+    const template = await templateStorage.getById(id);
+    if (!template || !template.usage_count || template.usage_count === 0) {
+      return 0;
+    }
+    return (template.success_count || 0) / template.usage_count;
+  },
 };
