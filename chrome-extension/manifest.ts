@@ -68,11 +68,17 @@ const manifest = {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
       css: ['content.css'],
     },
+    {
+      matches: ['https://ahrefs.com/*'],
+      js: ['ahrefs-main-bridge.js'],
+      world: 'MAIN',
+      run_at: 'document_start',
+    },
   ],
   devtools_page: 'devtools/index.html',
   web_accessible_resources: [
     {
-      resources: ['*.js', '*.css', '*.svg', 'icon-128.png', 'icon-34.png'],
+      resources: ['*.js', '*.css', '*.svg', '*.html', 'icon-128.png', 'icon-34.png'],
       matches: ['*://*/*'],
     },
   ],
