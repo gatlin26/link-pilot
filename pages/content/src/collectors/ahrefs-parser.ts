@@ -54,6 +54,15 @@ export function parseAhrefsApiResponse(
   const results: CollectedBacklink[] = [];
 
   try {
+    // 添加详细的数据结构日志
+    console.log('[Ahrefs Parser] 开始解析响应数据');
+    console.log('[Ahrefs Parser] 数据类型:', typeof responseData);
+    console.log('[Ahrefs Parser] 是否为数组:', Array.isArray(responseData));
+
+    if (responseData && typeof responseData === 'object') {
+      console.log('[Ahrefs Parser] 数据键:', Object.keys(responseData as Record<string, unknown>));
+    }
+
     // 尝试多种可能的数据结构
     let backlinks: AhrefsBacklinkItem[] = [];
 
@@ -63,10 +72,12 @@ export function parseAhrefsApiResponse(
         const secondElement = responseData[1] as Record<string, unknown>;
         if (Array.isArray(secondElement.backlinks)) {
           backlinks = secondElement.backlinks;
+          console.log('[Ahrefs Parser] 使用格式: ["TopBacklinks", { backlinks: [...] }]');
         }
       } else {
         // 直接是数组
         backlinks = responseData;
+        console.log('[Ahrefs Parser] 使用格式: 直接数组');
       }
     } else if (typeof responseData === 'object' && responseData !== null) {
       const data = responseData as Record<string, unknown>;
@@ -74,20 +85,33 @@ export function parseAhrefsApiResponse(
       // 尝试常见的数据路径
       if (Array.isArray(data.backlinks)) {
         backlinks = data.backlinks;
+        console.log('[Ahrefs Parser] 使用格式: { backlinks: [...] }');
       } else if (Array.isArray(data.data)) {
         backlinks = data.data;
+        console.log('[Ahrefs Parser] 使用格式: { data: [...] }');
       } else if (Array.isArray(data.results)) {
         backlinks = data.results;
+        console.log('[Ahrefs Parser] 使用格式: { results: [...] }');
       } else if (Array.isArray(data.items)) {
         backlinks = data.items;
+        console.log('[Ahrefs Parser] 使用格式: { items: [...] }');
       } else if (data.refpages && Array.isArray((data.refpages as Record<string, unknown>).backlinks)) {
         backlinks = ((data.refpages as Record<string, unknown>).backlinks) as AhrefsBacklinkItem[];
+        console.log('[Ahrefs Parser] 使用格式: { refpages: { backlinks: [...] } }');
       }
     }
 
     if (backlinks.length === 0) {
       console.warn('[Ahrefs Parser] 未找到外链数据');
+      console.warn('[Ahrefs Parser] 完整响应数据:', JSON.stringify(responseData).substring(0, 500));
       return results;
+    }
+
+    console.log(`[Ahrefs Parser] 找到 ${backlinks.length} 条原始外链数据`);
+
+    // 打印第一条数据的结构用于调试
+    if (backlinks.length > 0) {
+      console.log('[Ahrefs Parser] 第一条数据示例:', JSON.stringify(backlinks[0]).substring(0, 300));
     }
 
     const now = new Date().toISOString();
@@ -124,6 +148,12 @@ function parseBacklinkItem(
   batchId: string,
   timestamp: string,
 ): CollectedBacklink | null {
+  // 防御性检查：确保 item 不为 null/undefined
+  if (!item || typeof item !== 'object') {
+    console.warn('[Ahrefs Parser] 无效的外链数据项:', item);
+    return null;
+  }
+
   // 提取必需字段（支持两种命名格式）
   const referringUrl = item.urlFrom || item.url_from ||
     (typeof item.referring_page_url === 'string' ? item.referring_page_url : '');
@@ -131,7 +161,7 @@ function parseBacklinkItem(
 
   // 验证必需字段
   if (!referringUrl || !isValidUrl(referringUrl)) {
-    console.warn('[Ahrefs Parser] 无效的引用 URL:', referringUrl);
+    console.warn('[Ahrefs Parser] 无效的引用 URL:', referringUrl, '原始数据:', item);
     return null;
   }
 

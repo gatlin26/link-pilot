@@ -32,17 +32,27 @@ function startPersistentCollection() {
     } else {
       console.log(`[Link Pilot] 拦截到外链数据，共 ${backlinks.length} 条`);
 
-      // 自动保存到 storage
-      chrome.runtime.sendMessage({
-        type: 'AUTO_COLLECTION_COMPLETE',
-        payload: { backlinks },
-      }).then(response => {
-        if (response?.success) {
-          console.log(`[Link Pilot] 数据已保存 - 新增: ${response.saved || response.count} 条, 跳过: ${response.skipped || 0} 条`);
-        }
-      }).catch(error => {
-        console.error('[Link Pilot] 发送数据失败:', error);
-      });
+      // 自动保存到 storage，添加错误处理
+      try {
+        chrome.runtime.sendMessage({
+          type: 'AUTO_COLLECTION_COMPLETE',
+          payload: { backlinks },
+        }).then(response => {
+          if (response?.success) {
+            console.log(`[Link Pilot] 数据已保存 - 新增: ${response.saved || response.count} 条, 跳过: ${response.skipped || 0} 条`);
+          }
+        }).catch(error => {
+          // 检查是否是扩展上下文失效错误
+          if (error.message?.includes('Extension context invalidated')) {
+            console.warn('[Link Pilot] 扩展已重新加载，停止当前拦截器');
+            collectorRegistry.stopCollection();
+            return;
+          }
+          console.error('[Link Pilot] 发送数据失败:', error);
+        });
+      } catch (error) {
+        console.error('[Link Pilot] 发送消息异常:', error);
+      }
     }
 
     // 继续下一轮拦截（常驻模式）

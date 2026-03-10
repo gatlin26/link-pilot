@@ -89,7 +89,7 @@ export class AhrefsApiInterceptor {
         `[Ahrefs Interceptor] 状态检查 - 总请求: ${this.requestCount}, 匹配请求: ${this.matchedRequestCount}, 已收集: ${this.collectedBacklinks.length}/${this.config.maxCount}`,
       );
 
-      // 如果60秒内没有任何请求，给出警告
+      // 如果10秒内没有任何请求，给出警告
       if (this.requestCount === 0) {
         console.warn('[Ahrefs Interceptor] ⚠️ 警告：拦截器已启动但未捕获到任何网络请求！');
         console.warn('[Ahrefs Interceptor] 可能原因：');
@@ -305,6 +305,13 @@ export class AhrefsApiInterceptor {
    */
   getCollectedCount(): number {
     return this.collectedBacklinks.length;
+  }
+
+  /**
+   * 获取已收集的外链数据
+   */
+  getCollectedBacklinks(): CollectedBacklink[] {
+    return this.collectedBacklinks.slice();
   }
 
   /**

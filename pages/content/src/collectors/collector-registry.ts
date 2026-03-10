@@ -56,15 +56,24 @@ class AhrefsCollector implements Collector {
 
       console.log(`[Ahrefs Collector] 开始收集，目标数量: ${maxCount}`);
 
-      // 设置超时（60秒）
+      // 设置超时（180秒，给更多时间等待数据）
       setTimeout(() => {
         if (this.interceptor?.isRunning()) {
           const collected = this.interceptor.getCollectedCount();
           console.warn(`[Ahrefs Collector] 收集超时，已收集 ${collected} 条`);
-          this.stop();
-          reject(new Error(`收集超时，仅收集到 ${collected} 条数据`));
+
+          // 如果已经收集到一些数据，返回已收集的数据而不是报错
+          if (collected > 0) {
+            console.log(`[Ahrefs Collector] 返回已收集的 ${collected} 条数据`);
+            const backlinks = this.interceptor.getCollectedBacklinks();
+            this.stop();
+            resolve(backlinks);
+          } else {
+            this.stop();
+            reject(new Error(`收集超时，未收集到任何数据`));
+          }
         }
-      }, 60000);
+      }, 180000);
     });
   }
 
