@@ -9,6 +9,75 @@ import { OpportunityStatus, PageType, LinkType, SourcePlatform } from '@extensio
 import { opportunityStorage, collectionBatchStorage, managedBacklinkStorage } from '@extension/storage';
 import type { Opportunity, CollectedBacklink, ManagedBacklink } from '@extension/shared';
 
+/**
+ * 指数退避重试工具函数
+ */
+const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
+ * 判断是否为临时错误（可重试）
+ */
+const isTemporaryError = (error: unknown): boolean => {
+  if (!(error instanceof Error)) return false;
+  const message = error.message.toLowerCase();
+
+  // 网络相关错误
+  if (message.includes('network') || message.includes('fetch') || message.includes('connection')) {
+    return true;
+  }
+  // 超时错误
+  if (message.includes('timeout') || message.includes('timed out')) {
+    return true;
+  }
+  // 503 服务不可用
+  if (message.includes('503') || message.includes('service unavailable')) {
+    return true;
+  }
+  // 429 请求过多
+  if (message.includes('429') || message.includes('too many requests')) {
+    return true;
+  }
+
+  return false;
+};
+
+/**
+ * 带指数退避的重试函数
+ */
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  maxRetries: number = 3,
+  baseDelay: number = 1000,
+): Promise<T> {
+  let lastError: unknown;
+
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+
+      // 永久错误不重试
+      if (!isTemporaryError(error)) {
+        console.log('[Collection Manager] 永久错误，不重试:', error);
+        throw error;
+      }
+
+      // 已达最大重试次数
+      if (i === maxRetries - 1) {
+        break;
+      }
+
+      // 指数退避 + 随机抖动
+      const delay = baseDelay * Math.pow(2, i) + Math.random() * 1000;
+      console.log(`[Collection Manager] 临时错误，${delay.toFixed(0)}ms 后重试 (${i + 1}/${maxRetries})`);
+      await sleep(delay);
+    }
+  }
+
+  throw lastError;
+}
+
 interface CollectionResult {
   success: boolean;
   count?: number;
@@ -286,14 +355,53 @@ class CollectionManager {
   private static readonly MAX_DEBUG_LOGS = 300;
   private activeTab: ActiveTab | null = null;
   private currentBatchId: string | null = null;
+  // URL 缓存机制 - 减少 getAll 调用
+  private urlCache = new Set<string>();
+  private domainCache = new Set<string>();
+  private cacheLastRefresh = 0;
+  private static readonly CACHE_REFRESH_INTERVAL = 5 * 60 * 1000; // 5分钟刷新
 
   /**
    * 初始化管理器
    */
   init(): void {
     console.log('[Collection Manager] 初始化');
-
     console.log('[Collection Manager] 管理器初始化完成');
+  }
+
+  /**
+   * 获取 URL 缓存（带自动刷新）
+   */
+  private async getUrlCache(): Promise<{ urls: Set<string>; domains: Set<string> }> {
+    const now = Date.now();
+    if (now - this.cacheLastRefresh > CollectionManager.CACHE_REFRESH_INTERVAL) {
+      // 缓存过期，重新加载
+      const allOpportunities = await opportunityStorage.getAll();
+      this.urlCache.clear();
+      this.domainCache.clear();
+      for (const opp of allOpportunities) {
+        this.urlCache.add(this.normalizeUrl(opp.url));
+        this.domainCache.add(opp.domain.toLowerCase());
+      }
+      this.cacheLastRefresh = now;
+      console.log('[Collection Manager] URL 缓存已刷新，缓存大小:', this.urlCache.size);
+    }
+    return { urls: this.urlCache, domains: this.domainCache };
+  }
+
+  /**
+   * 手动刷新缓存
+   */
+  async refreshUrlCache(): Promise<void> {
+    const allOpportunities = await opportunityStorage.getAll();
+    this.urlCache.clear();
+    this.domainCache.clear();
+    for (const opp of allOpportunities) {
+      this.urlCache.add(this.normalizeUrl(opp.url));
+      this.domainCache.add(opp.domain.toLowerCase());
+    }
+    this.cacheLastRefresh = Date.now();
+    console.log('[Collection Manager] URL 缓存已手动刷新，缓存大小:', this.urlCache.size);
   }
 
   /**
@@ -336,12 +444,29 @@ class CollectionManager {
         try {
           // 检查标签页是否存在
           tab = await chrome.tabs.get(reuseTabId);
-          // 导航到新 URL
-          await chrome.tabs.update(reuseTabId, { url: ahrefsUrl, active: true });
-          await this.logInfo('复用现有标签页', { tabId: reuseTabId, ahrefsUrl });
+
+          // 增强验证：检查标签页是否可用
+          if (tab.status === 'loading') {
+            await this.logWarn('复用标签页正在加载，等待完成', { tabId: reuseTabId });
+            // 等待标签页加载完成
+            await this.waitForTabLoad(reuseTabId);
+          }
+
+          // 检查标签页是否被废弃（discarded）
+          if (tab.discarded) {
+            await this.logWarn('复用标签页已被废弃，重新创建', { tabId: reuseTabId });
+            tab = await chrome.tabs.create({
+              url: ahrefsUrl,
+              active: true,
+            });
+          } else {
+            // 导航到新 URL
+            await chrome.tabs.update(reuseTabId, { url: ahrefsUrl, active: true });
+            await this.logInfo('复用现有标签页', { tabId: reuseTabId, ahrefsUrl });
+          }
           shouldCloseTab = false; // 不关闭复用的标签页
         } catch (error) {
-          // 标签页不存在，创建新的
+          // 标签页不存在或其他错误，创建新的
           await this.logWarn('复用标签页失败，创建新标签页', {
             error: error instanceof Error ? error.message : String(error),
           });
@@ -633,7 +758,16 @@ class CollectionManager {
         message: { type?: string; payload?: { backlinks?: CollectedBacklink[]; error?: string } },
         sender: chrome.runtime.MessageSender,
       ) => {
+        // 诊断日志：打印收到的消息
+        console.log('[Collection Manager] 收到消息:', message.type, {
+          expectedTabId: tabId,
+          actualTabId: sender.tab?.id,
+          hasTab: !!sender.tab,
+          hasPayload: !!message.payload,
+        });
+
         if (sender.tab?.id !== tabId) {
+          console.log('[Collection Manager] Tab ID 不匹配，跳过处理');
           return false;
         }
 
@@ -777,15 +911,11 @@ class CollectionManager {
   async saveBacklinksToStorage(backlinks: CollectedBacklink[]): Promise<{ saved: number; skipped: number }> {
     console.log('[Collection Manager] 开始保存外链，总数:', backlinks.length);
 
-    // 获取现有的 opportunities
-    const existingOpportunities = await opportunityStorage.getAll();
+    // 使用缓存获取现有的 URL 和域名
+    const { urls: existingUrls, domains: existingDomains } = await this.getUrlCache();
 
-    // 创建去重集合（使用 URL 去重）
-    const existingUrls = new Set(existingOpportunities.map(opp => this.normalizeUrl(opp.url)));
-    const existingDomains = new Set(existingOpportunities.map(opp => opp.domain.toLowerCase()));
-
-    console.log('[Collection Manager] 现有 URL 数量:', existingUrls.size);
-    console.log('[Collection Manager] 现有域名数量:', existingDomains.size);
+    console.log('[Collection Manager] 现有 URL 缓存数量:', existingUrls.size);
+    console.log('[Collection Manager] 现有域名缓存数量:', existingDomains.size);
 
     // 过滤重复的外链
     const newBacklinks = backlinks.filter(backlink => {
@@ -797,12 +927,6 @@ class CollectionManager {
         console.log('[Collection Manager] URL 已存在，跳过:', normalizedUrl);
         return false;
       }
-
-      // 域名级别去重（可选，根据需求启用）
-      // if (existingDomains.has(domain)) {
-      //   console.log('[Collection Manager] 域名已存在，跳过:', domain);
-      //   return false;
-      // }
 
       return true;
     });
@@ -816,6 +940,12 @@ class CollectionManager {
     // 转换为 Opportunity 并保存
     const opportunities = this.convertToOpportunities(newBacklinks);
     await opportunityStorage.addBatch(opportunities);
+
+    // 更新缓存
+    for (const opp of opportunities) {
+      existingUrls.add(this.normalizeUrl(opp.url));
+      existingDomains.add(opp.domain.toLowerCase());
+    }
 
     console.log('[Collection Manager] 保存完成，新增:', opportunities.length, '条');
 

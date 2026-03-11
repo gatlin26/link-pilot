@@ -96,9 +96,8 @@ async function handleStartCollection(
 
     // 发送完成通知
     chrome.runtime.sendMessage({
-      type: 'COLLECTION_COMPLETED',
-      count: backlinks.length,
-      batchId: backlinks[0]?.collection_batch_id,
+      type: 'COLLECTION_COMPLETE',
+      payload: { backlinks },
     }).catch(console.error);
 
     // 响应

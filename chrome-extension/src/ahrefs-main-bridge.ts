@@ -93,16 +93,42 @@ if (existingState?.listenerBound) {
   };
 
   const isAhrefsApiRequest = (url: string): boolean => {
-    const patterns = [
+    // 首先检查是否是 Ahrefs API 请求
+    const basePatterns = [
       /api\.ahrefs\.com/i,
       /ahrefs\.com\/api/i,
       /ahrefs\.com\/v\d+\//i,
       /stGetFreeBacklinksList/i,
-      /backlink.*api/i,
-      /refpages/i,
-      /backlinks/i,
     ];
-    return patterns.some(pattern => pattern.test(url));
+
+    if (!basePatterns.some(pattern => pattern.test(url))) {
+      return false;
+    }
+
+    // 排除域统计 API：只有 metrics 参数，没有 limit/output/page 参数
+    // 域统计 API 示例: /backlinks?target=xxx.com&metrics=domain_rating,backlinks
+    // 外链列表 API 示例: /backlinks?target=xxx.com&limit=100 或 &output=...
+    const isMetricsOnly =
+      /metrics=/i.test(url) &&
+      !/limit=/i.test(url) &&
+      !/output=/i.test(url) &&
+      !/page=/i.test(url) &&
+      !/offset=/i.test(url);
+
+    if (isMetricsOnly) {
+      console.log('[Ahrefs Bridge] 排除域统计 API 请求:', url);
+      return false;
+    }
+
+    // 匹配外链列表 API 的模式
+    const listPatterns = [
+      /backlinks/i,
+      /refpages/i,
+      /top-domains/i,
+      / domains/i,
+    ];
+
+    return listPatterns.some(pattern => pattern.test(url));
   };
 
   const getUrlFromResource = (resource: RequestInfo | URL): string => {

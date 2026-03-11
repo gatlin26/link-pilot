@@ -19,7 +19,7 @@ export enum AhrefsMessageType {
 
   // 收集事件
   COLLECTION_STARTED = 'COLLECTION_STARTED',
-  COLLECTION_COMPLETED = 'COLLECTION_COMPLETED',
+  COLLECTION_COMPLETE = 'COLLECTION_COMPLETE',
   COLLECTION_FAILED = 'COLLECTION_FAILED',
   COLLECTION_PROGRESS = 'COLLECTION_PROGRESS',
 }
@@ -73,9 +73,10 @@ export interface CollectionStartedMessage {
  * 收集完成事件
  */
 export interface CollectionCompletedMessage {
-  type: AhrefsMessageType.COLLECTION_COMPLETED;
-  count: number;
-  batchId: string;
+  type: AhrefsMessageType.COLLECTION_COMPLETE;
+  payload: {
+    backlinks: CollectedBacklink[];
+  };
 }
 
 /**

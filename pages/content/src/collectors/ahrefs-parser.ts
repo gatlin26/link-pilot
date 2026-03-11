@@ -59,6 +59,38 @@ export function parseAhrefsApiResponse(
     console.log('[Ahrefs Parser] 数据类型:', typeof responseData);
     console.log('[Ahrefs Parser] 是否为数组:', Array.isArray(responseData));
 
+    // 检测是否是域统计 API 响应（不是外链列表）
+    // 域统计响应格式: ["Ok",{data:{domainRating:...,backlinks:...,refdomains:...}}]
+    if (Array.isArray(responseData) && responseData.length === 2) {
+      const secondElement = responseData[1];
+      if (secondElement && typeof secondElement === 'object' && !Array.isArray(secondElement)) {
+        const innerData = secondElement as Record<string, unknown>;
+        // 检查是否是域统计响应：data 包含 domainRating/backlinks/refdomains 且不是数组
+        if (
+          innerData.data &&
+          typeof innerData.data === 'object' &&
+          !Array.isArray(innerData.data)
+        ) {
+          const statsData = innerData.data as Record<string, unknown>;
+          if (
+            typeof statsData.domainRating === 'number' &&
+            typeof statsData.backlinks === 'number' &&
+            typeof statsData.refdomains === 'number' &&
+            !Array.isArray(statsData.backlinks)
+          ) {
+            console.warn(
+              '[Ahrefs Parser] 检测到域统计 API 响应，非外链列表，跳过解析',
+            );
+            console.warn(
+              '[Ahrefs Parser] 域统计:',
+              JSON.stringify(statsData).substring(0, 200),
+            );
+            return results;
+          }
+        }
+      }
+    }
+
     if (responseData && typeof responseData === 'object') {
       console.log('[Ahrefs Parser] 数据键:', Object.keys(responseData as Record<string, unknown>));
     }

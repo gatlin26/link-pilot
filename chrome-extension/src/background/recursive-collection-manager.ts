@@ -29,6 +29,9 @@ class RecursiveCollectionManager {
   private currentItemId: string | null = null;
   private collectionTabId: number | null = null; // 保持会话的标签页
   private waitingForVerification = false; // 是否正在等待验证
+  private currentItemStartTime: number = 0; // 当前采集项的开始时间
+  private collectionDurations: number[] = []; // 采集耗时记录（毫秒）
+  private maxDurationHistory = 10; // 最多记录 10 次耗时
 
   /**
    * 初始化管理器
@@ -232,6 +235,7 @@ class RecursiveCollectionManager {
     console.log('[Recursive Collection Manager] 处理队列项:', item.url, '深度:', item.depth);
 
     this.currentItemId = item.id;
+    this.currentItemStartTime = Date.now(); // 记录采集开始时间
 
     // 更新状态为 IN_PROGRESS
     await recursiveQueueStorage.updateItem(item.id, {
@@ -366,7 +370,19 @@ class RecursiveCollectionManager {
         failed_count: session.stats.failed_count + 1,
       });
     } finally {
+      // 记录采集耗时
+      if (this.currentItemStartTime > 0) {
+        const duration = Date.now() - this.currentItemStartTime;
+        this.collectionDurations.push(duration);
+        // 保持最多记录 maxDurationHistory 次
+        if (this.collectionDurations.length > this.maxDurationHistory) {
+          this.collectionDurations.shift();
+        }
+        console.log('[Recursive Collection Manager] 采集耗时:', duration, 'ms');
+      }
+
       this.currentItemId = null;
+      this.currentItemStartTime = 0;
     }
   }
 
@@ -380,15 +396,11 @@ class RecursiveCollectionManager {
     try {
       console.log('[Recursive Collection Manager] 开始提取新 URL，父项:', parentItem.url);
 
-      // 从 opportunityStorage 获取最近采集的外链
-      // 由于 CollectionManager 会保存所有外链，我们需要筛选出属于当前父项的外链
-      const allOpportunities = await opportunityStorage.getAll();
-
-      // 获取最近添加的外链（假设是刚采集的）
-      // 按创建时间排序，取最新的 max_links_per_url 条
-      const recentOpportunities = allOpportunities
-        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-        .slice(0, session.config.max_links_per_url);
+      // 使用数据库排序和 limit 替代全量排序
+      const recentOpportunities = await opportunityStorage.getSorted(
+        { field: 'created_at', order: 'desc' },
+        session.config.max_links_per_url
+      );
 
       console.log('[Recursive Collection Manager] 找到最近的外链数量:', recentOpportunities.length);
 
@@ -418,12 +430,39 @@ class RecursiveCollectionManager {
       let enqueuedCount = 0;
       const nextDepth = parentItem.depth + 1;
 
+      // 预先批量获取已存在的 URL 和域名
+      const allUrls = Array.from(uniqueDomains).map(d => domainToUrl.get(d)).filter(Boolean) as string[];
+      const allDomains = Array.from(uniqueDomains);
+
+      let existingUrls: Set<string> = new Set();
+      let existingDomains: Set<string> = new Set();
+
+      if (session.config.deduplication === DeduplicationStrategy.URL_LEVEL) {
+        existingUrls = await recursiveQueueStorage.hasUrlBatch(allUrls);
+      } else if (session.config.deduplication === DeduplicationStrategy.DOMAIN_LEVEL) {
+        existingDomains = await recursiveQueueStorage.hasDomainBatch(allDomains);
+      } else {
+        // HYBRID 模式
+        existingDomains = await recursiveQueueStorage.hasDomainBatch(allDomains);
+      }
+
       for (const domain of uniqueDomains) {
         const url = domainToUrl.get(domain);
         if (!url) continue;
 
-        // 应用去重策略
-        const isDuplicate = await this.applyDeduplication(url, domain, session);
+        // 应用去重策略（使用预查询的结果）
+        let isDuplicate = false;
+        const config = session.config;
+
+        if (config.deduplication === DeduplicationStrategy.URL_LEVEL) {
+          isDuplicate = existingUrls.has(url);
+        } else if (config.deduplication === DeduplicationStrategy.DOMAIN_LEVEL) {
+          isDuplicate = existingDomains.has(domain);
+        } else {
+          // HYBRID 模式：使用域名级别
+          isDuplicate = existingDomains.has(domain);
+        }
+
         if (isDuplicate) {
           console.log('[Recursive Collection Manager] URL 已存在，跳过:', url);
           continue;
@@ -474,7 +513,7 @@ class RecursiveCollectionManager {
   }
 
   /**
-   * 应用去重策略
+   * 应用去重策略（保留单个查询接口以兼容其他调用场景）
    */
   private async applyDeduplication(url: string, domain: string, session: RecursiveCollectionSession): Promise<boolean> {
     const config = session.config;
@@ -654,15 +693,38 @@ class RecursiveCollectionManager {
     session: RecursiveCollectionSession | null;
     queueSize: number;
     currentItem: RecursiveQueueItem | null;
+    nextItem: RecursiveQueueItem | null;
+    estimatedTimeRemaining: number | null; // 预计剩余时间（毫秒）
+    averageCollectionDuration: number | null; // 平均采集耗时（毫秒）
   }> {
     const session = await recursiveConfigStorage.getCurrentSession();
     const allItems = await recursiveQueueStorage.getAll();
     const currentItem = this.currentItemId ? await recursiveQueueStorage.getById(this.currentItemId) : null;
 
+    // 获取下一个待采集项
+    const pendingItems = allItems.filter(item => item.status === RecursiveQueueStatus.PENDING);
+    const nextItem = pendingItems.length > 0 ? pendingItems[0] : null;
+
+    // 计算平均采集耗时
+    let averageCollectionDuration: number | null = null;
+    let estimatedTimeRemaining: number | null = null;
+
+    if (this.collectionDurations.length > 0) {
+      const sum = this.collectionDurations.reduce((a, b) => a + b, 0);
+      averageCollectionDuration = Math.round(sum / this.collectionDurations.length);
+      // 预计剩余时间 = 平均耗时 × 剩余项数
+      if (nextItem && averageCollectionDuration) {
+        estimatedTimeRemaining = averageCollectionDuration * pendingItems.length;
+      }
+    }
+
     return {
       session,
       queueSize: allItems.length,
       currentItem,
+      nextItem,
+      estimatedTimeRemaining,
+      averageCollectionDuration,
     };
   }
 

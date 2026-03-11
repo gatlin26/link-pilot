@@ -18,6 +18,10 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
   const [recursiveSession, setRecursiveSession] = useState<RecursiveCollectionSession | null>(null);
   const [queueSize, setQueueSize] = useState(0);
   const [currentItem, setCurrentItem] = useState<RecursiveQueueItem | null>(null);
+  const [nextItem, setNextItem] = useState<RecursiveQueueItem | null>(null);
+  const [estimatedTimeRemaining, setEstimatedTimeRemaining] = useState<number | null>(null);
+  const [averageCollectionDuration, setAverageCollectionDuration] = useState<number | null>(null);
+  const [countdownSeconds, setCountdownSeconds] = useState<number | null>(null);
   const [isStartingRecursive, setIsStartingRecursive] = useState(false);
 
   useEffect(() => {
@@ -25,6 +29,33 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
     loadRecursiveStatus();
     loadSavedTargetUrl();
   }, []);
+
+  // 倒计时逻辑
+  useEffect(() => {
+    if (!estimatedTimeRemaining || estimatedTimeRemaining <= 0) {
+      setCountdownSeconds(null);
+      return;
+    }
+
+    // 更新倒计时
+    const updateCountdown = () => {
+      setCountdownSeconds(prev => {
+        if (prev === null || prev <= 0) {
+          // 首次设置或重置时，使用预计剩余时间
+          return Math.ceil(estimatedTimeRemaining / 1000);
+        }
+        return prev - 1;
+      });
+    };
+
+    // 立即更新一次
+    updateCountdown();
+
+    // 每秒更新一次
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval);
+  }, [estimatedTimeRemaining]);
 
   // 从 localStorage 加载保存的目标 URL
   const loadSavedTargetUrl = () => {
@@ -84,10 +115,16 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
         setRecursiveSession(response.session);
         setQueueSize(response.queueSize || 0);
         setCurrentItem(response.currentItem || null);
+        setNextItem(response.nextItem || null);
+        setEstimatedTimeRemaining(response.estimatedTimeRemaining || null);
+        setAverageCollectionDuration(response.averageCollectionDuration || null);
       } else {
         setRecursiveSession(null);
         setQueueSize(0);
         setCurrentItem(null);
+        setNextItem(null);
+        setEstimatedTimeRemaining(null);
+        setAverageCollectionDuration(null);
       }
     } catch (err) {
       console.error('加载递归采集状态失败:', err);
@@ -421,6 +458,35 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                   {queueSize}
                 </div>
               </div>
+
+              {/* 倒计时显示 */}
+              {countdownSeconds !== null && countdownSeconds > 0 && (
+                <div className={cn(
+                  'p-2 rounded text-center',
+                  isLight ? 'bg-blue-50' : 'bg-blue-900/30'
+                )}>
+                  <div className={cn(
+                    'text-xs',
+                    isLight ? 'text-blue-600' : 'text-blue-400'
+                  )}>
+                    下一个
+                  </div>
+                  <div className={cn(
+                    'text-lg font-semibold',
+                    isLight ? 'text-blue-700' : 'text-blue-300'
+                  )}>
+                    {countdownSeconds}秒
+                  </div>
+                  {nextItem && (
+                    <div className={cn(
+                      'text-xs truncate max-w-[80px]',
+                      isLight ? 'text-blue-500' : 'text-blue-400'
+                    )}>
+                      {nextItem.url.replace(/^https?:\/\//, '').slice(0, 15)}...
+                    </div>
+                  )}
+                </div>
+              )}
 
               <div className={cn(
                 'p-2 rounded text-center',
