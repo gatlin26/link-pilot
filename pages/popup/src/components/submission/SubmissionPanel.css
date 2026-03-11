@@ -1,0 +1,299 @@
+/**
+ * Submission Panel Styles
+ */
+
+.submission-panel {
+  padding: 16px;
+  background: var(--bg-primary, #fff);
+  border-radius: 8px;
+}
+
+.submission-panel .loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary, #666);
+}
+
+/* Header */
+.submission-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.submission-panel .panel-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+}
+
+.submission-panel .status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.submission-panel .status-badge.running {
+  background: #e6f7e6;
+  color: #28a745;
+}
+
+.submission-panel .status-badge.paused {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.submission-panel .status-badge.idle {
+  background: #f5f5f5;
+  color: #666;
+}
+
+/* Progress */
+.submission-panel .progress-section {
+  margin-bottom: 16px;
+}
+
+.submission-panel .progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.submission-panel .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.submission-panel .progress-text {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+}
+
+/* Current Task */
+.submission-panel .current-task {
+  padding: 12px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.submission-panel .task-label {
+  font-size: 12px;
+  color: #1976d2;
+  margin-bottom: 4px;
+}
+
+.submission-panel .task-url {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.submission-panel .task-instruction {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #f57c00;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Stats Grid */
+.submission-panel .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.submission-panel .stat-item {
+  text-align: center;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.submission-panel .stat-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+}
+
+.submission-panel .stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary, #666);
+  margin-top: 2px;
+}
+
+.submission-panel .stat-item.completed .stat-value {
+  color: #28a745;
+}
+
+.submission-panel .stat-item.failed .stat-value {
+  color: #dc3545;
+}
+
+/* Controls */
+.submission-panel .controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.submission-panel .btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submission-panel .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submission-panel .btn-primary {
+  background: #1976d2;
+  color: white;
+}
+
+.submission-panel .btn-primary:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.submission-panel .btn-warning {
+  background: #ff9800;
+  color: white;
+}
+
+.submission-panel .btn-warning:hover:not(:disabled) {
+  background: #f57c00;
+}
+
+.submission-panel .btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.submission-panel .btn-danger:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.submission-panel .btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.submission-panel .btn-secondary:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+/* Queue Preview */
+.submission-panel .queue-preview {
+  border-top: 1px solid #e9ecef;
+  padding-top: 12px;
+}
+
+.submission-panel .queue-preview h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+}
+
+.submission-panel .queue-list {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.submission-panel .queue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  background: #f8f9fa;
+}
+
+.submission-panel .queue-item.current {
+  background: #e3f2fd;
+  border-left: 3px solid #1976d2;
+}
+
+.submission-panel .queue-item.completed {
+  background: #e8f5e9;
+}
+
+.submission-panel .queue-item.failed {
+  background: #ffebee;
+}
+
+.submission-panel .queue-item-domain {
+  font-size: 12px;
+  color: var(--text-primary, #333);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.submission-panel .queue-item-status {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.submission-panel .queue-item-status.pending {
+  background: #e9ecef;
+  color: #666;
+}
+
+.submission-panel .queue-item-status.in_progress {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.submission-panel .queue-item-status.waiting_confirmation {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.submission-panel .queue-item-status.completed {
+  background: #e8f5e9;
+  color: #28a745;
+}
+
+.submission-panel .queue-item-status.failed {
+  background: #ffebee;
+  color: #dc3545;
+}
+
+.submission-panel .queue-more {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+  padding: 8px;
+}

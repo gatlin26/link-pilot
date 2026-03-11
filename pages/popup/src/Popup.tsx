@@ -14,8 +14,9 @@ import { useSubmissionSession } from './hooks/useSubmissionSession';
 import { buildCommentCandidates } from './utils/comment-generator';
 import { ManualCollector } from './components/ManualCollector';
 import { DevTools } from './components/DevTools';
+import { SubmissionPanel } from './components/submission/SubmissionPanel';
 
-type PopupTab = 'fill' | 'backlinks' | 'collection' | 'devtools';
+type PopupTab = 'fill' | 'backlinks' | 'collection' | 'devtools' | 'submission';
 
 export interface PopupViewProps {
   layout?: 'popup' | 'side-panel';
@@ -443,6 +444,7 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
           { id: 'fill' as const, label: '填表' },
           { id: 'backlinks' as const, label: '外链' },
           { id: 'collection' as const, label: '采集' },
+          { id: 'submission' as const, label: '提交' },
           { id: 'devtools' as const, label: '🛠️' },
         ].map(tab => (
           <button
@@ -695,6 +697,10 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
 
         {activeTab === 'collection' && (
           <ManualCollector isLight={isLight} />
+        )}
+
+        {activeTab === 'submission' && (
+          <SubmissionPanel />
         )}
 
         {activeTab === 'devtools' && (

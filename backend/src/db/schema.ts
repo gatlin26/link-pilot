@@ -413,6 +413,13 @@ export const backlinks = pgTable('backlinks', {
 	status: text('status').notNull().default('active'),
 	flagged: boolean('flagged').notNull().default(false),
 	metadata: text('metadata'),
+	// 新增字段：外链可用性
+	isAvailable: boolean('is_available'),
+	availableAt: timestamp('available_at'),
+	availabilityError: text('availability_error'),
+	// 新增字段：外链类型识别
+	linkType: text('link_type'),
+	linkTypeConfidence: integer('link_type_confidence'),
 	createdAt: timestamp('created_at').notNull().defaultNow(),
 	updatedAt: timestamp('updated_at').notNull().defaultNow(),
 }, (table) => ({
