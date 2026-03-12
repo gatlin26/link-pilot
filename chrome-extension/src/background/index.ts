@@ -10,6 +10,17 @@ import './web-request-manager';
 import './submission-session-manager';
 import './recursive-collection-manager';
 
+// 点击插件图标时打开 side-panel
+chrome.action.onClicked.addListener(async tab => {
+  if (tab.id) {
+    try {
+      await chrome.sidePanel.open({ tabId: tab.id });
+    } catch (error) {
+      console.error('[Background] Failed to open side panel:', error);
+    }
+  }
+});
+
 const initStorageAccess = async () => {
   try {
     await chrome.storage.session.setAccessLevel({

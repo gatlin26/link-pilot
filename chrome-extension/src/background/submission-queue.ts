@@ -3,31 +3,7 @@
  * Manages the queue for semi-automatic comment submission
  */
 
-import type { FillData } from '../../form-handlers/auto-fill-service';
-
-/**
- * Submission task status
- */
-export type SubmissionTaskStatus = 'pending' | 'in_progress' | 'waiting_confirmation' | 'completed' | 'failed' | 'paused';
-
-/**
- * Submission task
- */
-export interface SubmissionTask {
-  id: string;
-  backlinkId: string;
-  url: string;
-  domain: string;
-  comment: string;
-  fillData: FillData;
-  status: SubmissionTaskStatus;
-  retryCount: number;
-  error?: string;
-  createdAt: string;
-  startedAt?: string;
-  completedAt?: string;
-  lastAttemptAt?: string;
-}
+import type { FillData, SubmissionTask, QueueEvent, SubmissionTaskStatus } from '@extension/shared';
 
 /**
  * Queue state
@@ -66,7 +42,7 @@ const DEFAULT_CONFIG: RateLimitConfig = {
 /**
  * Queue event types
  */
-export type QueueEventType = 
+export type QueueEventType =
   | 'task_added'
   | 'task_started'
   | 'task_waiting_confirmation'
@@ -77,15 +53,6 @@ export type QueueEventType =
   | 'queue_stopped'
   | 'queue_cleared'
   | 'progress';
-
-/**
- * Queue event
- */
-export interface QueueEvent {
-  type: QueueEventType;
-  data?: unknown;
-  timestamp: string;
-}
 
 /**
  * Submission Queue Manager

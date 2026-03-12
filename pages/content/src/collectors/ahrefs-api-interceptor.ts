@@ -51,6 +51,8 @@ export class AhrefsApiInterceptor {
   private requestCount = 0; // 记录拦截到的请求总数
   private matchedRequestCount = 0; // 记录匹配的请求数
   private messageListener: ((event: MessageEvent) => void) | null = null;
+  private processedUrls = new Set<string>(); // 请求去重机制
+  private lastStatusLogTime = 0; // 上次日志时间
 
   constructor(config: InterceptorConfig) {
     this.config = config;
@@ -71,9 +73,10 @@ export class AhrefsApiInterceptor {
     this.batchId = this.generateBatchId();
     this.requestCount = 0;
     this.matchedRequestCount = 0;
+    this.processedUrls.clear(); // 清空请求去重集合
+    this.lastStatusLogTime = Date.now();
 
     console.log('[Ahrefs Interceptor] 开始拦截 API 请求');
-    console.log('[Ahrefs Interceptor] 当前页面 URL:', window.location.href);
     console.log('[Ahrefs Interceptor] 目标采集数量:', this.config.maxCount);
 
     this.bindBridgeListener();
@@ -81,21 +84,23 @@ export class AhrefsApiInterceptor {
       maxCount: this.config.maxCount,
     });
 
-    console.log('[Ahrefs Interceptor] 拦截器已激活，等待网络请求...');
-
-    // 启动状态检查（每10秒报告一次）
+    // 启动状态检查（改为静默模式，减少日志输出）
     this.statusCheckInterval = window.setInterval(() => {
-      console.log(
-        `[Ahrefs Interceptor] 状态检查 - 总请求: ${this.requestCount}, 匹配请求: ${this.matchedRequestCount}, 已收集: ${this.collectedBacklinks.length}/${this.config.maxCount}`,
-      );
+      const now = Date.now();
+      // 只在有进展时才输出日志
+      const hasProgress = this.requestCount > 0 || this.collectedBacklinks.length > 0;
+      const timeSinceLastLog = now - this.lastStatusLogTime;
 
-      // 如果10秒内没有任何请求，给出警告
-      if (this.requestCount === 0) {
-        console.warn('[Ahrefs Interceptor] ⚠️ 警告：拦截器已启动但未捕获到任何网络请求！');
-        console.warn('[Ahrefs Interceptor] 可能原因：');
-        console.warn('[Ahrefs Interceptor] 1. 页面在拦截器启动前已完成所有请求');
-        console.warn('[Ahrefs Interceptor] 2. Ahrefs 使用了其他请求方式（如 iframe、WebSocket）');
-        console.warn('[Ahrefs Interceptor] 3. Content script 注入时机有问题');
+      if (hasProgress || timeSinceLastLog > 30000) {
+        console.log(
+          `[Ahrefs Interceptor] 状态 - 请求: ${this.requestCount}, 匹配: ${this.matchedRequestCount}, 已收集: ${this.collectedBacklinks.length}/${this.config.maxCount}`,
+        );
+        this.lastStatusLogTime = now;
+      }
+
+      // 如果30秒内没有任何请求，给出警告（但只输出一次）
+      if (this.requestCount === 0 && timeSinceLastLog > 30000) {
+        console.warn('[Ahrefs Interceptor] 警告：拦截器未捕获到网络请求');
       }
     }, 10000);
   }
@@ -109,6 +114,7 @@ export class AhrefsApiInterceptor {
     }
 
     this.isActive = false;
+    this.processedUrls.clear(); // 清空请求去重集合
 
     // 清除状态检查定时器
     if (this.statusCheckInterval !== null) {
@@ -141,7 +147,7 @@ export class AhrefsApiInterceptor {
 
       switch (data.type) {
         case 'BRIDGE_READY': {
-          console.log('[Ahrefs Interceptor] 主世界桥接已就绪');
+          // 静默处理，不输出日志
           return;
         }
 
@@ -150,17 +156,21 @@ export class AhrefsApiInterceptor {
           if (!requestUrl) {
             return;
           }
+
+          // 请求去重：同一 URL 只处理一次
+          if (this.processedUrls.has(requestUrl)) {
+            return;
+          }
+          this.processedUrls.add(requestUrl);
+
           this.requestCount++;
-          console.log(
-            `[Ahrefs Interceptor] ${data.payload?.transport || 'request'} 请求 #${this.requestCount}:`,
-            requestUrl,
-          );
-          if (data.payload?.matched) {
+
+          // 减少日志输出：只在首次匹配时输出
+          if (data.payload?.matched && this.matchedRequestCount === 0) {
             this.matchedRequestCount++;
-            const matchResult = this.checkUrlPatterns(requestUrl);
-            if (matchResult.matched) {
-              console.log('[Ahrefs Interceptor] ✓ URL 匹配模式:', matchResult.pattern);
-            }
+            console.log('[Ahrefs Interceptor] 首次匹配 API 请求');
+          } else if (data.payload?.matched) {
+            this.matchedRequestCount++;
           }
           return;
         }
@@ -170,12 +180,15 @@ export class AhrefsApiInterceptor {
           if (!url) {
             return;
           }
-          console.log('[Ahrefs Interceptor] ✓ 命中 API 请求:', url);
-          const responseData = data.payload?.data;
-          if (responseData && typeof responseData === 'object') {
-            console.log('[Ahrefs Interceptor] 响应数据结构:', Object.keys(responseData as Record<string, unknown>));
+
+          // 响应去重
+          if (this.processedUrls.has(url + '_response')) {
+            return;
           }
-          this.handleApiResponse(responseData, url);
+          this.processedUrls.add(url + '_response');
+
+          console.log('[Ahrefs Interceptor] 收到 API 响应');
+          this.handleApiResponse(data.payload?.data, url);
           return;
         }
 

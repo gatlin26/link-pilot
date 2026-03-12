@@ -7,6 +7,7 @@ import { messageRouter } from './message-router';
 import { bindCollectionTab, unbindCollectionTab } from './web-request-manager';
 import { OpportunityStatus, PageType, LinkType, SourcePlatform } from '@extension/shared';
 import { opportunityStorage, collectionBatchStorage, managedBacklinkStorage } from '@extension/storage';
+import { identifyLinkType } from '@extension/shared';
 import type { Opportunity, CollectedBacklink, ManagedBacklink } from '@extension/shared';
 
 /**
@@ -884,25 +885,37 @@ class CollectionManager {
    * 将采集的外链数据转换为机会
    */
   private convertToOpportunities(backlinks: CollectedBacklink[]): Opportunity[] {
-    return backlinks.map(backlink => ({
-      id: crypto.randomUUID(),
-      collected_backlink_id: backlink.id,
-      url: backlink.referring_page_url,
-      domain: backlink.referring_domain,
-      page_type: PageType.BLOG_COMMENT,
-      path_pattern: '',
-      link_type: LinkType.BLOG_COMMENT,
-      site_summary: backlink.site_summary || '',
-      site_business_types: [],
-      context_match_score: backlink.context_match_score || 0,
-      context_match_note: backlink.context_match_note || '',
-      can_submit: true,
-      can_auto_fill: false,
-      can_auto_submit: false,
-      status: OpportunityStatus.NEW,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    }));
+    return backlinks.map(backlink => {
+      // 检测链接类型
+      const detectedLinkType = identifyLinkType(
+        backlink.referring_page_url,
+        backlink.page_title || '',
+        backlink.anchor_text || ''
+      );
+
+      // 根据检测到的类型判断是否可提交
+      const canSubmit = detectedLinkType !== LinkType.UNKNOWN;
+
+      return {
+        id: crypto.randomUUID(),
+        collected_backlink_id: backlink.id,
+        url: backlink.referring_page_url,
+        domain: backlink.referring_domain,
+        page_type: PageType.BLOG_COMMENT,
+        path_pattern: '',
+        link_type: detectedLinkType,
+        site_summary: backlink.site_summary || '',
+        site_business_types: [],
+        context_match_score: backlink.context_match_score || 0,
+        context_match_note: backlink.context_match_note || '',
+        can_submit: canSubmit,
+        can_auto_fill: false,
+        can_auto_submit: false,
+        status: OpportunityStatus.NEW,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+    });
   }
 
   /**
@@ -917,7 +930,7 @@ class CollectionManager {
     console.log('[Collection Manager] 现有 URL 缓存数量:', existingUrls.size);
     console.log('[Collection Manager] 现有域名缓存数量:', existingDomains.size);
 
-    // 过滤重复的外链
+    // 过滤重复的外链（URL级别和域名级别去重）
     const newBacklinks = backlinks.filter(backlink => {
       const normalizedUrl = this.normalizeUrl(backlink.referring_page_url);
       const domain = backlink.referring_domain.toLowerCase();
@@ -925,6 +938,12 @@ class CollectionManager {
       // URL 级别去重
       if (existingUrls.has(normalizedUrl)) {
         console.log('[Collection Manager] URL 已存在，跳过:', normalizedUrl);
+        return false;
+      }
+
+      // 域名级别去重
+      if (existingDomains.has(domain)) {
+        console.log('[Collection Manager] 域名已存在，跳过:', domain);
         return false;
       }
 

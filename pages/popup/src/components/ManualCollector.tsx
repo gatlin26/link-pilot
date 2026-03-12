@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '@extension/ui';
 import { opportunityStorage } from '@extension/storage';
 import type { Opportunity, RecursiveCollectionSession, RecursiveQueueItem } from '@extension/shared';
+import { BacklinkReviewPanel } from './BacklinkReviewPanel';
 
 interface ManualCollectorProps {
   isLight: boolean;
@@ -114,9 +115,19 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
       if (response?.success && response.session) {
         setRecursiveSession(response.session);
         setQueueSize(response.queueSize || 0);
-        setCurrentItem(response.currentItem || null);
-        setNextItem(response.nextItem || null);
-        setEstimatedTimeRemaining(response.estimatedTimeRemaining || null);
+
+        // 如果会话已完成或已停止，清除当前项和下一项
+        if (response.session.status === 'completed' || response.session.status === 'stopped') {
+          setCurrentItem(null);
+          setNextItem(null);
+          setEstimatedTimeRemaining(null);
+          setCountdownSeconds(null);
+        } else {
+          setCurrentItem(response.currentItem || null);
+          setNextItem(response.nextItem || null);
+          setEstimatedTimeRemaining(response.estimatedTimeRemaining || null);
+        }
+
         setAverageCollectionDuration(response.averageCollectionDuration || null);
       } else {
         setRecursiveSession(null);
@@ -125,6 +136,7 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
         setNextItem(null);
         setEstimatedTimeRemaining(null);
         setAverageCollectionDuration(null);
+        setCountdownSeconds(null);
       }
     } catch (err) {
       console.error('加载递归采集状态失败:', err);
@@ -286,19 +298,6 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    try {
-      await opportunityStorage.delete(id);
-      await loadOpportunities();
-    } catch (err) {
-      console.error('删除失败:', err);
-    }
-  };
-
-  const handleOpenUrl = (url: string) => {
-    chrome.tabs.create({ url });
-  };
-
   return (
     <div className="space-y-4">
       {/* 顶部：采集控制区域 */}
@@ -397,6 +396,7 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                   'w-2 h-2 rounded-full',
                   recursiveSession.status === 'running' ? 'bg-green-500 animate-pulse' :
                   recursiveSession.status === 'paused' ? 'bg-yellow-500' :
+                  recursiveSession.status === 'completed' ? 'bg-blue-500' :
                   'bg-gray-500'
                 )}></div>
                 <span className={cn(
@@ -411,7 +411,7 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                   }
                 </span>
               </div>
-              {currentItem && (
+              {currentItem && recursiveSession.status !== 'completed' && recursiveSession.status !== 'stopped' && (
                 <span className={cn(
                   'text-xs',
                   isLight ? 'text-gray-600' : 'text-gray-400'
@@ -422,25 +422,8 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
             </div>
 
             {/* 统计信息 */}
-            <div className="grid grid-cols-3 gap-2">
-              <div className={cn(
-                'p-2 rounded text-center',
-                isLight ? 'bg-white' : 'bg-gray-800/50'
-              )}>
-                <div className={cn(
-                  'text-xs',
-                  isLight ? 'text-gray-600' : 'text-gray-400'
-                )}>
-                  深度
-                </div>
-                <div className={cn(
-                  'text-lg font-semibold',
-                  isLight ? 'text-gray-900' : 'text-gray-100'
-                )}>
-                  {currentItem?.depth || 0} / {recursiveSession.config.maxDepth}
-                </div>
-              </div>
-
+            {/* 第一行：队列和已采集 */}
+            <div className="grid grid-cols-2 gap-2">
               <div className={cn(
                 'p-2 rounded text-center',
                 isLight ? 'bg-white' : 'bg-gray-800/50'
@@ -459,35 +442,6 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                 </div>
               </div>
 
-              {/* 倒计时显示 */}
-              {countdownSeconds !== null && countdownSeconds > 0 && (
-                <div className={cn(
-                  'p-2 rounded text-center',
-                  isLight ? 'bg-blue-50' : 'bg-blue-900/30'
-                )}>
-                  <div className={cn(
-                    'text-xs',
-                    isLight ? 'text-blue-600' : 'text-blue-400'
-                  )}>
-                    下一个
-                  </div>
-                  <div className={cn(
-                    'text-lg font-semibold',
-                    isLight ? 'text-blue-700' : 'text-blue-300'
-                  )}>
-                    {countdownSeconds}秒
-                  </div>
-                  {nextItem && (
-                    <div className={cn(
-                      'text-xs truncate max-w-[80px]',
-                      isLight ? 'text-blue-500' : 'text-blue-400'
-                    )}>
-                      {nextItem.url.replace(/^https?:\/\//, '').slice(0, 15)}...
-                    </div>
-                  )}
-                </div>
-              )}
-
               <div className={cn(
                 'p-2 rounded text-center',
                 isLight ? 'bg-white' : 'bg-gray-800/50'
@@ -502,7 +456,75 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                   'text-lg font-semibold',
                   isLight ? 'text-gray-900' : 'text-gray-100'
                 )}>
-                  {recursiveSession.stats.completed} / {recursiveSession.config.maxTotalUrls}
+                  {recursiveSession.stats.completed_count} / {recursiveSession.config.max_total_urls}
+                </div>
+              </div>
+            </div>
+
+            {/* 第二行：倒计时显示 */}
+            {countdownSeconds !== null && countdownSeconds > 0 && (
+              <div className={cn(
+                'p-2 rounded text-center',
+                isLight ? 'bg-blue-50 border border-blue-200' : 'bg-blue-900/30 border border-blue-800'
+              )}>
+                <div className={cn(
+                  'text-xs',
+                  isLight ? 'text-blue-600' : 'text-blue-400'
+                )}>
+                  下一个采集倒计时
+                </div>
+                <div className={cn(
+                  'text-2xl font-bold',
+                  isLight ? 'text-blue-700' : 'text-blue-300'
+                )}>
+                  {Math.floor(countdownSeconds / 60)}:{String(countdownSeconds % 60).padStart(2, '0')}
+                </div>
+                {nextItem && (
+                  <div className={cn(
+                    'text-xs truncate max-w-[200px] mx-auto mt-1',
+                    isLight ? 'text-blue-500' : 'text-blue-400'
+                  )}>
+                    {nextItem.domain}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* 第三行：深度和其他辅助信息 */}
+            <div className="grid grid-cols-2 gap-2">
+              <div className={cn(
+                'p-2 rounded text-center',
+                isLight ? 'bg-white' : 'bg-gray-800/50'
+              )}>
+                <div className={cn(
+                  'text-xs',
+                  isLight ? 'text-gray-600' : 'text-gray-400'
+                )}>
+                  当前深度
+                </div>
+                <div className={cn(
+                  'text-base font-semibold',
+                  isLight ? 'text-gray-900' : 'text-gray-100'
+                )}>
+                  {currentItem?.depth || 0} / {recursiveSession.config.max_depth}
+                </div>
+              </div>
+
+              <div className={cn(
+                'p-2 rounded text-center',
+                isLight ? 'bg-white' : 'bg-gray-800/50'
+              )}>
+                <div className={cn(
+                  'text-xs',
+                  isLight ? 'text-gray-600' : 'text-gray-400'
+                )}>
+                  外链机会
+                </div>
+                <div className={cn(
+                  'text-base font-semibold',
+                  isLight ? 'text-gray-900' : 'text-gray-100'
+                )}>
+                  {recursiveSession.stats.total_opportunities > 0 ? recursiveSession.stats.total_opportunities : '-'}
                 </div>
               </div>
             </div>
@@ -551,84 +573,14 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                 </button>
               )}
             </div>
-
-            {/* 进度提示 */}
-            {recursiveSession.stats.totalOpportunities > 0 && (
-              <div className={cn(
-                'text-xs text-center',
-                isLight ? 'text-gray-600' : 'text-gray-400'
-              )}>
-                已发现 {recursiveSession.stats.totalOpportunities} 个外链机会
-              </div>
-            )}
           </div>
         </div>
       )}
-      {/* 已采集的外链列表 */}
-      <div className={cn(
-        'rounded-lg border p-4',
-        isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700'
-      )}>
-        <div className="flex items-center justify-between mb-3">
-          <h3 className={cn('text-sm font-semibold', isLight ? 'text-gray-900' : 'text-gray-100')}>
-            已采集外链 ({opportunities.length})
-          </h3>
-          <button
-            onClick={loadOpportunities}
-            className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            刷新
-          </button>
-        </div>
-
-        {loadingOpportunities ? (
-          <div className="text-center py-4 text-sm text-gray-500">加载中...</div>
-        ) : opportunities.length === 0 ? (
-          <div className="text-center py-4 text-sm text-gray-500">
-            暂无采集记录
-          </div>
-        ) : (
-          <div className="space-y-2 max-h-64 overflow-y-auto">
-            {opportunities.slice(0, 10).map(opp => (
-              <div
-                key={opp.id}
-                className={cn(
-                  'p-3 rounded border',
-                  isLight ? 'bg-gray-50 border-gray-200' : 'bg-gray-900/40 border-gray-700'
-                )}
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-medium truncate">{opp.domain}</div>
-                    <button
-                      onClick={() => handleOpenUrl(opp.url)}
-                      className="text-xs text-blue-600 dark:text-blue-400 hover:underline break-all text-left mt-1"
-                    >
-                      {opp.url}
-                    </button>
-                    <div className="flex items-center gap-2 mt-1 text-xs text-gray-500">
-                      <span>{opp.status === 'new' ? '未提交' : opp.status}</span>
-                      <span>·</span>
-                      <span>{new Date(opp.created_at).toLocaleDateString()}</span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => handleDelete(opp.id)}
-                    className="text-xs text-red-600 dark:text-red-400 hover:text-red-700"
-                  >
-                    删除
-                  </button>
-                </div>
-              </div>
-            ))}
-            {opportunities.length > 10 && (
-              <div className="text-center text-xs text-gray-500 pt-2">
-                仅显示最近 10 条，查看全部请前往 Options 页面
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      {/* 外链审核面板 */}
+      <BacklinkReviewPanel
+        isLight={isLight}
+        onOpportunitiesChanged={loadOpportunities}
+      />
 
       {/* 使用说明 */}
       <div className={cn(
@@ -639,9 +591,9 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
         <ul className="space-y-1 list-disc list-inside">
           <li>新建采集：单次采集指定网站的外链</li>
           <li>自动采集：递归采集外链，自动发现更多机会</li>
+          <li>外链审核：将采集的机会转化为可提交的外链</li>
           <li>留空 URL 输入框将使用当前标签页的域名</li>
           <li>采集过程中会自动打开和关闭标签页</li>
-          <li>采集的外链会显示在下方列表中</li>
         </ul>
       </div>
     </div>

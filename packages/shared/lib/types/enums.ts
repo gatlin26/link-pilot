@@ -42,6 +42,16 @@ export enum OpportunityStatus {
   SUBMITTED = 'submitted',
   REJECTED = 'rejected',
   ARCHIVED = 'archived',
+  CONVERTED = 'converted',
+  DISCARDED = 'discarded',
+}
+
+/**
+ * 外链提交模式
+ */
+export enum SubmissionMode {
+  PER_URL = 'per_url',
+  PER_DOMAIN = 'per_domain',
 }
 
 /**

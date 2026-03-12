@@ -143,6 +143,12 @@ export interface Opportunity {
   /** 备注 */
   notes?: string;
 
+  /** 转化后的外链 ID（status 为 converted 时设置） */
+  converted_backlink_id?: string;
+
+  /** 丢弃原因（status 为 discarded 时可设置） */
+  discard_reason?: string;
+
   /** 创建时间 */
   created_at: string;
 
@@ -444,6 +450,8 @@ export interface WebsiteProfile {
   url: string;
   domain: string;
   email: string;
+  author_name?: string;
+  author_email?: string;
   comments: string[];
   enabled: boolean;
   created_at: string;
@@ -473,6 +481,19 @@ export interface ManagedBacklink {
   dr?: number;
   as?: number;
   flagged: boolean;
+
+  /** 来源 Opportunity ID（per_url 模式使用） */
+  source_opportunity_id?: string;
+
+  /** 来源 Opportunity ID 列表（per_domain 模式使用） */
+  source_opportunity_ids?: string[];
+
+  /** 提交模式：per_url（每URL独立提交）或 per_domain（整个域名一个入口） */
+  submission_mode?: 'per_url' | 'per_domain';
+
+  /** per_domain 模式下的实际提交页面URL */
+  submit_page_url?: string;
+
   created_at: string;
   updated_at: string;
 }
@@ -562,6 +583,7 @@ export interface RecursiveCollectionStats {
   skipped_count: number;
   total_backlinks_collected: number;
   total_backlinks_added: number;
+  total_opportunities: number;
   current_depth: number;
   max_depth_reached: number;
   by_depth: Record<
@@ -610,4 +632,88 @@ export interface RecursiveCollectionSession {
   started_at?: string;
   paused_at?: string;
   completed_at?: string;
+}
+
+/**
+ * 表单填充数据
+ */
+export interface FillData {
+  name?: string;
+  email?: string;
+  website?: string;
+  comment?: string;
+}
+
+/**
+ * 表单填充结果
+ */
+export interface FillResult {
+  /** 是否成功 */
+  success: boolean;
+  /** 已填充的字段 */
+  filledFields: string[];
+  /** 失败的字段 */
+  failedFields: string[];
+  /** 错误信息 */
+  error?: string;
+}
+
+/**
+ * 填充决策行为类型
+ */
+export type AutoFillBehavior = 'auto_fill' | 'prompt_user' | 'skip';
+
+/**
+ * 置信度等级
+ */
+export type ConfidenceLevel = 'high' | 'medium' | 'low';
+
+/**
+ * 填充决策
+ */
+export interface FillDecision {
+  /** 建议的行为 */
+  behavior: AutoFillBehavior;
+  /** 置信度等级 */
+  confidenceLevel: ConfidenceLevel;
+  /** 置信度分数 */
+  confidence: number;
+  /** 是否应该自动填充 */
+  shouldAutoFill: boolean;
+  /** 是否应该提示用户 */
+  shouldPromptUser: boolean;
+}
+
+/**
+ * 提交任务状态
+ */
+export type SubmissionTaskStatus = 'pending' | 'in_progress' | 'waiting_confirmation' | 'completed' | 'failed' | 'paused';
+
+/**
+ * 提交任务
+ */
+export interface SubmissionTask {
+  id: string;
+  backlinkId: string;
+  url: string;
+  domain: string;
+  comment: string;
+  fillData: FillData;
+  status: SubmissionTaskStatus;
+  retryCount: number;
+  error?: string;
+  createdAt: string;
+  startedAt?: string;
+  completedAt?: string;
+  lastAttemptAt?: string;
+}
+
+/**
+ * 队列事件
+ */
+export interface QueueEvent {
+  type: 'task_added' | 'task_started' | 'task_waiting_confirmation' | 'task_completed' | 'task_failed' | 'queue_paused' | 'queue_resumed' | 'queue_cleared' | 'queue_stopped' | 'progress';
+  taskId?: string;
+  timestamp: string;
+  data?: unknown;
 }

@@ -3,9 +3,9 @@
  * Handles form filling and submission detection
  */
 
-import type { FillData } from '../form-handlers/auto-fill-service';
+import type { FillData, FillResult } from '@extension/shared';
 import { formDetector, type FormDetectionResult } from '../form-handlers/form-detector';
-import { autoFillService, type FillResult } from '../form-handlers/auto-fill-service';
+import { autoFillService } from '../form-handlers/auto-fill-service';
 
 /**
  * Setup message listener for submission commands
@@ -29,6 +29,9 @@ export function setupSubmissionHandler(): void {
         handleGetStatus()
           .then(sendResponse);
         return true;
+
+      default:
+        return false;
     }
   });
 }
@@ -66,7 +69,10 @@ async function handleFillAndWait(data: {
     }
 
     // 3. Setup observer to detect submission
-    const observer = setupSubmissionObserver(detectionResult.form, data.taskId);
+    if (!detectionResult.formElement) {
+      return { success: false, error: 'Could not find form element', taskId: data.taskId };
+    }
+    const observer = setupSubmissionObserver(detectionResult.formElement, data.taskId);
 
     // 4. Return success - user needs to click submit
     return { success: true, taskId: data.taskId };
@@ -180,12 +186,12 @@ function checkSubmissionSuccess(): boolean {
 
   // 2. Check if the comment textarea is now empty (comment was submitted)
   const commentFields = document.querySelectorAll('textarea[name*="comment"], textarea[id*="comment"]');
-  for (const field of commentFields) {
+  for (const field of Array.from(commentFields)) {
     if ((field as HTMLTextAreaElement).value === '') {
       // Field is empty, might have been submitted
       // Check if there's a new comment in the list
       const commentLists = document.querySelectorAll('.comment-list, .comments-list, #comments');
-      for (const list of commentLists) {
+      for (const list of Array.from(commentLists)) {
         if (list.children.length > 0) {
           return true;
         }

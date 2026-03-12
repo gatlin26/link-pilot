@@ -80,6 +80,8 @@ export const OpportunityList: React.FC<OpportunityListProps> = ({ opportunities,
       [OpportunityStatus.SUBMITTED]: '已提交',
       [OpportunityStatus.REJECTED]: '已拒绝',
       [OpportunityStatus.ARCHIVED]: '已归档',
+      [OpportunityStatus.CONVERTED]: '已转化',
+      [OpportunityStatus.DISCARDED]: '已丢弃',
     };
     return labels[status] || status;
   };
@@ -91,6 +93,8 @@ export const OpportunityList: React.FC<OpportunityListProps> = ({ opportunities,
       [OpportunityStatus.SUBMITTED]: 'bg-green-100 text-green-800',
       [OpportunityStatus.REJECTED]: 'bg-red-100 text-red-800',
       [OpportunityStatus.ARCHIVED]: 'bg-gray-100 text-gray-800',
+      [OpportunityStatus.CONVERTED]: 'bg-purple-100 text-purple-800',
+      [OpportunityStatus.DISCARDED]: 'bg-orange-100 text-orange-800',
     };
     return colors[status] || 'bg-gray-100 text-gray-800';
   };

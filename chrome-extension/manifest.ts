@@ -37,12 +37,12 @@ const manifest = {
     service_worker: 'background.js',
     type: 'module',
   },
+  // action: 点击图标时打开 side-panel
   action: {
-    default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
   },
-  chrome_url_overrides: {
-    newtab: 'new-tab/index.html',
+  side_panel: {
+    default_path: 'side-panel/index.html',
   },
   icons: {
     '128': 'icon-128.png',
@@ -82,9 +82,6 @@ const manifest = {
       matches: ['*://*/*'],
     },
   ],
-  side_panel: {
-    default_path: 'side-panel/index.html',
-  },
 } satisfies ManifestType;
 
 export default manifest;

@@ -6,7 +6,8 @@ export { formDetector, FormDetector } from './form-detector';
 export type { FormField, FormDetectionResult } from './form-detector';
 
 export { autoFillService, AutoFillService } from './auto-fill-service';
-export type { FillData, FillResult, FillDecision } from './auto-fill-service';
+export type { FillDecision } from './auto-fill-service';
+export type { FillData, FillResult } from '@extension/shared';
 
 export { blogCommentHandler, BlogCommentHandler } from './blog-comment-handler';
 

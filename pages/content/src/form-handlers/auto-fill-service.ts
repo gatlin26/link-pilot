@@ -6,30 +6,7 @@
 import type { FormField } from './form-detector';
 import { confidenceCalculator, AutoFillBehavior, ConfidenceLevel } from './confidence-calculator';
 import { extensionSettingsStorage } from '@extension/storage';
-
-/**
- * 填充数据
- */
-export interface FillData {
-  name?: string;
-  email?: string;
-  website?: string;
-  comment?: string;
-}
-
-/**
- * 填充结果
- */
-export interface FillResult {
-  /** 是否成功 */
-  success: boolean;
-  /** 已填充的字段 */
-  filledFields: string[];
-  /** 失败的字段 */
-  failedFields: string[];
-  /** 错误信息 */
-  error?: string;
-}
+import type { FillData, FillResult } from '@extension/shared';
 
 /**
  * 填充决策

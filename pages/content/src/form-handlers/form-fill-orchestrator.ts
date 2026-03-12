@@ -9,7 +9,7 @@ import { confidenceCalculator } from './confidence-calculator';
 import { templateLearner } from '../template/template-learner';
 import { templateStorage } from '@extension/storage';
 import { extensionSettingsStorage } from '@extension/storage';
-import type { FillData } from './auto-fill-service';
+import type { FillData } from '@extension/shared';
 
 /**
  * 编排结果

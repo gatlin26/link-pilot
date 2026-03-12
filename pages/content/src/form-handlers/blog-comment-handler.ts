@@ -5,7 +5,8 @@
 
 import { contextService } from '@extension/storage/lib/services/context-service';
 import { formDetector, type FormDetectionResult } from './form-detector';
-import { autoFillService, type FillData, type FillResult } from './auto-fill-service';
+import { autoFillService } from './auto-fill-service';
+import type { FillData, FillResult } from '@extension/shared';
 
 /**
  * 博客评论处理器

@@ -20,7 +20,7 @@ export const BacklinkStateTransitions: Record<BacklinkStatus, BacklinkStatus[]> 
  * 机会状态流转
  */
 export const OpportunityStateTransitions: Record<OpportunityStatus, OpportunityStatus[]> = {
-  [OpportunityStatus.NEW]: [OpportunityStatus.READY_TO_SUBMIT, OpportunityStatus.REJECTED, OpportunityStatus.ARCHIVED],
+  [OpportunityStatus.NEW]: [OpportunityStatus.READY_TO_SUBMIT, OpportunityStatus.REJECTED, OpportunityStatus.ARCHIVED, OpportunityStatus.CONVERTED, OpportunityStatus.DISCARDED],
   [OpportunityStatus.READY_TO_SUBMIT]: [
     OpportunityStatus.SUBMITTED,
     OpportunityStatus.REJECTED,
@@ -28,6 +28,8 @@ export const OpportunityStateTransitions: Record<OpportunityStatus, OpportunityS
   ],
   [OpportunityStatus.SUBMITTED]: [OpportunityStatus.ARCHIVED],
   [OpportunityStatus.REJECTED]: [OpportunityStatus.ARCHIVED],
+  [OpportunityStatus.CONVERTED]: [OpportunityStatus.ARCHIVED],
+  [OpportunityStatus.DISCARDED]: [OpportunityStatus.ARCHIVED],
   [OpportunityStatus.ARCHIVED]: [],
 };
 

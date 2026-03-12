@@ -54,6 +54,12 @@ export const managedBacklinkStorage = {
     return state.groups;
   },
 
+  async getByDomain(domain: string): Promise<ManagedBacklink[]> {
+    const state = await storage.get();
+    const normalizedDomain = normalizeDomain(domain);
+    return state.backlinks.filter(backlink => normalizeDomain(backlink.domain) === normalizedDomain);
+  },
+
   async hasUrlInGroup(url: string, groupId: string, excludeId?: string): Promise<boolean> {
     const state = await storage.get();
     const normalizedUrl = normalizeUrl(url);

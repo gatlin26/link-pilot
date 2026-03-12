@@ -211,9 +211,10 @@ class RecursiveCollectionManager {
         // 处理当前项
         await this.processQueueItem(nextItem, session);
 
-        // 方案 2：增加随机延迟（在基础间隔上增加 0-5 秒的随机延迟）
-        const randomDelay = Math.floor(Math.random() * 5000);
-        const totalDelay = session.config.collection_interval_ms + randomDelay;
+        // 随机延迟 30-180 秒
+        const minDelay = 30 * 1000; // 30秒
+        const maxDelay = 180 * 1000; // 180秒
+        const totalDelay = minDelay + Math.floor(Math.random() * (maxDelay - minDelay));
         console.log('[Recursive Collection Manager] 等待', totalDelay, 'ms 后继续');
         await this.sleep(totalDelay);
       } catch (error) {
@@ -741,6 +742,7 @@ class RecursiveCollectionManager {
       skipped_count: 0,
       total_backlinks_collected: 0,
       total_backlinks_added: 0,
+      total_opportunities: 0,
       current_depth: 0,
       max_depth_reached: 0,
       by_depth: {},

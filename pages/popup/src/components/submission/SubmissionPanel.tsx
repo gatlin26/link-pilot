@@ -5,7 +5,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { cn } from '@extension/ui';
-import type { SubmissionTask, QueueEvent } from '@extension/background/submission-queue';
+import type { SubmissionTask, QueueEvent } from '@extension/shared';
 
 interface SubmissionPanelProps {
   className?: string;

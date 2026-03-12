@@ -1,13 +1,13 @@
 import '@src/SidePanel.css';
 import { withErrorBoundary, withSuspense } from '@extension/shared';
 import { ErrorDisplay, LoadingSpinner } from '@extension/ui';
-import { SidePanelView } from './SidePanelView';
+import { PopupView } from '../../popup/src/Popup';
 
 const SidePanel = () => {
   return (
     <div className="sidepanel-host">
       <div className="sidepanel-canvas">
-        <SidePanelView />
+        <PopupView layout="side-panel" />
       </div>
     </div>
   );

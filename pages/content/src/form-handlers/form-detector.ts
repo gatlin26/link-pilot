@@ -31,6 +31,8 @@ export interface FormDetectionResult {
   pageType: PageType | null;
   /** 检测到的字段 */
   fields: FormField[];
+  /** 表单元素（如果检测到） */
+  formElement: HTMLFormElement | null;
   /** 使用的模板 */
   template: SiteTemplate | null;
   /** 整体置信度 */
@@ -85,10 +87,16 @@ export class FormDetector {
     const detected = foundRequired.length === requiredFields.length;
     const confidence = detected ? 1.0 : foundRequired.length / requiredFields.length;
 
+    // 查找表单元素
+    const formElement = fields.length > 0
+      ? fields[0].element.closest('form') as HTMLFormElement
+      : null;
+
     return {
       detected,
       pageType: template.page_type,
       fields,
+      formElement,
       template,
       confidence,
     };
@@ -203,10 +211,16 @@ export class FormDetector {
     // 计算置信度
     const confidence = this.calculateConfidence(fields);
 
+    // 查找表单元素
+    const formElement = fields.length > 0
+      ? fields[0].element.closest('form') as HTMLFormElement
+      : null;
+
     return {
       detected,
       pageType: detected ? PageType.BLOG_COMMENT : null,
       fields,
+      formElement,
       template: null,
       confidence,
     };

@@ -10,9 +10,11 @@ import type { FillPageState } from './models.js';
 export enum MessageType {
   // Popup -> Content Script
   GET_FILL_PAGE_STATE = 'GET_FILL_PAGE_STATE',
+  GET_PAGE_STATE = 'GET_PAGE_STATE',
   DETECT_PAGE_FORMS = 'DETECT_PAGE_FORMS',
   LOCATE_NEXT_FORM = 'LOCATE_NEXT_FORM',
   FILL_SELECTED_WEBSITE = 'FILL_SELECTED_WEBSITE',
+  FILL_FORM = 'FILL_FORM',
 
   // Popup -> Background
   OPEN_NEXT_BACKLINKS = 'OPEN_NEXT_BACKLINKS',
