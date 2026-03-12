@@ -12,8 +12,10 @@ import type { FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGrou
 import { useSubmissionSession } from '../../popup/src/hooks/useSubmissionSession';
 import { buildCommentCandidates } from '../../popup/src/utils/comment-generator';
 import { ManualCollector } from '../../popup/src/components/ManualCollector';
+import { WebsiteProfileSelector } from '../../popup/src/components/WebsiteProfileSelector';
+import { SubmissionPanel } from '../../popup/src/components/submission/SubmissionPanel';
 
-type SidePanelTab = 'fill' | 'backlinks' | 'collection';
+type SidePanelTab = 'fill' | 'backlinks' | 'collection' | 'submission';
 
 function resolveCollectionTargetUrl(rawUrl: string): string {
   const currentUrl = new URL(rawUrl);
@@ -52,6 +54,9 @@ export const SidePanelView = () => {
   const [backlinkNote, setBacklinkNote] = useState('');
   const [selectedBacklinkGroupId, setSelectedBacklinkGroupId] = useState('all');
   const [collectingCurrentSite, setCollectingCurrentSite] = useState(false);
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [selectedBacklinks, setSelectedBacklinks] = useState<Set<string>>(new Set());
+  const [showWebsiteSelector, setShowWebsiteSelector] = useState(false);
 
   const enabledProfiles = useMemo(() => profiles.filter(profile => profile.enabled), [profiles]);
   const groupProfiles = useMemo(
@@ -266,6 +271,60 @@ export const SidePanelView = () => {
     }
   };
 
+  const toggleSelection = (backlinkId: string) => {
+    const next = new Set(selectedBacklinks);
+    if (next.has(backlinkId)) {
+      next.delete(backlinkId);
+    } else {
+      next.add(backlinkId);
+    }
+    setSelectedBacklinks(next);
+  };
+
+  const openWebsiteProfileSelector = (backlinkIds: Set<string>) => {
+    if (backlinkIds.size === 0) {
+      setMessage('请先选择至少一个外链');
+      setTimeout(() => setMessage(null), 3000);
+      return;
+    }
+    setShowWebsiteSelector(true);
+  };
+
+  const handleWebsiteSelectorConfirm = async (websiteProfileId: string) => {
+    setShowWebsiteSelector(false);
+    setWorking(true);
+    try {
+      const response = await chrome.runtime.sendMessage({
+        type: 'ADD_TO_SUBMISSION_QUEUE',
+        payload: {
+          backlinkIds: Array.from(selectedBacklinks),
+          websiteProfileId,
+        },
+      });
+
+      if (!response?.success) {
+        throw new Error(response?.error || '添加到队列失败');
+      }
+
+      setMessage(`已成功添加 ${response.count} 个任务到提交队列`);
+      setSelectionMode(false);
+      setSelectedBacklinks(new Set());
+      setActiveTab('submission');
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : '添加到队列失败');
+    } finally {
+      setWorking(false);
+      setTimeout(() => {
+        setMessage(null);
+        setErrorMessage(null);
+      }, 3000);
+    }
+  };
+
+  const handleWebsiteSelectorCancel = () => {
+    setShowWebsiteSelector(false);
+  };
+
   return (
     <div className={cn('w-full h-full flex flex-col overflow-hidden', isLight ? 'bg-slate-50' : 'bg-gray-900')}>
       {/* 头部 */}
@@ -280,6 +339,7 @@ export const SidePanelView = () => {
           { id: 'fill' as const, label: '填表' },
           { id: 'backlinks' as const, label: '外链' },
           { id: 'collection' as const, label: '采集' },
+          { id: 'submission' as const, label: '提交' },
         ].map(tab => (
           <button
             key={tab.id}
@@ -445,7 +505,41 @@ export const SidePanelView = () => {
             <section className={cn('p-4 rounded-lg border', isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700')}>
               <div className="flex items-center justify-between mb-3">
                 <h2 className="text-sm font-semibold">选择外链</h2>
-                <button onClick={() => chrome.runtime.openOptionsPage()} className="text-xs text-blue-600 dark:text-blue-400 hover:underline">完整管理页</button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setSelectionMode(!selectionMode);
+                      if (selectionMode) {
+                        setSelectedBacklinks(new Set());
+                      }
+                    }}
+                    className={cn(
+                      'text-xs px-3 py-1.5 rounded transition-colors',
+                      selectionMode
+                        ? 'bg-red-500 text-white hover:bg-red-600'
+                        : isLight
+                          ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                          : 'bg-gray-700 text-gray-200 hover:bg-gray-600',
+                    )}
+                  >
+                    {selectionMode ? '退出选择' : '批量选择'}
+                  </button>
+                  {selectionMode && (
+                    <button
+                      onClick={() => openWebsiteProfileSelector(selectedBacklinks)}
+                      disabled={selectedBacklinks.size === 0}
+                      className={cn(
+                        'text-xs px-3 py-1.5 rounded transition-colors disabled:opacity-50',
+                        isLight
+                          ? 'bg-blue-600 text-white hover:bg-blue-700'
+                          : 'bg-blue-500 text-white hover:bg-blue-600',
+                      )}
+                    >
+                      加入提交队列 ({selectedBacklinks.size})
+                    </button>
+                  )}
+                  <button onClick={() => chrome.runtime.openOptionsPage()} className="text-xs text-blue-600 dark:text-blue-400 hover:underline">完整管理页</button>
+                </div>
               </div>
               <div className="flex gap-2 mb-3">
                 <button
@@ -492,7 +586,7 @@ export const SidePanelView = () => {
                   ))}
                 </select>
               </div>
-              <div className="text-xs text-gray-500">当前结果 {filteredBacklinks.length} 条；点击任意一条后会写入"当前外链记录"和队列。</div>
+              <div className="text-xs text-gray-500">当前结果 {filteredBacklinks.length} 条；{selectionMode ? '选择要加入队列的外链' : '点击任意一条后会写入"当前外链记录"和队列'}。</div>
             </section>
 
             <section className={cn('p-3 rounded-lg border', isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700')}>
@@ -501,6 +595,16 @@ export const SidePanelView = () => {
                 {filteredBacklinks.map(backlink => (
                   <div key={backlink.id} className={cn('p-3 rounded-lg border', isLight ? 'border-gray-200 bg-gray-50' : 'border-gray-700 bg-gray-900/40')}>
                     <div className="flex items-start justify-between gap-2">
+                      {selectionMode && (
+                        <div className="flex-shrink-0 pt-0.5">
+                          <input
+                            type="checkbox"
+                            checked={selectedBacklinks.has(backlink.id)}
+                            onChange={() => toggleSelection(backlink.id)}
+                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                          />
+                        </div>
+                      )}
                       <div className="min-w-0 flex-1">
                         <div className="text-sm font-medium truncate">{backlink.domain}</div>
                         <div className="text-xs text-blue-600 dark:text-blue-400 break-all mt-1">{backlink.url}</div>
@@ -528,7 +632,25 @@ export const SidePanelView = () => {
         {activeTab === 'collection' && (
           <ManualCollector isLight={isLight} />
         )}
+
+        {/* 提交标签页 */}
+        {activeTab === 'submission' && (
+          <SubmissionPanel />
+        )}
       </div>
+
+      {/* 网站选择器弹窗 */}
+      {showWebsiteSelector && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className={cn('w-full max-w-lg max-h-[80vh] overflow-hidden rounded-lg shadow-xl', isLight ? 'bg-white' : 'bg-gray-800')}>
+            <WebsiteProfileSelector
+              backlinkIds={Array.from(selectedBacklinks)}
+              onConfirm={handleWebsiteSelectorConfirm}
+              onCancel={handleWebsiteSelectorCancel}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

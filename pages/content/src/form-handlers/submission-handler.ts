@@ -3,9 +3,10 @@
  * Handles form filling and submission detection
  */
 
-import type { FillData, FillResult } from '@extension/shared';
+import type { FillData, FillResult, WebsiteProfile } from '@extension/shared';
 import { formDetector, type FormDetectionResult } from '../form-handlers/form-detector';
 import { autoFillService } from '../form-handlers/auto-fill-service';
+import { buildCommentCandidates } from '../../popup/src/utils/comment-generator';
 
 /**
  * Setup message listener for submission commands
@@ -39,28 +40,83 @@ export function setupSubmissionHandler(): void {
 /**
  * Fill form and wait for user submission
  */
-async function handleFillAndWait(data: { 
-  fillData: FillData; 
-  comment: string;
+async function handleFillAndWait(data: {
+  backlinkId: string;
+  websiteProfileId: string;
+  context: {
+    backlinkNote?: string;
+    backlinkKeywords?: string[];
+  };
   taskId?: string;
 }): Promise<{ success: boolean; error?: string; taskId?: string }> {
   try {
-    // 1. Detect form
+    // 1. Get WebsiteProfile via chrome.runtime.sendMessage
+    const profileResponse = await chrome.runtime.sendMessage({
+      type: 'WEBSITE_PROFILE_STORAGE_GET_BY_ID',
+      id: data.websiteProfileId,
+    });
+
+    if (!profileResponse.success || !profileResponse.data) {
+      return { success: false, error: 'Failed to get website profile', taskId: data.taskId };
+    }
+
+    const profile: WebsiteProfile = profileResponse.data;
+
+    // 2. Get page state (reusing existing detectForm)
     const detectionResult: FormDetectionResult | null = await detectForm();
 
     if (!detectionResult) {
       return { success: false, error: 'No comment form detected', taskId: data.taskId };
     }
 
-    // 2. Fill the form (but not submit)
+    // Build page state for comment generation
+    const pageState = {
+      seo: {
+        title: document.title || '',
+        description: '',
+        h1: document.querySelector('h1')?.textContent || '',
+        language: document.documentElement.lang || 'zh',
+        url: window.location.href,
+      },
+      form_detected: true,
+      form_confidence: detectionResult.confidence || 0,
+      field_types: detectionResult.fields.map(f => f.type),
+      backlink_in_current_group: false,
+      selected_website_link_present: false,
+    };
+
+    // Build current backlink for comment generation
+    const currentBacklink = {
+      id: data.backlinkId,
+      group_id: '',
+      url: '',
+      domain: '',
+      note: data.context.backlinkNote,
+      keywords: data.context.backlinkKeywords || [],
+      flagged: false,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+
+    // 3. Call buildCommentCandidates to generate comments
+    const comments = buildCommentCandidates(profile, pageState, currentBacklink);
+
+    if (comments.length === 0) {
+      return { success: false, error: 'Failed to generate comment candidates', taskId: data.taskId };
+    }
+
+    // 4. Build FillData
+    const fillData: FillData = {
+      name: profile.author_name || profile.name,
+      email: profile.author_email || profile.email,
+      website: profile.url,
+      comment: comments[0], // Use first candidate
+    };
+
+    // 5. Fill the form (but not submit)
     const fillResult: FillResult = await autoFillService.fill(
       detectionResult.fields,
-      {
-        name: data.fillData.name,
-        email: data.fillData.email,
-        website: data.fillData.website,
-        comment: data.comment,
-      },
+      fillData,
       false // Don't auto-submit
     );
 
@@ -68,19 +124,19 @@ async function handleFillAndWait(data: {
       return { success: false, error: fillResult.error || 'Failed to fill form', taskId: data.taskId };
     }
 
-    // 3. Setup observer to detect submission
+    // 6. Setup observer to detect submission
     if (!detectionResult.formElement) {
       return { success: false, error: 'Could not find form element', taskId: data.taskId };
     }
     const observer = setupSubmissionObserver(detectionResult.formElement, data.taskId);
 
-    // 4. Return success - user needs to click submit
+    // 7. Return success - user needs to click submit
     return { success: true, taskId: data.taskId };
   } catch (error) {
-    return { 
-      success: false, 
+    return {
+      success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
-      taskId: data.taskId 
+      taskId: data.taskId
     };
   }
 }

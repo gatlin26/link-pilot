@@ -182,8 +182,10 @@ export class SubmissionQueue {
       const fillResponse = await this.sendMessageToTab(tab.id, {
         type: 'FILL_AND_WAIT',
         data: {
-          fillData: task.fillData,
-          comment: task.comment,
+          backlinkId: task.backlinkId,
+          websiteProfileId: task.websiteProfileId,
+          context: task.context,
+          taskId: task.id,
         },
       });
 

@@ -9,6 +9,7 @@ import './collection-manager';
 import './web-request-manager';
 import './submission-session-manager';
 import './recursive-collection-manager';
+import './submission-queue-manager';
 
 // 点击插件图标时打开 side-panel
 chrome.action.onClicked.addListener(async tab => {

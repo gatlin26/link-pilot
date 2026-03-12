@@ -697,8 +697,13 @@ export interface SubmissionTask {
   backlinkId: string;
   url: string;
   domain: string;
-  comment: string;
-  fillData: FillData;
+  // 关键：存储 website_profile_id 而不是 FillData
+  websiteProfileId: string;
+  // 存储评论生成所需的上下文
+  context: {
+    backlinkNote?: string;
+    backlinkKeywords?: string[];
+  };
   status: SubmissionTaskStatus;
   retryCount: number;
   error?: string;
