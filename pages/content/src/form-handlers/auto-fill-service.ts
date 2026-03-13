@@ -6,6 +6,14 @@
 import type { FormField } from './form-detector';
 import { confidenceCalculator, AutoFillBehavior, ConfidenceLevel } from './confidence-calculator';
 import { extensionSettingsStorage } from '@extension/storage';
+import {
+  fillWithHumanTyping,
+  fillWithNativeSetter,
+  fillReactSelect,
+  fillSelectElement,
+  isReactSelect,
+} from './fill-strategies';
+import { FillStrategyError, withTimeout } from '@extension/shared';
 
 /**
  * 填充数据
@@ -79,8 +87,35 @@ export class AutoFillService {
   }
   /**
    * 填充表单
+   * 增强：添加超时控制，防止操作卡住
    */
   async fill(fields: FormField[], data: FillData, autoSubmit = false): Promise<FillResult> {
+    try {
+      // 使用超时控制包装填充操作
+      return await withTimeout(
+        this.fillInternal(fields, data, autoSubmit),
+        10000, // 10 秒超时
+        '表单填充超时',
+      );
+    } catch (error) {
+      console.error('表单填充失败', error);
+      return {
+        success: false,
+        filledFields: [],
+        failedFields: fields.map((f) => f.type),
+        error: error instanceof Error ? error.message : '未知错误',
+      };
+    }
+  }
+
+  /**
+   * 内部填充逻辑
+   */
+  private async fillInternal(
+    fields: FormField[],
+    data: FillData,
+    autoSubmit: boolean,
+  ): Promise<FillResult> {
     const filledFields: string[] = [];
     const failedFields: string[] = [];
 
@@ -180,35 +215,66 @@ export class AutoFillService {
 
   /**
    * 填充单个字段
+   * 使用策略模式：Human Typing (首选) → Native Setter (降级) → React Select (特殊处理)
+   * 增强：验证填充结果，确保降级策略生效
    */
   private async fillField(element: HTMLElement, value: string): Promise<void> {
-    // 聚焦元素
-    element.focus();
+    // 聚焦元素（preventScroll 避免页面跳动）
+    element.focus({ preventScroll: true });
 
-    // 设置值
+    // 策略1: HTMLInputElement 或 HTMLTextAreaElement
     if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
-      // 使用原生 setter 触发 React/Vue 等框架的变更检测
-      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-        element.constructor.prototype,
-        'value'
-      )?.set;
-
-      if (nativeInputValueSetter) {
-        nativeInputValueSetter.call(element, value);
+      // 特殊处理：React Select 组件
+      if (element instanceof HTMLInputElement && isReactSelect(element)) {
+        const success = await fillReactSelect(element, value);
+        if (!success) {
+          console.warn('React Select 填充失败，尝试降级策略', {
+            id: element.id,
+            name: element.name,
+          });
+          fillWithNativeSetter(element, value);
+        }
       } else {
-        element.value = value;
+        // 首选策略：Human Typing（模拟人类输入）
+        const success = await fillWithHumanTyping(element, value);
+
+        // 降级策略：Native Setter（如果 Human Typing 失败）
+        if (!success) {
+          console.debug('Human Typing 失败，降级到 Native Setter', {
+            id: element.id,
+            name: element.name,
+          });
+          fillWithNativeSetter(element, value);
+        }
       }
 
-      // 触发事件
-      element.dispatchEvent(new Event('input', { bubbles: true }));
-      element.dispatchEvent(new Event('change', { bubbles: true }));
+      // 验证填充结果
+      if (element.value !== value) {
+        const error = new FillStrategyError(
+          `字段填充失败: 期望 "${value}", 实际 "${element.value}"`,
+          element,
+          'validation',
+        );
+        console.error('字段填充验证失败', {
+          expected: value,
+          actual: element.value,
+          id: element.id,
+          name: element.name,
+        });
+        throw error;
+      }
+
+      return;
     }
 
-    // 失焦
-    element.blur();
+    // 策略2: HTMLSelectElement
+    if (element instanceof HTMLSelectElement) {
+      fillSelectElement(element, value);
+      return;
+    }
 
-    // 等待一小段时间确保事件处理完成
-    await this.sleep(100);
+    // 未知元素类型，记录警告
+    console.warn('未知的表单元素类型:', element);
   }
 
   /**

@@ -116,4 +116,31 @@ export const opportunityStorage = {
       lastUpdated: new Date().toISOString(),
     });
   },
+
+  /**
+   * 获取排序后的机会
+   */
+  getSorted: async (
+    sort: { field: keyof Opportunity; order: 'asc' | 'desc' },
+    limit?: number,
+  ): Promise<Opportunity[]> => {
+    const state = await storage.get();
+    let sorted = [...state.opportunities];
+
+    sorted.sort((a, b) => {
+      const aVal = a[sort.field];
+      const bVal = b[sort.field];
+      if (aVal === undefined || bVal === undefined) return 0;
+      if (sort.order === 'desc') {
+        return bVal > aVal ? 1 : bVal < aVal ? -1 : 0;
+      }
+      return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+    });
+
+    if (limit) {
+      sorted = sorted.slice(0, limit);
+    }
+
+    return sorted;
+  },
 };

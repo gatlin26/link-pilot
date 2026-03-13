@@ -12,9 +12,10 @@ import type {
   BaseMessage,
   BaseResponse,
   GetFillPageStateResponse,
+  MatchResult,
 } from '@extension/shared/lib/types/messages';
 import { MessageType } from '@extension/shared/lib/types/messages';
-import type { FillPageState, WebsiteProfile } from '@extension/shared';
+import type { FillPageState, ManagedBacklink, WebsiteProfile } from '@extension/shared';
 import { autoFillService, formDetector, type FormField, type FormDetectionResult } from '../form-handlers';
 import { templateLearner } from '../template';
 import { createAhrefsInterceptor } from '../collectors/ahrefs-api-interceptor';
@@ -39,6 +40,17 @@ let passiveRestartTimer: number | null = null;
 let autoPassiveBootstrapStarted = false;
 let passiveBootstrapRetryTimer: number | null = null;
 let passiveBootstrapRetryCount = 0;
+
+// === 新增：智能匹配状态 ===
+let currentMatchResult: MatchResult | null = null;
+let lastUrl: string = window.location.href;
+
+// === 新增：悬浮球状态 ===
+interface FloatingPanelState {
+  isOpen: boolean;
+  state: 'expanded' | 'collapsed';
+}
+let floatingPanelState: FloatingPanelState = { isOpen: false, state: 'collapsed' };
 
 function cacheBacklinks(backlinks: CollectedBacklink[]): void {
   cachedBacklinks = backlinks.slice();
@@ -456,6 +468,369 @@ async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (re
   }
 }
 
+// === 新增：智能匹配处理器 ===
+
+/**
+ * 处理匹配结果更新
+ */
+async function handleMatchResultUpdated(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as MatchResult & { sourceUrl: string; timestamp: number } | undefined;
+    if (!payload) {
+      sendResponse({ success: false, error: '缺少匹配结果数据' });
+      return;
+    }
+
+    currentMatchResult = {
+      bestMatch: payload.bestMatch,
+      confidence: payload.confidence,
+      alternatives: payload.alternatives,
+    };
+
+    console.log('[Content Script] 匹配结果已更新:', {
+      hasMatch: !!payload.bestMatch,
+      confidence: payload.confidence,
+      alternativesCount: payload.alternatives.length,
+    });
+
+    // 触发表单检测
+    if (payload.bestMatch && payload.confidence >= 30) {
+      const detection = await detectForms(false);
+
+      // 发送表单检测结果
+      if (detection.detected) {
+        void chrome.runtime.sendMessage({
+          type: MessageType.FORM_DETECTED,
+          payload: {
+            detected: true,
+            confidence: detection.confidence,
+            fieldTypes: detection.fields.map(f => f.type),
+          },
+        });
+      }
+    }
+
+    sendResponse({ success: true });
+  } catch (error) {
+    console.error('[Content Script] 处理匹配结果失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '处理匹配结果失败',
+    });
+  }
+}
+
+// === 新增：快速添加外链处理器 ===
+
+/**
+ * 处理快速添加外链响应
+ */
+async function handleBacklinkAdded(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as { backlink: ManagedBacklink; addedAt: string } | undefined;
+    if (!payload?.backlink) {
+      sendResponse({ success: false, error: '缺少外链数据' });
+      return;
+    }
+
+    console.log('[Content Script] 新外链已添加:', payload.backlink.url);
+
+    // 如果当前页面 URL 与新添加的外链匹配，更新匹配结果
+    const currentUrl = normalizeUrl(window.location.href);
+    const backlinkUrl = normalizeUrl(payload.backlink.url);
+
+    if (currentUrl === backlinkUrl || currentUrl.includes(backlinkUrl)) {
+      currentMatchResult = {
+        bestMatch: payload.backlink,
+        confidence: 100,
+        alternatives: currentMatchResult?.alternatives || [],
+      };
+    }
+
+    sendResponse({ success: true });
+  } catch (error) {
+    console.error('[Content Script] 处理外链添加通知失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '处理外链添加通知失败',
+    });
+  }
+}
+
+// === 新增：一键填充处理器 ===
+
+/**
+ * 处理一键填充请求
+ */
+async function handleOneClickFill(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as {
+      profileId: string;
+      backlinkId?: string;
+      comment?: string;
+      autoSubmit?: boolean;
+    } | undefined;
+
+    if (!payload?.profileId) {
+      sendResponse({ success: false, error: '缺少 profileId 参数' });
+      return;
+    }
+
+    const { profileId, backlinkId, comment, autoSubmit } = payload;
+
+    // 获取网站资料
+    const profile = await websiteProfileStorage.getProfileById(profileId);
+    if (!profile || !profile.enabled) {
+      sendResponse({ success: false, error: '网站资料不存在或已禁用' });
+      return;
+    }
+
+    // 检测表单
+    const detection = await detectForms(false);
+    if (!detection.detected) {
+      sendResponse({ success: false, error: '当前页面未检测到可填充表单' });
+      return;
+    }
+
+    // 获取当前外链的备注（用于生成评论）
+    let backlinkNote: string | undefined;
+    if (backlinkId) {
+      const backlink = await managedBacklinkStorage.getBacklinkById(backlinkId);
+      backlinkNote = backlink?.note;
+    }
+
+    // 使用指定的评论或生成自动评论
+    const commentToUse = comment?.trim() || buildAutoComment(profile, backlinkNote);
+
+    // 执行填充
+    const result = await autoFillService.fill(
+      detection.fields,
+      {
+        name: profile.name,
+        email: profile.email,
+        website: profile.url,
+        comment: commentToUse,
+      },
+      autoSubmit || false,
+    );
+
+    if (result.success) {
+      autoFillStarted = true;
+      await learnTemplateIfNeeded(detection);
+
+      // 发送填充已开始通知
+      void chrome.runtime.sendMessage({
+        type: MessageType.FILL_INITIATED,
+        payload: {
+          success: true,
+          profileId,
+          backlinkId,
+          filledFields: detection.fields.map(f => f.type),
+        },
+      });
+
+      sendResponse({
+        success: true,
+        data: {
+          profileId,
+          backlinkId,
+          filledFields: detection.fields.map(f => f.type),
+        },
+      });
+    } else {
+      sendResponse({
+        success: false,
+        error: result.error || '填充失败',
+      });
+    }
+  } catch (error) {
+    console.error('[Content Script] 一键填充失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '一键填充失败',
+    });
+  }
+}
+
+// === 新增：悬浮面板处理器 ===
+
+/**
+ * 处理打开悬浮面板请求
+ */
+async function handleOpenFloatingPanel(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as { initialState?: 'expanded' | 'collapsed' } | undefined;
+
+    floatingPanelState = {
+      isOpen: true,
+      state: payload?.initialState || 'collapsed',
+    };
+
+    // 通知悬浮面板状态变更
+    void chrome.runtime.sendMessage({
+      type: MessageType.FLOATING_PANEL_STATE_CHANGED,
+      payload: {
+        isOpen: true,
+        state: floatingPanelState.state,
+        matchResult: currentMatchResult || undefined,
+      },
+    });
+
+    console.log('[Content Script] 悬浮面板已打开:', floatingPanelState);
+    sendResponse({ success: true });
+  } catch (error) {
+    console.error('[Content Script] 打开悬浮面板失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '打开悬浮面板失败',
+    });
+  }
+}
+
+/**
+ * 处理关闭悬浮面板请求
+ */
+async function handleCloseFloatingPanel(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as { reason?: 'user_action' | 'auto' | 'page_navigate' } | undefined;
+
+    floatingPanelState = {
+      isOpen: false,
+      state: 'collapsed',
+    };
+
+    // 通知悬浮面板状态变更
+    void chrome.runtime.sendMessage({
+      type: MessageType.FLOATING_PANEL_STATE_CHANGED,
+      payload: {
+        isOpen: false,
+        state: 'collapsed',
+        matchResult: currentMatchResult || undefined,
+      },
+    });
+
+    console.log('[Content Script] 悬浮面板已关闭:', { reason: payload?.reason });
+    sendResponse({ success: true });
+  } catch (error) {
+    console.error('[Content Script] 关闭悬浮面板失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '关闭悬浮面板失败',
+    });
+  }
+}
+
+// === 新增：表单检测处理器 ===
+
+/**
+ * 处理强制检测表单请求
+ */
+async function handleForceDetectForm(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as { retryCount?: number } | undefined;
+
+    // 清除缓存，强制重新检测
+    lastDetectionResult = null;
+    const detection = await detectForms(true);
+
+    // 发送表单检测结果消息
+    void chrome.runtime.sendMessage({
+      type: MessageType.FORM_DETECTED,
+      payload: {
+        detected: detection.detected,
+        confidence: detection.confidence,
+        fieldTypes: detection.fields.map(f => f.type),
+        selectors: detection.fields.map(f => f.selector),
+      },
+    });
+
+    sendResponse({
+      success: true,
+      data: {
+        detected: detection.detected,
+        confidence: detection.confidence,
+        fields: detection.fields.map(f => ({
+          type: f.type,
+          selector: f.selector,
+          required: f.required ?? false,
+        })),
+      },
+    });
+  } catch (error) {
+    console.error('[Content Script] 强制检测表单失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '强制检测表单失败',
+    });
+  }
+}
+
+// === 新增：URL 变更处理器 ===
+
+/**
+ * 处理 URL 变更通知
+ */
+async function handleUrlChanged(
+  message: BaseMessage,
+  sendResponse: (response: BaseResponse) => void,
+): Promise<void> {
+  try {
+    const payload = message.payload as { oldUrl: string; newUrl: string; title?: string } | undefined;
+    if (!payload?.newUrl) {
+      sendResponse({ success: false, error: '缺少 newUrl 参数' });
+      return;
+    }
+
+    console.log('[Content Script] URL 变更:', payload.oldUrl, '->', payload.newUrl);
+
+    // 更新最后 URL
+    lastUrl = payload.newUrl;
+
+    // 重置状态
+    autoFillStarted = false;
+    learnedTemplateKey = null;
+    lastDetectionResult = null;
+
+    // 如果悬浮面板打开，更新其状态
+    if (floatingPanelState.isOpen) {
+      void chrome.runtime.sendMessage({
+        type: MessageType.FLOATING_PANEL_STATE_CHANGED,
+        payload: {
+          isOpen: true,
+          state: floatingPanelState.state,
+          matchResult: currentMatchResult || undefined,
+        },
+      });
+    }
+
+    sendResponse({ success: true });
+  } catch (error) {
+    console.error('[Content Script] 处理 URL 变更失败:', error);
+    sendResponse({
+      success: false,
+      error: error instanceof Error ? error.message : '处理 URL 变更失败',
+    });
+  }
+}
+
 function handleMessage(
   message: BaseMessage,
   _sender: chrome.runtime.MessageSender,
@@ -478,6 +853,40 @@ function handleMessage(
 
     case MessageType.FILL_SELECTED_WEBSITE:
       void handleFillSelectedWebsite(message, sendResponse);
+      return true;
+
+    // === 新增：智能匹配相关 ===
+    case MessageType.MATCH_RESULT_UPDATED:
+      void handleMatchResultUpdated(message, sendResponse);
+      return true;
+
+    // === 新增：快速添加外链相关 ===
+    case MessageType.BACKLINK_ADDED:
+      void handleBacklinkAdded(message, sendResponse);
+      return true;
+
+    // === 新增：一键填充相关 ===
+    case MessageType.ONE_CLICK_FILL:
+      void handleOneClickFill(message, sendResponse);
+      return true;
+
+    // === 新增：悬浮面板相关 ===
+    case MessageType.OPEN_FLOATING_PANEL:
+      void handleOpenFloatingPanel(message, sendResponse);
+      return true;
+
+    case MessageType.CLOSE_FLOATING_PANEL:
+      void handleCloseFloatingPanel(message, sendResponse);
+      return true;
+
+    // === 新增：表单检测相关 ===
+    case MessageType.FORCE_DETECT_FORM:
+      void handleForceDetectForm(message, sendResponse);
+      return true;
+
+    // === 新增：URL 变更相关 ===
+    case MessageType.URL_CHANGED:
+      void handleUrlChanged(message, sendResponse);
       return true;
 
     case 'START_API_INTERCEPTOR':
@@ -621,9 +1030,74 @@ async function warmupDetectionIfNeeded() {
   }
 }
 
+// === 新增：监听 URL 变化 ===
+
+/**
+ * 监听 URL 变化（用于 SPA 页面）
+ */
+function initUrlChangeListener(): void {
+  let lastUrl = window.location.href;
+
+  // 监听 hash 变化
+  window.addEventListener('hashchange', () => {
+    const newUrl = window.location.href;
+    notifyUrlChanged(lastUrl, newUrl);
+    lastUrl = newUrl;
+  });
+
+  // 监听 history 变化（pushState/replaceState）
+  const originalPushState = history.pushState;
+  const originalReplaceState = history.replaceState;
+
+  history.pushState = function (...args) {
+    originalPushState.apply(this, args);
+    const newUrl = window.location.href;
+    notifyUrlChanged(lastUrl, newUrl);
+    lastUrl = newUrl;
+  };
+
+  history.replaceState = function (...args) {
+    originalReplaceState.apply(this, args);
+    const newUrl = window.location.href;
+    if (newUrl !== lastUrl) {
+      notifyUrlChanged(lastUrl, newUrl);
+      lastUrl = newUrl;
+    }
+  };
+
+  // 监听 popstate 事件（前后缀导航）
+  window.addEventListener('popstate', () => {
+    const newUrl = window.location.href;
+    if (newUrl !== lastUrl) {
+      notifyUrlChanged(lastUrl, newUrl);
+      lastUrl = newUrl;
+    }
+  });
+
+  console.log('[Content Script] URL 变化监听已初始化');
+}
+
+/**
+ * 通知 URL 变更
+ */
+async function notifyUrlChanged(oldUrl: string, newUrl: string): Promise<void> {
+  const title = document.title;
+
+  // 发送到 background
+  try {
+    await chrome.runtime.sendMessage({
+      type: MessageType.URL_CHANGED,
+      payload: { oldUrl, newUrl, title },
+    });
+  } catch (error) {
+    console.warn('[Content Script] 发送 URL 变更通知失败:', error);
+  }
+}
+
 export function initMessageListener(): void {
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => handleMessage(message, sender, sendResponse));
   void warmupDetectionIfNeeded();
   void ensurePassiveInterceptorBootstrap();
+  initUrlChangeListener(); // 新增：初始化 URL 变化监听
   console.log('[Content Script] 消息监听器已初始化');
 }

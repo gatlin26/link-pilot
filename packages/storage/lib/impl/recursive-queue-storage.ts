@@ -116,6 +116,34 @@ export const recursiveQueueStorage = {
   },
 
   /**
+   * 批量检查 URL 是否存在，返回存在的 URL 集合
+   */
+  hasUrlBatch: async (urls: string[]): Promise<Set<string>> => {
+    const state = await storage.get();
+    const existing = new Set<string>();
+    for (const url of urls) {
+      if (state.queue_items.some(item => item.url === url)) {
+        existing.add(url);
+      }
+    }
+    return existing;
+  },
+
+  /**
+   * 批量检查域名是否存在，返回存在的域名集合
+   */
+  hasDomainBatch: async (domains: string[]): Promise<Set<string>> => {
+    const state = await storage.get();
+    const existing = new Set<string>();
+    for (const domain of domains) {
+      if (state.queue_items.some(item => item.domain === domain)) {
+        existing.add(domain);
+      }
+    }
+    return existing;
+  },
+
+  /**
    * 获取指定深度的队列项
    */
   getByDepth: async (depth: number): Promise<RecursiveQueueItem[]> => {

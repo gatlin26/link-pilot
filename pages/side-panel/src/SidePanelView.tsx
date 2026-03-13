@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useStorage } from '@extension/shared';
 import {
   exampleThemeStorage,
@@ -6,12 +6,13 @@ import {
   submissionSessionStorage,
   websiteProfileStorage,
 } from '@extension/storage';
-import { cn, LoadingSpinner } from '@extension/ui';
+import { cn } from '@extension/ui';
 import { MessageType } from '@extension/shared';
 import type { FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGroup } from '@extension/shared';
 import { useSubmissionSession } from '../../popup/src/hooks/useSubmissionSession';
-import { buildCommentCandidates } from '../../popup/src/utils/comment-generator';
 import { ManualCollector } from '../../popup/src/components/ManualCollector';
+import { QuickFillCard } from './components/QuickFillCard';
+import { buildCommentCandidates } from '@extension/shared';
 
 type SidePanelTab = 'fill' | 'backlinks' | 'collection';
 
@@ -53,6 +54,14 @@ export const SidePanelView = () => {
   const [selectedBacklinkGroupId, setSelectedBacklinkGroupId] = useState('all');
   const [collectingCurrentSite, setCollectingCurrentSite] = useState(false);
 
+  // 智能匹配状态
+  const [predictedBacklink, setPredictedBacklink] = useState<ManagedBacklink | null>(null);
+  const [matchConfidence, setMatchConfidence] = useState(0);
+  const [alternativeMatches, setAlternativeMatches] = useState<ManagedBacklink[]>([]);
+  const [isMatching, setIsMatching] = useState(false);
+  const [currentTabId, setCurrentTabId] = useState<number | null>(null);
+  const [currentUrl, setCurrentUrl] = useState<string>('');
+
   const enabledProfiles = useMemo(() => profiles.filter(profile => profile.enabled), [profiles]);
   const groupProfiles = useMemo(
     () => enabledProfiles.filter(profile => profile.group_id === selectedGroupId),
@@ -89,7 +98,164 @@ export const SidePanelView = () => {
     void loadProfiles();
     void loadBacklinks();
     void refreshPageState(false);
+
+    // 设置标签页监听
+    setupTabListeners();
   }, []);
+
+  // 监听标签页变化，触发智能匹配
+  useEffect(() => {
+    if (backlinks.length > 0) {
+      void performSmartMatch();
+    }
+  }, [backlinks, currentUrl]);
+
+  const setupTabListeners = () => {
+    // 监听标签页切换
+    chrome.tabs.onActivated.addListener((activeInfo) => {
+      setCurrentTabId(activeInfo.tabId);
+      void handleTabChange(activeInfo.tabId);
+    });
+
+    // 监听 URL 变化
+    chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+      if (changeInfo.url && tabId === currentTabId) {
+        setCurrentUrl(changeInfo.url);
+      }
+    });
+
+    // 初始化当前标签页
+    void chrome.tabs.query({ active: true, currentWindow: true }).then(([tab]) => {
+      if (tab?.id) {
+        setCurrentTabId(tab.id);
+        setCurrentUrl(tab.url || '');
+      }
+    });
+  };
+
+  const handleTabChange = async (tabId: number) => {
+    try {
+      const tab = await chrome.tabs.get(tabId);
+      setCurrentUrl(tab.url || '');
+    } catch (error) {
+      console.error('获取标签页信息失败:', error);
+    }
+  };
+
+  // 智能匹配逻辑
+  const performSmartMatch = useCallback(async () => {
+    if (!currentUrl || backlinks.length === 0) return;
+
+    setIsMatching(true);
+    try {
+      const currentDomain = extractDomain(currentUrl);
+      const currentPath = extractPath(currentUrl);
+
+      // 计算匹配分数
+      const scoredBacklinks = backlinks.map((backlink) => {
+        let score = 0;
+        const backlinkDomain = extractDomain(backlink.url);
+        const backlinkPath = extractPath(backlink.url);
+
+        // 域名匹配 (最高 60 分)
+        if (currentDomain === backlinkDomain) {
+          score += 60;
+        } else if (currentDomain.includes(backlinkDomain) || backlinkDomain.includes(currentDomain)) {
+          score += 40;
+        }
+
+        // 路径匹配 (最高 30 分)
+        if (currentPath === backlinkPath) {
+          score += 30;
+        } else if (currentPath && backlinkPath && (currentPath.includes(backlinkPath) || backlinkPath.includes(currentPath))) {
+          score += 15;
+        }
+
+        // 关键词匹配 (最高 10 分)
+        const urlLower = currentUrl.toLowerCase();
+        const keywordMatches = backlink.keywords.filter(kw => urlLower.includes(kw.toLowerCase())).length;
+        score += Math.min(keywordMatches * 3, 10);
+
+        return { backlink, score };
+      });
+
+      // 按分数排序
+      scoredBacklinks.sort((a, b) => b.score - a.score);
+
+      const bestMatch = scoredBacklinks[0];
+      if (bestMatch && bestMatch.score >= 30) {
+        setPredictedBacklink(bestMatch.backlink);
+        setMatchConfidence(Math.min(bestMatch.score, 100));
+        setAlternativeMatches(scoredBacklinks.slice(1, 4).map(s => s.backlink));
+
+        // 更新会话
+        await updateSession({
+          current_backlink_id: bestMatch.backlink.id,
+        });
+      } else {
+        setPredictedBacklink(null);
+        setMatchConfidence(0);
+        setAlternativeMatches([]);
+      }
+    } catch (error) {
+      console.error('智能匹配失败:', error);
+    } finally {
+      setIsMatching(false);
+    }
+  }, [backlinks, currentUrl, updateSession]);
+
+  const extractDomain = (url: string): string => {
+    try {
+      return new URL(url).hostname.replace(/^www\./, '');
+    } catch {
+      return url.replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0] ?? '';
+    }
+  };
+
+  const extractPath = (url: string): string => {
+    try {
+      return new URL(url).pathname;
+    } catch {
+      const pathMatch = url.match(/https?:\/\/[^/]+(.+)/);
+      return pathMatch?.[1] ?? '';
+    }
+  };
+
+  // 一键填充处理
+  const handleQuickFill = async (profileId: string, comment: string) => {
+    if (!predictedBacklink) throw new Error('未匹配到外链');
+
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tab?.id) throw new Error('无法获取当前标签页');
+
+    const profile = profiles.find(p => p.id === profileId);
+    if (!profile) throw new Error('未找到网站资料');
+
+    await chrome.tabs.sendMessage(tab.id, {
+      type: MessageType.FILL_SELECTED_WEBSITE,
+      payload: { profile, comment, backlink: predictedBacklink },
+    });
+
+    // 更新会话状态
+    await updateSession({
+      current_backlink_id: predictedBacklink.id,
+    });
+  };
+
+  // 切换外链
+  const handleSwitchBacklink = async (backlinkId: string) => {
+    const backlink = backlinks.find(b => b.id === backlinkId);
+    if (backlink) {
+      setPredictedBacklink(backlink);
+      setMatchConfidence(85); // 手动选择视为高匹配度
+      await updateSession({ current_backlink_id: backlinkId });
+    }
+  };
+
+  // 打开完整外链列表
+  const handleOpenFullBacklinks = () => {
+    setActiveTab('backlinks');
+  };
 
   const loadProfiles = async () => {
     try {
@@ -121,7 +287,7 @@ export const SidePanelView = () => {
         throw new Error('无法获取当前标签页');
       }
 
-      const response = await chrome.tabs.sendMessage(tab.id, { type: MessageType.GET_PAGE_STATE });
+      const response = await chrome.tabs.sendMessage(tab.id, { type: MessageType.GET_FILL_PAGE_STATE });
       setPageState(response);
       if (showMessage) {
         setMessage('页面状态已刷新');
@@ -166,7 +332,7 @@ export const SidePanelView = () => {
 
       const comment = generatedComments[selectedCommentIndex] || '';
       await chrome.tabs.sendMessage(tab.id, {
-        type: MessageType.FILL_FORM,
+        type: MessageType.FILL_SELECTED_WEBSITE,
         payload: { profile: selectedProfile, comment, backlink: currentBacklink },
       });
 
@@ -305,13 +471,34 @@ export const SidePanelView = () => {
 
       {/* 内容区域 */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-4">
-        {(loadingPageState || sessionLoading) && activeTab === 'fill' && <LoadingSpinner />}
+        {(loadingPageState || sessionLoading) && activeTab === 'fill' && (
+          <div className="flex justify-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          </div>
+        )}
         {errorMessage && <div className="rounded-lg p-3 text-sm bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-200">{errorMessage}</div>}
         {message && <div className="rounded-lg p-3 text-sm bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-200">{message}</div>}
 
         {/* 填表标签页 */}
         {activeTab === 'fill' && (
           <>
+            {/* 智能预测快捷填充卡片 */}
+            <QuickFillCard
+              predictedBacklink={predictedBacklink}
+              matchConfidence={matchConfidence}
+              alternativeMatches={alternativeMatches}
+              profiles={enabledProfiles}
+              pageState={pageState ? {
+                form_detected: pageState.form_detected,
+                form_confidence: 0.8,
+                url: pageState.seo?.url || currentUrl,
+              } : null}
+              onFill={handleQuickFill}
+              onSwitchBacklink={handleSwitchBacklink}
+              onOpenFullBacklinks={handleOpenFullBacklinks}
+              isLight={isLight}
+            />
+
             {/* 当前页面 */}
             <section className={cn('p-4 rounded-lg border', isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700')}>
               <div className="flex items-center justify-between mb-3">
@@ -392,8 +579,8 @@ export const SidePanelView = () => {
                   {selectedProfile && (
                     <div className="text-xs space-y-1 p-3 rounded bg-gray-50 dark:bg-gray-800">
                       <div><span className="text-gray-500">URL：</span>{selectedProfile.url}</div>
-                      <div><span className="text-gray-500">名称：</span>{selectedProfile.author_name}</div>
-                      <div><span className="text-gray-500">邮箱：</span>{selectedProfile.author_email}</div>
+                      <div><span className="text-gray-500">名称：</span>{selectedProfile.name}</div>
+                      <div><span className="text-gray-500">邮箱：</span>{selectedProfile.email}</div>
                     </div>
                   )}
                 </div>

@@ -5,7 +5,14 @@
 
 import { templateStorage } from '@extension/storage';
 import type { SiteTemplate, FieldMapping } from '@extension/shared';
-import { PageType } from '@extension/shared';
+import { PageType, logger } from '@extension/shared';
+import { FieldAnalyzer } from './field-analyzer';
+import { ShadowDOMDetector } from './shadow-dom-detector';
+import { FormObserver } from './form-observer';
+import type { DetectedField as AnalyzerDetectedField, FormFieldElement } from '../types/field-analyzer';
+import { mapFieldPurposeToLinkPilot, calculateFieldQuality } from '../utils/field-type-mapper';
+import { DOM_CACHE } from '../utils/dom-cache';
+import { performanceMonitor, MetricType } from '../utils/performance-monitor';
 
 /**
  * 表单字段检测结果
@@ -19,6 +26,8 @@ export interface FormField {
   selector: string;
   /** 置信度 (0-1) */
   confidence: number;
+  /** 是否必填 */
+  required?: boolean;
 }
 
 /**
@@ -41,21 +50,43 @@ export interface FormDetectionResult {
  * 表单检测器
  */
 export class FormDetector {
+  /** 字段分析器实例 */
+  private fieldAnalyzer = new FieldAnalyzer();
+
+  /** Shadow DOM 检测器实例 */
+  private shadowDOMDetector = new ShadowDOMDetector(this.fieldAnalyzer);
+
+  /** 表单监听器实例 */
+  private formObserver: FormObserver | null = null;
+
+  /** 动态表单变化回调 */
+  private onFormChangeCallback: ((result: FormDetectionResult) => void) | null = null;
+
   /**
    * 检测页面表单
    */
   async detect(): Promise<FormDetectionResult> {
-    const domain = this.extractDomain(window.location.href);
-    const path = window.location.pathname;
+    const metricId = performanceMonitor.start(MetricType.FORM_DETECTION);
 
-    // 尝试使用模板
-    const template = await this.findMatchingTemplate(domain, path);
-    if (template) {
-      return this.detectWithTemplate(template);
+    try {
+      const domain = this.extractDomain(window.location.href);
+      const path = window.location.pathname;
+
+      logger.info('开始检测表单', { domain, path });
+
+      // 尝试使用模板
+      const template = await this.findMatchingTemplate(domain, path);
+      if (template) {
+        logger.info('使用模板检测', { templateId: template.id });
+        return this.detectWithTemplate(template);
+      }
+
+      // 使用启发式识别
+      logger.info('使用启发式检测');
+      return this.detectWithHeuristics();
+    } finally {
+      performanceMonitor.end(metricId);
     }
-
-    // 使用启发式识别
-    return this.detectWithHeuristics();
   }
 
   /**
@@ -98,6 +129,112 @@ export class FormDetector {
    * 使用启发式规则检测
    */
   private async detectWithHeuristics(): Promise<FormDetectionResult> {
+    const fields: FormField[] = [];
+
+    // 清空 DOM 缓存
+    DOM_CACHE.clear();
+
+    // 第一步：使用 FieldAnalyzer 分析所有表单字段
+    const analyzedFields = this.analyzeAllFormFields();
+
+    // 第二步：检测 Shadow DOM 中的字段
+    const shadowFields = this.shadowDOMDetector.detectShadowDOMFields(document.body, {
+      maxDepth: 10,
+      includeDuplicates: false,
+    });
+
+    // 合并 Shadow DOM 字段到分析结果
+    analyzedFields.push(...shadowFields);
+
+    // 第三步：将分析结果映射到 link-pilot 字段类型
+    for (const analyzed of analyzedFields) {
+      const linkPilotType = mapFieldPurposeToLinkPilot(
+        analyzed.metadata.fieldPurpose,
+        analyzed.metadata,
+      );
+
+      if (linkPilotType) {
+        // 计算字段质量分数
+        const qualityScore = calculateFieldQuality(analyzed.metadata);
+
+        // 只保留高质量字段（质量分数 >= 0.4）
+        if (qualityScore >= 0.4) {
+          fields.push({
+            type: linkPilotType,
+            element: analyzed.element as HTMLElement,
+            selector: this.generateSelector(analyzed.element as HTMLElement),
+            confidence: qualityScore,
+            required: analyzed.metadata.required,
+          });
+        }
+      }
+    }
+
+    // 第四步：如果 FieldAnalyzer 没有找到足够的字段，回退到原有的选择器匹配
+    if (fields.length < 2) {
+      const fallbackFields = this.detectFieldsWithSelectors();
+      // 合并结果，去重
+      for (const fallbackField of fallbackFields) {
+        const exists = fields.some(f => f.element === fallbackField.element);
+        if (!exists) {
+          fields.push(fallbackField);
+        }
+      }
+    }
+
+    // 判断是否为博客评论表单
+    const hasComment = fields.some(f => f.type === 'comment');
+    const hasNameOrEmail = fields.some(f => f.type === 'name' || f.type === 'email');
+    const detected = hasComment && hasNameOrEmail;
+
+    // 计算置信度
+    const confidence = this.calculateConfidence(fields);
+
+    return {
+      detected,
+      pageType: detected ? PageType.BLOG_COMMENT : null,
+      fields,
+      template: null,
+      confidence,
+    };
+  }
+
+  /**
+   * 使用 FieldAnalyzer 分析所有表单字段
+   */
+  private analyzeAllFormFields(): AnalyzerDetectedField[] {
+    const results: AnalyzerDetectedField[] = [];
+
+    // 查找所有表单元素
+    const formElements = document.querySelectorAll<FormFieldElement>(
+      'input:not([type="hidden"]):not([type="password"]):not([type="file"]), textarea, select',
+    );
+
+    for (const element of Array.from(formElements)) {
+      // 检查是否可见
+      if (!this.fieldAnalyzer.isElementVisible(element)) {
+        continue;
+      }
+
+      // 分析字段
+      const detectedField: AnalyzerDetectedField = {
+        element,
+        metadata: {} as any, // 临时占位
+      };
+
+      const metadata = this.fieldAnalyzer.analyzeField(detectedField);
+      detectedField.metadata = metadata;
+
+      results.push(detectedField);
+    }
+
+    return results;
+  }
+
+  /**
+   * 使用选择器检测字段（回退方案）
+   */
+  private detectFieldsWithSelectors(): FormField[] {
     const fields: FormField[] = [];
 
     // 检测 name 字段（扩展中英文关键词）
@@ -195,21 +332,7 @@ export class FormDetector {
     ]);
     if (submitField) fields.push(submitField);
 
-    // 判断是否为博客评论表单
-    const hasComment = fields.some(f => f.type === 'comment');
-    const hasNameOrEmail = fields.some(f => f.type === 'name' || f.type === 'email');
-    const detected = hasComment && hasNameOrEmail;
-
-    // 计算置信度
-    const confidence = this.calculateConfidence(fields);
-
-    return {
-      detected,
-      pageType: detected ? PageType.BLOG_COMMENT : null,
-      fields,
-      template: null,
-      confidence,
-    };
+    return fields;
   }
 
   /**
@@ -253,18 +376,19 @@ export class FormDetector {
 
   /**
    * 生成稳定的选择器
+   * 使用 CSS.escape 防止 XSS 攻击
    */
   private generateSelector(element: HTMLElement): string {
-    // 优先使用 id
+    // 优先使用 id（使用 CSS.escape 转义）
     if (element.id) {
-      return `#${element.id}`;
+      return `#${CSS.escape(element.id)}`;
     }
 
-    // 其次使用 name
+    // 其次使用 name（使用 CSS.escape 转义）
     const name = element.getAttribute('name');
     if (name) {
       const tagName = element.tagName.toLowerCase();
-      return `${tagName}[name="${name}"]`;
+      return `${tagName}[name="${CSS.escape(name)}"]`;
     }
 
     // 最后使用 CSS 选择器
@@ -274,12 +398,13 @@ export class FormDetector {
     while (current && current !== document.body) {
       let selector = current.tagName.toLowerCase();
 
-      // 添加类名（最多 2 个）
+      // 添加类名（最多 2 个），使用 CSS.escape 转义每个 class
       if (current.className) {
         const classes = current.className
           .split(' ')
           .filter(c => c && !c.startsWith('wp-') && !c.startsWith('post-'))
-          .slice(0, 2);
+          .slice(0, 2)
+          .map(c => CSS.escape(c)); // 转义每个 class
         if (classes.length > 0) {
           selector += '.' + classes.join('.');
         }
@@ -373,11 +498,34 @@ export class FormDetector {
 
   /**
    * 匹配路径模式
+   * 防止 ReDoS 攻击
    */
   private matchPathPattern(path: string, pattern: string): boolean {
-    // 简单的通配符匹配
-    const regex = new RegExp('^' + pattern.replace(/\*/g, '.*') + '$');
-    return regex.test(path);
+    // 1. 限制正则表达式长度
+    if (pattern.length > 200) {
+      logger.warn('Pattern 过长，跳过匹配', { pattern: pattern.substring(0, 50) + '...' });
+      return false;
+    }
+
+    // 2. 限制通配符数量
+    const wildcardCount = (pattern.match(/\*/g) || []).length;
+    if (wildcardCount > 5) {
+      logger.warn('Pattern 包含过多通配符，跳过匹配', { pattern, wildcardCount });
+      return false;
+    }
+
+    // 3. 转义特殊字符，只允许 * 作为通配符
+    const escapedPattern = pattern
+      .replace(/[.+?^${}()|[\]\\]/g, '\\$&') // 转义特殊字符
+      .replace(/\*/g, '.*'); // 将 * 替换为 .*
+
+    try {
+      const regex = new RegExp('^' + escapedPattern + '$');
+      return regex.test(path);
+    } catch (error) {
+      logger.error('正则表达式编译失败', error as Error, { pattern });
+      return false;
+    }
   }
 
   /**
@@ -390,6 +538,70 @@ export class FormDetector {
     } catch {
       return '';
     }
+  }
+
+  /**
+   * 启动动态表单监听
+   */
+  startObserving(callback?: (result: FormDetectionResult) => void): void {
+    if (this.formObserver?.isRunning()) {
+      logger.warn('表单监听器已在运行中');
+      return;
+    }
+
+    // 保存回调
+    if (callback) {
+      this.onFormChangeCallback = callback;
+    }
+
+    // 创建监听器
+    if (!this.formObserver) {
+      this.formObserver = new FormObserver({
+        debounceDelay: 500,
+        watchAttributes: true,
+        watchSubtree: true,
+      });
+    }
+
+    // 启动监听
+    this.formObserver.start(async (addedForms, addedFields) => {
+      logger.info('检测到表单变化', {
+        forms: addedForms.length,
+        fields: addedFields.length,
+      });
+
+      // 重新检测表单
+      const result = await this.detect();
+
+      // 触发回调
+      if (this.onFormChangeCallback && result.detected) {
+        this.onFormChangeCallback(result);
+      }
+    });
+
+    logger.info('动态表单监听已启动');
+  }
+
+  /**
+   * 停止动态表单监听
+   */
+  stopObserving(): void {
+    if (this.formObserver) {
+      this.formObserver.stop();
+      logger.info('动态表单监听已停止');
+    }
+  }
+
+  /**
+   * 销毁检测器
+   */
+  destroy(): void {
+    if (this.formObserver) {
+      this.formObserver.destroy();
+      this.formObserver = null;
+    }
+    this.onFormChangeCallback = null;
+    logger.info('FormDetector 已销毁');
   }
 }
 

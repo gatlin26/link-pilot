@@ -9,6 +9,7 @@ import './collection-manager';
 import './web-request-manager';
 import './submission-session-manager';
 import './recursive-collection-manager';
+import './sidepanel-toggle';
 
 const initStorageAccess = async () => {
   try {

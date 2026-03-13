@@ -437,7 +437,7 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                   'text-lg font-semibold',
                   isLight ? 'text-gray-900' : 'text-gray-100'
                 )}>
-                  {currentItem?.depth || 0} / {recursiveSession.config.maxDepth}
+                  {currentItem?.depth || 0} / {recursiveSession.config.max_depth}
                 </div>
               </div>
 
@@ -502,7 +502,7 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
                   'text-lg font-semibold',
                   isLight ? 'text-gray-900' : 'text-gray-100'
                 )}>
-                  {recursiveSession.stats.completed} / {recursiveSession.config.maxTotalUrls}
+                  {recursiveSession.stats.completed_count} / {recursiveSession.config.max_total_urls}
                 </div>
               </div>
             </div>
@@ -553,12 +553,12 @@ export const ManualCollector = ({ isLight }: ManualCollectorProps) => {
             </div>
 
             {/* 进度提示 */}
-            {recursiveSession.stats.totalOpportunities > 0 && (
+            {recursiveSession.stats.total_backlinks_collected > 0 && (
               <div className={cn(
                 'text-xs text-center',
                 isLight ? 'text-gray-600' : 'text-gray-400'
               )}>
-                已发现 {recursiveSession.stats.totalOpportunities} 个外链机会
+                已发现 {recursiveSession.stats.total_backlinks_collected} 个外链机会
               </div>
             )}
           </div>

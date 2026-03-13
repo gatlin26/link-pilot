@@ -9,3 +9,4 @@ export * from './scoring-service.js';
 export * from './business-type-detector.js';
 export * from './opportunity-converter.js';
 export * from './batch-processor.js';
+export * from './backlink-matcher.js';
