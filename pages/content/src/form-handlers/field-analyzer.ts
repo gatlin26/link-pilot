@@ -22,6 +22,7 @@ import type {
   SelectOption,
 } from '../types/field-analyzer';
 import { getCachedComputedStyle } from '../utils/dom-cache';
+import { FORM_DETECTION_CONFIG } from '../config/constants';
 import {
   INTERACTIVE_CURSORS,
   INTERACTIVE_ROLES,
@@ -314,7 +315,9 @@ export class FieldAnalyzer {
       document.body;
 
     const rect = element.getBoundingClientRect();
-    const threshold = direction === 'top' ? 100 : 200;
+    const threshold = direction === 'top'
+      ? FORM_DETECTION_CONFIG.LABEL_DISTANCE_THRESHOLD_TOP
+      : FORM_DETECTION_CONFIG.LABEL_DISTANCE_THRESHOLD_LEFT;
     const candidates: Array<{ element: Element; distance: number }> = [];
 
     const walker = document.createTreeWalker(
@@ -323,7 +326,9 @@ export class FieldAnalyzer {
       {
         acceptNode: (node) => {
           const text = node.textContent?.trim();
-          if (!text || text.length < 2) return NodeFilter.FILTER_REJECT;
+          if (!text || text.length < FORM_DETECTION_CONFIG.POSITIONAL_LABEL_MIN_TEXT_LENGTH) {
+            return NodeFilter.FILTER_REJECT;
+          }
 
           const parent = node.parentElement;
           if (!parent) return NodeFilter.FILTER_REJECT;
@@ -348,7 +353,7 @@ export class FieldAnalyzer {
           if (direction === 'top') {
             let ancestor: HTMLElement | null = parent;
             let depth = 0;
-            while (ancestor && depth < 3) {
+            while (ancestor && depth < FORM_DETECTION_CONFIG.POSITIONAL_LABEL_CONTAINER_MAX_DEPTH) {
               const ancestorTag = ancestor.tagName.toLowerCase();
               if (['button', 'a'].includes(ancestorTag)) {
                 return NodeFilter.FILTER_REJECT;
@@ -364,7 +369,9 @@ export class FieldAnalyzer {
               depth++;
             }
 
-            if (text.length < 3) return NodeFilter.FILTER_REJECT;
+            if (text.length < FORM_DETECTION_CONFIG.POSITIONAL_LABEL_MIN_TEXT_LENGTH_TOP) {
+              return NodeFilter.FILTER_REJECT;
+            }
 
             if (/^(or|and|with|continue|sign|login|register)$/i.test(text)) {
               return NodeFilter.FILTER_REJECT;
@@ -377,7 +384,7 @@ export class FieldAnalyzer {
     );
 
     let node: Node | null = walker.nextNode();
-    while (node && candidates.length < 20) {
+    while (node && candidates.length < FORM_DETECTION_CONFIG.POSITIONAL_LABEL_MAX_CANDIDATES) {
       const parent = node.parentElement;
       if (!parent) {
         node = walker.nextNode();
@@ -437,7 +444,9 @@ export class FieldAnalyzer {
             Math.abs(fieldRect.left - labelRect.right),
             Math.abs(labelRect.left - fieldRect.right),
           );
-          if (horizontalDistance > 50) return null;
+          if (horizontalDistance > FORM_DETECTION_CONFIG.LABEL_HORIZONTAL_DISTANCE_MAX) {
+            return null;
+          }
         }
 
         return fieldRect.top - labelRect.bottom;
@@ -567,6 +576,8 @@ export class FieldAnalyzer {
       .replace(/\s+/g, ' ')
       .trim();
 
-    return cleaned.length > 0 && cleaned.length < 200 ? cleaned : null;
+    return cleaned.length > 0 && cleaned.length < FORM_DETECTION_CONFIG.MAX_LABEL_TEXT_LENGTH
+      ? cleaned
+      : null;
   }
 }

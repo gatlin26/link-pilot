@@ -5,7 +5,7 @@
 
 import { templateStorage } from '@extension/storage';
 import type { SiteTemplate, FieldMapping } from '@extension/shared';
-import { PageType, logger } from '@extension/shared';
+import { PageType, logger, isElementVisible } from '@extension/shared';
 import { FieldAnalyzer } from './field-analyzer';
 import { ShadowDOMDetector } from './shadow-dom-detector';
 import { FormObserver } from './form-observer';
@@ -13,6 +13,7 @@ import type { DetectedField as AnalyzerDetectedField, FormFieldElement } from '.
 import { mapFieldPurposeToLinkPilot, calculateFieldQuality } from '../utils/field-type-mapper';
 import { DOM_CACHE } from '../utils/dom-cache';
 import { performanceMonitor, MetricType } from '../utils/performance-monitor';
+import { FORM_DETECTION_CONFIG } from '../config/constants';
 
 /**
  * 表单字段检测结果
@@ -139,7 +140,7 @@ export class FormDetector {
 
     // 第二步：检测 Shadow DOM 中的字段
     const shadowFields = this.shadowDOMDetector.detectShadowDOMFields(document.body, {
-      maxDepth: 10,
+      maxDepth: FORM_DETECTION_CONFIG.SHADOW_DOM_MAX_DEPTH,
       includeDuplicates: false,
     });
 
@@ -157,8 +158,8 @@ export class FormDetector {
         // 计算字段质量分数
         const qualityScore = calculateFieldQuality(analyzed.metadata);
 
-        // 只保留高质量字段（质量分数 >= 0.4）
-        if (qualityScore >= 0.4) {
+        // 只保留高质量字段（质量分数 >= 阈值）
+        if (qualityScore >= FORM_DETECTION_CONFIG.FIELD_QUALITY_THRESHOLD) {
           fields.push({
             type: linkPilotType,
             element: analyzed.element as HTMLElement,
@@ -171,7 +172,7 @@ export class FormDetector {
     }
 
     // 第四步：如果 FieldAnalyzer 没有找到足够的字段，回退到原有的选择器匹配
-    if (fields.length < 2) {
+    if (fields.length < FORM_DETECTION_CONFIG.MIN_FIELDS_FOR_HEURISTIC) {
       const fallbackFields = this.detectFieldsWithSelectors();
       // 合并结果，去重
       for (const fallbackField of fallbackFields) {
@@ -365,13 +366,7 @@ export class FormDetector {
    * 检查元素是否可见
    */
   private isVisible(element: HTMLElement): boolean {
-    const style = window.getComputedStyle(element);
-    return (
-      style.display !== 'none' &&
-      style.visibility !== 'hidden' &&
-      style.opacity !== '0' &&
-      element.offsetParent !== null
-    );
+    return isElementVisible(element);
   }
 
   /**
@@ -403,7 +398,7 @@ export class FormDetector {
         const classes = current.className
           .split(' ')
           .filter(c => c && !c.startsWith('wp-') && !c.startsWith('post-'))
-          .slice(0, 2)
+          .slice(0, FORM_DETECTION_CONFIG.SELECTOR_MAX_CLASSES)
           .map(c => CSS.escape(c)); // 转义每个 class
         if (classes.length > 0) {
           selector += '.' + classes.join('.');
@@ -414,7 +409,7 @@ export class FormDetector {
       current = current.parentElement;
 
       // 限制路径深度
-      if (path.length >= 4) break;
+      if (path.length >= FORM_DETECTION_CONFIG.SELECTOR_MAX_PATH_DEPTH) break;
     }
 
     return path.join(' > ');
@@ -424,7 +419,7 @@ export class FormDetector {
    * 计算字段置信度
    */
   private calculateFieldConfidence(element: HTMLElement, type: string): number {
-    let confidence = 0.5; // 基础置信度
+    let confidence = FORM_DETECTION_CONFIG.CONFIDENCE_BASE; // 基础置信度
 
     const name = element.getAttribute('name')?.toLowerCase() || '';
     const id = element.id.toLowerCase();
@@ -442,15 +437,27 @@ export class FormDetector {
     // 根据属性匹配度提升置信度
     const typeKeywords = keywords[type] || [];
     for (const keyword of typeKeywords) {
-      if (name.includes(keyword)) confidence += 0.25;
-      if (id.includes(keyword)) confidence += 0.15;
-      if (placeholder.includes(keyword)) confidence += 0.1;
+      if (name.includes(keyword)) {
+        confidence += FORM_DETECTION_CONFIG.CONFIDENCE_BOOST_NAME_MATCH;
+      }
+      if (id.includes(keyword)) {
+        confidence += FORM_DETECTION_CONFIG.CONFIDENCE_BOOST_ID_MATCH;
+      }
+      if (placeholder.includes(keyword)) {
+        confidence += FORM_DETECTION_CONFIG.CONFIDENCE_BOOST_PLACEHOLDER_MATCH;
+      }
     }
 
     // 根据元素类型提升置信度
-    if (type === 'email' && element.getAttribute('type') === 'email') confidence += 0.2;
-    if (type === 'website' && element.getAttribute('type') === 'url') confidence += 0.2;
-    if (type === 'comment' && element.tagName.toLowerCase() === 'textarea') confidence += 0.2;
+    if (type === 'email' && element.getAttribute('type') === 'email') {
+      confidence += FORM_DETECTION_CONFIG.CONFIDENCE_BOOST_TYPE_MATCH;
+    }
+    if (type === 'website' && element.getAttribute('type') === 'url') {
+      confidence += FORM_DETECTION_CONFIG.CONFIDENCE_BOOST_TYPE_MATCH;
+    }
+    if (type === 'comment' && element.tagName.toLowerCase() === 'textarea') {
+      confidence += FORM_DETECTION_CONFIG.CONFIDENCE_BOOST_TYPE_MATCH;
+    }
 
     return Math.min(confidence, 1.0);
   }
@@ -462,11 +469,11 @@ export class FormDetector {
     if (fields.length === 0) return 0;
 
     const weights = {
-      comment: 0.4,
-      email: 0.2,
-      name: 0.2,
-      website: 0.1,
-      submit: 0.1,
+      comment: FORM_DETECTION_CONFIG.CONFIDENCE_WEIGHT_COMMENT,
+      email: FORM_DETECTION_CONFIG.CONFIDENCE_WEIGHT_EMAIL,
+      name: FORM_DETECTION_CONFIG.CONFIDENCE_WEIGHT_NAME,
+      website: FORM_DETECTION_CONFIG.CONFIDENCE_WEIGHT_WEBSITE,
+      submit: FORM_DETECTION_CONFIG.CONFIDENCE_WEIGHT_SUBMIT,
     };
 
     let totalConfidence = 0;
@@ -502,14 +509,14 @@ export class FormDetector {
    */
   private matchPathPattern(path: string, pattern: string): boolean {
     // 1. 限制正则表达式长度
-    if (pattern.length > 200) {
+    if (pattern.length > FORM_DETECTION_CONFIG.REGEX_MAX_LENGTH) {
       logger.warn('Pattern 过长，跳过匹配', { pattern: pattern.substring(0, 50) + '...' });
       return false;
     }
 
     // 2. 限制通配符数量
     const wildcardCount = (pattern.match(/\*/g) || []).length;
-    if (wildcardCount > 5) {
+    if (wildcardCount > FORM_DETECTION_CONFIG.REGEX_MAX_WILDCARDS) {
       logger.warn('Pattern 包含过多通配符，跳过匹配', { pattern, wildcardCount });
       return false;
     }
@@ -557,7 +564,7 @@ export class FormDetector {
     // 创建监听器
     if (!this.formObserver) {
       this.formObserver = new FormObserver({
-        debounceDelay: 500,
+        debounceDelay: FORM_DETECTION_CONFIG.DEBOUNCE_DELAY,
         watchAttributes: true,
         watchSubtree: true,
       });

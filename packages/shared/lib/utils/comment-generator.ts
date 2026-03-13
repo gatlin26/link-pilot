@@ -76,6 +76,29 @@ export function buildCommentCandidates(
   pageState: FillPageState | null,
   currentBacklink: ManagedBacklink | null,
 ): string[] {
+  // 输入验证
+  if (!profile) {
+    throw new Error('profile 参数不能为空');
+  }
+
+  if (!profile.name || typeof profile.name !== 'string') {
+    throw new Error('profile.name 必须是非空字符串');
+  }
+
+  if (profile.name.trim().length === 0) {
+    throw new Error('profile.name 不能为空白字符串');
+  }
+
+  // 验证 pageState（如果提供）
+  if (pageState !== null && typeof pageState !== 'object') {
+    throw new Error('pageState 必须是对象或 null');
+  }
+
+  // 验证 currentBacklink（如果提供）
+  if (currentBacklink !== null && typeof currentBacklink !== 'object') {
+    throw new Error('currentBacklink 必须是对象或 null');
+  }
+
   const pageTitle = normalizeText(pageState?.seo.title);
   const pageH1 = normalizeText(pageState?.seo.h1);
   const pageDescription = normalizeText(pageState?.seo.description);

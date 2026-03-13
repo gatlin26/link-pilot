@@ -84,3 +84,18 @@ export function safeJsonParse<T>(json: string, defaultValue: T): T {
     return defaultValue;
   }
 }
+
+/**
+ * 检查元素是否可见
+ * 统一的可见性检测逻辑，避免重复实现
+ */
+export function isElementVisible(element: HTMLElement): boolean {
+  const style = window.getComputedStyle(element);
+  return (
+    element.offsetWidth > 0 &&
+    element.offsetHeight > 0 &&
+    style.visibility !== 'hidden' &&
+    style.display !== 'none' &&
+    style.opacity !== '0'
+  );
+}

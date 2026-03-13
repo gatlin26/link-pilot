@@ -7,6 +7,8 @@
  */
 
 import type { FieldPurpose, FieldMetadata } from '../types/field-analyzer';
+import { FORM_DETECTION_CONFIG } from '../config/constants';
+import { logger } from '@extension/shared';
 
 /**
  * link-pilot 支持的字段类型
@@ -40,7 +42,7 @@ export function mapFieldPurposeToLinkPilot(
     case 'title':
       // 这些字段类型在博客评论表单中不常见
       // 记录日志以便未来扩展
-      console.debug(`[FieldTypeMapper] 字段类型 ${purpose} 暂不支持，将尝试通过其他方式识别`, {
+      logger.debug(`字段类型 ${purpose} 暂不支持，将尝试通过其他方式识别`, {
         purpose,
         labels: [
           metadata.labelTag,
@@ -93,6 +95,13 @@ function inferFromMetadata(metadata: FieldMetadata): LinkPilotFieldType | null {
 }
 
 /**
+ * 辅助函数：检查文本是否包含任意关键词
+ */
+function containsAnyKeyword(text: string, keywords: string[]): boolean {
+  return keywords.some(keyword => text.includes(keyword));
+}
+
+/**
  * 判断是否为评论字段
  */
 function isCommentField(metadata: FieldMetadata): boolean {
@@ -122,7 +131,7 @@ function isCommentField(metadata: FieldMetadata): boolean {
     '评论', '留言', '内容', '消息',
   ];
 
-  return commentKeywords.some(keyword => allLabels.includes(keyword));
+  return containsAnyKeyword(allLabels, commentKeywords);
 }
 
 /**
@@ -160,7 +169,7 @@ function isWebsiteField(metadata: FieldMetadata): boolean {
     '网站', '网址', '主页',
   ];
 
-  return websiteKeywords.some(keyword => allLabels.includes(keyword));
+  return containsAnyKeyword(allLabels, websiteKeywords);
 }
 
 /**
@@ -184,7 +193,7 @@ function isSubmitButton(metadata: FieldMetadata): boolean {
       '提交', '发送', '发表', '保存',
     ];
 
-    return submitKeywords.some(keyword => allLabels.includes(keyword));
+    return containsAnyKeyword(allLabels, submitKeywords);
   }
 
   return false;
@@ -200,29 +209,29 @@ function isSubmitButton(metadata: FieldMetadata): boolean {
 export function calculateFieldQuality(metadata: FieldMetadata): number {
   let score = 0;
 
-  // 有明确标签 (+0.3)
+  // 有明确标签
   if (metadata.labelTag || metadata.labelAria) {
-    score += 0.3;
+    score += FORM_DETECTION_CONFIG.QUALITY_SCORE_LABEL_TAG;
   }
 
-  // 有位置标签 (+0.2)
+  // 有位置标签
   if (metadata.labelLeft || metadata.labelTop) {
-    score += 0.2;
+    score += FORM_DETECTION_CONFIG.QUALITY_SCORE_POSITIONAL_LABEL;
   }
 
-  // 有 placeholder (+0.1)
+  // 有 placeholder
   if (metadata.placeholder) {
-    score += 0.1;
+    score += FORM_DETECTION_CONFIG.QUALITY_SCORE_PLACEHOLDER;
   }
 
-  // 可见且可交互 (+0.2)
+  // 可见且可交互
   if (metadata.isVisible && metadata.isInteractive) {
-    score += 0.2;
+    score += FORM_DETECTION_CONFIG.QUALITY_SCORE_VISIBLE_INTERACTIVE;
   }
 
-  // 在最上层 (+0.2)
+  // 在最上层
   if (metadata.isTopElement) {
-    score += 0.2;
+    score += FORM_DETECTION_CONFIG.QUALITY_SCORE_TOP_ELEMENT;
   }
 
   return Math.min(score, 1.0);
