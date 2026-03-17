@@ -8,12 +8,15 @@ import {
   type BaseResponse,
   MessageType,
   type MatchResult,
+  type GenerateLLMCommentMessage,
+  type GenerateLLMCommentResponse,
 } from '@extension/shared';
 import {
   managedBacklinkStorage,
   websiteProfileStorage,
   submissionSessionStorage,
 } from '@extension/storage';
+import { generateLLMComment } from './llm-service';
 
 type MessageHandler = (
   message: any,
@@ -69,6 +72,12 @@ class MessageRouter {
 
     // 注册表单检测处理器
     this.register(MessageType.FORCE_DETECT_FORM, this.handleForceDetectForm.bind(this));
+
+    // 注册 LLM 评论生成处理器
+    this.register(MessageType.GENERATE_LLM_COMMENT, this.handleGenerateLLMComment.bind(this));
+
+    // 注册匹配结果更新处理器（用于广播）
+    this.register(MessageType.MATCH_RESULT_UPDATED, this.handleMatchResultUpdated.bind(this));
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const messageType = message?.type;
@@ -243,6 +252,24 @@ class MessageRouter {
       confidence,
       alternatives,
     };
+  }
+
+  /**
+   * 处理匹配结果更新（用于广播）
+   */
+  private handleMatchResultUpdated(
+    message: BaseMessage,
+    sender: chrome.runtime.MessageSender,
+    sendResponse: (response: BaseResponse) => void,
+  ): boolean {
+    // 这个消息只是用于广播，不需要特殊处理
+    // 直接返回成功响应
+    sendResponse({ success: true });
+
+    // 可以在这里添加日志或其他逻辑
+    console.log('[Message Router] 收到匹配结果更新广播');
+
+    return false; // 同步响应
   }
 
   /**
@@ -584,6 +611,33 @@ class MessageRouter {
         sendResponse({
           success: false,
           error: error instanceof Error ? error.message : '强制检测表单失败',
+        });
+      }
+    })();
+
+    return true; // 异步响应
+  }
+
+  // === LLM 评论生成处理器 ===
+
+  /**
+   * 处理 LLM 评论生成请求
+   */
+  private handleGenerateLLMComment(
+    message: BaseMessage,
+    sender: chrome.runtime.MessageSender,
+    sendResponse: (response: GenerateLLMCommentResponse) => void,
+  ): boolean {
+    (async () => {
+      try {
+        console.log('[Message Router] 处理 LLM 评论生成请求');
+        const response = await generateLLMComment(message as GenerateLLMCommentMessage);
+        sendResponse(response);
+      } catch (error) {
+        console.error('[Message Router] LLM 评论生成失败:', error);
+        sendResponse({
+          success: false,
+          error: error instanceof Error ? error.message : 'LLM 评论生成失败',
         });
       }
     })();

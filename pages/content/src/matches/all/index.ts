@@ -1,5 +1,5 @@
 import { sampleFunction } from '@src/sample-function';
-import { PageObserver, getCurrentMatchContext } from '@src/page-observer';
+import { pageObserver, getCurrentMatchContext } from '@src/page-observer';
 import { initMessageListener } from '@src/handlers/message-handler';
 import { collectorRegistry } from '@src/collectors/collector-registry';
 import { backlinkMatcher } from '@extension/shared/lib/services/backlink-matcher.js';
@@ -8,8 +8,7 @@ import { MessageType } from '@extension/shared/lib/types/messages.js';
 
 console.log('[Link Pilot] Content script loaded');
 
-// 初始化页面观察器和匹配状态
-const pageObserver = new PageObserver();
+// 使用单例 pageObserver，避免创建多个实例
 let lastMatchResults: MatchResult[] = [];
 
 /**
@@ -26,23 +25,27 @@ async function performSmartMatch(): Promise<void> {
       formDetected: context.formDetected,
     });
 
-    // 执行匹配
-    const matches = await backlinkMatcher.findMatches(context);
-    lastMatchResults = matches;
+    // ⚠️ 改为非阻塞模式：不等待匹配结果
+    void backlinkMatcher.findMatches(context).then(matches => {
+      lastMatchResults = matches;
+      console.log(`[Link Pilot] 智能匹配完成，找到 ${matches.length} 个匹配结果`);
 
-    console.log(`[Link Pilot] 智能匹配完成，找到 ${matches.length} 个匹配结果`);
+      // 广播匹配结果
+      void broadcastMatchResult(matches, context.currentUrl);
 
-    // 广播匹配结果
-    await broadcastMatchResult(matches, context.currentUrl);
+      // 如果有高置信度匹配，发送特殊消息
+      const highConfidenceMatches = matches.filter(m => m.score >= 0.8);
+      if (highConfidenceMatches.length > 0) {
+        console.log(`[Link Pilot] 发现 ${highConfidenceMatches.length} 个高置信度匹配`);
+        void notifyHighConfidenceMatch(highConfidenceMatches[0]);
+      }
+    }).catch(error => {
+      console.error('[Link Pilot] 智能匹配失败:', error);
+    });
 
-    // 如果有高置信度匹配，发送特殊消息
-    const highConfidenceMatches = matches.filter(m => m.score >= 0.8);
-    if (highConfidenceMatches.length > 0) {
-      console.log(`[Link Pilot] 发现 ${highConfidenceMatches.length} 个高置信度匹配`);
-      await notifyHighConfidenceMatch(highConfidenceMatches[0]);
-    }
+    console.log('[Link Pilot] 智能匹配已启动（非阻塞模式）');
   } catch (error) {
-    console.error('[Link Pilot] 智能匹配失败:', error);
+    console.error('[Link Pilot] 智能匹配启动失败:', error);
   }
 }
 
@@ -152,14 +155,20 @@ function initSmartMatching(): void {
   // 启动页面监听
   pageObserver.start();
 
-  // 页面加载完成后立即执行一次匹配
+  // ⚠️ 使用 requestIdleCallback 或更长的延迟，确保页面完全加载后再执行
+  // 页面加载完成后执行一次匹配
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      void performSmartMatch();
+      // DOMContentLoaded 后再延迟 1 秒
+      setTimeout(() => {
+        void performSmartMatch();
+      }, 1000);
     });
   } else {
-    // DOM 已加载完成，立即执行
-    void performSmartMatch();
+    // DOM 已加载完成，延迟 1 秒后执行
+    setTimeout(() => {
+      void performSmartMatch();
+    }, 1000);
   }
 
   console.log('[Link Pilot] 智能匹配功能已初始化');
@@ -218,26 +227,43 @@ function initSmartMatchMessageHandler(): void {
 
 // === 原有的采集功能代码 ===
 
-// 立即检测并启动常驻拦截（不等待任何条件）
+// ⚠️ 修复：只在 Ahrefs 页面启动拦截器，避免在所有页面运行无限循环
 const collector = collectorRegistry.detectCollector();
-if (collector) {
+if (collector && window.location.hostname.includes('ahrefs.com')) {
   console.log(`[Link Pilot] 检测到支持的平台: ${collector.platform}`);
   console.log('[Link Pilot] 立即启动常驻拦截模式');
 
   // 主世界桥接脚本已通过 manifest 自动注入
   // 直接启动拦截器
   startPersistentCollection();
+} else if (collector) {
+  console.log(`[Link Pilot] 检测到支持的平台: ${collector.platform}，但当前不在目标域名，跳过拦截器启动`);
 }
+
+// 拦截器停止标志
+let collectionStopped = false;
 
 /**
  * 启动常驻拦截
  * 持续监听 API 请求，自动保存数据
  */
 function startPersistentCollection() {
+  // 检查停止标志
+  if (collectionStopped) {
+    console.log('[Link Pilot] 拦截器已停止，不再继续');
+    return;
+  }
+
   console.log('[Link Pilot] 拦截器启动，开始监听 API 请求...');
 
   // 使用较大的数量，让拦截器持续运行
   collectorRegistry.startCollection(1000).then(backlinks => {
+    // 再次检查停止标志
+    if (collectionStopped) {
+      console.log('[Link Pilot] 拦截器已停止，不再继续');
+      return;
+    }
+
     if (backlinks.length === 0) {
       console.log('[Link Pilot] 本轮未拦截到数据，继续监听...');
     } else {
@@ -256,6 +282,7 @@ function startPersistentCollection() {
           // 检查是否是扩展上下文失效错误
           if (error.message?.includes('Extension context invalidated')) {
             console.warn('[Link Pilot] 扩展已重新加载，停止当前拦截器');
+            collectionStopped = true;
             collectorRegistry.stopCollection();
             return;
           }
@@ -273,6 +300,12 @@ function startPersistentCollection() {
   }).catch(error => {
     console.error('[Link Pilot] 拦截器错误:', error);
 
+    // 检查停止标志
+    if (collectionStopped) {
+      console.log('[Link Pilot] 拦截器已停止，不再重试');
+      return;
+    }
+
     // 出错后重试
     console.log('[Link Pilot] 3秒后重试...');
     setTimeout(() => {
@@ -281,7 +314,16 @@ function startPersistentCollection() {
   });
 }
 
+// 监听页面卸载事件，停止拦截器
+window.addEventListener('beforeunload', () => {
+  collectionStopped = true;
+  collectorRegistry.stopCollection();
+  console.log('[Link Pilot] 页面卸载，停止拦截器');
+});
+
 // === 初始化 ===
+
+console.log('[Link Pilot] 开始初始化 - 完整功能模式（延迟 1 秒执行匹配）');
 
 // 初始化原有功能
 initMessageListener();
@@ -292,4 +334,6 @@ initSmartMatching();
 // 初始化智能匹配消息处理器
 initSmartMatchMessageHandler();
 
-void sampleFunction();
+// void sampleFunction();
+
+console.log('[Link Pilot] 初始化完成 - 所有功能已启用（延迟 1 秒执行匹配）');
