@@ -1282,10 +1282,21 @@ async function notifyUrlChanged(oldUrl: string, newUrl: string): Promise<void> {
   }
 }
 
+// 防止重复初始化表单提交监听器
+let formSubmitListenerInitialized = false;
+
 /**
  * 初始化表单提交监听
  */
 function initFormSubmitListener(): void {
+  // 防止重复注册监听器
+  if (formSubmitListenerInitialized) {
+    console.log('[Content Script] 表单提交监听已初始化，跳过');
+    return;
+  }
+
+  formSubmitListenerInitialized = true;
+
   // 监听表单提交事件
   document.addEventListener('submit', async (event) => {
     if (!pendingSubmission) return;
@@ -1297,17 +1308,45 @@ function initFormSubmitListener(): void {
     if (now - timestamp > 5 * 60 * 1000) {
       console.warn('[Content Script] 待提交记录已超时，跳过');
       pendingSubmission = null;
+      clearPendingSubmission();
       return;
     }
 
+    // 阻止默认提交，等待记录完成
+    event.preventDefault();
+
     console.log('[Content Script] 检测到表单提交，记录提交:', { profileId, backlinkId });
 
-    // 记录提交
-    await recordSubmission(profileId, backlinkId, comment);
+    try {
+      // 记录提交
+      await recordSubmission(profileId, backlinkId, comment);
 
-    // 清除待提交记录
-    pendingSubmission = null;
-    clearPendingSubmission();
+      // 清除待提交记录
+      pendingSubmission = null;
+      clearPendingSubmission();
+
+      console.log('[Content Script] 提交记录完成，继续提交表单');
+
+      // 继续提交表单
+      const form = event.target as HTMLFormElement;
+      // 移除监听器以避免递归
+      formSubmitListenerInitialized = false;
+      form.submit();
+      // 重新标记为已初始化（因为页面可能不会跳转）
+      formSubmitListenerInitialized = true;
+    } catch (error) {
+      console.error('[Content Script] 记录提交失败，但仍继续提交表单:', error);
+
+      // 清除待提交记录
+      pendingSubmission = null;
+      clearPendingSubmission();
+
+      // 即使记录失败，也继续提交表单
+      const form = event.target as HTMLFormElement;
+      formSubmitListenerInitialized = false;
+      form.submit();
+      formSubmitListenerInitialized = true;
+    }
   }, true); // 使用捕获阶段，确保在表单提交前记录
 
   console.log('[Content Script] 表单提交监听已初始化');
