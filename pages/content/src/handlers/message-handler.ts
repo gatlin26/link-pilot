@@ -7,6 +7,7 @@ import {
   managedBacklinkStorage,
   submissionSessionStorage,
   websiteProfileStorage,
+  backlinkSubmissionStorage,
 } from '@extension/storage';
 import type {
   BaseMessage,
@@ -14,6 +15,7 @@ import type {
   GetFillPageStateResponse,
   MatchResult,
 } from '@extension/shared/lib/types/messages';
+import type { BacklinkSubmission } from '@extension/shared/lib/types/models';
 import { MessageType } from '@extension/shared/lib/types/messages';
 import type { FillPageState, ManagedBacklink, WebsiteProfile } from '@extension/shared';
 import { autoFillService, formDetector, type FormField, type FormDetectionResult } from '../form-handlers';
@@ -51,6 +53,51 @@ interface FloatingPanelState {
   state: 'expanded' | 'collapsed';
 }
 let floatingPanelState: FloatingPanelState = { isOpen: false, state: 'collapsed' };
+
+// === 新增：待提交记录 ===
+interface PendingSubmission {
+  profileId: string;
+  backlinkId: string;
+  comment: string;
+  timestamp: number;
+}
+
+// 从 sessionStorage 恢复待提交记录
+function loadPendingSubmission(): PendingSubmission | null {
+  try {
+    const stored = sessionStorage.getItem('link-pilot-pending-submission');
+    if (!stored) return null;
+    const data = JSON.parse(stored) as PendingSubmission;
+    // 检查是否超时（5分钟）
+    if (Date.now() - data.timestamp > 5 * 60 * 1000) {
+      sessionStorage.removeItem('link-pilot-pending-submission');
+      return null;
+    }
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+// 保存待提交记录到 sessionStorage
+function savePendingSubmission(data: PendingSubmission): void {
+  try {
+    sessionStorage.setItem('link-pilot-pending-submission', JSON.stringify(data));
+  } catch (error) {
+    console.error('[Content Script] 保存待提交记录失败:', error);
+  }
+}
+
+// 清除待提交记录
+function clearPendingSubmission(): void {
+  try {
+    sessionStorage.removeItem('link-pilot-pending-submission');
+  } catch (error) {
+    console.error('[Content Script] 清除待提交记录失败:', error);
+  }
+}
+
+let pendingSubmission: PendingSubmission | null = loadPendingSubmission();
 
 function cacheBacklinks(backlinks: CollectedBacklink[]): void {
   cachedBacklinks = backlinks.slice();
@@ -220,12 +267,46 @@ async function learnTemplateIfNeeded(detection: FormDetectionResult): Promise<vo
   }
 }
 
-function buildAutoComment(profile: WebsiteProfile, backlinkNote?: string): string {
+/**
+ * 构建自动评论
+ * 优先使用 LLM 生成，失败则回退到模板
+ */
+async function buildAutoComment(profile: WebsiteProfile, backlinkNote?: string): Promise<string> {
   const comments = profile.comments.map(comment => comment.trim()).filter(Boolean);
   if (comments.length > 0) {
     return comments[0];
   }
 
+  // 尝试使用 LLM 生成评论
+  try {
+    const settings = await extensionSettingsStorage.get();
+    if (settings.enable_llm_comment && settings.llm_api_key) {
+      const seo = getPageSeoSummary();
+
+      const response = await chrome.runtime.sendMessage({
+        type: MessageType.GENERATE_LLM_COMMENT,
+        payload: {
+          pageTitle: seo.title,
+          pageDescription: seo.description,
+          pageH1: seo.h1,
+          pageUrl: seo.url,
+          websiteName: profile.name,
+          websiteUrl: profile.url,
+          websiteDescription: profile.comments[0], // 使用第一条评论作为网站简介
+          backlinkNote,
+        },
+      });
+
+      if (response?.success && response.data) {
+        console.log('[Content Script] LLM 生成评论成功');
+        return response.data;
+      }
+    }
+  } catch (error) {
+    console.warn('[Content Script] LLM 生成评论失败，回退到模板:', error);
+  }
+
+  // 回退到模板生成
   const seo = getPageSeoSummary();
   const topic = seo.h1 || seo.title || window.location.hostname.replace(/^www\./, '') || '当前主题';
   const focus = seo.description || backlinkNote || seo.title || '';
@@ -263,7 +344,7 @@ async function autoStartFillIfNeeded(detection: FormDetectionResult): Promise<vo
       name: profile.name,
       email: profile.email,
       website: profile.url,
-      comment: buildAutoComment(profile, currentBacklink?.note),
+      comment: await buildAutoComment(profile, currentBacklink?.note),
     },
     false,
   );
@@ -408,14 +489,33 @@ async function handleDetectPageForms(sendResponse: (response: BaseResponse) => v
 
 async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (response: BaseResponse) => void): Promise<void> {
   try {
-    const payload = (message.payload ?? {}) as { selectedWebsiteId?: string; commentIndex?: number; comment?: string };
-    if (!payload.selectedWebsiteId) {
+    const payload = (message.payload ?? {}) as {
+      selectedWebsiteId?: string;
+      commentIndex?: number;
+      comment?: string;
+      profile?: WebsiteProfile;
+      backlink?: ManagedBacklink;
+    };
+
+    // 支持两种格式：旧格式（selectedWebsiteId）和新格式（profile）
+    let profile: WebsiteProfile | null = null;
+    let backlinkId: string | undefined;
+
+    if (payload.profile) {
+      // 新格式：直接使用 profile 对象
+      profile = payload.profile;
+      backlinkId = payload.backlink?.id;
+    } else if (payload.selectedWebsiteId) {
+      // 旧格式：通过 ID 查询
+      profile = await websiteProfileStorage.getProfileById(payload.selectedWebsiteId);
+    }
+
+    if (!profile) {
       throw new Error('未选择网站资料');
     }
 
-    const profile = await websiteProfileStorage.getProfileById(payload.selectedWebsiteId);
-    if (!profile || !profile.enabled) {
-      throw new Error('网站资料不存在或已禁用');
+    if (!profile.enabled) {
+      throw new Error('网站资料已禁用');
     }
 
     const detection = await detectForms(false);
@@ -436,13 +536,15 @@ async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (re
         : Math.floor(Math.random() * validComments.length)
       : 0;
 
+    const commentToUse = payloadComment || validComments[selectedIndex];
+
     const result = await autoFillService.fill(
       detection.fields,
       {
         name: profile.name,
         email: profile.email,
         website: profile.url,
-        comment: payloadComment || validComments[selectedIndex],
+        comment: commentToUse,
       },
       false,
     );
@@ -450,6 +552,18 @@ async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (re
     if (result.success) {
       autoFillStarted = true;
       await learnTemplateIfNeeded(detection);
+
+      // 设置待提交记录，等待表单提交事件
+      if (backlinkId) {
+        pendingSubmission = {
+          profileId: profile.id,
+          backlinkId,
+          comment: commentToUse,
+          timestamp: Date.now(),
+        };
+        savePendingSubmission(pendingSubmission);
+        console.log('[Content Script] 已设置待提交记录，等待表单提交');
+      }
     }
 
     sendResponse({
@@ -566,6 +680,68 @@ async function handleBacklinkAdded(
 // === 新增：一键填充处理器 ===
 
 /**
+ * 记录外链提交
+ */
+async function recordSubmission(
+  websiteProfileId: string,
+  backlinkId: string,
+  comment: string
+): Promise<void> {
+  try {
+    // 检查是否已提交过
+    const hasSubmitted = await backlinkSubmissionStorage.hasSubmitted(
+      websiteProfileId,
+      backlinkId
+    );
+
+    if (hasSubmitted) {
+      console.warn('[Content Script] 该外链已提交过，跳过记录:', { websiteProfileId, backlinkId });
+      return;
+    }
+
+    const backlink = await managedBacklinkStorage.getBacklinkById(backlinkId);
+    if (!backlink) {
+      console.warn('[Content Script] 外链不存在，无法记录提交:', backlinkId);
+      return;
+    }
+
+    const submission: BacklinkSubmission = {
+      id: `sub_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      website_profile_id: websiteProfileId,
+      managed_backlink_id: backlinkId,
+      target_url: window.location.href,
+      target_domain: backlink.domain,
+      submitted_at: new Date().toISOString(),
+      status: 'submitted',
+      comment: comment,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+
+    await backlinkSubmissionStorage.addSubmission(submission);
+    console.log('[Content Script] 提交记录已保存:', submission);
+
+    // 通知用户提交成功
+    void chrome.runtime.sendMessage({
+      type: 'SUBMISSION_RECORDED',
+      payload: { submission },
+    }).catch(error => {
+      console.error('[Content Script] 发送提交记录通知失败:', error);
+    });
+  } catch (error) {
+    console.error('[Content Script] 记录提交失败:', error);
+
+    // 通知用户记录失败
+    void chrome.runtime.sendMessage({
+      type: 'SUBMISSION_RECORD_FAILED',
+      payload: { error: error instanceof Error ? error.message : '未知错误' },
+    }).catch(err => {
+      console.error('[Content Script] 发送失败通知失败:', err);
+    });
+  }
+}
+
+/**
  * 处理一键填充请求
  */
 async function handleOneClickFill(
@@ -609,7 +785,7 @@ async function handleOneClickFill(
     }
 
     // 使用指定的评论或生成自动评论
-    const commentToUse = comment?.trim() || buildAutoComment(profile, backlinkNote);
+    const commentToUse = comment?.trim() || await buildAutoComment(profile, backlinkNote);
 
     // 执行填充
     const result = await autoFillService.fill(
@@ -626,6 +802,18 @@ async function handleOneClickFill(
     if (result.success) {
       autoFillStarted = true;
       await learnTemplateIfNeeded(detection);
+
+      // 设置待提交记录，等待表单提交事件
+      if (backlinkId) {
+        pendingSubmission = {
+          profileId,
+          backlinkId,
+          comment: commentToUse,
+          timestamp: Date.now(),
+        };
+        savePendingSubmission(pendingSubmission);
+        console.log('[Content Script] 已设置待提交记录，等待表单提交');
+      }
 
       // 发送填充已开始通知
       void chrome.runtime.sendMessage({
@@ -1094,10 +1282,42 @@ async function notifyUrlChanged(oldUrl: string, newUrl: string): Promise<void> {
   }
 }
 
+/**
+ * 初始化表单提交监听
+ */
+function initFormSubmitListener(): void {
+  // 监听表单提交事件
+  document.addEventListener('submit', async (event) => {
+    if (!pendingSubmission) return;
+
+    const { profileId, backlinkId, comment, timestamp } = pendingSubmission;
+
+    // 检查是否超时（5分钟内有效）
+    const now = Date.now();
+    if (now - timestamp > 5 * 60 * 1000) {
+      console.warn('[Content Script] 待提交记录已超时，跳过');
+      pendingSubmission = null;
+      return;
+    }
+
+    console.log('[Content Script] 检测到表单提交，记录提交:', { profileId, backlinkId });
+
+    // 记录提交
+    await recordSubmission(profileId, backlinkId, comment);
+
+    // 清除待提交记录
+    pendingSubmission = null;
+    clearPendingSubmission();
+  }, true); // 使用捕获阶段，确保在表单提交前记录
+
+  console.log('[Content Script] 表单提交监听已初始化');
+}
+
 export function initMessageListener(): void {
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => handleMessage(message, sender, sendResponse));
   void warmupDetectionIfNeeded();
   void ensurePassiveInterceptorBootstrap();
-  initUrlChangeListener(); // 新增：初始化 URL 变化监听
+  initUrlChangeListener(); // 初始化 URL 变化监听
+  initFormSubmitListener(); // 初始化表单提交监听
   console.log('[Content Script] 消息监听器已初始化');
 }
