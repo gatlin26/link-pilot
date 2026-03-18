@@ -62,14 +62,22 @@ interface PendingSubmission {
   timestamp: number;
 }
 
+// 待提交记录超时时间（5分钟）
+const PENDING_SUBMISSION_TIMEOUT = 5 * 60 * 1000;
+
+// 检查待提交记录是否超时
+function isPendingSubmissionExpired(timestamp: number): boolean {
+  return Date.now() - timestamp > PENDING_SUBMISSION_TIMEOUT;
+}
+
 // 从 sessionStorage 恢复待提交记录
 function loadPendingSubmission(): PendingSubmission | null {
   try {
     const stored = sessionStorage.getItem('link-pilot-pending-submission');
     if (!stored) return null;
     const data = JSON.parse(stored) as PendingSubmission;
-    // 检查是否超时（5分钟）
-    if (Date.now() - data.timestamp > 5 * 60 * 1000) {
+    // 检查是否超时
+    if (isPendingSubmissionExpired(data.timestamp)) {
       sessionStorage.removeItem('link-pilot-pending-submission');
       return null;
     }
@@ -555,14 +563,20 @@ async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (re
 
       // 设置待提交记录，等待表单提交事件
       if (backlinkId) {
-        pendingSubmission = {
-          profileId: profile.id,
-          backlinkId,
-          comment: commentToUse,
-          timestamp: Date.now(),
-        };
-        savePendingSubmission(pendingSubmission);
-        console.log('[Content Script] 已设置待提交记录，等待表单提交');
+        // 检查是否已提交过（避免重复提交）
+        const hasSubmitted = await backlinkSubmissionStorage.hasSubmitted(profile.id, backlinkId);
+        if (hasSubmitted) {
+          console.warn('[Content Script] 该外链已提交过，跳过设置待提交记录:', { profileId: profile.id, backlinkId });
+        } else {
+          pendingSubmission = {
+            profileId: profile.id,
+            backlinkId,
+            comment: commentToUse,
+            timestamp: Date.now(),
+          };
+          savePendingSubmission(pendingSubmission);
+          console.log('[Content Script] 已设置待提交记录，等待表单提交');
+        }
       }
     }
 
@@ -805,14 +819,20 @@ async function handleOneClickFill(
 
       // 设置待提交记录，等待表单提交事件
       if (backlinkId) {
-        pendingSubmission = {
-          profileId,
-          backlinkId,
-          comment: commentToUse,
-          timestamp: Date.now(),
-        };
-        savePendingSubmission(pendingSubmission);
-        console.log('[Content Script] 已设置待提交记录，等待表单提交');
+        // 检查是否已提交过（避免重复提交）
+        const hasSubmitted = await backlinkSubmissionStorage.hasSubmitted(profileId, backlinkId);
+        if (hasSubmitted) {
+          console.warn('[Content Script] 该外链已提交过，跳过设置待提交记录:', { profileId, backlinkId });
+        } else {
+          pendingSubmission = {
+            profileId,
+            backlinkId,
+            comment: commentToUse,
+            timestamp: Date.now(),
+          };
+          savePendingSubmission(pendingSubmission);
+          console.log('[Content Script] 已设置待提交记录，等待表单提交');
+        }
       }
 
       // 发送填充已开始通知
@@ -1303,9 +1323,8 @@ function initFormSubmitListener(): void {
 
     const { profileId, backlinkId, comment, timestamp } = pendingSubmission;
 
-    // 检查是否超时（5分钟内有效）
-    const now = Date.now();
-    if (now - timestamp > 5 * 60 * 1000) {
+    // 检查是否超时
+    if (isPendingSubmissionExpired(timestamp)) {
       console.warn('[Content Script] 待提交记录已超时，跳过');
       pendingSubmission = null;
       clearPendingSubmission();
