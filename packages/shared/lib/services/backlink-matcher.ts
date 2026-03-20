@@ -379,9 +379,9 @@ export class BacklinkMatcher {
   private cleanupExpiredCache(): void {
     const now = Date.now();
     // 遍历所有缓存项，删除过期的
-    for (const key of this.cache.keys()) {
-      const item = this.cache.get(key);
-      if (item && now - item.timestamp > this.cacheTtlMs) {
+    // 注意：不能在 keys() 迭代中调用 get()，否则会触发 LRU 访问更新并可能导致迭代异常
+    for (const [key, item] of Array.from(this.cache.entries())) {
+      if (now - item.timestamp > this.cacheTtlMs) {
         this.cache.delete(key);
       }
     }
