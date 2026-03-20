@@ -610,20 +610,55 @@ class CollectionManager {
    */
   private waitForTabLoad(tabId: number): Promise<void> {
     return new Promise((resolve, reject) => {
-      const timeout = setTimeout(() => {
-        chrome.tabs.onUpdated.removeListener(listener);
+      let isResolved = false;
+
+      const cleanup = () => {
+        if (!isResolved) {
+          isResolved = true;
+          chrome.tabs.onUpdated.removeListener(listener);
+          clearTimeout(timeout);
+        }
+      };
+
+      const timeout = setTimeout(async () => {
+        cleanup();
+
+        // 停止页面加载并关闭标签页
+        try {
+          await chrome.tabs.update(tabId, { url: 'about:blank' });
+          await new Promise(resolve => setTimeout(resolve, 100));
+          await chrome.tabs.remove(tabId);
+          await this.logWarn('页面加载超时，已停止并关闭标签页', { tabId });
+        } catch (e) {
+          // 标签页可能已关闭
+          await this.logWarn('清理超时标签页失败（可能已关闭）', {
+            tabId,
+            error: e instanceof Error ? e.message : String(e)
+          });
+        }
+
         reject(new Error('页面加载超时'));
       }, 30000);
 
       const listener = (id: number, changeInfo: chrome.tabs.TabChangeInfo) => {
         if (id === tabId && changeInfo.status === 'complete') {
-          clearTimeout(timeout);
-          chrome.tabs.onUpdated.removeListener(listener);
+          cleanup();
           resolve();
         }
       };
 
       chrome.tabs.onUpdated.addListener(listener);
+
+      // 检查标签页是否已经加载完成
+      chrome.tabs.get(tabId).then(tab => {
+        if (tab.status === 'complete') {
+          cleanup();
+          resolve();
+        }
+      }).catch(() => {
+        cleanup();
+        reject(new Error('标签页不存在'));
+      });
     });
   }
 
@@ -634,6 +669,10 @@ class CollectionManager {
       files: ['content/all.iife.js'],
     });
     await this.logInfo('content script 注入完成', { tabId });
+
+    // 等待 content script 初始化完成（避免注入后立即通信导致连接失败）
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await this.logInfo('content script 已等待初始化', { tabId });
   }
 
   private async ensureMainWorldBridge(tabId: number): Promise<void> {
@@ -658,11 +697,18 @@ class CollectionManager {
   }
 
   private async sendMessageToTab<T = unknown>(tabId: number, message: unknown): Promise<T> {
-    const maxAttempts = 5;
+    const maxAttempts = 4; // 增加重试次数
     let lastError: unknown = null;
+    let scriptInjected = false;
 
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
+        // 先检查标签页是否存在
+        const tab = await chrome.tabs.get(tabId);
+        if (!tab) {
+          throw new Error('标签页不存在');
+        }
+
         await this.logInfo('发送消息到标签页', {
           tabId,
           attempt,
@@ -687,13 +733,28 @@ class CollectionManager {
           throw error;
         }
 
-        await this.logWarn('未找到消息接收端，准备重试注入', {
-          tabId,
-          attempt,
-          type: this.extractMessageType(message),
-        });
-        await this.ensureContentScript(tabId);
-        await new Promise(resolve => setTimeout(resolve, 200 * attempt));
+        // 只注入一次
+        if (!scriptInjected) {
+          await this.logWarn('未找到消息接收端，尝试注入脚本', {
+            tabId,
+            attempt,
+            type: this.extractMessageType(message),
+          });
+          try {
+            await this.ensureContentScript(tabId);
+            scriptInjected = true;
+          } catch (injectError) {
+            await this.logError('注入脚本失败', {
+              tabId,
+              error: injectError instanceof Error ? injectError.message : String(injectError),
+            });
+            throw injectError;
+          }
+        }
+
+        // 指数退避（增加等待时间让 content script 初始化）
+        const delay = 1000 * Math.pow(2, attempt - 1);
+        await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
 
