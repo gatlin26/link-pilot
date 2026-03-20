@@ -99,10 +99,10 @@ export function buildCommentCandidates(
     throw new Error('currentBacklink 必须是对象或 null');
   }
 
-  const pageTitle = normalizeText(pageState?.seo.title);
-  const pageH1 = normalizeText(pageState?.seo.h1);
-  const pageDescription = normalizeText(pageState?.seo.description);
-  const pageUrl = normalizeText(pageState?.seo.url);
+  const pageTitle = normalizeText(pageState?.seo?.title);
+  const pageH1 = normalizeText(pageState?.seo?.h1);
+  const pageDescription = normalizeText(pageState?.seo?.description);
+  const pageUrl = normalizeText(pageState?.seo?.url);
   const pageDomain = parseDomain(pageUrl);
   const pageTopic = truncateText(pageH1 || pageTitle || pageDomain || '当前主题', 72);
   const pageFocus = truncateText(pageDescription || pageH1 || pageTitle || pageTopic, 72);
