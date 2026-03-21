@@ -41,6 +41,9 @@ export enum MessageType {
   // === 新增：表单检测相关 ===
   FORM_DETECTED = 'FORM_DETECTED',
   FORCE_DETECT_FORM = 'FORCE_DETECT_FORM',
+
+  // === 新增：LLM 评论生成相关 ===
+  GENERATE_LLM_COMMENT = 'GENERATE_LLM_COMMENT',
 }
 
 /**
@@ -229,6 +232,42 @@ export interface ForceDetectFormMessage extends BaseMessage {
   };
 }
 
+// === 新增：LLM 评论生成相关消息 ===
+
+/**
+ * 生成 LLM 评论请求
+ */
+export interface GenerateLLMCommentMessage extends BaseMessage {
+  type: MessageType.GENERATE_LLM_COMMENT;
+  payload: {
+    /** 页面标题 */
+    pageTitle: string;
+    /** 页面描述 */
+    pageDescription: string;
+    /** 页面 H1 */
+    pageH1: string;
+    /** 页面 URL */
+    pageUrl: string;
+    /** 网站名称 */
+    websiteName: string;
+    /** 网站 URL */
+    websiteUrl: string;
+    /** 网站简介 */
+    websiteDescription?: string;
+    /** 外链备注 */
+    backlinkNote?: string;
+  };
+}
+
+/**
+ * 生成 LLM 评论响应
+ */
+export interface GenerateLLMCommentResponse extends BaseResponse<string> {
+  success: boolean;
+  data?: string; // 生成的评论内容
+  error?: string;
+}
+
 /**
  * 消息联合类型 - 用于类型守卫
  */
@@ -244,6 +283,7 @@ export type LinkPilotMessage =
   | OneClickFillMessage
   | FillInitiatedMessage
   | FormDetectedMessage
+  | GenerateLLMCommentMessage
   | ForceDetectFormMessage;
 
 /**

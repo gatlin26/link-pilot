@@ -25,7 +25,7 @@ async function performSmartMatch(): Promise<void> {
       formDetected: context.formDetected,
     });
 
-    // ⚠️ 改为非阻塞模式：不等待匹配结果
+    // 非阻塞模式：不等待匹配结果
     void backlinkMatcher.findMatches(context).then(matches => {
       lastMatchResults = matches;
       console.log(`[Link Pilot] 智能匹配完成，找到 ${matches.length} 个匹配结果`);
@@ -155,17 +155,14 @@ function initSmartMatching(): void {
   // 启动页面监听
   pageObserver.start();
 
-  // ⚠️ 使用 requestIdleCallback 或更长的延迟，确保页面完全加载后再执行
   // 页面加载完成后执行一次匹配
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      // DOMContentLoaded 后再延迟 1 秒
       setTimeout(() => {
         void performSmartMatch();
       }, 1000);
     });
   } else {
-    // DOM 已加载完成，延迟 1 秒后执行
     setTimeout(() => {
       void performSmartMatch();
     }, 1000);
@@ -325,15 +322,17 @@ window.addEventListener('beforeunload', () => {
 
 console.log('[Link Pilot] 开始初始化 - 完整功能模式（延迟 1 秒执行匹配）');
 
-// 初始化原有功能
-initMessageListener();
+try {
+  // 初始化原有功能
+  initMessageListener();
 
-// 初始化智能匹配
-initSmartMatching();
+  // 初始化智能匹配
+  initSmartMatching();
 
-// 初始化智能匹配消息处理器
-initSmartMatchMessageHandler();
+  // 初始化智能匹配消息处理器
+  initSmartMatchMessageHandler();
 
-// void sampleFunction();
-
-console.log('[Link Pilot] 初始化完成 - 所有功能已启用（延迟 1 秒执行匹配）');
+  console.log('[Link Pilot] 初始化完成 - 所有功能已启用（延迟 1 秒执行匹配）');
+} catch (error) {
+  console.error('[Link Pilot] 初始化失败:', error);
+}

@@ -432,6 +432,21 @@ export interface ExtensionSettings {
 
   /** 填充后自动保存模板 */
   auto_save_template_after_fill?: boolean;
+
+  /** 启用 LLM 生成评论 */
+  enable_llm_comment?: boolean;
+
+  /** LLM API 提供商 */
+  llm_provider?: 'openai' | 'anthropic' | 'custom';
+
+  /** LLM API Key */
+  llm_api_key?: string;
+
+  /** LLM 模型名称 */
+  llm_model?: string;
+
+  /** 自定义 LLM API 端点 */
+  llm_custom_endpoint?: string;
 }
 
 /**
@@ -485,6 +500,32 @@ export interface ManagedBacklinkGroup {
   name: string;
   backlink_count: number;
   created_at: string;
+}
+
+/**
+ * 外链提交记录
+ */
+export interface BacklinkSubmission {
+  id: string;
+  website_profile_id: string;
+  managed_backlink_id: string;
+  target_url: string;
+  target_domain: string;
+  submitted_at: string;
+  approved_at?: string;
+  status: 'submitted' | 'approved' | 'rejected';
+  comment?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * 网站外链统计
+ */
+export interface WebsiteBacklinkStats {
+  total_backlinks: number;
+  submitted_count: number;
+  approved_count: number;
 }
 
 /**

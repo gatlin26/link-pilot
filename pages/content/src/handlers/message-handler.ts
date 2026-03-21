@@ -1372,10 +1372,14 @@ function initFormSubmitListener(): void {
 }
 
 export function initMessageListener(): void {
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => handleMessage(message, sender, sendResponse));
-  void warmupDetectionIfNeeded();
-  void ensurePassiveInterceptorBootstrap();
-  initUrlChangeListener(); // 初始化 URL 变化监听
-  initFormSubmitListener(); // 初始化表单提交监听
-  console.log('[Content Script] 消息监听器已初始化');
+  try {
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => handleMessage(message, sender, sendResponse));
+    void warmupDetectionIfNeeded();
+    void ensurePassiveInterceptorBootstrap();
+    initUrlChangeListener(); // 初始化 URL 变化监听
+    initFormSubmitListener(); // 初始化表单提交监听
+    console.log('[Content Script] 消息监听器已初始化');
+  } catch (error) {
+    console.error('[Content Script] 消息监听器初始化失败:', error);
+  }
 }

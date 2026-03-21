@@ -16,6 +16,7 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
     resolve: {
       alias: {
         '@src': srcDir,
+        '@extension/storage': resolve(rootDir, '..', '..', 'packages', 'storage', 'lib', 'index.ts'),
       },
     },
     publicDir: resolve(rootDir, 'public'),

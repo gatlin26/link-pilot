@@ -16,6 +16,11 @@ const defaultSettings: ExtensionSettings = {
   enable_assisted_learning: true,
   show_field_mapping_preview: false,
   auto_save_template_after_fill: true,
+  enable_llm_comment: false,
+  llm_provider: 'anthropic',
+  llm_api_key: '',
+  llm_model: 'claude-sonnet-4-6',
+  llm_custom_endpoint: '',
 };
 
 const storage = createStorage<ExtensionSettings>(

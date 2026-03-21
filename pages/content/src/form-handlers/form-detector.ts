@@ -183,10 +183,12 @@ export class FormDetector {
       }
     }
 
-    // 判断是否为博客评论表单
+    // 判断是否为评论表单
+    // 放宽条件：只要有评论字段就认为是评论表单
+    // 某些平台（如社交媒体）不需要姓名/邮箱字段（用户已登录）
     const hasComment = fields.some(f => f.type === 'comment');
     const hasNameOrEmail = fields.some(f => f.type === 'name' || f.type === 'email');
-    const detected = hasComment && hasNameOrEmail;
+    const detected = hasComment; // 只要有评论字段即可
 
     // 计算置信度
     const confidence = this.calculateConfidence(fields);
@@ -206,9 +208,9 @@ export class FormDetector {
   private analyzeAllFormFields(): AnalyzerDetectedField[] {
     const results: AnalyzerDetectedField[] = [];
 
-    // 查找所有表单元素
+    // 查找所有表单元素（包括 contenteditable）
     const formElements = document.querySelectorAll<FormFieldElement>(
-      'input:not([type="hidden"]):not([type="password"]):not([type="file"]), textarea, select',
+      'input:not([type="hidden"]):not([type="password"]):not([type="file"]), textarea, select, [contenteditable="true"]',
     );
 
     for (const element of Array.from(formElements)) {
@@ -293,7 +295,7 @@ export class FormDetector {
     ]);
     if (websiteField) fields.push(websiteField);
 
-    // 检测 comment 字段（扩展中英文关键词）
+    // 检测 comment 字段（扩展中英文关键词 + contenteditable 支持）
     const commentField = this.detectField('comment', [
       'textarea[name*="comment"]',
       'textarea[id*="comment"]',
@@ -311,6 +313,13 @@ export class FormDetector {
       'textarea[placeholder*="说点什么"]',
       'textarea[placeholder*="your comment" i]',
       'textarea[placeholder*="your message" i]',
+      'textarea[placeholder*="write a comment" i]',
+      // contenteditable 支持（通用）
+      'div[contenteditable="true"][role="textbox"]',
+      'div[contenteditable="true"][aria-label*="comment" i]',
+      'div[contenteditable="true"][aria-label*="评论"]',
+      'div[contenteditable="true"][placeholder*="comment" i]',
+      'div[contenteditable="true"][placeholder*="评论"]',
     ]);
     if (commentField) fields.push(commentField);
 

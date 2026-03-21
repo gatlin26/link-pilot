@@ -5,10 +5,21 @@ export const initAppWithShadow = ({ id, app, inlineCss }: { id: string; inlineCs
   const root = document.createElement('div');
   root.id = id;
 
+  // [修复点击阻挡] 设置宿主元素不拦截点击，让内部内容自己处理
+  root.style.position = 'fixed';
+  root.style.top = '0';
+  root.style.left = '0';
+  root.style.width = '100%';
+  root.style.height = '100%';
+  root.style.pointerEvents = 'none';
+  root.style.zIndex = '2147483647';
+
   document.body.append(root);
 
   const rootIntoShadow = document.createElement('div');
   rootIntoShadow.id = `shadow-root-${id}`;
+  // [修复点击阻挡] 内部容器恢复点击事件
+  rootIntoShadow.style.pointerEvents = 'auto';
 
   const shadowRoot = root.attachShadow({ mode: 'open' });
 

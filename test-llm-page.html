@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="本文详细介绍了 Chrome Extension MV3 的开发实践，包括 Service Worker、Content Script、消息传递等核心技术">
+  <title>Chrome Extension MV3 开发完整指南</title>
+  <style>
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
+    }
+    .article-meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .article-content {
+      margin-bottom: 40px;
+    }
+    .comment-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+    .comment-form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    button[type="submit"] {
+      background: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: #0056b3;
+    }
+    .test-info {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .test-info h3 {
+      margin-top: 0;
+      color: #856404;
+    }
+    .test-results {
+      background: #d4edda;
+      border: 1px solid #28a745;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+      display: none;
+    }
+    .test-results.show {
+      display: block;
+    }
+    .test-results h3 {
+      margin-top: 0;
+      color: #155724;
+    }
+    .test-results pre {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-info">
+    <h3>🧪 LLM 功能测试页面</h3>
+    <p>这是一个用于测试 Link Pilot 扩展 LLM 功能的测试页面。</p>
+    <p><strong>测试步骤：</strong></p>
+    <ol>
+      <li>确保已配置 LLM（运行 quick-config-llm.js）</li>
+      <li>打开 Side Panel</li>
+      <li>选择一个网站资料</li>
+      <li>点击"一键填充"</li>
+      <li>检查表单是否自动填充（包括 LLM 生成的评论）</li>
+      <li>点击"提交评论"按钮</li>
+      <li>检查提交记录是否正确保存</li>
+    </ol>
+  </div>
+
+  <article>
+    <h1>Chrome Extension MV3 开发完整指南</h1>
+
+    <div class="article-meta">
+      发布时间: 2024-03-17 | 作者: 技术博客 | 分类: Web 开发
+    </div>
+
+    <div class="article-content">
+      <h2>什么是 Chrome Extension MV3？</h2>
+      <p>
+        Chrome Extension Manifest V3 (MV3) 是 Google Chrome 浏览器扩展的最新版本规范。
+        相比 MV2，MV3 引入了许多重要的变化，包括使用 Service Worker 替代 Background Pages、
+        更严格的内容安全策略、以及改进的权限模型。
+      </p>
+
+      <h2>核心概念</h2>
+
+      <h3>1. Service Worker</h3>
+      <p>
+        Service Worker 是 MV3 中最重要的变化之一。它替代了传统的 Background Pages，
+        提供了更好的性能和资源管理。Service Worker 在需要时启动，空闲时自动休眠，
+        大大减少了扩展的资源占用。
+      </p>
+
+      <h3>2. Content Script</h3>
+      <p>
+        Content Script 运行在网页的上下文中，可以访问和修改页面的 DOM。
+        它是扩展与网页交互的主要方式，可以读取页面内容、修改页面元素、
+        监听页面事件等。
+      </p>
+
+      <h3>3. 消息传递</h3>
+      <p>
+        MV3 提供了强大的消息传递机制，允许扩展的不同部分之间进行通信。
+        包括 chrome.runtime.sendMessage、chrome.tabs.sendMessage 等 API，
+        支持单次消息和长连接两种模式。
+      </p>
+
+      <h2>最佳实践</h2>
+      <ul>
+        <li>合理使用 Service Worker 的生命周期</li>
+        <li>避免在 Content Script 中执行耗时操作</li>
+        <li>使用 chrome.storage API 持久化数据</li>
+        <li>遵循最小权限原则</li>
+        <li>做好错误处理和降级方案</li>
+      </ul>
+
+      <h2>总结</h2>
+      <p>
+        Chrome Extension MV3 虽然学习曲线较陡，但它带来的性能提升和安全性改进是值得的。
+        掌握 Service Worker、Content Script 和消息传递这三个核心概念，
+        就能开发出高效、稳定的 Chrome 扩展。
+      </p>
+    </div>
+  </article>
+
+  <div class="comment-section">
+    <h2>发表评论</h2>
+
+    <form class="comment-form" id="commentForm">
+      <div class="form-group">
+        <label for="name">姓名 *</label>
+        <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+      </div>
+
+      <div class="form-group">
+        <label for="email">邮箱 *</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="website">网站</label>
+        <input type="url" id="website" name="website" placeholder="https://your-website.com">
+      </div>
+
+      <div class="form-group">
+        <label for="comment">评论内容 *</label>
+        <textarea id="comment" name="comment" required placeholder="请输入您的评论..."></textarea>
+      </div>
+
+      <button type="submit">提交评论</button>
+    </form>
+
+    <div class="test-results" id="testResults">
+      <h3>✅ 测试结果</h3>
+      <div id="resultsContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // 监听表单提交
+    document.getElementById('commentForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        website: document.getElementById('website').value,
+        comment: document.getElementById('comment').value,
+        submittedAt: new Date().toISOString(),
+        pageUrl: window.location.href,
+        pageTitle: document.title,
+      };
+
+      console.log('📝 表单提交:', formData);
+
+      // 显示测试结果
+      const resultsDiv = document.getElementById('testResults');
+      const resultsContent = document.getElementById('resultsContent');
+
+      resultsContent.innerHTML = `
+        <p><strong>提交时间:</strong> ${new Date().toLocaleString('zh-CN')}</p>
+        <p><strong>姓名:</strong> ${formData.name}</p>
+        <p><strong>邮箱:</strong> ${formData.email}</p>
+        <p><strong>网站:</strong> ${formData.website || '未填写'}</p>
+        <p><strong>评论内容:</strong></p>
+        <pre>${formData.comment}</pre>
+        <p><strong>评论字数:</strong> ${formData.comment.length} 字</p>
+        <hr>
+        <p><strong>🔍 检查项：</strong></p>
+        <ul>
+          <li>${formData.comment.length >= 80 && formData.comment.length <= 150 ? '✅' : '⚠️'} 评论长度 (80-150字): ${formData.comment.length}字</li>
+          <li>${/[\u4e00-\u9fa5]/.test(formData.comment) ? '✅' : '❌'} 包含中文</li>
+          <li>${formData.website ? '✅' : '⚠️'} 网站字段已填充</li>
+          <li>${formData.email.includes('@') ? '✅' : '❌'} 邮箱格式正确</li>
+        </ul>
+        <hr>
+        <p><strong>💡 下一步：</strong></p>
+        <ol>
+          <li>打开 Chrome DevTools Console</li>
+          <li>检查是否有 "[Content Script] 检测到表单提交" 日志</li>
+          <li>检查是否有 "[Content Script] 记录提交成功" 日志</li>
+          <li>打开 Side Panel 的"我的网站"标签页</li>
+          <li>检查统计数字是否更新（已提交数量 +1）</li>
+        </ol>
+      `;
+
+      resultsDiv.classList.add('show');
+
+      // 模拟提交成功
+      setTimeout(() => {
+        alert('✅ 评论提交成功！\n\n请检查：\n1. Console 日志\n2. Side Panel 统计数字\n3. chrome.storage.local 中的提交记录');
+      }, 500);
+    });
+
+    // 页面加载时输出测试信息
+    console.log('🧪 LLM 功能测试页面已加载');
+    console.log('📄 页面信息:');
+    console.log('  标题:', document.title);
+    console.log('  描述:', document.querySelector('meta[name="description"]')?.content);
+    console.log('  H1:', document.querySelector('h1')?.textContent);
+    console.log('  URL:', window.location.href);
+    console.log('\n💡 测试步骤:');
+    console.log('  1. 运行配置脚本: 在扩展页面 Console 中执行 quick-config-llm.js');
+    console.log('  2. 打开 Side Panel');
+    console.log('  3. 选择网站资料');
+    console.log('  4. 点击"一键填充"');
+    console.log('  5. 检查表单填充（特别是评论内容）');
+    console.log('  6. 点击"提交评论"');
+    console.log('  7. 检查提交记录');
+  </script>
+</body>
+</html>

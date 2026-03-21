@@ -13,8 +13,9 @@ import { useSubmissionSession } from '../../popup/src/hooks/useSubmissionSession
 import { ManualCollector } from '../../popup/src/components/ManualCollector';
 import { QuickFillCard } from './components/QuickFillCard';
 import { buildCommentCandidates } from '@extension/shared';
+import { WebsiteStatsCard } from './components/WebsiteStatsCard';
 
-type SidePanelTab = 'fill' | 'backlinks' | 'collection';
+type SidePanelTab = 'fill' | 'websites' | 'backlinks' | 'collection';
 
 function resolveCollectionTargetUrl(rawUrl: string): string {
   const currentUrl = new URL(rawUrl);
@@ -100,7 +101,28 @@ export const SidePanelView = () => {
     void refreshPageState(false);
 
     // 设置标签页监听
-    setupTabListeners();
+    const cleanupTabListeners = setupTabListeners();
+
+    // 监听 storage 变化，实时更新网站和外链列表
+    const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }, areaName: string) => {
+      if (areaName === 'local') {
+        if (changes['website-profile-storage-key']) {
+          void loadProfiles();
+        }
+        if (changes['managed-backlinks-key'] || changes['managed-backlink-groups-key']) {
+          void loadBacklinks();
+        }
+      }
+    };
+
+    chrome.storage.onChanged.addListener(handleStorageChange);
+
+    return () => {
+      // 清理标签页监听器
+      cleanupTabListeners();
+      // 清理 storage 监听器
+      chrome.storage.onChanged.removeListener(handleStorageChange);
+    };
   }, []);
 
   // 监听标签页变化，触发智能匹配
@@ -111,18 +133,23 @@ export const SidePanelView = () => {
   }, [backlinks, currentUrl]);
 
   const setupTabListeners = () => {
-    // 监听标签页切换
-    chrome.tabs.onActivated.addListener((activeInfo) => {
+    // 保存监听器引用，以便清理
+    const handleActivated = (activeInfo: chrome.tabs.TabActiveInfo) => {
       setCurrentTabId(activeInfo.tabId);
       void handleTabChange(activeInfo.tabId);
-    });
+    };
 
-    // 监听 URL 变化
-    chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    const handleUpdated = (tabId: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => {
       if (changeInfo.url && tabId === currentTabId) {
         setCurrentUrl(changeInfo.url);
       }
-    });
+    };
+
+    // 监听标签页切换
+    chrome.tabs.onActivated.addListener(handleActivated);
+
+    // 监听 URL 变化
+    chrome.tabs.onUpdated.addListener(handleUpdated);
 
     // 初始化当前标签页
     void chrome.tabs.query({ active: true, currentWindow: true }).then(([tab]) => {
@@ -131,6 +158,12 @@ export const SidePanelView = () => {
         setCurrentUrl(tab.url || '');
       }
     });
+
+    // 返回清理函数
+    return () => {
+      chrome.tabs.onActivated.removeListener(handleActivated);
+      chrome.tabs.onUpdated.removeListener(handleUpdated);
+    };
   };
 
   const handleTabChange = async (tabId: number) => {
@@ -444,6 +477,7 @@ export const SidePanelView = () => {
       <div className={cn('flex-shrink-0 flex border-b', isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700')}>
         {[
           { id: 'fill' as const, label: '填表' },
+          { id: 'websites' as const, label: '我的网站' },
           { id: 'backlinks' as const, label: '外链' },
           { id: 'collection' as const, label: '采集' },
         ].map(tab => (
@@ -624,6 +658,47 @@ export const SidePanelView = () => {
               <div className="text-xs text-gray-500 mt-3">支持字段：{pageState?.field_types?.join('、') || '尚未检测'}。</div>
             </section>
           </>
+        )}
+
+        {/* 我的网站标签页 */}
+        {activeTab === 'websites' && (
+          <div className="space-y-4">
+            {profiles.length === 0 ? (
+              <div className={cn('p-8 rounded-lg border text-center', isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700')}>
+                <p className={cn('mb-4', isLight ? 'text-gray-500' : 'text-gray-400')}>
+                  还没有添加网站资料
+                </p>
+                <button
+                  onClick={() => chrome.runtime.openOptionsPage()}
+                  className={cn(
+                    'px-4 py-2 rounded text-sm font-medium transition-colors',
+                    isLight
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                  )}
+                >
+                  添加第一个网站
+                </button>
+              </div>
+            ) : (
+              <>
+                {profiles.map(profile => (
+                  <WebsiteStatsCard
+                    key={profile.id}
+                    profile={profile}
+                    onViewDetails={() => {
+                      // TODO: 实现查看明细功能
+                      console.log('查看明细:', profile.id);
+                    }}
+                    onEdit={() => {
+                      chrome.runtime.openOptionsPage();
+                    }}
+                    isLight={isLight}
+                  />
+                ))}
+              </>
+            )}
+          </div>
         )}
 
         {/* 外链标签页 */}
