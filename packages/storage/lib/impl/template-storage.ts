@@ -129,7 +129,10 @@ export const templateStorage = {
    * 获取模板成功率
    */
   getSuccessRate: async (id: string): Promise<number> => {
-    const template = await templateStorage.getById(id);
+    // 修复 TDZ 问题：直接使用 storage.get() 而非 templateStorage.getById()
+    // templateStorage 在 const 初始化过程中引用自身会导致 "Cannot access before initialization"
+    const state = await storage.get();
+    const template = state.templates.find(t => t.id === id) || null;
     if (!template || !template.usage_count || template.usage_count === 0) {
       return 0;
     }
