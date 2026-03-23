@@ -207,16 +207,16 @@ const installAhrefsMainWorldBridge = (): void => {
   };
 
   const isAhrefsApiRequest = (url: string): boolean => {
-    const patterns = [
-      /api\.ahrefs\.com/i,
-      /ahrefs\.com\/api/i,
-      /ahrefs\.com\/v\d+\//i,
-      /stGetFreeBacklinksList/i,
-      /backlink.*api/i,
-      /refpages/i,
-      /backlinks/i,
+    // 精确匹配 Ahrefs API 端点
+    const apiPatterns = [
+      /ahrefs\.com\/v\d+\/stGetFreeBacklinksList/i,
+      /ahrefs\.com\/v\d+\/stGetRefDomains/i,
+      /ahrefs\.com\/v\d+\/stGetOrganicKeywords/i,
+      /ahrefs\.com\/v\d+\/stGetContentGap/i,
+      /ahrefs\.com\/v\d+\/stGetTopPages/i,
+      /ahrefs\.com\/v\d+\/stGetBacklinks/i,
     ];
-    return patterns.some(pattern => pattern.test(url));
+    return apiPatterns.some(pattern => pattern.test(url));
   };
 
   const getUrlFromResource = (resource: RequestInfo | URL): string => {
@@ -329,6 +329,11 @@ const installAhrefsMainWorldBridge = (): void => {
 
     if (message.type === 'START_INTERCEPT') {
       start(true);
+      // 发送确认响应
+      emit('INTERCEPT_STARTED', {
+        success: true,
+        bufferedCount: state.bufferedResponses.length
+      });
       return;
     }
     if (message.type === 'STOP_INTERCEPT') {
@@ -507,20 +512,47 @@ class CollectionManager {
       await this.waitForTabLoad(tab.id);
       await this.logInfo('页面加载完成', { tabId: tab.id, tabUrl: tab.url });
 
-      // 额外等待，确保页面完全稳定，避免触发安全检测
-      // 随机延迟 2-4 秒，模拟人类行为
-      const stabilizeDelay = 2000 + Math.floor(Math.random() * 2000);
+      // 检查是否遇到验证页面
+      const verificationCheck = await this.sendMessageToTab<{ isVerification?: boolean; type?: string; message?: string }>(tab.id, {
+        type: 'CHECK_VERIFICATION_PAGE'
+      }).catch(error => {
+        void this.logWarn('验证页面检测失败', { tabId: tab.id, error: error instanceof Error ? error.message : String(error) });
+        return null;
+      });
+
+      if (verificationCheck?.isVerification) {
+        await this.logWarn('检测到验证页面', {
+          tabId: tab.id,
+          type: verificationCheck.type,
+          message: verificationCheck.message
+        });
+        // 等待验证完成
+        await this.logInfo('等待验证完成...', { tabId: tab.id });
+        const waitResult = await this.sendMessageToTab<{ completed?: boolean }>(tab.id, {
+          type: 'WAIT_FOR_VERIFICATION',
+          payload: { timeoutMs: 120000 }
+        }).catch(() => ({ completed: false }));
+
+        if (!waitResult?.completed) {
+          throw new Error('验证超时或被阻止');
+        }
+        await this.logInfo('验证完成，继续采集', { tabId: tab.id });
+      }
+
+      // 额外等待，确保页面完全稳定
+      // 随机延迟 1-2 秒
+      const stabilizeDelay = 1000 + Math.floor(Math.random() * 1000);
       await this.logInfo('等待页面稳定', { tabId: tab.id, delay: stabilizeDelay });
       await new Promise(resolve => setTimeout(resolve, stabilizeDelay));
 
-      // 等待 content script 就绪
+      // 等待 content script 就绪并启动拦截器
+      // 注意：waitForContentReady 现在会直接发送 START_API_INTERCEPTOR
+      // 不需要再单独调用 startApiInterceptor
       await this.waitForContentReady(tab.id);
 
       // 主世界桥接脚本已通过 manifest 自动注入
-      // 不需要手动注入，直接启动拦截器
-      await this.logInfo('准备启动拦截器（桥接脚本已自动注入）', { tabId: tab.id });
-
-      await this.startApiInterceptor(tab.id, maxCount);
+      // 拦截器已在 waitForContentReady 中启动
+      await this.logInfo('拦截器已启动（桥接脚本已自动注入）', { tabId: tab.id });
 
       // 等待拦截结果（60 秒）
       const result = await this.waitForApiCollection(tab.id, maxCount, 60000);
@@ -638,12 +670,19 @@ class CollectionManager {
         }
 
         reject(new Error('页面加载超时'));
-      }, 30000);
+      }, 60000);
 
-      const listener = (id: number, changeInfo: chrome.tabs.TabChangeInfo) => {
-        if (id === tabId && changeInfo.status === 'complete') {
-          cleanup();
-          resolve();
+      const listener = (id: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => {
+        if (id === tabId) {
+          void this.logInfo('标签页状态更新', {
+            tabId,
+            status: changeInfo.status,
+            url: tab.url?.substring(0, 100)
+          });
+          if (changeInfo.status === 'complete') {
+            cleanup();
+            resolve();
+          }
         }
       };
 
@@ -676,13 +715,10 @@ class CollectionManager {
   }
 
   private async ensureMainWorldBridge(tabId: number): Promise<void> {
-    await this.logInfo('尝试注入主世界桥接脚本', { tabId });
-    await chrome.scripting.executeScript({
-      target: { tabId },
-      world: 'MAIN',
-      func: installAhrefsMainWorldBridge,
-    });
-    await this.logInfo('主世界桥接脚本注入完成', { tabId });
+    // 主世界桥接脚本已通过 manifest 自动注入 (ahrefs-main-bridge.js)
+    // 不需要手动注入，直接返回
+    await this.logInfo('确认主世界桥接脚本已就绪', { tabId });
+    return Promise.resolve();
   }
 
   async ensureAhrefsMainWorldBridge(tabId: number): Promise<void> {
@@ -697,7 +733,7 @@ class CollectionManager {
   }
 
   private async sendMessageToTab<T = unknown>(tabId: number, message: unknown): Promise<T> {
-    const maxAttempts = 4; // 增加重试次数
+    const maxAttempts = 6; // 进一步增加重试次数
     let lastError: unknown = null;
     let scriptInjected = false;
 
@@ -753,7 +789,9 @@ class CollectionManager {
         }
 
         // 指数退避（增加等待时间让 content script 初始化）
-        const delay = 1000 * Math.pow(2, attempt - 1);
+        // 第一次等待 1s, 第二次 2s, 第三次 3s, 第四次 4s, 第五次 5s
+        const delay = attempt * 1000;
+        await this.logWarn('等待 content script 初始化', { tabId, attempt, delay });
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
@@ -766,15 +804,33 @@ class CollectionManager {
   }
 
   private async waitForContentReady(tabId: number): Promise<void> {
+    // 关键修改：不再等待 PING 成功，而是直接尝试发送 START_API_INTERCEPTOR
+    // 因为 manifest 已配置 ahrefs-main-bridge.js 在 document_start 注入
+    // 桥接脚本已经在页面加载时启动了拦截并 buffer 了数据
+    // 我们只需要尽快发送消息让 content script 启动拦截器
+
+    await this.logInfo('尝试直接启动拦截器（跳过 PING 检查）', { tabId });
+
+    // 直接尝试发送 START_API_INTERCEPTOR，如果失败会重试
     const response = await this.sendMessageToTab<{ success?: boolean; error?: string }>(tabId, {
-      type: 'PING_CONTENT_SCRIPT',
+      type: 'START_API_INTERCEPTOR',
+      payload: { maxCount: this.activeTab?.maxCount ?? 20 },
+    }).catch(error => {
+      // 如果发送失败，记录错误但继续尝试
+      this.logWarn('首次发送失败，将重试', {
+        tabId,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      return null;
     });
 
-    if (!response?.success) {
-      throw new Error(response?.error || '内容脚本未就绪');
+    if (response?.success) {
+      await this.logInfo('拦截器启动成功', { tabId });
+      return;
     }
 
-    await this.logInfo('内容脚本握手成功', { tabId });
+    // 如果直接发送失败，抛出错误
+    throw new Error(response?.error || '无法启动拦截器');
   }
 
   private async startApiInterceptor(tabId: number, maxCount: number): Promise<void> {

@@ -1379,6 +1379,17 @@ export function initMessageListener(): void {
     initUrlChangeListener(); // 初始化 URL 变化监听
     initFormSubmitListener(); // 初始化表单提交监听
     console.log('[Content Script] 消息监听器已初始化');
+
+    // 通知 background script content script 已就绪
+    void chrome.runtime.sendMessage({
+      type: 'CONTENT_SCRIPT_READY',
+      payload: {
+        url: window.location.href,
+        timestamp: Date.now()
+      }
+    }).catch(() => {
+      // 忽略发送失败，background 可能还未准备好监听
+    });
   } catch (error) {
     console.error('[Content Script] 消息监听器初始化失败:', error);
   }

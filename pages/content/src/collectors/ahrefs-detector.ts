@@ -6,20 +6,13 @@
  * 检测当前页面是否为 Ahrefs Backlink Checker 页面
  */
 export function isAhrefsBacklinkChecker(): boolean {
-  const url = window.location.href;
   const hostname = window.location.hostname;
 
-  // 检查域名
-  if (!hostname.includes('ahrefs.com')) {
-    return false;
-  }
-
-  // 检查路径
-  if (!url.includes('/backlink-checker')) {
-    return false;
-  }
-
-  return true;
+  // 支持所有 Ahrefs 域名变体
+  return hostname === 'ahrefs.com' ||
+         hostname === 'www.ahrefs.com' ||
+         hostname === 'app.ahrefs.com' ||
+         hostname.endsWith('.ahrefs.com');
 }
 
 /**

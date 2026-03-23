@@ -51,6 +51,8 @@ export class AhrefsApiInterceptor {
   private requestCount = 0; // 记录拦截到的请求总数
   private matchedRequestCount = 0; // 记录匹配的请求数
   private messageListener: ((event: MessageEvent) => void) | null = null;
+  private lastDataReceivedAt = 0; // 上次收到数据的时间
+  private idleTimeout = 5000; // 空闲超时时间（5秒）
 
   constructor(config: InterceptorConfig) {
     this.config = config;
@@ -97,6 +99,15 @@ export class AhrefsApiInterceptor {
         console.warn('[Ahrefs Interceptor] 2. Ahrefs 使用了其他请求方式（如 iframe、WebSocket）');
         console.warn('[Ahrefs Interceptor] 3. Content script 注入时机有问题');
       }
+
+      // 如果已经收集到一些数据，但超过空闲超时时间没有新数据，则完成采集
+      if (this.collectedBacklinks.length > 0 && this.lastDataReceivedAt > 0) {
+        const idleTime = Date.now() - this.lastDataReceivedAt;
+        if (idleTime > this.idleTimeout) {
+          console.log(`[Ahrefs Interceptor] 空闲超时（${idleTime}ms），完成采集`);
+          this.complete();
+        }
+      }
     }, 10000);
   }
 
@@ -142,6 +153,12 @@ export class AhrefsApiInterceptor {
       switch (data.type) {
         case 'BRIDGE_READY': {
           console.log('[Ahrefs Interceptor] 主世界桥接已就绪');
+          return;
+        }
+
+        case 'INTERCEPT_STARTED': {
+          const bufferedCount = typeof data.payload?.bufferedCount === 'number' ? data.payload.bufferedCount : 0;
+          console.log('[Ahrefs Interceptor] 拦截器已启动，已缓冲请求数:', bufferedCount);
           return;
         }
 
@@ -221,13 +238,12 @@ export class AhrefsApiInterceptor {
    */
   private checkUrlPatterns(url: string): { matched: boolean; pattern?: string } {
     const patterns = [
-      { name: 'api.ahrefs.com', regex: /api\.ahrefs\.com/i },
-      { name: 'ahrefs.com/api', regex: /ahrefs\.com\/api/i },
-      { name: 'versioned API', regex: /ahrefs\.com\/v\d+\//i },
-      { name: 'stGetFreeBacklinksList', regex: /stGetFreeBacklinksList/i },
-      { name: 'backlink api', regex: /backlink.*api/i },
-      { name: 'refpages', regex: /refpages/i },
-      { name: 'backlinks', regex: /backlinks/i },
+      { name: 'stGetFreeBacklinksList', regex: /ahrefs\.com\/v\d+\/stGetFreeBacklinksList/i },
+      { name: 'stGetRefDomains', regex: /ahrefs\.com\/v\d+\/stGetRefDomains/i },
+      { name: 'stGetOrganicKeywords', regex: /ahrefs\.com\/v\d+\/stGetOrganicKeywords/i },
+      { name: 'stGetContentGap', regex: /ahrefs\.com\/v\d+\/stGetContentGap/i },
+      { name: 'stGetTopPages', regex: /ahrefs\.com\/v\d+\/stGetTopPages/i },
+      { name: 'stGetBacklinks', regex: /ahrefs\.com\/v\d+\/stGetBacklinks/i },
     ];
 
     for (const pattern of patterns) {
@@ -258,6 +274,8 @@ export class AhrefsApiInterceptor {
       if (backlinks.length > 0) {
         // 添加到收集列表
         this.collectedBacklinks.push(...backlinks);
+        // 更新上次收到数据的时间
+        this.lastDataReceivedAt = Date.now();
 
         console.log(`[Ahrefs Interceptor] 已收集 ${this.collectedBacklinks.length}/${this.config.maxCount} 条外链`);
 

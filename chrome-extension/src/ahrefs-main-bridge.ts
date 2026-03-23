@@ -93,15 +93,18 @@ if (existingState?.listenerBound) {
   };
 
   const isAhrefsApiRequest = (url: string): boolean => {
-    // 首先检查是否是 Ahrefs API 请求
-    const basePatterns = [
-      /api\.ahrefs\.com/i,
-      /ahrefs\.com\/api/i,
-      /ahrefs\.com\/v\d+\//i,
-      /stGetFreeBacklinksList/i,
+    // 精确匹配 Ahrefs API 端点
+    const apiPatterns = [
+      /ahrefs\.com\/v\d+\/stGetFreeBacklinksList/i,
+      /ahrefs\.com\/v\d+\/stGetRefDomains/i,
+      /ahrefs\.com\/v\d+\/stGetOrganicKeywords/i,
+      /ahrefs\.com\/v\d+\/stGetContentGap/i,
+      /ahrefs\.com\/v\d+\/stGetTopPages/i,
+      /ahrefs\.com\/v\d+\/stGetBacklinks/i,
     ];
 
-    if (!basePatterns.some(pattern => pattern.test(url))) {
+    // 首先检查是否是 Ahrefs API 请求
+    if (!apiPatterns.some(pattern => pattern.test(url))) {
       return false;
     }
 
@@ -120,15 +123,7 @@ if (existingState?.listenerBound) {
       return false;
     }
 
-    // 匹配外链列表 API 的模式
-    const listPatterns = [
-      /backlinks/i,
-      /refpages/i,
-      /top-domains/i,
-      / domains/i,
-    ];
-
-    return listPatterns.some(pattern => pattern.test(url));
+    return true;
   };
 
   const getUrlFromResource = (resource: RequestInfo | URL): string => {
@@ -244,6 +239,11 @@ if (existingState?.listenerBound) {
 
     if (message.type === 'START_INTERCEPT') {
       start(true);
+      // 发送确认响应
+      emit('INTERCEPT_STARTED', {
+        success: true,
+        bufferedCount: state.bufferedResponses.length
+      });
       return;
     }
     if (message.type === 'STOP_INTERCEPT') {
@@ -256,9 +256,9 @@ if (existingState?.listenerBound) {
     state.stop();
   });
 
-  // 自动启动底层拦截，尽可能提前捕获请求
-  // 数据会在 content script 就绪后回放
-  start(false);
+  // 自动启动拦截，直接流式传输所有响应
+  // 不再使用预缓冲机制，避免 content script 就绪前响应已缓冲但无法 flush 的竞态问题
+  start(true);
 
   win[BRIDGE_STATE_KEY] = state;
   emit('BRIDGE_READY', { installed: true });
