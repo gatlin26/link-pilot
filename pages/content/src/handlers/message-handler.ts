@@ -18,8 +18,9 @@ import type {
 import type { BacklinkSubmission } from '@extension/shared/lib/types/models';
 import { MessageType } from '@extension/shared/lib/types/messages';
 import type { FillPageState, ManagedBacklink, WebsiteProfile } from '@extension/shared';
-import { autoFillService, formDetector, type FormField, type FormDetectionResult } from '../form-handlers';
-import { templateLearner } from '../template';
+import { autoFillService } from '../form-handlers/auto-fill-service';
+import { formDetector, type FormField, type FormDetectionResult } from '../form-handlers/form-detector';
+import { templateLearner } from '../template/template-learner';
 import { createAhrefsInterceptor } from '../collectors/ahrefs-api-interceptor';
 import { isAhrefsBacklinkChecker, detectVerificationPage, waitForVerificationComplete } from '../collectors/ahrefs-detector';
 import type { CollectedBacklink } from '@extension/shared';
@@ -189,7 +190,15 @@ function createAndStartInterceptor(maxCount: number, passiveMode: boolean): void
 }
 
 async function ensurePassiveInterceptorBootstrap(): Promise<void> {
+  console.log('[Content Script][Passive] ensurePassiveInterceptorBootstrap 进入', {
+    href: window.location.href,
+    hostname: window.location.hostname,
+    activeInterceptorRunning: activeInterceptor?.isRunning() || false,
+    autoPassiveBootstrapStarted,
+  });
+
   if (!isAhrefsBacklinkChecker()) {
+    console.log('[Content Script][Passive] 当前页面不是 Ahrefs Backlink Checker，跳过');
     return;
   }
 
@@ -199,15 +208,19 @@ async function ensurePassiveInterceptorBootstrap(): Promise<void> {
   }
 
   if (autoPassiveBootstrapStarted) {
+    console.log('[Content Script][Passive] 已在启动中，跳过重复启动');
     return;
   }
   if (activeInterceptor?.isRunning()) {
+    console.log('[Content Script][Passive] 拦截器已在运行，跳过');
     return;
   }
 
   autoPassiveBootstrapStarted = true;
   try {
+    console.log('[Content Script][Passive] 准备确认主世界桥接脚本');
     await ensureMainWorldBridge();
+    console.log('[Content Script][Passive] 主世界桥接脚本确认完成，准备创建被动拦截器');
     createAndStartInterceptor(PASSIVE_INTERCEPT_MAX_COUNT, true);
     passiveBootstrapRetryCount = 0;
     console.log('[Content Script] Ahrefs 被动拦截器已启动');
@@ -1373,22 +1386,40 @@ function initFormSubmitListener(): void {
 
 export function initMessageListener(): void {
   try {
+    console.log('[Content Script][Init] 开始注册 chrome.runtime.onMessage 监听器');
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => handleMessage(message, sender, sendResponse));
+    console.log('[Content Script][Init] chrome.runtime.onMessage 监听器注册完成');
+
+    console.log('[Content Script][Init] 准备执行 warmupDetectionIfNeeded');
     void warmupDetectionIfNeeded();
+    console.log('[Content Script][Init] warmupDetectionIfNeeded 已触发');
+
+    console.log('[Content Script][Init] 准备执行 ensurePassiveInterceptorBootstrap');
     void ensurePassiveInterceptorBootstrap();
+    console.log('[Content Script][Init] ensurePassiveInterceptorBootstrap 已触发');
+
+    console.log('[Content Script][Init] 准备初始化 URL 变化监听');
     initUrlChangeListener(); // 初始化 URL 变化监听
+    console.log('[Content Script][Init] URL 变化监听初始化完成');
+
+    console.log('[Content Script][Init] 准备初始化表单提交监听');
     initFormSubmitListener(); // 初始化表单提交监听
+    console.log('[Content Script][Init] 表单提交监听初始化完成');
+
     console.log('[Content Script] 消息监听器已初始化');
 
     // 通知 background script content script 已就绪
+    console.log('[Content Script][Init] 准备发送 CONTENT_SCRIPT_READY');
     void chrome.runtime.sendMessage({
       type: 'CONTENT_SCRIPT_READY',
       payload: {
         url: window.location.href,
         timestamp: Date.now()
       }
-    }).catch(() => {
-      // 忽略发送失败，background 可能还未准备好监听
+    }).then(() => {
+      console.log('[Content Script][Init] CONTENT_SCRIPT_READY 发送成功');
+    }).catch(error => {
+      console.warn('[Content Script][Init] CONTENT_SCRIPT_READY 发送失败:', error);
     });
   } catch (error) {
     console.error('[Content Script] 消息监听器初始化失败:', error);

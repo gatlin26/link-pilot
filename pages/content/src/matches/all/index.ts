@@ -224,6 +224,9 @@ function initSmartMatchMessageHandler(): void {
 
 // === 原有的采集功能代码 ===
 
+// 拦截器停止标志
+let collectionStopped = false;
+
 // ⚠️ 修复：只在 Ahrefs 页面启动拦截器，避免在所有页面运行无限循环
 const collector = collectorRegistry.detectCollector();
 if (collector && window.location.hostname.includes('ahrefs.com')) {
@@ -236,9 +239,6 @@ if (collector && window.location.hostname.includes('ahrefs.com')) {
 } else if (collector) {
   console.log(`[Link Pilot] 检测到支持的平台: ${collector.platform}，但当前不在目标域名，跳过拦截器启动`);
 }
-
-// 拦截器停止标志
-let collectionStopped = false;
 
 /**
  * 启动常驻拦截
@@ -323,14 +323,17 @@ window.addEventListener('beforeunload', () => {
 console.log('[Link Pilot] 开始初始化 - 完整功能模式（延迟 1 秒执行匹配）');
 
 try {
-  // 初始化原有功能
+  console.log('[Link Pilot][Init] 准备初始化消息监听器');
   initMessageListener();
+  console.log('[Link Pilot][Init] 消息监听器初始化完成');
 
-  // 初始化智能匹配
+  console.log('[Link Pilot][Init] 准备初始化智能匹配');
   initSmartMatching();
+  console.log('[Link Pilot][Init] 智能匹配初始化完成');
 
-  // 初始化智能匹配消息处理器
+  console.log('[Link Pilot][Init] 准备初始化智能匹配消息处理器');
   initSmartMatchMessageHandler();
+  console.log('[Link Pilot][Init] 智能匹配消息处理器初始化完成');
 
   console.log('[Link Pilot] 初始化完成 - 所有功能已启用（延迟 1 秒执行匹配）');
 } catch (error) {

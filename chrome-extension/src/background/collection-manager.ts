@@ -703,11 +703,14 @@ class CollectionManager {
 
   private async ensureContentScript(tabId: number): Promise<void> {
     await this.logInfo('尝试注入 content script', { tabId });
-    await chrome.scripting.executeScript({
+    const injectionResult = await chrome.scripting.executeScript({
       target: { tabId },
       files: ['content/all.iife.js'],
     });
-    await this.logInfo('content script 注入完成', { tabId });
+    await this.logInfo('content script 注入完成', {
+      tabId,
+      frames: injectionResult.map(item => ({ frameId: item.frameId, result: item.result ?? null })),
+    });
 
     // 等待 content script 初始化完成（避免注入后立即通信导致连接失败）
     await new Promise(resolve => setTimeout(resolve, 1000));

@@ -153,9 +153,9 @@ export const createStorage = <D = string>(
     _emitChange();
   });
 
-  // Register listener for live updates for our storage area
+  // Register listener for live updates from the global storage event
   if (liveUpdate) {
-    chrome?.storage[storageEnum].onChanged.addListener(_updateFromStorageOnChanged);
+    chrome?.storage.onChanged.addListener(_updateFromStorageOnChanged);
   }
 
   return {
