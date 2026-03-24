@@ -18,7 +18,7 @@ import type {
 import type { BacklinkSubmission } from '@extension/shared/lib/types/models';
 import { MessageType } from '@extension/shared/lib/types/messages';
 import type { FillPageState, ManagedBacklink, WebsiteProfile } from '@extension/shared';
-import { buildCommentCandidates } from '@extension/shared';
+import { buildCommentCandidates, PageType } from '@extension/shared';
 import { autoFillService } from '../form-handlers/auto-fill-service';
 import { formDetector, type FormField, type FormDetectionResult } from '../form-handlers/form-detector';
 import { templateLearner } from '../template/template-learner';
@@ -265,6 +265,236 @@ function buildTemplateKey(fields: FormField[]): string {
   return [window.location.hostname, window.location.pathname, ...fields.map(field => `${field.type}:${field.selector}`)].join('|');
 }
 
+function isFillableElementVisible(element: HTMLElement): boolean {
+  const style = window.getComputedStyle(element);
+  if (
+    style.display === 'none' ||
+    style.visibility === 'hidden' ||
+    style.opacity === '0' ||
+    element.getAttribute('aria-hidden') === 'true'
+  ) {
+    return false;
+  }
+
+  if (
+    element instanceof HTMLInputElement ||
+    element instanceof HTMLTextAreaElement ||
+    element instanceof HTMLButtonElement
+  ) {
+    if (element.disabled) {
+      return false;
+    }
+  }
+
+  const rect = element.getBoundingClientRect();
+  return rect.width > 0 || rect.height > 0 || element.getClientRects().length > 0;
+}
+
+function generateFallbackSelector(element: HTMLElement): string {
+  if (element.id) {
+    return `#${CSS.escape(element.id)}`;
+  }
+
+  const name = element.getAttribute('name');
+  if (name) {
+    return `${element.tagName.toLowerCase()}[name="${CSS.escape(name)}"]`;
+  }
+
+  const classes = Array.from(element.classList).slice(0, 2).map(className => `.${CSS.escape(className)}`).join('');
+  return `${element.tagName.toLowerCase()}${classes}`;
+}
+
+function createFallbackField(
+  type: FormField['type'],
+  element: HTMLElement | null,
+  confidence: number,
+): FormField | null {
+  if (!element || !isFillableElementVisible(element)) {
+    return null;
+  }
+
+  return {
+    type,
+    element,
+    selector: generateFallbackSelector(element),
+    confidence,
+    required: element.hasAttribute('required'),
+  };
+}
+
+function findFirstMatchingElement(
+  container: ParentNode,
+  selectors: string[],
+  predicate?: (element: HTMLElement) => boolean,
+): HTMLElement | null {
+  for (const selector of selectors) {
+    const elements = Array.from(container.querySelectorAll<HTMLElement>(selector));
+    for (const element of elements) {
+      if (!isFillableElementVisible(element)) {
+        continue;
+      }
+      if (predicate && !predicate(element)) {
+        continue;
+      }
+      return element;
+    }
+  }
+
+  return null;
+}
+
+function dedupeFields(fields: FormField[]): FormField[] {
+  const seen = new Set<HTMLElement>();
+  return fields.filter(field => {
+    if (seen.has(field.element)) {
+      return false;
+    }
+    seen.add(field.element);
+    return true;
+  });
+}
+
+function detectSimpleCommentForm(): FormDetectionResult | null {
+  const containerSelectors = [
+    'form',
+    '#respond',
+    '[id*="commentform" i]',
+    '[id*="respond" i]',
+    '[class*="comment-form" i]',
+    '[class*="comment-respond" i]',
+    '[class*="commentform" i]',
+  ];
+
+  const containers = Array.from(document.querySelectorAll<HTMLElement>(containerSelectors.join(', ')));
+  const uniqueContainers = containers.filter((container, index) => containers.indexOf(container) === index);
+  const candidates = uniqueContainers.length > 0 ? uniqueContainers : [document.body];
+
+  let bestFields: FormField[] = [];
+  let bestScore = 0;
+
+  for (const container of candidates) {
+    const commentField = createFallbackField(
+      'comment',
+      findFirstMatchingElement(container, [
+        'textarea[name*="comment" i]',
+        'textarea[id*="comment" i]',
+        'textarea[placeholder*="comment" i]',
+        'textarea[aria-label*="comment" i]',
+        'textarea',
+        '[contenteditable="true"][role="textbox"]',
+        '[contenteditable="true"]',
+      ]),
+      0.96,
+    );
+
+    if (!commentField) {
+      continue;
+    }
+
+    const fields = dedupeFields([
+      commentField,
+      createFallbackField(
+        'name',
+        findFirstMatchingElement(container, [
+          'input[name*="author" i]',
+          'input[id*="author" i]',
+          'input[name*="name" i]',
+          'input[id*="name" i]',
+          'input[placeholder*="name" i]',
+          'input[type="text"]',
+        ], element => {
+          const haystack = `${element.getAttribute('name') || ''} ${element.id} ${element.getAttribute('placeholder') || ''}`.toLowerCase();
+          return !haystack.includes('email') && !haystack.includes('search');
+        }),
+        0.86,
+      ),
+      createFallbackField(
+        'email',
+        findFirstMatchingElement(container, [
+          'input[type="email"]',
+          'input[name*="email" i]',
+          'input[id*="email" i]',
+          'input[placeholder*="email" i]',
+        ]),
+        0.9,
+      ),
+      createFallbackField(
+        'website',
+        findFirstMatchingElement(container, [
+          'input[type="url"]',
+          'input[name*="url" i]',
+          'input[name*="website" i]',
+          'input[id*="url" i]',
+          'input[placeholder*="website" i]',
+        ]),
+        0.82,
+      ),
+      createFallbackField(
+        'submit',
+        findFirstMatchingElement(container, [
+          'button[type="submit"]',
+          'input[type="submit"]',
+          'button',
+          'input[type="button"]',
+        ], element => {
+          const label = (element.textContent || element.getAttribute('value') || '').trim().toLowerCase();
+          return label.length === 0 || /(submit|post|comment|reply|send|发表|提交|评论|发送)/i.test(label);
+        }),
+        0.78,
+      ),
+    ].filter((field): field is FormField => Boolean(field)));
+
+    const score =
+      fields.length +
+      (fields.some(field => field.type === 'submit') ? 1 : 0) +
+      (fields.some(field => field.type === 'email') ? 0.5 : 0);
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestFields = fields;
+    }
+  }
+
+  if (!bestFields.some(field => field.type === 'comment')) {
+    return null;
+  }
+
+  if (!bestFields.some(field => field.type === 'submit') && bestFields.length < 2) {
+    return null;
+  }
+
+  return {
+    detected: true,
+    pageType: PageType.BLOG_COMMENT,
+    fields: bestFields,
+    template: null,
+    confidence: Math.min(0.98, 0.72 + bestFields.length * 0.06),
+  };
+}
+
+function mergeDetectionWithFallback(detection: FormDetectionResult): FormDetectionResult {
+  const fallback = detectSimpleCommentForm();
+  if (!fallback) {
+    return detection;
+  }
+
+  if (!detection.detected) {
+    console.log('[Content Script] 启用评论表单兜底检测:', fallback.fields.map(field => field.type));
+    return fallback;
+  }
+
+  const mergedFields = dedupeFields([...detection.fields, ...fallback.fields]);
+  if (mergedFields.length === detection.fields.length) {
+    return detection;
+  }
+
+  return {
+    ...detection,
+    fields: mergedFields,
+    confidence: Math.max(detection.confidence, fallback.confidence),
+  };
+}
+
 async function learnTemplateIfNeeded(detection: FormDetectionResult): Promise<void> {
   if (!detection.detected || detection.template || detection.fields.length === 0) {
     return;
@@ -396,7 +626,8 @@ async function detectForms(force = false): Promise<FormDetectionResult> {
     return lastDetectionResult;
   }
 
-  lastDetectionResult = await formDetector.detect();
+  const detection = await formDetector.detect();
+  lastDetectionResult = mergeDetectionWithFallback(detection);
   refreshFormAnchors(lastDetectionResult.fields);
   await learnTemplateIfNeeded(lastDetectionResult);
   return lastDetectionResult;
