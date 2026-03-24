@@ -237,6 +237,11 @@ export class AhrefsApiInterceptor {
    * 检查 URL 是否匹配任何模式（用于调试）
    */
   private checkUrlPatterns(url: string): { matched: boolean; pattern?: string } {
+    const genericPatterns = [
+      { name: 'api-backlinks', regex: /ahrefs\.com\/api\/.*backlink/i },
+      { name: 'api-refpages', regex: /ahrefs\.com\/api\/.*refpage/i },
+      { name: 'api-refdomains', regex: /ahrefs\.com\/api\/.*refdomain/i },
+    ];
     const patterns = [
       { name: 'stGetFreeBacklinksList', regex: /ahrefs\.com\/v\d+\/stGetFreeBacklinksList/i },
       { name: 'stGetRefDomains', regex: /ahrefs\.com\/v\d+\/stGetRefDomains/i },
@@ -244,6 +249,7 @@ export class AhrefsApiInterceptor {
       { name: 'stGetContentGap', regex: /ahrefs\.com\/v\d+\/stGetContentGap/i },
       { name: 'stGetTopPages', regex: /ahrefs\.com\/v\d+\/stGetTopPages/i },
       { name: 'stGetBacklinks', regex: /ahrefs\.com\/v\d+\/stGetBacklinks/i },
+      ...genericPatterns,
     ];
 
     for (const pattern of patterns) {

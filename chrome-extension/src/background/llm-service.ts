@@ -12,6 +12,16 @@ interface LLMRequestOptions {
   customEndpoint?: string;
 }
 
+function resolveLanguageInstruction(pageLanguage?: string): string {
+  const normalized = (pageLanguage || '').trim().toLowerCase();
+
+  if (!normalized) {
+    return 'Use the same language as the current webpage. Do not mix languages in the comment.';
+  }
+
+  return `The current webpage language is "${pageLanguage}". Write the entire comment in that language only, and do not mix in Chinese or any other language.`;
+}
+
 /**
  * 调用 OpenAI API
  */
@@ -100,6 +110,7 @@ function buildPrompt(payload: GenerateLLMCommentMessage['payload']): string {
     pageDescription,
     pageH1,
     pageUrl,
+    pageLanguage,
     websiteName,
     websiteUrl,
     websiteDescription,
@@ -123,8 +134,8 @@ ${backlinkNote ? `- 补充说明: ${backlinkNote}` : ''}
 1. 评论应该真诚、自然，像一个真实读者的反馈
 2. 先对文章内容表示认可或提出有价值的观点
 3. 可以适当提及我的网站作为补充资源，但不要过度营销
-4. **评论长度严格控制在 100-120 字之间**（重要！）
-5. 使用中文撰写
+4. Keep the comment concise: about 2-4 sentences, roughly 60-120 words or equivalent length in the target language
+5. ${resolveLanguageInstruction(pageLanguage)}
 6. 不要使用过于正式或模板化的语言
 7. 保持简洁，不要啰嗦
 

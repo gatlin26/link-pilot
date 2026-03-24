@@ -18,6 +18,7 @@ import type {
 import type { BacklinkSubmission } from '@extension/shared/lib/types/models';
 import { MessageType } from '@extension/shared/lib/types/messages';
 import type { FillPageState, ManagedBacklink, WebsiteProfile } from '@extension/shared';
+import { buildCommentCandidates } from '@extension/shared';
 import { autoFillService } from '../form-handlers/auto-fill-service';
 import { formDetector, type FormField, type FormDetectionResult } from '../form-handlers/form-detector';
 import { templateLearner } from '../template/template-learner';
@@ -260,14 +261,6 @@ function getPageSeoSummary() {
   };
 }
 
-function truncateText(value: string, maxLength: number): string {
-  if (value.length <= maxLength) {
-    return value;
-  }
-
-  return `${value.slice(0, Math.max(0, maxLength - 1)).trim()}…`;
-}
-
 function buildTemplateKey(fields: FormField[]): string {
   return [window.location.hostname, window.location.pathname, ...fields.map(field => `${field.type}:${field.selector}`)].join('|');
 }
@@ -292,11 +285,8 @@ async function learnTemplateIfNeeded(detection: FormDetectionResult): Promise<vo
  * 构建自动评论
  * 优先使用 LLM 生成，失败则回退到模板
  */
-async function buildAutoComment(profile: WebsiteProfile, backlinkNote?: string): Promise<string> {
+async function buildAutoComment(profile: WebsiteProfile, backlink: ManagedBacklink | null = null): Promise<string> {
   const comments = profile.comments.map(comment => comment.trim()).filter(Boolean);
-  if (comments.length > 0) {
-    return comments[0];
-  }
 
   // 尝试使用 LLM 生成评论
   try {
@@ -311,10 +301,11 @@ async function buildAutoComment(profile: WebsiteProfile, backlinkNote?: string):
           pageDescription: seo.description,
           pageH1: seo.h1,
           pageUrl: seo.url,
+          pageLanguage: seo.language,
           websiteName: profile.name,
           websiteUrl: profile.url,
           websiteDescription: profile.comments[0], // 使用第一条评论作为网站简介
-          backlinkNote,
+          backlinkNote: backlink?.note,
         },
       });
 
@@ -327,17 +318,40 @@ async function buildAutoComment(profile: WebsiteProfile, backlinkNote?: string):
     console.warn('[Content Script] LLM 生成评论失败，回退到模板:', error);
   }
 
+  if (comments.length > 0) {
+    const seo = getPageSeoSummary();
+    const fallbackCandidates = buildCommentCandidates(
+      profile,
+      {
+        seo,
+        form_detected: true,
+        form_confidence: 1,
+        field_types: [],
+        backlink_in_current_group: false,
+        selected_website_link_present: false,
+      },
+      backlink,
+    );
+
+    return fallbackCandidates[0] || comments[0];
+  }
+
   // 回退到模板生成
   const seo = getPageSeoSummary();
-  const topic = seo.h1 || seo.title || window.location.hostname.replace(/^www\./, '') || '当前主题';
-  const focus = seo.description || backlinkNote || seo.title || '';
-  const parts = [
-    `感谢分享关于 ${truncateText(topic, 48)} 的内容，整体梳理得很清晰。`,
-    focus ? `尤其是 ${truncateText(focus, 40)} 这部分，很有参考价值。` : '',
-    `这里也补充一下 ${profile.name}（${profile.url}），希望能给读者提供另一个参考。`,
-  ].filter(Boolean);
+  const fallbackCandidates = buildCommentCandidates(
+    profile,
+    {
+      seo,
+      form_detected: true,
+      form_confidence: 1,
+      field_types: [],
+      backlink_in_current_group: false,
+      selected_website_link_present: false,
+    },
+    backlink,
+  );
 
-  return parts.join(' ');
+  return fallbackCandidates[0] || '';
 }
 
 async function autoStartFillIfNeeded(detection: FormDetectionResult): Promise<void> {
@@ -365,7 +379,7 @@ async function autoStartFillIfNeeded(detection: FormDetectionResult): Promise<vo
       name: profile.name,
       email: profile.email,
       website: profile.url,
-      comment: await buildAutoComment(profile, currentBacklink?.note),
+      comment: await buildAutoComment(profile, currentBacklink),
     },
     false,
   );
@@ -459,7 +473,7 @@ async function buildFillPageState(payload?: {
   selectedBacklinkGroupId?: string;
 }): Promise<FillPageState> {
   const [detection, selectedWebsite, backlinkInCurrentGroup] = await Promise.all([
-    detectForms(false),
+    detectForms(true),
     payload?.selectedWebsiteId ? websiteProfileStorage.getProfileById(payload.selectedWebsiteId) : Promise.resolve(null),
     isCurrentUrlInBacklinkGroup(payload?.selectedBacklinkGroupId),
   ]);
@@ -539,7 +553,7 @@ async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (re
       throw new Error('网站资料已禁用');
     }
 
-    const detection = await detectForms(false);
+    const detection = await detectForms(true);
     if (!detection.detected) {
       throw new Error('当前页面未检测到可填充表单');
     }
@@ -798,21 +812,20 @@ async function handleOneClickFill(
     }
 
     // 检测表单
-    const detection = await detectForms(false);
+    const detection = await detectForms(true);
     if (!detection.detected) {
       sendResponse({ success: false, error: '当前页面未检测到可填充表单' });
       return;
     }
 
     // 获取当前外链的备注（用于生成评论）
-    let backlinkNote: string | undefined;
+    let backlink: ManagedBacklink | null = null;
     if (backlinkId) {
-      const backlink = await managedBacklinkStorage.getBacklinkById(backlinkId);
-      backlinkNote = backlink?.note;
+      backlink = await managedBacklinkStorage.getBacklinkById(backlinkId);
     }
 
     // 使用指定的评论或生成自动评论
-    const commentToUse = comment?.trim() || await buildAutoComment(profile, backlinkNote);
+    const commentToUse = comment?.trim() || await buildAutoComment(profile, backlink);
 
     // 执行填充
     const result = await autoFillService.fill(

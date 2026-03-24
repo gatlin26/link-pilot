@@ -183,6 +183,17 @@ export class FormDetector {
       }
     }
 
+    // 第五步：如果依然没有识别到评论字段，尝试用更宽松的评论表单结构识别
+    if (!fields.some(field => field.type === 'comment')) {
+      const structuralFields = this.detectCommonCommentFormFields();
+      for (const structuralField of structuralFields) {
+        const exists = fields.some(field => field.element === structuralField.element);
+        if (!exists) {
+          fields.push(structuralField);
+        }
+      }
+    }
+
     // 判断是否为评论表单
     // 放宽条件：只要有评论字段就认为是评论表单
     // 某些平台（如社交媒体）不需要姓名/邮箱字段（用户已登录）
@@ -343,6 +354,129 @@ export class FormDetector {
     if (submitField) fields.push(submitField);
 
     return fields;
+  }
+
+  /**
+   * 基于常见评论区结构检测字段
+   * 用于兜底识别 WordPress 等标准评论表单，避免因标签提取失败漏检。
+   */
+  private detectCommonCommentFormFields(): FormField[] {
+    const containers = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        'form, #respond, [id*="comment" i], [class*="comment-form" i], [class*="comment-respond" i]',
+      ),
+    );
+    const uniqueContainers = containers.filter(
+      (container, index) => container && containers.indexOf(container) === index,
+    );
+
+    for (const container of uniqueContainers) {
+      const commentElement = this.findVisibleElement(container, [
+        'textarea',
+        '[contenteditable="true"][role="textbox"]',
+        '[contenteditable="true"]',
+      ]);
+
+      if (!commentElement) {
+        continue;
+      }
+
+      const fields: FormField[] = [
+        {
+          type: 'comment',
+          element: commentElement,
+          selector: this.generateSelector(commentElement),
+          confidence: 0.95,
+          required: commentElement.hasAttribute('required'),
+        },
+      ];
+
+      const nameElement = this.findVisibleElement(container, [
+        'input[type="text"][name*="name" i]',
+        'input[type="text"][id*="name" i]',
+        'input[type="text"][placeholder*="name" i]',
+        'input[name*="author" i]',
+        'input[placeholder*="your name" i]',
+      ]);
+      if (nameElement) {
+        fields.push({
+          type: 'name',
+          element: nameElement,
+          selector: this.generateSelector(nameElement),
+          confidence: 0.85,
+          required: nameElement.hasAttribute('required'),
+        });
+      }
+
+      const emailElement = this.findVisibleElement(container, [
+        'input[type="email"]',
+        'input[name*="email" i]',
+        'input[id*="email" i]',
+        'input[placeholder*="email" i]',
+      ]);
+      if (emailElement) {
+        fields.push({
+          type: 'email',
+          element: emailElement,
+          selector: this.generateSelector(emailElement),
+          confidence: 0.9,
+          required: emailElement.hasAttribute('required'),
+        });
+      }
+
+      const websiteElement = this.findVisibleElement(container, [
+        'input[type="url"]',
+        'input[name*="url" i]',
+        'input[name*="website" i]',
+        'input[id*="url" i]',
+        'input[placeholder*="website" i]',
+      ]);
+      if (websiteElement) {
+        fields.push({
+          type: 'website',
+          element: websiteElement,
+          selector: this.generateSelector(websiteElement),
+          confidence: 0.8,
+          required: websiteElement.hasAttribute('required'),
+        });
+      }
+
+      const submitElement = this.findVisibleElement(container, [
+        'button[type="submit"]',
+        'input[type="submit"]',
+        'button',
+      ]);
+      if (submitElement) {
+        fields.push({
+          type: 'submit',
+          element: submitElement,
+          selector: this.generateSelector(submitElement),
+          confidence: 0.75,
+        });
+      }
+
+      if (
+        fields.some(field => field.type === 'comment') &&
+        (fields.some(field => field.type === 'submit') || fields.length >= 2)
+      ) {
+        return fields;
+      }
+    }
+
+    return [];
+  }
+
+  private findVisibleElement(container: ParentNode, selectors: string[]): HTMLElement | null {
+    for (const selector of selectors) {
+      const elements = Array.from(container.querySelectorAll<HTMLElement>(selector));
+      for (const element of elements) {
+        if (this.isVisible(element)) {
+          return element;
+        }
+      }
+    }
+
+    return null;
   }
 
   /**

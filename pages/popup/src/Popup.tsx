@@ -1,6 +1,6 @@
 import './Popup.css';
 import { useEffect, useMemo, useState } from 'react';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { sendMessageToTabSafely, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import {
   exampleThemeStorage,
   managedBacklinkStorage,
@@ -9,7 +9,7 @@ import {
 } from '@extension/storage';
 import { cn, ErrorDisplay, LoadingSpinner } from '@extension/ui';
 import { MessageType } from '@extension/shared';
-import type { FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGroup } from '@extension/shared';
+import type { BaseMessage, BaseResponse, FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGroup } from '@extension/shared';
 import { useSubmissionSession } from './hooks/useSubmissionSession';
 import { buildCommentCandidates } from './utils/comment-generator';
 import { ManualCollector } from './components/ManualCollector';
@@ -170,27 +170,13 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
     return tab;
   };
 
-  const ensureContentScript = async (tabId: number) => {
-    await chrome.scripting.executeScript({
-      target: { tabId },
-      files: ['content/all.iife.js'],
-    });
-  };
-
-  const sendMessageToActiveTab = async (message: unknown) => {
+  const sendMessageToActiveTab = async <T = unknown, R = unknown>(message: BaseMessage<T>): Promise<BaseResponse<R>> => {
     const tab = await queryActiveTab();
-
-    try {
-      return await chrome.tabs.sendMessage(tab.id!, message);
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      if (!errorMessage.includes('Receiving end does not exist')) {
-        throw error;
-      }
-
-      await ensureContentScript(tab.id!);
-      return chrome.tabs.sendMessage(tab.id!, message);
+    const response = await sendMessageToTabSafely<T, R>(tab.id!, message);
+    if (!response.success) {
+      throw new Error(response.error || '页面通信失败');
     }
+    return response;
   };
 
   const refreshPageState = async (forceDetect = false) => {
@@ -200,7 +186,10 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
       if (forceDetect) {
         await sendMessageToActiveTab({ type: MessageType.DETECT_PAGE_FORMS });
       }
-      const response = await sendMessageToActiveTab({
+      const response = await sendMessageToActiveTab<
+        { selectedWebsiteId?: string; selectedBacklinkGroupId?: string },
+        FillPageState
+      >({
         type: MessageType.GET_FILL_PAGE_STATE,
         payload: {
           selectedWebsiteId: selectedProfile?.id,
@@ -253,31 +242,24 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
       return;
     }
 
-    const selectedComment = generatedComments[selectedCommentIndex]?.trim();
-    if (!selectedComment) {
-      setErrorMessage('当前没有可用的评论内容');
-      return;
-    }
-
     setWorking(true);
     setMessage(null);
     setErrorMessage(null);
     try {
-      const response = await sendMessageToActiveTab({
-        type: MessageType.FILL_SELECTED_WEBSITE,
+      const response = await sendMessageToActiveTab<
+        { profileId: string; backlinkId?: string },
+        { filledFields?: string[] }
+      >({
+        type: MessageType.ONE_CLICK_FILL,
         payload: {
-          selectedWebsiteId: selectedProfile.id,
-          commentIndex: selectedCommentIndex,
-          comment: selectedComment,
+          profileId: selectedProfile.id,
+          backlinkId: currentBacklink?.id,
         },
       });
       if (!response?.success) {
         throw new Error(response?.error || '填表失败');
       }
-      if (typeof response?.data?.commentIndex === 'number') {
-        setSelectedCommentIndex(response.data.commentIndex);
-      }
-      setMessage(`已填充字段：${(response?.data?.filledFields ?? []).join('、') || '无'}`);
+      setMessage(`已根据当前页面内容完成 AI 填表：${(response?.data?.filledFields ?? []).join('、') || '字段已更新'}`);
       await refreshPageState(false);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : '填表失败');
@@ -291,9 +273,14 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
     setMessage(null);
     setErrorMessage(null);
     try {
-      const response = await sendMessageToActiveTab({ type: MessageType.LOCATE_NEXT_FORM });
+      const response = await sendMessageToActiveTab<undefined, { index: number; total: number }>({
+        type: MessageType.LOCATE_NEXT_FORM,
+      });
       if (!response?.success) {
         throw new Error(response?.error || '定位表单失败');
+      }
+      if (!response.data) {
+        throw new Error('定位表单返回结果缺失');
       }
       setMessage(`已定位表单 ${response.data.index}/${response.data.total}`);
     } catch (error) {
@@ -560,7 +547,7 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
                       <div className="flex items-center justify-between gap-2"><span className="truncate">{selectedProfile.email}</span><button onClick={() => void copyField(selectedProfile.email)} className="text-blue-600 dark:text-blue-400 hover:underline">复制</button></div>
                       <div className="rounded-md p-2 bg-gray-50 dark:bg-gray-900/60">
                         <div className="flex items-center justify-between mb-1 gap-2"><span>评论 {generatedComments.length === 0 ? 0 : selectedCommentIndex + 1}/{generatedComments.length}</span><button onClick={cycleComment} className="text-blue-600 dark:text-blue-400 hover:underline">下一个评论</button></div>
-                        <div className="text-[11px] text-gray-500 mb-2">已结合当前页面标题、H1、描述和 URL 自动生成评论候选。</div>
+                        <div className="text-[11px] text-gray-500 mb-2">这些是备用评论候选。点击下方“AI 一键填表”时，会优先读取当前页面内容自动生成，失败后再回退到预设评论。</div>
                         <div className="max-h-28 overflow-y-auto pr-1 leading-5 break-words">{generatedComments[selectedCommentIndex] || '暂无可用评论，请先补充网站资料或重新检测页面。'}</div>
                       </div>
                     </div>
@@ -599,10 +586,11 @@ export const PopupView = ({ layout = 'popup' }: PopupViewProps) => {
                 <h2 className="text-sm font-semibold">表单动作</h2>
                 <div className="text-xs text-gray-500">只填表，不自动提交</div>
               </div>
+              <div className="text-xs text-gray-500 mt-[-4px] mb-3">推荐直接点“AI 一键填表”，会基于当前页面标题、描述、H1 和网站资料自动生成评论。</div>
               <div className="grid grid-cols-3 gap-2">
                 <button onClick={() => void refreshPageState(true)} disabled={working} className="py-2 rounded bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 disabled:opacity-50">检测表单</button>
                 <button onClick={locateNextForm} disabled={working} className="py-2 rounded bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 disabled:opacity-50">定位表单</button>
-                <button onClick={performFill} disabled={working || !selectedProfile || !pageState?.form_detected} className="py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">开始填表</button>
+                <button onClick={performFill} disabled={working || !selectedProfile} className="py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">AI 一键填表</button>
               </div>
               <div className="text-xs text-gray-500 mt-3">支持字段：{pageState?.field_types?.join('、') || '尚未检测'}。</div>
             </section>

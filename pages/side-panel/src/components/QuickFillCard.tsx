@@ -43,6 +43,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
   const [isFilling, setIsFilling] = useState(false);
   const [fillError, setFillError] = useState<string | null>(null);
   const [fillSuccess, setFillSuccess] = useState(false);
+  const hasMatchedBacklink = Boolean(predictedBacklink);
 
   const enabledProfiles = useMemo(() => profiles.filter(p => p.enabled), [profiles]);
   const selectedProfile = useMemo(
@@ -87,38 +88,6 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
     setCustomComment(generatedComments[index] || '');
   };
 
-  if (!predictedBacklink) {
-    return (
-      <div
-        className={cn(
-          'p-4 rounded-lg border',
-          isLight ? 'bg-white border-gray-200' : 'bg-gray-800 border-gray-700'
-        )}
-      >
-        <div className="flex items-center justify-between mb-3">
-          <h2 className={cn('text-sm font-semibold', isLight ? 'text-gray-900' : 'text-gray-100')}>
-            快捷填充
-          </h2>
-          <span className="text-xs text-gray-500">智能预测未匹配</span>
-        </div>
-        <div className="text-sm text-gray-500 text-center py-4">
-          当前页面未匹配到外链库中的站点
-        </div>
-        <button
-          onClick={onOpenFullBacklinks}
-          className={cn(
-            'w-full py-2 rounded text-sm font-medium transition-colors',
-            isLight
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-blue-500 text-white hover:bg-blue-600'
-          )}
-        >
-          前往外链库选择
-        </button>
-      </div>
-    );
-  }
-
   return (
     <div
       className={cn(
@@ -132,42 +101,64 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
           快捷填充
         </h2>
         <div className="flex items-center gap-2">
-          <span
-            className={cn(
-              'text-xs px-2 py-0.5 rounded-full',
-              confidenceLevel.color === 'green' && 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
-              confidenceLevel.color === 'yellow' && 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
-              confidenceLevel.color === 'red' && 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
-            )}
-          >
-            匹配度 {matchConfidence}%
-          </span>
+          {hasMatchedBacklink ? (
+            <span
+              className={cn(
+                'text-xs px-2 py-0.5 rounded-full',
+                confidenceLevel.color === 'green' && 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+                confidenceLevel.color === 'yellow' && 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
+                confidenceLevel.color === 'red' && 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
+              )}
+            >
+              匹配度 {matchConfidence}%
+            </span>
+          ) : (
+            <span
+              className={cn(
+                'text-xs px-2 py-0.5 rounded-full',
+                isLight ? 'bg-slate-100 text-slate-700' : 'bg-slate-700 text-slate-200'
+              )}
+            >
+              当前页直填
+            </span>
+          )}
         </div>
       </div>
 
       {/* 预测结果横幅 */}
-      <div
-        className={cn(
-          'mb-4 p-3 rounded-lg border',
-          isLight ? 'bg-blue-50 border-blue-200' : 'bg-blue-900/20 border-blue-700'
-        )}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex-1 min-w-0">
-            <div className={cn('text-sm font-medium truncate', isLight ? 'text-blue-900' : 'text-blue-200')}>
-              {predictedBacklink.domain}
-            </div>
-            <div className="text-xs text-blue-600 dark:text-blue-400 truncate mt-0.5">
-              {predictedBacklink.url}
-            </div>
-          </div>
-          {predictedBacklink.note && (
-            <div className="text-xs text-gray-500 ml-2 flex-shrink-0">
-              {predictedBacklink.note}
-            </div>
+      {predictedBacklink ? (
+        <div
+          className={cn(
+            'mb-4 p-3 rounded-lg border',
+            isLight ? 'bg-blue-50 border-blue-200' : 'bg-blue-900/20 border-blue-700'
           )}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex-1 min-w-0">
+              <div className={cn('text-sm font-medium truncate', isLight ? 'text-blue-900' : 'text-blue-200')}>
+                {predictedBacklink.domain}
+              </div>
+              <div className="text-xs text-blue-600 dark:text-blue-400 truncate mt-0.5">
+                {predictedBacklink.url}
+              </div>
+            </div>
+            {predictedBacklink.note && (
+              <div className="text-xs text-gray-500 ml-2 flex-shrink-0">
+                {predictedBacklink.note}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div
+          className={cn(
+            'mb-4 p-3 rounded-lg border text-sm',
+            isLight ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-emerald-900/20 border-emerald-700 text-emerald-200'
+          )}
+        >
+          当前页面没有匹配到外链也可以直接填表。系统会读取当前页面标题、描述和你的网站资料来生成内容。
+        </div>
+      )}
 
       {/* 网站资料选择 */}
       <div className="mb-4">
@@ -205,6 +196,9 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
         >
           评论内容
         </label>
+        <div className={cn('text-[11px] mb-2', isLight ? 'text-gray-500' : 'text-gray-400')}>
+          留空时会优先使用 AI 结合当前页面内容和网站资料自动生成；已填写时会按你的内容填充。
+        </div>
         {generatedComments.length > 0 && (
           <div className="mb-2">
             <select
@@ -216,7 +210,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
                   : 'bg-gray-800 border-gray-700 text-gray-300'
               )}
             >
-              <option value="">使用AI生成...</option>
+              <option value="">使用推荐内容（可选）...</option>
               {generatedComments.map((comment, index) => (
                 <option key={index} value={index}>
                   {comment.slice(0, 50)}{comment.length > 50 ? '...' : ''}
@@ -228,7 +222,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
         <textarea
           value={customComment}
           onChange={(e) => setCustomComment(e.target.value)}
-          placeholder={generatedComments[0] || '请输入评论内容...'}
+          placeholder={generatedComments[0] || '留空则自动生成评论'}
           rows={3}
           className={cn(
             'w-full px-3 py-2 rounded border text-sm resize-none',
@@ -243,7 +237,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
       <div className="grid grid-cols-2 gap-2 mb-4">
         <button
           onClick={handleFill}
-          disabled={isFilling || !selectedProfile || !pageState?.form_detected}
+          disabled={isFilling || !selectedProfile}
           className={cn(
             'py-2.5 rounded text-sm font-medium transition-colors disabled:opacity-50',
             isLight
@@ -272,12 +266,18 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
               填充中...
             </span>
           ) : (
-            '一键填充'
+            'AI 一键填表'
           )}
         </button>
         <button
-          onClick={() => setShowAlternatives(!showAlternatives)}
-          disabled={alternativeMatches.length === 0}
+          onClick={() => {
+            if (hasMatchedBacklink) {
+              setShowAlternatives(!showAlternatives);
+              return;
+            }
+            onOpenFullBacklinks();
+          }}
+          disabled={hasMatchedBacklink ? alternativeMatches.length === 0 : false}
           className={cn(
             'py-2.5 rounded text-sm font-medium transition-colors disabled:opacity-50',
             isLight
@@ -285,7 +285,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
               : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
           )}
         >
-          切换外链 ({alternativeMatches.length})
+          {hasMatchedBacklink ? `切换外链 (${alternativeMatches.length})` : '可选：关联外链'}
         </button>
       </div>
 
@@ -302,7 +302,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
       )}
 
       {/* 备选外链列表 */}
-      {showAlternatives && alternativeMatches.length > 0 && (
+      {hasMatchedBacklink && showAlternatives && alternativeMatches.length > 0 && (
         <div className="border-t pt-3">
           <div className="text-xs text-gray-500 mb-2">其他匹配结果：</div>
           <div className="space-y-2 max-h-32 overflow-y-auto">
@@ -336,7 +336,7 @@ export const QuickFillCard: React.FC<QuickFillCardProps> = ({
             isLight ? 'bg-yellow-50 text-yellow-700' : 'bg-yellow-900/30 text-yellow-200'
           )}
         >
-          当前页面未检测到表单，填充功能可能无法正常工作
+          当前状态还没识别到表单，但你仍然可以点击“AI 一键填表”强制重试检测与填充。
         </div>
       )}
     </div>

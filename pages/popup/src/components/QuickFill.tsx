@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { sendMessageToTabSafely } from '@extension/shared';
 import { cn } from '@extension/ui';
 
 interface PageInfo {
@@ -29,13 +30,17 @@ export const QuickFill: React.FC<QuickFillProps> = ({ isLight }) => {
         }
 
         // 获取页面信息
-        const response = await chrome.tabs.sendMessage(tab.id, {
+        const response = await sendMessageToTabSafely(tab.id, {
           type: 'GET_PAGE_INFO',
         });
 
         if (response?.success) {
-          setPageInfo(response.pageInfo);
-          setFormDetected(response.formDetected);
+          const quickFillResponse = response as typeof response & {
+            pageInfo?: PageInfo;
+            formDetected?: boolean;
+          };
+          setPageInfo(quickFillResponse.pageInfo ?? null);
+          setFormDetected(Boolean(quickFillResponse.formDetected));
         }
       } catch (error) {
         console.error('获取页面信息失败:', error);
@@ -53,7 +58,7 @@ export const QuickFill: React.FC<QuickFillProps> = ({ isLight }) => {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (!tab?.id) return;
 
-      const response = await chrome.tabs.sendMessage(tab.id, {
+      const response = await sendMessageToTabSafely(tab.id, {
         type: 'QUICK_FILL_FORM',
       });
 

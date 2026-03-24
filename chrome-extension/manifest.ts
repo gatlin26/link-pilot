@@ -100,7 +100,7 @@ const manifest = {
       css: ['content.css'],
     },
     {
-      matches: ['https://ahrefs.com/*'],
+      matches: ['https://ahrefs.com/*', 'https://*.ahrefs.com/*'],
       js: ['ahrefs-main-bridge.js'],
       world: 'MAIN',
       run_at: 'document_start',

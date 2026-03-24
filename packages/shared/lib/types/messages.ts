@@ -248,6 +248,8 @@ export interface GenerateLLMCommentMessage extends BaseMessage {
     pageH1: string;
     /** 页面 URL */
     pageUrl: string;
+    /** 页面语言 */
+    pageLanguage?: string;
     /** 网站名称 */
     websiteName: string;
     /** 网站 URL */

@@ -33,7 +33,7 @@ export function MvpSettingsPanel() {
         <label className="flex items-center justify-between gap-4">
           <div>
             <div className="font-medium">自动开始填充</div>
-            <div className="text-sm text-gray-500">检测到表单后，如当前已选择网站资料，则自动填入名称、邮箱、网站和评论。</div>
+            <div className="text-sm text-gray-500">检测到表单后，如当前已选择网站资料，则自动填入名称、邮箱、网站，并优先生成 AI 评论。</div>
           </div>
           <input type="checkbox" checked={settings.auto_start_fill} onChange={event => setSettings(current => current ? { ...current, auto_start_fill: event.target.checked } : current)} />
         </label>
@@ -57,6 +57,73 @@ export function MvpSettingsPanel() {
           </div>
           <input type="checkbox" checked={settings.unique_backlink_domain} onChange={event => setSettings(current => current ? { ...current, unique_backlink_domain: event.target.checked } : current)} />
         </label>
+
+        <div className="pt-2 border-t dark:border-gray-700 space-y-4">
+          <div>
+            <div className="font-medium">AI 评论生成</div>
+            <div className="text-sm text-gray-500">
+              打开目标页面后，侧边栏点击“AI 一键填表”时，会读取当前页面标题、描述、H1 和你的网站资料来生成评论。
+            </div>
+          </div>
+
+          <label className="flex items-center justify-between gap-4">
+            <div>
+              <div className="font-medium">启用 AI 评论</div>
+              <div className="text-sm text-gray-500">开启后优先用大模型生成评论；失败时回退到预设评论。</div>
+            </div>
+            <input
+              type="checkbox"
+              checked={Boolean(settings.enable_llm_comment)}
+              onChange={event => setSettings(current => current ? { ...current, enable_llm_comment: event.target.checked } : current)}
+            />
+          </label>
+
+          <div>
+            <label className="block font-medium mb-2">AI 提供商</label>
+            <select
+              value={settings.llm_provider || 'anthropic'}
+              onChange={event => setSettings(current => current ? { ...current, llm_provider: event.target.value as ExtensionSettings['llm_provider'] } : current)}
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+            >
+              <option value="anthropic">Anthropic</option>
+              <option value="openai">OpenAI</option>
+              <option value="custom">自定义 OpenAI 兼容接口</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block font-medium mb-2">API Key</label>
+            <input
+              type="password"
+              value={settings.llm_api_key || ''}
+              onChange={event => setSettings(current => current ? { ...current, llm_api_key: event.target.value } : current)}
+              placeholder="输入 API Key"
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium mb-2">模型名称</label>
+            <input
+              type="text"
+              value={settings.llm_model || ''}
+              onChange={event => setSettings(current => current ? { ...current, llm_model: event.target.value } : current)}
+              placeholder="如 claude-sonnet-4-6 / gpt-4o-mini"
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium mb-2">自定义端点（可选）</label>
+            <input
+              type="text"
+              value={settings.llm_custom_endpoint || ''}
+              onChange={event => setSettings(current => current ? { ...current, llm_custom_endpoint: event.target.value } : current)}
+              placeholder="https://api.openai.com/v1/chat/completions"
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+            />
+          </div>
+        </div>
       </div>
 
       <button

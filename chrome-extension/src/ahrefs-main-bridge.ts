@@ -28,6 +28,14 @@ type BridgeState = {
   stop: () => void;
 };
 
+function parseJsonLikePayload(rawText: string): unknown {
+  const trimmed = rawText.trim();
+  if (!trimmed) {
+    return null;
+  }
+  return JSON.parse(trimmed);
+}
+
 const win = window as unknown as Window & Record<string, unknown>;
 const existingState = win[BRIDGE_STATE_KEY] as BridgeState | undefined;
 
@@ -93,37 +101,46 @@ if (existingState?.listenerBound) {
   };
 
   const isAhrefsApiRequest = (url: string): boolean => {
-    // 精确匹配 Ahrefs API 端点
-    const apiPatterns = [
-      /ahrefs\.com\/v\d+\/stGetFreeBacklinksList/i,
-      /ahrefs\.com\/v\d+\/stGetRefDomains/i,
-      /ahrefs\.com\/v\d+\/stGetOrganicKeywords/i,
-      /ahrefs\.com\/v\d+\/stGetContentGap/i,
-      /ahrefs\.com\/v\d+\/stGetTopPages/i,
-      /ahrefs\.com\/v\d+\/stGetBacklinks/i,
-    ];
+    try {
+      const parsedUrl = new URL(url, window.location.origin);
+      if (!parsedUrl.hostname.endsWith('ahrefs.com')) {
+        return false;
+      }
 
-    // 首先检查是否是 Ahrefs API 请求
-    if (!apiPatterns.some(pattern => pattern.test(url))) {
+      const pathname = parsedUrl.pathname.toLowerCase();
+      const search = parsedUrl.search.toLowerCase();
+      const normalized = `${pathname}${search}`;
+
+      const isStructuredApiPath =
+        /\/v\d+\/stget/i.test(pathname) ||
+        pathname.includes('/api/') ||
+        pathname.includes('/backlinks') ||
+        pathname.includes('/refpages') ||
+        pathname.includes('/refdomains');
+
+      const hasBacklinkIntent =
+        /backlink|refpage|refdomain|topbacklinks|stgetfreebacklinkslist|stgetbacklinks/i.test(normalized);
+
+      if (!isStructuredApiPath || !hasBacklinkIntent) {
+        return false;
+      }
+
+      const isMetricsOnly =
+        search.includes('metrics=') &&
+        !search.includes('limit=') &&
+        !search.includes('output=') &&
+        !search.includes('page=') &&
+        !search.includes('offset=');
+
+      if (isMetricsOnly) {
+        console.log('[Ahrefs Bridge] 排除域统计 API 请求:', url);
+        return false;
+      }
+
+      return true;
+    } catch {
       return false;
     }
-
-    // 排除域统计 API：只有 metrics 参数，没有 limit/output/page 参数
-    // 域统计 API 示例: /backlinks?target=xxx.com&metrics=domain_rating,backlinks
-    // 外链列表 API 示例: /backlinks?target=xxx.com&limit=100 或 &output=...
-    const isMetricsOnly =
-      /metrics=/i.test(url) &&
-      !/limit=/i.test(url) &&
-      !/output=/i.test(url) &&
-      !/page=/i.test(url) &&
-      !/offset=/i.test(url);
-
-    if (isMetricsOnly) {
-      console.log('[Ahrefs Bridge] 排除域统计 API 请求:', url);
-      return false;
-    }
-
-    return true;
   };
 
   const getUrlFromResource = (resource: RequestInfo | URL): string => {
@@ -167,7 +184,9 @@ if (existingState?.listenerBound) {
 
       if (state.active && matched) {
         try {
-          const payload = await response.clone().json();
+          const clonedResponse = response.clone();
+          const rawText = await clonedResponse.text();
+          const payload = parseJsonLikePayload(rawText);
           emitApiResponse(url, payload);
         } catch (error) {
           emit('BRIDGE_ERROR', {
@@ -208,7 +227,7 @@ if (existingState?.listenerBound) {
             return;
           }
           try {
-            const payload = JSON.parse(xhr.responseText);
+            const payload = parseJsonLikePayload(xhr.responseText);
             emitApiResponse(url, payload);
           } catch (error) {
             emit('BRIDGE_ERROR', {

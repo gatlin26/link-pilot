@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
-import { useStorage } from '@extension/shared';
+import { sendMessageToTabSafely, useStorage } from '@extension/shared';
 import {
   exampleThemeStorage,
   managedBacklinkStorage,
@@ -12,7 +12,6 @@ import type { FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGrou
 import { useSubmissionSession } from '../../popup/src/hooks/useSubmissionSession';
 import { ManualCollector } from '../../popup/src/components/ManualCollector';
 import { QuickFillCard } from './components/QuickFillCard';
-import { buildCommentCandidates } from '@extension/shared';
 import { WebsiteStatsCard } from './components/WebsiteStatsCard';
 
 type SidePanelTab = 'fill' | 'websites' | 'backlinks' | 'collection';
@@ -43,7 +42,6 @@ export const SidePanelView = () => {
   const [backlinks, setBacklinks] = useState<ManagedBacklink[]>([]);
   const [selectedGroupId, setSelectedGroupId] = useState('default');
   const [selectedWebsiteId, setSelectedWebsiteId] = useState<string>('');
-  const [selectedCommentIndex, setSelectedCommentIndex] = useState(0);
   const [pageState, setPageState] = useState<FillPageState | null>(null);
   const [loadingPageState, setLoadingPageState] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
@@ -79,10 +77,6 @@ export const SidePanelView = () => {
   const currentBacklinkGroup = useMemo(
     () => currentBacklink?.group_id ?? session.selected_backlink_group_id,
     [currentBacklink?.group_id, session.selected_backlink_group_id],
-  );
-  const generatedComments = useMemo(
-    () => (selectedProfile ? buildCommentCandidates(selectedProfile, pageState, currentBacklink) : []),
-    [currentBacklink, pageState, selectedProfile],
   );
 
   const filteredBacklinks = useMemo(() => {
@@ -256,23 +250,31 @@ export const SidePanelView = () => {
 
   // 一键填充处理
   const handleQuickFill = async (profileId: string, comment: string) => {
-    if (!predictedBacklink) throw new Error('未匹配到外链');
-
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     if (!tab?.id) throw new Error('无法获取当前标签页');
 
     const profile = profiles.find(p => p.id === profileId);
     if (!profile) throw new Error('未找到网站资料');
 
-    await chrome.tabs.sendMessage(tab.id, {
-      type: MessageType.FILL_SELECTED_WEBSITE,
-      payload: { profile, comment, backlink: predictedBacklink },
+    const manualComment = comment.trim();
+    const response = await sendMessageToTabSafely(tab.id, {
+      type: MessageType.ONE_CLICK_FILL,
+      payload: {
+        profileId: profile.id,
+        backlinkId: predictedBacklink?.id,
+        comment: manualComment || undefined,
+      },
     });
+    if (!response.success) {
+      throw new Error(response.error || '填表失败');
+    }
 
     // 更新会话状态
-    await updateSession({
-      current_backlink_id: predictedBacklink.id,
-    });
+    if (predictedBacklink) {
+      await updateSession({
+        current_backlink_id: predictedBacklink.id,
+      });
+    }
   };
 
   // 切换外链
@@ -320,8 +322,23 @@ export const SidePanelView = () => {
         throw new Error('无法获取当前标签页');
       }
 
-      const response = await chrome.tabs.sendMessage(tab.id, { type: MessageType.GET_FILL_PAGE_STATE });
-      setPageState(response);
+      const response = await sendMessageToTabSafely<
+        { selectedWebsiteId?: string; selectedBacklinkGroupId?: string },
+        FillPageState
+      >(
+        tab.id,
+        {
+          type: MessageType.GET_FILL_PAGE_STATE,
+          payload: {
+            selectedWebsiteId: selectedProfile?.id,
+            selectedBacklinkGroupId: currentBacklinkGroup,
+          },
+        },
+      );
+      if (!response.success) {
+        throw new Error(response.error || '获取页面状态失败');
+      }
+      setPageState(response.data ?? null);
       if (showMessage) {
         setMessage('页面状态已刷新');
         setTimeout(() => setMessage(null), 2000);
@@ -340,7 +357,10 @@ export const SidePanelView = () => {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (!tab?.id) throw new Error('无法获取当前标签页');
 
-      await chrome.tabs.sendMessage(tab.id, { type: MessageType.LOCATE_NEXT_FORM });
+      const response = await sendMessageToTabSafely(tab.id, { type: MessageType.LOCATE_NEXT_FORM });
+      if (!response.success) {
+        throw new Error(response.error || '定位表单失败');
+      }
       setMessage('已定位到下一个表单');
       setTimeout(() => setMessage(null), 2000);
     } catch (error) {
@@ -363,13 +383,18 @@ export const SidePanelView = () => {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (!tab?.id) throw new Error('无法获取当前标签页');
 
-      const comment = generatedComments[selectedCommentIndex] || '';
-      await chrome.tabs.sendMessage(tab.id, {
-        type: MessageType.FILL_SELECTED_WEBSITE,
-        payload: { profile: selectedProfile, comment, backlink: currentBacklink },
+      const response = await sendMessageToTabSafely(tab.id, {
+        type: MessageType.ONE_CLICK_FILL,
+        payload: {
+          profileId: selectedProfile.id,
+          backlinkId: currentBacklink?.id,
+        },
       });
+      if (!response.success) {
+        throw new Error(response.error || '填表失败');
+      }
 
-      setMessage('表单填写完成');
+      setMessage('已根据当前页面内容完成 AI 填表');
       setTimeout(() => setMessage(null), 2000);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : '填表失败');
@@ -650,10 +675,13 @@ export const SidePanelView = () => {
                 <h2 className="text-sm font-semibold">表单动作</h2>
                 <div className="text-xs text-gray-500">只填表，不自动提交</div>
               </div>
+              <div className="text-xs text-gray-500 mb-3">
+                推荐直接点“AI 一键填表”。系统会读取当前页面标题、描述、H1 和你选择的网站资料来生成评论并填入表单。
+              </div>
               <div className="grid grid-cols-3 gap-2">
                 <button onClick={() => void refreshPageState(true)} disabled={working} className="py-2 rounded bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 disabled:opacity-50 text-sm">检测表单</button>
                 <button onClick={locateNextForm} disabled={working} className="py-2 rounded bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600 disabled:opacity-50 text-sm">定位表单</button>
-                <button onClick={performFill} disabled={working || !selectedProfile || !pageState?.form_detected} className="py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50 text-sm">开始填表</button>
+                <button onClick={performFill} disabled={working || !selectedProfile} className="py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50 text-sm">AI 一键填表</button>
               </div>
               <div className="text-xs text-gray-500 mt-3">支持字段：{pageState?.field_types?.join('、') || '尚未检测'}。</div>
             </section>

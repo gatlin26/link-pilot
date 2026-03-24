@@ -6,7 +6,7 @@ import {
   syncSettingsStorage,
   syncRunnerService,
 } from '@extension/storage';
-import { identificationService } from '@extension/shared';
+import { identificationService, sendMessageToTabSafely } from '@extension/shared';
 import { SourcePlatform, SyncEntityType, SyncOperation } from '@extension/shared/lib/types/enums';
 import type { CollectedBacklink, CollectionBatch } from '@extension/shared/lib/types/models';
 
@@ -35,7 +35,7 @@ export function useCollection() {
         throw new Error('无法获取当前标签页');
       }
 
-      const response = await chrome.tabs.sendMessage(tab.id, {
+      const response = await sendMessageToTabSafely(tab.id, {
         type: 'COLLECT_BACKLINKS',
         payload: { count },
       });

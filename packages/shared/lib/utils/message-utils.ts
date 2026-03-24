@@ -52,6 +52,76 @@ export async function sendMessageToTab<T = unknown, R = unknown>(
 }
 
 /**
+ * 判断标签页消息发送失败是否因为没有接收端
+ */
+export function isReceivingEndMissingError(error: unknown): boolean {
+  return error instanceof Error && error.message.includes('Receiving end does not exist');
+}
+
+interface SafeTabMessageOptions {
+  contentScriptFiles?: string[];
+  retries?: number;
+  retryDelayMs?: number;
+}
+
+/**
+ * 向指定标签页发送消息，并在缺少 content script 时尝试补注入后重试
+ */
+export async function sendMessageToTabSafely<T = unknown, R = unknown>(
+  tabId: number,
+  message: BaseMessage<T>,
+  options: SafeTabMessageOptions = {},
+): Promise<BaseResponse<R>> {
+  const {
+    contentScriptFiles = ['content/all.iife.js'],
+    retries = 2,
+    retryDelayMs = 250,
+  } = options;
+
+  let injected = false;
+  let lastError: unknown = null;
+
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      const response = await chrome.tabs.sendMessage(tabId, message);
+      return response as BaseResponse<R>;
+    } catch (error) {
+      lastError = error;
+      if (!isReceivingEndMissingError(error)) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : '发送消息到标签页失败',
+        };
+      }
+
+      if (!injected) {
+        try {
+          await chrome.scripting.executeScript({
+            target: { tabId },
+            files: contentScriptFiles,
+          });
+          injected = true;
+        } catch (injectError) {
+          return {
+            success: false,
+            error: injectError instanceof Error ? injectError.message : '注入 content script 失败',
+          };
+        }
+      }
+
+      if (attempt < retries) {
+        await new Promise(resolve => setTimeout(resolve, retryDelayMs * (attempt + 1)));
+      }
+    }
+  }
+
+  return {
+    success: false,
+    error: lastError instanceof Error ? lastError.message : '无法连接到内容脚本',
+  };
+}
+
+/**
  * 向多个目标广播消息
  * @param message 消息对象
  * @param options 广播选项

@@ -1,7 +1,5 @@
-import { sampleFunction } from '@src/sample-function';
 import { pageObserver, getCurrentMatchContext } from '@src/page-observer';
 import { initMessageListener } from '@src/handlers/message-handler';
-import { collectorRegistry } from '@src/collectors/collector-registry';
 import { backlinkMatcher } from '@extension/shared/lib/services/backlink-matcher.js';
 import type { MatchResult } from '@extension/shared/lib/services/backlink-matcher.js';
 import { MessageType } from '@extension/shared/lib/types/messages.js';
@@ -187,21 +185,6 @@ function initSmartMatchMessageHandler(): void {
             break;
           }
 
-          case MessageType.GET_FILL_PAGE_STATE: {
-            // 返回当前匹配状态
-            const context = getCurrentMatchContext();
-            sendResponse({
-              success: true,
-              data: {
-                currentUrl: context.currentUrl,
-                formDetected: context.formDetected,
-                matchCount: lastMatchResults.length,
-                bestMatch: lastMatchResults[0]?.backlink ?? null,
-              },
-            });
-            break;
-          }
-
           default:
             // 不处理的消息类型，不要调用 sendResponse
             return;
@@ -221,102 +204,6 @@ function initSmartMatchMessageHandler(): void {
 
   console.log('[Link Pilot] 智能匹配消息处理器已注册');
 }
-
-// === 原有的采集功能代码 ===
-
-// 拦截器停止标志
-let collectionStopped = false;
-
-// ⚠️ 修复：只在 Ahrefs 页面启动拦截器，避免在所有页面运行无限循环
-const collector = collectorRegistry.detectCollector();
-if (collector && window.location.hostname.includes('ahrefs.com')) {
-  console.log(`[Link Pilot] 检测到支持的平台: ${collector.platform}`);
-  console.log('[Link Pilot] 立即启动常驻拦截模式');
-
-  // 主世界桥接脚本已通过 manifest 自动注入
-  // 直接启动拦截器
-  startPersistentCollection();
-} else if (collector) {
-  console.log(`[Link Pilot] 检测到支持的平台: ${collector.platform}，但当前不在目标域名，跳过拦截器启动`);
-}
-
-/**
- * 启动常驻拦截
- * 持续监听 API 请求，自动保存数据
- */
-function startPersistentCollection() {
-  // 检查停止标志
-  if (collectionStopped) {
-    console.log('[Link Pilot] 拦截器已停止，不再继续');
-    return;
-  }
-
-  console.log('[Link Pilot] 拦截器启动，开始监听 API 请求...');
-
-  // 使用较大的数量，让拦截器持续运行
-  collectorRegistry.startCollection(1000).then(backlinks => {
-    // 再次检查停止标志
-    if (collectionStopped) {
-      console.log('[Link Pilot] 拦截器已停止，不再继续');
-      return;
-    }
-
-    if (backlinks.length === 0) {
-      console.log('[Link Pilot] 本轮未拦截到数据，继续监听...');
-    } else {
-      console.log(`[Link Pilot] 拦截到外链数据，共 ${backlinks.length} 条`);
-
-      // 自动保存到 storage，添加错误处理
-      try {
-        chrome.runtime.sendMessage({
-          type: 'AUTO_COLLECTION_COMPLETE',
-          payload: { backlinks },
-        }).then(response => {
-          if (response?.success) {
-            console.log(`[Link Pilot] 数据已保存 - 新增: ${response.saved || response.count} 条, 跳过: ${response.skipped || 0} 条`);
-          }
-        }).catch(error => {
-          // 检查是否是扩展上下文失效错误
-          if (error.message?.includes('Extension context invalidated')) {
-            console.warn('[Link Pilot] 扩展已重新加载，停止当前拦截器');
-            collectionStopped = true;
-            collectorRegistry.stopCollection();
-            return;
-          }
-          console.error('[Link Pilot] 发送数据失败:', error);
-        });
-      } catch (error) {
-        console.error('[Link Pilot] 发送消息异常:', error);
-      }
-    }
-
-    // 继续下一轮拦截（常驻模式）
-    setTimeout(() => {
-      startPersistentCollection();
-    }, 2000);
-  }).catch(error => {
-    console.error('[Link Pilot] 拦截器错误:', error);
-
-    // 检查停止标志
-    if (collectionStopped) {
-      console.log('[Link Pilot] 拦截器已停止，不再重试');
-      return;
-    }
-
-    // 出错后重试
-    console.log('[Link Pilot] 3秒后重试...');
-    setTimeout(() => {
-      startPersistentCollection();
-    }, 3000);
-  });
-}
-
-// 监听页面卸载事件，停止拦截器
-window.addEventListener('beforeunload', () => {
-  collectionStopped = true;
-  collectorRegistry.stopCollection();
-  console.log('[Link Pilot] 页面卸载，停止拦截器');
-});
 
 // === 初始化 ===
 
