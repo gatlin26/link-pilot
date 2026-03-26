@@ -15,7 +15,7 @@ interface ExternalLinksPanelProps {
   onAddLink: (link: ExternalLink) => Promise<void>;
   onDeleteLink: (id: string) => Promise<void>;
   onCollectMetadata: (url: string) => Promise<ExternalLinkMetadata | null>;
-  onCheckAvailability: (url: string) => Promise<void>;
+  onCheckAvailability: (id: string) => void;
   onToggleFavorite: (id: string) => Promise<void>;
 }
 
@@ -259,7 +259,7 @@ const ExternalLinksPanel = (props: ExternalLinksPanelProps) => {
             onEdit={() => {}}
             onDelete={() => onDeleteLink(link.id)}
             onFavorite={() => onToggleFavorite(link.id)}
-            onCheckAvailability={() => onCheckAvailability(link.url)}
+            onCheckAvailability={id => onCheckAvailability(id)}
             onReanalyze={() => {}}
           />
         ))}

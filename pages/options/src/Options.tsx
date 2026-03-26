@@ -158,8 +158,11 @@ const Options = () => {
     return metadata;
   };
 
-  const handleCheckExternalAvailability = async (id: string, url: string) => {
-    await checkLinkAvailability(id, url);
+  const handleCheckExternalAvailability = async (id: string) => {
+    const link = externalLinks.find(l => l.id === id);
+    if (link) {
+      await checkLinkAvailability(id, link.url);
+    }
   };
 
   return (
