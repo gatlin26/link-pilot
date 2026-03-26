@@ -2,7 +2,7 @@
  * 可用性检测服务
  */
 
-import { LinkAvailabilityStatus } from '@extension/shared';
+import { LinkAvailabilityStatus } from '../types/enums.js';
 
 const checkAvailability = (function () {
   // eslint-disable-next-line func-style

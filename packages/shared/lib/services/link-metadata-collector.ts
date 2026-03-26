@@ -6,7 +6,7 @@
 
 import { classifySiteType } from './site-type-classifier.js';
 import type { SiteAnalysisInput } from './site-type-classifier.js';
-import type { ExternalLinkMetadata, OwnedSiteMetadata, DynamicFieldDefinition } from '@extension/shared';
+import type { ExternalLinkMetadata, OwnedSiteMetadata, DynamicFieldDefinition } from '../types/index.js';
 
 const collectSiteInfo = (function () {
   // eslint-disable-next-line func-style

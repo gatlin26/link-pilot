@@ -2,7 +2,7 @@
  * 动态字段操作服务
  */
 
-import type { DynamicFieldDefinition, DynamicFieldValue } from '@extension/shared';
+import type { DynamicFieldDefinition, DynamicFieldValue } from '../types/owned-site-types.js';
 
 const mergeFields = (function () {
   // eslint-disable-next-line func-style

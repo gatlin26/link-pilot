@@ -12,4 +12,13 @@ export { scoringService } from './lib/services/scoring-service.js';
 export { businessTypeDetectorService } from './lib/services/business-type-detector.js';
 export { SyncService } from './lib/services/sync-service.js';
 export { SheetsApiClient } from './lib/services/sheets-api-client.js';
+export { checkAvailability, checkAvailabilityBatch } from './lib/services/availability-checker.js';
+export { mergeFields, createFieldDefinition, fieldsToRecord, recordToFields } from './lib/services/dynamic-field-service.js';
+export {
+  collectSiteInfo,
+  analyzeFormFields,
+  generateExternalLinkMetadata,
+  generateOwnedSiteMetadata,
+} from './lib/services/link-metadata-collector.js';
+export { classifySiteType } from './lib/services/site-type-classifier.js';
 export * from './const.js';

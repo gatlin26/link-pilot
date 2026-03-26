@@ -3,7 +3,7 @@
  * MVP 阶段：纯规则推断，后续可扩展为 LLM 调用
  */
 
-import type { LinkSiteType } from '@extension/shared';
+import { LinkSiteType } from '../types/enums.js';
 
 const SITE_TYPE_PATTERNS: Array<{
   type: LinkSiteType;
