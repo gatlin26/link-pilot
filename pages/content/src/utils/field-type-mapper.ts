@@ -26,6 +26,12 @@ export function mapFieldPurposeToLinkPilot(
   purpose: FieldPurpose,
   metadata: FieldMetadata,
 ): LinkPilotFieldType | null {
+  // 评论表单里的 textarea 优先视为评论字段，避免上方辅助文案中的
+  // "email" 关键词把它错误映射成邮箱。
+  if (metadata.fieldType === 'textarea') {
+    return 'comment';
+  }
+
   // 直接映射
   switch (purpose) {
     case 'name':

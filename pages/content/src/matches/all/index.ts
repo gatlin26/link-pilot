@@ -171,7 +171,7 @@ function initSmartMatching(): void {
 
 /**
  * 初始化消息处理器
- * 监听来自 popup、sidepanel 和 background 的消息
+ * 监听来自 sidepanel 和 background 的消息
  */
 function initSmartMatchMessageHandler(): void {
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {

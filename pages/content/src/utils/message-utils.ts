@@ -14,7 +14,7 @@ import {
 /**
  * 广播目标类型
  */
-type BroadcastTarget = 'content' | 'sidepanel' | 'popup' | 'background' | 'all';
+type BroadcastTarget = 'content' | 'sidepanel' | 'background' | 'all';
 
 /**
  * 广播消息到指定目标
@@ -37,11 +37,6 @@ export async function broadcastMessage<T extends BaseMessage>(
   // 广播到 sidepanel
   if (targets.includes('all') || targets.includes('sidepanel')) {
     promises.push(broadcastToSidePanel(message));
-  }
-
-  // 广播到 popup
-  if (targets.includes('all') || targets.includes('popup')) {
-    promises.push(broadcastToPopup(message));
   }
 
   await Promise.all(promises);
@@ -91,21 +86,6 @@ async function broadcastToSidePanel<T extends BaseMessage>(message: T): Promise<
 }
 
 /**
- * 广播消息到 popup
- * @param message 消息
- */
-async function broadcastToPopup<T extends BaseMessage>(message: T): Promise<void> {
-  try {
-    await chrome.runtime.sendMessage({
-      ...message,
-      _target: 'popup',
-    });
-  } catch (error) {
-    console.error('[MessageUtils] 广播到 popup 失败:', error);
-  }
-}
-
-/**
  * 发送匹配结果更新
  * 专用函数，简化调用
  * @param matchData 匹配数据
@@ -129,7 +109,7 @@ export async function sendMatchResultUpdate(matchData: {
 
 /**
  * 请求智能匹配
- * 从 sidepanel 或 popup 调用
+ * 从扩展 UI 调用
  * @param url 要匹配的 URL（可选，默认为当前页面）
  */
 export async function requestSmartMatch(url?: string): Promise<{

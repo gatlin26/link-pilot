@@ -535,6 +535,9 @@ export class FieldAnalyzer {
     metadata: Omit<FieldMetadata, 'fieldPurpose'>,
     fieldType: FieldType,
   ): FieldPurpose {
+    // textarea 在评论表单中几乎总是正文输入框，避免被附近的
+    // "Your email address will not be published" 之类提示文案误判为 email。
+    if (fieldType === 'textarea') return 'unknown';
     if (fieldType === 'email') return 'email';
     if (fieldType === 'tel') return 'phone';
 

@@ -168,15 +168,6 @@ export async function broadcastMessage<T = unknown>(
     );
   }
 
-  // 广播到 popup
-  if (shouldBroadcastTo('popup')) {
-    promises.push(
-      sendMessage(message).catch(error => {
-        console.warn('[MessageUtils] 广播到 Popup 失败:', error);
-      }),
-    );
-  }
-
   // 广播到 background
   if (shouldBroadcastTo('background')) {
     promises.push(

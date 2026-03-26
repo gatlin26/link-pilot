@@ -9,8 +9,8 @@ import {
 import { cn } from '@extension/ui';
 import { MessageType } from '@extension/shared';
 import type { FillPageState, ManagedBacklink, WebsiteProfile, WebsiteProfileGroup } from '@extension/shared';
-import { useSubmissionSession } from '../../popup/src/hooks/useSubmissionSession';
-import { ManualCollector } from '../../popup/src/components/ManualCollector';
+import { useSubmissionSession } from './hooks/useSubmissionSession';
+import { ManualCollector } from './components/ManualCollector';
 import { QuickFillCard } from './components/QuickFillCard';
 import { WebsiteStatsCard } from './components/WebsiteStatsCard';
 
@@ -404,7 +404,7 @@ export const SidePanelView = () => {
     }
   };
 
-  const openBacklinkFromPopup = async (backlinkId: string, groupId?: string) => {
+  const openManagedBacklink = async (backlinkId: string, groupId?: string) => {
     setWorking(true);
     try {
       const queueIds = filteredBacklinks.map(b => b.id);
@@ -800,7 +800,7 @@ export const SidePanelView = () => {
                         </div>
                       </div>
                       <button
-                        onClick={() => void openBacklinkFromPopup(backlink.id, backlink.group_id)}
+                        onClick={() => void openManagedBacklink(backlink.id, backlink.group_id)}
                         disabled={working}
                         className="px-3 py-1.5 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50 text-sm flex-shrink-0"
                       >

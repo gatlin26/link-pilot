@@ -197,7 +197,7 @@ describe('Collection Pipeline (Browser Validation)', () => {
 
   it('should pass three manual-collection attempts and keep storage counts consistent', async () => {
     const extensionPath = await browser.getExtensionPath();
-    await browser.url(`${extensionPath}/popup/index.html`);
+    await browser.url(`${extensionPath}/side-panel/index.html`);
     await clearCollectionStorage();
 
     let previousManaged = 0;
@@ -259,7 +259,7 @@ describe('Collection Pipeline (Browser Validation)', () => {
 
   it('should reject invalid collectionUrlOverride', async () => {
     const extensionPath = await browser.getExtensionPath();
-    await browser.url(`${extensionPath}/popup/index.html`);
+    await browser.url(`${extensionPath}/side-panel/index.html`);
 
     const result = await browser.executeAsync(done => {
       chrome.runtime

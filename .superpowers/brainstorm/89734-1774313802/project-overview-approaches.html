@@ -1,0 +1,87 @@
+<h2>Link Pilot 项目全链路说明页：结构方案</h2>
+<p class="subtitle">你要的是“给自己快速理解项目”的版本，所以我重点比较哪种结构最容易建立心智模型。</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A · 总览 → 分阶段（推荐）</div>
+        <div class="mockup-body">
+          <div class="section">
+            <div class="label">顶部</div>
+            <div class="placeholder">一句话说明：这是一个“采集 → 存储 → 匹配 → 填表”的扩展</div>
+          </div>
+          <div class="section">
+            <div class="label">中间</div>
+            <div class="mock-content">一张横向总流程图：用户页面 → Content Script → Background → Storage → Side Panel → 回到页面</div>
+          </div>
+          <div class="section">
+            <div class="label">下方</div>
+            <div class="mock-content">拆成 5 个阶段卡片：采集入口 / Ahrefs采集 / 数据入库 / 智能匹配 / 一键填充</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A · 先总览再拆阶段</h3>
+      <p>最适合先建立全局印象，再理解每一步做什么。读完后不容易迷路。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>最快建立整体心智模型</li><li>适合第一次看项目</li><li>流程感最强</li></ul></div>
+        <div class="cons"><h4>代价</h4><ul><li>模块边界会放在第二层讲</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B · 用户旅程式</div>
+        <div class="mockup-body">
+          <div class="mock-content">Step 1 打开页面</div>
+          <div class="mock-content">Step 2 点采集/打开侧边栏</div>
+          <div class="mock-content">Step 3 等待扩展处理</div>
+          <div class="mock-content">Step 4 获得推荐并填表</div>
+          <div class="mock-content">Step 5 提交记录写回</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B · 按真实操作顺序讲</h3>
+      <p>更像教程，从“你会做什么”开始，而不是从系统结构开始。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>代入感强</li><li>适合实际操作</li></ul></div>
+        <div class="cons"><h4>代价</h4><ul><li>不容易看清系统全貌</li><li>组件关系会被分散</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C · 模块分区式</div>
+        <div class="mockup-body">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div class="mock-sidebar">Content</div>
+            <div class="mock-sidebar">Background</div>
+            <div class="mock-sidebar">Storage</div>
+            <div class="mock-sidebar">Side Panel</div>
+          </div>
+          <div class="placeholder">每块下面列职责、消息、关键文件</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C · 按模块解释</h3>
+      <p>更偏技术查阅手册，适合后面回头定位代码，但第一次看会更抽象。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>模块职责最清楚</li><li>代码映射最直接</li></ul></div>
+        <div class="cons"><h4>代价</h4><ul><li>第一次理解门槛高</li><li>整体流程没那么顺</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">我的推荐</div>
+  <p><strong>推荐 A：</strong>先用一张总流程图把“用户页面、content、background、storage、side panel”串起来，再往下拆阶段，并在每个阶段只放 1~2 个关键文件路径。这样最符合你前面选的目标：<strong>快速理解整个项目</strong>。</p>
+</div>

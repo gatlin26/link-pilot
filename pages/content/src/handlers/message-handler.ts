@@ -13,12 +13,19 @@ import type {
   BaseMessage,
   BaseResponse,
   GetFillPageStateResponse,
+  GenerateLLMFillPlanData,
+  LLMFieldCandidate,
   MatchResult,
 } from '@extension/shared/lib/types/messages';
 import type { BacklinkSubmission } from '@extension/shared/lib/types/models';
 import { MessageType } from '@extension/shared/lib/types/messages';
 import type { FillPageState, ManagedBacklink, WebsiteProfile } from '@extension/shared';
-import { buildCommentCandidates, PageType } from '@extension/shared';
+import {
+  buildCommentCandidates,
+  getPrimaryWebsiteDescription,
+  getProfileCommentTemplates,
+  PageType,
+} from '@extension/shared';
 import { autoFillService } from '../form-handlers/auto-fill-service';
 import { formDetector, type FormField, type FormDetectionResult } from '../form-handlers/form-detector';
 import { templateLearner } from '../template/template-learner';
@@ -354,6 +361,136 @@ function dedupeFields(fields: FormField[]): FormField[] {
   });
 }
 
+function getElementLabelText(element: HTMLElement): string {
+  const explicitLabelId = element.getAttribute('id');
+  if (explicitLabelId) {
+    const explicitLabel = document.querySelector(`label[for="${CSS.escape(explicitLabelId)}"]`)?.textContent?.trim();
+    if (explicitLabel) {
+      return explicitLabel;
+    }
+  }
+
+  const parentLabel = element.closest('label')?.textContent?.trim();
+  if (parentLabel) {
+    return parentLabel;
+  }
+
+  const previousText = element.previousElementSibling?.textContent?.trim();
+  if (previousText) {
+    return previousText;
+  }
+
+  return '';
+}
+
+function serializeFieldForLLM(field: FormField): LLMFieldCandidate {
+  const inputType =
+    field.element instanceof HTMLInputElement ? field.element.type : field.element.getAttribute('type') || undefined;
+
+  return {
+    selector: field.selector,
+    currentType: field.type,
+    tagName: field.element.tagName.toLowerCase(),
+    inputType,
+    name: field.element.getAttribute('name') || undefined,
+    id: field.element.id || undefined,
+    placeholder: field.element.getAttribute('placeholder') || undefined,
+    label: getElementLabelText(field.element) || undefined,
+    ariaLabel: field.element.getAttribute('aria-label') || undefined,
+    required: field.required ?? false,
+  };
+}
+
+function normalizeResolvedFields(
+  fields: FormField[],
+  plan?: GenerateLLMFillPlanData | null,
+): FormField[] {
+  if (!plan || !Array.isArray(plan.fieldMappings) || plan.fieldMappings.length === 0) {
+    return fields;
+  }
+
+  const mappingBySelector = new Map(plan.fieldMappings.map(item => [item.selector, item]));
+  const adjusted = fields.map(field => {
+    const mapping = mappingBySelector.get(field.selector);
+    if (!mapping || mapping.fieldType === 'unknown') {
+      return field;
+    }
+
+    return {
+      ...field,
+      type: mapping.fieldType,
+      confidence: Math.max(field.confidence, mapping.confidence),
+    };
+  });
+
+  const keepTypes: Array<FormField['type']> = ['comment', 'name', 'email', 'website', 'submit'];
+  const bestByType = new Map<FormField['type'], FormField>();
+
+  adjusted
+    .slice()
+    .sort((left, right) => right.confidence - left.confidence)
+    .forEach(field => {
+      if (!keepTypes.includes(field.type)) {
+        return;
+      }
+      if (!bestByType.has(field.type)) {
+        bestByType.set(field.type, field);
+      }
+    });
+
+  const ordered = keepTypes.map(type => bestByType.get(type)).filter((field): field is FormField => Boolean(field));
+  return ordered.length > 0 ? ordered : fields;
+}
+
+async function buildLLMFillPlan(
+  profile: WebsiteProfile,
+  backlink: ManagedBacklink | null,
+  fields: FormField[],
+): Promise<GenerateLLMFillPlanData | null> {
+  try {
+    const seo = getPageSeoSummary();
+    const commentCandidates = buildCommentCandidates(
+      profile,
+      {
+        seo,
+        form_detected: true,
+        form_confidence: 1,
+        field_types: [],
+        backlink_in_current_group: false,
+        selected_website_link_present: false,
+      },
+      backlink,
+    );
+
+    const response = await chrome.runtime.sendMessage({
+      type: MessageType.GENERATE_LLM_FILL_PLAN,
+      payload: {
+        pageTitle: seo.title,
+        pageDescription: seo.description,
+        pageH1: seo.h1,
+        pageUrl: seo.url,
+        pageLanguage: seo.language,
+        websiteName: profile.name,
+        websiteUrl: profile.url,
+        websiteEmail: profile.email,
+        websiteDescription: getPrimaryWebsiteDescription(profile),
+        backlinkNote: backlink?.note,
+        commentCandidates,
+        fields: fields.map(serializeFieldForLLM),
+      },
+    });
+
+    if (!response?.success || !response.data) {
+      return null;
+    }
+
+    return response.data as GenerateLLMFillPlanData;
+  } catch (error) {
+    console.warn('[Content Script] 生成 LLM 结构化填表方案失败，回退到规则模式:', error);
+    return null;
+  }
+}
+
 function detectSimpleCommentForm(): FormDetectionResult | null {
   const containerSelectors = [
     'form',
@@ -516,7 +653,7 @@ async function learnTemplateIfNeeded(detection: FormDetectionResult): Promise<vo
  * 优先使用 LLM 生成，失败则回退到模板
  */
 async function buildAutoComment(profile: WebsiteProfile, backlink: ManagedBacklink | null = null): Promise<string> {
-  const comments = profile.comments.map(comment => comment.trim()).filter(Boolean);
+  const comments = getProfileCommentTemplates(profile);
 
   // 尝试使用 LLM 生成评论
   try {
@@ -534,7 +671,7 @@ async function buildAutoComment(profile: WebsiteProfile, backlink: ManagedBackli
           pageLanguage: seo.language,
           websiteName: profile.name,
           websiteUrl: profile.url,
-          websiteDescription: profile.comments[0], // 使用第一条评论作为网站简介
+          websiteDescription: getPrimaryWebsiteDescription(profile),
           backlinkNote: backlink?.note,
         },
       });
@@ -789,28 +926,43 @@ async function handleFillSelectedWebsite(message: BaseMessage, sendResponse: (re
       throw new Error('当前页面未检测到可填充表单');
     }
 
-    const validComments = profile.comments.map(comment => comment.trim()).filter(Boolean);
+    const validComments = getProfileCommentTemplates(profile);
     const payloadComment = payload.comment?.trim();
+    const generatedCandidates = buildCommentCandidates(
+      profile,
+      {
+        seo: getPageSeoSummary(),
+        form_detected: true,
+        form_confidence: 1,
+        field_types: [],
+        backlink_in_current_group: false,
+        selected_website_link_present: false,
+      },
+      payload.backlink ?? null,
+    );
 
-    if (!payloadComment && !validComments.length) {
+    if (!payloadComment && !validComments.length && !generatedCandidates.length) {
       throw new Error('网站资料缺少评论内容');
     }
 
-    const selectedIndex = validComments.length > 0
+    const commentPool = validComments.length > 0 ? validComments : generatedCandidates;
+    const selectedIndex = commentPool.length > 0
       ? typeof payload.commentIndex === 'number'
-        ? Math.max(0, Math.min(validComments.length - 1, payload.commentIndex))
-        : Math.floor(Math.random() * validComments.length)
+        ? Math.max(0, Math.min(commentPool.length - 1, payload.commentIndex))
+        : Math.floor(Math.random() * commentPool.length)
       : 0;
 
-    const commentToUse = payloadComment || validComments[selectedIndex];
+    const commentToUse = payloadComment || commentPool[selectedIndex];
 
+    const llmPlan = await buildLLMFillPlan(profile, payload.backlink ?? null, detection.fields);
+    const resolvedFields = normalizeResolvedFields(detection.fields, llmPlan);
     const result = await autoFillService.fill(
-      detection.fields,
+      resolvedFields,
       {
         name: profile.name,
         email: profile.email,
         website: profile.url,
-        comment: commentToUse,
+        comment: llmPlan?.comment?.trim() || commentToUse,
       },
       false,
     );
@@ -1056,11 +1208,13 @@ async function handleOneClickFill(
     }
 
     // 使用指定的评论或生成自动评论
-    const commentToUse = comment?.trim() || await buildAutoComment(profile, backlink);
+    const llmPlan = await buildLLMFillPlan(profile, backlink, detection.fields);
+    const commentToUse = comment?.trim() || llmPlan?.comment?.trim() || await buildAutoComment(profile, backlink);
+    const resolvedFields = normalizeResolvedFields(detection.fields, llmPlan);
 
     // 执行填充
     const result = await autoFillService.fill(
-      detection.fields,
+      resolvedFields,
       {
         name: profile.name,
         email: profile.email,

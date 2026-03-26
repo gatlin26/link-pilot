@@ -7,21 +7,21 @@ describe('Webextension Content Runtime Script', () => {
   });
 
   it('should create all runtime elements on the page', async function () {
-    // Open the popup
+    // Open the side panel
     const extensionPath = await browser.getExtensionPath();
-    const popupUrl = `${extensionPath}/popup/index.html`;
+    const sidePanelUrl = `${extensionPath}/side-panel/index.html`;
 
-    // if Popup file not found, skip the test
+    // If Side Panel file not found, skip the test
     try {
-      await browser.url(popupUrl);
+      await browser.url(sidePanelUrl);
     } catch {
-      console.error('Popup file not found');
+      console.error('Side Panel file not found');
       this.skip();
     }
 
-    await expect(browser).toHaveTitle('Popup');
+    await expect(browser).toHaveTitle('Side Panel');
 
-    // Trigger inject button on popup
+    // Trigger inject button on side panel
     const contentScriptsButton = await $('button*=Content Scripts').getElement();
 
     await contentScriptsButton.click();

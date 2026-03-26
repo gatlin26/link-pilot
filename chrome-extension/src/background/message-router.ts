@@ -10,13 +10,15 @@ import {
   type MatchResult,
   type GenerateLLMCommentMessage,
   type GenerateLLMCommentResponse,
+  type GenerateLLMFillPlanMessage,
+  type GenerateLLMFillPlanResponse,
 } from '@extension/shared';
 import {
   managedBacklinkStorage,
   websiteProfileStorage,
   submissionSessionStorage,
 } from '@extension/storage';
-import { generateLLMComment } from './llm-service';
+import { generateLLMComment, generateLLMFillPlan } from './llm-service';
 
 type MessageHandler = (
   message: any,
@@ -75,6 +77,7 @@ class MessageRouter {
 
     // 注册 LLM 评论生成处理器
     this.register(MessageType.GENERATE_LLM_COMMENT, this.handleGenerateLLMComment.bind(this));
+    this.register(MessageType.GENERATE_LLM_FILL_PLAN, this.handleGenerateLLMFillPlan.bind(this));
 
     // 注册匹配结果更新处理器（用于广播）
     this.register(MessageType.MATCH_RESULT_UPDATED, this.handleMatchResultUpdated.bind(this));
@@ -88,7 +91,7 @@ class MessageRouter {
         return false;
       }
 
-      console.log('[Message Router] 收到消息:', messageType, 'from', sender.tab?.id || 'popup');
+      console.log('[Message Router] 收到消息:', messageType, 'from', sender.tab?.id || 'extension-ui');
 
       const handler = this.handlers.get(messageType);
 
@@ -298,7 +301,7 @@ class MessageRouter {
       }
     }
 
-    // 广播到其他组件（Side Panel、Popup）
+    // 广播到其他扩展组件（Side Panel）
     void chrome.runtime.sendMessage(message).catch(error => {
       console.warn('[Message Router] 广播匹配结果失败:', error);
     });
@@ -643,6 +646,28 @@ class MessageRouter {
     })();
 
     return true; // 异步响应
+  }
+
+  private handleGenerateLLMFillPlan(
+    message: BaseMessage,
+    sender: chrome.runtime.MessageSender,
+    sendResponse: (response: GenerateLLMFillPlanResponse) => void,
+  ): boolean {
+    (async () => {
+      try {
+        console.log('[Message Router] 处理 LLM 结构化填表请求');
+        const response = await generateLLMFillPlan(message as GenerateLLMFillPlanMessage);
+        sendResponse(response);
+      } catch (error) {
+        console.error('[Message Router] LLM 结构化填表失败:', error);
+        sendResponse({
+          success: false,
+          error: error instanceof Error ? error.message : 'LLM 结构化填表失败',
+        });
+      }
+    })();
+
+    return true;
   }
 }
 

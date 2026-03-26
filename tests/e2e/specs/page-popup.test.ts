@@ -1,12 +1,12 @@
 import { canSwitchTheme } from '../helpers/theme.js';
 
-describe('Webextension Popup', () => {
-  it('should open the popup successfully', async () => {
+describe('Webextension Side Panel', () => {
+  it('should open the side panel successfully', async () => {
     const extensionPath = await browser.getExtensionPath();
-    const popupUrl = `${extensionPath}/popup/index.html`;
-    await browser.url(popupUrl);
+    const sidePanelUrl = `${extensionPath}/side-panel/index.html`;
+    await browser.url(sidePanelUrl);
 
-    await expect(browser).toHaveTitle('Popup');
+    await expect(browser).toHaveTitle('Side Panel');
     await canSwitchTheme();
   });
 });

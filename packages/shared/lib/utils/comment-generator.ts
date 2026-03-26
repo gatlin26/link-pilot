@@ -6,6 +6,7 @@
  */
 
 import type { FillPageState, ManagedBacklink, WebsiteProfile } from '../types/models.js';
+import { getPrimaryWebsiteDescription, getProfileCommentTemplates } from './website-profile.js';
 
 type SupportedCommentLanguage =
   | 'en'
@@ -361,6 +362,9 @@ export function buildCommentCandidates(
     websiteUrl: normalizeText(profile.url),
     websiteDomain: normalizeText(profile.domain) || parseDomain(profile.url),
     email: normalizeText(profile.email),
+    websiteTitle: normalizeText(profile.title),
+    websiteTagline: normalizeText(profile.tagline),
+    websiteDescription: getPrimaryWebsiteDescription(profile),
     pageTitle,
     pageH1,
     pageDescription,
@@ -372,7 +376,7 @@ export function buildCommentCandidates(
     backlinkKeywords,
   };
 
-  const baseTemplates = profile.comments
+  const baseTemplates = getProfileCommentTemplates(profile)
     .map(comment => normalizeText(comment))
     .filter(Boolean)
     .filter(comment => matchesTargetLanguage(comment, commentLanguage));

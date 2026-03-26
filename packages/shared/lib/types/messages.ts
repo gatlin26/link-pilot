@@ -8,13 +8,13 @@ import type { FillPageState, ManagedBacklink } from './models.js';
  * 消息类型枚举
  */
 export enum MessageType {
-  // === Popup -> Content Script ===
+  // === Extension UI -> Content Script ===
   GET_FILL_PAGE_STATE = 'GET_FILL_PAGE_STATE',
   DETECT_PAGE_FORMS = 'DETECT_PAGE_FORMS',
   LOCATE_NEXT_FORM = 'LOCATE_NEXT_FORM',
   FILL_SELECTED_WEBSITE = 'FILL_SELECTED_WEBSITE',
 
-  // === Popup -> Background ===
+  // === Extension UI -> Background ===
   OPEN_NEXT_BACKLINKS = 'OPEN_NEXT_BACKLINKS',
 
   // === Content Script -> Background ===
@@ -44,6 +44,7 @@ export enum MessageType {
 
   // === 新增：LLM 评论生成相关 ===
   GENERATE_LLM_COMMENT = 'GENERATE_LLM_COMMENT',
+  GENERATE_LLM_FILL_PLAN = 'GENERATE_LLM_FILL_PLAN',
 }
 
 /**
@@ -270,6 +271,52 @@ export interface GenerateLLMCommentResponse extends BaseResponse<string> {
   error?: string;
 }
 
+export interface LLMFieldCandidate {
+  selector: string;
+  currentType: 'name' | 'email' | 'website' | 'comment' | 'submit';
+  tagName: string;
+  inputType?: string;
+  name?: string;
+  id?: string;
+  placeholder?: string;
+  label?: string;
+  ariaLabel?: string;
+  required?: boolean;
+}
+
+export interface GenerateLLMFillPlanMessage extends BaseMessage {
+  type: MessageType.GENERATE_LLM_FILL_PLAN;
+  payload: {
+    pageTitle: string;
+    pageDescription: string;
+    pageH1: string;
+    pageUrl: string;
+    pageLanguage?: string;
+    websiteName: string;
+    websiteUrl: string;
+    websiteEmail?: string;
+    websiteDescription?: string;
+    backlinkNote?: string;
+    commentCandidates?: string[];
+    fields: LLMFieldCandidate[];
+  };
+}
+
+export interface GenerateLLMFillPlanData {
+  comment: string;
+  fieldMappings: Array<{
+    selector: string;
+    fieldType: 'name' | 'email' | 'website' | 'comment' | 'submit' | 'unknown';
+    confidence: number;
+  }>;
+}
+
+export interface GenerateLLMFillPlanResponse extends BaseResponse<GenerateLLMFillPlanData> {
+  success: boolean;
+  data?: GenerateLLMFillPlanData;
+  error?: string;
+}
+
 /**
  * 消息联合类型 - 用于类型守卫
  */
@@ -286,6 +333,7 @@ export type LinkPilotMessage =
   | FillInitiatedMessage
   | FormDetectedMessage
   | GenerateLLMCommentMessage
+  | GenerateLLMFillPlanMessage
   | ForceDetectFormMessage;
 
 /**
@@ -299,7 +347,7 @@ export type MessageHandler<T extends BaseMessage = BaseMessage, R = unknown> = (
 /**
  * 广播消息目标
  */
-export type BroadcastTarget = 'content' | 'sidepanel' | 'popup' | 'background' | 'all';
+export type BroadcastTarget = 'content' | 'sidepanel' | 'background' | 'all';
 
 /**
  * 广播消息选项

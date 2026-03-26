@@ -36,17 +36,32 @@ const recalcGroups = (groups: ManagedBacklinkGroup[], backlinks: ManagedBacklink
 const normalizeUrl = (value: string) => value.trim().replace(/\/$/, '').toLowerCase();
 const normalizeDomain = (value: string) => value.trim().toLowerCase();
 
+function normalizeBacklink(backlink: ManagedBacklink): ManagedBacklink {
+  return {
+    ...backlink,
+    title: backlink.title?.trim() || undefined,
+    description: backlink.description?.trim() || undefined,
+    site_type: backlink.site_type ?? 'blog_comment',
+    pricing: backlink.pricing ?? 'free',
+    language: backlink.language?.trim() || undefined,
+    is_available: backlink.is_available ?? true,
+    note: backlink.note?.trim() || undefined,
+    keywords: Array.from(new Set((backlink.keywords ?? []).map(keyword => keyword.trim()).filter(Boolean))),
+  };
+}
+
 export const managedBacklinkStorage = {
   ...storage,
 
   async getAllBacklinks(): Promise<ManagedBacklink[]> {
     const state = await storage.get();
-    return state.backlinks;
+    return state.backlinks.map(normalizeBacklink);
   },
 
   async getBacklinkById(id: string): Promise<ManagedBacklink | null> {
     const state = await storage.get();
-    return state.backlinks.find(backlink => backlink.id === id) ?? null;
+    const backlink = state.backlinks.find(item => item.id === id);
+    return backlink ? normalizeBacklink(backlink) : null;
   },
 
   async getAllGroups(): Promise<ManagedBacklinkGroup[]> {
@@ -68,7 +83,7 @@ export const managedBacklinkStorage = {
 
   async addBacklink(backlink: ManagedBacklink): Promise<void> {
     await storage.set(state => {
-      const backlinks = [...state.backlinks, backlink];
+      const backlinks = [...state.backlinks, normalizeBacklink(backlink)];
       return {
         ...state,
         backlinks,
@@ -81,7 +96,7 @@ export const managedBacklinkStorage = {
   async updateBacklink(id: string, updates: Partial<ManagedBacklink>): Promise<void> {
     await storage.set(state => {
       const backlinks = state.backlinks.map(backlink =>
-        backlink.id === id ? { ...backlink, ...updates, updated_at: new Date().toISOString() } : backlink,
+        backlink.id === id ? normalizeBacklink({ ...backlink, ...updates, updated_at: new Date().toISOString() }) : backlink,
       );
       return {
         ...state,

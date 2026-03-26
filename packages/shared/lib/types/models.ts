@@ -459,7 +459,17 @@ export interface WebsiteProfile {
   url: string;
   domain: string;
   email: string;
+  title?: string;
+  tagline?: string;
+  description?: string;
+  logo_url?: string;
+  screenshot_url?: string;
+  categories?: string[];
+  keywords?: string[];
   comments: string[];
+  comment_templates?: string[];
+  dynamic_fields?: WebsiteProfileDynamicField[];
+  scraped_at?: string;
   enabled: boolean;
   created_at: string;
   updated_at: string;
@@ -483,6 +493,12 @@ export interface ManagedBacklink {
   group_id: string;
   url: string;
   domain: string;
+  title?: string;
+  description?: string;
+  site_type?: ManagedBacklinkSiteType;
+  pricing?: ManagedBacklinkPricing;
+  language?: string;
+  is_available?: boolean;
   note?: string;
   keywords: string[];
   dr?: number;
@@ -500,6 +516,33 @@ export interface ManagedBacklinkGroup {
   name: string;
   backlink_count: number;
   created_at: string;
+}
+
+export type ManagedBacklinkSiteType =
+  | 'blog_comment'
+  | 'ai_directory'
+  | 'tool_directory'
+  | 'submission_form'
+  | 'partner'
+  | 'other';
+
+export type ManagedBacklinkPricing = 'free' | 'freemium' | 'paid' | 'unknown';
+
+export type WebsiteProfileFieldType = 'text' | 'textarea' | 'url' | 'email' | 'image' | 'tags';
+
+export type WebsiteProfileFieldSource = 'manual' | 'scraped' | 'generated' | 'ai';
+
+export type WebsiteProfileFieldCategory = 'identity' | 'brand' | 'content' | 'comment' | 'submission';
+
+export interface WebsiteProfileDynamicField {
+  id: string;
+  label: string;
+  value: string | string[];
+  field_type: WebsiteProfileFieldType;
+  source: WebsiteProfileFieldSource;
+  category: WebsiteProfileFieldCategory;
+  visible: boolean;
+  description?: string;
 }
 
 /**

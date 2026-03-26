@@ -1,5 +1,9 @@
 import { createStorage, StorageEnum } from '../base/index.js';
-import type { WebsiteProfile, WebsiteProfileGroup } from '@extension/shared';
+import {
+  buildWebsiteProfileDynamicFields,
+  type WebsiteProfile,
+  type WebsiteProfileGroup,
+} from '@extension/shared';
 
 interface WebsiteProfileStorageState {
   profiles: WebsiteProfile[];
@@ -33,27 +37,52 @@ const recalcGroups = (groups: WebsiteProfileGroup[], profiles: WebsiteProfile[])
     website_count: profiles.filter(profile => profile.group_id === group.id).length,
   }));
 
+function normalizeProfile(profile: WebsiteProfile): WebsiteProfile {
+  const comments = (profile.comment_templates ?? profile.comments ?? []).map(comment => comment.trim()).filter(Boolean);
+  const normalized: WebsiteProfile = {
+    ...profile,
+    email: profile.email ?? '',
+    title: profile.title?.trim() || undefined,
+    tagline: profile.tagline?.trim() || undefined,
+    description: profile.description?.trim() || undefined,
+    logo_url: profile.logo_url?.trim() || undefined,
+    screenshot_url: profile.screenshot_url?.trim() || undefined,
+    categories: Array.from(new Set((profile.categories ?? []).map(item => item.trim()).filter(Boolean))),
+    keywords: Array.from(new Set((profile.keywords ?? []).map(item => item.trim()).filter(Boolean))),
+    comments,
+    comment_templates: comments,
+    dynamic_fields: buildWebsiteProfileDynamicFields({
+      ...profile,
+      comments,
+      comment_templates: comments,
+    }),
+  };
+
+  return normalized;
+}
+
 export const websiteProfileStorage = {
   ...storage,
 
   async getAllProfiles(): Promise<WebsiteProfile[]> {
     const state = await storage.get();
-    return state.profiles;
+    return state.profiles.map(normalizeProfile);
   },
 
   async getEnabledProfiles(): Promise<WebsiteProfile[]> {
     const state = await storage.get();
-    return state.profiles.filter(profile => profile.enabled);
+    return state.profiles.filter(profile => profile.enabled).map(normalizeProfile);
   },
 
   async getProfileById(id: string): Promise<WebsiteProfile | null> {
     const state = await storage.get();
-    return state.profiles.find(profile => profile.id === id) ?? null;
+    const profile = state.profiles.find(item => item.id === id);
+    return profile ? normalizeProfile(profile) : null;
   },
 
   async addProfile(profile: WebsiteProfile): Promise<void> {
     await storage.set(state => {
-      const profiles = [...state.profiles, profile];
+      const profiles = [...state.profiles, normalizeProfile(profile)];
       return {
         ...state,
         profiles,
@@ -66,7 +95,7 @@ export const websiteProfileStorage = {
   async updateProfile(id: string, updates: Partial<WebsiteProfile>): Promise<void> {
     await storage.set(state => {
       const profiles = state.profiles.map(profile =>
-        profile.id === id ? { ...profile, ...updates, updated_at: new Date().toISOString() } : profile,
+        profile.id === id ? normalizeProfile({ ...profile, ...updates, updated_at: new Date().toISOString() }) : profile,
       );
       return {
         ...state,
