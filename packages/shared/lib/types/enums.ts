@@ -157,3 +157,27 @@ export enum DeduplicationStrategy {
   DOMAIN_LEVEL = 'domain_level',
   HYBRID = 'hybrid',
 }
+
+/**
+ * 外链可用性状态
+ */
+export enum LinkAvailabilityStatus {
+  UNKNOWN = 'unknown',
+  CHECKING = 'checking',
+  AVAILABLE = 'available',
+  UNAVAILABLE = 'unavailable',
+}
+
+/**
+ * 站点类型（AI 推荐值，可扩展）
+ */
+export enum LinkSiteType {
+  BLOG_COMMENT = 'blog_comment',
+  DIRECTORY = 'directory',
+  AI_DIRECTORY = 'ai_directory',
+  FORUM = 'forum',
+  SOCIAL_PROFILE = 'social_profile',
+  GUEST_POST = 'guest_post',
+  TOOL_SUBMISSION = 'tool_submission',
+  OTHER = 'other',
+}
