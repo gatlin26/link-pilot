@@ -21,6 +21,10 @@ tsconfig.tsbuildinfo
 .idea
 **/.turbo
 
+# worktrees
+.worktrees/
+worktrees/
+
 # compiled
 **/tailwind-output.css
 
